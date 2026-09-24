@@ -79,11 +79,11 @@ export const Footer = () => {
                 EFFIDOO
               </span>
               <p className="text-[10px] tracking-[0.2em] uppercase text-zinc-400 font-medium">
-                Sculpted Couture & Atelier
+                Luxury Couture & Atelier
               </p>
             </div>
             <p className="text-xs text-zinc-400 leading-relaxed max-w-sm">
-              Sculpted by Effidoo celebrates contemporary Indian luxury. We blend pure handloom weaves, intricate embroidery, and made-to-measure tailoring for timeless elegance.
+              EFFIDOO celebrates contemporary Indian luxury. We blend pure handloom weaves, intricate embroidery, and made-to-measure tailoring for timeless elegance.
             </p>
 
             <div className="pt-2 space-y-2 text-xs">
@@ -219,7 +219,7 @@ export const Footer = () => {
 
         {/* Bottom Strip: Social, Payment Badges & Copyright */}
         <div className="pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
-          <p>© 2026 Sculpted by Effidoo. All rights reserved.</p>
+          <p>© 2026 EFFIDOO. All rights reserved.</p>
 
           {/* Social Icons */}
           <div className="flex items-center gap-4 text-zinc-400">

@@ -46,7 +46,7 @@ export default function ProductDetailPage() {
   const [isLoading, setIsLoading] = useState(true);
   const [isSizeChartOpen, setIsSizeChartOpen] = useState(false);
 
-  // Sculpted.in Customization Suite State
+  // Customization Suite State
   const [selectedHeight, setSelectedHeight] = useState<string>("5'4\"");
   const [selectedNeckDesign, setSelectedNeckDesign] = useState<string>('Standard (As shown)');
   const [selectedSleeves, setSelectedSleeves] = useState<string>('Standard (As shown)');
@@ -146,7 +146,7 @@ export default function ProductDetailPage() {
   const brandName =
     typeof product.brand === 'object' && product.brand !== null
       ? product.brand.name
-      : 'Sculpted Atelier';
+      : 'Effidoo Atelier';
 
   const categoryName =
     typeof product.category === 'object' && product.category !== null
@@ -314,7 +314,7 @@ export default function ProductDetailPage() {
             </p>
           )}
 
-          {/* 3. SCULPTED.IN SIZE SELECTION SWATCHES */}
+          {/* 3. SIZE SELECTION SWATCHES */}
           <div className="space-y-3 pt-2 border-t border-zinc-100 dark:border-zinc-800">
             <div className="flex items-center justify-between text-xs">
               <div className="flex items-center gap-2">
@@ -326,7 +326,7 @@ export default function ProductDetailPage() {
                 </span>
               </div>
 
-              {/* View Size Chart Modal Trigger (Signature Sculpted.in Feature) */}
+              {/* View Size Chart Modal Trigger */}
               <button
                 type="button"
                 onClick={() => setIsSizeChartOpen(true)}
@@ -368,7 +368,7 @@ export default function ProductDetailPage() {
             </div>
           </div>
 
-          {/* 4. SCULPTED.IN TAILORING CUSTOMIZATION SUITE */}
+          {/* 4. TAILORING CUSTOMIZATION SUITE */}
           <div className="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 space-y-4">
             <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">
               <Scissors className="w-4 h-4 text-amber-500" />

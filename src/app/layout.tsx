@@ -14,11 +14,11 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  title: 'EFFIDOO • Sculpted Couture & Atelier | Contemporary Ethnic Elegance',
+  title: 'EFFIDOO • Luxury Couture & Atelier | Contemporary Ethnic Elegance',
   description:
     'Explore handcrafted Lehengas, pure zari Half Sarees, breathable Maxi Cotton gowns, and festive couture. Custom tailoring, bespoke heights, and worldwide shipping.',
   keywords: [
-    'sculpted couture',
+    'effidoo couture',
     'lehenga half saree',
     'pure silk sarees',
     'maxi cotton dress',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     'indian bridal couture',
   ],
   openGraph: {
-    title: 'EFFIDOO • Sculpted Couture & Atelier',
+    title: 'EFFIDOO • Luxury Couture & Atelier',
     description: 'Impeccably tailored ethnic ensembles designed to celebrate individuality.',
     type: 'website',
   },

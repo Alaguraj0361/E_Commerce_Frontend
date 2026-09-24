@@ -75,7 +75,7 @@ export const Navbar = () => {
 
   return (
     <>
-      {/* 1. TOP ANNOUNCEMENT & CONTACT MARQUEE (Matching Sculpted.in) */}
+      {/* 1. TOP ANNOUNCEMENT & CONTACT MARQUEE */}
       <div className="bg-zinc-950 text-zinc-300 text-[11px] border-b border-zinc-900 py-1.5 px-4">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-2">
           {/* Contact Details Left */}
@@ -197,13 +197,13 @@ export const Navbar = () => {
             </Link>
           </nav>
 
-          {/* Center Brand Logo (Sculpted by Effidoo) */}
+          {/* Center Brand Logo */}
           <Link href="/" className="flex flex-col items-center group text-center">
             <span className="text-xl sm:text-2xl font-serif tracking-widest uppercase text-zinc-950 dark:text-white font-extrabold group-hover:text-amber-600 transition-colors">
               EFFIDOO
             </span>
             <span className="text-[9px] tracking-[0.25em] font-medium uppercase text-zinc-500 dark:text-zinc-400 -mt-0.5">
-              Sculpted Couture
+              Luxury Couture
             </span>
           </Link>
 
@@ -233,7 +233,7 @@ export const Navbar = () => {
               )}
             </Link>
 
-            {/* Cart Widget Button (Sculpted.in style: shows price + count) */}
+            {/* Cart Widget Button (shows price + count) */}
             <button
               onClick={() => setIsCartOpen(true)}
               className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900/60 text-zinc-900 dark:text-zinc-100 hover:bg-amber-100 dark:hover:bg-amber-900/50 transition-all text-xs font-semibold"
@@ -347,7 +347,7 @@ export const Navbar = () => {
                     EFFIDOO
                   </span>
                   <p className="text-[10px] tracking-widest text-zinc-500 uppercase">
-                    Sculpted Couture
+                    Luxury Couture
                   </p>
                 </div>
                 <button

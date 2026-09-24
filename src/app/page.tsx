@@ -72,7 +72,7 @@ export default function HomePage() {
     },
     {
       q: 'What are the add-on options like Can Can and Feeding Zip?',
-      a: 'We provide specialized tailoring add-ons: Can Can layers for voluminous festive flare (+₹650), concealed Feeding Zips for nursing mothers (+₹250), and sculpted Blouse Padding (+₹200).',
+      a: 'We provide specialized tailoring add-ons: Can Can layers for voluminous festive flare (+₹650), concealed Feeding Zips for nursing mothers (+₹250), and tailored Blouse Padding (+₹200).',
     },
     {
       q: 'What is the delivery timeline for orders?',
@@ -90,13 +90,13 @@ export default function HomePage() {
 
   return (
     <div className="space-y-16 sm:space-y-24 pb-20 overflow-hidden">
-      {/* 1. HERO SECTION (Matching Sculpted.in: "More than Just Looks") */}
+      {/* 1. HERO SECTION */}
       <section className="relative min-h-[85vh] flex items-center justify-center bg-zinc-950 text-white px-4 sm:px-6 lg:px-8 overflow-hidden">
         {/* Background Ambient High-Fashion Image with Gradient */}
         <div className="absolute inset-0 z-0">
           <Image
             src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=2000&q=90"
-            alt="Sculpted Couture Ethnic Elegance"
+            alt="EFFIDOO Couture Ethnic Elegance"
             fill
             priority
             className="object-cover object-center opacity-45 scale-105 transition-transform duration-1000"
@@ -111,7 +111,7 @@ export default function HomePage() {
             <span>Bespoke Ethnic Couture & Ready to Ship</span>
           </div>
 
-          {/* Headline (Sculpted.in Signature) */}
+          {/* Headline */}
           <h1 className="text-4xl sm:text-6xl md:text-7xl font-serif tracking-tight text-white max-w-4xl mx-auto leading-[1.1]">
             More than Just <span className="text-amber-400 font-normal italic">Looks.</span>
           </h1>
@@ -139,7 +139,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. VISUAL CATEGORY GRID (Matching Sculpted.in Category Cards) */}
+      {/* 2. VISUAL CATEGORY GRID */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10 space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400">
@@ -206,7 +206,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. PROMOTIONAL STORY BANNER (Matching Sculpted.in: "Trending Collections with Premium Quality") */}
+      {/* 4. PROMOTIONAL STORY BANNER */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative rounded-3xl overflow-hidden bg-zinc-950 text-white min-h-[420px] flex items-center shadow-2xl">
           <div className="absolute inset-0 z-0">
@@ -273,7 +273,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 6. KEY METRICS COUNTER (Matching Sculpted.in 47K+ customers, etc.) */}
+      {/* 6. KEY METRICS COUNTER */}
       <section className="bg-zinc-50 dark:bg-zinc-900/60 py-12 border-y border-zinc-200/80 dark:border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
@@ -318,7 +318,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. FAQ ACCORDION (Matching Sculpted.in "Most Popular Questions") */}
+      {/* 7. FAQ ACCORDION */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10 space-y-2">
           <span className="text-xs font-bold uppercase tracking-widest text-amber-600 dark:text-amber-400">
@@ -401,7 +401,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 9. NEWSLETTER / VIP CLUB (Matching Sculpted.in) */}
+      {/* 9. NEWSLETTER / VIP CLUB */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-8 sm:p-12 rounded-3xl bg-amber-50/70 dark:bg-amber-950/20 border border-amber-200/80 dark:border-amber-900/40 text-center space-y-4">
           <div className="inline-flex p-3 rounded-full bg-amber-100 dark:bg-amber-900/50 text-amber-600 dark:text-amber-400">
