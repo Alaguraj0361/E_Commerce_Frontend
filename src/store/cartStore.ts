@@ -69,6 +69,8 @@ export const useCartStore = create<CartState>((set, get) => ({
         productId: itemData.productId,
         variantId: itemData.variantId,
         quantity: itemData.quantity || 1,
+        customAttributes: itemData.attributes,
+        priceOverride: itemData.price,
         guestId,
       });
 

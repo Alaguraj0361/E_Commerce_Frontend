@@ -117,12 +117,18 @@ export const CartDrawer = () => {
                         </button>
                       </div>
                       {item.attributes && Object.keys(item.attributes).length > 0 && (
-                        <p className="text-xs text-zinc-500 dark:text-zinc-400 mt-0.5">
+                        <div className="text-[11px] text-zinc-500 dark:text-zinc-400 mt-1 space-y-0.5">
                           {Object.entries(item.attributes)
-                            .filter(([key]) => key !== 'colorHex')
-                            .map(([k, v]) => `${k}: ${v}`)
-                            .join(' • ')}
-                        </p>
+                            .filter(([key]) => key !== 'colorHex' && key !== '_id')
+                            .map(([k, v]) => (
+                              <div key={k} className="flex items-center gap-1">
+                                <span className="font-semibold capitalize text-zinc-700 dark:text-zinc-300">
+                                  {k === 'neckDesign' ? 'Neck' : k}:
+                                </span>
+                                <span>{Array.isArray(v) ? v.join(', ') : String(v)}</span>
+                              </div>
+                            ))}
+                        </div>
                       )}
                       <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mt-1">
                         {formatCurrency(item.price)}

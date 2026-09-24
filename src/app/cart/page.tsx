@@ -118,12 +118,20 @@ export default function CartPage() {
                   </div>
 
                   {item.attributes && Object.keys(item.attributes).length > 0 && (
-                    <p className="text-xs text-zinc-500 mt-1">
+                    <div className="text-xs text-zinc-500 dark:text-zinc-400 mt-1.5 space-y-1">
                       {Object.entries(item.attributes)
-                        .filter(([key]) => key !== 'colorHex')
-                        .map(([k, v]) => `${k}: ${v}`)
-                        .join(' • ')}
-                    </p>
+                        .filter(([key]) => key !== 'colorHex' && key !== '_id')
+                        .map(([k, v]) => (
+                          <div key={k} className="flex items-center gap-1.5">
+                            <span className="font-semibold text-zinc-700 dark:text-zinc-300 capitalize text-[11px]">
+                              {k === 'neckDesign' ? 'Neckline' : k}:
+                            </span>
+                            <span className="text-[11px]">
+                              {Array.isArray(v) ? v.join(', ') : String(v)}
+                            </span>
+                          </div>
+                        ))}
+                    </div>
                   )}
 
                   <p className="text-sm font-semibold text-zinc-900 dark:text-zinc-100 mt-2">
