@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Jost } from 'next/font/google';
+import { Jost, Playfair_Display } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
@@ -13,20 +13,28 @@ const jost = Jost({
   display: 'swap',
 });
 
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  variable: '--font-display',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
-  title: 'EFFIDOO • Luxury Couture & Atelier | Contemporary Ethnic Elegance',
+  title: 'EFFIDOO • Luxury Ethnic Wear & Couture | Tradition Meets You',
   description:
-    'Explore handcrafted Lehengas, pure zari Half Sarees, breathable Maxi Cotton gowns, and festive couture. Custom tailoring, bespoke heights, and worldwide shipping.',
+    'Discover handcrafted ethnic wear, designed for your most special moments. From traditional sarees, lehengas, and salwar suits to modern fusion styles, celebrate you with EFFIDOO.',
   keywords: [
-    'effidoo couture',
-    'lehenga half saree',
-    'pure silk sarees',
-    'maxi cotton dress',
+    'effidoo',
+    'traditional silk saree',
+    'bridal lehenga',
+    'salwar suit',
+    'kurtis',
+    'anarkali',
     'ethnic wear',
     'indian bridal couture',
   ],
   openGraph: {
-    title: 'EFFIDOO • Luxury Couture & Atelier',
+    title: 'EFFIDOO • Tradition Meets You',
     description: 'Impeccably tailored ethnic ensembles designed to celebrate individuality.',
     type: 'website',
   },
@@ -38,8 +46,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={jost.variable}>
-      <body className="font-sans min-h-screen flex flex-col bg-white text-zinc-900 selection:bg-amber-100 selection:text-amber-900 dark:bg-zinc-950 dark:text-zinc-50">
+    <html lang="en" className={`${jost.variable} ${playfair.variable}`}>
+      <body className="font-sans min-h-screen flex flex-col bg-[#FAF8F5] text-zinc-900 selection:bg-amber-100 selection:text-amber-900 dark:bg-zinc-950 dark:text-zinc-50">
         <ToastProvider />
         <Navbar />
         <CartDrawer />
