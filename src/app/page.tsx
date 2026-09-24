@@ -35,8 +35,7 @@ const HERO_SLIDES = [
     highlight: 'Redefined',
     description:
       'Discover handcrafted ethnic wear, designed for your most special moments. From traditional sarees to modern fusion styles, celebrate you.',
-    image:
-      'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1920&q=85',
+    image: '/images/hero_banner.jpg',
     link: '/shop',
   },
   {
@@ -443,41 +442,41 @@ export default function HomePage() {
             alt={currentSlide.title}
             fill
             priority
-            className="object-cover object-center lg:object-right transition-all duration-1000 transform scale-100 opacity-90"
+            className="object-cover object-center lg:object-[68%_center] transition-all duration-1000 transform scale-100 opacity-95"
           />
           {/* Radial & directional gradient vignette for crystal clear text readability */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#061811] via-[#061811]/85 to-transparent lg:w-3/5" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#061811] via-transparent to-[#061811]/40" />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#061811] via-[#061811]/75 to-transparent lg:w-[55%]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#061811] via-transparent to-[#061811]/30" />
         </div>
 
         {/* Content Box */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-16 lg:py-24">
-          <div className="max-w-xl space-y-5">
+        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full py-16 lg:py-24">
+          <div className="max-w-xl space-y-4">
             {/* Tagline Badge */}
-            <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#E5C07B]">
+            <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#E5C07B]">
               {currentSlide.tag}
             </p>
 
             {/* Headline */}
-            <div className="space-y-1">
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white font-medium tracking-tight leading-none">
+            <div className="space-y-0">
+              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-wide leading-tight">
                 {currentSlide.title}
               </h1>
-              <span className="font-serif italic text-4xl sm:text-5xl lg:text-6xl text-[#E5C07B] block font-light tracking-wide -mt-1">
+              <span className="font-script text-5xl sm:text-6xl lg:text-7xl text-[#E5C07B] block font-normal tracking-wide -mt-2 sm:-mt-3">
                 {currentSlide.highlight}
               </span>
             </div>
 
             {/* Description */}
-            <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed max-w-md font-light">
+            <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed max-w-md font-light pt-1">
               {currentSlide.description}
             </p>
 
             {/* Shop Now CTA Button */}
-            <div className="pt-2">
+            <div className="pt-3">
               <Link
                 href={currentSlide.link}
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-[#E5C07B] hover:bg-[#D4AF37] text-zinc-950 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all transform hover:scale-105 shadow-xl group"
+                className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-[#FDE68A] via-[#E5C07B] to-[#D4AF37] hover:opacity-95 text-zinc-950 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all transform hover:scale-105 shadow-xl group"
               >
                 <span>Shop Now</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -486,27 +485,30 @@ export default function HomePage() {
           </div>
         </div>
 
-        {/* Bottom Left Scroll Indicator */}
-        <div className="absolute bottom-6 left-8 z-10 hidden sm:flex items-center gap-2 text-zinc-400 text-[10px] uppercase tracking-widest">
-          <div className="w-4 h-4 rounded-full border border-zinc-500 flex items-center justify-center">
-            <div className="w-1.5 h-1.5 rounded-full bg-[#E5C07B] animate-ping" />
+        {/* Left Vertical Scroll Indicator matching Screenshot */}
+        <div className="absolute left-6 top-1/2 -translate-y-1/2 z-10 hidden lg:flex flex-col items-center gap-3 text-zinc-400">
+          <div className="w-[1px] h-12 bg-zinc-600/70" />
+          <span className="text-[9px] uppercase tracking-[0.3em] font-medium [writing-mode:vertical-lr] text-zinc-400 select-none">
+            SCROLL
+          </span>
+          <div className="w-3.5 h-3.5 rounded-full border border-[#E5C07B] flex items-center justify-center">
+            <div className="w-1 h-1 rounded-full bg-[#E5C07B]" />
           </div>
-          <span>SCROLL</span>
         </div>
 
-        {/* Bottom Right Carousel Controls (01 / 03 + Arrows) */}
-        <div className="absolute bottom-6 right-8 z-10 flex items-center gap-3 text-white">
+        {/* Bottom Right Carousel Controls (01 / 03 + Vertically Stacked Circular Buttons) */}
+        <div className="absolute bottom-8 right-8 lg:right-12 z-10 flex flex-col items-end gap-3 text-white">
           <span className="text-xs font-serif tracking-widest text-[#E5C07B]">
             0{currentHeroSlide + 1} <span className="text-zinc-500">/ 0{HERO_SLIDES.length}</span>
           </span>
-          <div className="flex items-center gap-1.5">
+          <div className="flex flex-col gap-2">
             <button
               onClick={() =>
                 setCurrentHeroSlide(
                   (prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length
                 )
               }
-              className="w-7 h-7 rounded-full border border-zinc-600 bg-black/40 hover:bg-[#D4AF37] hover:border-[#D4AF37] hover:text-zinc-950 flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-full border border-zinc-700 bg-black/60 hover:bg-[#D4AF37] hover:border-[#D4AF37] hover:text-zinc-950 flex items-center justify-center transition-all text-[#E5C07B]"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -515,7 +517,7 @@ export default function HomePage() {
               onClick={() =>
                 setCurrentHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length)
               }
-              className="w-7 h-7 rounded-full border border-zinc-600 bg-black/40 hover:bg-[#D4AF37] hover:border-[#D4AF37] hover:text-zinc-950 flex items-center justify-center transition-colors"
+              className="w-8 h-8 rounded-full border border-zinc-700 bg-black/60 hover:bg-[#D4AF37] hover:border-[#D4AF37] hover:text-zinc-950 flex items-center justify-center transition-all text-[#E5C07B]"
               aria-label="Next slide"
             >
               <ChevronRight className="w-4 h-4" />

@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Jost, Playfair_Display } from 'next/font/google';
+import { Jost, Playfair_Display, Alex_Brush } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
@@ -16,6 +16,13 @@ const jost = Jost({
 const playfair = Playfair_Display({
   subsets: ['latin'],
   variable: '--font-display',
+  display: 'swap',
+});
+
+const alexBrush = Alex_Brush({
+  weight: '400',
+  subsets: ['latin'],
+  variable: '--font-script',
   display: 'swap',
 });
 
@@ -46,7 +53,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${jost.variable} ${playfair.variable}`}>
+    <html lang="en" className={`${jost.variable} ${playfair.variable} ${alexBrush.variable}`}>
       <body className="font-sans min-h-screen flex flex-col bg-[#FAF8F5] text-zinc-900 selection:bg-amber-100 selection:text-amber-900 dark:bg-zinc-950 dark:text-zinc-50">
         <ToastProvider />
         <Navbar />

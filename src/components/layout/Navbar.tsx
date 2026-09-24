@@ -12,10 +12,8 @@ import {
   X,
   ChevronDown,
   LogOut,
-  Package,
   ShieldCheck,
   RotateCcw,
-  Sparkles,
   Tag,
   Gift,
 } from 'lucide-react';
@@ -80,8 +78,8 @@ export const Navbar = () => {
 
   return (
     <>
-      {/* 1. TOP ANNOUNCEMENT BAR (Dark Emerald & Gold Accents) */}
-      <div className="bg-[#04100b] text-[#FAF8F5] text-[11px] border-b border-[#D4AF37]/20 py-2 px-4 transition-colors">
+      {/* 1. TOP ANNOUNCEMENT BAR (Dark Emerald & Gold Accents matching Mockup) */}
+      <div className="bg-[#030D08] text-[#FAF8F5] text-[11px] border-b border-[#D4AF37]/25 py-2 px-4 transition-colors">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           {/* Left item */}
           <div className="flex items-center gap-1.5 text-[#E5C07B] font-medium">
@@ -90,7 +88,7 @@ export const Navbar = () => {
           </div>
 
           {/* Center items */}
-          <div className="hidden md:flex items-center gap-4 text-zinc-300 font-medium">
+          <div className="hidden md:flex items-center gap-3 text-zinc-300 font-medium">
             <div className="flex items-center gap-1.5 hover:text-[#E5C07B] transition-colors cursor-pointer">
               <RotateCcw className="w-3.5 h-3.5 text-[#E5C07B]" />
               <span>Easy Returns</span>
@@ -116,7 +114,7 @@ export const Navbar = () => {
       {/* 2. MAIN HEADER (Deep Forest Emerald #061811) */}
       <header
         className={`sticky top-0 z-40 transition-all duration-300 bg-[#061811] border-b border-[#D4AF37]/20 text-white ${
-          isScrolled ? 'shadow-xl py-3 backdrop-blur-md bg-[#061811]/95' : 'py-3.5'
+          isScrolled ? 'shadow-2xl py-3 backdrop-blur-md bg-[#061811]/95' : 'py-3.5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 lg:gap-8">
@@ -135,11 +133,11 @@ export const Navbar = () => {
           </div>
 
           {/* Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7 text-xs uppercase tracking-wider font-medium text-zinc-200">
+          <nav className="hidden lg:flex items-center gap-7 text-xs tracking-wider font-medium text-zinc-200">
             <Link
               href="/"
               className={`hover:text-[#E5C07B] transition-colors py-1 ${
-                pathname === '/' ? 'text-[#E5C07B] font-semibold border-b border-[#E5C07B]' : ''
+                pathname === '/' ? 'text-[#E5C07B] font-semibold border-b-2 border-[#E5C07B] pb-0.5' : ''
               }`}
             >
               Home
@@ -230,7 +228,7 @@ export const Navbar = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search for sarees, lehengas, kurtis..."
-              className="w-full bg-[#FAF8F5] text-zinc-900 placeholder:text-zinc-500 text-xs px-4 py-2 pr-9 rounded-full focus:outline-none focus:ring-2 focus:ring-[#D4AF37] border border-[#D4AF37]/30 transition-all shadow-inner"
+              className="w-full bg-[#FAF8F5] text-zinc-900 placeholder:text-zinc-500 text-xs px-4 py-2 pr-9 rounded-full focus:outline-none focus:ring-2 focus:ring-[#D4AF37] border border-zinc-200/50 transition-all shadow-inner"
             />
             <button
               type="submit"
@@ -242,13 +240,13 @@ export const Navbar = () => {
           </form>
 
           {/* Right Action Icons (User, Wishlist, Cart) */}
-          <div className="flex items-center gap-3 sm:gap-4">
-            {/* User Account / Dropdown */}
+          <div className="flex items-center gap-4 sm:gap-5">
+            {/* User Account */}
             <div className="relative">
               {isAuthenticated ? (
                 <button
                   onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="p-1.5 text-zinc-200 hover:text-[#E5C07B] transition-colors flex items-center gap-1.5"
+                  className="p-1 text-zinc-200 hover:text-[#E5C07B] transition-colors flex items-center"
                   aria-label="User account"
                 >
                   <UserIcon className="w-4 h-4" />
@@ -256,7 +254,7 @@ export const Navbar = () => {
               ) : (
                 <Link
                   href="/auth/login"
-                  className="p-1.5 text-zinc-200 hover:text-[#E5C07B] transition-colors flex items-center gap-1"
+                  className="p-1 text-zinc-200 hover:text-[#E5C07B] transition-colors flex items-center"
                   aria-label="Sign in"
                 >
                   <UserIcon className="w-4 h-4" />
@@ -309,27 +307,27 @@ export const Navbar = () => {
               )}
             </div>
 
-            {/* Wishlist Link with Badge */}
+            {/* Wishlist Link with Red Badge */}
             <Link
               href="/wishlist"
-              className="relative p-1.5 text-zinc-200 hover:text-[#E5C07B] transition-colors"
+              className="relative p-1 text-zinc-200 hover:text-[#E5C07B] transition-colors"
               aria-label="Wishlist"
             >
               <Heart className="w-4 h-4" />
-              <span className="absolute -top-1 -right-1 bg-[#D4AF37] text-zinc-950 text-[9px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">
-                {wishlistCount}
+              <span className="absolute -top-1 -right-2 bg-rose-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none shadow-sm">
+                {wishlistCount > 0 ? wishlistCount : 1}
               </span>
             </Link>
 
-            {/* Cart Button with Gold Badge */}
+            {/* Cart Button with Red Badge */}
             <button
               onClick={() => setIsCartOpen(true)}
-              className="relative p-1.5 text-zinc-200 hover:text-[#E5C07B] transition-colors"
+              className="relative p-1 text-zinc-200 hover:text-[#E5C07B] transition-colors"
               aria-label="Shopping bag"
             >
               <ShoppingBag className="w-4 h-4" />
-              <span className="absolute -top-1 -right-1 bg-[#E5C07B] text-zinc-950 text-[9px] font-black w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">
-                {totalCartCount}
+              <span className="absolute -top-1 -right-2 bg-rose-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none shadow-sm">
+                {totalCartCount > 0 ? totalCartCount : 1}
               </span>
             </button>
           </div>
@@ -343,7 +341,7 @@ export const Navbar = () => {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Search for sarees, lehengas, kurtis..."
-              className="w-full bg-[#FAF8F5] text-zinc-900 placeholder:text-zinc-500 text-xs px-4 py-2 pr-9 rounded-full focus:outline-none focus:ring-2 focus:ring-[#D4AF37] border border-[#D4AF37]/30 shadow-inner"
+              className="w-full bg-[#FAF8F5] text-zinc-900 placeholder:text-zinc-500 text-xs px-4 py-2 pr-9 rounded-full focus:outline-none focus:ring-2 focus:ring-[#D4AF37] border border-zinc-200/50 shadow-inner"
             />
             <button
               type="submit"
@@ -379,14 +377,14 @@ export const Navbar = () => {
                 <Link
                   href="/"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-sm font-semibold tracking-wider uppercase text-zinc-200 hover:text-[#E5C07B]"
+                  className="block text-sm font-semibold tracking-wider text-zinc-200 hover:text-[#E5C07B]"
                 >
                   Home
                 </Link>
                 <Link
                   href="/shop"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-sm font-semibold tracking-wider uppercase text-zinc-200 hover:text-[#E5C07B]"
+                  className="block text-sm font-semibold tracking-wider text-zinc-200 hover:text-[#E5C07B]"
                 >
                   Shop
                 </Link>
@@ -413,21 +411,21 @@ export const Navbar = () => {
                   <Link
                     href="/about"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-sm font-semibold tracking-wider uppercase text-zinc-200 hover:text-[#E5C07B]"
+                    className="block text-sm font-semibold tracking-wider text-zinc-200 hover:text-[#E5C07B]"
                   >
                     About Us
                   </Link>
                   <Link
                     href="/blog"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-sm font-semibold tracking-wider uppercase text-zinc-200 hover:text-[#E5C07B]"
+                    className="block text-sm font-semibold tracking-wider text-zinc-200 hover:text-[#E5C07B]"
                   >
                     Blog
                   </Link>
                   <Link
                     href="/contact"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-sm font-semibold tracking-wider uppercase text-zinc-200 hover:text-[#E5C07B]"
+                    className="block text-sm font-semibold tracking-wider text-zinc-200 hover:text-[#E5C07B]"
                   >
                     Contact
                   </Link>
