@@ -36,7 +36,7 @@ const HERO_SLIDES = [
     description:
       'Discover handcrafted ethnic wear, designed for your most special moments. From traditional sarees to modern fusion styles, celebrate you.',
     image: '/images/hero_banner.jpg',
-    link: '/shop',
+    link: '/shop?category=sarees',
   },
   {
     tag: 'BRIDAL HERITAGE',
@@ -44,8 +44,7 @@ const HERO_SLIDES = [
     highlight: 'Pure Zari',
     description:
       'Intricate bridal lehengas, pure silk weaves, and bespoke silhouettes crafted with timeless Indian artistry.',
-    image:
-      'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=1920&q=85',
+    image: '/images/hero_banner_2.jpg',
     link: '/shop?category=lehengas',
   },
   {
@@ -54,8 +53,7 @@ const HERO_SLIDES = [
     highlight: 'Bespoke Fit',
     description:
       'From intimate family gatherings to grand festivities, explore our opulent collection of curated ethnic glamour.',
-    image:
-      'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1920&q=85',
+    image: '/images/hero_banner_3.jpg',
     link: '/shop?category=salwar-suits',
   },
 ];
@@ -351,13 +349,21 @@ export default function HomePage() {
     fetchData();
   }, []);
 
-  // Auto advance hero slider
+  const nextSlide = () => {
+    setCurrentHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentHeroSlide(
+      (prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length
+    );
+  };
+
+  // Auto advance hero slider every 7 seconds, resetting timer on manual change
   useEffect(() => {
-    const timer = setInterval(() => {
-      setCurrentHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length);
-    }, 6000);
+    const timer = setInterval(nextSlide, 7000);
     return () => clearInterval(timer);
-  }, []);
+  }, [currentHeroSlide]);
 
   const handleQuickAdd = (product: any, e: React.MouseEvent) => {
     e.preventDefault();
@@ -503,20 +509,14 @@ export default function HomePage() {
           </span>
           <div className="flex flex-col gap-2">
             <button
-              onClick={() =>
-                setCurrentHeroSlide(
-                  (prev) => (prev - 1 + HERO_SLIDES.length) % HERO_SLIDES.length
-                )
-              }
+              onClick={prevSlide}
               className="w-8 h-8 rounded-full border border-zinc-700 bg-black/60 hover:bg-[#D4AF37] hover:border-[#D4AF37] hover:text-zinc-950 flex items-center justify-center transition-all text-[#E5C07B]"
               aria-label="Previous slide"
             >
               <ChevronLeft className="w-4 h-4" />
             </button>
             <button
-              onClick={() =>
-                setCurrentHeroSlide((prev) => (prev + 1) % HERO_SLIDES.length)
-              }
+              onClick={nextSlide}
               className="w-8 h-8 rounded-full border border-zinc-700 bg-black/60 hover:bg-[#D4AF37] hover:border-[#D4AF37] hover:text-zinc-950 flex items-center justify-center transition-all text-[#E5C07B]"
               aria-label="Next slide"
             >
