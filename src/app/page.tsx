@@ -8,12 +8,12 @@ import {
   Heart,
   Star,
   ShoppingBag,
+  ShoppingCart,
   ChevronLeft,
   ChevronRight,
   ChevronDown,
   ShieldCheck,
   Truck,
-  RotateCcw,
   Sparkles,
   Award,
   Crown,
@@ -63,44 +63,37 @@ const EXACT_CATEGORIES = [
   {
     name: 'Sarees',
     slug: 'sarees',
-    image:
-      'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=80',
+    image: '/images/categories/sarees.jpg',
   },
   {
     name: 'Lehengas',
     slug: 'lehengas',
-    image:
-      'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80',
+    image: '/images/categories/lehengas.jpg',
   },
   {
     name: 'Salwar Suits',
     slug: 'salwar-suits',
-    image:
-      'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=600&q=80',
+    image: '/images/categories/salwar-suits.jpg',
   },
   {
     name: 'Kurtis',
     slug: 'kurtis',
-    image:
-      'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80',
+    image: '/images/categories/kurtis.jpg',
   },
   {
     name: 'Anarkali',
     slug: 'anarkali',
-    image:
-      'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?auto=format&fit=crop&w=600&q=80',
+    image: '/images/categories/anarkali.jpg',
   },
   {
     name: "Men's Wear",
     slug: 'mens-wear',
-    image:
-      'https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=600&q=80',
+    image: '/images/categories/mens-wear.jpg',
   },
   {
     name: "Kid's Wear",
     slug: 'kids-wear',
-    image:
-      'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=600&q=80',
+    image: '/images/categories/kids-wear.jpg',
   },
 ];
 
@@ -114,10 +107,9 @@ const EXACT_BEST_SELLERS = [
     compareAtPrice: 4999,
     rating: 4.8,
     reviewCount: 124,
-    badge: 'Best Seller',
-    badgeType: 'amber',
-    image:
-      'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80',
+    badge: 'Bestseller',
+    badgeType: 'bestseller',
+    image: '/images/bestsellers/traditional_silk_saree.jpg',
   },
   {
     _id: 'bs-2',
@@ -129,8 +121,7 @@ const EXACT_BEST_SELLERS = [
     reviewCount: 96,
     badge: 'New',
     badgeType: 'emerald',
-    image:
-      'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80',
+    image: '/images/bestsellers/bridal_lehenga.jpg',
   },
   {
     _id: 'bs-3',
@@ -142,8 +133,7 @@ const EXACT_BEST_SELLERS = [
     reviewCount: 76,
     badge: 'Hot',
     badgeType: 'rose',
-    image:
-      'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80',
+    image: '/images/bestsellers/embroidered_salwar_suit.jpg',
   },
   {
     _id: 'bs-4',
@@ -155,8 +145,7 @@ const EXACT_BEST_SELLERS = [
     reviewCount: 112,
     badge: 'New',
     badgeType: 'emerald',
-    image:
-      'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=600&q=80',
+    image: '/images/bestsellers/anarkali_dress.jpg',
   },
 ];
 
@@ -169,11 +158,10 @@ const EXACT_NEW_ARRIVALS = [
     price: 3499,
     compareAtPrice: 5999,
     rating: 4.8,
-    reviewCount: 95,
+    reviewCount: 65,
     badge: 'New',
     badgeType: 'emerald',
-    image:
-      'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=80',
+    image: '/images/new_arrivals/designer_silk_saree.jpg',
   },
   {
     _id: 'na-2',
@@ -185,8 +173,7 @@ const EXACT_NEW_ARRIVALS = [
     reviewCount: 52,
     badge: 'Hot',
     badgeType: 'rose',
-    image:
-      'https://images.unsplash.com/photo-1596755094514-f87e34085b2c?auto=format&fit=crop&w=600&q=80',
+    image: '/images/new_arrivals/straight_kurti_set.jpg',
   },
   {
     _id: 'na-3',
@@ -198,8 +185,7 @@ const EXACT_NEW_ARRIVALS = [
     reviewCount: 87,
     badge: 'New',
     badgeType: 'emerald',
-    image:
-      'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80',
+    image: '/images/new_arrivals/lehenga_choli.jpg',
   },
   {
     _id: 'na-4',
@@ -208,11 +194,10 @@ const EXACT_NEW_ARRIVALS = [
     price: 1999,
     compareAtPrice: 2999,
     rating: 4.6,
-    reviewCount: 63,
+    reviewCount: 43,
     badge: 'Trend',
     badgeType: 'teal',
-    image:
-      'https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=600&q=80',
+    image: '/images/new_arrivals/mens_kurta.jpg',
   },
   {
     _id: 'na-5',
@@ -224,8 +209,7 @@ const EXACT_NEW_ARRIVALS = [
     reviewCount: 72,
     badge: 'New',
     badgeType: 'emerald',
-    image:
-      'https://images.unsplash.com/photo-1622290291468-a28f7a7dc6a8?auto=format&fit=crop&w=600&q=80',
+    image: '/images/new_arrivals/kids_festive_wear.jpg',
   },
 ];
 
@@ -257,10 +241,33 @@ const OCCASIONS = [
   },
 ];
 
+// Custom Icons & Botanical Decorations matching mockup
+const WheatSproutIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 28 28"
+    fill="currentColor"
+    className={className}
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M5 23C9 20 15 15 18 10C21 5 23 2.5 24 1.5C23 3 22 7 18 11C15 15 10 20 5 23Z"
+      fill="currentColor"
+    />
+    <path d="M23.5 1.5C21 3.5 21 6.5 23 8C25 6.5 25.5 3.5 23.5 1.5Z" fill="currentColor" />
+    <path d="M17 5.5C14.5 6 13.5 8.5 15 10.5C17 10.5 18.5 8.5 17 5.5Z" fill="currentColor" />
+    <path d="M20 7.5C21.5 9.5 23.5 10 24.5 8.5C24.5 6.5 22.5 5.5 20 7.5Z" fill="currentColor" />
+    <path d="M12.5 10C10.5 11 9.5 13.5 11 15C13 15 14.5 13 12.5 10Z" fill="currentColor" />
+    <path d="M16 12C17.5 14 19.5 14.5 20.5 13C20.5 11 18.5 10 16 12Z" fill="currentColor" />
+    <path d="M8.5 14.5C6.5 15.5 5.5 18 7 19.5C9 19.5 10.5 17.5 8.5 14.5Z" fill="currentColor" />
+    <path d="M12 16.5C13.5 18.5 15.5 19 16.5 17.5C16.5 15.5 14.5 14.5 12 16.5Z" fill="currentColor" />
+  </svg>
+);
+
 export default function HomePage() {
   const [categories, setCategories] = useState<any[]>(EXACT_CATEGORIES);
   const [bestSellers, setBestSellers] = useState<any[]>(EXACT_BEST_SELLERS);
   const [newArrivals, setNewArrivals] = useState<any[]>(EXACT_NEW_ARRIVALS);
+  const [newArrivalsIndex, setNewArrivalsIndex] = useState(0);
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
   const [newsletterEmail, setNewsletterEmail] = useState('');
 
@@ -527,59 +534,46 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================== */}
-      {/* 2. TRUST BADGES STRIP (4 Gold Trust Badges on Ivory)         */}
+      {/* 2. TRUST BADGES STRIP (3 Gold Trust Badges on Ivory)         */}
       {/* ============================================================== */}
-      <section className="bg-[#FAF8F5] border-y border-[#D4AF37]/20 py-8 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
+      <section className="bg-[#FAF5EB] border-y border-[#E8DFC8]">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#E8DFC8] py-4 lg:py-5">
           {/* 1. Premium Quality */}
-          <div className="flex items-center gap-3.5 group">
-            <div className="w-11 h-11 rounded-full bg-[#FAF3E0] border border-[#D4AF37]/40 flex items-center justify-center text-[#B8860B] transition-transform group-hover:scale-110">
-              <Award className="w-5 h-5" />
-            </div>
+          <div className="flex items-center justify-center gap-3.5 px-4 sm:px-6 py-3">
+            <WheatSproutIcon className="w-8 h-8 text-[#B38646] shrink-0" />
             <div>
-              <h4 className="text-xs font-bold text-zinc-900 uppercase tracking-wide">
+              <h4 className="text-xs sm:text-[13px] font-bold text-zinc-900 tracking-tight leading-snug">
                 Premium Quality
               </h4>
-              <p className="text-[11px] text-zinc-500 font-normal">Finest Fabrics</p>
+              <p className="text-[11px] sm:text-xs text-zinc-500 font-normal leading-snug">
+                Finest Fabrics
+              </p>
             </div>
           </div>
 
           {/* 2. Free Shipping */}
-          <div className="flex items-center gap-3.5 group">
-            <div className="w-11 h-11 rounded-full bg-[#FAF3E0] border border-[#D4AF37]/40 flex items-center justify-center text-[#B8860B] transition-transform group-hover:scale-110">
-              <Truck className="w-5 h-5" />
-            </div>
+          <div className="flex items-center justify-center gap-3.5 px-4 sm:px-6 py-3">
+            <Truck className="w-8 h-8 text-[#B38646] shrink-0" strokeWidth={1.8} />
             <div>
-              <h4 className="text-xs font-bold text-zinc-900 uppercase tracking-wide">
+              <h4 className="text-xs sm:text-[13px] font-bold text-zinc-900 tracking-tight leading-snug">
                 Free Shipping
               </h4>
-              <p className="text-[11px] text-zinc-500 font-normal">On Orders Above ₹999</p>
+              <p className="text-[11px] sm:text-xs text-zinc-500 font-normal leading-snug">
+                On Orders Above ₹1,499
+              </p>
             </div>
           </div>
 
           {/* 3. Secure Payments */}
-          <div className="flex items-center gap-3.5 group">
-            <div className="w-11 h-11 rounded-full bg-[#FAF3E0] border border-[#D4AF37]/40 flex items-center justify-center text-[#B8860B] transition-transform group-hover:scale-110">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
+          <div className="flex items-center justify-center gap-3.5 px-4 sm:px-6 py-3">
+            <ShieldCheck className="w-8 h-8 text-[#B38646] shrink-0" strokeWidth={1.8} />
             <div>
-              <h4 className="text-xs font-bold text-zinc-900 uppercase tracking-wide">
+              <h4 className="text-xs sm:text-[13px] font-bold text-zinc-900 tracking-tight leading-snug">
                 Secure Payments
               </h4>
-              <p className="text-[11px] text-zinc-500 font-normal">100% Safe & Secure</p>
-            </div>
-          </div>
-
-          {/* 4. Easy Returns */}
-          <div className="flex items-center gap-3.5 group">
-            <div className="w-11 h-11 rounded-full bg-[#FAF3E0] border border-[#D4AF37]/40 flex items-center justify-center text-[#B8860B] transition-transform group-hover:scale-110">
-              <RotateCcw className="w-5 h-5" />
-            </div>
-            <div>
-              <h4 className="text-xs font-bold text-zinc-900 uppercase tracking-wide">
-                Easy Returns
-              </h4>
-              <p className="text-[11px] text-zinc-500 font-normal">Hassle Free within 7 Days</p>
+              <p className="text-[11px] sm:text-xs text-zinc-500 font-normal leading-snug">
+                100% Safe & Secure
+              </p>
             </div>
           </div>
         </div>
@@ -588,66 +582,72 @@ export default function HomePage() {
       {/* ============================================================== */}
       {/* 3. SHOP BY CATEGORY - EXPLORE OUR COLLECTIONS                 */}
       {/* ============================================================== */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+      <section
+        className="relative bg-[#FAF5EB] bg-cover bg-center bg-no-repeat border-b border-[#E8DFC8] py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 overflow-hidden"
+        style={{ backgroundImage: "url('/images/explore_collection_bg.png')" }}
+      >
+
+        <div className="max-w-[1560px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-8 xl:gap-10 relative z-10">
           {/* Left Title & Call to Action */}
-          <div className="lg:w-1/4 text-center lg:text-left space-y-3">
-            <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#B8860B]">
+          <div className="lg:w-[280px] xl:w-[320px] shrink-0 text-center lg:text-left flex flex-col items-center lg:items-start">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#B38646] mb-3">
               SHOP BY CATEGORY
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#0B2518] font-bold leading-tight">
-              Explore Our Collections
+            <h2
+              className="font-serif text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] text-zinc-900 font-semibold tracking-tight mb-4"
+              style={{ lineHeight: '3.5rem' }}
+            >
+              Explore Our<br /> Collections
             </h2>
-            <p className="text-xs text-zinc-600 leading-relaxed font-normal">
+            <p className="text-xs sm:text-[13px] text-zinc-600 font-normal leading-relaxed max-w-[270px] mb-7">
               Find your perfect style from our wide range of ethnic wear.
             </p>
-            <div className="pt-2">
-              <Link
-                href="/shop"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#0B2518] hover:bg-[#061811] text-white text-xs font-semibold tracking-wide transition-all shadow group"
-              >
-                <span>View All Collections</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
+            <Link
+              href="/shop"
+              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#051C14] hover:bg-[#092B20] text-white text-xs font-semibold tracking-wider transition-all shadow-md hover:shadow-lg group"
+            >
+              <span>View All Collections</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </Link>
           </div>
 
-          {/* Right 7 Circular Avatars Grid (Order: Sarees, Lehengas, Salwar Suits, Kurtis, Anarkali, Men's Wear, Kid's Wear) */}
-          <div className="lg:w-3/4 w-full">
-            <div className="grid grid-cols-3 sm:grid-cols-4 lg:grid-cols-7 gap-4 sm:gap-5 justify-items-center">
+          {/* Right 7 Circular Avatars Grid in Single Row (Order: Sarees, Lehengas, Salwar Suits, Kurtis, Anarkali, Men's Wear, Kids Wear) */}
+          <div className="flex-1 w-full overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 scrollbar-none">
+            <div className="grid grid-flow-col auto-cols-[130px] sm:auto-cols-[145px] lg:grid-flow-row lg:grid-cols-7 gap-5 sm:gap-6 lg:gap-4 xl:gap-6 2xl:gap-8 justify-items-center items-start">
               {categories.slice(0, 7).map((cat) => {
-                const fallbackImg =
+                const categoryImg =
                   EXACT_CATEGORIES.find((c) => c.slug === cat.slug)?.image ||
-                  cat.image ||
-                  EXACT_CATEGORIES[0].image;
+                  `/images/categories/${cat.slug}.jpg` ||
+                  cat.image;
 
                 return (
                   <Link
                     key={cat.slug || cat.name}
                     href={`/shop?category=${cat.slug}`}
-                    className="flex flex-col items-center text-center group"
+                    className="flex flex-col items-center text-center group cursor-pointer w-full"
                   >
-                    {/* Golden Bordered Circle Avatar */}
-                    <div className="relative w-20 h-20 sm:w-24 sm:h-24 rounded-full p-1 border-2 border-[#D4AF37]/50 group-hover:border-[#D4AF37] transition-all duration-300 shadow-sm group-hover:shadow-md group-hover:-translate-y-1">
-                      <div className="relative w-full h-full rounded-full overflow-hidden">
+                    {/* Golden Bordered Large Circle Avatar */}
+                    <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-32 md:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 rounded-full p-[3.5px] border-2 border-[#D4AF37] ring-1 ring-[#D4AF37]/50 bg-white shadow-md transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl group-hover:border-[#B8860B]">
+                      <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-100">
                         <Image
-                          src={cat.image || fallbackImg}
+                          src={categoryImg}
                           alt={cat.name}
                           fill
-                          sizes="(max-width: 640px) 80px, 96px"
-                          className="object-cover object-top transition-transform duration-500 group-hover:scale-110"
+                          sizes="(max-width: 640px) 130px, 160px"
+                          className="object-cover object-top transition-transform duration-500 group-hover:scale-108"
+                          priority
                         />
                       </div>
                     </div>
 
                     {/* Category Title */}
-                    <h3 className="mt-2.5 text-xs font-bold text-zinc-900 group-hover:text-[#B8860B] transition-colors">
+                    <h3 className="mt-3 text-[13px] sm:text-sm font-serif font-bold text-zinc-900 group-hover:text-[#B38646] transition-colors whitespace-nowrap tracking-tight">
                       {cat.name}
                     </h3>
 
                     {/* Explore Link */}
-                    <span className="text-[11px] text-[#B8860B] group-hover:text-zinc-950 font-medium inline-flex items-center gap-0.5 mt-0.5">
-                      Explore <ArrowRight className="w-2.5 h-2.5 ml-0.5" />
+                    <span className="mt-1 text-xs text-[#A87C38] font-medium inline-flex items-center gap-1 group-hover:text-zinc-950 transition-colors">
+                      Explore <span className="text-[13px] ml-0.5 leading-none">→</span>
                     </span>
                   </Link>
                 );
@@ -658,147 +658,169 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================== */}
+      {/* ============================================================== */}
       {/* 4. FEATURED COLLECTION - OUR BEST SELLERS                      */}
       {/* ============================================================== */}
-      <section className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          {/* Left Hero Card (Emerald Green Saree Model) */}
-          <div className="lg:col-span-4 relative rounded-2xl overflow-hidden min-h-[440px] lg:min-h-[500px] flex flex-col justify-end p-8 text-white shadow-xl group">
-            <Image
-              src="https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=800&q=85"
-              alt="EFFIDOO Best Sellers"
-              fill
-              className="object-cover object-center transition-transform duration-700 group-hover:scale-105"
-            />
-            {/* Rich gradient vignette */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#061811] via-[#061811]/60 to-transparent" />
+      <section
+        className="relative bg-[#FAF5EB] bg-cover bg-center bg-no-repeat border-b border-[#E8DFC8] py-10 lg:py-14 overflow-hidden"
+        style={{ backgroundImage: "url('/images/bestsellers_bg.png')" }}
+      >
+        {/* Left Side Title Background Image (Emerald Saree Model with Candlelit Palace Ambiance) */}
+        <div className="absolute left-0 top-0 h-[260px] lg:h-full w-full lg:w-[48%] xl:w-[42%] 2xl:w-[38%] pointer-events-none z-0 overflow-hidden">
+          <Image
+            src="/images/bestsellers/left_title_bg.png"
+            alt="Best Sellers"
+            fill
+            priority
+            className="object-cover object-[left_center]"
+          />
+          {/* Subtle darkening overlay behind text area for maximum contrast */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/45 to-transparent" />
+          {/* Smooth blend on mobile to bottom and desktop to right */}
+          <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#FAF5EB] to-transparent lg:hidden" />
+          <div className="absolute inset-y-0 right-0 w-28 sm:w-44 bg-gradient-to-r from-transparent to-[#FAF5EB] hidden lg:block" />
+        </div>
 
-            <div className="relative z-10 space-y-3">
-              <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#E5C07B]">
-                FEATURED COLLECTION
-              </p>
-              <h3 className="font-serif text-3xl font-bold leading-tight text-white">
-                Our Best Sellers
-              </h3>
-              <p className="text-xs text-zinc-200/90 leading-relaxed font-light">
-                Loved by many, our best-selling collection combines tradition, comfort and style.
-              </p>
-              <div className="pt-2">
-                <Link
-                  href="/shop?bestSeller=true"
-                  className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#E5C07B] hover:bg-[#D4AF37] text-zinc-950 font-bold text-xs tracking-wider uppercase transition-all shadow-md group/btn"
-                >
-                  <span>Shop Best Sellers</span>
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
-                </Link>
-              </div>
-            </div>
+        {/* Content Container */}
+        <div className="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-12 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 xl:gap-10 relative z-10">
+          {/* Left Title & Call to Action (Padded on left so text is positioned gracefully to the right of the model) */}
+          <div className="w-full lg:w-[380px] xl:w-[430px] 2xl:w-[460px] lg:pl-[130px] xl:pl-[160px] 2xl:pl-[180px] shrink-0 text-center lg:text-left flex flex-col items-center lg:items-start text-white py-4 lg:py-0">
+            <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#E5C07B] mb-2.5 drop-shadow">
+              FEATURED COLLECTION
+            </p>
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[38px] xl:text-[42px] text-white font-normal leading-[1.15] tracking-tight mb-3 drop-shadow-md">
+              Our Best Sellers
+            </h2>
+            <p className="text-xs sm:text-[13px] text-zinc-200/90 leading-relaxed font-light max-w-[270px] mb-6 drop-shadow">
+              Loved by many, our best-selling collection combines tradition, comfort and style.
+            </p>
+            <Link
+              href="/shop?bestSeller=true"
+              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-[#F7D47A] via-[#E8B854] to-[#D59837] hover:brightness-105 text-zinc-950 font-bold text-xs tracking-wider uppercase transition-all shadow-xl transform hover:scale-105 group/btn"
+            >
+              <span>Shop Best Sellers</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
+            </Link>
           </div>
 
-          {/* Right 4 Product Cards Grid */}
-          <div className="lg:col-span-8">
-            <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 h-full">
+          {/* Right 4 Product Cards (2 per row on mobile, 4 per row on desktop) */}
+          <div className="flex-1 w-full flex items-center gap-3">
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 xl:gap-4 w-full">
               {bestSellers.slice(0, 4).map((product, idx) => {
                 const isLiked = isInWishlist(product._id);
-                const fallbackData = EXACT_BEST_SELLERS[idx] || EXACT_BEST_SELLERS[0];
-                const img =
-                  product.images?.[0]?.url ||
-                  product.image ||
-                  fallbackData.image;
-
-                const badge = product.badge || fallbackData.badge;
-                const badgeType = product.badgeType || fallbackData.badgeType;
-
-                const badgeBg =
-                  badgeType === 'rose'
-                    ? 'bg-[#B91C1C]'
-                    : badgeType === 'amber'
-                    ? 'bg-[#9A621E]'
-                    : 'bg-[#0D5C3A]';
+                const fallbackData =
+                  EXACT_BEST_SELLERS.find((c) => c.slug === product.slug) ||
+                  EXACT_BEST_SELLERS[idx] ||
+                  EXACT_BEST_SELLERS[0];
+                const img = fallbackData.image || product.images?.[0]?.url || product.image;
+                const badge = fallbackData.badge || product.badge;
+                const badgeType = fallbackData.badgeType || product.badgeType;
 
                 return (
                   <div
-                    key={product._id || product.slug}
-                    className="bg-white rounded-2xl overflow-hidden border border-zinc-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+                    key={product._id || product.slug || idx}
+                    className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-[#E8DFC8]/70 flex flex-col group transition-all duration-300 hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:-translate-y-1"
                   >
-                    {/* Product Image & Badges */}
-                    <div className="relative aspect-[3/4] w-full bg-zinc-100 overflow-hidden">
+                    {/* Top Image Flush to Card Edges */}
+                    <div className="relative aspect-[1.18/1] w-full overflow-hidden bg-zinc-100">
                       <Image
                         src={img}
                         alt={product.name}
                         fill
-                        sizes="(max-width: 640px) 50vw, 25vw"
-                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
+                        className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
                       />
 
                       {/* Top Left Badge */}
-                      <div className="absolute top-2.5 left-2.5 z-10">
-                        <span
-                          className={`text-[9px] font-bold text-white uppercase px-2 py-0.5 rounded-full shadow-sm ${badgeBg}`}
-                        >
-                          {badge}
-                        </span>
+                      <div className="absolute top-1.5 sm:top-2 left-1.5 sm:left-2 z-10">
+                        {badgeType === 'bestseller' ? (
+                          <span className="font-serif italic text-[9px] sm:text-[11px] font-bold text-[#F5D07A] bg-black/90 px-2 sm:px-2.5 py-0.5 rounded-full shadow-sm tracking-wide">
+                            Bestseller
+                          </span>
+                        ) : badgeType === 'rose' ? (
+                          <span className="text-[9px] sm:text-[11px] font-bold text-white bg-[#DC2626] px-2 sm:px-2.5 py-0.5 rounded-full shadow-sm">
+                            Hot
+                          </span>
+                        ) : (
+                          <span className="text-[9px] sm:text-[11px] font-bold text-white bg-[#0D5C3A] px-2 sm:px-2.5 py-0.5 rounded-full shadow-sm">
+                            New
+                          </span>
+                        )}
                       </div>
 
-                      {/* Top Right Wishlist Heart */}
+                      {/* Top Right Floating White Heart Outline */}
                       <button
                         onClick={(e) => handleLike(product, e)}
-                        className="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-zinc-700 hover:text-rose-500 shadow-sm transition-colors z-10"
+                        className="absolute top-1.5 sm:top-2 right-1.5 sm:right-2.5 z-10 text-white drop-shadow hover:scale-110 transition-transform"
                         aria-label="Wishlist"
                       >
                         <Heart
-                          className={`w-3.5 h-3.5 ${
-                            isLiked ? 'fill-rose-500 text-rose-500' : ''
-                          }`}
+                          className={`w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2] ${isLiked ? 'fill-rose-500 text-rose-500' : 'text-white'}`}
                         />
                       </button>
                     </div>
 
                     {/* Product Details */}
-                    <div className="p-3.5 flex flex-col flex-1 justify-between space-y-3">
+                    <div className="p-2.5 sm:p-3.5 flex flex-col flex-1 justify-between bg-white">
                       <div>
                         <Link href={`/product/${product.slug || product._id}`}>
-                          <h4 className="text-xs font-bold text-zinc-900 group-hover:text-[#B8860B] transition-colors line-clamp-1">
+                          <h4 className="text-[11px] sm:text-[13px] font-medium text-zinc-700 group-hover:text-[#B38646] transition-colors line-clamp-1 mb-0.5 sm:mb-1 tracking-tight">
                             {product.name}
                           </h4>
                         </Link>
 
                         {/* Star Rating */}
-                        <div className="flex items-center gap-1.5 mt-1">
-                          <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-                          <span className="text-[11px] font-bold text-zinc-900">
+                        <div className="flex items-center gap-1 mb-1">
+                          <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
+                          <span className="text-[11px] sm:text-xs font-semibold text-zinc-800">
                             {product.rating ? product.rating.toFixed(1) : fallbackData.rating.toFixed(1)}
                           </span>
-                          <span className="text-[10px] text-zinc-400">
+                          <span className="text-[10px] sm:text-[11px] text-zinc-400">
                             ({product.reviewCount || fallbackData.reviewCount})
                           </span>
                         </div>
 
                         {/* Price */}
-                        <div className="flex items-baseline gap-2 mt-1.5">
-                          <span className="text-sm font-bold text-zinc-950">
+                        <div className="flex items-baseline gap-1.5 sm:gap-2 mb-2 sm:mb-2.5">
+                          <span className="text-xs sm:text-sm md:text-base font-bold text-zinc-950">
                             {formatCurrency(product.price || fallbackData.price)}
                           </span>
                           {(product.compareAtPrice || fallbackData.compareAtPrice) && (
-                            <span className="text-[11px] text-zinc-400 line-through">
+                            <span className="text-[10px] sm:text-xs text-zinc-400 line-through">
                               {formatCurrency(product.compareAtPrice || fallbackData.compareAtPrice)}
                             </span>
                           )}
                         </div>
                       </div>
 
-                      {/* Add to Cart Pill Button (Dark Forest Green) */}
+                      {/* Add to Cart Pill Button (Dark Forest Green with Shopping Cart) */}
                       <button
                         onClick={(e) => handleQuickAdd(product, e)}
-                        className="w-full py-2 px-3 rounded-full bg-[#0B2518] hover:bg-[#061811] text-white text-[11px] font-semibold flex items-center justify-center gap-1.5 transition-colors shadow-sm"
+                        className="w-full py-1.5 sm:py-2 px-2 sm:px-3 rounded-full bg-[#051C14] hover:bg-[#0A2E22] text-white text-[10px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 sm:gap-2 transition-all shadow-sm active:scale-95 group/cart"
                       >
-                        <ShoppingBag className="w-3 h-3 text-[#E5C07B]" />
+                        <ShoppingCart className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white transition-transform group-hover/cart:scale-110" />
                         <span>Add to Cart</span>
                       </button>
                     </div>
                   </div>
                 );
               })}
+            </div>
+
+            {/* Next / Prev Carousel Buttons on Far Right */}
+            <div className="hidden xl:flex items-center gap-1.5 shrink-0 pl-1">
+              <button
+                className="w-7 h-7 rounded-full bg-white/95 shadow-md border border-[#E8DFC8] hover:border-zinc-400 flex items-center justify-center text-zinc-600 hover:text-zinc-950 transition-all"
+                aria-label="Previous"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+              </button>
+              <button
+                className="w-7 h-7 rounded-full bg-white/95 shadow-md border border-[#E8DFC8] hover:border-zinc-400 flex items-center justify-center text-zinc-600 hover:text-zinc-950 transition-all"
+                aria-label="Next"
+              >
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
             </div>
           </div>
         </div>
@@ -807,87 +829,174 @@ export default function HomePage() {
       {/* ============================================================== */}
       {/* 5. SPECIAL OFFER BANNER ("FLAT 20% OFF")                       */}
       {/* ============================================================== */}
-      <section className="bg-[#061811] text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 border-y border-[#D4AF37]/20 relative overflow-hidden">
-        {/* Subtle background filigree */}
-        <div className="absolute inset-0 bg-[radial-gradient(#D4AF37_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
+      <section id="special-offer-section" className="relative overflow-hidden bg-[#041007] border-y border-[#D4AF37]/25 text-white scroll-mt-20 lg:scroll-mt-24">
+        {/* Background Image: user-provided luxury emerald background with leaves and light rays */}
+        <div className="absolute inset-0 z-0">
+          <Image
+            src="/images/offers/special_offer_bg.png"
+            alt="Ethnic Wear Special Offer Background"
+            fill
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+          {/* Ambient overlay vignette */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 pointer-events-none" />
+        </div>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
-          {/* Left: Folded Silk Fabric Photo */}
-          <div className="lg:col-span-4 relative h-64 lg:h-80 rounded-2xl overflow-hidden shadow-2xl border border-[#D4AF37]/30">
-            <Image
-              src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=800&q=85"
-              alt="EFFIDOO Pure Silk Ethnic Weaves"
-              fill
-              className="object-cover object-center"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#061811]/60 to-transparent" />
+        {/* Content Container */}
+        <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-10 lg:py-6 xl:py-8 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 xl:gap-8 min-h-[380px] lg:min-h-[400px] xl:min-h-[440px]">
+          {/* Left Column: Model in Royal Palace Arch - FITTED, NO ZOOM */}
+          <div className="w-full lg:w-[35%] xl:w-[36%] shrink-0 flex justify-center lg:justify-start items-center">
+            <div className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[350px] xl:max-w-[385px] aspect-[385/342] flex justify-center">
+              <Image
+                src="/images/offers/special_offer_arch_feathered.png"
+                alt="EFFIDOO Special Offer Model"
+                fill
+                priority
+                className="object-contain object-center drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)]"
+                sizes="(max-width: 640px) 280px, (max-width: 1024px) 320px, 400px"
+              />
+            </div>
           </div>
 
-          {/* Center: Offer Copy & CTA */}
-          <div className="lg:col-span-4 text-center space-y-3">
-            <p className="text-[11px] font-bold uppercase tracking-[0.3em] text-[#E5C07B]">
-              SPECIAL OFFER
-            </p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white">
+          {/* Center Column: Offer Copy, Lotus Motifs & CTA */}
+          <div className="w-full lg:w-[32%] xl:w-[31%] shrink-0 text-center flex flex-col items-center justify-center space-y-2.5 sm:space-y-3">
+            {/* Top Golden Lotus */}
+            <div className="flex justify-center mb-0.5">
+              <svg viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-5 text-[#E5B95E] drop-shadow">
+                <defs>
+                  <linearGradient id="lotusGoldTop" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#FDE68A" />
+                    <stop offset="50%" stopColor="#E5B95E" />
+                    <stop offset="100%" stopColor="#B48222" />
+                  </linearGradient>
+                </defs>
+                <path d="M16 1 C16 1 18.5 7 18.5 12 C18.5 16 17 17.5 16 18 C15 17.5 13.5 16 13.5 12 C13.5 7 16 1 16 1 Z" fill="url(#lotusGoldTop)" />
+                <path d="M16.5 17.5 C18.5 17 23 14 23.5 8 C23.5 8 25 14 21 17 C19 18.5 17.5 18 16.5 17.5 Z" fill="url(#lotusGoldTop)" opacity="0.95" />
+                <path d="M15.5 17.5 C13.5 17 9 14 8.5 8 C8.5 8 7 14 11 17 C13 18.5 14.5 18 15.5 17.5 Z" fill="url(#lotusGoldTop)" opacity="0.95" />
+                <path d="M18 18.5 C21 19 28 16 29 11.5 C29 11.5 28 18.5 22 19.5 C19.5 19.9 18 19 18 18.5 Z" fill="url(#lotusGoldTop)" opacity="0.9" />
+                <path d="M14 18.5 C11 19 4 16 3 11.5 C3 11.5 4 18.5 10 19.5 C12.5 19.9 14 19 14 18.5 Z" fill="url(#lotusGoldTop)" opacity="0.9" />
+                <ellipse cx="16" cy="20.5" rx="1.8" ry="1.2" fill="url(#lotusGoldTop)" />
+              </svg>
+            </div>
+
+            {/* SPECIAL OFFER with delicate flanking rules */}
+            <div className="flex items-center justify-center gap-3 w-full max-w-[280px]">
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#E5B95E]/60 to-[#E5B95E]" />
+              <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.28em] text-[#E5B95E] uppercase drop-shadow">
+                SPECIAL OFFER
+              </span>
+              <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#E5B95E]/60 to-[#E5B95E]" />
+            </div>
+
+            {/* FLAT 20% OFF */}
+            <h2 className="font-display text-3xl sm:text-4xl lg:text-[40px] xl:text-[46px] font-normal tracking-tight text-[#FFFDF8] leading-[1.1] drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
               FLAT 20% OFF
             </h2>
-            <p className="text-xs text-zinc-300 font-light max-w-xs mx-auto">
+
+            {/* On Selected Ethnic Wear Collection */}
+            <p className="font-display italic text-xs sm:text-[13px] md:text-sm text-[#DDD3C1] font-normal tracking-wide drop-shadow">
               On Selected Ethnic Wear Collection
             </p>
-            <div className="pt-2">
+
+            {/* SHOP NOW Button */}
+            <div className="pt-1.5 pb-1">
               <Link
                 href="/shop?sale=true"
-                className="inline-flex items-center gap-2 px-7 py-2.5 rounded-full bg-[#E5C07B] hover:bg-[#D4AF37] text-zinc-950 font-bold text-xs uppercase tracking-wider transition-all transform hover:scale-105 shadow-xl group"
+                className="inline-flex items-center justify-center gap-2.5 px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#E8BF70] via-[#DFB15A] to-[#CE9C3F] hover:brightness-105 text-[#18140B] font-bold text-xs sm:text-[13px] tracking-wider uppercase transition-all shadow-[0_4px_18px_rgba(0,0,0,0.4)] transform hover:scale-105 group/btn"
               >
-                <span>Shop Now</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+                <span>SHOP NOW</span>
+                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1 stroke-[2.5]" />
               </Link>
+            </div>
+
+            {/* Bottom Lotus flanked by rules */}
+            <div className="flex items-center justify-center gap-3 w-full max-w-[220px]">
+              <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#E5B95E]/50 to-[#E5B95E]" />
+              <svg viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-4 text-[#E5B95E] drop-shadow">
+                <defs>
+                  <linearGradient id="lotusGoldBot" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#FDE68A" />
+                    <stop offset="50%" stopColor="#E5B95E" />
+                    <stop offset="100%" stopColor="#B48222" />
+                  </linearGradient>
+                </defs>
+                <path d="M16 1 C16 1 18.5 7 18.5 12 C18.5 16 17 17.5 16 18 C15 17.5 13.5 16 13.5 12 C13.5 7 16 1 16 1 Z" fill="url(#lotusGoldBot)" />
+                <path d="M16.5 17.5 C18.5 17 23 14 23.5 8 C23.5 8 25 14 21 17 C19 18.5 17.5 18 16.5 17.5 Z" fill="url(#lotusGoldBot)" opacity="0.95" />
+                <path d="M15.5 17.5 C13.5 17 9 14 8.5 8 C8.5 8 7 14 11 17 C13 18.5 14.5 18 15.5 17.5 Z" fill="url(#lotusGoldBot)" opacity="0.95" />
+                <path d="M18 18.5 C21 19 28 16 29 11.5 C29 11.5 28 18.5 22 19.5 C19.5 19.9 18 19 18 18.5 Z" fill="url(#lotusGoldBot)" opacity="0.9" />
+                <path d="M14 18.5 C11 19 4 16 3 11.5 C3 11.5 4 18.5 10 19.5 C12.5 19.9 14 19 14 18.5 Z" fill="url(#lotusGoldBot)" opacity="0.9" />
+                <ellipse cx="16" cy="20.5" rx="1.8" ry="1.2" fill="url(#lotusGoldBot)" />
+              </svg>
+              <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#E5B95E]/50 to-[#E5B95E]" />
             </div>
           </div>
 
-          {/* Right: 2x2 Circular Features Grid */}
-          <div className="lg:col-span-4 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {/* Feature 1 */}
-            <div className="flex items-center gap-3 p-2.5 rounded-xl bg-[#081D14] border border-[#D4AF37]/20">
-              <div className="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center text-[#E5C07B] flex-shrink-0">
-                <Sparkles className="w-4 h-4" />
+          {/* Right Column: 4 Capsule Feature Cards in 2x2 Grid (2 per row on both mobile and desktop) */}
+          <div className="w-full lg:w-[33%] xl:w-[33%] shrink-0">
+            <div className="grid grid-cols-2 lg:grid-cols-2 gap-2 sm:gap-3 xl:gap-3.5">
+              {/* Card 1: Premium Fabrics */}
+              <div className="rounded-[18px] sm:rounded-[24px] p-2 sm:p-3 px-2.5 sm:px-4 bg-[#071911]/90 backdrop-blur-md border border-[#D4AF37]/35 hover:border-[#D4AF37]/80 flex items-center gap-2 sm:gap-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-[1.02] group">
+                <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full border border-[#D4AF37]/75 flex items-center justify-center shrink-0 bg-gradient-to-b from-[#0C291B] to-[#04110A] text-[#E5B95E] shadow-[inset_0_1px_3px_rgba(212,175,55,0.25)] group-hover:scale-105 transition-transform">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-3.5 h-3.5 sm:w-5 sm:h-5">
+                    <rect x="7" y="7" width="10" height="10" transform="rotate(45 12 12)" stroke="currentColor" fill="currentColor" fillOpacity="0.15" />
+                    <path d="M12 3.5L3.5 12L12 20.5L20.5 12L12 3.5Z" stroke="currentColor" strokeWidth="1.2" />
+                    <path d="M7.75 7.75L16.25 16.25M16.25 7.75L7.75 16.25" stroke="currentColor" strokeWidth="1.2" />
+                  </svg>
+                </div>
+                <div className="min-w-0">
+                  <h4 className="font-display text-[11px] sm:text-[13px] font-semibold text-white tracking-tight leading-tight truncate">
+                    Premium Fabrics
+                  </h4>
+                  <p className="text-[9px] sm:text-[11px] text-[#A6B7AA] font-light leading-tight mt-0.5 truncate">
+                    Only the Finest Materials
+                  </p>
+                </div>
               </div>
-              <div>
-                <h5 className="text-xs font-bold text-white">Premium Fabrics</h5>
-                <p className="text-[10px] text-zinc-400">Only the Finest Materials</p>
-              </div>
-            </div>
 
-            {/* Feature 2 */}
-            <div className="flex items-center gap-3 p-2.5 rounded-xl bg-[#081D14] border border-[#D4AF37]/20">
-              <div className="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center text-[#E5C07B] flex-shrink-0">
-                <Scissors className="w-4 h-4" />
+              {/* Card 2: Handcrafted Details */}
+              <div className="rounded-[18px] sm:rounded-[24px] p-2 sm:p-3 px-2.5 sm:px-4 bg-[#071911]/90 backdrop-blur-md border border-[#D4AF37]/35 hover:border-[#D4AF37]/80 flex items-center gap-2 sm:gap-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-[1.02] group">
+                <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full border border-[#D4AF37]/75 flex items-center justify-center shrink-0 bg-gradient-to-b from-[#0C291B] to-[#04110A] text-[#E5B95E] shadow-[inset_0_1px_3px_rgba(212,175,55,0.25)] group-hover:scale-105 transition-transform">
+                  <Scissors className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#E5B95E] -rotate-45" />
+                </div>
+                <div className="min-w-0">
+                  <h4 className="font-display text-[11px] sm:text-[13px] font-semibold text-white tracking-tight leading-tight truncate">
+                    Handcrafted Details
+                  </h4>
+                  <p className="text-[9px] sm:text-[11px] text-[#A6B7AA] font-light leading-tight mt-0.5 truncate">
+                    Made with love & care
+                  </p>
+                </div>
               </div>
-              <div>
-                <h5 className="text-xs font-bold text-white">Handcrafted Details</h5>
-                <p className="text-[10px] text-zinc-400">Made with love & care</p>
-              </div>
-            </div>
 
-            {/* Feature 3 */}
-            <div className="flex items-center gap-3 p-2.5 rounded-xl bg-[#081D14] border border-[#D4AF37]/20">
-              <div className="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center text-[#E5C07B] flex-shrink-0">
-                <Crown className="w-4 h-4" />
+              {/* Card 3: Timeless Designs */}
+              <div className="rounded-[18px] sm:rounded-[24px] p-2 sm:p-3 px-2.5 sm:px-4 bg-[#071911]/90 backdrop-blur-md border border-[#D4AF37]/35 hover:border-[#D4AF37]/80 flex items-center gap-2 sm:gap-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-[1.02] group">
+                <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full border border-[#D4AF37]/75 flex items-center justify-center shrink-0 bg-gradient-to-b from-[#0C291B] to-[#04110A] text-[#E5B95E] shadow-[inset_0_1px_3px_rgba(212,175,55,0.25)] group-hover:scale-105 transition-transform">
+                  <Crown className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#E5B95E]" />
+                </div>
+                <div className="min-w-0">
+                  <h4 className="font-display text-[11px] sm:text-[13px] font-semibold text-white tracking-tight leading-tight truncate">
+                    Timeless Designs
+                  </h4>
+                  <p className="text-[9px] sm:text-[11px] text-[#A6B7AA] font-light leading-tight mt-0.5 truncate">
+                    Style for every occasion
+                  </p>
+                </div>
               </div>
-              <div>
-                <h5 className="text-xs font-bold text-white">Timeless Designs</h5>
-                <p className="text-[10px] text-zinc-400">Style for every occasion</p>
-              </div>
-            </div>
 
-            {/* Feature 4 */}
-            <div className="flex items-center gap-3 p-2.5 rounded-xl bg-[#081D14] border border-[#D4AF37]/20">
-              <div className="w-10 h-10 rounded-full border border-[#D4AF37] flex items-center justify-center text-[#E5C07B] flex-shrink-0">
-                <Award className="w-4 h-4" />
-              </div>
-              <div>
-                <h5 className="text-xs font-bold text-white">Exclusive Collections</h5>
-                <p className="text-[10px] text-zinc-400">Limited Stock</p>
+              {/* Card 4: Exclusive Collections */}
+              <div className="rounded-[18px] sm:rounded-[24px] p-2 sm:p-3 px-2.5 sm:px-4 bg-[#071911]/90 backdrop-blur-md border border-[#D4AF37]/35 hover:border-[#D4AF37]/80 flex items-center gap-2 sm:gap-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-[1.02] group">
+                <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full border border-[#D4AF37]/75 flex items-center justify-center shrink-0 bg-gradient-to-b from-[#0C291B] to-[#04110A] text-[#E5B95E] shadow-[inset_0_1px_3px_rgba(212,175,55,0.25)] group-hover:scale-105 transition-transform">
+                  <Award className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#E5B95E]" />
+                </div>
+                <div className="min-w-0">
+                  <h4 className="font-display text-[11px] sm:text-[13px] font-semibold text-white tracking-tight leading-tight truncate">
+                    Exclusive Collections
+                  </h4>
+                  <p className="text-[9px] sm:text-[11px] text-[#A6B7AA] font-light leading-tight mt-0.5 truncate">
+                    Limited Stock
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -897,133 +1006,187 @@ export default function HomePage() {
       {/* ============================================================== */}
       {/* 6. NEW ARRIVALS - FRESH STYLES, JUST IN                         */}
       {/* ============================================================== */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        {/* Header with View All */}
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
-          <div className="space-y-1">
-            <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#B8860B]">
-              NEW ARRIVALS
-            </p>
-            <h2 className="font-serif text-3xl sm:text-4xl text-[#0B2518] font-bold">
-              Fresh Styles, Just In
-            </h2>
-            <p className="text-xs text-zinc-500">
-              Explore the latest trends and add a touch of elegance to your wardrobe.
-            </p>
-          </div>
-
-          <Link
-            href="/shop?newArrival=true"
-            className="text-xs font-bold text-[#0B2518] hover:text-[#B8860B] transition-colors inline-flex items-center gap-1"
-          >
-            <span>View All</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+      <section className="relative w-full overflow-hidden py-14 sm:py-18 lg:py-20 border-y border-[#EAE1D1]">
+        {/* Full-width Botanical Cream Background Image */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/images/new_arrivals_bg.png"
+            alt="New Arrivals Botanical Background"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
         </div>
 
-        {/* 5 Cards Row (Exact 5 items matching Mockup) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-          {newArrivals.slice(0, 5).map((product, idx) => {
-            const isLiked = isInWishlist(product._id);
-            const fallbackData = EXACT_NEW_ARRIVALS[idx] || EXACT_NEW_ARRIVALS[0];
-            const img =
-              product.images?.[0]?.url ||
-              product.image ||
-              fallbackData.image;
+        <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+          {/* Header with Centered Title & Right-Aligned View All */}
+          <div className="relative mb-8 sm:mb-10 lg:mb-12">
+            <div className="text-center max-w-2xl mx-auto px-4 sm:px-8">
+              <p className="text-[11px] sm:text-xs font-bold uppercase tracking-[0.25em] text-[#B8860B] mb-1 sm:mb-1.5">
+                NEW ARRIVALS
+              </p>
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-[38px] text-[#1A1A1A] font-medium tracking-tight leading-tight">
+                Fresh Styles, Just In
+              </h2>
+              <p className="text-xs sm:text-[13.5px] text-zinc-600 mt-1 sm:mt-2 font-normal">
+                Explore the latest trends and add a touch of elegance to your wardrobe.
+              </p>
+            </div>
 
-            const badge = product.badge || fallbackData.badge;
-            const badgeType = product.badgeType || fallbackData.badgeType;
-
-            const badgeBg =
-              badgeType === 'rose'
-                ? 'bg-[#B91C1C]'
-                : badgeType === 'teal'
-                ? 'bg-[#0E7490]'
-                : 'bg-[#0D5C3A]';
-
-            return (
-              <div
-                key={product._id || product.slug}
-                className="bg-white rounded-2xl overflow-hidden border border-zinc-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group"
+            {/* View All positioned on the right */}
+            <div className="mt-3 sm:mt-0 sm:absolute sm:right-0 sm:bottom-0.5 flex justify-center sm:justify-end">
+              <Link
+                href="/shop?newArrival=true"
+                className="text-xs sm:text-[13px] font-semibold text-zinc-900 hover:text-[#B8860B] transition-colors inline-flex items-center gap-1 group"
               >
-                {/* Product Image */}
-                <div className="relative aspect-[3/4] w-full bg-zinc-100 overflow-hidden">
-                  <Image
-                    src={img}
-                    alt={product.name}
-                    fill
-                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                  />
+                <span>View All</span>
+                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
+          </div>
 
-                  {/* Badge */}
-                  <div className="absolute top-2.5 left-2.5 z-10">
-                    <span
-                      className={`text-[9px] font-bold text-white uppercase px-2 py-0.5 rounded-full shadow-sm ${badgeBg}`}
-                    >
-                      {badge}
-                    </span>
-                  </div>
+          {/* Cards & Carousel Navigation */}
+          <div className="relative flex items-center">
+            {/* 5 Cards Row (Exact 5 items matching Mockup, 2 cards per row on mobile) */}
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-4 xl:gap-5 flex-1">
+              {EXACT_NEW_ARRIVALS.map((fallbackData, idx) => {
+                const actualIdx = (idx + newArrivalsIndex) % EXACT_NEW_ARRIVALS.length;
+                const cardData = EXACT_NEW_ARRIVALS[actualIdx];
+                const product = newArrivals.find((p) => p.slug === cardData.slug) || cardData;
 
-                  {/* Wishlist Button */}
-                  <button
-                    onClick={(e) => handleLike(product, e)}
-                    className="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-white/90 backdrop-blur-sm flex items-center justify-center text-zinc-700 hover:text-rose-500 shadow-sm transition-colors z-10"
-                    aria-label="Wishlist"
+                const isLiked = isInWishlist(cardData._id || product._id);
+                const img = cardData.image || product.images?.[0]?.url || product.image;
+                const badge = cardData.badge;
+                const badgeType = cardData.badgeType;
+                const rating = cardData.rating;
+                const reviewCount = cardData.reviewCount;
+                const price = cardData.price;
+                const compareAtPrice = cardData.compareAtPrice;
+                const name = cardData.name;
+
+                return (
+                  <div
+                    key={cardData._id || cardData.slug || idx}
+                    className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-[#EAE1D1]/80 flex flex-col group transition-all duration-300 hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:-translate-y-1"
                   >
-                    <Heart
-                      className={`w-3.5 h-3.5 ${
-                        isLiked ? 'fill-rose-500 text-rose-500' : ''
-                      }`}
-                    />
-                  </button>
-                </div>
+                    {/* Top Image Flush to Card Edges */}
+                    <div className="relative aspect-[1.12/1] w-full overflow-hidden bg-zinc-100">
+                      <Image
+                        src={img}
+                        alt={name}
+                        fill
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                        className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
+                      />
 
-                {/* Details */}
-                <div className="p-3 flex flex-col flex-1 justify-between space-y-2.5">
-                  <div>
-                    <Link href={`/product/${product.slug || product._id}`}>
-                      <h4 className="text-xs font-bold text-zinc-900 group-hover:text-[#B8860B] transition-colors line-clamp-1">
-                        {product.name}
-                      </h4>
-                    </Link>
+                      {/* Top Left Badge */}
+                      <div className="absolute top-2 left-2 z-10">
+                        {badgeType === 'rose' || badge === 'Hot' ? (
+                          <span className="text-[9.5px] sm:text-[10px] font-semibold text-white bg-[#E11D48] px-2.5 py-0.5 rounded-full shadow-sm tracking-wide">
+                            {badge}
+                          </span>
+                        ) : badgeType === 'teal' || badge === 'Trend' ? (
+                          <span className="text-[9.5px] sm:text-[10px] font-semibold text-white bg-[#064E3B] px-2.5 py-0.5 rounded-full shadow-sm tracking-wide">
+                            {badge}
+                          </span>
+                        ) : (
+                          <span className="text-[9.5px] sm:text-[10px] font-semibold text-white bg-[#0B3B2B] px-2.5 py-0.5 rounded-full shadow-sm tracking-wide">
+                            {badge}
+                          </span>
+                        )}
+                      </div>
 
-                    {/* Star Rating */}
-                    <div className="flex items-center gap-1 mt-1">
-                      <Star className="w-3 h-3 fill-amber-400 text-amber-400" />
-                      <span className="text-[11px] font-bold text-zinc-900">
-                        {product.rating ? product.rating.toFixed(1) : fallbackData.rating.toFixed(1)}
-                      </span>
-                      <span className="text-[10px] text-zinc-400">
-                        ({product.reviewCount || fallbackData.reviewCount})
-                      </span>
+                      {/* Top Right Floating White Heart Outline */}
+                      <button
+                        onClick={(e) => handleLike({ ...cardData, ...product, image: img }, e)}
+                        className="absolute top-2 right-2 z-10 text-white drop-shadow hover:scale-110 transition-transform"
+                        aria-label="Wishlist"
+                      >
+                        <Heart
+                          className={`w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2] drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] ${
+                            isLiked ? 'fill-rose-500 text-rose-500' : 'text-white'
+                          }`}
+                        />
+                      </button>
                     </div>
 
-                    {/* Price Row */}
-                    <div className="flex items-baseline gap-2 mt-1">
-                      <span className="text-xs font-bold text-zinc-950">
-                        {formatCurrency(product.price || fallbackData.price)}
-                      </span>
-                      {(product.compareAtPrice || fallbackData.compareAtPrice) && (
-                        <span className="text-[10px] text-zinc-400 line-through">
-                          {formatCurrency(product.compareAtPrice || fallbackData.compareAtPrice)}
-                        </span>
-                      )}
+                    {/* Product Details */}
+                    <div className="p-2.5 sm:p-3.5 flex flex-col flex-1 justify-between bg-white">
+                      <div>
+                        <Link href={`/product/${cardData.slug}`}>
+                          <h4 className="text-[12px] sm:text-[13.5px] font-semibold text-zinc-900 group-hover:text-[#B8860B] transition-colors line-clamp-1 tracking-tight">
+                            {name}
+                          </h4>
+                        </Link>
+
+                        {/* Star Rating */}
+                        <div className="flex items-center gap-1 mt-1">
+                          <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
+                          <span className="text-[11px] sm:text-xs font-semibold text-zinc-800">
+                            {rating.toFixed(1)}
+                          </span>
+                          <span className="text-[10px] sm:text-[11px] text-zinc-400">
+                            ({reviewCount})
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Price & Action Row */}
+                      <div className="flex items-center justify-between mt-2 pt-0.5">
+                        <div className="flex items-baseline gap-1 sm:gap-1.5 min-w-0">
+                          <span className="text-xs sm:text-[14px] md:text-[15px] font-bold text-zinc-950">
+                            {formatCurrency(price)}
+                          </span>
+                          {compareAtPrice && (
+                            <span className="text-[10px] sm:text-xs text-zinc-400 line-through font-normal">
+                              {formatCurrency(compareAtPrice)}
+                            </span>
+                          )}
+                        </div>
+
+                        {/* Circular Black Action Button with White Right Arrow */}
+                        <button
+                          onClick={(e) => handleQuickAdd({ ...cardData, ...product, image: img }, e)}
+                          title="Add to Cart"
+                          aria-label="Add to Cart"
+                          className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-zinc-950 hover:bg-[#B8860B] text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-105 active:scale-95 shrink-0 ml-1.5 group/arrow cursor-pointer"
+                        >
+                          <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5] transition-transform group-hover/arrow:translate-x-0.5" />
+                        </button>
+                      </div>
                     </div>
                   </div>
+                );
+              })}
+            </div>
 
-                  {/* Add to Cart Button */}
-                  <button
-                    onClick={(e) => handleQuickAdd(product, e)}
-                    className="w-full py-1.5 px-2 rounded-full bg-[#0B2518] hover:bg-[#061811] text-white text-[10px] font-semibold flex items-center justify-center gap-1 transition-colors"
-                  >
-                    <ShoppingBag className="w-3 h-3 text-[#E5C07B]" />
-                    <span>Add to Cart</span>
-                  </button>
-                </div>
-              </div>
-            );
-          })}
+            {/* Desktop Carousel Controls next to 5th Card */}
+            <div className="hidden xl:flex items-center gap-1.5 pl-3 xl:pl-4 shrink-0">
+              <button
+                onClick={() => {
+                  setNewArrivalsIndex(
+                    (prev) => (prev - 1 + EXACT_NEW_ARRIVALS.length) % EXACT_NEW_ARRIVALS.length
+                  );
+                }}
+                aria-label="Previous arrival"
+                className="w-8 h-8 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] border border-zinc-200/80 hover:border-zinc-400 flex items-center justify-center text-zinc-700 hover:text-black transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              >
+                <ChevronLeft className="w-4 h-4 stroke-[2]" />
+              </button>
+              <button
+                onClick={() => {
+                  setNewArrivalsIndex(
+                    (prev) => (prev + 1) % EXACT_NEW_ARRIVALS.length
+                  );
+                }}
+                aria-label="Next arrival"
+                className="w-8 h-8 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] border border-zinc-200/80 hover:border-zinc-400 flex items-center justify-center text-zinc-700 hover:text-black transition-all hover:scale-105 active:scale-95 cursor-pointer"
+              >
+                <ChevronRight className="w-4 h-4 stroke-[2]" />
+              </button>
+            </div>
+          </div>
         </div>
       </section>
 

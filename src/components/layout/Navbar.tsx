@@ -84,7 +84,7 @@ export const Navbar = () => {
           {/* Left item */}
           <div className="flex items-center gap-1.5 text-[#E5C07B] font-medium">
             <Gift className="w-3.5 h-3.5 text-[#E5C07B]" />
-            <span>Free Shipping on Orders Above ₹999</span>
+            <span>Free Shipping on Orders Above ₹1,499</span>
           </div>
 
           {/* Center items */}

@@ -189,7 +189,7 @@ export const useCartStore = create<CartState>((set, get) => ({
     const discount = get().getDiscount();
     const discounted = Math.max(0, subtotal - discount);
     if (discounted === 0) return 0;
-    return discounted > 1499 ? 0 : 99;
+    return discounted >= 1499 ? 0 : 99;
   },
 
   getTax: () => {
