@@ -29,6 +29,7 @@ export const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
 
   const { setIsCartOpen, getTotalItemsCount, fetchCart, mergeGuestCart } =
@@ -253,7 +254,7 @@ export const Navbar = () => {
                 </button>
               ) : (
                 <Link
-                  href="/auth/login"
+                  href="/login"
                   className="p-1 text-zinc-200 hover:text-[#E5C07B] transition-colors flex items-center"
                   aria-label="Sign in"
                 >
@@ -297,7 +298,7 @@ export const Navbar = () => {
                   <button
                     onClick={() => {
                       setIsUserMenuOpen(false);
-                      logout();
+                      setShowLogoutConfirm(true);
                     }}
                     className="w-full text-left px-4 py-2 text-rose-400 hover:bg-[#0E3324] flex items-center gap-2"
                   >
@@ -446,7 +447,7 @@ export const Navbar = () => {
                   <button
                     onClick={() => {
                       setIsMobileMenuOpen(false);
-                      logout();
+                      setShowLogoutConfirm(true);
                     }}
                     className="w-full text-center py-2 rounded-full border border-rose-500/50 text-rose-400 text-xs font-semibold hover:bg-rose-500/10"
                   >
@@ -455,13 +456,62 @@ export const Navbar = () => {
                 </div>
               ) : (
                 <Link
-                  href="/auth/login"
+                  href="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
                   className="block w-full text-center py-2.5 rounded-full bg-[#E5C07B] text-zinc-950 font-bold text-xs uppercase tracking-wider"
                 >
                   Sign In / Register
                 </Link>
               )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Logout Confirmation Modal */}
+      {showLogoutConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
+          <div className="bg-[#0B2518] border border-[#D4AF37]/50 rounded-2xl p-6 sm:p-7 max-w-sm w-full shadow-2xl text-center space-y-4 relative">
+            <button
+              onClick={() => setShowLogoutConfirm(false)}
+              className="absolute right-4 top-4 text-zinc-400 hover:text-white"
+              aria-label="Close"
+            >
+              <X className="w-4 h-4" />
+            </button>
+
+            <div className="w-12 h-12 rounded-full bg-rose-500/15 border border-rose-500/30 flex items-center justify-center mx-auto text-rose-400">
+              <LogOut className="w-6 h-6 stroke-[1.8]" />
+            </div>
+
+            <div className="space-y-1.5">
+              <h3 className="font-serif text-lg font-bold text-white">
+                Confirm Logout
+              </h3>
+              <p className="text-xs text-zinc-300 leading-relaxed">
+                Are you sure you want to log out of your <strong className="text-[#E5C07B]">EFFIDOO</strong> account?
+              </p>
+            </div>
+
+            <div className="flex items-center gap-3 pt-3">
+              <button
+                type="button"
+                onClick={() => setShowLogoutConfirm(false)}
+                className="flex-1 py-2.5 rounded-full border border-zinc-500/40 text-xs font-semibold text-zinc-300 hover:bg-white/5 hover:text-white transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setShowLogoutConfirm(false);
+                  logout();
+                  router.push('/login');
+                }}
+                className="flex-1 py-2.5 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold shadow-lg shadow-rose-900/40 transition-colors"
+              >
+                Yes, Log Out
+              </button>
             </div>
           </div>
         </div>

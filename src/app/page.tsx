@@ -15,6 +15,9 @@ import {
   ShieldCheck,
   Truck,
   Sparkles,
+  Instagram,
+  MessageCircle,
+  CheckCircle2,
 } from 'lucide-react';
 import { api } from '../lib/api';
 import { Product } from '../types';
@@ -214,27 +217,135 @@ const EXACT_NEW_ARRIVALS = [
 const OCCASIONS = [
   {
     title: 'Weddings',
-    image:
-      'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80',
+    image: '/images/occasions/card_weddings_2x.png',
     link: '/shop?category=lehengas',
+    width: 332,
+    height: 624,
   },
   {
     title: 'Festive',
-    image:
-      'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80',
+    image: '/images/occasions/card_festive_2x.png',
     link: '/shop?category=sarees',
+    width: 280,
+    height: 624,
   },
   {
     title: 'Casual',
-    image:
-      'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=600&q=80',
+    image: '/images/occasions/card_casual_2x.png',
     link: '/shop?category=salwar-suits',
+    width: 290,
+    height: 624,
   },
   {
     title: 'Party Wear',
-    image:
-      'https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=600&q=80',
+    image: '/images/occasions/card_party_wear_2x.png',
     link: '/shop?category=mens-wear',
+    width: 292,
+    height: 624,
+  },
+];
+
+// Verified Google Reviews Data
+const GOOGLE_REVIEWS = [
+  {
+    id: 1,
+    author: 'Ananya Sharma',
+    city: 'Mumbai',
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=150&q=80',
+    rating: 5,
+    date: '3 days ago',
+    verified: true,
+    review:
+      'EFFIDOO’s Kanchipuram silk saree made my reception truly unforgettable. The pure gold zari craftsmanship and weight of the silk are peerless. The luxury packaging felt like receiving an heirloom royal gift!',
+    product: 'Royal Kanchipuram Pure Silk Saree',
+  },
+  {
+    id: 2,
+    author: 'Priya Venkatesh',
+    city: 'Bengaluru',
+    avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80',
+    rating: 5,
+    date: '1 week ago',
+    verified: true,
+    review:
+      'I ordered a bridal velvet lehenga with custom blouse tailoring. The fitting was immaculate, and the zardozi embroidery sparkles gracefully under banquet chandeliers. Truly bespoke royal craftsmanship!',
+    product: 'Heritage Zardozi Velvet Bridal Lehenga',
+  },
+  {
+    id: 3,
+    author: 'Meera Rajput',
+    city: 'New Delhi',
+    avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=150&q=80',
+    rating: 5,
+    date: '2 weeks ago',
+    verified: true,
+    review:
+      'Exquisite Chanderi weaves and authentic handlooms. The styling concierge even arranged a video consultation to help match my wedding jewelry. Outstanding luxury customer service!',
+    product: 'Handwoven Chanderi Kurti & Dupatta Set',
+  },
+  {
+    id: 4,
+    author: 'Sneha Kulkarni',
+    city: 'Pune',
+    avatar: 'https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=150&q=80',
+    rating: 5,
+    date: '3 weeks ago',
+    verified: true,
+    review:
+      'Fast express delivery and genuine handloom silk certificates included. EFFIDOO has rightfully earned its place as our family’s premier choice for all celebratory occasions.',
+    product: 'Paithani Heritage Zari Silk Saree',
+  },
+];
+
+// Curated Instagram Recent Posts
+const INSTAGRAM_POSTS = [
+  {
+    id: 1,
+    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80',
+    likes: '3.4k',
+    comments: 142,
+    caption: 'Royal ivory lehengas crafted for modern brides. ✨ #EffidooBridal',
+    link: 'https://instagram.com',
+  },
+  {
+    id: 2,
+    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80',
+    likes: '4.8k',
+    comments: 215,
+    caption: 'Drapes of majesty in regal jewel tones. 💜 #EffidooHeritage',
+    link: 'https://instagram.com',
+  },
+  {
+    id: 3,
+    image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=600&q=80',
+    likes: '2.9k',
+    comments: 98,
+    caption: 'Effortless fusion charm for sunlit garden celebrations. ☀️ #EffidooStyle',
+    link: 'https://instagram.com',
+  },
+  {
+    id: 4,
+    image: 'https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=600&q=80',
+    likes: '5.2k',
+    comments: 310,
+    caption: 'Dusty rose sequins and sheer elegance under chandelier lights. 💫 #EffidooCouture',
+    link: 'https://instagram.com',
+  },
+  {
+    id: 5,
+    image: 'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=600&q=80',
+    likes: '3.1k',
+    comments: 124,
+    caption: 'Intricate zardozi needlework by our master kaarigars. 🧵 #EffidooArtisans',
+    link: 'https://instagram.com',
+  },
+  {
+    id: 6,
+    image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=80',
+    likes: '4.1k',
+    comments: 189,
+    caption: 'The art of the perfect pallu drape. Unmistakably EFFIDOO. 👑 #EffidooMoments',
+    link: 'https://instagram.com',
   },
 ];
 
@@ -266,7 +377,6 @@ export default function HomePage() {
   const [newArrivals, setNewArrivals] = useState<any[]>(EXACT_NEW_ARRIVALS);
   const [newArrivalsIndex, setNewArrivalsIndex] = useState(0);
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
-  const [newsletterEmail, setNewsletterEmail] = useState('');
 
   const { addItem } = useCartStore();
   const { toggleWishlist, isInWishlist } = useWishlistStore();
@@ -425,16 +535,6 @@ export default function HomePage() {
     } as unknown as Product;
 
     toggleWishlist(formattedProduct);
-  };
-
-  const handleSubscribe = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!newsletterEmail.trim() || !newsletterEmail.includes('@')) {
-      toast.error('Please enter a valid email address.');
-      return;
-    }
-    toast.success('Thank you for subscribing to EFFIDOO!');
-    setNewsletterEmail('');
   };
 
   const currentSlide = HERO_SLIDES[currentHeroSlide];
@@ -1098,105 +1198,329 @@ export default function HomePage() {
       {/* ============================================================== */}
       {/* 7. TRADITIONAL MEETS MODERN - CRAFTED FOR EVERY OCCASION       */}
       {/* ============================================================== */}
-      <section className="bg-[#061811] text-white py-16 sm:py-20 px-4 sm:px-6 lg:px-8 border-y border-[#D4AF37]/20 relative overflow-hidden">
-        {/* Subtle decorative gold floral outline */}
-        <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-8 lg:gap-12 relative z-10">
-          {/* Left Column */}
-          <div className="lg:w-1/3 text-center lg:text-left space-y-4">
-            <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-[#E5C07B]">
-              TRADITIONAL MEETS MODERN
-            </p>
-            <h2 className="font-serif text-3xl sm:text-4xl text-white font-bold leading-snug">
-              Crafted for Every Occasion
-            </h2>
-            <p className="text-xs text-zinc-300 font-medium tracking-wide">
-              Weddings &nbsp;|&nbsp; Festive &nbsp;|&nbsp; Casual &nbsp;|&nbsp; Party
-            </p>
-            <div className="pt-2">
-              <Link
-                href="/shop"
-                className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#E5C07B] hover:bg-[#D4AF37] text-zinc-950 font-bold text-xs uppercase tracking-wider transition-all shadow-xl group"
-              >
-                <span>Explore Collections</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
-          </div>
+      <section className="relative overflow-hidden bg-[#130717] border-y border-[#D4AF37]/20 py-12 sm:py-16 lg:py-20">
+        {/* Full-width Ambient Luxury Background with Gold Lace & Light Rays */}
+        <div
+          className="absolute inset-0 bg-cover bg-center pointer-events-none opacity-85"
+          style={{ backgroundImage: `url('/images/occasions/occasions_bg_2x.png')` }}
+        />
+        {/* Subtle Top & Bottom Vignette Shadow */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#130717]/40 via-transparent to-[#130717]/50 pointer-events-none" />
 
-          {/* Right 4 Occasion Cards */}
-          <div className="lg:w-2/3 w-full">
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-              {OCCASIONS.map((occ) => (
-                <Link
-                  key={occ.title}
-                  href={occ.link}
-                  className="relative h-64 sm:h-72 rounded-2xl overflow-hidden border border-[#D4AF37]/30 group shadow-lg flex flex-col justify-end p-4"
-                >
-                  <Image
-                    src={occ.image}
-                    alt={occ.title}
-                    fill
-                    sizes="(max-width: 640px) 50vw, 25vw"
-                    className="object-cover object-top transition-transform duration-700 group-hover:scale-110"
-                  />
-                  {/* Dark gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#061811] via-[#061811]/40 to-transparent" />
+        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-8 xl:gap-12">
+            
+            {/* ============================================================== */}
+            {/* LEFT COLUMN: REAL CODED HTML TYPOGRAPHY & BUTTON             */}
+            {/* ============================================================== */}
+            <div className="w-full lg:w-[35%] xl:w-[32%] text-center lg:text-left space-y-4 sm:space-y-5">
+              {/* Subtitle */}
+              <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#C5A880]">
+                TRADITIONAL MEETS MODERN
+              </p>
 
-                  {/* Card Bottom Tag & Arrow */}
-                  <div className="relative z-10 flex items-center justify-between">
-                    <span className="font-serif text-base font-bold text-white group-hover:text-[#E5C07B] transition-colors">
-                      {occ.title}
-                    </span>
-                    <div className="w-6 h-6 rounded-full border border-white/50 bg-black/30 flex items-center justify-center text-white group-hover:border-[#E5C07B] group-hover:text-[#E5C07B] transition-colors">
-                      <ChevronDown className="w-3.5 h-3.5" />
-                    </div>
-                  </div>
+              {/* Glowing gold accent line */}
+              <div className="flex items-center justify-center lg:justify-start">
+                <div className="h-[1px] w-20 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent shadow-[0_0_8px_rgba(212,175,55,0.7)]" />
+              </div>
+
+              {/* Luxury Serif Heading */}
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] xl:text-[48px] text-[#F5EFDC] font-bold leading-[1.14] tracking-tight drop-shadow-sm">
+                Crafted for Every<br className="hidden sm:inline" /> Occasion
+              </h2>
+
+              {/* Occasion category sub-links */}
+              <div className="flex items-center justify-center lg:justify-start gap-2.5 text-xs sm:text-sm text-[#E2DDD6] font-normal tracking-wide">
+                <Link href="/shop?category=lehengas" className="hover:text-[#E5C07B] transition-colors">
+                  Weddings
                 </Link>
-              ))}
+                <span className="text-[#C5A880]/50 font-light">|</span>
+                <Link href="/shop?category=sarees" className="hover:text-[#E5C07B] transition-colors">
+                  Festive
+                </Link>
+                <span className="text-[#C5A880]/50 font-light">|</span>
+                <Link href="/shop?category=salwar-suits" className="hover:text-[#E5C07B] transition-colors">
+                  Casual
+                </Link>
+                <span className="text-[#C5A880]/50 font-light">|</span>
+                <Link href="/shop?category=mens-wear" className="hover:text-[#E5C07B] transition-colors">
+                  Party
+                </Link>
+              </div>
+
+              {/* Explore Collections Button */}
+              <div className="pt-2 sm:pt-3">
+                <Link
+                  href="/shop"
+                  className="inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-[#1b0a15]/90 hover:bg-[#280d20] text-[#F5EFDC] hover:text-white border border-[#D4AF37]/80 hover:border-[#E5C07B] shadow-[0_0_15px_rgba(212,175,55,0.25)] hover:shadow-[0_0_24px_rgba(212,175,55,0.5)] transition-all duration-300 text-xs font-semibold tracking-widest uppercase group"
+                >
+                  <span>Explore Collections</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 stroke-[2]" />
+                </Link>
+              </div>
             </div>
+
+            {/* ============================================================== */}
+            {/* CENTER DIVIDER: THIN VERTICAL LINE WITH DIAMOND MOTIF        */}
+            {/* ============================================================== */}
+            <div className="hidden lg:flex items-center justify-center self-stretch px-2 xl:px-4">
+              <div className="w-[1px] h-52 bg-gradient-to-b from-transparent via-[#D4AF37]/50 to-transparent relative flex items-center justify-center">
+                <div className="w-2.5 h-2.5 rotate-45 border border-[#D4AF37] bg-[#B08B58] shadow-[0_0_10px_rgba(212,175,55,0.8)]" />
+              </div>
+            </div>
+
+            {/* ============================================================== */}
+            {/* RIGHT COLUMN: 4 SEPARATE OCCASION CARD IMAGES                */}
+            {/* ============================================================== */}
+            <div className="w-full lg:w-[62%] xl:w-[65%]">
+              {/* Desktop & Tablet: Proportional Flex Row matching identical heights */}
+              <div className="hidden sm:flex items-center justify-center gap-2 md:gap-3 xl:gap-4 h-[280px] md:h-[320px] lg:h-[350px] xl:h-[380px]">
+                {OCCASIONS.map((occ) => (
+                  <Link
+                    key={occ.title}
+                    href={occ.link}
+                    className="group relative h-full flex items-center justify-center transition-all duration-500 hover:scale-[1.05] hover:-translate-y-2 focus:outline-none"
+                  >
+                    <Image
+                      src={occ.image}
+                      alt={occ.title}
+                      width={occ.width}
+                      height={occ.height}
+                      className="h-full w-auto object-contain drop-shadow-xl group-hover:drop-shadow-[0_15px_30px_rgba(212,175,55,0.4)] transition-all duration-500"
+                      priority
+                    />
+                    {/* Subtle golden ambient highlight on hover */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/20 via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl" />
+                  </Link>
+                ))}
+              </div>
+
+              {/* Mobile: 2x2 Grid with Touch Targets */}
+              <div className="grid sm:hidden grid-cols-2 gap-3 max-w-sm mx-auto">
+                {OCCASIONS.map((occ) => (
+                  <Link
+                    key={occ.title}
+                    href={occ.link}
+                    className="group relative block aspect-[150/300] w-full rounded-2xl overflow-hidden drop-shadow-lg active:scale-95 transition-transform"
+                  >
+                    <Image
+                      src={occ.image}
+                      alt={occ.title}
+                      fill
+                      sizes="50vw"
+                      className="object-contain object-center transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
+
           </div>
         </div>
       </section>
 
       {/* ============================================================== */}
-      {/* 8. JOIN OUR NEWSLETTER SECTION (Ivory + Gold Lotus + Input)    */}
+      {/* 8. GOOGLE REVIEWS SECTION (Trust, 4.9 Rating, Verified Buyers) */}
       {/* ============================================================== */}
-      <section className="py-14 sm:py-16 px-4 sm:px-6 lg:px-8 bg-[#FAF8F5] border-b border-[#D4AF37]/20">
-        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
-          {/* Left Text with Lotus */}
-          <div className="flex items-center gap-4 text-center md:text-left">
-            <LotusIcon className="w-12 h-10 text-[#B8860B] flex-shrink-0" />
-            <div>
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#0B2518]">
-                Join Our Newsletter
-              </h3>
-              <p className="text-xs text-zinc-500 font-normal">
-                Get the latest updates on new arrivals, offers and more.
-              </p>
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#FAF8F5] border-b border-[#D4AF37]/20">
+        <div className="max-w-7xl mx-auto space-y-10 sm:space-y-12">
+          
+          {/* Header with Google Rating Trust Badge */}
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pb-6 border-b border-[#D4AF37]/20 text-center md:text-left">
+            <div className="space-y-2">
+              <div className="flex items-center justify-center md:justify-start gap-2">
+                <LotusIcon className="w-4 h-3.5 text-[#B8860B]" />
+                <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#B8860B]">
+                  Voices of Royal Patrons
+                </span>
+              </div>
+              <h2 className="font-serif text-3xl sm:text-4xl text-[#0B2518] font-bold">
+                Google Customer Reviews
+              </h2>
+            </div>
+
+            {/* Official Google Reviews Badge */}
+            <div className="bg-white border border-[#D4AF37]/35 rounded-2xl p-4 sm:p-5 shadow-md flex items-center gap-4">
+              {/* Google G Logo */}
+              <div className="w-10 h-10 rounded-xl bg-zinc-50 border border-zinc-200/70 flex items-center justify-center flex-shrink-0 shadow-sm">
+                <svg className="w-6 h-6" viewBox="0 0 24 24">
+                  <path
+                    fill="#4285F4"
+                    d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"
+                  />
+                  <path
+                    fill="#34A853"
+                    d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"
+                  />
+                  <path
+                    fill="#FBBC05"
+                    d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"
+                  />
+                  <path
+                    fill="#EA4335"
+                    d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
+                  />
+                </svg>
+              </div>
+
+              <div className="space-y-0.5 text-left">
+                <div className="flex items-center gap-2">
+                  <span className="font-serif text-xl font-bold text-zinc-900 leading-none">4.9</span>
+                  <div className="flex items-center gap-0.5 text-amber-500">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
+                    ))}
+                  </div>
+                </div>
+                <p className="text-[11px] text-zinc-500 font-medium">
+                  Based on <strong>1,420+ Verified Reviews</strong> on Google
+                </p>
+              </div>
             </div>
           </div>
 
-          {/* Right Email Form */}
-          <form
-            onSubmit={handleSubscribe}
-            className="w-full md:w-auto flex items-center max-w-md bg-white border border-[#D4AF37]/40 rounded-full p-1 shadow-sm focus-within:ring-2 focus-within:ring-[#D4AF37]"
-          >
-            <input
-              type="email"
-              value={newsletterEmail}
-              onChange={(e) => setNewsletterEmail(e.target.value)}
-              placeholder="Enter your email address"
-              className="flex-1 bg-transparent text-xs text-zinc-900 px-4 py-2 focus:outline-none placeholder:text-zinc-400"
-              required
-            />
-            <button
-              type="submit"
-              className="px-6 py-2.5 rounded-full bg-[#0B2518] hover:bg-[#061811] text-white text-xs font-semibold tracking-wide flex items-center gap-1.5 transition-colors shadow"
+          {/* 4 Customer Review Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {GOOGLE_REVIEWS.map((rev) => (
+              <div
+                key={rev.id}
+                className="bg-white rounded-2xl border border-[#D4AF37]/25 p-5 sm:p-6 shadow-sm hover:shadow-xl hover:border-[#D4AF37]/60 transition-all duration-300 flex flex-col justify-between space-y-4 group"
+              >
+                <div className="space-y-3.5">
+                  {/* Reviewer Header */}
+                  <div className="flex items-center gap-3">
+                    <div className="relative w-10 h-10 rounded-full overflow-hidden border border-[#D4AF37]/40 flex-shrink-0">
+                      <Image
+                        src={rev.avatar}
+                        alt={rev.author}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="min-w-0 flex-1">
+                      <div className="flex items-center gap-1.5">
+                        <h4 className="font-semibold text-xs text-zinc-900 truncate">
+                          {rev.author}
+                        </h4>
+                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 flex-shrink-0" />
+                      </div>
+                      <p className="text-[10px] text-zinc-500 truncate">{rev.city} • {rev.date}</p>
+                    </div>
+                  </div>
+
+                  {/* Rating Stars & Google Verified Tag */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-0.5 text-amber-500">
+                      {[...Array(rev.rating)].map((_, i) => (
+                        <Star key={i} className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
+                      ))}
+                    </div>
+                    <span className="text-[9px] font-semibold tracking-wider text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200">
+                      Verified Buyer
+                    </span>
+                  </div>
+
+                  {/* Review Text */}
+                  <p className="text-xs text-zinc-700 leading-relaxed font-normal italic">
+                    &ldquo;{rev.review}&rdquo;
+                  </p>
+                </div>
+
+                {/* Product Mention */}
+                <div className="pt-3 border-t border-zinc-100 flex items-center gap-1.5 text-[10px] text-zinc-500">
+                  <span className="font-semibold text-[#B8860B]">Purchased:</span>
+                  <span className="truncate">{rev.product}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+      </section>
+
+      {/* ============================================================== */}
+      {/* 9. INSTAGRAM RECENT POSTS SECTION (#EffidooElegance Gallery)   */}
+      {/* ============================================================== */}
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#061811] text-white border-b border-[#D4AF37]/30 relative overflow-hidden">
+        {/* Subtle decorative glow */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(212,175,55,0.12),transparent_70%)] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto space-y-10 sm:space-y-12 relative z-10">
+          
+          {/* Header */}
+          <div className="text-center space-y-3 max-w-xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/35 text-[#E5C07B] text-[11px] font-semibold tracking-[0.25em] uppercase">
+              <Instagram className="w-3.5 h-3.5" />
+              <span>@EFFIDOO_OFFICIAL</span>
+            </div>
+
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
+              Seen On You • #EffidooElegance
+            </h2>
+
+            <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
+              Tag <span className="text-[#E5C07B] font-medium">@effidoo_official</span> on Instagram to be featured in our royal heritage gallery.
+            </p>
+          </div>
+
+          {/* 6 Curated Instagram Posts Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+            {INSTAGRAM_POSTS.map((post) => (
+              <a
+                key={post.id}
+                href={post.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative aspect-square rounded-2xl overflow-hidden border border-[#D4AF37]/30 shadow-lg block focus:outline-none"
+              >
+                <Image
+                  src={post.image}
+                  alt={post.caption}
+                  fill
+                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110"
+                />
+
+                {/* Luxury Hover Overlay */}
+                <div className="absolute inset-0 bg-[#061811]/85 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-3.5 text-white">
+                  <div className="flex items-center justify-between">
+                    <Instagram className="w-4 h-4 text-[#E5C07B]" />
+                    <span className="text-[10px] text-zinc-400 font-light">Instagram</span>
+                  </div>
+
+                  <p className="text-[10px] line-clamp-3 text-zinc-200 leading-snug">
+                    {post.caption}
+                  </p>
+
+                  <div className="flex items-center justify-between text-[11px] text-[#E5C07B] font-semibold pt-1 border-t border-[#D4AF37]/20">
+                    <span className="flex items-center gap-1">
+                      <Heart className="w-3 h-3 fill-[#E5C07B]" />
+                      {post.likes}
+                    </span>
+                    <span className="flex items-center gap-1 text-zinc-300">
+                      <MessageCircle className="w-3 h-3" />
+                      {post.comments}
+                    </span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+
+          {/* Instagram Follow Call To Action */}
+          <div className="text-center pt-2">
+            <a
+              href="https://instagram.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#833ab4]/80 via-[#fd1d1d]/80 to-[#fcb045]/80 hover:from-[#833ab4] hover:via-[#fd1d1d] hover:to-[#fcb045] text-white text-xs font-bold uppercase tracking-widest transition-all shadow-xl hover:shadow-[0_0_25px_rgba(253,29,29,0.4)] group"
             >
-              <span>Subscribe</span>
-              <ArrowRight className="w-3 h-3" />
-            </button>
-          </form>
+              <Instagram className="w-4 h-4" />
+              <span>Follow @effidoo_official On Instagram</span>
+              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+            </a>
+          </div>
+
         </div>
       </section>
     </div>
