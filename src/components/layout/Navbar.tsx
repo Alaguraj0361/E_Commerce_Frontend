@@ -314,9 +314,11 @@ export const Navbar = () => {
               aria-label="Wishlist"
             >
               <Heart className="w-4 h-4" />
-              <span className="absolute -top-1 -right-2 bg-rose-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none shadow-sm">
-                {wishlistCount > 0 ? wishlistCount : 1}
-              </span>
+              {wishlistCount > 0 && (
+                <span className="absolute -top-1 -right-2 bg-rose-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none shadow-sm">
+                  {wishlistCount}
+                </span>
+              )}
             </Link>
 
             {/* Cart Button with Red Badge */}
@@ -326,9 +328,11 @@ export const Navbar = () => {
               aria-label="Shopping bag"
             >
               <ShoppingBag className="w-4 h-4" />
-              <span className="absolute -top-1 -right-2 bg-rose-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none shadow-sm">
-                {totalCartCount > 0 ? totalCartCount : 1}
-              </span>
+              {totalCartCount > 0 && (
+                <span className="absolute -top-1 -right-2 bg-rose-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none shadow-sm">
+                  {totalCartCount}
+                </span>
+              )}
             </button>
           </div>
         </div>

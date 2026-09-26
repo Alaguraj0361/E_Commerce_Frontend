@@ -58,7 +58,9 @@ function OrderSuccessContent() {
 
       <div className="space-y-2">
         <span className="text-xs uppercase tracking-widest text-emerald-600 font-bold">
-          Payment Confirmed
+          {order?.paymentMethod === 'cod'
+            ? 'Order Confirmed • Cash on Delivery'
+            : 'Payment Confirmed • Verified via UPI / Online'}
         </span>
         <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-100 tracking-tight">
           Thank You For Your Order
@@ -126,7 +128,7 @@ function OrderSuccessContent() {
               <span>{formatCurrency(order.tax)}</span>
             </div>
             <div className="flex justify-between text-sm font-extrabold text-zinc-900 dark:text-zinc-100 pt-2 border-t border-zinc-200 dark:border-zinc-800">
-              <span>Total Paid</span>
+              <span>{order.paymentMethod === 'cod' ? 'Total (Due on Delivery)' : 'Total Paid'}</span>
               <span>{formatCurrency(order.total)}</span>
             </div>
           </div>

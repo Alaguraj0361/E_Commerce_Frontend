@@ -129,6 +129,8 @@ export interface Order {
   orderStatus: 'Pending' | 'Confirmed' | 'Processing' | 'Packed' | 'Shipped' | 'Delivered' | 'Cancelled' | 'Refunded';
   stripePaymentIntentId?: string;
   stripeSessionId?: string;
+  razorpayOrderId?: string;
+  razorpayPaymentId?: string;
   trackingNumber?: string;
   notes?: string;
   timeline: OrderTimeline[];
