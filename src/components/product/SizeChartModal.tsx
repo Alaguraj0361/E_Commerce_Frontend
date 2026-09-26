@@ -269,7 +269,7 @@ export const SizeChartModal: React.FC<SizeChartModalProps> = ({ isOpen, onClose 
         <div className="px-6 py-4 bg-zinc-50 dark:bg-zinc-800/50 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-xs">
           <span className="text-zinc-500">Need personal sizing advice?</span>
           <a
-            href="https://wa.me/919361923406?text=Hi%2C%20I%20need%20help%20with%20sizing%20and%20measurements"
+            href="https://wa.me/917871207631?text=Hi%2C%20I%20need%20help%20with%20sizing%20and%20measurements"
             target="_blank"
             rel="noopener noreferrer"
             className="font-bold text-emerald-600 hover:text-emerald-500 underline"

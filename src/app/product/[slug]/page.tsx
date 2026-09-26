@@ -691,7 +691,7 @@ export default function ProductDetailPage() {
                 <strong>India Shipping:</strong> Free express shipping on all orders over ₹1,499. Orders dispatch within 24–48 hours and arrive in 3–8 business days via Bluedart/Delhivery.
               </p>
               <p>
-                <strong>Worldwide Delivery:</strong> We ship to 20+ countries via DHL Express. WhatsApp us at +91-9361923406 for direct international order queries.
+                <strong>Worldwide Delivery:</strong> We ship to 20+ countries via DHL Express. WhatsApp us at +91-7871207631 for direct international order queries.
               </p>
               <p>
                 <strong>Returns & Exchange:</strong> 7-day hassle-free size exchange policy.
