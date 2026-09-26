@@ -15,9 +15,6 @@ import {
   ShieldCheck,
   Truck,
   Sparkles,
-  Award,
-  Crown,
-  Scissors,
 } from 'lucide-react';
 import { api } from '../lib/api';
 import { Product } from '../types';
@@ -829,177 +826,85 @@ export default function HomePage() {
       {/* ============================================================== */}
       {/* 5. SPECIAL OFFER BANNER ("FLAT 20% OFF")                       */}
       {/* ============================================================== */}
-      <section id="special-offer-section" className="relative overflow-hidden bg-[#041007] border-y border-[#D4AF37]/25 text-white scroll-mt-20 lg:scroll-mt-24">
-        {/* Background Image: user-provided luxury emerald background with leaves and light rays */}
-        <div className="absolute inset-0 z-0">
+      <section
+        id="special-offer-section"
+        className="relative w-full overflow-hidden bg-[#240614] border-y border-[#D4AF37]/35 text-white scroll-mt-20 lg:scroll-mt-24 shadow-[0_12px_40px_rgba(0,0,0,0.45)]"
+      >
+        {/* Full-width Royal Wine Silk Background with ambient illumination */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#200411] via-[#2A0818] to-[#1E0310] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_50%,_var(--tw-gradient-stops))] from-[#4A132C]/60 via-transparent to-transparent pointer-events-none" />
+
+        {/* Far Left: Botanical Leaf Linework Vector */}
+        <div className="absolute left-0 bottom-0 top-0 w-32 sm:w-48 lg:w-64 pointer-events-none opacity-40 z-0">
           <Image
-            src="/images/offers/special_offer_bg.png"
-            alt="Ethnic Wear Special Offer Background"
+            src="/images/offers/botanical_leaves.svg"
+            alt="Gold Botanical Motifs"
             fill
-            className="object-cover object-center"
-            sizes="100vw"
+            className="object-contain object-left-bottom"
           />
-          {/* Ambient overlay vignette */}
-          <div className="absolute inset-0 bg-gradient-to-r from-black/20 via-transparent to-black/20 pointer-events-none" />
         </div>
 
-        {/* Content Container */}
-        <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-10 lg:py-6 xl:py-8 relative z-10 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-4 xl:gap-8 min-h-[380px] lg:min-h-[400px] xl:min-h-[440px]">
-          {/* Left Column: Model in Royal Palace Arch - FITTED, NO ZOOM */}
-          <div className="w-full lg:w-[35%] xl:w-[36%] shrink-0 flex justify-center lg:justify-start items-center">
-            <div className="relative w-full max-w-[280px] sm:max-w-[320px] lg:max-w-[350px] xl:max-w-[385px] aspect-[385/342] flex justify-center">
+        {/* Right Side: Ultra High Clarity 4K Photorealistic Ethnic Fabrics */}
+        <div className="absolute right-0 top-0 bottom-0 w-[48%] sm:w-[48%] md:w-[46%] lg:w-[44%] xl:w-[42%] h-full z-0 overflow-hidden pointer-events-none">
+          <Image
+            src="/images/offers/ethnic_fabrics_clarity.jpg"
+            alt="Luxury Ethnic Fabrics with Jasmine Garland"
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="(max-width: 1024px) 50vw, 42vw"
+          />
+          {/* Feathered gradient to dissolve fabrics seamlessly into the burgundy background on the left */}
+          <div className="absolute inset-y-0 left-0 w-24 sm:w-36 lg:w-48 bg-gradient-to-r from-[#240614] via-[#240614]/70 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#200411]/40 via-transparent to-[#200411]/30" />
+        </div>
+
+        {/* Full-width Responsive Content Grid */}
+        <div className="w-full relative z-10 px-5 sm:px-8 md:px-12 lg:px-16 xl:px-24 py-8 sm:py-10 md:py-12 lg:py-14 xl:py-16 flex flex-row items-center justify-between">
+          {/* Left Column: Crisp High-End Typography & CTA */}
+          <div className="max-w-xl flex flex-col items-start space-y-2 sm:space-y-3 lg:space-y-3.5 z-10">
+            {/* Limited Time Offer */}
+            <span className="text-[#DEB371] font-serif tracking-[0.22em] text-[11px] sm:text-xs md:text-sm font-medium uppercase drop-shadow">
+              Limited Time Offer
+            </span>
+
+            {/* FLAT 20% OFF */}
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] font-normal tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FFF5DC] via-[#F5D48D] to-[#CF9F42] leading-[1.05] drop-shadow-[0_2px_14px_rgba(0,0,0,0.6)]">
+              FLAT 20% OFF
+            </h2>
+
+            {/* On All Ethnic Wear */}
+            <p className="font-serif text-sm sm:text-base md:text-lg lg:text-xl text-[#EBD9C2] font-light tracking-wide drop-shadow">
+              On All Ethnic Wear
+            </p>
+
+            {/* Shop Now Button */}
+            <div className="pt-2 sm:pt-3">
+              <Link
+                href="/shop?sale=true"
+                className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#E5BD7B] via-[#DEB371] to-[#D5A558] hover:brightness-110 text-[#240614] font-semibold text-xs sm:text-sm tracking-wide uppercase transition-all shadow-[0_4px_16px_rgba(0,0,0,0.4)] transform hover:scale-105 group/btn"
+              >
+                <span>Shop Now</span>
+                <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 stroke-[2.5]" />
+              </Link>
+            </div>
+          </div>
+
+          {/* Center Badge: Precision Vector SVG Royal Arch with 20% OFF */}
+          <div className="flex shrink-0 items-center justify-center mr-auto ml-4 sm:ml-8 md:ml-10 lg:ml-16 xl:ml-24 z-10">
+            <div className="relative w-24 h-20 sm:w-32 sm:h-28 md:w-40 md:h-36 lg:w-48 lg:h-44 xl:w-52 xl:h-48 drop-shadow-[0_8px_20px_rgba(0,0,0,0.5)] transform hover:scale-105 transition-transform duration-300">
               <Image
-                src="/images/offers/special_offer_arch_feathered.png"
-                alt="EFFIDOO Special Offer Model"
+                src="/images/offers/arch_badge.svg"
+                alt="20% OFF Royal Arch Badge"
                 fill
                 priority
-                className="object-contain object-center drop-shadow-[0_8px_24px_rgba(0,0,0,0.5)]"
-                sizes="(max-width: 640px) 280px, (max-width: 1024px) 320px, 400px"
+                className="object-contain"
               />
             </div>
           </div>
 
-          {/* Center Column: Offer Copy, Lotus Motifs & CTA */}
-          <div className="w-full lg:w-[32%] xl:w-[31%] shrink-0 text-center flex flex-col items-center justify-center space-y-2.5 sm:space-y-3">
-            {/* Top Golden Lotus */}
-            <div className="flex justify-center mb-0.5">
-              <svg viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-6 h-5 text-[#E5B95E] drop-shadow">
-                <defs>
-                  <linearGradient id="lotusGoldTop" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#FDE68A" />
-                    <stop offset="50%" stopColor="#E5B95E" />
-                    <stop offset="100%" stopColor="#B48222" />
-                  </linearGradient>
-                </defs>
-                <path d="M16 1 C16 1 18.5 7 18.5 12 C18.5 16 17 17.5 16 18 C15 17.5 13.5 16 13.5 12 C13.5 7 16 1 16 1 Z" fill="url(#lotusGoldTop)" />
-                <path d="M16.5 17.5 C18.5 17 23 14 23.5 8 C23.5 8 25 14 21 17 C19 18.5 17.5 18 16.5 17.5 Z" fill="url(#lotusGoldTop)" opacity="0.95" />
-                <path d="M15.5 17.5 C13.5 17 9 14 8.5 8 C8.5 8 7 14 11 17 C13 18.5 14.5 18 15.5 17.5 Z" fill="url(#lotusGoldTop)" opacity="0.95" />
-                <path d="M18 18.5 C21 19 28 16 29 11.5 C29 11.5 28 18.5 22 19.5 C19.5 19.9 18 19 18 18.5 Z" fill="url(#lotusGoldTop)" opacity="0.9" />
-                <path d="M14 18.5 C11 19 4 16 3 11.5 C3 11.5 4 18.5 10 19.5 C12.5 19.9 14 19 14 18.5 Z" fill="url(#lotusGoldTop)" opacity="0.9" />
-                <ellipse cx="16" cy="20.5" rx="1.8" ry="1.2" fill="url(#lotusGoldTop)" />
-              </svg>
-            </div>
-
-            {/* SPECIAL OFFER with delicate flanking rules */}
-            <div className="flex items-center justify-center gap-3 w-full max-w-[280px]">
-              <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#E5B95E]/60 to-[#E5B95E]" />
-              <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.28em] text-[#E5B95E] uppercase drop-shadow">
-                SPECIAL OFFER
-              </span>
-              <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#E5B95E]/60 to-[#E5B95E]" />
-            </div>
-
-            {/* FLAT 20% OFF */}
-            <h2 className="font-display text-3xl sm:text-4xl lg:text-[40px] xl:text-[46px] font-normal tracking-tight text-[#FFFDF8] leading-[1.1] drop-shadow-[0_2px_12px_rgba(0,0,0,0.6)]">
-              FLAT 20% OFF
-            </h2>
-
-            {/* On Selected Ethnic Wear Collection */}
-            <p className="font-display italic text-xs sm:text-[13px] md:text-sm text-[#DDD3C1] font-normal tracking-wide drop-shadow">
-              On Selected Ethnic Wear Collection
-            </p>
-
-            {/* SHOP NOW Button */}
-            <div className="pt-1.5 pb-1">
-              <Link
-                href="/shop?sale=true"
-                className="inline-flex items-center justify-center gap-2.5 px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#E8BF70] via-[#DFB15A] to-[#CE9C3F] hover:brightness-105 text-[#18140B] font-bold text-xs sm:text-[13px] tracking-wider uppercase transition-all shadow-[0_4px_18px_rgba(0,0,0,0.4)] transform hover:scale-105 group/btn"
-              >
-                <span>SHOP NOW</span>
-                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1 stroke-[2.5]" />
-              </Link>
-            </div>
-
-            {/* Bottom Lotus flanked by rules */}
-            <div className="flex items-center justify-center gap-3 w-full max-w-[220px]">
-              <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#E5B95E]/50 to-[#E5B95E]" />
-              <svg viewBox="0 0 32 24" fill="none" xmlns="http://www.w3.org/2000/svg" className="w-5 h-4 text-[#E5B95E] drop-shadow">
-                <defs>
-                  <linearGradient id="lotusGoldBot" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#FDE68A" />
-                    <stop offset="50%" stopColor="#E5B95E" />
-                    <stop offset="100%" stopColor="#B48222" />
-                  </linearGradient>
-                </defs>
-                <path d="M16 1 C16 1 18.5 7 18.5 12 C18.5 16 17 17.5 16 18 C15 17.5 13.5 16 13.5 12 C13.5 7 16 1 16 1 Z" fill="url(#lotusGoldBot)" />
-                <path d="M16.5 17.5 C18.5 17 23 14 23.5 8 C23.5 8 25 14 21 17 C19 18.5 17.5 18 16.5 17.5 Z" fill="url(#lotusGoldBot)" opacity="0.95" />
-                <path d="M15.5 17.5 C13.5 17 9 14 8.5 8 C8.5 8 7 14 11 17 C13 18.5 14.5 18 15.5 17.5 Z" fill="url(#lotusGoldBot)" opacity="0.95" />
-                <path d="M18 18.5 C21 19 28 16 29 11.5 C29 11.5 28 18.5 22 19.5 C19.5 19.9 18 19 18 18.5 Z" fill="url(#lotusGoldBot)" opacity="0.9" />
-                <path d="M14 18.5 C11 19 4 16 3 11.5 C3 11.5 4 18.5 10 19.5 C12.5 19.9 14 19 14 18.5 Z" fill="url(#lotusGoldBot)" opacity="0.9" />
-                <ellipse cx="16" cy="20.5" rx="1.8" ry="1.2" fill="url(#lotusGoldBot)" />
-              </svg>
-              <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#E5B95E]/50 to-[#E5B95E]" />
-            </div>
-          </div>
-
-          {/* Right Column: 4 Capsule Feature Cards in 2x2 Grid (2 per row on both mobile and desktop) */}
-          <div className="w-full lg:w-[33%] xl:w-[33%] shrink-0">
-            <div className="grid grid-cols-2 lg:grid-cols-2 gap-2 sm:gap-3 xl:gap-3.5">
-              {/* Card 1: Premium Fabrics */}
-              <div className="rounded-[18px] sm:rounded-[24px] p-2 sm:p-3 px-2.5 sm:px-4 bg-[#071911]/90 backdrop-blur-md border border-[#D4AF37]/35 hover:border-[#D4AF37]/80 flex items-center gap-2 sm:gap-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-[1.02] group">
-                <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full border border-[#D4AF37]/75 flex items-center justify-center shrink-0 bg-gradient-to-b from-[#0C291B] to-[#04110A] text-[#E5B95E] shadow-[inset_0_1px_3px_rgba(212,175,55,0.25)] group-hover:scale-105 transition-transform">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-3.5 h-3.5 sm:w-5 sm:h-5">
-                    <rect x="7" y="7" width="10" height="10" transform="rotate(45 12 12)" stroke="currentColor" fill="currentColor" fillOpacity="0.15" />
-                    <path d="M12 3.5L3.5 12L12 20.5L20.5 12L12 3.5Z" stroke="currentColor" strokeWidth="1.2" />
-                    <path d="M7.75 7.75L16.25 16.25M16.25 7.75L7.75 16.25" stroke="currentColor" strokeWidth="1.2" />
-                  </svg>
-                </div>
-                <div className="min-w-0">
-                  <h4 className="font-display text-[11px] sm:text-[13px] font-semibold text-white tracking-tight leading-tight truncate">
-                    Premium Fabrics
-                  </h4>
-                  <p className="text-[9px] sm:text-[11px] text-[#A6B7AA] font-light leading-tight mt-0.5 truncate">
-                    Only the Finest Materials
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 2: Handcrafted Details */}
-              <div className="rounded-[18px] sm:rounded-[24px] p-2 sm:p-3 px-2.5 sm:px-4 bg-[#071911]/90 backdrop-blur-md border border-[#D4AF37]/35 hover:border-[#D4AF37]/80 flex items-center gap-2 sm:gap-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-[1.02] group">
-                <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full border border-[#D4AF37]/75 flex items-center justify-center shrink-0 bg-gradient-to-b from-[#0C291B] to-[#04110A] text-[#E5B95E] shadow-[inset_0_1px_3px_rgba(212,175,55,0.25)] group-hover:scale-105 transition-transform">
-                  <Scissors className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#E5B95E] -rotate-45" />
-                </div>
-                <div className="min-w-0">
-                  <h4 className="font-display text-[11px] sm:text-[13px] font-semibold text-white tracking-tight leading-tight truncate">
-                    Handcrafted Details
-                  </h4>
-                  <p className="text-[9px] sm:text-[11px] text-[#A6B7AA] font-light leading-tight mt-0.5 truncate">
-                    Made with love & care
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 3: Timeless Designs */}
-              <div className="rounded-[18px] sm:rounded-[24px] p-2 sm:p-3 px-2.5 sm:px-4 bg-[#071911]/90 backdrop-blur-md border border-[#D4AF37]/35 hover:border-[#D4AF37]/80 flex items-center gap-2 sm:gap-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-[1.02] group">
-                <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full border border-[#D4AF37]/75 flex items-center justify-center shrink-0 bg-gradient-to-b from-[#0C291B] to-[#04110A] text-[#E5B95E] shadow-[inset_0_1px_3px_rgba(212,175,55,0.25)] group-hover:scale-105 transition-transform">
-                  <Crown className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#E5B95E]" />
-                </div>
-                <div className="min-w-0">
-                  <h4 className="font-display text-[11px] sm:text-[13px] font-semibold text-white tracking-tight leading-tight truncate">
-                    Timeless Designs
-                  </h4>
-                  <p className="text-[9px] sm:text-[11px] text-[#A6B7AA] font-light leading-tight mt-0.5 truncate">
-                    Style for every occasion
-                  </p>
-                </div>
-              </div>
-
-              {/* Card 4: Exclusive Collections */}
-              <div className="rounded-[18px] sm:rounded-[24px] p-2 sm:p-3 px-2.5 sm:px-4 bg-[#071911]/90 backdrop-blur-md border border-[#D4AF37]/35 hover:border-[#D4AF37]/80 flex items-center gap-2 sm:gap-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.35)] transition-all duration-300 hover:scale-[1.02] group">
-                <div className="w-8 h-8 sm:w-11 sm:h-11 rounded-full border border-[#D4AF37]/75 flex items-center justify-center shrink-0 bg-gradient-to-b from-[#0C291B] to-[#04110A] text-[#E5B95E] shadow-[inset_0_1px_3px_rgba(212,175,55,0.25)] group-hover:scale-105 transition-transform">
-                  <Award className="w-3.5 h-3.5 sm:w-5 sm:h-5 text-[#E5B95E]" />
-                </div>
-                <div className="min-w-0">
-                  <h4 className="font-display text-[11px] sm:text-[13px] font-semibold text-white tracking-tight leading-tight truncate">
-                    Exclusive Collections
-                  </h4>
-                  <p className="text-[9px] sm:text-[11px] text-[#A6B7AA] font-light leading-tight mt-0.5 truncate">
-                    Limited Stock
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          {/* Spacer to accommodate the right fabrics drape */}
+          <div className="hidden lg:block w-[32%] xl:w-[35%] shrink-0 pointer-events-none" />
         </div>
       </section>
 
