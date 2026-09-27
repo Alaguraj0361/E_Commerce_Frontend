@@ -146,7 +146,7 @@ export default function ProductDetailPage() {
   const brandName =
     typeof product.brand === 'object' && product.brand !== null
       ? product.brand.name
-      : 'Effidoo Atelier';
+      : 'Nalmara Fashion Atelier';
 
   const categoryName =
     typeof product.category === 'object' && product.category !== null

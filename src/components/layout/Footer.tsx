@@ -20,7 +20,7 @@ export const Footer = () => {
           <div className="space-y-6 lg:pr-4">
             <BrandLogo size="md" theme="dark" />
             <p className="text-xs text-zinc-300 leading-relaxed font-light">
-              EFFIDOO celebrates authentic Indian tradition, pure artisanal craftsmanship, and contemporary royal elegance.
+              NALMARA FASHION celebrates authentic Indian tradition, pure artisanal craftsmanship, and contemporary royal elegance.
             </p>
             {/* Social Icons */}
             <div className="flex items-center gap-3 pt-1">
@@ -225,7 +225,7 @@ export const Footer = () => {
 
         {/* Bottom Bar: Copyright & Links */}
         <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-400 font-light">
-          <p>© 2026 EFFIDOO. All rights reserved.</p>
+          <p>© 2026 NALMARA FASHION. All rights reserved.</p>
           <div className="flex items-center gap-4 text-zinc-400">
             <Link href="/privacy" className="hover:text-[#E5C07B] transition-colors">
               Privacy Policy

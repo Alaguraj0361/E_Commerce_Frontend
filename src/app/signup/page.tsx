@@ -40,7 +40,7 @@ function SignupContent() {
           localStorage.setItem('auth_token', res.data.data.token);
         }
         setUser(res.data.data.user);
-        toast.success(`Welcome to EFFIDOO, ${res.data.data.user.firstName}!`);
+        toast.success(`Welcome to NALMARA FASHION, ${res.data.data.user.firstName}!`);
         router.push(redirectUrl);
       }
     } catch (error: any) {

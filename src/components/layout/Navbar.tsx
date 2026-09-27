@@ -489,7 +489,7 @@ export const Navbar = () => {
                 Confirm Logout
               </h3>
               <p className="text-xs text-zinc-300 leading-relaxed">
-                Are you sure you want to log out of your <strong className="text-[#E5C07B]">EFFIDOO</strong> account?
+                Are you sure you want to log out of your <strong className="text-[#E5C07B]">NALMARA FASHION</strong> account?
               </p>
             </div>
 

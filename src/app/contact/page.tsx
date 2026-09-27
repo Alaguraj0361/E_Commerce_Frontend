@@ -130,7 +130,7 @@ export default function ContactPage() {
                     +91 78712 07631
                   </a>
                   <a
-                    href="https://wa.me/917871207631?text=Hello%20EFFIDOO%20team,%20I%20have%20an%20enquiry%20regarding%20your%20luxury%20ethnic%20wear."
+                    href="https://wa.me/917871207631?text=Hello%20NALMARA%20FASHION%20team,%20I%20have%20an%20enquiry%20regarding%20your%20luxury%20ethnic%20wear."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs text-emerald-700 font-semibold hover:underline pt-0.5"
@@ -151,10 +151,10 @@ export default function ContactPage() {
                     Email Correspondence
                   </p>
                   <a
-                    href="mailto:support@effidoo.com"
+                    href="mailto:support@nalmarafashion.com"
                     className="text-sm font-bold text-[#0B2518] hover:text-[#B8860B] transition-colors block"
                   >
-                    support@effidoo.com
+                    support@nalmarafashion.com
                   </a>
                   <p className="text-[11px] text-zinc-500">
                     Average response time: within 4 hours
@@ -172,7 +172,7 @@ export default function ContactPage() {
                     Flagship Studio & Atelier
                   </p>
                   <p className="text-xs text-zinc-800 leading-relaxed font-medium">
-                    EFFIDOO Royal Atelier, 42 Cathedral Road, T. Nagar, Chennai, Tamil Nadu — 600017
+                    NALMARA FASHION Royal Atelier, 42 Cathedral Road, T. Nagar, Chennai, Tamil Nadu — 600017
                   </p>
                 </div>
               </div>
@@ -223,7 +223,7 @@ export default function ContactPage() {
                       Enquiry Submitted Successfully!
                     </h4>
                     <p className="text-xs text-zinc-600 max-w-md mx-auto leading-relaxed">
-                      Thank you for reaching out to EFFIDOO. A confirmation has been dispatched, and our styling concierge will contact you within 24 hours.
+                      Thank you for reaching out to NALMARA FASHION. A confirmation has been dispatched, and our styling concierge will contact you within 24 hours.
                     </p>
                   </div>
                   <button

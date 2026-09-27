@@ -256,7 +256,7 @@ const GOOGLE_REVIEWS = [
     date: '3 days ago',
     verified: true,
     review:
-      'EFFIDOO’s Kanchipuram silk saree made my reception truly unforgettable. The pure gold zari craftsmanship and weight of the silk are peerless. The luxury packaging felt like receiving an heirloom royal gift!',
+      'NALMARA FASHION’s Kanchipuram silk saree made my reception truly unforgettable. The pure gold zari craftsmanship and weight of the silk are peerless. The luxury packaging felt like receiving an heirloom royal gift!',
     product: 'Royal Kanchipuram Pure Silk Saree',
   },
   {
@@ -292,7 +292,7 @@ const GOOGLE_REVIEWS = [
     date: '3 weeks ago',
     verified: true,
     review:
-      'Fast express delivery and genuine handloom silk certificates included. EFFIDOO has rightfully earned its place as our family’s premier choice for all celebratory occasions.',
+      'Fast express delivery and genuine handloom silk certificates included. NALMARA FASHION has rightfully earned its place as our family’s premier choice for all celebratory occasions.',
     product: 'Paithani Heritage Zari Silk Saree',
   },
 ];
@@ -304,7 +304,7 @@ const INSTAGRAM_POSTS = [
     image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=600&q=80',
     likes: '3.4k',
     comments: 142,
-    caption: 'Royal ivory lehengas crafted for modern brides. ✨ #EffidooBridal',
+    caption: 'Royal ivory lehengas crafted for modern brides. ✨ #NalmaraFashionBridal',
     link: 'https://instagram.com',
   },
   {
@@ -312,7 +312,7 @@ const INSTAGRAM_POSTS = [
     image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=600&q=80',
     likes: '4.8k',
     comments: 215,
-    caption: 'Drapes of majesty in regal jewel tones. 💜 #EffidooHeritage',
+    caption: 'Drapes of majesty in regal jewel tones. 💜 #NalmaraFashionHeritage',
     link: 'https://instagram.com',
   },
   {
@@ -320,7 +320,7 @@ const INSTAGRAM_POSTS = [
     image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=600&q=80',
     likes: '2.9k',
     comments: 98,
-    caption: 'Effortless fusion charm for sunlit garden celebrations. ☀️ #EffidooStyle',
+    caption: 'Effortless fusion charm for sunlit garden celebrations. ☀️ #NalmaraFashionStyle',
     link: 'https://instagram.com',
   },
   {
@@ -328,7 +328,7 @@ const INSTAGRAM_POSTS = [
     image: 'https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=600&q=80',
     likes: '5.2k',
     comments: 310,
-    caption: 'Dusty rose sequins and sheer elegance under chandelier lights. 💫 #EffidooCouture',
+    caption: 'Dusty rose sequins and sheer elegance under chandelier lights. 💫 #NalmaraFashionCouture',
     link: 'https://instagram.com',
   },
   {
@@ -336,7 +336,7 @@ const INSTAGRAM_POSTS = [
     image: 'https://images.unsplash.com/photo-1609357605129-26f69add5d6e?auto=format&fit=crop&w=600&q=80',
     likes: '3.1k',
     comments: 124,
-    caption: 'Intricate zardozi needlework by our master kaarigars. 🧵 #EffidooArtisans',
+    caption: 'Intricate zardozi needlework by our master kaarigars. 🧵 #NalmaraFashionArtisans',
     link: 'https://instagram.com',
   },
   {
@@ -344,7 +344,7 @@ const INSTAGRAM_POSTS = [
     image: 'https://images.unsplash.com/photo-1617627143750-d86bc21e42bb?auto=format&fit=crop&w=600&q=80',
     likes: '4.1k',
     comments: 189,
-    caption: 'The art of the perfect pallu drape. Unmistakably EFFIDOO. 👑 #EffidooMoments',
+    caption: 'The art of the perfect pallu drape. Unmistakably NALMARA FASHION. 👑 #NalmaraFashionMoments',
     link: 'https://instagram.com',
   },
 ];
@@ -1438,9 +1438,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============================================================== */}
-      {/* 9. INSTAGRAM RECENT POSTS SECTION (#EffidooElegance Gallery)   */}
-      {/* ============================================================== */}
+      {/* ==================================================================== */}
+      {/* 9. INSTAGRAM RECENT POSTS SECTION (#NalmaraFashionElegance Gallery) */}
+      {/* ==================================================================== */}
       <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#061811] text-white border-b border-[#D4AF37]/30 relative overflow-hidden">
         {/* Subtle decorative glow */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(212,175,55,0.12),transparent_70%)] pointer-events-none" />
@@ -1451,15 +1451,15 @@ export default function HomePage() {
           <div className="text-center space-y-3 max-w-xl mx-auto">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/35 text-[#E5C07B] text-[11px] font-semibold tracking-[0.25em] uppercase">
               <Instagram className="w-3.5 h-3.5" />
-              <span>@EFFIDOO_OFFICIAL</span>
+              <span>@NALMARAFASHION_OFFICIAL</span>
             </div>
 
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
-              Seen On You • #EffidooElegance
+              Seen On You • #NalmaraFashionElegance
             </h2>
 
             <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
-              Tag <span className="text-[#E5C07B] font-medium">@effidoo_official</span> on Instagram to be featured in our royal heritage gallery.
+              Tag <span className="text-[#E5C07B] font-medium">@nalmarafashion_official</span> on Instagram to be featured in our royal heritage gallery.
             </p>
           </div>
 
@@ -1516,7 +1516,7 @@ export default function HomePage() {
               className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#833ab4]/80 via-[#fd1d1d]/80 to-[#fcb045]/80 hover:from-[#833ab4] hover:via-[#fd1d1d] hover:to-[#fcb045] text-white text-xs font-bold uppercase tracking-widest transition-all shadow-xl hover:shadow-[0_0_25px_rgba(253,29,29,0.4)] group"
             >
               <Instagram className="w-4 h-4" />
-              <span>Follow @effidoo_official On Instagram</span>
+              <span>Follow @nalmarafashion_official On Instagram</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
             </a>
           </div>

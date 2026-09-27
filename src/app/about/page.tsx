@@ -13,9 +13,9 @@ import {
 import { LotusIcon } from '@/components/ui/BrandLogo';
 
 export const metadata = {
-  title: 'About Us | EFFIDOO • Luxury Ethnic Wear & Couture',
+  title: 'About Us | NALMARA FASHION • Luxury Ethnic Wear & Couture',
   description:
-    'Discover the story of EFFIDOO. Where ancient Indian handloom heritage meets contemporary royal couture. Empowering master artisans across India.',
+    'Discover the story of NALMARA FASHION. Where ancient Indian handloom heritage meets contemporary royal couture. Empowering master artisans across India.',
 };
 
 export default function AboutPage() {
@@ -37,7 +37,7 @@ export default function AboutPage() {
           </h1>
 
           <p className="text-sm sm:text-base text-zinc-300 font-light leading-relaxed max-w-2xl mx-auto">
-            EFFIDOO was born from an unyielding passion for India&apos;s timeless textile legacy. 
+            NALMARA FASHION was born from an unyielding passion for India&apos;s timeless textile legacy. 
             We weave the royal grandeur of historic dynasties into contemporary couture for the discerning connoisseur.
           </p>
 
@@ -58,7 +58,7 @@ export default function AboutPage() {
             <div className="relative h-[420px] sm:h-[480px] rounded-3xl overflow-hidden border border-[#D4AF37]/30 shadow-2xl">
               <Image
                 src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1200&q=85"
-                alt="EFFIDOO Royal Silk Heritage"
+                alt="NALMARA FASHION Royal Silk Heritage"
                 fill
                 priority
                 className="object-cover object-top"
@@ -71,7 +71,7 @@ export default function AboutPage() {
                   &ldquo;A saree is not merely six yards of fabric; it is a tapestry woven with centuries of royal soul.&rdquo;
                 </p>
                 <p className="text-[11px] text-zinc-300 uppercase tracking-widest font-semibold">
-                  — The EFFIDOO Philosophy
+                  — The NALMARA FASHION Philosophy
                 </p>
               </div>
             </div>
@@ -93,11 +93,11 @@ export default function AboutPage() {
             </div>
 
             <p className="text-sm text-zinc-700 leading-relaxed font-normal">
-              At EFFIDOO, every thread tells an epochal tale. From the sacred ghats of Varanasi where master weavers spin pure Mulberry silk and gold zari brocades, to the heritage temple looms of Kanchipuram and the royal courts of Maheshwar — we curate the finest authentic handcrafted textiles in the subcontinent.
+              At NALMARA FASHION, every thread tells an epochal tale. From the sacred ghats of Varanasi where master weavers spin pure Mulberry silk and gold zari brocades, to the heritage temple looms of Kanchipuram and the royal courts of Maheshwar — we curate the finest authentic handcrafted textiles in the subcontinent.
             </p>
 
             <p className="text-sm text-zinc-700 leading-relaxed font-normal">
-              Unlike mass-manufactured fast fashion, every EFFIDOO ensemble is slow-crafted by generational artisans. Our lehengas, sarees, and couture garments embody weeks of painstaking hand-embroidery — including genuine Zardozi, Aari needlework, and delicate Gota Patti motifs.
+              Unlike mass-manufactured fast fashion, every NALMARA FASHION ensemble is slow-crafted by generational artisans. Our lehengas, sarees, and couture garments embody weeks of painstaking hand-embroidery — including genuine Zardozi, Aari needlework, and delicate Gota Patti motifs.
             </p>
 
             {/* Key Value Points */}
@@ -140,7 +140,7 @@ export default function AboutPage() {
         <div className="max-w-7xl mx-auto space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#B8860B]">
-              THE EFFIDOO PROMISE
+              THE NALMARA FASHION PROMISE
             </p>
             <h2 className="font-serif text-3xl sm:text-4xl text-[#0B2518] font-bold">
               The Four Pillars of Our Atelier
@@ -167,7 +167,7 @@ export default function AboutPage() {
               </div>
               <h3 className="font-serif text-lg font-bold text-[#0B2518]">Artisan Empowerment</h3>
               <p className="text-xs text-zinc-600 leading-relaxed">
-                By eliminating exploitative middlemen, EFFIDOO ensures fair trade livelihoods for over 400 weaver clusters across India.
+                By eliminating exploitative middlemen, NALMARA FASHION ensures fair trade livelihoods for over 400 weaver clusters across India.
               </p>
             </div>
 
@@ -224,7 +224,7 @@ export default function AboutPage() {
       <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 text-center max-w-4xl mx-auto space-y-6">
         <LotusIcon className="w-12 h-10 text-[#B8860B] mx-auto" />
         <h2 className="font-serif text-3xl sm:text-4xl text-[#0B2518] font-bold">
-          Step Into the World of EFFIDOO Royalty
+          Step Into the World of NALMARA FASHION Royalty
         </h2>
         <p className="text-sm text-zinc-600 max-w-xl mx-auto">
           Explore our handcrafted bridal lehengas, pure silk sarees, and bespoke couture crafted for your unforgettable celebrations.

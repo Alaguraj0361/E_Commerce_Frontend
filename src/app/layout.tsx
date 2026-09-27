@@ -27,11 +27,11 @@ const alexBrush = Alex_Brush({
 });
 
 export const metadata: Metadata = {
-  title: 'EFFIDOO • Luxury Ethnic Wear & Couture | Tradition Meets You',
+  title: 'NALMARA FASHION • Luxury Ethnic Wear & Couture | Tradition Meets You',
   description:
-    'Discover handcrafted ethnic wear, designed for your most special moments. From traditional sarees, lehengas, and salwar suits to modern fusion styles, celebrate you with EFFIDOO.',
+    'Discover handcrafted ethnic wear, designed for your most special moments. From traditional sarees, lehengas, and salwar suits to modern fusion styles, celebrate you with NALMARA FASHION.',
   keywords: [
-    'effidoo',
+    'nalmara fashion',
     'traditional silk saree',
     'bridal lehenga',
     'salwar suit',
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     'indian bridal couture',
   ],
   openGraph: {
-    title: 'EFFIDOO • Tradition Meets You',
+    title: 'NALMARA FASHION • Tradition Meets You',
     description: 'Impeccably tailored ethnic ensembles designed to celebrate individuality.',
     type: 'website',
   },

@@ -79,7 +79,7 @@ export const SizeChartModal: React.FC<SizeChartModalProps> = ({ isOpen, onClose 
                 Size & Tailoring Guide
               </h3>
               <p className="text-xs text-zinc-500">
-                EFFIDOO Couture • Standard Sizes & Custom Tailoring Options
+                NALMARA FASHION Couture • Standard Sizes & Custom Tailoring Options
               </p>
             </div>
           </div>

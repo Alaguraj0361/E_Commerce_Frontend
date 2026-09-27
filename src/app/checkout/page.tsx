@@ -209,7 +209,7 @@ export default function CheckoutPage() {
             key: keyId,
             amount,
             currency: currency || 'INR',
-            name: 'EFFIDOO • Luxury Ethnic Wear',
+            name: 'NALMARA FASHION • Luxury Ethnic Wear',
             description: `Order #${orderNumber}`,
             image: '/images/offers/arch_badge.svg',
             order_id: razorpayOrderId,

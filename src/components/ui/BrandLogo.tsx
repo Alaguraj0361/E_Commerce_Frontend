@@ -112,7 +112,7 @@ export const BrandLogo = ({ size = 'md', theme = 'dark' }: BrandLogoProps) => {
           }`}
           style={{ letterSpacing: '0.14em' }}
         >
-          EFFIDOO
+          NALMARA FASHION
         </span>
         <span
           className={`font-sans font-medium uppercase -mt-0.5 ${
