@@ -18,7 +18,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[#D4AF37]/20">
           {/* Column 1: Brand & Socials */}
           <div className="space-y-6 lg:pr-4">
-            <BrandLogo size="md" theme="dark" />
+            <BrandLogo size="lg" theme="dark" />
             <p className="text-xs text-zinc-300 leading-relaxed font-light">
               NALMARA FASHION celebrates authentic Indian tradition, pure artisanal craftsmanship, and contemporary royal elegance.
             </p>

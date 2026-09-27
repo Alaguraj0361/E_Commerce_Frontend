@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export const LotusIcon = ({ className = 'w-10 h-8' }: { className?: string }) => (
   <svg viewBox="0 0 120 90" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
@@ -75,54 +76,42 @@ export const LotusIcon = ({ className = 'w-10 h-8' }: { className?: string }) =>
 interface BrandLogoProps {
   size?: 'sm' | 'md' | 'lg';
   theme?: 'dark' | 'light';
+  className?: string;
+  priority?: boolean;
 }
 
-export const BrandLogo = ({ size = 'md', theme = 'dark' }: BrandLogoProps) => {
-  const iconSizes = {
-    sm: 'w-8 h-7',
-    md: 'w-10 h-8',
-    lg: 'w-14 h-11',
-  };
-
-  const titleSizes = {
-    sm: 'text-lg tracking-[0.14em]',
-    md: 'text-2xl tracking-[0.16em]',
-    lg: 'text-3xl tracking-[0.18em]',
-  };
-
-  const subtitleSizes = {
-    sm: 'text-[6.5px] tracking-[0.28em]',
-    md: 'text-[7.5px] tracking-[0.3em]',
-    lg: 'text-[9px] tracking-[0.32em]',
+export const BrandLogo = ({
+  size = 'md',
+  theme = 'dark',
+  className = '',
+  priority = false,
+}: BrandLogoProps) => {
+  // Height configurations optimized for mobile, tablet, and desktop:
+  // sm: mobile drawer / compact header (height: 28px - 34px)
+  // md: main navbar header (mobile: 32px-36px, tablet: 40px, desktop: 46px)
+  // lg: footer / hero (mobile: 42px, desktop: 52px)
+  const sizeClasses = {
+    sm: 'h-7 sm:h-8 w-auto max-h-[34px]',
+    md: 'h-8 sm:h-9 md:h-10 lg:h-11 w-auto max-w-[155px] sm:max-w-[185px] md:max-w-none',
+    lg: 'h-10 sm:h-12 md:h-13 w-auto',
   };
 
   return (
-    <Link href="/" className="inline-flex items-center gap-3 group select-none">
-      <LotusIcon
-        className={`${iconSizes[size]} transition-transform duration-300 group-hover:scale-105 flex-shrink-0`}
+    <Link
+      href="/"
+      className={`inline-flex items-center group select-none focus:outline-none ${className}`}
+      aria-label="NALMARA FASHION Home"
+    >
+      <Image
+        src="/images/nalmara_logo.png"
+        alt="NALMARA FASHION"
+        width={350}
+        height={102}
+        priority={priority || size === 'md'}
+        className={`${sizeClasses[size]} object-contain object-left transition-transform duration-300 group-hover:scale-105 ${
+          theme === 'light' ? 'brightness-0' : ''
+        }`}
       />
-      <div className="flex flex-col text-left">
-        <span
-          className={`font-serif font-semibold transition-colors ${
-            titleSizes[size]
-          } ${
-            theme === 'dark'
-              ? 'text-white group-hover:text-[#E5C07B]'
-              : 'text-[#061811] group-hover:text-[#D4AF37]'
-          }`}
-          style={{ letterSpacing: '0.14em' }}
-        >
-          NALMARA FASHION
-        </span>
-        <span
-          className={`font-sans font-medium uppercase -mt-0.5 ${
-            subtitleSizes[size]
-          } text-[#E5C07B]`}
-          style={{ letterSpacing: '0.3em' }}
-        >
-          TRADITION MEETS YOU
-        </span>
-      </div>
     </Link>
   );
 };
