@@ -103,7 +103,7 @@ export const BrandLogo = ({
       aria-label="NALMARA FASHION Home"
     >
       <Image
-        src="/images/nalmara_logo.png"
+        src="/images/nalmara_gold_logo.png"
         alt="NALMARA FASHION"
         width={350}
         height={102}
