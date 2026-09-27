@@ -34,7 +34,7 @@ export default function ContactPage() {
     setError(null);
 
     try {
-      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api';
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'https://e-commerce-backend-4c4d.onrender.com/api';
       const res = await fetch(`${apiUrl}/contact/enquiry`, {
         method: 'POST',
         headers: {
