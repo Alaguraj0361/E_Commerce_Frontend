@@ -60,35 +60,35 @@ const HERO_SLIDES = [
 ];
 
 
-// Exact 4 Occasions matching Mockup
+// Curated Occasions with High-Definition Luxury Ethnic Imagery
 const OCCASIONS = [
   {
     title: 'Weddings',
-    image: '/images/occasions/card_weddings_2x.png',
+    subtitle: 'Bridal Couture & Lehengas',
+    tag: 'Grand Royale',
+    image: '/images/categories/lehengas.jpg',
     link: '/shop?category=lehengas',
-    width: 332,
-    height: 624,
   },
   {
     title: 'Festive',
-    image: '/images/occasions/card_festive_2x.png',
+    subtitle: 'Kanjivaram & Pure Silks',
+    tag: 'Heritage Drapes',
+    image: '/images/categories/sarees.jpg',
     link: '/shop?category=sarees',
-    width: 280,
-    height: 624,
   },
   {
     title: 'Casual',
-    image: '/images/occasions/card_casual_2x.png',
-    link: '/shop?category=salwar-suits',
-    width: 290,
-    height: 624,
+    subtitle: 'Handcrafted Chikankari',
+    tag: 'Daily Grace',
+    image: '/images/categories/kurtis.jpg',
+    link: '/shop?category=kurtis',
   },
   {
     title: 'Party Wear',
-    image: '/images/occasions/card_party_wear_2x.png',
-    link: '/shop?category=mens-wear',
-    width: 292,
-    height: 624,
+    subtitle: 'Opulent Anarkalis & Gowns',
+    tag: 'Evening Glamour',
+    image: '/images/categories/anarkali.jpg',
+    link: '/shop?category=anarkali',
   },
 ];
 
@@ -1215,120 +1215,123 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================== */}
+      {/* ============================================================== */}
       {/* 7. TRADITIONAL MEETS MODERN - CRAFTED FOR EVERY OCCASION       */}
       {/* ============================================================== */}
-      <section className="relative overflow-hidden bg-[#130717] border-y border-[#D4AF37]/20 py-12 sm:py-16 lg:py-20">
-        {/* Full-width Ambient Luxury Background with Gold Lace & Light Rays */}
+      <section className="relative overflow-hidden bg-[#120516] border-y border-[#D4AF37]/25 py-14 sm:py-18 lg:py-22">
+        {/* Full-width Ambient Luxury Background with Gold Lace & Subtle Warm Glow */}
         <div
-          className="absolute inset-0 bg-cover bg-center pointer-events-none opacity-85"
+          className="absolute inset-0 bg-cover bg-center pointer-events-none opacity-40 mix-blend-screen"
           style={{ backgroundImage: `url('/images/occasions/occasions_bg_2x.png')` }}
         />
-        {/* Subtle Top & Bottom Vignette Shadow */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#130717]/40 via-transparent to-[#130717]/50 pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_75%_50%,rgba(102,28,80,0.3)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#120516] via-[#1A0820]/95 to-[#120516] pointer-events-none" />
 
-        <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-8 xl:gap-12">
+        {/* Top & Bottom Golden Hairline Accents */}
+        <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#E5BA72]/60 to-transparent z-20 pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#E5BA72]/60 to-transparent z-20 pointer-events-none" />
+
+        <div className="max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-10 xl:gap-14">
             
             {/* ============================================================== */}
             {/* LEFT COLUMN: REAL CODED HTML TYPOGRAPHY & BUTTON             */}
             {/* ============================================================== */}
-            <div className="w-full lg:w-[35%] xl:w-[32%] text-center lg:text-left space-y-4 sm:space-y-5">
-              {/* Subtitle */}
-              <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-[#C5A880]">
-                TRADITIONAL MEETS MODERN
-              </p>
-
-              {/* Glowing gold accent line */}
-              <div className="flex items-center justify-center lg:justify-start">
-                <div className="h-[1px] w-20 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent shadow-[0_0_8px_rgba(212,175,55,0.7)]" />
+            <div className="w-full lg:w-[32%] xl:w-[28%] text-center lg:text-left space-y-4 sm:space-y-5 shrink-0">
+              {/* Eyebrow with gold hairline */}
+              <div className="inline-flex items-center gap-2 text-[#DEB371] tracking-[0.24em] text-[10.5px] sm:text-xs font-semibold uppercase">
+                <span className="w-6 h-[1.5px] bg-gradient-to-r from-transparent to-[#DEB371]" />
+                <span>Traditional Meets Modern</span>
+                <span className="w-6 h-[1.5px] bg-gradient-to-l from-transparent to-[#DEB371] lg:hidden" />
               </div>
 
-              {/* Luxury Serif Heading */}
-              <h2 className="font-serif text-2xl sm:text-4xl lg:text-[42px] xl:text-[48px] text-[#F5EFDC] font-bold leading-[1.14] tracking-tight drop-shadow-sm">
-                Crafted for Every<br className="hidden sm:inline" /> Occasion
+              {/* Luxury Serif Heading with Gold Gradient */}
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] xl:text-[46px] font-bold leading-[1.12] tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FFF8E7] via-[#F8DA93] to-[#CF9F42] drop-shadow-[0_2px_14px_rgba(0,0,0,0.6)]">
+                Crafted for Every<br className="hidden lg:inline" /> Occasion
               </h2>
 
-              {/* Occasion category sub-links */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-2.5 text-xs sm:text-sm text-[#E2DDD6] font-normal tracking-wide">
-                <Link href="/shop?category=lehengas" className="hover:text-[#E5C07B] transition-colors">
-                  Weddings
-                </Link>
-                <span className="text-[#C5A880]/50 font-light">|</span>
-                <Link href="/shop?category=sarees" className="hover:text-[#E5C07B] transition-colors">
-                  Festive
-                </Link>
-                <span className="text-[#C5A880]/50 font-light">|</span>
-                <Link href="/shop?category=salwar-suits" className="hover:text-[#E5C07B] transition-colors">
-                  Casual
-                </Link>
-                <span className="text-[#C5A880]/50 font-light">|</span>
-                <Link href="/shop?category=mens-wear" className="hover:text-[#E5C07B] transition-colors">
-                  Party
-                </Link>
+              {/* Brand Narrative */}
+              <p className="text-xs sm:text-[13px] text-zinc-300 font-light leading-relaxed max-w-md mx-auto lg:mx-0">
+                From sacred wedding rituals to celebratory festivities and effortless daily grace — explore handcrafted royal couture tailored for life’s most cherished milestones.
+              </p>
+
+              {/* Occasion category sub-links as refined gold pills */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-1">
+                {OCCASIONS.map((occ) => (
+                  <Link
+                    key={occ.title}
+                    href={occ.link}
+                    className="px-3.5 py-1 rounded-full border border-[#D4AF37]/35 bg-white/5 hover:bg-[#D4AF37]/20 hover:border-[#E5BA72] text-[#E8DFC8] hover:text-[#FFF8E7] transition-all text-xs font-medium tracking-wide shadow-sm"
+                  >
+                    {occ.title}
+                  </Link>
+                ))}
               </div>
 
               {/* Explore Collections Button */}
               <div className="pt-2 sm:pt-3">
                 <Link
                   href="/shop"
-                  className="inline-flex items-center gap-2 sm:gap-2.5 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-[#1b0a15]/90 hover:bg-[#280d20] text-[#F5EFDC] hover:text-white border border-[#D4AF37]/80 hover:border-[#E5C07B] shadow-[0_0_15px_rgba(212,175,55,0.25)] hover:shadow-[0_0_24px_rgba(212,175,55,0.5)] transition-all duration-300 text-[11px] sm:text-xs font-semibold tracking-widest uppercase group"
+                  className="inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-gradient-to-r from-[#F0CF85] via-[#E2B768] to-[#D19B45] hover:from-[#FCE4A6] hover:to-[#DEAA50] text-[#130717] font-bold text-xs tracking-widest uppercase transition-all shadow-[0_4px_18px_rgba(0,0,0,0.4)] hover:shadow-[0_6px_25px_rgba(226,183,104,0.45)] transform hover:scale-105 active:scale-95 group"
                 >
                   <span>Explore Collections</span>
-                  <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 stroke-[2]" />
+                  <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1 stroke-[2.5]" />
                 </Link>
               </div>
             </div>
 
             {/* ============================================================== */}
-            {/* CENTER DIVIDER: THIN VERTICAL LINE WITH DIAMOND MOTIF        */}
+            {/* RIGHT COLUMN: 4 HIGH-DEFINITION ROYAL OCCASION CARDS         */}
             {/* ============================================================== */}
-            <div className="hidden lg:flex items-center justify-center self-stretch px-2 xl:px-4">
-              <div className="w-[1px] h-52 bg-gradient-to-b from-transparent via-[#D4AF37]/50 to-transparent relative flex items-center justify-center">
-                <div className="w-2.5 h-2.5 rotate-45 border border-[#D4AF37] bg-[#B08B58] shadow-[0_0_10px_rgba(212,175,55,0.8)]" />
-              </div>
-            </div>
-
-            {/* ============================================================== */}
-            {/* RIGHT COLUMN: 4 SEPARATE OCCASION CARD IMAGES                */}
-            {/* ============================================================== */}
-            <div className="w-full lg:w-[62%] xl:w-[65%]">
-              {/* Desktop & Tablet: Proportional Flex Row matching identical heights */}
-              <div className="hidden sm:flex items-center justify-center gap-2 md:gap-3 xl:gap-4 h-[280px] md:h-[320px] lg:h-[350px] xl:h-[380px]">
+            <div className="w-full lg:w-[68%] xl:w-[72%]">
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-3.5 xl:gap-4">
                 {OCCASIONS.map((occ) => (
                   <Link
                     key={occ.title}
                     href={occ.link}
-                    className="group relative h-full flex items-center justify-center transition-all duration-500 hover:scale-[1.05] hover:-translate-y-2 focus:outline-none"
+                    className="group relative flex flex-col aspect-[3/4.8] sm:aspect-[3/4.6] w-full rounded-2xl lg:rounded-3xl overflow-hidden border border-[#D4AF37]/40 hover:border-[#F8DA93] shadow-[0_8px_24px_rgba(0,0,0,0.5)] hover:shadow-[0_16px_36px_rgba(212,175,55,0.25)] transition-all duration-500 hover:-translate-y-2 focus:outline-none"
                   >
-                    <Image
-                      src={occ.image}
-                      alt={occ.title}
-                      width={occ.width}
-                      height={occ.height}
-                      className="h-full w-auto object-contain drop-shadow-xl group-hover:drop-shadow-[0_15px_30px_rgba(212,175,55,0.4)] transition-all duration-500"
-                      priority
-                    />
-                    {/* Subtle golden ambient highlight on hover */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#D4AF37]/20 via-transparent to-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl" />
-                  </Link>
-                ))}
-              </div>
+                    {/* Full-bleed Model Image */}
+                    <div className="absolute inset-0 bg-[#1A0820] overflow-hidden">
+                      <Image
+                        src={occ.image}
+                        alt={occ.title}
+                        fill
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 18vw"
+                        className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-108"
+                        priority
+                      />
+                    </div>
 
-              {/* Mobile: 2x2 Grid with Touch Targets */}
-              <div className="grid sm:hidden grid-cols-2 gap-3 max-w-sm mx-auto">
-                {OCCASIONS.map((occ) => (
-                  <Link
-                    key={occ.title}
-                    href={occ.link}
-                    className="group relative block aspect-[150/300] w-full rounded-2xl overflow-hidden drop-shadow-lg active:scale-95 transition-transform"
-                  >
-                    <Image
-                      src={occ.image}
-                      alt={occ.title}
-                      fill
-                      sizes="50vw"
-                      className="object-contain object-center transition-transform duration-500 group-hover:scale-105"
-                    />
+                    {/* Top Gold Hairline Accent */}
+                    <div className="absolute inset-x-0 top-0 h-[2px] bg-gradient-to-r from-transparent via-[#E5BA72]/70 to-transparent z-10" />
+
+                    {/* Gradient Vignettes: subtle top + rich bottom for text readability */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent pointer-events-none" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent pointer-events-none" />
+
+                    {/* Top Badge: Occasion Tag */}
+                    <div className="relative z-10 p-3 sm:p-3.5">
+                      <span className="inline-block text-[9px] sm:text-[9.5px] uppercase font-bold tracking-[0.2em] text-[#E5BA72] bg-black/65 backdrop-blur-md px-2.5 py-1 rounded-full border border-[#D4AF37]/40 shadow-sm">
+                        {occ.tag}
+                      </span>
+                    </div>
+
+                    {/* Bottom Card Content: Title and Illuminated Gold Arrow Button */}
+                    <div className="relative z-10 mt-auto p-3.5 sm:p-4 lg:p-4.5 flex items-end justify-between gap-2">
+                      <div className="min-w-0">
+                        <span className="text-[9px] sm:text-[9.5px] tracking-[0.2em] uppercase text-[#DEB371] font-semibold block mb-0.5">
+                          Occasion
+                        </span>
+                        <h3 className="font-serif text-lg sm:text-xl lg:text-[22px] font-bold text-white group-hover:text-[#F8DA93] transition-colors leading-tight drop-shadow-md truncate">
+                          {occ.title}
+                        </h3>
+                      </div>
+                      
+                      <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white/10 backdrop-blur-md border border-[#D4AF37]/60 group-hover:bg-[#D4AF37] group-hover:border-[#D4AF37] text-white group-hover:text-zinc-950 flex items-center justify-center transition-all duration-300 shadow-md group-hover:scale-110 shrink-0">
+                        <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2] transition-transform group-hover:translate-x-0.5" />
+                      </div>
+                    </div>
                   </Link>
                 ))}
               </div>
