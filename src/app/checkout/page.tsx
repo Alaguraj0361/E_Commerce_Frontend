@@ -24,6 +24,7 @@ import { useCartStore } from '../../store/cartStore';
 import { useAuthStore } from '../../store/authStore';
 import { formatCurrency } from '../../lib/utils';
 import { loadRazorpayScript } from '../../lib/razorpay';
+import { RazorpayTestModal } from '../../components/checkout/RazorpayTestModal';
 import { toast } from 'sonner';
 
 const INDIAN_STATES = [
@@ -117,12 +118,47 @@ export default function CheckoutPage() {
   }
 
   const [paymentMethod, setPaymentMethod] = useState<'razorpay' | 'cod' | 'stripe'>('razorpay');
+  const [razorpaySimulator, setRazorpaySimulator] = useState<{
+    isOpen: boolean;
+    orderId: string;
+    orderNumber: string;
+    razorpayOrderId: string;
+    amount: number;
+    currency: string;
+  } | null>(null);
 
   const subtotal = getSubtotal();
   const discount = getDiscount();
   const shippingFee = getShippingFee();
   const tax = getTax();
   const total = getTotal();
+
+  const handleSimulatorSuccess = async () => {
+    if (!razorpaySimulator) return;
+    try {
+      const verifyRes = await api.post('/payments/razorpay/verify-payment', {
+        orderId: razorpaySimulator.orderId,
+        razorpayOrderId: razorpaySimulator.razorpayOrderId,
+        razorpayPaymentId: `pay_test_${Date.now()}`,
+        razorpaySignature: 'sig_test_verified',
+      });
+
+      if (verifyRes.data?.success) {
+        clearCart();
+        setRazorpaySimulator(null);
+        toast.success('Payment verified! Your order has been placed.');
+        router.push(`/checkout/success?order_id=${razorpaySimulator.orderId}&method=upi`);
+      }
+    } catch (err: any) {
+      toast.error('Payment verification failed. Please try again.');
+    }
+  };
+
+  const handleSimulatorFailure = (reason?: string) => {
+    setRazorpaySimulator(null);
+    setIsLoading(false);
+    toast.error(reason || 'Payment failed or declined. Your cart items are saved.');
+  };
 
   const handleProcessCheckout = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -178,77 +214,95 @@ export default function CheckoutPage() {
         });
 
         if (res.data?.success && res.data.data) {
-          const { orderId, orderNumber, razorpayOrderId, amount, currency, keyId, isTestMode, customer } =
+          const { orderId, orderNumber, razorpayOrderId, amount, currency, keyId, customer } =
             res.data.data;
 
-          // If in sandbox / placeholder test mode without live keys:
-          if (isTestMode || keyId?.includes('placeholder')) {
-            const verifyRes = await api.post('/payments/razorpay/verify-payment', {
-              orderId,
-              razorpayOrderId,
-              razorpayPaymentId: `pay_test_${Date.now()}`,
-              razorpaySignature: 'sig_test_verified',
+          const isRealKey = Boolean(
+            keyId &&
+              !keyId.includes('placeholder') &&
+              (keyId.startsWith('rzp_test_') || keyId.startsWith('rzp_live_'))
+          );
+
+          if (isRealKey) {
+            // Live / Official Razorpay Checkout SDK
+            const scriptLoaded = await loadRazorpayScript();
+            if (!scriptLoaded) {
+              toast.error('Payment gateway script failed to load. Please check your internet connection.');
+              setIsLoading(false);
+              return;
+            }
+
+            const options = {
+              key: keyId,
+              amount,
+              currency: currency || 'INR',
+              name: 'NALMARA FASHION • Luxury Ethnic Wear',
+              description: `Order #${orderNumber}`,
+              image: typeof window !== 'undefined' ? `${window.location.origin}/images/offers/arch_badge.svg` : undefined,
+              order_id: razorpayOrderId,
+              prefill: {
+                name: customer?.name || shippingAddress.fullName,
+                email: customer?.email,
+                contact: customer?.phone || shippingAddress.phone,
+              },
+              theme: {
+                color: '#B8860B',
+              },
+              modal: {
+                ondismiss: () => {
+                  toast.info('Payment window closed. Your items remain saved in cart.');
+                  setIsLoading(false);
+                },
+              },
+              handler: async (response: any) => {
+                try {
+                  const verifyRes = await api.post('/payments/razorpay/verify-payment', {
+                    orderId,
+                    razorpayOrderId: response.razorpay_order_id,
+                    razorpayPaymentId: response.razorpay_payment_id,
+                    razorpaySignature: response.razorpay_signature,
+                  });
+
+                  if (verifyRes.data?.success) {
+                    clearCart();
+                    toast.success('Payment verified! Your order is placed.');
+                    router.push(`/checkout/success?order_id=${orderId}&method=upi`);
+                  }
+                } catch (verifyErr) {
+                  toast.error('Payment verification failed. Please contact support.');
+                  setIsLoading(false);
+                }
+              },
+            };
+
+            const rzp = new (window as any).Razorpay(options);
+
+            // Handle failure event in Razorpay Test Mode or customer decline
+            rzp.on('payment.failed', (response: any) => {
+              console.error('Razorpay payment failed:', response.error);
+              toast.error(
+                response.error?.description ||
+                  response.error?.reason ||
+                  'Payment was declined or failed. Please try again.'
+              );
+              setIsLoading(false);
             });
 
-            if (verifyRes.data?.success) {
-              clearCart();
-              toast.success('UPI / Online Payment confirmed (Test Sandbox)');
-              router.push(`/checkout/success?order_id=${orderId}&method=upi`);
-            }
+            rzp.open();
             return;
           }
 
-          // Live Razorpay Checkout SDK
-          const scriptLoaded = await loadRazorpayScript();
-          if (!scriptLoaded) {
-            toast.error('Payment gateway script failed to load. Please check your internet connection.');
-            return;
-          }
-
-          const options = {
-            key: keyId,
+          // Otherwise (when using test placeholder keys or sandbox simulator):
+          // Open authentic Razorpay Test Prompt Modal matching user screenshots
+          setRazorpaySimulator({
+            isOpen: true,
+            orderId,
+            orderNumber,
+            razorpayOrderId,
             amount,
             currency: currency || 'INR',
-            name: 'NALMARA FASHION • Luxury Ethnic Wear',
-            description: `Order #${orderNumber}`,
-            image: '/images/offers/arch_badge.svg',
-            order_id: razorpayOrderId,
-            prefill: {
-              name: customer?.name || shippingAddress.fullName,
-              email: customer?.email,
-              contact: customer?.phone || shippingAddress.phone,
-            },
-            theme: {
-              color: '#B8860B',
-            },
-            modal: {
-              ondismiss: () => {
-                toast.info('Payment window closed. Your items remain saved in cart.');
-                setIsLoading(false);
-              },
-            },
-            handler: async (response: any) => {
-              try {
-                const verifyRes = await api.post('/payments/razorpay/verify-payment', {
-                  orderId,
-                  razorpayOrderId: response.razorpay_order_id,
-                  razorpayPaymentId: response.razorpay_payment_id,
-                  razorpaySignature: response.razorpay_signature,
-                });
-
-                if (verifyRes.data?.success) {
-                  clearCart();
-                  toast.success('Payment verified! Your order is placed.');
-                  router.push(`/checkout/success?order_id=${orderId}&method=upi`);
-                }
-              } catch (verifyErr) {
-                toast.error('Payment verification failed. Please contact support.');
-              }
-            },
-          };
-
-          const rzp = new (window as any).Razorpay(options);
-          rzp.open();
+          });
+          setIsLoading(false);
         }
         return;
       }
@@ -744,6 +798,22 @@ export default function CheckoutPage() {
           </div>
         </div>
       </div>
+
+      {razorpaySimulator && (
+        <RazorpayTestModal
+          isOpen={razorpaySimulator.isOpen}
+          orderNumber={razorpaySimulator.orderNumber}
+          amount={razorpaySimulator.amount}
+          currency={razorpaySimulator.currency}
+          onSuccess={handleSimulatorSuccess}
+          onFailure={handleSimulatorFailure}
+          onClose={() => {
+            setRazorpaySimulator(null);
+            setIsLoading(false);
+            toast.info('Payment window closed. Your items remain saved in cart.');
+          }}
+        />
+      )}
     </div>
   );
 }
