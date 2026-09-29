@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { useParams, useRouter } from 'next/navigation';
 import Link from 'next/link';
 import {
@@ -42,6 +42,9 @@ export default function ProductDetailPage() {
   const [product, setProduct] = useState<Product | null>(null);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const [selectedVariant, setSelectedVariant] = useState<ProductVariant | null>(null);
+  const [selectedColor, setSelectedColor] = useState<string>('');
+  const [selectedSize, setSelectedSize] = useState<string>('');
+  const [activeImageIndex, setActiveImageIndex] = useState<number>(0);
   const [quantity, setQuantity] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isSizeChartOpen, setIsSizeChartOpen] = useState(false);
@@ -75,13 +78,6 @@ export default function ProductDetailPage() {
           const prod: Product = res.data.data;
           setProduct(prod);
 
-          if (prod.variants && prod.variants.length > 0) {
-            // Default to 'M' size if present, else first variant
-            const defaultVar =
-              prod.variants.find((v) => v.attributes?.size === 'M') || prod.variants[0];
-            setSelectedVariant(defaultVar);
-          }
-
           // Fetch related products
           const relatedRes = await api.get(`/products/${prod._id}/related`);
           if (relatedRes.data?.success) {
@@ -99,6 +95,226 @@ export default function ProductDetailPage() {
       fetchProductDetails();
     }
   }, [slug]);
+
+  // Extract all unique color options
+  const colorOptions = useMemo(() => {
+    if (!product?.variants || product.variants.length === 0) return [];
+    const colorMap = new Map<string, { name: string; colorHex?: string; image?: string; stock: number }>();
+
+    product.variants.forEach((v) => {
+      const color = v.attributes?.color?.trim();
+      if (color) {
+        const key = color.toLowerCase();
+        if (!colorMap.has(key)) {
+          colorMap.set(key, {
+            name: color,
+            colorHex: v.attributes?.colorHex || '#888',
+            image: v.images?.[0],
+            stock: v.stock || 0,
+          });
+        } else {
+          const existing = colorMap.get(key)!;
+          existing.stock += v.stock || 0;
+          if (!existing.image && v.images?.[0]) existing.image = v.images[0];
+        }
+      }
+    });
+
+    return Array.from(colorMap.values());
+  }, [product]);
+
+  // Extract available sizes for currently selected color
+  const sizeOptions = useMemo(() => {
+    if (!product?.variants || product.variants.length === 0) {
+      if (product?.attributes) {
+        const attrSizes = product.attributes['Size'] || product.attributes['size'] || [];
+        if (Array.isArray(attrSizes) && attrSizes.length > 0) {
+          return attrSizes.map((s) => ({ size: String(s).trim(), stock: product.stock || 10 }));
+        }
+      }
+      return [];
+    }
+
+    // Filter variants by selectedColor if colors exist
+    const relevantVariants = selectedColor
+      ? product.variants.filter(
+          (v) => (v.attributes?.color?.trim() || '').toLowerCase() === selectedColor.toLowerCase()
+        )
+      : product.variants;
+
+    const sizeMap = new Map<string, { size: string; stock: number; price?: number }>();
+
+    relevantVariants.forEach((v) => {
+      const rawSize = v.attributes?.size;
+      if (rawSize) {
+        const sizes = rawSize.split(/[,/|]+/).map((s: string) => s.trim()).filter(Boolean);
+        sizes.forEach((s: string) => {
+          const key = s.toUpperCase();
+          if (!sizeMap.has(key)) {
+            sizeMap.set(key, {
+              size: s,
+              stock: v.stock || 0,
+              price: v.price,
+            });
+          } else {
+            const cur = sizeMap.get(key)!;
+            cur.stock += v.stock || 0;
+          }
+        });
+      }
+    });
+
+    // Fallback: If no sizes found for this specific color, check if product has general sizes
+    if (sizeMap.size === 0) {
+      product.variants.forEach((v) => {
+        const rawSize = v.attributes?.size;
+        if (rawSize) {
+          const sizes = rawSize.split(/[,/|]+/).map((s: string) => s.trim()).filter(Boolean);
+          sizes.forEach((s: string) => {
+            const key = s.toUpperCase();
+            if (!sizeMap.has(key)) {
+              sizeMap.set(key, { size: s, stock: v.stock || 0 });
+            }
+          });
+        }
+      });
+    }
+
+    return Array.from(sizeMap.values());
+  }, [product, selectedColor]);
+
+  // Set initial selectedColor and selectedSize when product loads
+  useEffect(() => {
+    if (!product) return;
+
+    if (colorOptions.length > 0) {
+      const defaultColor = colorOptions[0].name;
+      setSelectedColor(defaultColor);
+
+      // Find first available size for this color
+      const matchingVariants =
+        product.variants?.filter(
+          (v) => (v.attributes?.color?.trim() || '').toLowerCase() === defaultColor.toLowerCase()
+        ) || [];
+
+      let foundSize = '';
+      for (const v of matchingVariants) {
+        if (v.attributes?.size) {
+          foundSize = v.attributes.size.split(/[,/|]+/)[0]?.trim() || '';
+          if (foundSize) break;
+        }
+      }
+      setSelectedSize(foundSize);
+    } else if (sizeOptions.length > 0) {
+      setSelectedSize(sizeOptions[0].size);
+    }
+  }, [product, colorOptions.length]);
+
+  // Match selectedVariant based on selectedColor and selectedSize
+  useEffect(() => {
+    if (!product?.variants || product.variants.length === 0) {
+      setSelectedVariant(null);
+      return;
+    }
+
+    let match: ProductVariant | undefined;
+
+    // 1. Match both color and size
+    if (selectedColor && selectedSize) {
+      match = product.variants.find((v) => {
+        const vColor = (v.attributes?.color?.trim() || '').toLowerCase();
+        const vSizeRaw = v.attributes?.size || '';
+        const vSizes = vSizeRaw.split(/[,/|]+/).map((s: string) => s.trim().toLowerCase());
+        return (
+          vColor === selectedColor.toLowerCase() &&
+          (vSizes.includes(selectedSize.toLowerCase()) || vSizeRaw.toLowerCase() === selectedSize.toLowerCase())
+        );
+      });
+    }
+
+    // 2. Match color only
+    if (!match && selectedColor) {
+      match = product.variants.find(
+        (v) => (v.attributes?.color?.trim() || '').toLowerCase() === selectedColor.toLowerCase()
+      );
+    }
+
+    // 3. Match size only
+    if (!match && selectedSize) {
+      match = product.variants.find((v) => {
+        const vSizeRaw = v.attributes?.size || '';
+        const vSizes = vSizeRaw.split(/[,/|]+/).map((s: string) => s.trim().toLowerCase());
+        return vSizes.includes(selectedSize.toLowerCase());
+      });
+    }
+
+    if (!match) {
+      match = product.variants[0];
+    }
+
+    setSelectedVariant(match);
+
+    // Synchronize gallery image with selected color
+    if (selectedColor && product.images && product.images.length > 0) {
+      const colorQuery = selectedColor.toLowerCase();
+
+      // Check if matched variant has an explicit image
+      if (match?.images && match.images.length > 0) {
+        const imgIdx = product.images.findIndex((img) => img.url === match?.images?.[0]);
+        if (imgIdx !== -1) {
+          setActiveImageIndex(imgIdx);
+          return;
+        }
+      }
+
+      // Check if any product image alt or url matches color name
+      const altMatchIdx = product.images.findIndex(
+        (img) =>
+          img.alt?.toLowerCase().includes(colorQuery) ||
+          img.url?.toLowerCase().includes(colorQuery)
+      );
+      if (altMatchIdx !== -1) {
+        setActiveImageIndex(altMatchIdx);
+        return;
+      }
+
+      // Check color option index mapped to gallery image index
+      const colorIdx = colorOptions.findIndex((c) => c.name.toLowerCase() === colorQuery);
+      if (colorIdx >= 0 && colorIdx < product.images.length) {
+        setActiveImageIndex(colorIdx);
+      }
+    }
+  }, [selectedColor, selectedSize, product, colorOptions]);
+
+  const handleSelectColor = (colorName: string) => {
+    setSelectedColor(colorName);
+
+    // Check sizes available in the new color
+    const newColorVariants =
+      product?.variants?.filter(
+        (v) => (v.attributes?.color?.trim() || '').toLowerCase() === colorName.toLowerCase()
+      ) || [];
+
+    const availableInNewColor: string[] = [];
+    newColorVariants.forEach((v) => {
+      if (v.attributes?.size) {
+        v.attributes.size
+          .split(/[,/|]+/)
+          .map((s: string) => s.trim())
+          .filter(Boolean)
+          .forEach((s: string) => availableInNewColor.push(s));
+      }
+    });
+
+    if (availableInNewColor.length > 0) {
+      const sizeStillAvailable = availableInNewColor.some(
+        (s: string) => s.toLowerCase() === selectedSize.toLowerCase()
+      );
+      if (!sizeStillAvailable) {
+        setSelectedSize(availableInNewColor[0]);
+      }
+    }
+  };
 
   if (isLoading) {
     return (
@@ -191,16 +407,14 @@ export default function ProductDetailPage() {
     if (addOnCanCan) selectedAddOnsList.push('Can Can Flare (+₹650)');
     if (addOnBlousePad) selectedAddOnsList.push('Blouse Pad (+₹200)');
 
-    const hasSizeVariants = Boolean(
-      product.variants &&
-      product.variants.length > 0 &&
-      product.variants.some((v) => v.attributes?.size)
-    );
-
     const customAttributes: Record<string, any> = {};
 
-    if (hasSizeVariants && selectedVariant?.attributes?.size) {
-      customAttributes.size = selectedVariant.attributes.size;
+    if (selectedColor) {
+      customAttributes.color = selectedColor;
+    }
+
+    if (selectedSize) {
+      customAttributes.size = selectedSize;
     }
 
     if (product.hasBespokeTailoring) {
@@ -265,7 +479,11 @@ export default function ProductDetailPage() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
         {/* Left: Gallery (5 cols) */}
         <div className="lg:col-span-6">
-          <ProductGallery images={product.images} productName={product.name} />
+          <ProductGallery
+            images={product.images}
+            productName={product.name}
+            activeImageIndex={activeImageIndex}
+          />
         </div>
 
         {/* Right: Details, Customization Suite & Purchase Controls (7 cols) */}
@@ -325,16 +543,69 @@ export default function ProductDetailPage() {
             </p>
           )}
 
-          {/* 3. SIZE SELECTION SWATCHES (Only if product has size variants) */}
-          {product.variants && product.variants.length > 0 && product.variants.some((v) => v.attributes?.size) && (
-            <div className="space-y-3 pt-2 border-t border-zinc-100 dark:border-zinc-800">
+          {/* 3. COLOR SELECTION SWATCHES (If product has color variants) */}
+          {colorOptions.length > 0 && (
+            <div className="space-y-3 pt-4 border-t border-zinc-200 dark:border-zinc-800">
+              <div className="flex items-center justify-between text-xs">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">
+                    Color:
+                  </span>
+                  <span className="text-amber-600 dark:text-amber-400 font-bold capitalize">
+                    {selectedColor || 'Select a color'}
+                  </span>
+                </div>
+                <span className="text-[11px] text-zinc-500 font-medium">
+                  {colorOptions.length} Color{colorOptions.length > 1 ? 's' : ''} Available
+                </span>
+              </div>
+
+              {/* Color Swatch Buttons */}
+              <div className="flex flex-wrap gap-2.5">
+                {colorOptions.map((opt) => {
+                  const isSelected =
+                    selectedColor.toLowerCase() === opt.name.toLowerCase();
+                  const isOutOfStock = opt.stock <= 0;
+
+                  return (
+                    <button
+                      key={opt.name}
+                      type="button"
+                      onClick={() => handleSelectColor(opt.name)}
+                      className={`group relative flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-semibold border transition-all cursor-pointer ${
+                        isSelected
+                          ? 'border-zinc-950 bg-zinc-950 text-white dark:border-amber-400 dark:bg-amber-400 dark:text-zinc-950 shadow-md ring-2 ring-amber-400/40 scale-[1.02]'
+                          : 'border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 hover:border-amber-400'
+                      } ${isOutOfStock ? 'opacity-60' : ''}`}
+                    >
+                      {/* Swatch circle */}
+                      <span
+                        className="w-4 h-4 rounded-full border border-black/20 dark:border-white/30 flex-shrink-0 shadow-inner"
+                        style={{ backgroundColor: opt.colorHex || '#888' }}
+                      />
+                      <span className="capitalize">{opt.name}</span>
+                      {isOutOfStock && (
+                        <span className="text-[10px] text-rose-500 font-normal">
+                          (Out of stock)
+                        </span>
+                      )}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+
+          {/* 4. SIZE SELECTION SWATCHES (If product or selected color has size options) */}
+          {sizeOptions.length > 0 && (
+            <div className="space-y-3 pt-3 border-t border-zinc-200 dark:border-zinc-800">
               <div className="flex items-center justify-between text-xs">
                 <div className="flex items-center gap-2">
                   <span className="font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">
                     Size:
                   </span>
-                  <span className="text-amber-600 dark:text-amber-400 font-bold">
-                    {selectedVariant?.attributes?.size || 'Select a size'}
+                  <span className="text-amber-600 dark:text-amber-400 font-bold uppercase">
+                    {selectedSize || 'Select a size'}
                   </span>
                 </div>
 
@@ -342,7 +613,7 @@ export default function ProductDetailPage() {
                 <button
                   type="button"
                   onClick={() => setIsSizeChartOpen(true)}
-                  className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 hover:text-amber-700 font-bold underline transition-colors"
+                  className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 hover:text-amber-700 font-bold underline transition-colors cursor-pointer"
                 >
                   <Ruler className="w-3.5 h-3.5" /> View Size Chart
                 </button>
@@ -350,26 +621,26 @@ export default function ProductDetailPage() {
 
               {/* Size Swatch Buttons */}
               <div className="flex flex-wrap gap-2">
-                {product.variants
-                  .filter((v) => v.attributes?.size)
-                  .map((v) => {
-                    const sizeLabel = v.attributes?.size || v.sku;
-                    const isSelected = selectedVariant?._id === v._id;
+                {sizeOptions.map((opt) => {
+                  const isSelected =
+                    selectedSize.toLowerCase() === opt.size.toLowerCase();
+                  const isOutOfStock = opt.stock <= 0;
 
-                    return (
-                      <button
-                        key={v.sku || v._id}
-                        onClick={() => setSelectedVariant(v)}
-                        className={`min-w-[42px] px-3 py-2 rounded-xl text-xs font-bold border transition-all ${
-                          isSelected
-                            ? 'border-zinc-950 bg-zinc-950 text-white dark:border-amber-400 dark:bg-amber-400 dark:text-zinc-950 shadow-md scale-105'
-                            : 'border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-amber-400 bg-white dark:bg-zinc-900'
-                        }`}
-                      >
-                        {sizeLabel}
-                      </button>
-                    );
-                  })}
+                  return (
+                    <button
+                      key={opt.size}
+                      type="button"
+                      onClick={() => setSelectedSize(opt.size)}
+                      className={`min-w-[44px] px-3.5 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
+                        isSelected
+                          ? 'border-zinc-950 bg-zinc-950 text-white dark:border-amber-400 dark:bg-amber-400 dark:text-zinc-950 shadow-md scale-105'
+                          : 'border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-amber-400 bg-white dark:bg-zinc-900'
+                      } ${isOutOfStock ? 'opacity-50 line-through' : ''}`}
+                    >
+                      {opt.size}
+                    </button>
+                  );
+                })}
               </div>
             </div>
           )}

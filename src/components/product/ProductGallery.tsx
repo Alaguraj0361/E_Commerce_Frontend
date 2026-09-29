@@ -8,13 +8,20 @@ import { ProductImage } from '../../types';
 interface ProductGalleryProps {
   images: ProductImage[];
   productName: string;
+  activeImageIndex?: number;
 }
 
-export const ProductGallery = ({ images, productName }: ProductGalleryProps) => {
-  const [selectedIndex, setSelectedIndex] = useState(0);
+export const ProductGallery = ({ images, productName, activeImageIndex }: ProductGalleryProps) => {
+  const [selectedIndex, setSelectedIndex] = useState(activeImageIndex ?? 0);
   const [isZoomed, setIsZoomed] = useState(false);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
+
+  React.useEffect(() => {
+    if (activeImageIndex !== undefined && activeImageIndex >= 0 && activeImageIndex < images.length) {
+      setSelectedIndex(activeImageIndex);
+    }
+  }, [activeImageIndex, images.length]);
 
   const galleryImages =
     images && images.length > 0
