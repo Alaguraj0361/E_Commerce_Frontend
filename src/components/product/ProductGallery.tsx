@@ -70,6 +70,7 @@ export const ProductGallery = ({ images, productName, activeImageIndex }: Produc
                 alt={img.alt || `${productName} thumbnail ${idx + 1}`}
                 fill
                 className="object-cover"
+                unoptimized={Boolean(img.url?.startsWith('data:'))}
               />
             </button>
           ))}
@@ -93,6 +94,7 @@ export const ProductGallery = ({ images, productName, activeImageIndex }: Produc
             className={`object-cover object-center transition-transform duration-200 ${
               isZoomed ? 'scale-150' : 'scale-100'
             }`}
+            unoptimized={Boolean(currentImage.url?.startsWith('data:'))}
             style={
               isZoomed
                 ? {

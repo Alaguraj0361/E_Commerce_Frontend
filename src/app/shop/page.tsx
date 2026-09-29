@@ -79,13 +79,28 @@ function ShopContent() {
 
   // Load Categories & Brands
   useEffect(() => {
+    try {
+      const storedCats = sessionStorage.getItem('cached_categories');
+      if (storedCats) {
+        const parsed = JSON.parse(storedCats);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setCategories(parsed);
+        }
+      }
+    } catch {}
+
     const fetchMetadata = async () => {
       try {
         const [catRes, brandRes] = await Promise.all([
           api.get('/categories'),
           api.get('/brands'),
         ]);
-        if (catRes.data?.success) setCategories(catRes.data.data || []);
+        if (catRes.data?.success && Array.isArray(catRes.data.data)) {
+          setCategories(catRes.data.data);
+          try {
+            sessionStorage.setItem('cached_categories', JSON.stringify(catRes.data.data));
+          } catch {}
+        }
         if (brandRes.data?.success) setBrands(brandRes.data.data || []);
       } catch (error) {
         // Ignore

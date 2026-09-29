@@ -196,46 +196,83 @@ const INSTAGRAM_POSTS = [
   },
 ];
 
+// In-memory module cache for instantaneous client-side navigation
+let cachedCategoriesMemory: any[] | null = null;
+let cachedCollectionsMemory: { bestSellers: any[]; newArrivals: any[] } | null = null;
+
 export default function HomePage() {
-  const [categories, setCategories] = useState<any[]>([]);
-  const [bestSellers, setBestSellers] = useState<any[]>([]);
-  const [newArrivals, setNewArrivals] = useState<any[]>([]);
-  const [isLoadingCategories, setIsLoadingCategories] = useState(true);
-  const [isLoadingProducts, setIsLoadingProducts] = useState(true);
+  const [categories, setCategories] = useState<any[]>(() => cachedCategoriesMemory || []);
+  const [bestSellers, setBestSellers] = useState<any[]>(() => cachedCollectionsMemory?.bestSellers || []);
+  const [newArrivals, setNewArrivals] = useState<any[]>(() => cachedCollectionsMemory?.newArrivals || []);
+  const [isLoadingCategories, setIsLoadingCategories] = useState(!cachedCategoriesMemory);
+  const [isLoadingProducts, setIsLoadingProducts] = useState(
+    !cachedCollectionsMemory ||
+      (cachedCollectionsMemory.bestSellers.length === 0 &&
+        cachedCollectionsMemory.newArrivals.length === 0)
+  );
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
 
   const { addItem } = useCartStore();
   const { toggleWishlist, isInWishlist } = useWishlistStore();
 
   useEffect(() => {
-    const fetchData = async () => {
-      setIsLoadingCategories(true);
-      setIsLoadingProducts(true);
-      try {
-        const [catRes, collectionsRes, allProdsRes] = await Promise.allSettled([
-          api.get('/categories'),
-          api.get('/products/collections/home'),
-          api.get('/products?limit=20&isActive=true'),
-        ]);
-
-        if (catRes.status === 'fulfilled' && catRes.value.data?.success) {
-          const apiCats = catRes.value.data.data;
-          if (Array.isArray(apiCats) && apiCats.length > 0) {
-            setCategories(apiCats);
+    // 1. Instant cache hydration from sessionStorage if memory cache was empty
+    try {
+      if (!cachedCategoriesMemory) {
+        const storedCats = sessionStorage.getItem('cached_categories');
+        if (storedCats) {
+          const parsed = JSON.parse(storedCats);
+          if (Array.isArray(parsed) && parsed.length > 0) {
+            cachedCategoriesMemory = parsed;
+            setCategories(parsed);
+            setIsLoadingCategories(false);
           }
         }
+      }
 
+      if (!cachedCollectionsMemory) {
+        const storedColls = sessionStorage.getItem('cached_home_collections');
+        if (storedColls) {
+          const parsed = JSON.parse(storedColls);
+          if (parsed?.bestSellers?.length > 0 || parsed?.newArrivals?.length > 0) {
+            cachedCollectionsMemory = parsed;
+            if (parsed.bestSellers?.length > 0) setBestSellers(parsed.bestSellers);
+            if (parsed.newArrivals?.length > 0) setNewArrivals(parsed.newArrivals);
+            setIsLoadingProducts(false);
+          }
+        }
+      }
+    } catch {
+      // Storage access error or invalid JSON
+    }
+
+    // 2. Fetch categories independently - display IMMEDIATELY as soon as response arrives
+    const fetchCategories = async () => {
+      try {
+        const res = await api.get('/categories');
+        if (res.data?.success && Array.isArray(res.data.data) && res.data.data.length > 0) {
+          cachedCategoriesMemory = res.data.data;
+          setCategories(res.data.data);
+          try {
+            sessionStorage.setItem('cached_categories', JSON.stringify(res.data.data));
+          } catch {}
+        }
+      } catch (err) {
+        console.error('Failed to fetch categories:', err);
+      } finally {
+        setIsLoadingCategories(false);
+      }
+    };
+
+    // 3. Fetch products independently - display IMMEDIATELY without waiting for other calls
+    const fetchProducts = async () => {
+      try {
+        const collectionsRes = await api.get('/products/collections/home');
         let dynamicBest: any[] = [];
         let dynamicNew: any[] = [];
 
-        if (
-          collectionsRes.status === 'fulfilled' &&
-          collectionsRes.value.data?.success &&
-          collectionsRes.value.data.data
-        ) {
-          const { bestSellers: apiBest, newArrivals: apiNew } =
-            collectionsRes.value.data.data;
-
+        if (collectionsRes.data?.success && collectionsRes.data.data) {
+          const { bestSellers: apiBest, newArrivals: apiNew } = collectionsRes.data.data;
           if (Array.isArray(apiBest) && apiBest.length > 0) {
             dynamicBest = apiBest;
           }
@@ -244,35 +281,45 @@ export default function HomePage() {
           }
         }
 
-        if (
-          allProdsRes.status === 'fulfilled' &&
-          allProdsRes.value.data?.success &&
-          Array.isArray(allProdsRes.value.data.data)
-        ) {
-          const allProds = allProdsRes.value.data.data;
-          if (allProds.length > 0) {
-            if (dynamicBest.length === 0) {
-              const bestList = allProds.filter((p: any) => p.bestSeller);
-              dynamicBest = bestList.length > 0 ? bestList : allProds;
+        // Only fallback if collections endpoint returned empty
+        if (dynamicBest.length === 0 || dynamicNew.length === 0) {
+          try {
+            const fallbackRes = await api.get('/products?limit=12&isActive=true');
+            if (fallbackRes.data?.success && Array.isArray(fallbackRes.data.data)) {
+              const allProds = fallbackRes.data.data;
+              if (dynamicBest.length === 0) {
+                const bestList = allProds.filter((p: any) => p.bestSeller);
+                dynamicBest = bestList.length > 0 ? bestList : allProds;
+              }
+              if (dynamicNew.length === 0) {
+                const newList = allProds.filter((p: any) => p.newArrival);
+                dynamicNew = newList.length > 0 ? newList : allProds;
+              }
             }
-            if (dynamicNew.length === 0) {
-              const newList = allProds.filter((p: any) => p.newArrival);
-              dynamicNew = newList.length > 0 ? newList : allProds;
-            }
+          } catch (e) {
+            console.warn('Fallback products query failed:', e);
           }
         }
 
+        cachedCollectionsMemory = { bestSellers: dynamicBest, newArrivals: dynamicNew };
         setBestSellers(dynamicBest);
         setNewArrivals(dynamicNew);
+        try {
+          sessionStorage.setItem(
+            'cached_home_collections',
+            JSON.stringify({ bestSellers: dynamicBest, newArrivals: dynamicNew })
+          );
+        } catch {}
       } catch (err) {
-        console.error('Failed to fetch home data:', err);
+        console.error('Failed to fetch collections:', err);
       } finally {
-        setIsLoadingCategories(false);
         setIsLoadingProducts(false);
       }
     };
 
-    fetchData();
+    // Trigger both queries concurrently without blocking each other
+    fetchCategories();
+    fetchProducts();
   }, []);
 
   const nextSlide = () => {
@@ -561,6 +608,7 @@ export default function HomePage() {
                             sizes="(max-width: 640px) 110px, 160px"
                             className="object-cover object-top transition-transform duration-500 group-hover:scale-108"
                             priority
+                            unoptimized={typeof categoryImg === 'string' && categoryImg.startsWith('data:')}
                           />
                         </div>
                       </div>
@@ -724,6 +772,7 @@ export default function HomePage() {
                           fill
                           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
                           className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
+                          unoptimized={typeof img === 'string' && img.startsWith('data:')}
                         />
 
                         {/* Top Left Badge */}
@@ -1044,6 +1093,7 @@ export default function HomePage() {
                           fill
                           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                           className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
+                          unoptimized={typeof img === 'string' && img.startsWith('data:')}
                         />
 
                         {/* Top Left Badge */}
