@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -59,160 +59,6 @@ const HERO_SLIDES = [
   },
 ];
 
-// Exact 7 Categories in exact order from the Mockup
-const EXACT_CATEGORIES = [
-  {
-    name: 'Sarees',
-    slug: 'sarees',
-    image: '/images/categories/sarees.jpg',
-  },
-  {
-    name: 'Lehengas',
-    slug: 'lehengas',
-    image: '/images/categories/lehengas.jpg',
-  },
-  {
-    name: 'Salwar Suits',
-    slug: 'salwar-suits',
-    image: '/images/categories/salwar-suits.jpg',
-  },
-  {
-    name: 'Kurtis',
-    slug: 'kurtis',
-    image: '/images/categories/kurtis.jpg',
-  },
-  {
-    name: 'Anarkali',
-    slug: 'anarkali',
-    image: '/images/categories/anarkali.jpg',
-  },
-  {
-    name: "Men's Wear",
-    slug: 'mens-wear',
-    image: '/images/categories/mens-wear.jpg',
-  },
-  {
-    name: "Kid's Wear",
-    slug: 'kids-wear',
-    image: '/images/categories/kids-wear.jpg',
-  },
-];
-
-// Exact 4 Best Sellers from Mockup
-const EXACT_BEST_SELLERS = [
-  {
-    _id: 'bs-1',
-    name: 'Traditional Silk Saree',
-    slug: 'traditional-silk-saree',
-    price: 2999,
-    compareAtPrice: 4999,
-    rating: 4.8,
-    reviewCount: 124,
-    badge: 'Bestseller',
-    badgeType: 'bestseller',
-    image: '/images/bestsellers/traditional_silk_saree.jpg',
-  },
-  {
-    _id: 'bs-2',
-    name: 'Bridal Lehenga',
-    slug: 'bridal-lehenga',
-    price: 8999,
-    compareAtPrice: 11999,
-    rating: 4.9,
-    reviewCount: 96,
-    badge: 'New',
-    badgeType: 'emerald',
-    image: '/images/bestsellers/bridal_lehenga.jpg',
-  },
-  {
-    _id: 'bs-3',
-    name: 'Embroidered Salwar Suit',
-    slug: 'embroidered-salwar-suit',
-    price: 3499,
-    compareAtPrice: 5999,
-    rating: 4.7,
-    reviewCount: 76,
-    badge: 'Hot',
-    badgeType: 'rose',
-    image: '/images/bestsellers/embroidered_salwar_suit.jpg',
-  },
-  {
-    _id: 'bs-4',
-    name: 'Anarkali Dress',
-    slug: 'anarkali-dress',
-    price: 4999,
-    compareAtPrice: 7999,
-    rating: 4.8,
-    reviewCount: 112,
-    badge: 'New',
-    badgeType: 'emerald',
-    image: '/images/bestsellers/anarkali_dress.jpg',
-  },
-];
-
-// Exact 5 New Arrivals from Mockup
-const EXACT_NEW_ARRIVALS = [
-  {
-    _id: 'na-1',
-    name: 'Designer Silk Saree',
-    slug: 'designer-silk-saree',
-    price: 3499,
-    compareAtPrice: 5999,
-    rating: 4.8,
-    reviewCount: 65,
-    badge: 'New',
-    badgeType: 'emerald',
-    image: '/images/new_arrivals/designer_silk_saree.jpg',
-  },
-  {
-    _id: 'na-2',
-    name: 'Straight Kurti Set',
-    slug: 'straight-kurti-set',
-    price: 2199,
-    compareAtPrice: 3499,
-    rating: 4.7,
-    reviewCount: 52,
-    badge: 'Hot',
-    badgeType: 'rose',
-    image: '/images/new_arrivals/straight_kurti_set.jpg',
-  },
-  {
-    _id: 'na-3',
-    name: 'Lehenga Choli',
-    slug: 'lehenga-choli',
-    price: 7999,
-    compareAtPrice: 10999,
-    rating: 4.9,
-    reviewCount: 87,
-    badge: 'New',
-    badgeType: 'emerald',
-    image: '/images/new_arrivals/lehenga_choli.jpg',
-  },
-  {
-    _id: 'na-4',
-    name: "Men's Kurta",
-    slug: 'mens-kurta',
-    price: 1999,
-    compareAtPrice: 2999,
-    rating: 4.6,
-    reviewCount: 43,
-    badge: 'Trend',
-    badgeType: 'teal',
-    image: '/images/new_arrivals/mens_kurta.jpg',
-  },
-  {
-    _id: 'na-5',
-    name: 'Kids Festive Wear',
-    slug: 'kids-festive-wear',
-    price: 1499,
-    compareAtPrice: 2499,
-    rating: 4.8,
-    reviewCount: 72,
-    badge: 'New',
-    badgeType: 'emerald',
-    image: '/images/new_arrivals/kids_festive_wear.jpg',
-  },
-];
 
 // Exact 4 Occasions matching Mockup
 const OCCASIONS = [
@@ -306,7 +152,7 @@ const INSTAGRAM_POSTS = [
     likes: '3.4k',
     comments: 142,
     caption: 'Royal ivory lehengas crafted for modern brides. ✨ #NalmaraFashionBridal',
-    link: 'https://instagram.com',
+    link: 'https://www.instagram.com/nalmarafashion_official',
   },
   {
     id: 2,
@@ -314,7 +160,7 @@ const INSTAGRAM_POSTS = [
     likes: '4.8k',
     comments: 215,
     caption: 'Drapes of majesty in regal jewel tones. 💜 #NalmaraFashionHeritage',
-    link: 'https://instagram.com',
+    link: 'https://www.instagram.com/nalmarafashion_official',
   },
   {
     id: 3,
@@ -322,7 +168,7 @@ const INSTAGRAM_POSTS = [
     likes: '2.9k',
     comments: 98,
     caption: 'Effortless fusion charm for sunlit garden celebrations. ☀️ #NalmaraFashionStyle',
-    link: 'https://instagram.com',
+    link: 'https://www.instagram.com/nalmarafashion_official',
   },
   {
     id: 4,
@@ -330,7 +176,7 @@ const INSTAGRAM_POSTS = [
     likes: '5.2k',
     comments: 310,
     caption: 'Dusty rose sequins and sheer elegance under chandelier lights. 💫 #NalmaraFashionCouture',
-    link: 'https://instagram.com',
+    link: 'https://www.instagram.com/nalmarafashion_official',
   },
   {
     id: 5,
@@ -338,7 +184,7 @@ const INSTAGRAM_POSTS = [
     likes: '3.1k',
     comments: 124,
     caption: 'Intricate zardozi needlework by our master kaarigars. 🧵 #NalmaraFashionArtisans',
-    link: 'https://instagram.com',
+    link: 'https://www.instagram.com/nalmarafashion_official',
   },
   {
     id: 6,
@@ -346,31 +192,9 @@ const INSTAGRAM_POSTS = [
     likes: '4.1k',
     comments: 189,
     caption: 'The art of the perfect pallu drape. Unmistakably NALMARA FASHION. 👑 #NalmaraFashionMoments',
-    link: 'https://instagram.com',
+    link: 'https://www.instagram.com/nalmarafashion_official',
   },
 ];
-
-// Custom Icons & Botanical Decorations matching mockup
-const WheatSproutIcon = ({ className }: { className?: string }) => (
-  <svg
-    viewBox="0 0 28 28"
-    fill="currentColor"
-    className={className}
-    xmlns="http://www.w3.org/2000/svg"
-  >
-    <path
-      d="M5 23C9 20 15 15 18 10C21 5 23 2.5 24 1.5C23 3 22 7 18 11C15 15 10 20 5 23Z"
-      fill="currentColor"
-    />
-    <path d="M23.5 1.5C21 3.5 21 6.5 23 8C25 6.5 25.5 3.5 23.5 1.5Z" fill="currentColor" />
-    <path d="M17 5.5C14.5 6 13.5 8.5 15 10.5C17 10.5 18.5 8.5 17 5.5Z" fill="currentColor" />
-    <path d="M20 7.5C21.5 9.5 23.5 10 24.5 8.5C24.5 6.5 22.5 5.5 20 7.5Z" fill="currentColor" />
-    <path d="M12.5 10C10.5 11 9.5 13.5 11 15C13 15 14.5 13 12.5 10Z" fill="currentColor" />
-    <path d="M16 12C17.5 14 19.5 14.5 20.5 13C20.5 11 18.5 10 16 12Z" fill="currentColor" />
-    <path d="M8.5 14.5C6.5 15.5 5.5 18 7 19.5C9 19.5 10.5 17.5 8.5 14.5Z" fill="currentColor" />
-    <path d="M12 16.5C13.5 18.5 15.5 19 16.5 17.5C16.5 15.5 14.5 14.5 12 16.5Z" fill="currentColor" />
-  </svg>
-);
 
 export default function HomePage() {
   const [categories, setCategories] = useState<any[]>([]);
@@ -378,7 +202,6 @@ export default function HomePage() {
   const [newArrivals, setNewArrivals] = useState<any[]>([]);
   const [isLoadingCategories, setIsLoadingCategories] = useState(true);
   const [isLoadingProducts, setIsLoadingProducts] = useState(true);
-  const [newArrivalsIndex, setNewArrivalsIndex] = useState(0);
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
 
   const { addItem } = useCartStore();
@@ -468,6 +291,54 @@ export default function HomePage() {
     return () => clearInterval(timer);
   }, [currentHeroSlide]);
 
+  const newArrivalsSliderRef = useRef<HTMLDivElement>(null);
+
+  const scrollNewArrivals = (direction: 'left' | 'right') => {
+    if (!newArrivalsSliderRef.current) return;
+    const container = newArrivalsSliderRef.current;
+    const card = container.querySelector('.arrival-card') as HTMLElement;
+    const scrollAmount = card ? card.offsetWidth + 20 : 300;
+
+    if (direction === 'right') {
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (container.scrollLeft >= maxScroll - 10) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    } else {
+      if (container.scrollLeft <= 10) {
+        container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
+  const bestSellersSliderRef = useRef<HTMLDivElement>(null);
+
+  const scrollBestSellers = (direction: 'left' | 'right') => {
+    if (!bestSellersSliderRef.current) return;
+    const container = bestSellersSliderRef.current;
+    const card = container.querySelector('.bestseller-card') as HTMLElement;
+    const scrollAmount = card ? card.offsetWidth + 16 : 280;
+
+    if (direction === 'right') {
+      const maxScroll = container.scrollWidth - container.clientWidth;
+      if (container.scrollLeft >= maxScroll - 10) {
+        container.scrollTo({ left: 0, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    } else {
+      if (container.scrollLeft <= 10) {
+        container.scrollTo({ left: container.scrollWidth, behavior: 'smooth' });
+      } else {
+        container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
   const handleQuickAdd = (product: any, e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -533,9 +404,10 @@ export default function HomePage() {
   return (
     <div className="bg-[#FAF8F5] text-zinc-900 selection:bg-amber-100 selection:text-amber-900">
       {/* ============================================================== */}
+      {/* ============================================================== */}
       {/* 1. HERO BANNER SECTION (Regal Candlelit Palace + Elegance)    */}
       {/* ============================================================== */}
-      <section className="relative min-h-[580px] lg:min-h-[660px] w-full bg-[#061811] text-white flex items-center overflow-hidden">
+      <section className="relative min-h-[520px] sm:min-h-[580px] lg:min-h-[660px] w-full bg-[#061811] text-white flex items-center overflow-hidden">
         {/* Ambient Palace Background Image with Rich Dark Gradient */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -551,19 +423,19 @@ export default function HomePage() {
         </div>
 
         {/* Content Box */}
-        <div className="relative z-10 max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 w-full py-16 lg:py-24">
-          <div className="max-w-xl space-y-4">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12 w-full py-14 sm:py-16 lg:py-24">
+          <div className="max-w-xl space-y-3.5 sm:space-y-4">
             {/* Tagline Badge */}
-            <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#E5C07B]">
+            <p className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.25em] text-[#E5C07B]">
               {currentSlide.tag}
             </p>
 
             {/* Headline */}
             <div className="space-y-0">
-              <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl text-white font-normal tracking-wide leading-tight">
+              <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-white font-normal tracking-wide leading-tight">
                 {currentSlide.title}
               </h1>
-              <span className="font-script text-5xl sm:text-6xl lg:text-7xl text-[#E5C07B] block font-normal tracking-wide -mt-2 sm:-mt-3">
+              <span className="font-script text-4xl sm:text-6xl lg:text-7xl text-[#E5C07B] block font-normal tracking-wide -mt-1 sm:-mt-3">
                 {currentSlide.highlight}
               </span>
             </div>
@@ -574,10 +446,10 @@ export default function HomePage() {
             </p>
 
             {/* Shop Now CTA Button */}
-            <div className="pt-3">
+            <div className="pt-2 sm:pt-3">
               <Link
                 href={currentSlide.link}
-                className="inline-flex items-center gap-2 px-8 py-3 rounded-full bg-gradient-to-r from-[#FDE68A] via-[#E5C07B] to-[#D4AF37] hover:opacity-95 text-zinc-950 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all transform hover:scale-105 shadow-xl group"
+                className="inline-flex items-center gap-2 px-7 sm:px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#FDE68A] via-[#E5C07B] to-[#D4AF37] hover:opacity-95 text-zinc-950 font-bold text-xs sm:text-sm tracking-wider uppercase transition-all transform hover:scale-105 shadow-xl group"
               >
                 <span>Shop Now</span>
                 <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -598,7 +470,7 @@ export default function HomePage() {
         </div>
 
         {/* Bottom Right Carousel Controls (01 / 03 + Vertically Stacked Circular Buttons) */}
-        <div className="absolute bottom-8 right-8 lg:right-12 z-10 flex flex-col items-end gap-3 text-white">
+        <div className="absolute bottom-6 right-4 sm:bottom-8 sm:right-8 lg:right-12 z-10 flex flex-col items-end gap-2.5 sm:gap-3 text-white">
           <span className="text-xs font-serif tracking-widest text-[#E5C07B]">
             0{currentHeroSlide + 1} <span className="text-zinc-500">/ 0{HERO_SLIDES.length}</span>
           </span>
@@ -621,51 +493,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ============================================================== */}
-      {/* 2. TRUST BADGES STRIP (3 Gold Trust Badges on Ivory)         */}
-      {/* ============================================================== */}
-      <section className="bg-[#FAF5EB] border-y border-[#E8DFC8]">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[#E8DFC8] py-4 lg:py-5">
-          {/* 1. Premium Quality */}
-          <div className="flex items-center justify-center gap-3.5 px-4 sm:px-6 py-3">
-            <WheatSproutIcon className="w-8 h-8 text-[#B38646] shrink-0" />
-            <div>
-              <h4 className="text-xs sm:text-[13px] font-bold text-zinc-900 tracking-tight leading-snug">
-                Premium Quality
-              </h4>
-              <p className="text-[11px] sm:text-xs text-zinc-500 font-normal leading-snug">
-                Finest Fabrics
-              </p>
-            </div>
-          </div>
-
-          {/* 2. Free Shipping */}
-          <div className="flex items-center justify-center gap-3.5 px-4 sm:px-6 py-3">
-            <Truck className="w-8 h-8 text-[#B38646] shrink-0" strokeWidth={1.8} />
-            <div>
-              <h4 className="text-xs sm:text-[13px] font-bold text-zinc-900 tracking-tight leading-snug">
-                Free Shipping
-              </h4>
-              <p className="text-[11px] sm:text-xs text-zinc-500 font-normal leading-snug">
-                On Orders Above ₹1,499
-              </p>
-            </div>
-          </div>
-
-          {/* 3. Secure Payments */}
-          <div className="flex items-center justify-center gap-3.5 px-4 sm:px-6 py-3">
-            <ShieldCheck className="w-8 h-8 text-[#B38646] shrink-0" strokeWidth={1.8} />
-            <div>
-              <h4 className="text-xs sm:text-[13px] font-bold text-zinc-900 tracking-tight leading-snug">
-                Secure Payments
-              </h4>
-              <p className="text-[11px] sm:text-xs text-zinc-500 font-normal leading-snug">
-                100% Safe & Secure
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* ============================================================== */}
       {/* 3. SHOP BY CATEGORY - EXPLORE OUR COLLECTIONS                 */}
@@ -678,21 +505,18 @@ export default function HomePage() {
         <div className="max-w-[1560px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-8 xl:gap-10 relative z-10">
           {/* Left Title & Call to Action */}
           <div className="lg:w-[280px] xl:w-[320px] shrink-0 text-center lg:text-left flex flex-col items-center lg:items-start">
-            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#B38646] mb-3">
+            <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#B38646] mb-2 sm:mb-3">
               SHOP BY CATEGORY
             </p>
-            <h2
-              className="font-serif text-3xl sm:text-4xl lg:text-[40px] xl:text-[44px] text-zinc-900 font-semibold tracking-tight mb-4"
-              style={{ lineHeight: '3.5rem' }}
-            >
-              Explore Our<br /> Collections
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-[40px] xl:text-[44px] text-zinc-900 font-semibold tracking-tight mb-3 sm:mb-4 leading-tight sm:leading-tight lg:leading-[1.12]">
+              Explore Our<br className="hidden sm:inline" /> Collections
             </h2>
-            <p className="text-xs sm:text-[13px] text-zinc-600 font-normal leading-relaxed max-w-[270px] mb-7">
+            <p className="text-xs sm:text-[13px] text-zinc-600 font-normal leading-relaxed max-w-[270px] mb-6 sm:mb-7">
               Find your perfect style from our wide range of ethnic wear.
             </p>
             <Link
               href="/shop"
-              className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#051C14] hover:bg-[#092B20] text-white text-xs font-semibold tracking-wider transition-all shadow-md hover:shadow-lg group"
+              className="inline-flex items-center gap-2.5 px-6 sm:px-7 py-3 sm:py-3.5 rounded-full bg-[#051C14] hover:bg-[#092B20] text-white text-xs font-semibold tracking-wider transition-all shadow-md hover:shadow-lg group"
             >
               <span>View All Collections</span>
               <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -700,12 +524,12 @@ export default function HomePage() {
           </div>
 
           {/* Right Circular Avatars in dynamic layout with Skeleton Loading */}
-          <div className="flex-1 w-full overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 scrollbar-none">
+          <div className="flex-1 w-full overflow-x-auto lg:overflow-visible pb-3 lg:pb-0 scrollbar-none">
             {isLoadingCategories ? (
-              <div className="flex items-center gap-6 sm:gap-8 flex-wrap lg:flex-nowrap justify-center lg:justify-start py-2">
+              <div className="flex items-center gap-4 sm:gap-6 lg:gap-8 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 scrollbar-none justify-start px-1 sm:px-0">
                 {[1, 2, 3, 4, 5].map((i) => (
                   <div key={i} className="flex flex-col items-center text-center animate-pulse shrink-0">
-                    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3px] border-2 border-[#D4AF37]/30 bg-white shadow-sm flex items-center justify-center">
+                    <div className="w-24 h-24 sm:w-28 sm:h-28 lg:w-28 lg:h-28 xl:w-32 xl:h-32 rounded-full p-[3px] border-2 border-[#D4AF37]/30 bg-white shadow-sm flex items-center justify-center">
                       <div className="w-full h-full rounded-full bg-[#EAE1D1]/60" />
                     </div>
                     <div className="h-4 w-20 bg-[#EAE1D1]/70 rounded-full mt-3" />
@@ -714,7 +538,7 @@ export default function HomePage() {
                 ))}
               </div>
             ) : categories.length > 0 ? (
-              <div className="flex items-center gap-6 sm:gap-8 flex-wrap lg:flex-nowrap justify-center lg:justify-start">
+              <div className="flex items-center gap-4 sm:gap-6 lg:gap-8 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 scrollbar-none justify-start px-1 sm:px-0">
                 {categories.map((cat) => {
                   const categoryImg =
                     cat.image ||
@@ -728,13 +552,13 @@ export default function HomePage() {
                       className="flex flex-col items-center text-center group cursor-pointer shrink-0"
                     >
                       {/* Golden Bordered Large Circle Avatar */}
-                      <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-32 md:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 rounded-full p-[3.5px] border-2 border-[#D4AF37] ring-1 ring-[#D4AF37]/50 bg-white shadow-md transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl group-hover:border-[#B8860B]">
+                      <div className="relative w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 rounded-full p-[3.5px] border-2 border-[#D4AF37] ring-1 ring-[#D4AF37]/50 bg-white shadow-md transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl group-hover:border-[#B8860B]">
                         <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-100">
                           <Image
                             src={categoryImg}
                             alt={cat.name}
                             fill
-                            sizes="(max-width: 640px) 130px, 160px"
+                            sizes="(max-width: 640px) 110px, 160px"
                             className="object-cover object-top transition-transform duration-500 group-hover:scale-108"
                             priority
                           />
@@ -742,13 +566,13 @@ export default function HomePage() {
                       </div>
 
                       {/* Category Title */}
-                      <h3 className="mt-3 text-[13px] sm:text-sm font-serif font-bold text-zinc-900 group-hover:text-[#B38646] transition-colors whitespace-nowrap tracking-tight">
+                      <h3 className="mt-2.5 sm:mt-3 text-[12px] sm:text-sm font-serif font-bold text-zinc-900 group-hover:text-[#B38646] transition-colors whitespace-nowrap tracking-tight">
                         {cat.name}
                       </h3>
 
                       {/* Explore Link */}
-                      <span className="mt-1 text-xs text-[#A87C38] font-medium inline-flex items-center gap-1 group-hover:text-zinc-950 transition-colors">
-                        Explore <span className="text-[13px] ml-0.5 leading-none">→</span>
+                      <span className="mt-1 text-[11px] sm:text-xs text-[#A87C38] font-medium inline-flex items-center gap-1 group-hover:text-zinc-950 transition-colors">
+                        Explore <span className="text-[12px] sm:text-[13px] ml-0.5 leading-none">→</span>
                       </span>
                     </Link>
                   );
@@ -761,6 +585,7 @@ export default function HomePage() {
 
       {/* ============================================================== */}
       {/* ============================================================== */}
+      {/* ============================================================== */}
       {/* 4. FEATURED COLLECTION - OUR BEST SELLERS                      */}
       {/* ============================================================== */}
       <section
@@ -768,7 +593,7 @@ export default function HomePage() {
         style={{ backgroundImage: "url('/images/bestsellers_bg.png')" }}
       >
         {/* Left Side Title Background Image (Emerald Saree Model with Candlelit Palace Ambiance) */}
-        <div className="absolute left-0 top-0 h-[260px] lg:h-full w-full lg:w-[48%] xl:w-[42%] 2xl:w-[38%] pointer-events-none z-0 overflow-hidden">
+        <div className="absolute left-0 top-0 h-[300px] sm:h-[320px] lg:h-full w-full lg:w-[48%] xl:w-[42%] 2xl:w-[38%] pointer-events-none z-0 overflow-hidden">
           <Image
             src="/images/bestsellers/left_title_bg.png"
             alt="Best Sellers"
@@ -787,29 +612,73 @@ export default function HomePage() {
         <div className="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8 xl:px-12 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 xl:gap-10 relative z-10">
           {/* Left Title & Call to Action (Padded on left so text is positioned gracefully to the right of the model) */}
           <div className="w-full lg:w-[380px] xl:w-[430px] 2xl:w-[460px] lg:pl-[130px] xl:pl-[160px] 2xl:pl-[180px] shrink-0 text-center lg:text-left flex flex-col items-center lg:items-start text-white py-4 lg:py-0">
-            <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#E5C07B] mb-2.5 drop-shadow">
+            <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#E5C07B] mb-2 sm:mb-2.5 drop-shadow">
               FEATURED COLLECTION
             </p>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-[38px] xl:text-[42px] text-white font-normal leading-[1.15] tracking-tight mb-3 drop-shadow-md">
+            <h2 className="font-serif text-2xl sm:text-3xl lg:text-[38px] xl:text-[42px] text-white font-normal leading-tight tracking-tight mb-2 sm:mb-3 drop-shadow-md">
               Our Best Sellers
             </h2>
-            <p className="text-xs sm:text-[13px] text-zinc-200/90 leading-relaxed font-light max-w-[270px] mb-6 drop-shadow">
+            <p className="text-xs sm:text-[13px] text-zinc-200/90 leading-relaxed font-light max-w-[270px] mb-5 sm:mb-6 drop-shadow">
               Loved by many, our best-selling collection combines tradition, comfort and style.
             </p>
-            <Link
-              href="/shop?bestSeller=true"
-              className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-[#F7D47A] via-[#E8B854] to-[#D59837] hover:brightness-105 text-zinc-950 font-bold text-xs tracking-wider uppercase transition-all shadow-xl transform hover:scale-105 group/btn"
-            >
-              <span>Shop Best Sellers</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
-            </Link>
+            <div className="flex items-center gap-3 pt-1">
+              <Link
+                href="/shop?bestSeller=true"
+                className="inline-flex items-center gap-2.5 px-6 py-3 rounded-full bg-gradient-to-r from-[#F7D47A] via-[#E8B854] to-[#D59837] hover:brightness-105 text-zinc-950 font-bold text-xs tracking-wider uppercase transition-all shadow-xl transform hover:scale-105 group/btn"
+              >
+                <span>Shop Best Sellers</span>
+                <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover/btn:translate-x-1" />
+              </Link>
+
+              {bestSellers.length > 3 && (
+                <div className="hidden sm:flex items-center gap-1.5 pl-1">
+                  <button
+                    onClick={() => scrollBestSellers('left')}
+                    aria-label="Previous best sellers"
+                    className="w-8 h-8 rounded-full bg-white/90 shadow-md border border-[#D4AF37]/60 hover:border-[#D4AF37] hover:bg-white flex items-center justify-center text-zinc-800 hover:text-black transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                  >
+                    <ChevronLeft className="w-4 h-4 stroke-[2]" />
+                  </button>
+                  <button
+                    onClick={() => scrollBestSellers('right')}
+                    aria-label="Next best sellers"
+                    className="w-8 h-8 rounded-full bg-white/90 shadow-md border border-[#D4AF37]/60 hover:border-[#D4AF37] hover:bg-white flex items-center justify-center text-zinc-800 hover:text-black transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                  >
+                    <ChevronRight className="w-4 h-4 stroke-[2]" />
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
 
-          {/* Right Product Cards with Skeleton Loading */}
-          <div className="flex-1 w-full flex items-center gap-3">
+          {/* Right Product Cards with Skeleton Loading and 3-Card Slider */}
+          <div className="flex-1 w-full relative group/bestseller-slider overflow-hidden">
+            {/* Left Floating Chevron Button (Desktop) */}
+            {bestSellers.length > 3 && (
+              <button
+                onClick={() => scrollBestSellers('left')}
+                aria-label="Previous best sellers"
+                className="hidden lg:flex absolute left-1 xl:left-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/95 backdrop-blur-sm border border-[#D4AF37]/60 shadow-[0_4px_16px_rgba(0,0,0,0.18)] hover:border-[#B8860B] hover:bg-white text-zinc-800 hover:text-[#B8860B] items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
+              >
+                <ChevronLeft className="w-4 h-4 stroke-[2.2]" />
+              </button>
+            )}
+
+            {/* Right Floating Chevron Button (Desktop) */}
+            {bestSellers.length > 3 && (
+              <button
+                onClick={() => scrollBestSellers('right')}
+                aria-label="Next best sellers"
+                className="hidden lg:flex absolute right-1 xl:right-2 top-1/2 -translate-y-1/2 z-20 w-9 h-9 rounded-full bg-white/95 backdrop-blur-sm border border-[#D4AF37]/60 shadow-[0_4px_16px_rgba(0,0,0,0.18)] hover:border-[#B8860B] hover:bg-white text-zinc-800 hover:text-[#B8860B] items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
+              >
+                <ChevronRight className="w-4 h-4 stroke-[2.2]" />
+              </button>
+            )}
+
+            {/* Skeleton Loading State (3 Cards Visible) */}
             {isLoadingProducts ? (
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 xl:gap-4 w-full">
-                {[1, 2, 3, 4].map((i) => (
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5 sm:gap-3.5 xl:gap-4 w-full">
+                {[1, 2, 3].map((i) => (
                   <div
                     key={i}
                     className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm border border-[#E8DFC8]/70 flex flex-col animate-pulse"
@@ -825,13 +694,16 @@ export default function HomePage() {
                 ))}
               </div>
             ) : bestSellers.length > 0 ? (
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 xl:gap-4 w-full">
-                {bestSellers.slice(0, 4).map((product, idx) => {
+              <div
+                ref={bestSellersSliderRef}
+                className="flex items-stretch gap-3 sm:gap-3.5 xl:gap-4 overflow-x-auto scroll-smooth scrollbar-none snap-x snap-mandatory py-2 -mx-1 px-1 w-full"
+              >
+                {bestSellers.map((product, idx) => {
                   const isLiked = isInWishlist(product._id);
                   const img =
                     product.images?.[0]?.url ||
                     product.image ||
-                    '/images/new_arrivals/designer_silk_saree.jpg';
+                    '/images/hero_banner.jpg';
                   const badge = product.bestSeller
                     ? 'Bestseller'
                     : product.newArrival
@@ -842,7 +714,7 @@ export default function HomePage() {
                   return (
                     <div
                       key={product._id || product.slug || idx}
-                      className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-[#E8DFC8]/70 flex flex-col group transition-all duration-300 hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:-translate-y-1"
+                      className="bestseller-card shrink-0 w-[calc(50%-6px)] sm:w-[calc(50%-8px)] lg:w-[calc(33.333%-11px)] snap-start bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-[#E8DFC8]/70 flex flex-col group transition-all duration-300 hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:-translate-y-1"
                     >
                       {/* Top Image Flush to Card Edges */}
                       <div className="relative aspect-[1.18/1] w-full overflow-hidden bg-zinc-100">
@@ -850,7 +722,7 @@ export default function HomePage() {
                           src={img}
                           alt={product.name}
                           fill
-                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 33vw"
                           className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
                         />
 
@@ -883,7 +755,7 @@ export default function HomePage() {
                       <div className="p-2.5 sm:p-3.5 flex flex-col flex-1 justify-between bg-white">
                         <div>
                           <Link href={`/product/${product.slug || product._id}`}>
-                            <h4 className="text-[11px] sm:text-[13px] font-medium text-zinc-700 group-hover:text-[#B38646] transition-colors line-clamp-1 mb-0.5 sm:mb-1 tracking-tight">
+                            <h4 className="text-[11px] sm:text-[13px] font-medium text-zinc-800 group-hover:text-[#B38646] transition-colors line-clamp-1 mb-0.5 sm:mb-1 tracking-tight">
                               {product.name}
                             </h4>
                           </Link>
@@ -892,10 +764,10 @@ export default function HomePage() {
                           <div className="flex items-center gap-1 mb-1">
                             <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
                             <span className="text-[11px] sm:text-xs font-semibold text-zinc-800">
-                              {product.rating ? product.rating.toFixed(1) : '4.9'}
+                              {product.rating ? Number(product.rating).toFixed(1) : '5.0'}
                             </span>
                             <span className="text-[10px] sm:text-[11px] text-zinc-400">
-                              ({product.reviewCount || 24})
+                              ({product.reviewCount ?? 0})
                             </span>
                           </div>
 
@@ -927,21 +799,25 @@ export default function HomePage() {
               </div>
             ) : null}
 
-            {/* Next / Prev Carousel Buttons on Far Right */}
-            <div className="hidden xl:flex items-center gap-1.5 shrink-0 pl-1">
-              <button
-                className="w-7 h-7 rounded-full bg-white/95 shadow-md border border-[#E8DFC8] hover:border-zinc-400 flex items-center justify-center text-zinc-600 hover:text-zinc-950 transition-all"
-                aria-label="Previous"
-              >
-                <ChevronLeft className="w-3.5 h-3.5" />
-              </button>
-              <button
-                className="w-7 h-7 rounded-full bg-white/95 shadow-md border border-[#E8DFC8] hover:border-zinc-400 flex items-center justify-center text-zinc-600 hover:text-zinc-950 transition-all"
-                aria-label="Next"
-              >
-                <ChevronRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
+            {/* Mobile Prev / Next Controls */}
+            {bestSellers.length > 2 && (
+              <div className="flex sm:hidden items-center justify-center gap-2 pt-3">
+                <button
+                  onClick={() => scrollBestSellers('left')}
+                  aria-label="Previous best seller"
+                  className="w-8 h-8 rounded-full bg-white shadow-sm border border-[#D4AF37]/50 flex items-center justify-center text-zinc-700 active:scale-95"
+                >
+                  <ChevronLeft className="w-4 h-4 stroke-[2]" />
+                </button>
+                <button
+                  onClick={() => scrollBestSellers('right')}
+                  aria-label="Next best seller"
+                  className="w-8 h-8 rounded-full bg-white shadow-sm border border-[#D4AF37]/50 flex items-center justify-center text-zinc-700 active:scale-95"
+                >
+                  <ChevronRight className="w-4 h-4 stroke-[2]" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -983,39 +859,39 @@ export default function HomePage() {
         </div>
 
         {/* Full-width Responsive Content Grid */}
-        <div className="w-full relative z-10 px-5 sm:px-8 md:px-12 lg:px-16 xl:px-24 py-8 sm:py-10 md:py-12 lg:py-14 xl:py-16 flex flex-row items-center justify-between">
+        <div className="w-full relative z-10 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 py-7 sm:py-10 md:py-12 lg:py-14 xl:py-16 flex flex-row items-center justify-between">
           {/* Left Column: Crisp High-End Typography & CTA */}
-          <div className="max-w-xl flex flex-col items-start space-y-2 sm:space-y-3 lg:space-y-3.5 z-10">
+          <div className="max-w-xl flex flex-col items-start space-y-1.5 sm:space-y-3 lg:space-y-3.5 z-10">
             {/* Limited Time Offer */}
-            <span className="text-[#DEB371] font-serif tracking-[0.22em] text-[11px] sm:text-xs md:text-sm font-medium uppercase drop-shadow">
+            <span className="text-[#DEB371] font-serif tracking-[0.22em] text-[10px] sm:text-xs md:text-sm font-medium uppercase drop-shadow">
               Limited Time Offer
             </span>
 
             {/* FLAT 20% OFF */}
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] font-normal tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FFF5DC] via-[#F5D48D] to-[#CF9F42] leading-[1.05] drop-shadow-[0_2px_14px_rgba(0,0,0,0.6)]">
+            <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] font-normal tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FFF5DC] via-[#F5D48D] to-[#CF9F42] leading-[1.08] drop-shadow-[0_2px_14px_rgba(0,0,0,0.6)]">
               FLAT 20% OFF
             </h2>
 
             {/* On All Ethnic Wear */}
-            <p className="font-serif text-sm sm:text-base md:text-lg lg:text-xl text-[#EBD9C2] font-light tracking-wide drop-shadow">
+            <p className="font-serif text-xs sm:text-base md:text-lg lg:text-xl text-[#EBD9C2] font-light tracking-wide drop-shadow">
               On All Ethnic Wear
             </p>
 
             {/* Shop Now Button */}
-            <div className="pt-2 sm:pt-3">
+            <div className="pt-1.5 sm:pt-3">
               <Link
                 href="/shop?sale=true"
-                className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#E5BD7B] via-[#DEB371] to-[#D5A558] hover:brightness-110 text-[#240614] font-semibold text-xs sm:text-sm tracking-wide uppercase transition-all shadow-[0_4px_16px_rgba(0,0,0,0.4)] transform hover:scale-105 group/btn"
+                className="inline-flex items-center gap-2 sm:gap-2.5 px-5 sm:px-8 py-2 sm:py-3 rounded-full bg-gradient-to-r from-[#E5BD7B] via-[#DEB371] to-[#D5A558] hover:brightness-110 text-[#240614] font-semibold text-[11px] sm:text-sm tracking-wide uppercase transition-all shadow-[0_4px_16px_rgba(0,0,0,0.4)] transform hover:scale-105 group/btn"
               >
                 <span>Shop Now</span>
-                <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1 stroke-[2.5]" />
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover/btn:translate-x-1 stroke-[2.5]" />
               </Link>
             </div>
           </div>
 
           {/* Center Badge: Precision Vector SVG Royal Arch with 20% OFF */}
-          <div className="flex shrink-0 items-center justify-center mr-auto ml-4 sm:ml-8 md:ml-10 lg:ml-16 xl:ml-24 z-10">
-            <div className="relative w-24 h-20 sm:w-32 sm:h-28 md:w-40 md:h-36 lg:w-48 lg:h-44 xl:w-52 xl:h-48 drop-shadow-[0_8px_20px_rgba(0,0,0,0.5)] transform hover:scale-105 transition-transform duration-300">
+          <div className="flex shrink-0 items-center justify-center mr-auto ml-2 sm:ml-6 md:ml-10 lg:ml-16 xl:ml-24 z-10">
+            <div className="relative w-20 h-16 sm:w-28 sm:h-24 md:w-36 md:h-32 lg:w-48 lg:h-44 xl:w-52 xl:h-48 drop-shadow-[0_8px_20px_rgba(0,0,0,0.5)] transform hover:scale-105 transition-transform duration-300">
               <Image
                 src="/images/offers/arch_badge.svg"
                 alt="20% OFF Royal Arch Badge"
@@ -1062,8 +938,8 @@ export default function HomePage() {
               </p>
             </div>
 
-            {/* View All positioned on the right */}
-            <div className="mt-3 sm:mt-0 sm:absolute sm:right-0 sm:bottom-0.5 flex justify-center sm:justify-end">
+            {/* View All & Header Slider Controls */}
+            <div className="mt-3 sm:mt-0 sm:absolute sm:right-0 sm:bottom-0.5 flex items-center justify-center sm:justify-end gap-3">
               <Link
                 href="/shop?newArrival=true"
                 className="text-xs sm:text-[13px] font-semibold text-zinc-900 hover:text-[#B8860B] transition-colors inline-flex items-center gap-1 group"
@@ -1071,14 +947,57 @@ export default function HomePage() {
                 <span>View All</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </Link>
+
+              {/* Prev / Next Header Slider Controls for Tablet & Desktop */}
+              {newArrivals.length > 4 && (
+                <div className="hidden sm:flex items-center gap-1.5 pl-3 border-l border-zinc-300/80">
+                  <button
+                    onClick={() => scrollNewArrivals('left')}
+                    aria-label="Previous arrival"
+                    className="w-8 h-8 rounded-full bg-white shadow-sm border border-[#D4AF37]/50 hover:border-[#D4AF37] hover:bg-[#FAF5EB] flex items-center justify-center text-zinc-700 hover:text-black transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                  >
+                    <ChevronLeft className="w-4 h-4 stroke-[2]" />
+                  </button>
+                  <button
+                    onClick={() => scrollNewArrivals('right')}
+                    aria-label="Next arrival"
+                    className="w-8 h-8 rounded-full bg-white shadow-sm border border-[#D4AF37]/50 hover:border-[#D4AF37] hover:bg-[#FAF5EB] flex items-center justify-center text-zinc-700 hover:text-black transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                  >
+                    <ChevronRight className="w-4 h-4 stroke-[2]" />
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 
-          {/* Cards & Carousel Navigation with Skeleton Loading */}
-          <div className="relative flex items-center">
+          {/* Cards 4-Card Slider with Floating Chevron Navigation */}
+          <div className="relative group/slider">
+            {/* Left Floating Chevron Button (Desktop) */}
+            {newArrivals.length > 4 && (
+              <button
+                onClick={() => scrollNewArrivals('left')}
+                aria-label="Previous arrivals"
+                className="hidden lg:flex absolute -left-4 xl:-left-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm border border-[#D4AF37]/60 shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:border-[#B8860B] hover:bg-white text-zinc-800 hover:text-[#B8860B] items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
+              >
+                <ChevronLeft className="w-5 h-5 stroke-[2.2]" />
+              </button>
+            )}
+
+            {/* Right Floating Chevron Button (Desktop) */}
+            {newArrivals.length > 4 && (
+              <button
+                onClick={() => scrollNewArrivals('right')}
+                aria-label="Next arrivals"
+                className="hidden lg:flex absolute -right-4 xl:-right-5 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white/95 backdrop-blur-sm border border-[#D4AF37]/60 shadow-[0_4px_16px_rgba(0,0,0,0.15)] hover:border-[#B8860B] hover:bg-white text-zinc-800 hover:text-[#B8860B] items-center justify-center transition-all duration-200 hover:scale-110 active:scale-95 cursor-pointer"
+              >
+                <ChevronRight className="w-5 h-5 stroke-[2.2]" />
+              </button>
+            )}
+
+            {/* Skeleton Loading State (4 Cards Visible) */}
             {isLoadingProducts ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-4 xl:gap-5 flex-1">
-                {[1, 2, 3, 4, 5].map((i) => (
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-5 w-full">
+                {[1, 2, 3, 4].map((i) => (
                   <div
                     key={i}
                     className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm border border-[#EAE1D1]/80 flex flex-col animate-pulse"
@@ -1093,7 +1012,11 @@ export default function HomePage() {
                 ))}
               </div>
             ) : newArrivals.length > 0 ? (
-              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-4 xl:gap-5 flex-1">
+              /* Slidable 4-Card Track (Snap-Scrollable with Smooth Animation) */
+              <div
+                ref={newArrivalsSliderRef}
+                className="flex items-stretch gap-3 sm:gap-4 lg:gap-5 overflow-x-auto scroll-smooth scrollbar-none snap-x snap-mandatory py-2 -mx-1 px-1"
+              >
                 {newArrivals.map((product, idx) => {
                   const isLiked = isInWishlist(product._id);
                   const img =
@@ -1102,8 +1025,8 @@ export default function HomePage() {
                     '/images/new_arrivals/designer_silk_saree.jpg';
                   const badge = product.badge || (product.bestSeller ? 'Bestseller' : 'New');
                   const badgeType = product.badgeType || (product.bestSeller ? 'rose' : 'teal');
-                  const rating = product.rating || 4.9;
-                  const reviewCount = product.reviewCount || 24;
+                  const rating = product.rating ? Number(product.rating) : 5.0;
+                  const reviewCount = typeof product.reviewCount === 'number' ? product.reviewCount : 0;
                   const price = product.price;
                   const compareAtPrice = product.compareAtPrice;
                   const name = product.name;
@@ -1111,7 +1034,7 @@ export default function HomePage() {
                   return (
                     <div
                       key={product._id || product.slug || idx}
-                      className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-[#EAE1D1]/80 flex flex-col group transition-all duration-300 hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:-translate-y-1"
+                      className="arrival-card shrink-0 w-[calc(50%-6px)] sm:w-[calc(33.333%-11px)] lg:w-[calc(25%-15px)] snap-start bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-[#EAE1D1]/80 flex flex-col group transition-all duration-300 hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:-translate-y-1"
                     >
                       {/* Top Image Flush to Card Edges */}
                       <div className="relative aspect-[1.12/1] w-full overflow-hidden bg-zinc-100">
@@ -1119,7 +1042,7 @@ export default function HomePage() {
                           src={img}
                           alt={name}
                           fill
-                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
                           className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
                         />
 
@@ -1163,7 +1086,7 @@ export default function HomePage() {
                           <div className="flex items-center gap-1 mt-1">
                             <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
                             <span className="text-[11px] sm:text-xs font-semibold text-zinc-800">
-                              {typeof rating === 'number' ? rating.toFixed(1) : '4.9'}
+                              {rating.toFixed(1)}
                             </span>
                             <span className="text-[10px] sm:text-[11px] text-zinc-400">
                               ({reviewCount})
@@ -1201,24 +1124,20 @@ export default function HomePage() {
               </div>
             ) : null}
 
-            {/* Desktop Carousel Controls next to 5th Card (only if more than 5 cards) */}
-            {newArrivals.length > 5 && (
-              <div className="hidden xl:flex items-center gap-1.5 pl-3 xl:pl-4 shrink-0">
+            {/* Mobile Prev / Next Controls */}
+            {newArrivals.length > 2 && (
+              <div className="flex sm:hidden items-center justify-center gap-2 pt-3">
                 <button
-                  onClick={() => {
-                    setNewArrivalsIndex((prev) => (prev - 1 + newArrivals.length) % newArrivals.length);
-                  }}
+                  onClick={() => scrollNewArrivals('left')}
                   aria-label="Previous arrival"
-                  className="w-8 h-8 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] border border-zinc-200/80 hover:border-zinc-400 flex items-center justify-center text-zinc-700 hover:text-black transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-white shadow-sm border border-[#D4AF37]/50 flex items-center justify-center text-zinc-700 active:scale-95"
                 >
                   <ChevronLeft className="w-4 h-4 stroke-[2]" />
                 </button>
                 <button
-                  onClick={() => {
-                    setNewArrivalsIndex((prev) => (prev + 1) % newArrivals.length);
-                  }}
+                  onClick={() => scrollNewArrivals('right')}
                   aria-label="Next arrival"
-                  className="w-8 h-8 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] border border-zinc-200/80 hover:border-zinc-400 flex items-center justify-center text-zinc-700 hover:text-black transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-white shadow-sm border border-[#D4AF37]/50 flex items-center justify-center text-zinc-700 active:scale-95"
                 >
                   <ChevronRight className="w-4 h-4 stroke-[2]" />
                 </button>
@@ -1258,12 +1177,12 @@ export default function HomePage() {
               </div>
 
               {/* Luxury Serif Heading */}
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] xl:text-[48px] text-[#F5EFDC] font-bold leading-[1.14] tracking-tight drop-shadow-sm">
+              <h2 className="font-serif text-2xl sm:text-4xl lg:text-[42px] xl:text-[48px] text-[#F5EFDC] font-bold leading-[1.14] tracking-tight drop-shadow-sm">
                 Crafted for Every<br className="hidden sm:inline" /> Occasion
               </h2>
 
               {/* Occasion category sub-links */}
-              <div className="flex items-center justify-center lg:justify-start gap-2.5 text-xs sm:text-sm text-[#E2DDD6] font-normal tracking-wide">
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 sm:gap-2.5 text-xs sm:text-sm text-[#E2DDD6] font-normal tracking-wide">
                 <Link href="/shop?category=lehengas" className="hover:text-[#E5C07B] transition-colors">
                   Weddings
                 </Link>
@@ -1285,7 +1204,7 @@ export default function HomePage() {
               <div className="pt-2 sm:pt-3">
                 <Link
                   href="/shop"
-                  className="inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-[#1b0a15]/90 hover:bg-[#280d20] text-[#F5EFDC] hover:text-white border border-[#D4AF37]/80 hover:border-[#E5C07B] shadow-[0_0_15px_rgba(212,175,55,0.25)] hover:shadow-[0_0_24px_rgba(212,175,55,0.5)] transition-all duration-300 text-xs font-semibold tracking-widest uppercase group"
+                  className="inline-flex items-center gap-2 sm:gap-2.5 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full bg-[#1b0a15]/90 hover:bg-[#280d20] text-[#F5EFDC] hover:text-white border border-[#D4AF37]/80 hover:border-[#E5C07B] shadow-[0_0_15px_rgba(212,175,55,0.25)] hover:shadow-[0_0_24px_rgba(212,175,55,0.5)] transition-all duration-300 text-[11px] sm:text-xs font-semibold tracking-widest uppercase group"
                 >
                   <span>Explore Collections</span>
                   <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1 stroke-[2]" />
@@ -1363,23 +1282,23 @@ export default function HomePage() {
             <div className="space-y-2">
               <div className="flex items-center justify-center md:justify-start gap-2">
                 <LotusIcon className="w-4 h-3.5 text-[#B8860B]" />
-                <span className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#B8860B]">
+                <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.25em] text-[#B8860B]">
                   Voices of Royal Patrons
                 </span>
               </div>
-              <h2 className="font-serif text-3xl sm:text-4xl text-[#0B2518] font-bold">
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#0B2518] font-bold">
                 Google Customer Reviews
               </h2>
             </div>
 
             {/* Official Google Reviews Badge & Header Action Button */}
-            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 w-full sm:w-auto">
               <a
                 href="https://g.page/r/CTOKP0LCfhhDECE/review"
                 target="_blank"
                 rel="noopener noreferrer"
                 title="View reviews on Google"
-                className="bg-white hover:bg-zinc-50 border border-[#D4AF37]/35 hover:border-[#D4AF37]/70 rounded-2xl p-4 sm:p-5 shadow-md hover:shadow-lg flex items-center gap-4 transition-all duration-200 group"
+                className="bg-white hover:bg-zinc-50 border border-[#D4AF37]/35 hover:border-[#D4AF37]/70 rounded-2xl p-3.5 sm:p-5 shadow-md hover:shadow-lg flex items-center gap-3.5 sm:gap-4 transition-all duration-200 group"
               >
                 {/* Google G Logo */}
                 <div className="w-10 h-10 rounded-xl bg-zinc-50 border border-zinc-200/70 flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-105 transition-transform">
@@ -1423,7 +1342,7 @@ export default function HomePage() {
                 href="https://g.page/r/CTOKP0LCfhhDECE/review"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-2xl bg-[#0B2518] hover:bg-[#133E29] text-[#FAF8F5] hover:text-white border border-[#D4AF37]/50 shadow-md hover:shadow-xl transition-all duration-300 font-medium text-xs tracking-wider group flex-shrink-0"
+                className="inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-3 sm:py-4 rounded-2xl bg-[#0B2518] hover:bg-[#133E29] text-[#FAF8F5] hover:text-white border border-[#D4AF37]/50 shadow-md hover:shadow-xl transition-all duration-300 font-medium text-xs tracking-wider group flex-shrink-0"
               >
                 <span>Write a Review</span>
                 <ExternalLink className="w-3.5 h-3.5 text-[#D4AF37] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
@@ -1493,7 +1412,7 @@ export default function HomePage() {
               href="https://g.page/r/CTOKP0LCfhhDECE/review"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-[#0B2518] hover:bg-[#133E29] text-white border border-[#D4AF37]/60 shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 group font-semibold text-xs sm:text-sm tracking-wider"
+              className="inline-flex items-center justify-center gap-3 px-6 sm:px-8 py-3 sm:py-3.5 rounded-full bg-[#0B2518] hover:bg-[#133E29] text-white border border-[#D4AF37]/60 shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 group font-semibold text-xs sm:text-sm tracking-wider w-full sm:w-auto text-center"
             >
               <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
                 <svg className="w-3.5 h-3.5" viewBox="0 0 24 24">
@@ -1526,66 +1445,81 @@ export default function HomePage() {
       {/* ==================================================================== */}
       {/* 9. INSTAGRAM RECENT POSTS SECTION (#NalmaraFashionElegance Gallery) */}
       {/* ==================================================================== */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#061811] text-white border-b border-[#D4AF37]/30 relative overflow-hidden">
-        {/* Subtle decorative glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_20%,rgba(212,175,55,0.12),transparent_70%)] pointer-events-none" />
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#FAF8F5] via-[#FFFFFF] to-[#FAF6EE] border-b border-[#D4AF37]/25 relative overflow-hidden">
+        {/* Subtle decorative royal gold ambiance */}
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,rgba(212,175,55,0.08),transparent_65%)] pointer-events-none" />
+        <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-96 h-96 bg-[#D4AF37]/5 blur-3xl rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto space-y-10 sm:space-y-12 relative z-10">
           
           {/* Header */}
-          <div className="text-center space-y-3 max-w-xl mx-auto">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/35 text-[#E5C07B] text-[11px] font-semibold tracking-[0.25em] uppercase">
-              <Instagram className="w-3.5 h-3.5" />
-              <span>@NALMARAFASHION_OFFICIAL</span>
+          <div className="text-center space-y-3.5 max-w-xl mx-auto">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#FAF3E0] border border-[#D4AF37]/45 text-[#8C6B1B] text-[11px] font-bold tracking-[0.22em] uppercase shadow-xs">
+              <div className="w-4 h-4 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] flex items-center justify-center text-white flex-shrink-0 shadow-xs">
+                <Instagram className="w-2.5 h-2.5" />
+              </div>
+              <span>@nalmarafashion_official</span>
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-white tracking-tight">
-              Seen On You • #NalmaraFashionElegance
+            <h2 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#0B2518] tracking-tight">
+              Seen On You <span className="font-sans text-[#D4AF37] font-light mx-1 sm:mx-2">•</span> <span className="italic font-serif font-normal text-[#8C6B1B]">#NalmaraFashionElegance</span>
             </h2>
 
-            <p className="text-xs sm:text-sm text-zinc-300 font-light leading-relaxed">
-              Tag <span className="text-[#E5C07B] font-medium">@nalmarafashion_official</span> on Instagram to be featured in our royal heritage gallery.
+            <p className="text-xs sm:text-sm text-zinc-600 font-normal leading-relaxed">
+              Tag <span className="text-[#8C6B1B] font-semibold underline decoration-[#D4AF37]/60 underline-offset-4">@nalmarafashion_official</span> on Instagram to be featured in our royal heritage gallery.
             </p>
           </div>
 
           {/* 6 Curated Instagram Posts Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4 lg:gap-5">
             {INSTAGRAM_POSTS.map((post) => (
               <a
                 key={post.id}
-                href={post.link}
+                href={post.link || 'https://www.instagram.com/nalmarafashion_official'}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative aspect-square rounded-2xl overflow-hidden border border-[#D4AF37]/30 shadow-lg block focus:outline-none"
+                className="group relative aspect-square rounded-2xl overflow-hidden bg-white p-1 border border-[#D4AF37]/30 shadow-sm hover:shadow-2xl hover:border-[#D4AF37] hover:-translate-y-1 transition-all duration-500 block focus:outline-none"
               >
-                <Image
-                  src={post.image}
-                  alt={post.caption}
-                  fill
-                  sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
-                  className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110"
-                />
+                <div className="relative w-full h-full rounded-xl overflow-hidden">
+                  <Image
+                    src={post.image}
+                    alt={post.caption}
+                    fill
+                    sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-110"
+                  />
 
-                {/* Luxury Hover Overlay */}
-                <div className="absolute inset-0 bg-[#061811]/85 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-3.5 text-white">
-                  <div className="flex items-center justify-between">
-                    <Instagram className="w-4 h-4 text-[#E5C07B]" />
-                    <span className="text-[10px] text-zinc-400 font-light">Instagram</span>
+                  {/* Subtle Instagram frosted glass badge (visible in resting state) */}
+                  <div className="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-black/40 backdrop-blur-md border border-white/20 flex items-center justify-center text-white shadow-sm transition-opacity duration-200 group-hover:opacity-0">
+                    <Instagram className="w-3.5 h-3.5" />
                   </div>
 
-                  <p className="text-[10px] line-clamp-3 text-zinc-200 leading-snug">
-                    {post.caption}
-                  </p>
+                  {/* Luxury Hover Overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0B2518]/95 via-[#0B2518]/65 to-black/25 backdrop-blur-[2px] opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col justify-between p-3.5 text-white">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-1.5 text-[10px] text-[#F3E5AB] font-medium tracking-wide">
+                        <Instagram className="w-3.5 h-3.5 text-[#F3E5AB]" />
+                        <span>@nalmarafashion</span>
+                      </div>
+                      <span className="text-[9px] bg-white/20 backdrop-blur-md px-2 py-0.5 rounded-full text-white/95 font-medium">
+                        View
+                      </span>
+                    </div>
 
-                  <div className="flex items-center justify-between text-[11px] text-[#E5C07B] font-semibold pt-1 border-t border-[#D4AF37]/20">
-                    <span className="flex items-center gap-1">
-                      <Heart className="w-3 h-3 fill-[#E5C07B]" />
-                      {post.likes}
-                    </span>
-                    <span className="flex items-center gap-1 text-zinc-300">
-                      <MessageCircle className="w-3 h-3" />
-                      {post.comments}
-                    </span>
+                    <p className="text-[10px] line-clamp-3 text-zinc-100 leading-snug font-normal">
+                      {post.caption}
+                    </p>
+
+                    <div className="flex items-center justify-between text-[11px] text-[#F3E5AB] font-semibold pt-1.5 border-t border-[#D4AF37]/30">
+                      <span className="flex items-center gap-1">
+                        <Heart className="w-3 h-3 fill-[#F3E5AB]" />
+                        {post.likes}
+                      </span>
+                      <span className="flex items-center gap-1 text-zinc-200">
+                        <MessageCircle className="w-3 h-3" />
+                        {post.comments}
+                      </span>
+                    </div>
                   </div>
                 </div>
               </a>
@@ -1593,17 +1527,24 @@ export default function HomePage() {
           </div>
 
           {/* Instagram Follow Call To Action */}
-          <div className="text-center pt-2">
+          <div className="text-center space-y-2.5 pt-2">
             <a
-              href="https://instagram.com"
+              href="https://www.instagram.com/nalmarafashion_official"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-full bg-gradient-to-r from-[#833ab4]/80 via-[#fd1d1d]/80 to-[#fcb045]/80 hover:from-[#833ab4] hover:via-[#fd1d1d] hover:to-[#fcb045] text-white text-xs font-bold uppercase tracking-widest transition-all shadow-xl hover:shadow-[0_0_25px_rgba(253,29,29,0.4)] group"
+              className="inline-flex items-center justify-center gap-2.5 sm:gap-3 px-6 sm:px-10 py-3 sm:py-4 rounded-full bg-[#0B2518] hover:bg-[#133E29] text-white border border-[#D4AF37]/70 shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 group max-w-full text-center"
             >
-              <Instagram className="w-4 h-4" />
-              <span>Follow @nalmarafashion_official On Instagram</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
+              <div className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gradient-to-tr from-[#f09433] via-[#dc2743] to-[#bc1888] flex items-center justify-center text-white shadow-sm flex-shrink-0 group-hover:rotate-12 transition-transform duration-300">
+                <Instagram className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+              </div>
+              <span className="text-[11px] sm:text-xs md:text-sm font-bold tracking-wider sm:tracking-widest uppercase truncate">
+                Follow @nalmarafashion_official On Instagram
+              </span>
+              <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#D4AF37] transition-transform duration-300 group-hover:translate-x-1.5 shrink-0" />
             </a>
+            <p className="text-[10px] sm:text-[11px] text-zinc-500 font-medium tracking-wide">
+              Join 45,000+ Royal Patrons &amp; Connoisseurs of Couture
+            </p>
           </div>
 
         </div>

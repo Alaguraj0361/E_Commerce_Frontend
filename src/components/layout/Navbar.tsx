@@ -80,16 +80,16 @@ export const Navbar = () => {
   return (
     <>
       {/* 1. TOP ANNOUNCEMENT BAR (Dark Emerald & Gold Accents matching Mockup) */}
-      <div className="bg-[#030D08] text-[#FAF8F5] text-[11px] border-b border-[#D4AF37]/25 py-2 px-4 transition-colors">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+      <div className="bg-[#030D08] text-[#FAF8F5] text-[10px] sm:text-[11px] border-b border-[#D4AF37]/25 py-2 px-3 sm:px-4 transition-colors">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
           {/* Left item */}
-          <div className="flex items-center gap-1.5 text-[#E5C07B] font-medium">
-            <Gift className="w-3.5 h-3.5 text-[#E5C07B]" />
-            <span>Free Shipping on Orders Above ₹1,499</span>
+          <div className="flex items-center gap-1.5 text-[#E5C07B] font-medium truncate">
+            <Gift className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#E5C07B] shrink-0" />
+            <span className="truncate">Free Shipping on Orders Above ₹1,499</span>
           </div>
 
           {/* Center items */}
-          <div className="hidden md:flex items-center gap-3 text-zinc-300 font-medium">
+          <div className="hidden lg:flex items-center gap-3 text-zinc-300 font-medium">
             <div className="flex items-center gap-1.5 hover:text-[#E5C07B] transition-colors cursor-pointer">
               <RotateCcw className="w-3.5 h-3.5 text-[#E5C07B]" />
               <span>Easy Returns</span>
@@ -102,10 +102,10 @@ export const Navbar = () => {
           </div>
 
           {/* Right item */}
-          <div className="flex items-center gap-1.5 font-medium text-right">
-            <Tag className="w-3.5 h-3.5 text-[#E5C07B]" />
+          <div className="hidden sm:flex items-center gap-1.5 font-medium text-right shrink-0">
+            <Tag className="w-3.5 h-3.5 text-[#E5C07B] shrink-0" />
             <span className="text-zinc-300">
-              Get 10% OFF on Your First Order <span className="hidden sm:inline">| Use Code : </span>
+              10% OFF First Order | Code:{' '}
               <strong className="text-[#E5C07B] tracking-wide font-bold">WELCOME10</strong>
             </span>
           </div>
