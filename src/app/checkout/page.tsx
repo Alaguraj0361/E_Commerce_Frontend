@@ -244,6 +244,33 @@ export default function CheckoutPage() {
                 name: customer?.name || shippingAddress.fullName,
                 email: customer?.email,
                 contact: customer?.phone || shippingAddress.phone,
+                method: 'upi',
+              },
+              config: {
+                display: {
+                  blocks: {
+                    upi: {
+                      name: 'UPI / QR (Google Pay, PhonePe, Paytm)',
+                      instruments: [
+                        {
+                          method: 'upi',
+                        },
+                      ],
+                    },
+                    other: {
+                      name: 'Cards & Net Banking',
+                      instruments: [
+                        { method: 'card' },
+                        { method: 'netbanking' },
+                        { method: 'wallet' },
+                      ],
+                    },
+                  },
+                  sequence: ['block.upi', 'block.other'],
+                  preferences: {
+                    show_default_blocks: true,
+                  },
+                },
               },
               theme: {
                 color: '#B8860B',
