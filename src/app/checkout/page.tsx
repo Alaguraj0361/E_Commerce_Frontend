@@ -726,7 +726,7 @@ export default function CheckoutPage() {
                 </span>
               </div>
               <div className="flex justify-between text-zinc-600 dark:text-zinc-400">
-                <span>GST (18% Integrated Tax)</span>
+                <span>GST (5% Integrated Tax)</span>
                 <span className="font-semibold text-zinc-900 dark:text-zinc-100">
                   {formatCurrency(tax)}
                 </span>

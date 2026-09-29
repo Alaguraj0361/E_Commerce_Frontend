@@ -18,6 +18,7 @@ import {
   Instagram,
   MessageCircle,
   CheckCircle2,
+  ExternalLink,
 } from 'lucide-react';
 import { api } from '../lib/api';
 import { Product } from '../types';
@@ -372,9 +373,11 @@ const WheatSproutIcon = ({ className }: { className?: string }) => (
 );
 
 export default function HomePage() {
-  const [categories, setCategories] = useState<any[]>(EXACT_CATEGORIES);
-  const [bestSellers, setBestSellers] = useState<any[]>(EXACT_BEST_SELLERS);
-  const [newArrivals, setNewArrivals] = useState<any[]>(EXACT_NEW_ARRIVALS);
+  const [categories, setCategories] = useState<any[]>([]);
+  const [bestSellers, setBestSellers] = useState<any[]>([]);
+  const [newArrivals, setNewArrivals] = useState<any[]>([]);
+  const [isLoadingCategories, setIsLoadingCategories] = useState(true);
+  const [isLoadingProducts, setIsLoadingProducts] = useState(true);
   const [newArrivalsIndex, setNewArrivalsIndex] = useState(0);
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0);
 
@@ -383,34 +386,24 @@ export default function HomePage() {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoadingCategories(true);
+      setIsLoadingProducts(true);
       try {
-        const [catRes, collectionsRes] = await Promise.allSettled([
+        const [catRes, collectionsRes, allProdsRes] = await Promise.allSettled([
           api.get('/categories'),
           api.get('/products/collections/home'),
+          api.get('/products?limit=20&isActive=true'),
         ]);
 
         if (catRes.status === 'fulfilled' && catRes.value.data?.success) {
           const apiCats = catRes.value.data.data;
-          if (apiCats && apiCats.length >= 7) {
-            // Sort to ensure the exact sequence: Sarees, Lehengas, Salwar Suits, Kurtis, Anarkali, Men's Wear, Kid's Wear
-            const order = [
-              'sarees',
-              'lehengas',
-              'salwar-suits',
-              'kurtis',
-              'anarkali',
-              'mens-wear',
-              'kids-wear',
-            ];
-            const sorted = [...apiCats].sort((a, b) => {
-              const idxA = order.indexOf(a.slug);
-              const idxB = order.indexOf(b.slug);
-              if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-              return 0;
-            });
-            setCategories(sorted);
+          if (Array.isArray(apiCats) && apiCats.length > 0) {
+            setCategories(apiCats);
           }
         }
+
+        let dynamicBest: any[] = [];
+        let dynamicNew: any[] = [];
 
         if (
           collectionsRes.status === 'fulfilled' &&
@@ -420,43 +413,39 @@ export default function HomePage() {
           const { bestSellers: apiBest, newArrivals: apiNew } =
             collectionsRes.value.data.data;
 
-          if (apiBest && apiBest.length >= 4) {
-            // Match order from mockup
-            const preferredBs = [
-              'traditional-silk-saree',
-              'bridal-lehenga',
-              'embroidered-salwar-suit',
-              'anarkali-dress',
-            ];
-            const sortedBs = [...apiBest].sort((a, b) => {
-              const idxA = preferredBs.indexOf(a.slug);
-              const idxB = preferredBs.indexOf(b.slug);
-              if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-              return 0;
-            });
-            setBestSellers(sortedBs);
+          if (Array.isArray(apiBest) && apiBest.length > 0) {
+            dynamicBest = apiBest;
           }
-
-          if (apiNew && apiNew.length >= 5) {
-            // Match order from mockup
-            const preferredNa = [
-              'designer-silk-saree',
-              'straight-kurti-set',
-              'lehenga-choli',
-              'mens-kurta',
-              'kids-festive-wear',
-            ];
-            const sortedNa = [...apiNew].sort((a, b) => {
-              const idxA = preferredNa.indexOf(a.slug);
-              const idxB = preferredNa.indexOf(b.slug);
-              if (idxA !== -1 && idxB !== -1) return idxA - idxB;
-              return 0;
-            });
-            setNewArrivals(sortedNa);
+          if (Array.isArray(apiNew) && apiNew.length > 0) {
+            dynamicNew = apiNew;
           }
         }
+
+        if (
+          allProdsRes.status === 'fulfilled' &&
+          allProdsRes.value.data?.success &&
+          Array.isArray(allProdsRes.value.data.data)
+        ) {
+          const allProds = allProdsRes.value.data.data;
+          if (allProds.length > 0) {
+            if (dynamicBest.length === 0) {
+              const bestList = allProds.filter((p: any) => p.bestSeller);
+              dynamicBest = bestList.length > 0 ? bestList : allProds;
+            }
+            if (dynamicNew.length === 0) {
+              const newList = allProds.filter((p: any) => p.newArrival);
+              dynamicNew = newList.length > 0 ? newList : allProds;
+            }
+          }
+        }
+
+        setBestSellers(dynamicBest);
+        setNewArrivals(dynamicNew);
       } catch (err) {
         console.error('Failed to fetch home data:', err);
+      } finally {
+        setIsLoadingCategories(false);
+        setIsLoadingProducts(false);
       }
     };
 
@@ -487,7 +476,9 @@ export default function HomePage() {
       productId: product._id,
       name: product.name,
       image:
-        product.images?.[0]?.url || product.image || EXACT_BEST_SELLERS[0].image,
+        product.images?.[0]?.url ||
+        product.image ||
+        '/images/new_arrivals/designer_silk_saree.jpg',
       price: product.price,
       sku: product.sku || `SKU-${product._id}`,
       quantity: 1,
@@ -512,7 +503,7 @@ export default function HomePage() {
           url:
             product.images?.[0]?.url ||
             product.image ||
-            EXACT_BEST_SELLERS[0].image,
+            '/images/new_arrivals/designer_silk_saree.jpg',
           isMain: true,
         },
       ],
@@ -708,48 +699,62 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Right 7 Circular Avatars Grid in Single Row (Order: Sarees, Lehengas, Salwar Suits, Kurtis, Anarkali, Men's Wear, Kids Wear) */}
+          {/* Right Circular Avatars in dynamic layout with Skeleton Loading */}
           <div className="flex-1 w-full overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 scrollbar-none">
-            <div className="grid grid-flow-col auto-cols-[130px] sm:auto-cols-[145px] lg:grid-flow-row lg:grid-cols-7 gap-5 sm:gap-6 lg:gap-4 xl:gap-6 2xl:gap-8 justify-items-center items-start">
-              {categories.slice(0, 7).map((cat) => {
-                const categoryImg =
-                  EXACT_CATEGORIES.find((c) => c.slug === cat.slug)?.image ||
-                  `/images/categories/${cat.slug}.jpg` ||
-                  cat.image;
-
-                return (
-                  <Link
-                    key={cat.slug || cat.name}
-                    href={`/shop?category=${cat.slug}`}
-                    className="flex flex-col items-center text-center group cursor-pointer w-full"
-                  >
-                    {/* Golden Bordered Large Circle Avatar */}
-                    <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-32 md:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 rounded-full p-[3.5px] border-2 border-[#D4AF37] ring-1 ring-[#D4AF37]/50 bg-white shadow-md transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl group-hover:border-[#B8860B]">
-                      <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-100">
-                        <Image
-                          src={categoryImg}
-                          alt={cat.name}
-                          fill
-                          sizes="(max-width: 640px) 130px, 160px"
-                          className="object-cover object-top transition-transform duration-500 group-hover:scale-108"
-                          priority
-                        />
-                      </div>
+            {isLoadingCategories ? (
+              <div className="flex items-center gap-6 sm:gap-8 flex-wrap lg:flex-nowrap justify-center lg:justify-start py-2">
+                {[1, 2, 3, 4, 5].map((i) => (
+                  <div key={i} className="flex flex-col items-center text-center animate-pulse shrink-0">
+                    <div className="w-28 h-28 sm:w-32 sm:h-32 rounded-full p-[3px] border-2 border-[#D4AF37]/30 bg-white shadow-sm flex items-center justify-center">
+                      <div className="w-full h-full rounded-full bg-[#EAE1D1]/60" />
                     </div>
+                    <div className="h-4 w-20 bg-[#EAE1D1]/70 rounded-full mt-3" />
+                    <div className="h-3 w-12 bg-[#EAE1D1]/40 rounded-full mt-1.5" />
+                  </div>
+                ))}
+              </div>
+            ) : categories.length > 0 ? (
+              <div className="flex items-center gap-6 sm:gap-8 flex-wrap lg:flex-nowrap justify-center lg:justify-start">
+                {categories.map((cat) => {
+                  const categoryImg =
+                    cat.image ||
+                    `/images/categories/${cat.slug}.jpg` ||
+                    '/images/categories/sarees.jpg';
 
-                    {/* Category Title */}
-                    <h3 className="mt-3 text-[13px] sm:text-sm font-serif font-bold text-zinc-900 group-hover:text-[#B38646] transition-colors whitespace-nowrap tracking-tight">
-                      {cat.name}
-                    </h3>
+                  return (
+                    <Link
+                      key={cat._id || cat.slug || cat.name}
+                      href={`/shop?category=${cat.slug}`}
+                      className="flex flex-col items-center text-center group cursor-pointer shrink-0"
+                    >
+                      {/* Golden Bordered Large Circle Avatar */}
+                      <div className="relative w-28 h-28 sm:w-32 sm:h-32 md:w-32 md:h-32 lg:w-28 lg:h-28 xl:w-32 xl:h-32 2xl:w-36 2xl:h-36 rounded-full p-[3.5px] border-2 border-[#D4AF37] ring-1 ring-[#D4AF37]/50 bg-white shadow-md transition-all duration-300 group-hover:scale-105 group-hover:shadow-xl group-hover:border-[#B8860B]">
+                        <div className="relative w-full h-full rounded-full overflow-hidden bg-zinc-100">
+                          <Image
+                            src={categoryImg}
+                            alt={cat.name}
+                            fill
+                            sizes="(max-width: 640px) 130px, 160px"
+                            className="object-cover object-top transition-transform duration-500 group-hover:scale-108"
+                            priority
+                          />
+                        </div>
+                      </div>
 
-                    {/* Explore Link */}
-                    <span className="mt-1 text-xs text-[#A87C38] font-medium inline-flex items-center gap-1 group-hover:text-zinc-950 transition-colors">
-                      Explore <span className="text-[13px] ml-0.5 leading-none">→</span>
-                    </span>
-                  </Link>
-                );
-              })}
-            </div>
+                      {/* Category Title */}
+                      <h3 className="mt-3 text-[13px] sm:text-sm font-serif font-bold text-zinc-900 group-hover:text-[#B38646] transition-colors whitespace-nowrap tracking-tight">
+                        {cat.name}
+                      </h3>
+
+                      {/* Explore Link */}
+                      <span className="mt-1 text-xs text-[#A87C38] font-medium inline-flex items-center gap-1 group-hover:text-zinc-950 transition-colors">
+                        Explore <span className="text-[13px] ml-0.5 leading-none">→</span>
+                      </span>
+                    </Link>
+                  );
+                })}
+              </div>
+            ) : null}
           </div>
         </div>
       </section>
@@ -800,109 +805,127 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Right 4 Product Cards (2 per row on mobile, 4 per row on desktop) */}
+          {/* Right Product Cards with Skeleton Loading */}
           <div className="flex-1 w-full flex items-center gap-3">
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 xl:gap-4 w-full">
-              {bestSellers.slice(0, 4).map((product, idx) => {
-                const isLiked = isInWishlist(product._id);
-                const fallbackData =
-                  EXACT_BEST_SELLERS.find((c) => c.slug === product.slug) ||
-                  EXACT_BEST_SELLERS[idx] ||
-                  EXACT_BEST_SELLERS[0];
-                const img = fallbackData.image || product.images?.[0]?.url || product.image;
-                const badge = fallbackData.badge || product.badge;
-                const badgeType = fallbackData.badgeType || product.badgeType;
-
-                return (
+            {isLoadingProducts ? (
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 xl:gap-4 w-full">
+                {[1, 2, 3, 4].map((i) => (
                   <div
-                    key={product._id || product.slug || idx}
-                    className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-[#E8DFC8]/70 flex flex-col group transition-all duration-300 hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:-translate-y-1"
+                    key={i}
+                    className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm border border-[#E8DFC8]/70 flex flex-col animate-pulse"
                   >
-                    {/* Top Image Flush to Card Edges */}
-                    <div className="relative aspect-[1.18/1] w-full overflow-hidden bg-zinc-100">
-                      <Image
-                        src={img}
-                        alt={product.name}
-                        fill
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
-                        className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
-                      />
-
-                      {/* Top Left Badge */}
-                      <div className="absolute top-1.5 sm:top-2 left-1.5 sm:left-2 z-10">
-                        {badgeType === 'bestseller' ? (
-                          <span className="font-serif italic text-[9px] sm:text-[11px] font-bold text-[#F5D07A] bg-black/90 px-2 sm:px-2.5 py-0.5 rounded-full shadow-sm tracking-wide">
-                            Bestseller
-                          </span>
-                        ) : badgeType === 'rose' ? (
-                          <span className="text-[9px] sm:text-[11px] font-bold text-white bg-[#DC2626] px-2 sm:px-2.5 py-0.5 rounded-full shadow-sm">
-                            Hot
-                          </span>
-                        ) : (
-                          <span className="text-[9px] sm:text-[11px] font-bold text-white bg-[#0D5C3A] px-2 sm:px-2.5 py-0.5 rounded-full shadow-sm">
-                            New
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Top Right Floating White Heart Outline */}
-                      <button
-                        onClick={(e) => handleLike(product, e)}
-                        className="absolute top-1.5 sm:top-2 right-1.5 sm:right-2.5 z-10 text-white drop-shadow hover:scale-110 transition-transform"
-                        aria-label="Wishlist"
-                      >
-                        <Heart
-                          className={`w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2] ${isLiked ? 'fill-rose-500 text-rose-500' : 'text-white'}`}
-                        />
-                      </button>
+                    <div className="relative aspect-[1.18/1] w-full bg-[#EAE1D1]/60" />
+                    <div className="p-3.5 space-y-2.5 bg-white">
+                      <div className="h-3.5 bg-[#EAE1D1]/70 rounded w-3/4" />
+                      <div className="h-3 bg-[#EAE1D1]/50 rounded w-1/2" />
+                      <div className="h-4 bg-[#EAE1D1]/70 rounded w-1/3" />
+                      <div className="h-8 bg-[#FAF5EB] border border-[#EAE1D1] rounded-full w-full mt-2" />
                     </div>
+                  </div>
+                ))}
+              </div>
+            ) : bestSellers.length > 0 ? (
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5 xl:gap-4 w-full">
+                {bestSellers.slice(0, 4).map((product, idx) => {
+                  const isLiked = isInWishlist(product._id);
+                  const img =
+                    product.images?.[0]?.url ||
+                    product.image ||
+                    '/images/new_arrivals/designer_silk_saree.jpg';
+                  const badge = product.bestSeller
+                    ? 'Bestseller'
+                    : product.newArrival
+                    ? 'New'
+                    : 'Bestseller';
+                  const badgeType = product.bestSeller ? 'bestseller' : 'rose';
 
-                    {/* Product Details */}
-                    <div className="p-2.5 sm:p-3.5 flex flex-col flex-1 justify-between bg-white">
-                      <div>
-                        <Link href={`/product/${product.slug || product._id}`}>
-                          <h4 className="text-[11px] sm:text-[13px] font-medium text-zinc-700 group-hover:text-[#B38646] transition-colors line-clamp-1 mb-0.5 sm:mb-1 tracking-tight">
-                            {product.name}
-                          </h4>
-                        </Link>
+                  return (
+                    <div
+                      key={product._id || product.slug || idx}
+                      className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-[#E8DFC8]/70 flex flex-col group transition-all duration-300 hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:-translate-y-1"
+                    >
+                      {/* Top Image Flush to Card Edges */}
+                      <div className="relative aspect-[1.18/1] w-full overflow-hidden bg-zinc-100">
+                        <Image
+                          src={img}
+                          alt={product.name}
+                          fill
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 50vw, 25vw"
+                          className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
+                        />
 
-                        {/* Star Rating */}
-                        <div className="flex items-center gap-1 mb-1">
-                          <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
-                          <span className="text-[11px] sm:text-xs font-semibold text-zinc-800">
-                            {product.rating ? product.rating.toFixed(1) : fallbackData.rating.toFixed(1)}
-                          </span>
-                          <span className="text-[10px] sm:text-[11px] text-zinc-400">
-                            ({product.reviewCount || fallbackData.reviewCount})
-                          </span>
-                        </div>
-
-                        {/* Price */}
-                        <div className="flex items-baseline gap-1.5 sm:gap-2 mb-2 sm:mb-2.5">
-                          <span className="text-xs sm:text-sm md:text-base font-bold text-zinc-950">
-                            {formatCurrency(product.price || fallbackData.price)}
-                          </span>
-                          {(product.compareAtPrice || fallbackData.compareAtPrice) && (
-                            <span className="text-[10px] sm:text-xs text-zinc-400 line-through">
-                              {formatCurrency(product.compareAtPrice || fallbackData.compareAtPrice)}
+                        {/* Top Left Badge */}
+                        <div className="absolute top-1.5 sm:top-2 left-1.5 sm:left-2 z-10">
+                          {badgeType === 'bestseller' ? (
+                            <span className="font-serif italic text-[9px] sm:text-[11px] font-bold text-[#F5D07A] bg-black/90 px-2 sm:px-2.5 py-0.5 rounded-full shadow-sm tracking-wide">
+                              Bestseller
+                            </span>
+                          ) : (
+                            <span className="text-[9px] sm:text-[11px] font-bold text-white bg-[#DC2626] px-2 sm:px-2.5 py-0.5 rounded-full shadow-sm">
+                              Hot
                             </span>
                           )}
                         </div>
+
+                        {/* Top Right Floating White Heart Outline */}
+                        <button
+                          onClick={(e) => handleLike(product, e)}
+                          className="absolute top-1.5 sm:top-2 right-1.5 sm:right-2.5 z-10 text-white drop-shadow hover:scale-110 transition-transform"
+                          aria-label="Wishlist"
+                        >
+                          <Heart
+                            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2] ${isLiked ? 'fill-rose-500 text-rose-500' : 'text-white'}`}
+                          />
+                        </button>
                       </div>
 
-                      {/* Add to Cart Pill Button (Dark Forest Green with Shopping Cart) */}
-                      <button
-                        onClick={(e) => handleQuickAdd(product, e)}
-                        className="w-full py-1.5 sm:py-2 px-2 sm:px-3 rounded-full bg-[#051C14] hover:bg-[#0A2E22] text-white text-[10px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 sm:gap-2 transition-all shadow-sm active:scale-95 group/cart"
-                      >
-                        <ShoppingCart className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white transition-transform group-hover/cart:scale-110" />
-                        <span>Add to Cart</span>
-                      </button>
+                      {/* Product Details */}
+                      <div className="p-2.5 sm:p-3.5 flex flex-col flex-1 justify-between bg-white">
+                        <div>
+                          <Link href={`/product/${product.slug || product._id}`}>
+                            <h4 className="text-[11px] sm:text-[13px] font-medium text-zinc-700 group-hover:text-[#B38646] transition-colors line-clamp-1 mb-0.5 sm:mb-1 tracking-tight">
+                              {product.name}
+                            </h4>
+                          </Link>
+
+                          {/* Star Rating */}
+                          <div className="flex items-center gap-1 mb-1">
+                            <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
+                            <span className="text-[11px] sm:text-xs font-semibold text-zinc-800">
+                              {product.rating ? product.rating.toFixed(1) : '4.9'}
+                            </span>
+                            <span className="text-[10px] sm:text-[11px] text-zinc-400">
+                              ({product.reviewCount || 24})
+                            </span>
+                          </div>
+
+                          {/* Price */}
+                          <div className="flex items-baseline gap-1.5 sm:gap-2 mb-2 sm:mb-2.5">
+                            <span className="text-xs sm:text-sm md:text-base font-bold text-zinc-950">
+                              {formatCurrency(product.price)}
+                            </span>
+                            {product.compareAtPrice && product.compareAtPrice > product.price && (
+                              <span className="text-[10px] sm:text-xs text-zinc-400 line-through">
+                                {formatCurrency(product.compareAtPrice)}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        {/* Add to Cart Pill Button (Dark Forest Green with Shopping Cart) */}
+                        <button
+                          onClick={(e) => handleQuickAdd(product, e)}
+                          className="w-full py-1.5 sm:py-2 px-2 sm:px-3 rounded-full bg-[#051C14] hover:bg-[#0A2E22] text-white text-[10px] sm:text-xs font-semibold flex items-center justify-center gap-1.5 sm:gap-2 transition-all shadow-sm active:scale-95 group/cart"
+                        >
+                          <ShoppingCart className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-white transition-transform group-hover/cart:scale-110" />
+                          <span>Add to Cart</span>
+                        </button>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            ) : null}
 
             {/* Next / Prev Carousel Buttons on Far Right */}
             <div className="hidden xl:flex items-center gap-1.5 shrink-0 pl-1">
@@ -1051,146 +1074,156 @@ export default function HomePage() {
             </div>
           </div>
 
-          {/* Cards & Carousel Navigation */}
+          {/* Cards & Carousel Navigation with Skeleton Loading */}
           <div className="relative flex items-center">
-            {/* 5 Cards Row (Exact 5 items matching Mockup, 2 cards per row on mobile) */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-4 xl:gap-5 flex-1">
-              {EXACT_NEW_ARRIVALS.map((fallbackData, idx) => {
-                const actualIdx = (idx + newArrivalsIndex) % EXACT_NEW_ARRIVALS.length;
-                const cardData = EXACT_NEW_ARRIVALS[actualIdx];
-                const product = newArrivals.find((p) => p.slug === cardData.slug) || cardData;
-
-                const isLiked = isInWishlist(cardData._id || product._id);
-                const img = cardData.image || product.images?.[0]?.url || product.image;
-                const badge = cardData.badge;
-                const badgeType = cardData.badgeType;
-                const rating = cardData.rating;
-                const reviewCount = cardData.reviewCount;
-                const price = cardData.price;
-                const compareAtPrice = cardData.compareAtPrice;
-                const name = cardData.name;
-
-                return (
+            {isLoadingProducts ? (
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-4 xl:gap-5 flex-1">
+                {[1, 2, 3, 4, 5].map((i) => (
                   <div
-                    key={cardData._id || cardData.slug || idx}
-                    className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-[#EAE1D1]/80 flex flex-col group transition-all duration-300 hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:-translate-y-1"
+                    key={i}
+                    className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-sm border border-[#EAE1D1]/80 flex flex-col animate-pulse"
                   >
-                    {/* Top Image Flush to Card Edges */}
-                    <div className="relative aspect-[1.12/1] w-full overflow-hidden bg-zinc-100">
-                      <Image
-                        src={img}
-                        alt={name}
-                        fill
-                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
-                        className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
-                      />
-
-                      {/* Top Left Badge */}
-                      <div className="absolute top-2 left-2 z-10">
-                        {badgeType === 'rose' || badge === 'Hot' ? (
-                          <span className="text-[9.5px] sm:text-[10px] font-semibold text-white bg-[#E11D48] px-2.5 py-0.5 rounded-full shadow-sm tracking-wide">
-                            {badge}
-                          </span>
-                        ) : badgeType === 'teal' || badge === 'Trend' ? (
-                          <span className="text-[9.5px] sm:text-[10px] font-semibold text-white bg-[#064E3B] px-2.5 py-0.5 rounded-full shadow-sm tracking-wide">
-                            {badge}
-                          </span>
-                        ) : (
-                          <span className="text-[9.5px] sm:text-[10px] font-semibold text-white bg-[#0B3B2B] px-2.5 py-0.5 rounded-full shadow-sm tracking-wide">
-                            {badge}
-                          </span>
-                        )}
-                      </div>
-
-                      {/* Top Right Floating White Heart Outline */}
-                      <button
-                        onClick={(e) => handleLike({ ...cardData, ...product, image: img }, e)}
-                        className="absolute top-2 right-2 z-10 text-white drop-shadow hover:scale-110 transition-transform"
-                        aria-label="Wishlist"
-                      >
-                        <Heart
-                          className={`w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2] drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] ${
-                            isLiked ? 'fill-rose-500 text-rose-500' : 'text-white'
-                          }`}
-                        />
-                      </button>
+                    <div className="relative aspect-[1.12/1] w-full bg-[#EAE1D1]/60" />
+                    <div className="p-3.5 space-y-2.5 bg-white">
+                      <div className="h-3.5 bg-[#EAE1D1]/70 rounded w-3/4" />
+                      <div className="h-3 bg-[#EAE1D1]/50 rounded w-1/2" />
+                      <div className="h-4 bg-[#EAE1D1]/70 rounded w-1/3 mt-2" />
                     </div>
+                  </div>
+                ))}
+              </div>
+            ) : newArrivals.length > 0 ? (
+              <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4 lg:gap-4 xl:gap-5 flex-1">
+                {newArrivals.map((product, idx) => {
+                  const isLiked = isInWishlist(product._id);
+                  const img =
+                    product.images?.[0]?.url ||
+                    product.image ||
+                    '/images/new_arrivals/designer_silk_saree.jpg';
+                  const badge = product.badge || (product.bestSeller ? 'Bestseller' : 'New');
+                  const badgeType = product.badgeType || (product.bestSeller ? 'rose' : 'teal');
+                  const rating = product.rating || 4.9;
+                  const reviewCount = product.reviewCount || 24;
+                  const price = product.price;
+                  const compareAtPrice = product.compareAtPrice;
+                  const name = product.name;
 
-                    {/* Product Details */}
-                    <div className="p-2.5 sm:p-3.5 flex flex-col flex-1 justify-between bg-white">
-                      <div>
-                        <Link href={`/product/${cardData.slug}`}>
-                          <h4 className="text-[12px] sm:text-[13.5px] font-semibold text-zinc-900 group-hover:text-[#B8860B] transition-colors line-clamp-1 tracking-tight">
-                            {name}
-                          </h4>
-                        </Link>
+                  return (
+                    <div
+                      key={product._id || product.slug || idx}
+                      className="bg-white rounded-xl sm:rounded-2xl overflow-hidden shadow-[0_4px_16px_rgba(0,0,0,0.06)] border border-[#EAE1D1]/80 flex flex-col group transition-all duration-300 hover:shadow-[0_12px_28px_rgba(0,0,0,0.12)] hover:-translate-y-1"
+                    >
+                      {/* Top Image Flush to Card Edges */}
+                      <div className="relative aspect-[1.12/1] w-full overflow-hidden bg-zinc-100">
+                        <Image
+                          src={img}
+                          alt={name}
+                          fill
+                          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
+                          className="object-cover object-[center_15%] transition-transform duration-700 group-hover:scale-105"
+                        />
 
-                        {/* Star Rating */}
-                        <div className="flex items-center gap-1 mt-1">
-                          <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
-                          <span className="text-[11px] sm:text-xs font-semibold text-zinc-800">
-                            {rating.toFixed(1)}
-                          </span>
-                          <span className="text-[10px] sm:text-[11px] text-zinc-400">
-                            ({reviewCount})
-                          </span>
-                        </div>
-                      </div>
-
-                      {/* Price & Action Row */}
-                      <div className="flex items-center justify-between mt-2 pt-0.5">
-                        <div className="flex items-baseline gap-1 sm:gap-1.5 min-w-0">
-                          <span className="text-xs sm:text-[14px] md:text-[15px] font-bold text-zinc-950">
-                            {formatCurrency(price)}
-                          </span>
-                          {compareAtPrice && (
-                            <span className="text-[10px] sm:text-xs text-zinc-400 line-through font-normal">
-                              {formatCurrency(compareAtPrice)}
+                        {/* Top Left Badge */}
+                        <div className="absolute top-2 left-2 z-10">
+                          {badgeType === 'rose' || badge === 'Hot' ? (
+                            <span className="text-[9.5px] sm:text-[10px] font-semibold text-white bg-[#E11D48] px-2.5 py-0.5 rounded-full shadow-sm tracking-wide">
+                              {badge}
+                            </span>
+                          ) : (
+                            <span className="text-[9.5px] sm:text-[10px] font-semibold text-white bg-[#064E3B] px-2.5 py-0.5 rounded-full shadow-sm tracking-wide">
+                              {badge}
                             </span>
                           )}
                         </div>
 
-                        {/* Circular Black Action Button with White Right Arrow */}
+                        {/* Top Right Floating White Heart Outline */}
                         <button
-                          onClick={(e) => handleQuickAdd({ ...cardData, ...product, image: img }, e)}
-                          title="Add to Cart"
-                          aria-label="Add to Cart"
-                          className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-zinc-950 hover:bg-[#B8860B] text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-105 active:scale-95 shrink-0 ml-1.5 group/arrow cursor-pointer"
+                          onClick={(e) => handleLike(product, e)}
+                          className="absolute top-2 right-2 z-10 text-white drop-shadow hover:scale-110 transition-transform"
+                          aria-label="Wishlist"
                         >
-                          <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5] transition-transform group-hover/arrow:translate-x-0.5" />
+                          <Heart
+                            className={`w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2] drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)] ${
+                              isLiked ? 'fill-rose-500 text-rose-500' : 'text-white'
+                            }`}
+                          />
                         </button>
                       </div>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
 
-            {/* Desktop Carousel Controls next to 5th Card */}
-            <div className="hidden xl:flex items-center gap-1.5 pl-3 xl:pl-4 shrink-0">
-              <button
-                onClick={() => {
-                  setNewArrivalsIndex(
-                    (prev) => (prev - 1 + EXACT_NEW_ARRIVALS.length) % EXACT_NEW_ARRIVALS.length
+                      {/* Product Details */}
+                      <div className="p-2.5 sm:p-3.5 flex flex-col flex-1 justify-between bg-white">
+                        <div>
+                          <Link href={`/product/${product.slug || product._id}`}>
+                            <h4 className="text-[12px] sm:text-[13.5px] font-semibold text-zinc-900 group-hover:text-[#B8860B] transition-colors line-clamp-1 tracking-tight">
+                              {name}
+                            </h4>
+                          </Link>
+
+                          {/* Star Rating */}
+                          <div className="flex items-center gap-1 mt-1">
+                            <Star className="w-3 h-3 sm:w-3.5 sm:h-3.5 fill-[#F59E0B] text-[#F59E0B]" />
+                            <span className="text-[11px] sm:text-xs font-semibold text-zinc-800">
+                              {typeof rating === 'number' ? rating.toFixed(1) : '4.9'}
+                            </span>
+                            <span className="text-[10px] sm:text-[11px] text-zinc-400">
+                              ({reviewCount})
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Price & Action Row */}
+                        <div className="flex items-center justify-between mt-2 pt-0.5">
+                          <div className="flex items-baseline gap-1 sm:gap-1.5 min-w-0">
+                            <span className="text-xs sm:text-[14px] md:text-[15px] font-bold text-zinc-950">
+                              {formatCurrency(price)}
+                            </span>
+                            {compareAtPrice && compareAtPrice > price && (
+                              <span className="text-[10px] sm:text-xs text-zinc-400 line-through font-normal">
+                                {formatCurrency(compareAtPrice)}
+                              </span>
+                            )}
+                          </div>
+
+                          {/* Circular Black Action Button with White Right Arrow */}
+                          <button
+                            onClick={(e) => handleQuickAdd(product, e)}
+                            title="Add to Cart"
+                            aria-label="Add to Cart"
+                            className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-zinc-950 hover:bg-[#B8860B] text-white flex items-center justify-center transition-all duration-200 shadow-sm hover:scale-105 active:scale-95 shrink-0 ml-1.5 group/arrow cursor-pointer"
+                          >
+                            <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 stroke-[2.5] transition-transform group-hover/arrow:translate-x-0.5" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
                   );
-                }}
-                aria-label="Previous arrival"
-                className="w-8 h-8 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] border border-zinc-200/80 hover:border-zinc-400 flex items-center justify-center text-zinc-700 hover:text-black transition-all hover:scale-105 active:scale-95 cursor-pointer"
-              >
-                <ChevronLeft className="w-4 h-4 stroke-[2]" />
-              </button>
-              <button
-                onClick={() => {
-                  setNewArrivalsIndex(
-                    (prev) => (prev + 1) % EXACT_NEW_ARRIVALS.length
-                  );
-                }}
-                aria-label="Next arrival"
-                className="w-8 h-8 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] border border-zinc-200/80 hover:border-zinc-400 flex items-center justify-center text-zinc-700 hover:text-black transition-all hover:scale-105 active:scale-95 cursor-pointer"
-              >
-                <ChevronRight className="w-4 h-4 stroke-[2]" />
-              </button>
-            </div>
+                })}
+              </div>
+            ) : null}
+
+            {/* Desktop Carousel Controls next to 5th Card (only if more than 5 cards) */}
+            {newArrivals.length > 5 && (
+              <div className="hidden xl:flex items-center gap-1.5 pl-3 xl:pl-4 shrink-0">
+                <button
+                  onClick={() => {
+                    setNewArrivalsIndex((prev) => (prev - 1 + newArrivals.length) % newArrivals.length);
+                  }}
+                  aria-label="Previous arrival"
+                  className="w-8 h-8 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] border border-zinc-200/80 hover:border-zinc-400 flex items-center justify-center text-zinc-700 hover:text-black transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                >
+                  <ChevronLeft className="w-4 h-4 stroke-[2]" />
+                </button>
+                <button
+                  onClick={() => {
+                    setNewArrivalsIndex((prev) => (prev + 1) % newArrivals.length);
+                  }}
+                  aria-label="Next arrival"
+                  className="w-8 h-8 rounded-full bg-white shadow-[0_2px_8px_rgba(0,0,0,0.08)] border border-zinc-200/80 hover:border-zinc-400 flex items-center justify-center text-zinc-700 hover:text-black transition-all hover:scale-105 active:scale-95 cursor-pointer"
+                >
+                  <ChevronRight className="w-4 h-4 stroke-[2]" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       </section>
@@ -1339,43 +1372,62 @@ export default function HomePage() {
               </h2>
             </div>
 
-            {/* Official Google Reviews Badge */}
-            <div className="bg-white border border-[#D4AF37]/35 rounded-2xl p-4 sm:p-5 shadow-md flex items-center gap-4">
-              {/* Google G Logo */}
-              <div className="w-10 h-10 rounded-xl bg-zinc-50 border border-zinc-200/70 flex items-center justify-center flex-shrink-0 shadow-sm">
-                <svg className="w-6 h-6" viewBox="0 0 24 24">
-                  <path
-                    fill="#4285F4"
-                    d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"
-                  />
-                  <path
-                    fill="#34A853"
-                    d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"
-                  />
-                  <path
-                    fill="#FBBC05"
-                    d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"
-                  />
-                  <path
-                    fill="#EA4335"
-                    d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
-                  />
-                </svg>
-              </div>
-
-              <div className="space-y-0.5 text-left">
-                <div className="flex items-center gap-2">
-                  <span className="font-serif text-xl font-bold text-zinc-900 leading-none">4.9</span>
-                  <div className="flex items-center gap-0.5 text-amber-500">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
-                    ))}
-                  </div>
+            {/* Official Google Reviews Badge & Header Action Button */}
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <a
+                href="https://g.page/r/CTOKP0LCfhhDECE/review"
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View reviews on Google"
+                className="bg-white hover:bg-zinc-50 border border-[#D4AF37]/35 hover:border-[#D4AF37]/70 rounded-2xl p-4 sm:p-5 shadow-md hover:shadow-lg flex items-center gap-4 transition-all duration-200 group"
+              >
+                {/* Google G Logo */}
+                <div className="w-10 h-10 rounded-xl bg-zinc-50 border border-zinc-200/70 flex items-center justify-center flex-shrink-0 shadow-sm group-hover:scale-105 transition-transform">
+                  <svg className="w-6 h-6" viewBox="0 0 24 24">
+                    <path
+                      fill="#4285F4"
+                      d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"
+                    />
+                    <path
+                      fill="#34A853"
+                      d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"
+                    />
+                    <path
+                      fill="#FBBC05"
+                      d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"
+                    />
+                    <path
+                      fill="#EA4335"
+                      d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
+                    />
+                  </svg>
                 </div>
-                <p className="text-[11px] text-zinc-500 font-medium">
-                  Based on <strong>1,420+ Verified Reviews</strong> on Google
-                </p>
-              </div>
+
+                <div className="space-y-0.5 text-left">
+                  <div className="flex items-center gap-2">
+                    <span className="font-serif text-xl font-bold text-zinc-900 leading-none">4.9</span>
+                    <div className="flex items-center gap-0.5 text-amber-500">
+                      {[...Array(5)].map((_, i) => (
+                        <Star key={i} className="w-4 h-4 fill-amber-500 text-amber-500" />
+                      ))}
+                    </div>
+                  </div>
+                  <p className="text-[11px] text-zinc-500 font-medium">
+                    Based on <strong>1,420+ Verified Reviews</strong> on Google
+                  </p>
+                </div>
+              </a>
+
+              {/* Write Review Button */}
+              <a
+                href="https://g.page/r/CTOKP0LCfhhDECE/review"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-5 py-4 rounded-2xl bg-[#0B2518] hover:bg-[#133E29] text-[#FAF8F5] hover:text-white border border-[#D4AF37]/50 shadow-md hover:shadow-xl transition-all duration-300 font-medium text-xs tracking-wider group flex-shrink-0"
+              >
+                <span>Write a Review</span>
+                <ExternalLink className="w-3.5 h-3.5 text-[#D4AF37] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </a>
             </div>
           </div>
 
@@ -1433,6 +1485,39 @@ export default function HomePage() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Centered Google Review Button */}
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+            <a
+              href="https://g.page/r/CTOKP0LCfhhDECE/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-3 px-8 py-3.5 rounded-full bg-[#0B2518] hover:bg-[#133E29] text-white border border-[#D4AF37]/60 shadow-lg hover:shadow-2xl hover:scale-105 active:scale-95 transition-all duration-300 group font-semibold text-xs sm:text-sm tracking-wider"
+            >
+              <div className="w-6 h-6 rounded-full bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                <svg className="w-3.5 h-3.5" viewBox="0 0 24 24">
+                  <path
+                    fill="#4285F4"
+                    d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.665-5.17 3.665-9.17z"
+                  />
+                  <path
+                    fill="#34A853"
+                    d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"
+                  />
+                  <path
+                    fill="#FBBC05"
+                    d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.98 0 12s.45 3.82 1.25 5.42l4.03-3.15z"
+                  />
+                  <path
+                    fill="#EA4335"
+                    d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
+                  />
+                </svg>
+              </div>
+              <span>Write a Review on Google</span>
+              <ExternalLink className="w-4 h-4 text-[#D4AF37] transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+            </a>
           </div>
 
         </div>

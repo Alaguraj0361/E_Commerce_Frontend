@@ -62,6 +62,7 @@ export interface Product {
   featured: boolean;
   bestSeller: boolean;
   newArrival: boolean;
+  hasBespokeTailoring?: boolean;
   rating: number;
   reviewCount: number;
   isActive: boolean;

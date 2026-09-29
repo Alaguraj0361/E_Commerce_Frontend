@@ -127,11 +127,12 @@ export default function ProductDetailPage() {
     );
   }
 
-  // Calculate dynamic add-on charges
-  const addOnsTotal =
-    (addOnFeedingZip ? 250 : 0) +
-    (addOnCanCan ? 650 : 0) +
-    (addOnBlousePad ? 200 : 0);
+  // Calculate dynamic add-on charges (only if Bespoke Tailoring is enabled)
+  const addOnsTotal = product.hasBespokeTailoring
+    ? (addOnFeedingZip ? 250 : 0) +
+      (addOnCanCan ? 650 : 0) +
+      (addOnBlousePad ? 200 : 0)
+    : 0;
 
   const basePrice = selectedVariant ? selectedVariant.price : product.price;
   const currentPrice = basePrice + addOnsTotal;
@@ -190,18 +191,28 @@ export default function ProductDetailPage() {
     if (addOnCanCan) selectedAddOnsList.push('Can Can Flare (+₹650)');
     if (addOnBlousePad) selectedAddOnsList.push('Blouse Pad (+₹200)');
 
-    const customAttributes: Record<string, any> = {
-      size: selectedVariant?.attributes?.size || 'Free Size',
-      height: selectedHeight,
-      neckDesign: selectedNeckDesign,
-      sleeves: selectedSleeves,
-    };
+    const hasSizeVariants = Boolean(
+      product.variants &&
+      product.variants.length > 0 &&
+      product.variants.some((v) => v.attributes?.size)
+    );
 
-    if (selectedAddOnsList.length > 0) {
-      customAttributes.addOns = selectedAddOnsList;
+    const customAttributes: Record<string, any> = {};
+
+    if (hasSizeVariants && selectedVariant?.attributes?.size) {
+      customAttributes.size = selectedVariant.attributes.size;
     }
-    if (customNotes.trim()) {
-      customAttributes.notes = customNotes.trim();
+
+    if (product.hasBespokeTailoring) {
+      customAttributes.height = selectedHeight;
+      customAttributes.neckDesign = selectedNeckDesign;
+      customAttributes.sleeves = selectedSleeves;
+      if (selectedAddOnsList.length > 0) {
+        customAttributes.addOns = selectedAddOnsList;
+      }
+      if (customNotes.trim()) {
+        customAttributes.notes = customNotes.trim();
+      }
     }
 
     addItem({
@@ -314,38 +325,40 @@ export default function ProductDetailPage() {
             </p>
           )}
 
-          {/* 3. SIZE SELECTION SWATCHES */}
-          <div className="space-y-3 pt-2 border-t border-zinc-100 dark:border-zinc-800">
-            <div className="flex items-center justify-between text-xs">
-              <div className="flex items-center gap-2">
-                <span className="font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">
-                  Size:
-                </span>
-                <span className="text-amber-600 dark:text-amber-400 font-bold">
-                  {selectedVariant?.attributes?.size || 'Select a size'}
-                </span>
+          {/* 3. SIZE SELECTION SWATCHES (Only if product has size variants) */}
+          {product.variants && product.variants.length > 0 && product.variants.some((v) => v.attributes?.size) && (
+            <div className="space-y-3 pt-2 border-t border-zinc-100 dark:border-zinc-800">
+              <div className="flex items-center justify-between text-xs">
+                <div className="flex items-center gap-2">
+                  <span className="font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">
+                    Size:
+                  </span>
+                  <span className="text-amber-600 dark:text-amber-400 font-bold">
+                    {selectedVariant?.attributes?.size || 'Select a size'}
+                  </span>
+                </div>
+
+                {/* View Size Chart Modal Trigger */}
+                <button
+                  type="button"
+                  onClick={() => setIsSizeChartOpen(true)}
+                  className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 hover:text-amber-700 font-bold underline transition-colors"
+                >
+                  <Ruler className="w-3.5 h-3.5" /> View Size Chart
+                </button>
               </div>
 
-              {/* View Size Chart Modal Trigger */}
-              <button
-                type="button"
-                onClick={() => setIsSizeChartOpen(true)}
-                className="flex items-center gap-1.5 text-amber-600 dark:text-amber-400 hover:text-amber-700 font-bold underline transition-colors"
-              >
-                <Ruler className="w-3.5 h-3.5" /> View Size Chart
-              </button>
-            </div>
-
-            {/* Size Swatch Buttons (XXXS to 5XL and Custom) */}
-            <div className="flex flex-wrap gap-2">
-              {product.variants && product.variants.length > 0
-                ? product.variants.map((v) => {
+              {/* Size Swatch Buttons */}
+              <div className="flex flex-wrap gap-2">
+                {product.variants
+                  .filter((v) => v.attributes?.size)
+                  .map((v) => {
                     const sizeLabel = v.attributes?.size || v.sku;
                     const isSelected = selectedVariant?._id === v._id;
 
                     return (
                       <button
-                        key={v.sku}
+                        key={v.sku || v._id}
                         onClick={() => setSelectedVariant(v)}
                         className={`min-w-[42px] px-3 py-2 rounded-xl text-xs font-bold border transition-all ${
                           isSelected
@@ -356,135 +369,130 @@ export default function ProductDetailPage() {
                         {sizeLabel}
                       </button>
                     );
-                  })
-                : ['XS', 'S', 'M', 'L', 'XL', '2XL', 'Custom'].map((s) => (
-                    <button
-                      key={s}
-                      className="px-3 py-2 rounded-xl text-xs font-bold border border-zinc-200 text-zinc-700"
-                    >
-                      {s}
-                    </button>
-                  ))}
-            </div>
-          </div>
-
-          {/* 4. TAILORING CUSTOMIZATION SUITE */}
-          <div className="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">
-              <Scissors className="w-4 h-4 text-amber-500" />
-              <span>Bespoke Tailoring Options</span>
-            </div>
-
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-              {/* Height Selector */}
-              <div>
-                <label className="block text-zinc-600 dark:text-zinc-400 font-semibold mb-1">
-                  Height (Head to Toe):
-                </label>
-                <select
-                  value={selectedHeight}
-                  onChange={(e) => setSelectedHeight(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 font-medium focus:ring-1 focus:ring-amber-500 focus:outline-none"
-                >
-                  {["4'10\"", "4'11\"", "5'0\"", "5'1\"", "5'2\"", "5'3\"", "5'4\"", "5'5\"", "5'6\"", "5'7\"", "5'8\"+"].map((h) => (
-                    <option key={h} value={h}>
-                      {h}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Neck Design Selector */}
-              <div>
-                <label className="block text-zinc-600 dark:text-zinc-400 font-semibold mb-1">
-                  Neck Design:
-                </label>
-                <select
-                  value={selectedNeckDesign}
-                  onChange={(e) => setSelectedNeckDesign(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 font-medium focus:ring-1 focus:ring-amber-500 focus:outline-none"
-                >
-                  <option value="Standard (As shown)">Standard (As shown)</option>
-                  <option value="Sweet Heart">Sweet Heart</option>
-                  <option value="Round Square">Round Square</option>
-                  <option value="U-Round">U-Round</option>
-                  <option value="Boat Neck">Boat Neck</option>
-                  <option value="Square Neck">Square Neck</option>
-                </select>
-              </div>
-
-              {/* Sleeves Preference */}
-              <div className="sm:col-span-2">
-                <label className="block text-zinc-600 dark:text-zinc-400 font-semibold mb-1">
-                  Sleeves Style:
-                </label>
-                <select
-                  value={selectedSleeves}
-                  onChange={(e) => setSelectedSleeves(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 font-medium focus:ring-1 focus:ring-amber-500 focus:outline-none"
-                >
-                  <option value="Standard (As shown)">Standard (As shown)</option>
-                  <option value="Sleeveless">Sleeveless</option>
-                  <option value="Cap Sleeves">Cap Sleeves</option>
-                  <option value="Elbow Length">Elbow Length</option>
-                  <option value="3/4th Sleeves">3/4th Sleeves</option>
-                  <option value="Full Length">Full Length</option>
-                </select>
+                  })}
               </div>
             </div>
+          )}
 
-            {/* Custom Tailoring Add-ons (Checkboxes with dynamic price update) */}
-            <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800 space-y-2">
-              <span className="block text-[11px] font-bold uppercase tracking-wider text-zinc-500">
-                Optional Tailoring Add-ons:
-              </span>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                <label className="flex items-center gap-2 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 cursor-pointer hover:border-amber-400 transition-colors">
-                  <input
-                    type="checkbox"
-                    checked={addOnCanCan}
-                    onChange={(e) => setAddOnCanCan(e.target.checked)}
-                    className="rounded text-amber-600 focus:ring-amber-500 w-4 h-4"
-                  />
-                  <span>Can Can Flare (+₹650)</span>
-                </label>
+          {/* 4. TAILORING CUSTOMIZATION SUITE (Only if enabled in admin) */}
+          {Boolean(product.hasBespokeTailoring) && (
+            <div className="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 space-y-4">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">
+                <Scissors className="w-4 h-4 text-amber-500" />
+                <span>Bespoke Tailoring Options</span>
+              </div>
 
-                <label className="flex items-center gap-2 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 cursor-pointer hover:border-amber-400 transition-colors">
-                  <input
-                    type="checkbox"
-                    checked={addOnFeedingZip}
-                    onChange={(e) => setAddOnFeedingZip(e.target.checked)}
-                    className="rounded text-amber-600 focus:ring-amber-500 w-4 h-4"
-                  />
-                  <span>Feeding Zip (+₹250)</span>
-                </label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                {/* Height Selector */}
+                <div>
+                  <label className="block text-zinc-600 dark:text-zinc-400 font-semibold mb-1">
+                    Height (Head to Toe):
+                  </label>
+                  <select
+                    value={selectedHeight}
+                    onChange={(e) => setSelectedHeight(e.target.value)}
+                    className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 font-medium focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                  >
+                    {["4'10\"", "4'11\"", "5'0\"", "5'1\"", "5'2\"", "5'3\"", "5'4\"", "5'5\"", "5'6\"", "5'7\"", "5'8\"+"].map((h) => (
+                      <option key={h} value={h}>
+                        {h}
+                      </option>
+                    ))}
+                  </select>
+                </div>
 
-                <label className="flex items-center gap-2 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 cursor-pointer hover:border-amber-400 transition-colors">
-                  <input
-                    type="checkbox"
-                    checked={addOnBlousePad}
-                    onChange={(e) => setAddOnBlousePad(e.target.checked)}
-                    className="rounded text-amber-600 focus:ring-amber-500 w-4 h-4"
-                  />
-                  <span>Blouse Pad (+₹200)</span>
+                {/* Neck Design Selector */}
+                <div>
+                  <label className="block text-zinc-600 dark:text-zinc-400 font-semibold mb-1">
+                    Neck Design:
+                  </label>
+                  <select
+                    value={selectedNeckDesign}
+                    onChange={(e) => setSelectedNeckDesign(e.target.value)}
+                    className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 font-medium focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                  >
+                    <option value="Standard (As shown)">Standard (As shown)</option>
+                    <option value="Sweet Heart">Sweet Heart</option>
+                    <option value="Round Square">Round Square</option>
+                    <option value="U-Round">U-Round</option>
+                    <option value="Boat Neck">Boat Neck</option>
+                    <option value="Square Neck">Square Neck</option>
+                  </select>
+                </div>
+
+                {/* Sleeves Preference */}
+                <div className="sm:col-span-2">
+                  <label className="block text-zinc-600 dark:text-zinc-400 font-semibold mb-1">
+                    Sleeves Style:
+                  </label>
+                  <select
+                    value={selectedSleeves}
+                    onChange={(e) => setSelectedSleeves(e.target.value)}
+                    className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 font-medium focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                  >
+                    <option value="Standard (As shown)">Standard (As shown)</option>
+                    <option value="Sleeveless">Sleeveless</option>
+                    <option value="Cap Sleeves">Cap Sleeves</option>
+                    <option value="Elbow Length">Elbow Length</option>
+                    <option value="3/4th Sleeves">3/4th Sleeves</option>
+                    <option value="Full Length">Full Length</option>
+                  </select>
+                </div>
+              </div>
+
+              {/* Custom Tailoring Add-ons (Checkboxes with dynamic price update) */}
+              <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800 space-y-2">
+                <span className="block text-[11px] font-bold uppercase tracking-wider text-zinc-500">
+                  Optional Tailoring Add-ons:
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
+                  <label className="flex items-center gap-2 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 cursor-pointer hover:border-amber-400 transition-colors">
+                    <input
+                      type="checkbox"
+                      checked={addOnCanCan}
+                      onChange={(e) => setAddOnCanCan(e.target.checked)}
+                      className="rounded text-amber-600 focus:ring-amber-500 w-4 h-4"
+                    />
+                    <span>Can Can Flare (+₹650)</span>
+                  </label>
+
+                  <label className="flex items-center gap-2 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 cursor-pointer hover:border-amber-400 transition-colors">
+                    <input
+                      type="checkbox"
+                      checked={addOnFeedingZip}
+                      onChange={(e) => setAddOnFeedingZip(e.target.checked)}
+                      className="rounded text-amber-600 focus:ring-amber-500 w-4 h-4"
+                    />
+                    <span>Feeding Zip (+₹250)</span>
+                  </label>
+
+                  <label className="flex items-center gap-2 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 cursor-pointer hover:border-amber-400 transition-colors">
+                    <input
+                      type="checkbox"
+                      checked={addOnBlousePad}
+                      onChange={(e) => setAddOnBlousePad(e.target.checked)}
+                      className="rounded text-amber-600 focus:ring-amber-500 w-4 h-4"
+                    />
+                    <span>Blouse Pad (+₹200)</span>
+                  </label>
+                </div>
+              </div>
+
+              {/* Custom Notes / Measurements */}
+              <div className="pt-2">
+                <label className="block text-[11px] font-semibold text-zinc-500 mb-1">
+                  Custom Measurements or Specific Requests (Optional):
                 </label>
+                <input
+                  type="text"
+                  placeholder="e.g. Bust 35, Waist 29, please add extra margin..."
+                  value={customNotes}
+                  onChange={(e) => setCustomNotes(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl text-xs border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                />
               </div>
             </div>
-
-            {/* Custom Notes / Measurements */}
-            <div className="pt-2">
-              <label className="block text-[11px] font-semibold text-zinc-500 mb-1">
-                Custom Measurements or Specific Requests (Optional):
-              </label>
-              <input
-                type="text"
-                placeholder="e.g. Bust 35, Waist 29, please add extra margin..."
-                value={customNotes}
-                onChange={(e) => setCustomNotes(e.target.value)}
-                className="w-full px-3 py-2 rounded-xl text-xs border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 focus:ring-1 focus:ring-amber-500 focus:outline-none"
-              />
-            </div>
-          </div>
+          )}
 
           {/* 5. PINCODE DELIVERY ESTIMATOR */}
           <div className="p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-2">

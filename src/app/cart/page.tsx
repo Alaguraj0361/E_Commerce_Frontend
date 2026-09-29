@@ -251,7 +251,7 @@ export default function CartPage() {
               </div>
 
               <div className="flex justify-between text-zinc-600 dark:text-zinc-400">
-                <span>GST (18% Integrated Tax)</span>
+                <span>GST (5% Integrated Tax)</span>
                 <span className="font-medium text-zinc-900 dark:text-zinc-100">
                   {formatCurrency(tax)}
                 </span>

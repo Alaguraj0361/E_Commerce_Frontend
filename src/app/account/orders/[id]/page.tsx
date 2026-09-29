@@ -217,7 +217,7 @@ export default function OrderDetailPage() {
               <span>{order.shippingFee === 0 ? 'Complimentary' : formatCurrency(order.shippingFee)}</span>
             </div>
             <div className="flex justify-between text-zinc-500">
-              <span>GST (18% Integrated Tax)</span>
+              <span>GST (5% Integrated Tax)</span>
               <span>{formatCurrency(order.tax)}</span>
             </div>
             <div className="flex justify-between text-base font-black text-zinc-900 dark:text-zinc-100 pt-3 border-t border-zinc-200 dark:border-zinc-800">

@@ -196,7 +196,7 @@ export const useCartStore = create<CartState>((set, get) => ({
     const subtotal = get().getSubtotal();
     const discount = get().getDiscount();
     const discounted = Math.max(0, subtotal - discount);
-    return Math.round(discounted * 0.18 * 100) / 100;
+    return Math.round(discounted * 0.05 * 100) / 100;
   },
 
   getTotal: () => {
