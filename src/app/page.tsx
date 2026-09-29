@@ -876,14 +876,19 @@ export default function HomePage() {
       {/* ============================================================== */}
       <section
         id="special-offer-section"
-        className="relative w-full overflow-hidden bg-[#240614] border-y border-[#D4AF37]/35 text-white scroll-mt-20 lg:scroll-mt-24 shadow-[0_12px_40px_rgba(0,0,0,0.45)]"
+        className="relative w-full overflow-hidden bg-[#1E0312] border-y border-[#D4AF37]/35 text-white scroll-mt-20 lg:scroll-mt-24 shadow-[0_12px_40px_rgba(0,0,0,0.45)]"
       >
-        {/* Full-width Royal Wine Silk Background with ambient illumination */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#200411] via-[#2A0818] to-[#1E0310] pointer-events-none" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_35%_50%,_var(--tw-gradient-stops))] from-[#4A132C]/60 via-transparent to-transparent pointer-events-none" />
+        {/* Full-width Royal Wine Velvet Silk Background with radial ambient illumination */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1A0210] via-[#260517] to-[#18010E] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_32%_50%,rgba(78,20,48,0.7)_0%,transparent_70%)] pointer-events-none" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_55%_50%,rgba(229,186,114,0.08)_0%,transparent_60%)] pointer-events-none" />
+
+        {/* Top and Bottom Gold Hairline Trims */}
+        <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#E5BA72]/60 to-transparent z-20 pointer-events-none" />
+        <div className="absolute inset-x-0 bottom-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#E5BA72]/60 to-transparent z-20 pointer-events-none" />
 
         {/* Far Left: Botanical Leaf Linework Vector */}
-        <div className="absolute left-0 bottom-0 top-0 w-32 sm:w-48 lg:w-64 pointer-events-none opacity-40 z-0">
+        <div className="absolute left-0 bottom-0 top-0 w-28 sm:w-44 lg:w-56 pointer-events-none opacity-30 z-0">
           <Image
             src="/images/offers/botanical_leaves.svg"
             alt="Gold Botanical Motifs"
@@ -892,45 +897,55 @@ export default function HomePage() {
           />
         </div>
 
-        {/* Right Side: Ultra High Clarity 4K Photorealistic Ethnic Fabrics */}
-        <div className="absolute right-0 top-0 bottom-0 w-[48%] sm:w-[48%] md:w-[46%] lg:w-[44%] xl:w-[42%] h-full z-0 overflow-hidden pointer-events-none">
+        {/* Right Side: Ultra High Clarity 4K Photorealistic Ethnic Fabrics with Seamless Alpha Mask (Zero Hard Line) */}
+        <div
+          className="absolute right-0 top-0 bottom-0 w-[55%] sm:w-[50%] md:w-[46%] lg:w-[44%] xl:w-[42%] h-full z-0 overflow-hidden pointer-events-none"
+          style={{
+            maskImage:
+              'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.12) 15%, rgba(0,0,0,0.7) 35%, black 60%)',
+            WebkitMaskImage:
+              'linear-gradient(to right, transparent 0%, rgba(0,0,0,0.12) 15%, rgba(0,0,0,0.7) 35%, black 60%)',
+          }}
+        >
           <Image
             src="/images/offers/ethnic_fabrics_clarity.jpg"
             alt="Luxury Ethnic Fabrics with Jasmine Garland"
             fill
             priority
-            className="object-cover object-center"
-            sizes="(max-width: 1024px) 50vw, 42vw"
+            className="object-cover object-right"
+            sizes="(max-width: 1024px) 55vw, 42vw"
           />
-          {/* Feathered gradient to dissolve fabrics seamlessly into the burgundy background on the left */}
-          <div className="absolute inset-y-0 left-0 w-24 sm:w-36 lg:w-48 bg-gradient-to-r from-[#240614] via-[#240614]/70 to-transparent" />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#200411]/40 via-transparent to-[#200411]/30" />
         </div>
 
-        {/* Full-width Responsive Content Grid */}
-        <div className="w-full relative z-10 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-24 py-7 sm:py-10 md:py-12 lg:py-14 xl:py-16 flex flex-row items-center justify-between">
-          {/* Left Column: Crisp High-End Typography & CTA */}
-          <div className="max-w-xl flex flex-col items-start space-y-1.5 sm:space-y-3 lg:space-y-3.5 z-10">
-            {/* Limited Time Offer */}
-            <span className="text-[#DEB371] font-serif tracking-[0.22em] text-[10px] sm:text-xs md:text-sm font-medium uppercase drop-shadow">
-              Limited Time Offer
-            </span>
+        {/* Mobile Backdrop Overlay for 100% Crisp Text Legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1A0210]/95 via-[#1A0210]/75 to-transparent md:hidden z-0 pointer-events-none" />
 
-            {/* FLAT 20% OFF */}
-            <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl lg:text-[54px] xl:text-[62px] font-normal tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-[#FFF5DC] via-[#F5D48D] to-[#CF9F42] leading-[1.08] drop-shadow-[0_2px_14px_rgba(0,0,0,0.6)]">
+        {/* Centered Luxury Content Stage */}
+        <div className="max-w-[1480px] mx-auto relative z-10 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 py-8 sm:py-10 md:py-12 lg:py-14 flex flex-col md:flex-row items-center justify-between gap-5 md:gap-8 lg:gap-10">
+          {/* Left Column: Crisp High-End Typography & CTA */}
+          <div className="flex flex-col items-center md:items-start text-center md:text-left max-w-lg lg:max-w-xl z-10 space-y-2 sm:space-y-3 lg:space-y-3.5">
+            {/* Limited Time Offer Eyebrow with gold accent lines */}
+            <div className="inline-flex items-center gap-2.5 text-[#DEB371] tracking-[0.22em] text-[10.5px] sm:text-xs font-semibold uppercase">
+              <span className="w-5 sm:w-7 h-[1px] bg-gradient-to-r from-transparent to-[#DEB371]" />
+              <span>Limited Time Offer</span>
+              <span className="w-5 sm:w-7 h-[1px] bg-gradient-to-l from-transparent to-[#DEB371]" />
+            </div>
+
+            {/* FLAT 20% OFF Headline */}
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-[54px] xl:text-[60px] font-bold tracking-tight leading-[1.08] text-transparent bg-clip-text bg-gradient-to-r from-[#FFF8E7] via-[#F8DA93] to-[#CF9F42] drop-shadow-[0_2px_14px_rgba(0,0,0,0.65)]">
               FLAT 20% OFF
             </h2>
 
-            {/* On All Ethnic Wear */}
-            <p className="font-serif text-xs sm:text-base md:text-lg lg:text-xl text-[#EBD9C2] font-light tracking-wide drop-shadow">
+            {/* On All Ethnic Wear Subtitle */}
+            <p className="font-serif italic text-sm sm:text-base md:text-lg lg:text-xl text-[#F3E7D5] font-normal tracking-wide drop-shadow">
               On All Ethnic Wear
             </p>
 
-            {/* Shop Now Button */}
-            <div className="pt-1.5 sm:pt-3">
+            {/* Shop Now CTA Button */}
+            <div className="pt-2 sm:pt-3">
               <Link
                 href="/shop?sale=true"
-                className="inline-flex items-center gap-2 sm:gap-2.5 px-5 sm:px-8 py-2 sm:py-3 rounded-full bg-gradient-to-r from-[#E5BD7B] via-[#DEB371] to-[#D5A558] hover:brightness-110 text-[#240614] font-semibold text-[11px] sm:text-sm tracking-wide uppercase transition-all shadow-[0_4px_16px_rgba(0,0,0,0.4)] transform hover:scale-105 group/btn"
+                className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#F0CF85] via-[#E2B768] to-[#D19B45] hover:from-[#FCE4A6] hover:to-[#DEAA50] text-[#1E0312] font-bold text-xs sm:text-sm tracking-wider uppercase shadow-[0_4px_18px_rgba(0,0,0,0.4)] hover:shadow-[0_6px_25px_rgba(226,183,104,0.45)] transition-all duration-300 transform hover:scale-105 active:scale-95 group/btn"
               >
                 <span>Shop Now</span>
                 <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover/btn:translate-x-1 stroke-[2.5]" />
@@ -939,8 +954,10 @@ export default function HomePage() {
           </div>
 
           {/* Center Badge: Precision Vector SVG Royal Arch with 20% OFF */}
-          <div className="flex shrink-0 items-center justify-center mr-auto ml-2 sm:ml-6 md:ml-10 lg:ml-16 xl:ml-24 z-10">
-            <div className="relative w-20 h-16 sm:w-28 sm:h-24 md:w-36 md:h-32 lg:w-48 lg:h-44 xl:w-52 xl:h-48 drop-shadow-[0_8px_20px_rgba(0,0,0,0.5)] transform hover:scale-105 transition-transform duration-300">
+          <div className="relative shrink-0 flex items-center justify-center z-10 order-first md:order-none md:mr-auto md:ml-4 lg:ml-8 xl:ml-12 my-1 md:my-0">
+            {/* Soft gold ambient backlight glow */}
+            <div className="absolute inset-0 bg-[#E5BA72]/15 blur-2xl rounded-full scale-125 pointer-events-none" />
+            <div className="relative w-20 h-16 sm:w-28 sm:h-24 md:w-36 md:h-32 lg:w-44 lg:h-40 xl:w-48 xl:h-44 drop-shadow-[0_8px_24px_rgba(0,0,0,0.6)] hover:scale-105 transition-transform duration-300">
               <Image
                 src="/images/offers/arch_badge.svg"
                 alt="20% OFF Royal Arch Badge"
@@ -952,7 +969,7 @@ export default function HomePage() {
           </div>
 
           {/* Spacer to accommodate the right fabrics drape */}
-          <div className="hidden lg:block w-[32%] xl:w-[35%] shrink-0 pointer-events-none" />
+          <div className="hidden lg:block w-[30%] xl:w-[34%] shrink-0 pointer-events-none" />
         </div>
       </section>
 
