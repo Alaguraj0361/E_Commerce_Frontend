@@ -18,6 +18,7 @@ import {
 import { api } from '../../../../lib/api';
 import { Order } from '../../../../types';
 import { formatCurrency } from '../../../../lib/utils';
+import { LotusIcon } from '../../../../components/ui/BrandLogo';
 
 const STATUS_STEPS = ['Confirmed', 'Processing', 'Packed', 'Shipped', 'Delivered'];
 
@@ -71,39 +72,50 @@ export default function OrderDetailPage() {
   const currentStepIndex = STATUS_STEPS.indexOf(order.orderStatus);
 
   return (
-    <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-      {/* Top Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-zinc-200 dark:border-zinc-800 gap-4">
-        <div>
-          <Link
-            href="/account/orders"
-            className="inline-flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-900 mb-2"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" /> All Orders
-          </Link>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-zinc-100 font-mono">
-            {order.orderNumber}
-          </h1>
-          <p className="text-xs text-zinc-400 mt-1">
-            Placed on {new Date(order.createdAt).toLocaleDateString('en-US', { dateStyle: 'full' })}
-          </p>
-        </div>
+    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
+      {/* 1. HERO HEADER */}
+      <section className="relative overflow-hidden bg-[#061811] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
 
-        <div className="flex items-center gap-2">
-          <span
-            className={`text-xs font-bold px-3 py-1 rounded-full ${
-              order.paymentStatus === 'Paid'
-                ? 'bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400'
-                : 'bg-amber-50 text-amber-700'
-            }`}
-          >
-            Payment: {order.paymentStatus}
-          </span>
-          <span className="text-xs font-bold bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 px-3 py-1 rounded-full">
-            Status: {order.orderStatus}
-          </span>
+        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+          <div className="space-y-2 text-center md:text-left">
+            <Link
+              href="/account/orders"
+              className="inline-flex items-center gap-1.5 text-xs text-[#E5C07B] hover:underline mb-1"
+            >
+              <ArrowLeft className="w-3.5 h-3.5" /> Back to All Orders
+            </Link>
+            <div className="flex items-center justify-center md:justify-start gap-2">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#E5C07B] px-2.5 py-0.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30">
+                Order Particulars
+              </span>
+            </div>
+            <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+              Order #{order.orderNumber || order._id.slice(-8).toUpperCase()}
+            </h1>
+            <p className="text-xs text-zinc-300 font-light">
+              Placed on {new Date(order.createdAt).toLocaleDateString('en-IN', { dateStyle: 'full' })}
+            </p>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <span
+              className={`text-xs font-bold px-3.5 py-1.5 rounded-full ${
+                order.paymentStatus === 'Paid'
+                  ? 'bg-emerald-950/80 text-emerald-400 border border-emerald-500/40'
+                  : 'bg-amber-950/80 text-amber-400 border border-amber-500/40'
+              }`}
+            >
+              Payment: {order.paymentStatus}
+            </span>
+            <span className="text-xs font-bold bg-[#0E3324] text-[#E5C07B] border border-[#D4AF37]/40 px-3.5 py-1.5 rounded-full">
+              Status: {order.orderStatus}
+            </span>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
 
       {/* 1. VISUAL ORDER TIMELINE STEPPER */}
       <div className="bg-white dark:bg-zinc-900 p-6 sm:p-8 rounded-3xl border border-zinc-200/80 dark:border-zinc-800 shadow-sm">

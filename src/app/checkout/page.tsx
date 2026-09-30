@@ -25,6 +25,7 @@ import { useAuthStore } from '../../store/authStore';
 import { formatCurrency } from '../../lib/utils';
 import { loadRazorpayScript } from '../../lib/razorpay';
 import { RazorpayTestModal } from '../../components/checkout/RazorpayTestModal';
+import { LotusIcon } from '../../components/ui/BrandLogo';
 import { toast } from 'sonner';
 
 const INDIAN_STATES = [
@@ -363,15 +364,36 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      {/* Breadcrumbs */}
-      <div className="flex items-center gap-2 text-xs text-zinc-400 mb-8">
-        <Link href="/cart" className="hover:text-zinc-900">
-          Shopping Bag
-        </Link>
-        <ChevronRight className="w-3 h-3" />
-        <span className="text-zinc-900 dark:text-zinc-100 font-semibold">Checkout</span>
-      </div>
+    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
+      {/* 1. HERO HEADER */}
+      <section className="relative overflow-hidden bg-[#061811] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#E5C07B] text-xs font-semibold tracking-widest uppercase">
+            <LotusIcon className="w-4 h-3.5" />
+            <span>Royal Concierge Checkout</span>
+          </div>
+
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
+            Finalize Your Order
+          </h1>
+
+          <p className="text-xs sm:text-sm text-zinc-300 font-light max-w-xl mx-auto leading-relaxed">
+            Safe, insured delivery directly from our artisanal handlooms to your address.
+          </p>
+
+          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#E5C07B]">
+            <Link href="/" className="hover:underline">Home</Link>
+            <span className="text-zinc-500">/</span>
+            <Link href="/cart" className="hover:underline">Shopping Bag</Link>
+            <span className="text-zinc-500">/</span>
+            <span className="text-white font-medium">Checkout</span>
+          </div>
+        </div>
+      </section>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         {/* Left: Address & Payment Info */}
@@ -841,6 +863,7 @@ export default function CheckoutPage() {
           }}
         />
       )}
+      </div>
     </div>
   );
 }

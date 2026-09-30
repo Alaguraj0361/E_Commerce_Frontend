@@ -13,11 +13,14 @@ import {
   ChevronRight,
   Clock,
   CheckCircle,
+  ArrowRight,
+  Sparkles,
 } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 import { api } from '../../lib/api';
 import { Order } from '../../types';
 import { formatCurrency } from '../../lib/utils';
+import { LotusIcon } from '../../components/ui/BrandLogo';
 import { toast } from 'sonner';
 
 export default function AccountPage() {
@@ -90,242 +93,278 @@ export default function AccountPage() {
   if (isLoading || !user) {
     return (
       <div className="min-h-[50vh] flex items-center justify-center text-zinc-400">
-        Loading profile...
+        Loading client profile...
       </div>
     );
   }
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-      {/* Header */}
-      <div className="flex flex-col md:flex-row items-start md:items-center justify-between pb-8 border-b border-zinc-200 dark:border-zinc-800 gap-4 mb-8">
-        <div className="flex items-center gap-4">
-          <div className="w-16 h-16 rounded-full bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center text-xl font-bold">
-            {user.firstName[0]}
-            {user.lastName[0]}
+    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
+      {/* 1. HERO HEADER */}
+      <section className="relative overflow-hidden bg-[#061811] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+          <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
+            <div className="w-20 h-20 rounded-full bg-[#0E3324] border-2 border-[#D4AF37] flex items-center justify-center text-2xl font-serif font-bold text-[#E5C07B] shadow-xl">
+              {user.firstName[0]}
+              {user.lastName ? user.lastName[0] : ''}
+            </div>
+            <div className="space-y-1">
+              <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-[#E5C07B] px-2.5 py-0.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30">
+                <LotusIcon className="w-3 h-3" />
+                <span>Client Privilege Account</span>
+              </div>
+              <h1 className="font-serif text-2xl sm:text-3xl font-bold text-white">
+                {user.firstName} {user.lastName}
+              </h1>
+              <p className="text-xs text-zinc-300 font-light">{user.email}</p>
+            </div>
           </div>
-          <div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-zinc-900 dark:text-zinc-100 tracking-tight">
-              {user.firstName} {user.lastName}
-            </h1>
-            <p className="text-xs text-zinc-400">{user.email}</p>
-          </div>
-        </div>
 
-        {user.role === 'admin' && (
-          <Link
-            href="/admin"
-            className="inline-flex items-center gap-2 bg-amber-500 text-white px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-amber-600 transition-colors shadow-sm"
-          >
-            <ShieldCheck className="w-4 h-4" /> Admin Portal
-          </Link>
-        )}
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
-        {/* Navigation Tabs Sidebar */}
-        <aside className="space-y-1">
-          <button
-            onClick={() => setActiveTab('overview')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors text-left ${
-              activeTab === 'overview'
-                ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
-                : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'
-            }`}
-          >
-            <UserIcon className="w-4 h-4" /> Overview
-          </button>
-
-          <Link
-            href="/account/orders"
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-          >
-            <Package className="w-4 h-4" /> My Orders
-          </Link>
-
-          <Link
-            href="/wishlist"
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
-          >
-            <Heart className="w-4 h-4" /> Wishlist
-          </Link>
-
-          <button
-            onClick={() => setActiveTab('password')}
-            className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider transition-colors text-left ${
-              activeTab === 'password'
-                ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
-                : 'text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800'
-            }`}
-          >
-            <KeyRound className="w-4 h-4" /> Change Password
-          </button>
-
-          <div className="pt-4">
+          <div className="flex items-center gap-3">
+            {user.role === 'admin' && (
+              <a
+                href="http://localhost:3001"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-[#D4AF37] hover:bg-[#B38F2E] text-zinc-950 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all shadow-md"
+              >
+                <ShieldCheck className="w-4 h-4" /> Admin Dashboard ↗
+              </a>
+            )}
             <button
               onClick={() => {
                 logout();
                 router.push('/');
               }}
-              className="w-full flex items-center gap-3 px-4 py-3 rounded-xl text-xs font-bold uppercase tracking-wider text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/30 text-left transition-colors"
+              className="inline-flex items-center gap-2 border border-rose-500/50 text-rose-400 hover:bg-rose-500/10 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all"
             >
-              <LogOut className="w-4 h-4" /> Sign Out
+              <LogOut className="w-3.5 h-3.5" /> Sign Out
             </button>
           </div>
-        </aside>
+        </div>
+      </section>
 
-        {/* Content Area */}
-        <div className="lg:col-span-3 space-y-8">
-          {activeTab === 'overview' ? (
-            <>
-              {/* Account Quick Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="p-6 bg-zinc-50 dark:bg-zinc-900 rounded-3xl border border-zinc-200/80 dark:border-zinc-800">
-                  <span className="text-xs uppercase font-bold text-zinc-400">Account Details</span>
-                  <p className="text-base font-bold text-zinc-900 dark:text-zinc-100 mt-2">
-                    {user.firstName} {user.lastName}
-                  </p>
-                  <p className="text-xs text-zinc-500 mt-0.5">{user.email}</p>
-                  <p className="text-xs text-zinc-500">{user.phone || 'No phone set'}</p>
-                </div>
-
-                <div className="p-6 bg-zinc-50 dark:bg-zinc-900 rounded-3xl border border-zinc-200/80 dark:border-zinc-800">
-                  <span className="text-xs uppercase font-bold text-zinc-400">Account Status</span>
-                  <div className="flex items-center gap-2 mt-2">
-                    <CheckCircle className="w-4 h-4 text-emerald-500" />
-                    <span className="text-sm font-semibold text-zinc-800 dark:text-zinc-200">
-                      Verified Member
-                    </span>
-                  </div>
-                  <p className="text-xs text-zinc-400 mt-1">
-                    Role: <span className="capitalize font-medium text-zinc-700 dark:text-zinc-300">{user.role}</span>
-                  </p>
-                </div>
-              </div>
-
-              {/* Recent Orders Overview */}
-              <div className="space-y-4">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
-                    Recent Orders
-                  </h3>
-                  <Link
-                    href="/account/orders"
-                    className="text-xs font-bold uppercase tracking-wider text-zinc-600 hover:text-zinc-900 dark:text-zinc-400"
-                  >
-                    View All Orders →
-                  </Link>
-                </div>
-
-                {recentOrders.length === 0 ? (
-                  <div className="p-8 text-center bg-zinc-50 dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 text-zinc-400 text-xs">
-                    You have not placed any orders yet.
-                  </div>
-                ) : (
-                  <div className="space-y-3">
-                    {recentOrders.map((order) => (
-                      <Link
-                        key={order._id}
-                        href={`/account/orders/${order._id}`}
-                        className="p-5 bg-white dark:bg-zinc-900 rounded-2xl border border-zinc-200 dark:border-zinc-800 hover:shadow-md transition-shadow flex items-center justify-between block"
-                      >
-                        <div>
-                          <div className="flex items-center gap-3">
-                            <span className="font-mono font-bold text-sm text-zinc-900 dark:text-zinc-100">
-                              {order.orderNumber}
-                            </span>
-                            <span
-                              className={`text-[11px] font-bold px-2.5 py-0.5 rounded-full ${
-                                order.orderStatus === 'Delivered'
-                                  ? 'bg-emerald-50 text-emerald-600'
-                                  : order.orderStatus === 'Cancelled'
-                                  ? 'bg-rose-50 text-rose-600'
-                                  : 'bg-amber-50 text-amber-700'
-                              }`}
-                            >
-                              {order.orderStatus}
-                            </span>
-                          </div>
-                          <p className="text-xs text-zinc-400 mt-1">
-                            {new Date(order.createdAt).toLocaleDateString('en-US', {
-                              year: 'numeric',
-                              month: 'short',
-                              day: 'numeric',
-                            })}{' '}
-                            • {order.items.length} items
-                          </p>
-                        </div>
-
-                        <div className="flex items-center gap-4">
-                          <span className="font-bold text-sm text-zinc-900 dark:text-zinc-100">
-                            {formatCurrency(order.total)}
-                          </span>
-                          <ChevronRight className="w-4 h-4 text-zinc-400" />
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
-            </>
-          ) : (
-            /* Change Password Form */
-            <form
-              onSubmit={handleChangePassword}
-              className="bg-white dark:bg-zinc-900 p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 max-w-lg space-y-4 shadow-sm"
+      {/* 2. MAIN ACCOUNT CONTENT */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Navigation Tabs Sidebar */}
+          <aside className="space-y-2">
+            <button
+              onClick={() => setActiveTab('overview')}
+              className={`w-full flex items-center gap-3 px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all text-left shadow-sm ${
+                activeTab === 'overview'
+                  ? 'bg-[#061811] text-[#E5C07B] border border-[#D4AF37]/40'
+                  : 'bg-white text-zinc-700 hover:bg-zinc-50 border border-zinc-200'
+              }`}
             >
-              <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100 mb-4">
-                Update Password
-              </h3>
+              <UserIcon className="w-4 h-4 text-[#D4AF37]" /> Profile Overview
+            </button>
 
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1">
-                  Current Password
-                </label>
-                <input
-                  type="password"
-                  required
-                  value={currentPassword}
-                  onChange={(e) => setCurrentPassword(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl p-3 text-sm focus:outline-none focus:border-zinc-900"
-                />
+            <Link
+              href="/account/orders"
+              className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider bg-white text-zinc-700 hover:bg-zinc-50 border border-zinc-200 transition-all shadow-sm"
+            >
+              <span className="flex items-center gap-3">
+                <Package className="w-4 h-4 text-[#D4AF37]" /> My Orders
+              </span>
+              <ChevronRight className="w-3.5 h-3.5 text-zinc-400" />
+            </Link>
+
+            <Link
+              href="/track-order"
+              className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider bg-white text-zinc-700 hover:bg-zinc-50 border border-zinc-200 transition-all shadow-sm"
+            >
+              <span className="flex items-center gap-3">
+                <Clock className="w-4 h-4 text-[#D4AF37]" /> Live Tracking
+              </span>
+              <ChevronRight className="w-3.5 h-3.5 text-zinc-400" />
+            </Link>
+
+            <Link
+              href="/wishlist"
+              className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider bg-white text-zinc-700 hover:bg-zinc-50 border border-zinc-200 transition-all shadow-sm"
+            >
+              <span className="flex items-center gap-3">
+                <Heart className="w-4 h-4 text-[#D4AF37]" /> Wishlist
+              </span>
+              <ChevronRight className="w-3.5 h-3.5 text-zinc-400" />
+            </Link>
+
+            <button
+              onClick={() => setActiveTab('password')}
+              className={`w-full flex items-center gap-3 px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all text-left shadow-sm ${
+                activeTab === 'password'
+                  ? 'bg-[#061811] text-[#E5C07B] border border-[#D4AF37]/40'
+                  : 'bg-white text-zinc-700 hover:bg-zinc-50 border border-zinc-200'
+              }`}
+            >
+              <KeyRound className="w-4 h-4 text-[#D4AF37]" /> Security & Password
+            </button>
+          </aside>
+
+          {/* Tab Content Panel */}
+          <main className="lg:col-span-3">
+            {activeTab === 'overview' && (
+              <div className="space-y-8">
+                {/* Profile Card */}
+                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#D4AF37]/25 shadow-sm space-y-6">
+                  <h3 className="font-serif text-xl font-bold text-[#061811]">
+                    Client Particulars
+                  </h3>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs">
+                    <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-zinc-100">
+                      <span className="text-zinc-500 font-medium block">Full Name</span>
+                      <strong className="text-[#061811] text-sm mt-0.5 block font-serif">
+                        {user.firstName} {user.lastName}
+                      </strong>
+                    </div>
+                    <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-zinc-100">
+                      <span className="text-zinc-500 font-medium block">Registered Email</span>
+                      <strong className="text-[#061811] text-sm mt-0.5 block">
+                        {user.email}
+                      </strong>
+                    </div>
+                    <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-zinc-100">
+                      <span className="text-zinc-500 font-medium block">Mobile Contact</span>
+                      <strong className="text-[#061811] text-sm mt-0.5 block font-mono">
+                        {user.phone || 'Not provided'}
+                      </strong>
+                    </div>
+                    <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-zinc-100">
+                      <span className="text-zinc-500 font-medium block">Membership Tier</span>
+                      <strong className="text-[#B8860B] text-sm mt-0.5 block font-serif">
+                        NALMARA Royal Patron
+                      </strong>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Recent Orders Preview */}
+                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#D4AF37]/25 shadow-sm space-y-6">
+                  <div className="flex items-center justify-between">
+                    <h3 className="font-serif text-xl font-bold text-[#061811]">
+                      Recent Orders
+                    </h3>
+                    <Link
+                      href="/account/orders"
+                      className="text-xs font-bold text-[#B8860B] hover:underline flex items-center gap-1"
+                    >
+                      View All Orders <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+
+                  {recentOrders.length === 0 ? (
+                    <div className="text-center py-10 space-y-2">
+                      <p className="text-xs text-zinc-500">No recent orders found.</p>
+                      <Link
+                        href="/shop"
+                        className="inline-block text-xs font-bold text-[#061811] hover:underline"
+                      >
+                        Start Shopping →
+                      </Link>
+                    </div>
+                  ) : (
+                    <div className="space-y-4">
+                      {recentOrders.map((ord) => (
+                        <div
+                          key={ord._id}
+                          className="p-4 rounded-2xl border border-zinc-100 bg-[#FAF8F5] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs"
+                        >
+                          <div>
+                            <span className="font-mono font-bold text-[#061811]">
+                              #{ord.orderNumber || ord._id.slice(-8).toUpperCase()}
+                            </span>
+                            <p className="text-zinc-500 text-[11px] mt-0.5">
+                              {new Date(ord.createdAt).toLocaleDateString('en-IN', {
+                                day: 'numeric',
+                                month: 'short',
+                                year: 'numeric',
+                              })}
+                            </p>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <span className="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#0E3324] text-[#E5C07B]">
+                              {ord.orderStatus}
+                            </span>
+                            <span className="font-bold text-[#061811] font-serif">
+                              {formatCurrency(ord.totalAmount)}
+                            </span>
+                            <Link
+                              href={`/account/orders/${ord._id}`}
+                              className="text-xs font-bold text-[#B8860B] hover:underline"
+                            >
+                              Details →
+                            </Link>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
+            )}
 
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1">
-                  New Password
-                </label>
-                <input
-                  type="password"
-                  required
-                  value={newPassword}
-                  onChange={(e) => setNewPassword(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl p-3 text-sm focus:outline-none focus:border-zinc-900"
-                />
+            {activeTab === 'password' && (
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#D4AF37]/25 shadow-sm space-y-6">
+                <h3 className="font-serif text-xl font-bold text-[#061811]">
+                  Change Password
+                </h3>
+                <form onSubmit={handleChangePassword} className="space-y-4 max-w-md">
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
+                      Current Password
+                    </label>
+                    <input
+                      type="password"
+                      required
+                      value={currentPassword}
+                      onChange={(e) => setCurrentPassword(e.target.value)}
+                      placeholder="••••••••"
+                      className="w-full bg-[#FAF8F5] border border-zinc-200 rounded-xl py-3 px-4 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-zinc-900"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
+                      New Password
+                    </label>
+                    <input
+                      type="password"
+                      required
+                      minLength={6}
+                      value={newPassword}
+                      onChange={(e) => setNewPassword(e.target.value)}
+                      placeholder="Minimum 6 characters"
+                      className="w-full bg-[#FAF8F5] border border-zinc-200 rounded-xl py-3 px-4 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-zinc-900"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1.5">
+                      Confirm New Password
+                    </label>
+                    <input
+                      type="password"
+                      required
+                      minLength={6}
+                      value={confirmNewPassword}
+                      onChange={(e) => setConfirmNewPassword(e.target.value)}
+                      placeholder="Repeat new password"
+                      className="w-full bg-[#FAF8F5] border border-zinc-200 rounded-xl py-3 px-4 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-zinc-900"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={isChangingPassword}
+                    className="bg-[#D4AF37] hover:bg-[#B38F2E] text-zinc-950 py-3 px-6 rounded-full text-xs font-bold uppercase tracking-widest shadow-md transition-all disabled:opacity-50 mt-2"
+                  >
+                    {isChangingPassword ? 'Updating...' : 'Update Password'}
+                  </button>
+                </form>
               </div>
-
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-zinc-600 dark:text-zinc-400 mb-1">
-                  Confirm New Password
-                </label>
-                <input
-                  type="password"
-                  required
-                  value={confirmNewPassword}
-                  onChange={(e) => setConfirmNewPassword(e.target.value)}
-                  className="w-full bg-zinc-50 dark:bg-zinc-800 border border-zinc-300 dark:border-zinc-700 rounded-xl p-3 text-sm focus:outline-none focus:border-zinc-900"
-                />
-              </div>
-
-              <button
-                type="submit"
-                disabled={isChangingPassword}
-                className="w-full bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 py-3 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-zinc-800 transition-colors disabled:opacity-50 mt-4"
-              >
-                {isChangingPassword ? 'Updating...' : 'Save New Password'}
-              </button>
-            </form>
-          )}
+            )}
+          </main>
         </div>
       </div>
     </div>

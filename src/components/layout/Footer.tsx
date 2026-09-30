@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect } from 'react';
 import Link from 'next/link';
 import {
   Instagram,
@@ -9,8 +9,14 @@ import {
   Share2,
 } from 'lucide-react';
 import { BrandLogo } from '../ui/BrandLogo';
+import { useCategoryStore } from '../../store/categoryStore';
 
 export const Footer = () => {
+  const { categories, fetchCategories } = useCategoryStore();
+
+  useEffect(() => {
+    fetchCategories();
+  }, [fetchCategories]);
   return (
     <footer className="bg-[#061811] text-[#FAF8F5] pt-16 pb-8 border-t border-[#D4AF37]/20 select-none">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -104,7 +110,7 @@ export const Footer = () => {
             </h5>
             <ul className="space-y-2.5 text-xs text-zinc-300 font-light">
               <li>
-                <Link href="/account/orders" className="hover:text-[#E5C07B] transition-colors">
+                <Link href="/track-order" className="hover:text-[#E5C07B] transition-colors">
                   Track Order
                 </Link>
               </li>
@@ -125,48 +131,43 @@ export const Footer = () => {
               </li>
               <li>
                 <Link href="/contact" className="hover:text-[#E5C07B] transition-colors">
-                  Support
+                  Support & Concierge
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Our Collections */}
+          {/* Column 4: Our Collections (Dynamic) */}
           <div className="space-y-4">
             <h5 className="text-xs font-bold text-[#E5C07B] uppercase tracking-widest">
               Our Collections
             </h5>
             <ul className="space-y-2.5 text-xs text-zinc-300 font-light">
-              <li>
-                <Link href="/shop?category=sarees" className="hover:text-[#E5C07B] transition-colors">
-                  Sarees
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop?category=lehengas" className="hover:text-[#E5C07B] transition-colors">
-                  Lehengas
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop?category=salwar-suits" className="hover:text-[#E5C07B] transition-colors">
-                  Salwar Suits
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop?category=kurtis" className="hover:text-[#E5C07B] transition-colors">
-                  Kurtis
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop?category=mens-wear" className="hover:text-[#E5C07B] transition-colors">
-                  Men's Wear
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop?category=kids-wear" className="hover:text-[#E5C07B] transition-colors">
-                  Kids Wear
-                </Link>
-              </li>
+              {categories.length > 0 ? (
+                categories.map((cat) => (
+                  <li key={cat._id || cat.slug}>
+                    <Link
+                      href={`/shop?category=${cat.slug}`}
+                      className="hover:text-[#E5C07B] transition-colors capitalize"
+                    >
+                      {cat.name}
+                    </Link>
+                  </li>
+                ))
+              ) : (
+                <>
+                  <li>
+                    <Link href="/shop" className="hover:text-[#E5C07B] transition-colors">
+                      All Collections
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="/shop" className="hover:text-[#E5C07B] transition-colors">
+                      New Arrivals
+                    </Link>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
 

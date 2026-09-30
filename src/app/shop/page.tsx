@@ -1,7 +1,7 @@
 'use client';
-
 import React, { useState, useEffect, Suspense } from 'react';
 import { useSearchParams, useRouter } from 'next/navigation';
+import Link from 'next/link';
 import {
   Filter,
   X,
@@ -11,11 +11,13 @@ import {
   List,
   Search,
   RotateCcw,
+  Sparkles,
 } from 'lucide-react';
 import { api } from '../../lib/api';
 import { Product, Category, Brand } from '../../types';
 import { ProductCard } from '../../components/product/ProductCard';
 import { formatCurrency } from '../../lib/utils';
+import { LotusIcon } from '../../components/ui/BrandLogo';
 
 function ShopContent() {
   const searchParams = useSearchParams();
@@ -182,77 +184,105 @@ function ShopContent() {
   ].filter(Boolean).length;
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-      {/* Header Bar */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between pb-8 border-b border-zinc-200 dark:border-zinc-800 gap-4">
-        <div>
-          <span className="text-xs font-bold uppercase tracking-widest text-zinc-400">
-            Catalog & Collections
-          </span>
-          <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-100 tracking-tight mt-1">
-            Shop Everything
+    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
+      {/* 1. HERO HEADER (Deep Royal Emerald & Gold Filigree) */}
+      <section className="relative overflow-hidden bg-[#061811] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
+
+        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-4">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#E5C07B] text-xs font-semibold tracking-widest uppercase">
+            <LotusIcon className="w-4 h-3.5" />
+            <span>Curated Handlooms & Couture</span>
+          </div>
+
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight capitalize">
+            {selectedCategory ? `${selectedCategory.replace(/-/g, ' ')} Collection` : 'All Collections'}
           </h1>
-          <p className="text-sm text-zinc-500 mt-1">
-            Showing <strong className="text-zinc-900 dark:text-zinc-100">{products.length}</strong> of{' '}
-            {totalProducts} handcrafted items
+
+          <p className="text-xs sm:text-sm text-zinc-300 font-light max-w-xl mx-auto leading-relaxed">
+            Discover {totalProducts} handcrafted artisanal ensembles, traditional silk weaves, and bespoke bridal designs.
           </p>
-        </div>
 
-        {/* Sort & View Controls */}
-        <div className="flex items-center gap-3">
-          {/* Mobile Filter Trigger */}
-          <button
-            onClick={() => setIsMobileFilterOpen(true)}
-            className="lg:hidden flex items-center gap-2 bg-zinc-100 dark:bg-zinc-800 px-4 py-2.5 rounded-xl text-xs font-semibold text-zinc-800 dark:text-zinc-200"
-          >
-            <SlidersHorizontal className="w-4 h-4" />
-            Filters {activeFiltersCount > 0 && `(${activeFiltersCount})`}
-          </button>
-
-          {/* Sort Dropdown */}
-          <div className="relative">
-            <select
-              value={sort}
-              onChange={(e) => setSort(e.target.value)}
-              className="appearance-none bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-xl px-4 py-2.5 pr-9 text-xs font-semibold text-zinc-800 dark:text-zinc-200 focus:outline-none focus:border-zinc-900 cursor-pointer shadow-sm"
-            >
-              <option value="featured">Featured Collection</option>
-              <option value="newest">Newest Releases</option>
-              <option value="price-asc">Price: Low → High</option>
-              <option value="price-desc">Price: High → Low</option>
-              <option value="best-seller">Best Selling</option>
-              <option value="top-rated">Highest Customer Rating</option>
-            </select>
-            <ChevronDown className="w-4 h-4 text-zinc-400 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
-          </div>
-
-          {/* View Mode Toggle */}
-          <div className="hidden sm:flex items-center border border-zinc-200 dark:border-zinc-800 rounded-xl p-1 bg-white dark:bg-zinc-900">
-            <button
-              onClick={() => setViewMode('grid')}
-              className={`p-1.5 rounded-lg transition-colors ${
-                viewMode === 'grid'
-                  ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
-                  : 'text-zinc-400 hover:text-zinc-700'
-              }`}
-              aria-label="Grid view"
-            >
-              <LayoutGrid className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => setViewMode('list')}
-              className={`p-1.5 rounded-lg transition-colors ${
-                viewMode === 'list'
-                  ? 'bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900'
-                  : 'text-zinc-400 hover:text-zinc-700'
-              }`}
-              aria-label="List view"
-            >
-              <List className="w-4 h-4" />
-            </button>
+          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#E5C07B]">
+            <Link href="/" className="hover:underline">Home</Link>
+            <span className="text-zinc-500">/</span>
+            <span className="text-white font-medium">Shop</span>
+            {selectedCategory && (
+              <>
+                <span className="text-zinc-500">/</span>
+                <span className="text-[#E5C07B] font-medium capitalize">{selectedCategory.replace(/-/g, ' ')}</span>
+              </>
+            )}
           </div>
         </div>
-      </div>
+      </section>
+
+      {/* 2. MAIN SHOP CONTENT */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        {/* Header Bar: Results count & Sorting */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between pb-6 border-b border-[#D4AF37]/20 gap-4">
+          <div>
+            <p className="text-xs text-zinc-600">
+              Showing <strong className="text-[#061811] font-bold">{products.length}</strong> of{' '}
+              <strong className="text-[#061811] font-bold">{totalProducts}</strong> handcrafted items
+            </p>
+          </div>
+
+          {/* Sort & View Controls */}
+          <div className="flex items-center gap-3">
+            {/* Mobile Filter Trigger */}
+            <button
+              onClick={() => setIsMobileFilterOpen(true)}
+              className="lg:hidden flex items-center gap-2 bg-[#0E3324] text-[#E5C07B] border border-[#D4AF37]/40 px-4 py-2.5 rounded-xl text-xs font-semibold shadow-sm"
+            >
+              <SlidersHorizontal className="w-4 h-4 text-[#E5C07B]" />
+              Filters {activeFiltersCount > 0 && `(${activeFiltersCount})`}
+            </button>
+
+            {/* Sort Dropdown */}
+            <div className="relative">
+              <select
+                value={sort}
+                onChange={(e) => setSort(e.target.value)}
+                className="appearance-none bg-white border border-[#D4AF37]/30 rounded-xl px-4 py-2.5 pr-9 text-xs font-semibold text-zinc-800 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] cursor-pointer shadow-sm"
+              >
+                <option value="featured">Featured Collection</option>
+                <option value="newest">Newest Releases</option>
+                <option value="price-asc">Price: Low → High</option>
+                <option value="price-desc">Price: High → Low</option>
+                <option value="best-seller">Best Selling</option>
+                <option value="top-rated">Highest Customer Rating</option>
+              </select>
+              <ChevronDown className="w-4 h-4 text-[#D4AF37] absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+            </div>
+
+            {/* View Mode Toggle */}
+            <div className="hidden sm:flex items-center border border-[#D4AF37]/30 rounded-xl p-1 bg-white shadow-sm">
+              <button
+                onClick={() => setViewMode('grid')}
+                className={`p-1.5 rounded-lg transition-colors ${
+                  viewMode === 'grid'
+                    ? 'bg-[#0E3324] text-[#E5C07B]'
+                    : 'text-zinc-400 hover:text-zinc-700'
+                }`}
+                aria-label="Grid view"
+              >
+                <LayoutGrid className="w-4 h-4" />
+              </button>
+              <button
+                onClick={() => setViewMode('list')}
+                className={`p-1.5 rounded-lg transition-colors ${
+                  viewMode === 'list'
+                    ? 'bg-[#0E3324] text-[#E5C07B]'
+                    : 'text-zinc-400 hover:text-zinc-700'
+                }`}
+                aria-label="List view"
+              >
+                <List className="w-4 h-4" />
+              </button>
+            </div>
+          </div>
+        </div>
 
       {/* Active Filter Pills Bar */}
       {activeFiltersCount > 0 && (
@@ -625,6 +655,7 @@ function ShopContent() {
           </div>
         </div>
       )}
+      </div>
     </div>
   );
 }

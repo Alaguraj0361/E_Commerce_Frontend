@@ -20,6 +20,7 @@ import {
 import { useCartStore } from '../../store/cartStore';
 import { useWishlistStore } from '../../store/wishlistStore';
 import { useAuthStore } from '../../store/authStore';
+import { useCategoryStore } from '../../store/categoryStore';
 import { BrandLogo } from '../ui/BrandLogo';
 
 export const Navbar = () => {
@@ -36,12 +37,14 @@ export const Navbar = () => {
     useCartStore();
   const { products: wishlistProducts, fetchWishlist } = useWishlistStore();
   const { user, isAuthenticated, checkAuth, logout } = useAuthStore();
+  const { categories, fetchCategories } = useCategoryStore();
 
   useEffect(() => {
     checkAuth();
     fetchCart();
     fetchWishlist();
-  }, [checkAuth, fetchCart, fetchWishlist]);
+    fetchCategories();
+  }, [checkAuth, fetchCart, fetchWishlist, fetchCategories]);
 
   useEffect(() => {
     if (isAuthenticated) {
@@ -60,15 +63,10 @@ export const Navbar = () => {
   const totalCartCount = getTotalItemsCount();
   const wishlistCount = wishlistProducts.length;
 
-  const categories = [
-    { label: 'Sarees', href: '/shop?category=sarees' },
-    { label: 'Lehengas', href: '/shop?category=lehengas' },
-    { label: 'Salwar Suits', href: '/shop?category=salwar-suits' },
-    { label: 'Kurtis', href: '/shop?category=kurtis' },
-    { label: 'Anarkali', href: '/shop?category=anarkali' },
-    { label: "Men's Wear", href: '/shop?category=mens-wear' },
-    { label: "Kid's Wear", href: '/shop?category=kids-wear' },
-  ];
+  const navCategories = categories.map((c) => ({
+    label: c.name,
+    href: `/shop?category=${c.slug}`,
+  }));
 
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -174,16 +172,22 @@ export const Navbar = () => {
                   <div className="px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#E5C07B]/70 border-b border-[#D4AF37]/15">
                     Explore Collections
                   </div>
-                  {categories.map((cat) => (
-                    <Link
-                      key={cat.label}
-                      href={cat.href}
-                      onClick={() => setIsCollectionsOpen(false)}
-                      className="block px-4 py-2 text-xs text-zinc-200 hover:bg-[#0E3324] hover:text-[#E5C07B] transition-colors"
-                    >
-                      {cat.label}
-                    </Link>
-                  ))}
+                  {navCategories.length > 0 ? (
+                    navCategories.map((cat) => (
+                      <Link
+                        key={cat.label}
+                        href={cat.href}
+                        onClick={() => setIsCollectionsOpen(false)}
+                        className="block px-4 py-2 text-xs text-zinc-200 hover:bg-[#0E3324] hover:text-[#E5C07B] transition-colors capitalize"
+                      >
+                        {cat.label}
+                      </Link>
+                    ))
+                  ) : (
+                    <div className="px-4 py-2 text-xs text-zinc-400 italic">
+                      Loading collections...
+                    </div>
+                  )}
                   <div className="border-t border-[#D4AF37]/15 mt-1 pt-1">
                     <Link
                       href="/shop"
@@ -399,16 +403,20 @@ export const Navbar = () => {
                     Our Collections
                   </p>
                   <div className="space-y-2 pl-3 border-l border-[#D4AF37]/20">
-                    {categories.map((cat) => (
-                      <Link
-                        key={cat.label}
-                        href={cat.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className="block text-xs text-zinc-300 hover:text-[#E5C07B]"
-                      >
-                        {cat.label}
-                      </Link>
-                    ))}
+                    {navCategories.length > 0 ? (
+                      navCategories.map((cat) => (
+                        <Link
+                          key={cat.label}
+                          href={cat.href}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className="block text-xs text-zinc-300 hover:text-[#E5C07B] capitalize"
+                        >
+                          {cat.label}
+                        </Link>
+                      ))
+                    ) : (
+                      <span className="text-xs text-zinc-400 italic">Loading collections...</span>
+                    )}
                   </div>
                 </div>
 
