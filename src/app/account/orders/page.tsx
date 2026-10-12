@@ -167,7 +167,7 @@ export default function OrderHistoryPage() {
                   <div>
                     <span className="text-zinc-500 block">Total Investment</span>
                     <span className="font-serif text-lg font-bold text-[#061811]">
-                      {formatCurrency(order.totalAmount)}
+                      {formatCurrency(order.totalAmount ?? order.total ?? 0)}
                     </span>
                   </div>
 

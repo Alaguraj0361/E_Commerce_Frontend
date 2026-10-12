@@ -125,6 +125,7 @@ export interface Order {
   shippingFee: number;
   tax: number;
   total: number;
+  totalAmount?: number;
   paymentMethod: string;
   paymentStatus: 'Pending' | 'Paid' | 'Failed' | 'Refunded' | 'Partially Refunded';
   orderStatus: 'Pending' | 'Confirmed' | 'Processing' | 'Packed' | 'Shipped' | 'Delivered' | 'Cancelled' | 'Refunded';

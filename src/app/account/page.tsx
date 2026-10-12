@@ -289,7 +289,7 @@ export default function AccountPage() {
                               {ord.orderStatus}
                             </span>
                             <span className="font-bold text-[#061811] font-serif">
-                              {formatCurrency(ord.totalAmount)}
+                              {formatCurrency(ord.totalAmount ?? ord.total ?? 0)}
                             </span>
                             <Link
                               href={`/account/orders/${ord._id}`}
