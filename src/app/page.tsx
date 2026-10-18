@@ -292,46 +292,102 @@ const BESTSELLERS_DATA = [
 ];
 
 // ==============================================================
-// 10. STYLE INSPIRATION (Instagram 6 items)
+// 09. WHY CHOOSE NALMARA FASHION (Exact Desktop Cards for Mobile)
 // ==============================================================
-const INSTAGRAM_POSTS_DATA = [
+const WHY_CHOOSE_CARDS = [
   {
     id: 1,
-    image: '/images/nalmara/occasion_saree_banner.jpg',
-    likes: '2.4k',
-    isReel: false,
+    title: 'Handpicked Styles',
+    subtitle: 'Trendy & Traditional',
+    image: '/images/nalmara/why_choose_card_1_exact.png',
   },
   {
     id: 2,
-    image: '/images/nalmara/hero_maroon_saree.jpg',
-    likes: '3.8k',
-    isReel: true,
+    title: 'Transparent Details',
+    subtitle: 'Fabric | Length | Blouse | Care',
+    image: '/images/nalmara/why_choose_card_2_exact.png',
   },
   {
     id: 3,
-    image: '/images/nalmara/kidswear_butterfly_gown.jpg',
-    likes: '1.9k',
-    isReel: false,
+    title: 'Personal Support',
+    subtitle: "We're here to help",
+    image: '/images/nalmara/why_choose_card_3_exact.png',
   },
   {
     id: 4,
+    title: 'Small Business',
+    subtitle: 'With a Big Dream',
+    image: '/images/nalmara/why_choose_card_4_exact.png',
+  },
+];
+
+// ==============================================================
+// 10. STYLE INSPIRATION (Exact Reference Mockup 6 items)
+// ==============================================================
+const STYLE_INSPIRATION_ITEMS = [
+  {
+    id: 1,
+    title: 'Sarees',
+    subtitle: 'Grace in Every Drape',
+    image: '/images/nalmara/card_kanchivaram.jpg',
+    cardImage: '/images/nalmara/style_inspire_card_1_clean.png',
+    href: '/shop?category=sarees',
+    left: '4.68%',
+    width: '14.06%',
+  },
+  {
+    id: 2,
+    title: 'Traditional Wear',
+    subtitle: 'Timeless Heritage',
+    image: '/images/nalmara/hero_maroon_saree.jpg',
+    cardImage: '/images/nalmara/style_inspire_card_2_clean.png',
+    href: '/shop?category=traditional',
+    left: '20.23%',
+    width: '14.06%',
+  },
+  {
+    id: 3,
+    title: 'Kids Collection',
+    subtitle: 'Little Smiles, Big Joy',
+    image: '/images/nalmara/kidswear_butterfly_gown.jpg',
+    cardImage: '/images/nalmara/style_inspire_card_3_clean.png',
+    href: '/shop?category=kids-wear',
+    left: '35.78%',
+    width: '14.06%',
+  },
+  {
+    id: 4,
+    title: 'Premium Collections',
+    subtitle: 'Luxury in Every Thread',
     image: '/images/nalmara/brand_story_box.jpg',
-    likes: '4.2k',
-    isReel: true,
+    cardImage: '/images/nalmara/style_inspire_card_4_clean.png',
+    href: '/shop?category=silk-sarees',
+    left: '51.33%',
+    width: '14.06%',
   },
   {
     id: 5,
+    title: 'Behind the Scenes',
+    subtitle: 'Real Moments, Real Us',
     image: '/images/nalmara/category_party_wear.jpg',
-    likes: '3.1k',
-    isReel: false,
+    cardImage: '/images/nalmara/style_inspire_card_5_clean.png',
+    href: 'https://instagram.com/nalmarafashion_official',
+    left: '66.88%',
+    width: '14.06%',
   },
   {
     id: 6,
+    title: 'Festive Vibes',
+    subtitle: 'Celebrate in Style',
     image: '/images/nalmara/festive_diwali_diyas.jpg',
-    likes: '1.5k',
-    isReel: true,
+    cardImage: '/images/nalmara/style_inspire_card_6_clean.png',
+    href: '/shop?category=festive',
+    left: '82.42%',
+    width: '14.06%',
   },
 ];
+
+const INSTAGRAM_POSTS_DATA = STYLE_INSPIRATION_ITEMS;
 
 // ==============================================================
 // 12. CUSTOMER REVIEWS DATA
@@ -867,8 +923,8 @@ export default function HomePage() {
           <BotanicalBranch className="w-36 h-36 text-[#C5A059]" />
         </div>
 
-        {/* Master Festive Banner Card */}
-        <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D4AF37]/60 group transition-all duration-500 hover:shadow-[0_25px_60px_rgba(46,6,13,0.45)] bg-[#170206]">
+        {/* Desktop View: Panoramic Master Festive Banner */}
+        <div className="hidden md:block relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D4AF37]/60 group transition-all duration-500 hover:shadow-[0_25px_60px_rgba(46,6,13,0.45)] bg-[#170206]">
           {/* Inner hairline gold border */}
           <div className="absolute inset-2 sm:inset-3 border border-[#D4AF37]/35 rounded-xl sm:rounded-2xl pointer-events-none z-20" />
 
@@ -985,34 +1041,61 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
 
-          {/* Mobile Badge Strip */}
-          <div className="relative z-20 md:hidden grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 border-t border-[#D4AF37]/30 bg-[#170206]/95">
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-full border border-[#D4AF37]/60 flex items-center justify-center text-[#E5C158] shrink-0 bg-[#170206]">
-                <Sparkles className="w-3.5 h-3.5" />
-              </div>
-              <span className="text-[10px] font-serif text-amber-100/90">Premium Silk Sarees</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-full border border-[#D4AF37]/60 flex items-center justify-center text-[#E5C158] shrink-0 bg-[#170206]">
-                <Gem className="w-3.5 h-3.5" />
-              </div>
-              <span className="text-[10px] font-serif text-amber-100/90">Authentic Craftsmanship</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-full border border-[#D4AF37]/60 flex items-center justify-center text-[#E5C158] shrink-0 bg-[#170206]">
-                <Package className="w-3.5 h-3.5" />
-              </div>
-              <span className="text-[10px] font-serif text-amber-100/90">Secure Delivery</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-full border border-[#D4AF37]/60 flex items-center justify-center text-[#E5C158] shrink-0 bg-[#170206]">
-                <Heart className="w-3.5 h-3.5" />
-              </div>
-              <span className="text-[10px] font-serif text-amber-100/90">Made with Love</span>
-            </div>
-          </div>
+        {/* Mobile View: Exactly matching the uploaded user mobile mockup */}
+        <div className="md:hidden relative w-full aspect-[1364/2048] rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D4AF37]/60 bg-[#170206]">
+          <Image
+            src="/images/nalmara/festive_collection_mobile_exact_banner.png"
+            alt="NALMARA Festive Collection - Traditional Elegance"
+            fill
+            priority
+            unoptimized
+            sizes="100vw"
+            className="object-cover object-center select-none"
+          />
+
+          {/* "Explore Collection →" Button Hotspot */}
+          <Link
+            href="/shop?category=festive"
+            title="Explore Festive Collection"
+            className="absolute rounded-full border border-transparent active:border-[#D4AF37] active:ring-2 active:ring-[#D4AF37]/60 active:bg-[#D4AF37]/15 transition-all duration-200 cursor-pointer"
+            style={{ left: '7.5%', top: '32.8%', width: '41.0%', height: '3.6%' }}
+          >
+            <span className="sr-only">Explore Festive Collection</span>
+          </Link>
+
+          {/* Center Saree Image Hotspot */}
+          <Link
+            href="/shop?category=festive"
+            title="Explore Festive Sarees"
+            className="absolute rounded-3xl border border-transparent active:ring-2 active:ring-[#D4AF37]/40 transition-all duration-200 cursor-pointer"
+            style={{ left: '8%', top: '38%', width: '84%', height: '28%' }}
+          >
+            <span className="sr-only">Explore Festive Sarees</span>
+          </Link>
+
+          {/* 4 Bottom Trust Feature Hotspots */}
+          <div
+            className="absolute rounded-xl border border-transparent active:border-[#D4AF37]/60 active:bg-[#D4AF37]/10 transition-all duration-200 cursor-default"
+            style={{ left: '5.0%', top: '71.5%', width: '43.0%', height: '11.0%' }}
+            title="Premium Silk Sarees • Luxurious Feel, Lasting Beauty"
+          />
+          <div
+            className="absolute rounded-xl border border-transparent active:border-[#D4AF37]/60 active:bg-[#D4AF37]/10 transition-all duration-200 cursor-default"
+            style={{ left: '50.0%', top: '71.5%', width: '43.0%', height: '11.0%' }}
+            title="Authentic Craftsmanship • Skilled Hands, Timeless Art"
+          />
+          <div
+            className="absolute rounded-xl border border-transparent active:border-[#D4AF37]/60 active:bg-[#D4AF37]/10 transition-all duration-200 cursor-default"
+            style={{ left: '5.0%', top: '83.5%', width: '43.0%', height: '11.0%' }}
+            title="Secure Delivery • Safe & Reliable Packaging"
+          />
+          <div
+            className="absolute rounded-xl border border-transparent active:border-[#D4AF37]/60 active:bg-[#D4AF37]/10 transition-all duration-200 cursor-default"
+            style={{ left: '50.0%', top: '83.5%', width: '43.0%', height: '11.0%' }}
+            title="Made with Love • Every Saree Tells a Story"
+          />
         </div>
       </section>
 
@@ -1353,188 +1436,281 @@ export default function HomePage() {
       {/* ============================================================== */}
       {/* 08. DUAL PROMO BANNER (Wedding Special & Kids Collection)      */}
       {/* ============================================================== */}
-      <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch">
-          {/* Left Banner (~58% width, 7 cols): Wedding Special */}
-          <div className="lg:col-span-7 bg-[#2D070C] text-white rounded-3xl overflow-hidden relative min-h-[300px] sm:min-h-[360px] flex items-center shadow-xl border border-[#D4AF37]/50 group">
-            <div className="absolute inset-0 z-0">
+      <section className="w-full max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-6 lg:gap-8 items-stretch">
+          {/* Left Card (~52% width, 6 cols): Wedding Special */}
+          <div className="lg:col-span-6 relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-2 border-[#D4AF37]/50 bg-[#2D060D] group transition-all duration-500 hover:shadow-[0_20px_45px_rgba(45,6,13,0.35)]">
+            <Link
+              href="/shop?category=weddings"
+              className="block relative w-full aspect-[486/216] min-h-[170px] sm:min-h-[220px]"
+            >
               <Image
-                src="/images/nalmara/hero_maroon_saree.jpg"
+                src="/images/nalmara/wedding_banner_exact.png"
                 alt="Wedding Special • Timeless Looks for Your Special Day"
                 fill
-                className="object-cover object-[70%_center] group-hover:scale-105 transition-transform duration-700"
+                priority
+                unoptimized
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-center group-hover:scale-[1.015] transition-transform duration-700 select-none"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#2D070C] via-[#380B11]/85 to-transparent w-full sm:w-[68%]" />
-            </div>
 
-            <div className="relative z-10 p-6 sm:p-10 space-y-3 sm:space-y-4 max-w-md">
-              <span className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-[#F5E6BE]">
-                Wedding Special
-              </span>
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal leading-tight text-white">
-                Timeless Looks <br />
-                for Your Special Day
-              </h3>
-              <div className="pt-2">
-                <Link
-                  href="/shop?category=weddings"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#18181B] hover:bg-[#132E27] text-white text-xs font-semibold tracking-wider uppercase transition-all shadow-md group-hover:shadow-lg"
-                >
-                  <span>Shop Wedding Collection</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
+              {/* Interactive glow over the 'Shop Wedding Collection →' button area */}
+              <div
+                className="absolute left-[8%] bottom-[12%] hidden sm:block w-[185px] h-[36px] rounded-full border border-transparent group-hover:border-[#D4AF37] group-hover:bg-[#D4AF37]/15 transition-all duration-300 pointer-events-none"
+                aria-hidden="true"
+              />
+            </Link>
           </div>
 
-          {/* Right Banner (~42% width, 5 cols): Kids Collection */}
-          <div className="lg:col-span-5 bg-[#FAF7F2] text-zinc-900 rounded-3xl overflow-hidden relative min-h-[300px] sm:min-h-[360px] flex items-center shadow-lg border border-[#E8E2D5] group">
-            <div className="absolute inset-0 z-0">
+          {/* Right Card (~48% width, 6 cols): Kids Collection */}
+          <div className="lg:col-span-6 relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-2 border-[#D4AF37]/50 bg-[#FAF7F2] group transition-all duration-500 hover:shadow-[0_20px_45px_rgba(212,175,55,0.25)]">
+            <Link
+              href="/shop?category=kids-wear"
+              className="block relative w-full aspect-[442/216] min-h-[170px] sm:min-h-[220px]"
+            >
               <Image
-                src="/images/nalmara/kidswear_butterfly_gown.jpg"
-                alt="Kids Collection • Little Styles, Big Smiles"
+                src="/images/nalmara/kids_banner_exact.png"
+                alt="Kids Collection • Little Styles Big Smiles"
                 fill
-                className="object-cover object-[75%_center] group-hover:scale-105 transition-transform duration-700"
+                priority
+                unoptimized
+                sizes="(max-width: 1024px) 100vw, 50vw"
+                className="object-cover object-center group-hover:scale-[1.015] transition-transform duration-700 select-none"
               />
-              <div className="absolute inset-0 bg-gradient-to-r from-white/95 via-white/80 to-transparent w-full sm:w-[65%]" />
-            </div>
 
-            <div className="relative z-10 p-6 sm:p-10 space-y-3 sm:space-y-4 max-w-xs">
-              <span className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-[#8C6D2D]">
-                Kids Collection
-              </span>
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal leading-tight text-zinc-900">
-                Little Styles <br />
-                Big Smiles
-              </h3>
-              <div className="pt-2">
-                <Link
-                  href="/shop?category=kids-wear"
-                  className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#18181B] hover:bg-[#132E27] text-white text-xs font-semibold tracking-wider uppercase transition-all shadow-md group-hover:shadow-lg"
-                >
-                  <span>Shop Kidswear</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
+              {/* Interactive glow over the 'Shop Kidswear →' button area */}
+              <div
+                className="absolute left-[7%] bottom-[12%] hidden sm:block w-[140px] h-[36px] rounded-full border border-transparent group-hover:border-[#4A0E17] group-hover:bg-[#4A0E17]/10 transition-all duration-300 pointer-events-none"
+                aria-hidden="true"
+              />
+            </Link>
           </div>
         </div>
       </section>
 
       {/* ============================================================== */}
-      {/* 09. WHY CHOOSE NALMARA FASHION?                                */}
+      {/* 09. WHY CHOOSE NALMARA FASHION? (Exact Reference Look)         */}
       {/* ============================================================== */}
-      <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10 sm:py-14">
-        <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-zinc-900 tracking-tight text-center lg:text-left mb-8">
-          Why Choose NALMARA FASHION?
-        </h2>
+      <section className="w-full max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-12">
+        {/* Desktop Showcase: The exact champagne silk banner composite */}
+        <div className="hidden md:block relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border-2 border-[#D4AF37]/45 bg-[#F8F3EA] group">
+          <div className="relative w-full aspect-[2560/485] min-h-[240px]">
+            <Image
+              src="/images/nalmara/why_choose_banner_exact.png"
+              alt="Why Choose NALMARA FASHION? - Traditional Elegance | Timeless Collections | Made with Love"
+              fill
+              priority
+              unoptimized
+              sizes="100vw"
+              className="object-cover object-center select-none"
+            />
 
-        {/* 4 Line-Art Icon Cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-6">
-          {/* 1. Handpicked Styles */}
-          <div className="bg-white rounded-2xl border border-[#E8E2D5] p-5 sm:p-6 text-center flex flex-col items-center justify-center space-y-2.5 shadow-2xs hover:border-[#D4AF37] hover:shadow-md transition-all group">
-            <div className="w-12 h-12 rounded-2xl bg-[#FAF7F2] border border-[#E8E2D5] flex items-center justify-center text-[#132E27] group-hover:bg-[#132E27] group-hover:text-[#D4AF37] transition-all">
-              <Sparkles className="w-5 h-5" />
-            </div>
-            <h4 className="font-serif font-bold text-xs sm:text-sm text-zinc-900">
-              Handpicked Styles
-            </h4>
-            <p className="text-[11px] sm:text-xs text-zinc-500 font-light">
-              Trendy &amp; Traditional
-            </p>
+            {/* Interactive hover hotspots over the 4 value cards */}
+            <div className="absolute bottom-[8%] left-[7.5%] w-[19%] h-[68%] rounded-xl sm:rounded-2xl border border-transparent hover:border-[#D4AF37]/70 hover:bg-[#D4AF37]/10 transition-all duration-300 cursor-default" title="Handpicked Styles • Trendy & Traditional" />
+            <div className="absolute bottom-[8%] left-[29.5%] w-[19%] h-[68%] rounded-xl sm:rounded-2xl border border-transparent hover:border-[#D4AF37]/70 hover:bg-[#D4AF37]/10 transition-all duration-300 cursor-default" title="Transparent Details • Fabric | Length | Blouse | Care" />
+            <div className="absolute bottom-[8%] left-[51.5%] w-[19%] h-[68%] rounded-xl sm:rounded-2xl border border-transparent hover:border-[#D4AF37]/70 hover:bg-[#D4AF37]/10 transition-all duration-300 cursor-default" title="Personal Support • We're here to help" />
+            <div className="absolute bottom-[8%] left-[73.5%] w-[19%] h-[68%] rounded-xl sm:rounded-2xl border border-transparent hover:border-[#D4AF37]/70 hover:bg-[#D4AF37]/10 transition-all duration-300 cursor-default" title="Small Business • With a Big Dream" />
           </div>
+        </div>
 
-          {/* 2. Transparent Details */}
-          <div className="bg-white rounded-2xl border border-[#E8E2D5] p-5 sm:p-6 text-center flex flex-col items-center justify-center space-y-2.5 shadow-2xs hover:border-[#D4AF37] hover:shadow-md transition-all group">
-            <div className="w-12 h-12 rounded-2xl bg-[#FAF7F2] border border-[#E8E2D5] flex items-center justify-center text-[#132E27] group-hover:bg-[#132E27] group-hover:text-[#D4AF37] transition-all">
-              <FileCheck2 className="w-5 h-5" />
-            </div>
-            <h4 className="font-serif font-bold text-xs sm:text-sm text-zinc-900">
-              Transparent Details
-            </h4>
-            <p className="text-[11px] sm:text-xs text-zinc-500 font-light">
-              Fabric | Length | Blouse | Care
-            </p>
-          </div>
+        {/* Mobile View: Exactly matching the uploaded user mobile mockup */}
+        <div className="md:hidden relative w-full aspect-[1364/2048] rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D4AF37]/45 bg-[#F8F3EA]">
+          <Image
+            src="/images/nalmara/why_choose_mobile_exact_banner.png"
+            alt="Why Choose NALMARA FASHION? - Traditional Elegance | Timeless Collections | Made with Love"
+            fill
+            priority
+            unoptimized
+            sizes="100vw"
+            className="object-cover object-center select-none"
+          />
 
-          {/* 3. Personal Support */}
-          <div className="bg-white rounded-2xl border border-[#E8E2D5] p-5 sm:p-6 text-center flex flex-col items-center justify-center space-y-2.5 shadow-2xs hover:border-[#D4AF37] hover:shadow-md transition-all group">
-            <div className="w-12 h-12 rounded-2xl bg-[#FAF7F2] border border-[#E8E2D5] flex items-center justify-center text-[#132E27] group-hover:bg-[#132E27] group-hover:text-[#D4AF37] transition-all">
-              <HeartHandshake className="w-5 h-5" />
-            </div>
-            <h4 className="font-serif font-bold text-xs sm:text-sm text-zinc-900">
-              Personal Support
-            </h4>
-            <p className="text-[11px] sm:text-xs text-zinc-500 font-light">
-              We&apos;re here to help
-            </p>
-          </div>
-
-          {/* 4. Small Business With a Big Dream */}
-          <div className="bg-white rounded-2xl border border-[#E8E2D5] p-5 sm:p-6 text-center flex flex-col items-center justify-center space-y-2.5 shadow-2xs hover:border-[#D4AF37] hover:shadow-md transition-all group">
-            <div className="w-12 h-12 rounded-2xl bg-[#FAF7F2] border border-[#E8E2D5] flex items-center justify-center text-[#132E27] group-hover:bg-[#132E27] group-hover:text-[#D4AF37] transition-all">
-              <Sprout className="w-5 h-5" />
-            </div>
-            <h4 className="font-serif font-bold text-xs sm:text-sm text-zinc-900">
-              Small Business
-            </h4>
-            <p className="text-[11px] sm:text-xs text-zinc-500 font-light">
-              With a Big Dream
-            </p>
-          </div>
+          {/* Interactive touch/hover hotspots over the 4 value cards */}
+          <div
+            className="absolute rounded-2xl border border-transparent active:border-[#D4AF37] active:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+            style={{ left: '7.99%', top: '42.04%', width: '39.88%', height: '26.17%' }}
+            title="Handpicked Styles • Trendy & Traditional"
+          />
+          <div
+            className="absolute rounded-2xl border border-transparent active:border-[#D4AF37] active:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+            style={{ left: '52.27%', top: '42.04%', width: '39.88%', height: '26.17%' }}
+            title="Transparent Details • Fabric | Length | Blouse | Care"
+          />
+          <div
+            className="absolute rounded-2xl border border-transparent active:border-[#D4AF37] active:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+            style={{ left: '7.99%', top: '71.14%', width: '39.88%', height: '26.17%' }}
+            title="Personal Support • We're here to help"
+          />
+          <div
+            className="absolute rounded-2xl border border-transparent active:border-[#D4AF37] active:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+            style={{ left: '52.27%', top: '71.14%', width: '39.88%', height: '26.17%' }}
+            title="Small Business • With a Big Dream"
+          />
         </div>
       </section>
 
       {/* ============================================================== */}
-      {/* 10. STYLE INSPIRATION (Instagram 6 items)                      */}
+      {/* 10. STYLE INSPIRATION (Exact Reference Mockup Design)          */}
       {/* ============================================================== */}
-      <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10 sm:py-14">
-        <div className="flex items-end justify-between gap-4 mb-6 sm:mb-8">
-          <div>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-zinc-900 tracking-tight">
-              Style Inspiration
-            </h2>
-            <p className="text-xs sm:text-sm text-zinc-500 font-light mt-1">
-              Follow us on instagram @nalmarafashion
-            </p>
-          </div>
+      <section className="relative w-full max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 my-8 sm:my-14">
+        {/* Desktop View: Exact Panoramic Mockup with Interactive Hotspots */}
+        <div className="hidden lg:block relative w-full aspect-[2560/852] rounded-3xl overflow-hidden shadow-2xl border border-[#D4AF37]/35 bg-[#FAF7F2]">
+          <Image
+            src="/images/nalmara/style_inspiration_exact_banner.png"
+            alt="Style Inspiration - Traditional, Festive, Everyday Elegance"
+            fill
+            priority
+            unoptimized
+            sizes="100vw"
+            className="object-cover pointer-events-none select-none"
+          />
+
+          {/* Top Right "View More" Hotspot Button */}
           <a
             href="https://instagram.com/nalmarafashion_official"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-700 hover:text-[#132E27] transition-colors shrink-0"
+            title="View More on Instagram"
+            className="absolute z-20 group flex items-center justify-center rounded-full transition-transform hover:scale-105"
+            style={{
+              top: '17%',
+              right: '4.8%',
+              width: '10%',
+              height: '8%',
+            }}
           >
-            <span>View More</span>
-            <ArrowRight className="w-3.5 h-3.5" />
+            <span className="sr-only">View More Style Inspirations</span>
+            <div className="w-full h-full rounded-full ring-2 ring-transparent group-hover:ring-[#D4AF37]/80 group-hover:bg-[#C5A059]/15 transition-all duration-300" />
           </a>
+
+          {/* Instagram Handle Text Hotspot */}
+          <a
+            href="https://instagram.com/nalmarafashion_official"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Follow us on Instagram @nalmara.fashion"
+            className="absolute z-20 group rounded-md"
+            style={{
+              top: '22.5%',
+              left: '35%',
+              width: '30%',
+              height: '5.5%',
+            }}
+          >
+            <span className="sr-only">Follow us on Instagram @nalmara.fashion</span>
+            <div className="w-full h-full rounded-md ring-1 ring-transparent group-hover:ring-[#D4AF37]/40 group-hover:bg-[#C5A059]/10 transition-all duration-300" />
+          </a>
+
+          {/* 6 Card Hotspots with Interactive Hover Rings & Glow */}
+          {STYLE_INSPIRATION_ITEMS.map((item) => {
+            const isExternal = item.href.startsWith('http');
+            const CardWrapper = isExternal ? 'a' : Link;
+            return (
+              <CardWrapper
+                key={item.id}
+                href={item.href}
+                {...(isExternal ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                title={`${item.title} — ${item.subtitle}`}
+                className="absolute z-20 group rounded-2xl block transition-all duration-300 hover:-translate-y-1.5 cursor-pointer"
+                style={{
+                  top: '32.6%',
+                  height: '51.6%',
+                  left: item.left,
+                  width: item.width,
+                }}
+              >
+                <div className="w-full h-full rounded-2xl transition-all duration-300 ring-0 group-hover:ring-2 group-hover:ring-[#E5C158] group-hover:shadow-[0_8px_30px_rgba(212,175,55,0.45)]" />
+              </CardWrapper>
+            );
+          })}
         </div>
 
-        {/* 6 Instagram Posts Grid (Desktop: 6, Mobile: 3 or 4) */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
-          {INSTAGRAM_POSTS_DATA.map((post) => (
-            <a
-              key={post.id}
-              href="https://instagram.com/nalmarafashion_official"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group relative aspect-square rounded-2xl overflow-hidden bg-zinc-200 border border-[#E8E2D5] hover:border-[#D4AF37] block shadow-2xs hover:shadow-lg transition-all duration-300 transform hover:-translate-y-1"
-            >
-              <Image
-                src={post.image}
-                alt="Instagram style inspiration"
-                fill
-                className="object-cover group-hover:scale-110 transition-transform duration-700"
-              />
-              <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
-                <Instagram className="w-6 h-6 text-[#D4AF37]" />
-              </div>
-              {post.isReel && (
-                <div className="absolute top-2 right-2 w-5 h-5 rounded-full bg-black/60 text-white flex items-center justify-center text-[10px]">
-                  <Play className="w-2.5 h-2.5 fill-white ml-0.5" />
-                </div>
-              )}
-            </a>
-          ))}
+        {/* Mobile & Tablet View: Exactly matching the uploaded user mobile mockup */}
+        <div className="lg:hidden relative w-full aspect-[1364/2048] rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D4AF37]/45 bg-[#FAF7F2]">
+          <Image
+            src="/images/nalmara/style_inspiration_mobile_exact_banner.png"
+            alt="Style Inspiration - Traditional, Festive, Everyday Elegance"
+            fill
+            priority
+            unoptimized
+            sizes="100vw"
+            className="object-cover object-center select-none"
+          />
+
+          {/* Top "Follow us on Instagram @nalmara.fashion" Hotspot */}
+          <a
+            href="https://instagram.com/nalmarafashion_official"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Follow us on Instagram @nalmara.fashion"
+            className="absolute rounded-lg border border-transparent active:border-[#D4AF37] active:bg-[#D4AF37]/15 transition-all duration-200 cursor-pointer"
+            style={{ left: '23.0%', top: '18.6%', width: '53.0%', height: '3.5%' }}
+          >
+            <span className="sr-only">Follow us on Instagram @nalmara.fashion</span>
+          </a>
+
+          {/* Top Right "View More" Button Hotspot */}
+          <a
+            href="https://instagram.com/nalmarafashion_official"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="View More on Instagram"
+            className="absolute rounded-full border border-transparent active:border-[#D4AF37] active:ring-2 active:ring-[#D4AF37]/50 transition-all duration-200 cursor-pointer"
+            style={{ left: '77.7%', top: '18.5%', width: '18.0%', height: '3.6%' }}
+          >
+            <span className="sr-only">View More</span>
+          </a>
+
+          {/* 6 Interactive Touch/Hover Hotspots for the 6 Cards */}
+          {/* 1. Sarees */}
+          <Link
+            href="/shop?category=sarees"
+            title="Sarees — Grace in Every Drape"
+            className="absolute rounded-2xl border border-transparent active:border-[#D4AF37] active:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+            style={{ left: '4.0%', top: '24.4%', width: '44.7%', height: '22.8%' }}
+          />
+
+          {/* 2. Traditional Wear */}
+          <Link
+            href="/shop?category=traditional"
+            title="Traditional Wear — Timeless Heritage"
+            className="absolute rounded-2xl border border-transparent active:border-[#D4AF37] active:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+            style={{ left: '51.4%', top: '24.4%', width: '44.7%', height: '22.8%' }}
+          />
+
+          {/* 3. Kids Collection */}
+          <Link
+            href="/shop?category=kids-wear"
+            title="Kids Collection — Little Smiles, Big Joy"
+            className="absolute rounded-2xl border border-transparent active:border-[#D4AF37] active:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+            style={{ left: '4.0%', top: '49.0%', width: '44.7%', height: '21.5%' }}
+          />
+
+          {/* 4. Premium Collections */}
+          <Link
+            href="/shop?category=silk-sarees"
+            title="Premium Collections — Luxury in Every Thread"
+            className="absolute rounded-2xl border border-transparent active:border-[#D4AF37] active:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+            style={{ left: '51.4%', top: '49.0%', width: '44.7%', height: '21.5%' }}
+          />
+
+          {/* 5. Behind the Scenes */}
+          <a
+            href="https://instagram.com/nalmarafashion_official"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Behind the Scenes — Real Moments, Real Us"
+            className="absolute rounded-2xl border border-transparent active:border-[#D4AF37] active:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+            style={{ left: '4.0%', top: '71.5%', width: '44.7%', height: '20.6%' }}
+          />
+
+          {/* 6. Festive Vibes */}
+          <Link
+            href="/shop?category=festive"
+            title="Festive Vibes — Celebrate in Style"
+            className="absolute rounded-2xl border border-transparent active:border-[#D4AF37] active:bg-[#D4AF37]/10 transition-all duration-200 cursor-pointer"
+            style={{ left: '51.4%', top: '71.5%', width: '44.7%', height: '20.6%' }}
+          />
         </div>
       </section>
 
