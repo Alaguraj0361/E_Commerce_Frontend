@@ -72,28 +72,28 @@ export default function OrderDetailPage() {
   const currentStepIndex = STATUS_STEPS.indexOf(order.orderStatus);
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
+    <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
       {/* 1. HERO HEADER */}
-      <section className="relative overflow-hidden bg-[#061811] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
+      <section className="relative overflow-hidden bg-[#4A0E17] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
 
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
           <div className="space-y-2 text-center md:text-left">
             <Link
               href="/account/orders"
-              className="inline-flex items-center gap-1.5 text-xs text-[#E5C07B] hover:underline mb-1"
+              className="inline-flex items-center gap-1.5 text-xs text-[#D4AF37] hover:underline mb-1"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Back to All Orders
             </Link>
             <div className="flex items-center justify-center md:justify-start gap-2">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#E5C07B] px-2.5 py-0.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] px-2.5 py-0.5 rounded-full bg-white/10 border border-[#D4AF37]/30">
                 Order Particulars
               </span>
             </div>
             <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
               Order #{order.orderNumber || order._id.slice(-8).toUpperCase()}
             </h1>
-            <p className="text-xs text-zinc-300 font-light">
+            <p className="text-xs text-zinc-200 font-light">
               Placed on {new Date(order.createdAt).toLocaleDateString('en-IN', { dateStyle: 'full' })}
             </p>
           </div>
@@ -108,7 +108,7 @@ export default function OrderDetailPage() {
             >
               Payment: {order.paymentStatus}
             </span>
-            <span className="text-xs font-bold bg-[#0E3324] text-[#E5C07B] border border-[#D4AF37]/40 px-3.5 py-1.5 rounded-full">
+            <span className="text-xs font-bold bg-[#4A0E17] text-[#D4AF37] border border-[#7A1D2A] px-3.5 py-1.5 rounded-full">
               Status: {order.orderStatus}
             </span>
           </div>

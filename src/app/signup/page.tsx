@@ -52,7 +52,7 @@ function SignupContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900 py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+    <div className="min-h-screen bg-[#FAF7F2] text-zinc-900 py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
       <div className="max-w-md w-full space-y-6">
         {/* Brand Emblem & Header */}
         <div className="text-center space-y-3">
@@ -60,11 +60,11 @@ function SignupContent() {
             <BrandLogo size="lg" theme="light" />
           </div>
           <div className="pt-2">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#B8860B] px-3 py-1 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[#4A0E17] px-3 py-1 rounded-full bg-[#4A0E17]/10 border border-[#4A0E17]/20">
               Join The Atelier
             </span>
           </div>
-          <h1 className="font-serif text-3xl font-bold text-[#061811]">
+          <h1 className="font-serif text-3xl font-bold text-zinc-900">
             Create an Account
           </h1>
           <p className="text-xs text-zinc-500 font-light max-w-xs mx-auto">
@@ -73,7 +73,7 @@ function SignupContent() {
         </div>
 
         {/* Form Card */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#D4AF37]/30 shadow-xl space-y-5">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E2D5] shadow-xl space-y-5">
           <form onSubmit={handleSubmit} className="space-y-4">
             <div className="grid grid-cols-2 gap-3">
               <div>
@@ -178,11 +178,11 @@ function SignupContent() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-[#D4AF37] hover:bg-[#B38F2E] text-zinc-950 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg transition-all hover:scale-[1.01] disabled:opacity-50 mt-4"
+              className="w-full bg-[#4A0E17] hover:bg-[#5E141F] text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg transition-all hover:scale-[1.01] disabled:opacity-50 mt-4 border border-[#7A1D2A] cursor-pointer"
             >
               {isLoading ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin text-zinc-950" />
+                  <Loader2 className="w-4 h-4 animate-spin text-[#D4AF37]" />
                   Creating Client Account...
                 </>
               ) : (
@@ -195,7 +195,7 @@ function SignupContent() {
             Already have an account?{' '}
             <Link
               href={`/login?redirect=${redirectUrl}`}
-              className="font-bold text-[#061811] hover:text-[#B8860B] underline"
+              className="font-bold text-[#4A0E17] hover:underline"
             >
               Sign In
             </Link>

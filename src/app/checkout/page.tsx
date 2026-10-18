@@ -364,13 +364,13 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
+    <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
       {/* 1. HERO HEADER */}
-      <section className="relative overflow-hidden bg-[#061811] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
+      <section className="relative overflow-hidden bg-[#4A0E17] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
 
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#E5C07B] text-xs font-semibold tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-[#D4AF37]/40 text-[#D4AF37] text-xs font-semibold tracking-widest uppercase">
             <LotusIcon className="w-4 h-3.5" />
             <span>Royal Concierge Checkout</span>
           </div>
@@ -379,21 +379,21 @@ export default function CheckoutPage() {
             Finalize Your Order
           </h1>
 
-          <p className="text-xs sm:text-sm text-zinc-300 font-light max-w-xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-zinc-200 font-light max-w-xl mx-auto leading-relaxed">
             Safe, insured delivery directly from our artisanal handlooms to your address.
           </p>
 
-          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#E5C07B]">
-            <Link href="/" className="hover:underline">Home</Link>
-            <span className="text-zinc-500">/</span>
-            <Link href="/cart" className="hover:underline">Shopping Bag</Link>
-            <span className="text-zinc-500">/</span>
+          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#D4AF37]">
+            <Link href="/" className="hover:underline text-zinc-200">Home</Link>
+            <span className="text-white/50">/</span>
+            <Link href="/cart" className="hover:underline text-zinc-200">Shopping Bag</Link>
+            <span className="text-white/50">/</span>
             <span className="text-white font-medium">Checkout</span>
           </div>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10">
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
         {/* Left: Address & Payment Info */}
@@ -415,12 +415,12 @@ export default function CheckoutPage() {
           )}
 
           {/* 1. Shipping Address */}
-          <div className="bg-white dark:bg-zinc-900 p-6 sm:p-8 rounded-3xl border border-zinc-200/80 dark:border-zinc-800 space-y-4 shadow-sm">
+          <div className="bg-white dark:bg-zinc-900 p-6 sm:p-8 rounded-3xl border border-[#E8E2D5] space-y-4 shadow-sm">
             <div className="flex items-center gap-2.5 mb-2">
-              <div className="w-7 h-7 rounded-full bg-zinc-900 text-white dark:bg-zinc-100 dark:text-zinc-900 flex items-center justify-center text-xs font-bold">
+              <div className="w-7 h-7 rounded-full bg-[#4A0E17] text-white flex items-center justify-center text-xs font-bold">
                 1
               </div>
-              <h2 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
+              <h2 className="text-lg font-bold font-serif text-zinc-900 dark:text-zinc-100">
                 Delivery Address
               </h2>
             </div>
@@ -743,7 +743,7 @@ export default function CheckoutPage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-[#18140B] text-white py-4 rounded-2xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 hover:bg-[#B8860B] transition-all shadow-xl disabled:opacity-50 mt-4 group"
+              className="w-full bg-[#4A0E17] hover:bg-[#5E141F] text-white py-4 rounded-2xl text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-xl disabled:opacity-50 mt-4 group border border-[#7A1D2A] cursor-pointer"
             >
               {isLoading ? (
                 <>

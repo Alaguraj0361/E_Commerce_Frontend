@@ -164,13 +164,13 @@ function TrackOrderContent() {
   const currentStep = order ? getStepIndex(order.orderStatus) : 0;
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
+    <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
       {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden bg-[#061811] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
+      <section className="relative overflow-hidden bg-[#4A0E17] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
 
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#E5C07B] text-xs font-semibold tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-[#D4AF37]/40 text-[#D4AF37] text-xs font-semibold tracking-widest uppercase">
             <LotusIcon className="w-4 h-3.5" />
             <span>Shipment Intelligence</span>
           </div>
@@ -179,13 +179,13 @@ function TrackOrderContent() {
             Track Your Royal Order
           </h1>
 
-          <p className="text-xs sm:text-sm text-zinc-300 font-light max-w-xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-zinc-200 font-light max-w-xl mx-auto leading-relaxed">
             Follow the journey of your handcrafted couture from our atelier looms to your door.
           </p>
 
-          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#E5C07B]">
-            <Link href="/" className="hover:underline">Home</Link>
-            <span className="text-zinc-500">/</span>
+          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#D4AF37]">
+            <Link href="/" className="hover:underline text-zinc-200">Home</Link>
+            <span className="text-white/50">/</span>
             <span className="text-white font-medium">Track Order</span>
           </div>
         </div>
@@ -193,7 +193,7 @@ function TrackOrderContent() {
 
       {/* 2. TRACKING INPUT CARD */}
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#D4AF37]/30 shadow-xl space-y-6">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E2D5] shadow-xl space-y-6">
           <form onSubmit={handleTrackSubmit} className="space-y-4">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
@@ -208,7 +208,7 @@ function TrackOrderContent() {
                     value={orderId}
                     onChange={(e) => setOrderId(e.target.value)}
                     placeholder="e.g. ORD-20260929-9377"
-                    className="w-full bg-[#FAF8F5] text-zinc-900 placeholder:text-zinc-400 text-xs px-4 py-3 pl-10 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+                    className="w-full bg-[#FAF7F2] text-zinc-900 placeholder:text-zinc-400 text-xs px-4 py-3 pl-10 rounded-xl border border-[#E8E2D5] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
                   />
                 </div>
               </div>
@@ -224,7 +224,7 @@ function TrackOrderContent() {
                     value={contactInfo}
                     onChange={(e) => setContactInfo(e.target.value)}
                     placeholder="e.g. customer@example.com"
-                    className="w-full bg-[#FAF8F5] text-zinc-900 placeholder:text-zinc-400 text-xs px-4 py-3 pl-10 rounded-xl border border-zinc-200 focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+                    className="w-full bg-[#FAF7F2] text-zinc-900 placeholder:text-zinc-400 text-xs px-4 py-3 pl-10 rounded-xl border border-[#E8E2D5] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
                   />
                 </div>
               </div>
@@ -233,16 +233,16 @@ function TrackOrderContent() {
             <button
               type="submit"
               disabled={loading}
-              className="w-full py-3.5 rounded-full bg-[#061811] hover:bg-[#0E3324] text-[#E5C07B] border border-[#D4AF37] text-xs font-bold uppercase tracking-widest transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-70"
+              className="w-full py-3.5 rounded-full bg-[#4A0E17] hover:bg-[#5E141F] text-white border border-[#7A1D2A] text-xs font-bold uppercase tracking-widest transition-all shadow-md flex items-center justify-center gap-2 disabled:opacity-70 cursor-pointer"
             >
               {loading ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin text-[#E5C07B]" />
+                  <Loader2 className="w-4 h-4 animate-spin text-[#D4AF37]" />
                   Locating Royal Shipment...
                 </>
               ) : (
                 <>
-                  <Search className="w-4 h-4 text-[#E5C07B]" />
+                  <Search className="w-4 h-4 text-[#D4AF37]" />
                   Track Order Status
                 </>
               )}
@@ -333,13 +333,13 @@ function TrackOrderContent() {
       {order && (
         <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8 animate-fade-in">
           {/* Order Header Summary */}
-          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#D4AF37]/30 shadow-lg space-y-6">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-zinc-100 pb-6">
+          <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E2D5] shadow-lg space-y-6">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#E8E2D5]/70 pb-6">
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-[#B8860B] block">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-[#4A0E17] block">
                   ORDER PARTICULARS
                 </span>
-                <h3 className="font-serif text-2xl font-bold text-[#061811] mt-0.5">
+                <h3 className="font-serif text-2xl font-bold text-zinc-900 mt-0.5">
                   Order #{order.orderNumber || order._id.slice(-8).toUpperCase()}
                 </h3>
                 <p className="text-xs text-zinc-500 mt-1">
@@ -348,10 +348,10 @@ function TrackOrderContent() {
               </div>
 
               <div className="flex items-center gap-3">
-                <span className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#0E3324] text-[#E5C07B] border border-[#D4AF37]/40">
+                <span className="px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider bg-[#4A0E17] text-white border border-[#7A1D2A]">
                   {order.orderStatus}
                 </span>
-                <span className="text-sm font-serif font-bold text-[#061811]">
+                <span className="text-sm font-serif font-bold text-[#4A0E17]">
                   {formatCurrency(order.total || order.totalAmount || 0)}
                 </span>
               </div>
@@ -361,9 +361,9 @@ function TrackOrderContent() {
             <div className="py-4">
               <div className="relative">
                 {/* Progress bar line */}
-                <div className="hidden sm:block absolute top-5 left-8 right-8 h-1 bg-zinc-200">
+                <div className="hidden sm:block absolute top-5 left-8 right-8 h-1 bg-[#E8E2D5]">
                   <div
-                    className="h-full bg-[#0E3324] transition-all duration-700"
+                    className="h-full bg-[#4A0E17] transition-all duration-700"
                     style={{
                       width: `${(currentStep / (TRACKING_STEPS.length - 1)) * 100}%`,
                     }}
@@ -382,12 +382,12 @@ function TrackOrderContent() {
                         <div
                           className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-all shadow-md shrink-0 ${
                             isCompleted
-                              ? 'bg-[#0E3324] text-[#E5C07B] border-2 border-[#D4AF37]'
+                              ? 'bg-[#4A0E17] text-[#D4AF37] border-2 border-[#D4AF37]'
                               : 'bg-white text-zinc-400 border-2 border-zinc-200'
                           } ${isCurrent ? 'ring-4 ring-[#D4AF37]/30 scale-110' : ''}`}
                         >
                           {isCompleted ? (
-                            <CheckCircle2 className="w-5 h-5 text-[#E5C07B]" />
+                            <CheckCircle2 className="w-5 h-5 text-[#D4AF37]" />
                           ) : (
                             idx + 1
                           )}
@@ -396,7 +396,7 @@ function TrackOrderContent() {
                         <div>
                           <p
                             className={`text-xs font-serif font-bold ${
-                              isCompleted ? 'text-[#061811]' : 'text-zinc-400'
+                              isCompleted ? 'text-zinc-900' : 'text-zinc-400'
                             }`}
                           >
                             {step.label}
@@ -414,15 +414,15 @@ function TrackOrderContent() {
 
             {/* Items in this Order */}
             {order.items && order.items.length > 0 && (
-              <div className="border-t border-zinc-100 pt-6 space-y-4">
-                <h4 className="font-serif font-bold text-sm text-[#061811] uppercase tracking-wider">
+              <div className="border-t border-[#E8E2D5]/70 pt-6 space-y-4">
+                <h4 className="font-serif font-bold text-sm text-zinc-900 uppercase tracking-wider">
                   Garments in this Consignment ({order.items.length})
                 </h4>
-                <div className="divide-y divide-zinc-100">
+                <div className="divide-y divide-[#E8E2D5]/70">
                   {order.items.map((item, i) => (
                     <div key={i} className="py-3 flex items-center justify-between gap-4">
                       <div className="flex items-center gap-3">
-                        <div className="relative w-12 h-16 rounded-xl bg-zinc-100 overflow-hidden shrink-0 border border-zinc-200">
+                        <div className="relative w-12 h-16 rounded-xl bg-zinc-100 overflow-hidden shrink-0 border border-[#E8E2D5]">
                           {item.image ? (
                             <Image
                               src={item.image}
@@ -441,7 +441,7 @@ function TrackOrderContent() {
                           </p>
                         </div>
                       </div>
-                      <span className="text-xs font-bold text-[#061811]">
+                      <span className="text-xs font-bold text-[#4A0E17]">
                         {formatCurrency(item.price * item.quantity)}
                       </span>
                     </div>
@@ -452,10 +452,10 @@ function TrackOrderContent() {
 
             {/* Delivery Destination */}
             {order.shippingAddress && (
-              <div className="border-t border-zinc-100 pt-4 flex items-start gap-3 text-xs text-zinc-600">
-                <MapPin className="w-4 h-4 text-[#B8860B] shrink-0 mt-0.5" />
+              <div className="border-t border-[#E8E2D5]/70 pt-4 flex items-start gap-3 text-xs text-zinc-600">
+                <MapPin className="w-4 h-4 text-[#4A0E17] shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-[#061811]">Delivery Destination: </strong>
+                  <strong className="text-zinc-900">Delivery Destination: </strong>
                   {order.shippingAddress.fullName}, {order.shippingAddress.addressLine1},{' '}
                   {order.shippingAddress.city}, {order.shippingAddress.state} –{' '}
                   {order.shippingAddress.postalCode}
@@ -468,12 +468,12 @@ function TrackOrderContent() {
 
       {/* 5. LIVE SUPPORT CALLOUT */}
       <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <div className="p-8 rounded-3xl bg-[#061811] text-white border border-[#D4AF37]/40 shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="p-8 rounded-3xl bg-[#4A0E17] text-white border border-[#7A1D2A] shadow-xl flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="space-y-1.5 text-center sm:text-left">
-            <h4 className="font-serif text-xl font-bold text-[#E5C07B]">
+            <h4 className="font-serif text-xl font-bold text-[#D4AF37]">
               Need Urgent Courier Support?
             </h4>
-            <p className="text-xs text-zinc-300 font-light max-w-md leading-relaxed">
+            <p className="text-xs text-zinc-200 font-light max-w-md leading-relaxed">
               If your parcel has been in transit longer than expected, message our dispatch manager with your Order ID for real-time courier escalation.
             </p>
           </div>

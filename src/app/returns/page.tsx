@@ -73,7 +73,7 @@ export default function ReturnsPage() {
       </section>
 
       {/* 2. THREE CORE GUARANTEES */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
+      <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 -mt-8 relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <div className="bg-white rounded-3xl p-6 border border-[#D4AF37]/30 shadow-lg flex items-start gap-4">
             <div className="w-12 h-12 rounded-2xl bg-[#0E3324] border border-[#D4AF37]/30 flex items-center justify-center text-[#E5C07B] shrink-0">
@@ -114,7 +114,7 @@ export default function ReturnsPage() {
       </section>
 
       {/* 3. STEP BY STEP PROCESS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 space-y-12">
+      <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-16 sm:py-20 space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#B8860B]">
             HOW IT WORKS

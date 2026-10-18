@@ -38,13 +38,13 @@ export default function OrderHistoryPage() {
   }, [isAuthenticated]);
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
+    <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
       {/* 1. HERO HEADER */}
-      <section className="relative overflow-hidden bg-[#061811] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
+      <section className="relative overflow-hidden bg-[#4A0E17] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
 
         <div className="max-w-5xl mx-auto text-center relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#E5C07B] text-xs font-semibold tracking-widest uppercase">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-[#D4AF37]/40 text-[#D4AF37] text-xs font-semibold tracking-widest uppercase">
             <LotusIcon className="w-4 h-3.5" />
             <span>Order History</span>
           </div>
@@ -53,15 +53,15 @@ export default function OrderHistoryPage() {
             Your Purchase Chronicles
           </h1>
 
-          <p className="text-xs sm:text-sm text-zinc-300 font-light max-w-xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-zinc-200 font-light max-w-xl mx-auto leading-relaxed">
             Review the status of your past and active orders, download tax invoices, and track live consignments.
           </p>
 
-          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#E5C07B]">
-            <Link href="/" className="hover:underline">Home</Link>
-            <span className="text-zinc-500">/</span>
-            <Link href="/account" className="hover:underline">Account</Link>
-            <span className="text-zinc-500">/</span>
+          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#D4AF37]">
+            <Link href="/" className="hover:underline text-zinc-200">Home</Link>
+            <span className="text-white/50">/</span>
+            <Link href="/account" className="hover:underline text-zinc-200">Account</Link>
+            <span className="text-white/50">/</span>
             <span className="text-white font-medium">Orders ({orders.length})</span>
           </div>
         </div>
@@ -72,11 +72,11 @@ export default function OrderHistoryPage() {
         {isLoading ? (
           <div className="text-center py-20 text-zinc-400">Loading your purchase history...</div>
         ) : orders.length === 0 ? (
-          <div className="text-center py-20 bg-white rounded-3xl border border-[#D4AF37]/30 p-8 space-y-4 max-w-md mx-auto shadow-sm">
-            <div className="w-16 h-16 rounded-full bg-[#0E3324] border border-[#D4AF37]/30 flex items-center justify-center mx-auto text-[#E5C07B]">
+          <div className="text-center py-20 bg-white rounded-3xl border border-[#E8E2D5] p-8 space-y-4 max-w-md mx-auto shadow-sm">
+            <div className="w-16 h-16 rounded-full bg-[#FAF7F2] border border-[#E8E2D5] flex items-center justify-center mx-auto text-[#4A0E17]">
               <Package className="w-8 h-8" />
             </div>
-            <h3 className="font-serif text-2xl font-bold text-[#061811]">
+            <h3 className="font-serif text-2xl font-bold text-zinc-900">
               No Orders Placed Yet
             </h3>
             <p className="text-xs text-zinc-500 max-w-xs mx-auto leading-relaxed">
@@ -85,7 +85,7 @@ export default function OrderHistoryPage() {
             <div className="pt-2">
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 bg-[#D4AF37] hover:bg-[#B38F2E] text-zinc-950 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all shadow-md"
+                className="inline-flex items-center gap-2 bg-[#4A0E17] hover:bg-[#5E141F] text-white px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all shadow-md"
               >
                 Start Shopping <ArrowRight className="w-4 h-4" />
               </Link>
@@ -96,12 +96,12 @@ export default function OrderHistoryPage() {
             {orders.map((order) => (
               <div
                 key={order._id}
-                className="bg-white rounded-3xl border border-[#D4AF37]/25 p-6 sm:p-8 shadow-sm hover:shadow-md transition-all space-y-6"
+                className="bg-white rounded-3xl border border-[#E8E2D5] p-6 sm:p-8 shadow-sm hover:shadow-md transition-all space-y-6"
               >
                 {/* Top meta row */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-zinc-100">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-[#E8E2D5]/70">
                   <div>
-                    <span className="text-xs font-mono font-bold text-[#061811] block">
+                    <span className="text-xs font-mono font-bold text-zinc-900 block">
                       #{order.orderNumber || order._id.slice(-8).toUpperCase()}
                     </span>
                     <span className="text-xs text-zinc-400">
@@ -124,7 +124,7 @@ export default function OrderHistoryPage() {
                     >
                       Payment: {order.paymentStatus}
                     </span>
-                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#0E3324] text-[#E5C07B] border border-[#D4AF37]/30">
+                    <span className="text-xs font-bold px-3 py-1 rounded-full bg-[#4A0E17] text-white border border-[#7A1D2A]">
                       Status: {order.orderStatus}
                     </span>
                   </div>
@@ -135,7 +135,7 @@ export default function OrderHistoryPage() {
                   {order.items.map((item, idx) => (
                     <div
                       key={idx}
-                      className="relative w-16 h-20 rounded-xl overflow-hidden bg-zinc-100 border border-zinc-200"
+                      className="relative w-16 h-20 rounded-xl overflow-hidden bg-zinc-100 border border-[#E8E2D5]"
                     >
                       {item.image ? (
                         <Image
@@ -152,7 +152,7 @@ export default function OrderHistoryPage() {
                     </div>
                   ))}
                   <div className="text-xs text-zinc-600 pl-2">
-                    <p className="font-bold text-[#061811] font-serif text-sm">
+                    <p className="font-bold text-zinc-900 font-serif text-sm">
                       {order.items.length} {order.items.length === 1 ? 'Garment' : 'Garments'}
                     </p>
                     <p className="text-zinc-500 font-light mt-0.5">
@@ -163,10 +163,10 @@ export default function OrderHistoryPage() {
                 </div>
 
                 {/* Footer Action Row */}
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-zinc-100 text-xs">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-4 border-t border-[#E8E2D5]/70 text-xs">
                   <div>
                     <span className="text-zinc-500 block">Total Investment</span>
-                    <span className="font-serif text-lg font-bold text-[#061811]">
+                    <span className="font-serif text-lg font-bold text-[#4A0E17]">
                       {formatCurrency(order.totalAmount ?? order.total ?? 0)}
                     </span>
                   </div>
@@ -174,13 +174,13 @@ export default function OrderHistoryPage() {
                   <div className="flex items-center gap-3">
                     <Link
                       href={`/track-order?id=${order._id}`}
-                      className="px-4 py-2 rounded-full border border-zinc-300 text-zinc-700 hover:border-[#D4AF37] font-semibold text-xs transition-colors"
+                      className="px-4 py-2 rounded-full border border-[#E8E2D5] bg-[#FAF7F2] text-zinc-700 hover:border-[#4A0E17] hover:text-[#4A0E17] font-semibold text-xs transition-colors"
                     >
                       Track Shipment
                     </Link>
                     <Link
                       href={`/account/orders/${order._id}`}
-                      className="px-5 py-2 rounded-full bg-[#0E3324] hover:bg-[#061811] text-[#E5C07B] border border-[#D4AF37]/30 font-bold text-xs uppercase tracking-wider transition-all"
+                      className="px-5 py-2 rounded-full bg-[#4A0E17] hover:bg-[#5E141F] text-white border border-[#7A1D2A] font-bold text-xs uppercase tracking-wider transition-all"
                     >
                       View Order Particulars →
                     </Link>

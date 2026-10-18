@@ -52,24 +52,24 @@ function OrderSuccessContent() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 text-center space-y-8">
       {/* Celebration Icon */}
-      <div className="inline-flex p-4 rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 animate-bounce">
+      <div className="inline-flex p-4 rounded-full bg-[#4A0E17]/10 text-[#4A0E17] border border-[#D4AF37]/40 shadow-md">
         <CheckCircle2 className="w-12 h-12" />
       </div>
 
       <div className="space-y-2">
-        <span className="text-xs uppercase tracking-widest text-emerald-600 font-bold">
+        <span className="text-xs uppercase tracking-widest text-[#4A0E17] font-bold">
           {order?.paymentMethod === 'cod'
             ? 'Order Confirmed • Cash on Delivery'
             : 'Payment Confirmed • Verified via UPI / Online'}
         </span>
-        <h1 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 dark:text-zinc-100 tracking-tight">
+        <h1 className="font-serif text-3xl sm:text-4xl font-bold text-zinc-900 tracking-tight">
           Thank You For Your Order
         </h1>
-        <p className="text-sm text-zinc-500 max-w-md mx-auto">
-          We have received your order and our specialists are now preparing your parcel for dispatch.
+        <p className="text-sm text-zinc-600 max-w-md mx-auto font-light">
+          We have received your royal order and our master weavers are preparing your parcel for insured dispatch.
         </p>
         <div className="pt-2">
-          <span className="inline-block bg-zinc-100 dark:bg-zinc-800 text-zinc-800 dark:text-zinc-200 px-4 py-1.5 rounded-full font-mono text-xs font-bold">
+          <span className="inline-block bg-[#FAF7F2] border border-[#E8E2D5] text-[#4A0E17] px-4 py-1.5 rounded-full font-mono text-xs font-bold shadow-2xs">
             Order #{order?.orderNumber || 'ORD-2026-CONFIRMED'}
           </span>
         </div>
@@ -77,44 +77,44 @@ function OrderSuccessContent() {
 
       {/* Order Details Card */}
       {order && (
-        <div className="bg-zinc-50 dark:bg-zinc-900 p-6 sm:p-8 rounded-3xl border border-zinc-200 dark:border-zinc-800 text-left space-y-6">
-          <h3 className="font-bold text-base text-zinc-900 dark:text-zinc-100">
+        <div className="bg-white p-6 sm:p-8 rounded-3xl border border-[#E8E2D5] text-left space-y-6 shadow-sm">
+          <h3 className="font-serif font-bold text-base text-zinc-900">
             Order Summary
           </h3>
 
-          <div className="divide-y divide-zinc-200 dark:divide-zinc-800">
+          <div className="divide-y divide-[#E8E2D5]/70">
             {order.items.map((item, idx) => (
               <div key={idx} className="py-3 flex items-center justify-between gap-4">
                 <div className="flex items-center gap-3">
-                  <div className="relative w-12 h-16 rounded-lg overflow-hidden bg-zinc-200 flex-shrink-0">
+                  <div className="relative w-12 h-16 rounded-xl overflow-hidden bg-zinc-100 border border-[#E8E2D5] shrink-0">
                     <Image
-                      src={item.image || 'https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=200&q=80'}
+                      src={item.image || '/images/bestsellers/traditional_silk_saree.jpg'}
                       alt={item.name}
                       fill
                       className="object-cover"
                     />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-xs text-zinc-900 dark:text-zinc-100 line-clamp-1">
+                    <h4 className="font-serif font-medium text-xs text-zinc-900 line-clamp-1">
                       {item.name}
                     </h4>
                     <p className="text-[11px] text-zinc-400">Qty: {item.quantity}</p>
                   </div>
                 </div>
-                <span className="font-bold text-xs text-zinc-900 dark:text-zinc-100">
+                <span className="font-bold text-xs text-zinc-900">
                   {formatCurrency(item.price * item.quantity)}
                 </span>
               </div>
             ))}
           </div>
 
-          <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 space-y-2 text-xs">
+          <div className="pt-4 border-t border-[#E8E2D5]/70 space-y-2 text-xs">
             <div className="flex justify-between text-zinc-500">
               <span>Subtotal</span>
               <span>{formatCurrency(order.subtotal)}</span>
             </div>
             {order.discount > 0 && (
-              <div className="flex justify-between text-emerald-600 font-medium">
+              <div className="flex justify-between text-rose-600 font-medium">
                 <span>Discount ({order.couponCode})</span>
                 <span>-{formatCurrency(order.discount)}</span>
               </div>
@@ -127,15 +127,15 @@ function OrderSuccessContent() {
               <span>Taxes</span>
               <span>{formatCurrency(order.tax)}</span>
             </div>
-            <div className="flex justify-between text-sm font-extrabold text-zinc-900 dark:text-zinc-100 pt-2 border-t border-zinc-200 dark:border-zinc-800">
+            <div className="flex justify-between text-sm font-serif font-bold text-zinc-900 pt-2 border-t border-[#E8E2D5]">
               <span>{order.paymentMethod === 'cod' ? 'Total (Due on Delivery)' : 'Total Paid'}</span>
-              <span>{formatCurrency(order.total)}</span>
+              <span className="text-[#4A0E17]">{formatCurrency(order.total)}</span>
             </div>
           </div>
 
           {/* Shipping Address */}
-          <div className="pt-4 border-t border-zinc-200 dark:border-zinc-800 text-xs text-zinc-500">
-            <p className="font-bold text-zinc-900 dark:text-zinc-100 mb-1">Shipping To:</p>
+          <div className="pt-4 border-t border-[#E8E2D5]/70 text-xs text-zinc-500">
+            <p className="font-bold text-zinc-900 mb-1">Shipping To:</p>
             <p>{order.shippingAddress.fullName}</p>
             <p>{order.shippingAddress.addressLine1} {order.shippingAddress.addressLine2}</p>
             <p>{order.shippingAddress.city}, {order.shippingAddress.state} {order.shippingAddress.postalCode}, {order.shippingAddress.country}</p>
@@ -148,14 +148,14 @@ function OrderSuccessContent() {
         {order && (
           <Link
             href={`/account/orders/${order._id}`}
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-zinc-900 dark:bg-zinc-100 text-white dark:text-zinc-900 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-zinc-800 transition-colors shadow-lg"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-[#4A0E17] hover:bg-[#5E141F] text-white px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all shadow-md border border-[#7A1D2A]"
           >
             <Package className="w-4 h-4" /> View Order Details
           </Link>
         )}
         <Link
           href="/shop"
-          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-zinc-200 dark:border-zinc-700 text-zinc-800 dark:text-zinc-200 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+          className="w-full sm:w-auto inline-flex items-center justify-center gap-2 border border-[#E8E2D5] bg-[#FAF7F2] text-zinc-800 hover:text-[#4A0E17] hover:border-[#4A0E17] px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-wider transition-colors"
         >
           <Home className="w-4 h-4" /> Continue Shopping
         </Link>

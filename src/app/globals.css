@@ -25,9 +25,18 @@
     @apply border-zinc-200 dark:border-zinc-800;
   }
 
+  html {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+
   body {
     @apply bg-white text-zinc-900 antialiased selection:bg-zinc-900 selection:text-white dark:bg-zinc-950 dark:text-zinc-50 dark:selection:bg-zinc-100 dark:selection:text-zinc-900;
     font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+    width: 100%;
   }
 }
 

@@ -80,7 +80,7 @@ export default function ShippingPage() {
       </section>
 
       {/* 2. VALUE PROMISES HIGHLIGHT */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">
+      <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 -mt-8 relative z-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
             {
@@ -121,7 +121,7 @@ export default function ShippingPage() {
       </section>
 
       {/* 3. DELIVERY TIMELINES & TIERS */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 space-y-10">
+      <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-16 sm:py-20 space-y-10">
         <div className="text-center max-w-2xl mx-auto space-y-2">
           <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#B8860B]">
             DISPATCH ESTIMATES

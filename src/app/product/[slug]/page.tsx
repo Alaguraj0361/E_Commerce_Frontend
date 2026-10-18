@@ -34,6 +34,149 @@ import { useWishlistStore } from '../../../store/wishlistStore';
 import { formatCurrency, getDiscountPercentage } from '../../../lib/utils';
 import { toast } from 'sonner';
 
+const FALLBACK_PRODUCTS: Record<string, any> = {
+  'kids-butterfly-gown': {
+    _id: 'na-5',
+    name: 'Kids Butterfly Gown',
+    slug: 'kids-butterfly-gown',
+    price: 369,
+    compareAtPrice: 699,
+    description: 'Charming festive yellow butterfly gown for young girls, featuring circular tiers, sequined gold bodice, and lightweight twirling silhouette.',
+    shortDescription: 'Festive yellow ethnic butterfly gown for kids.',
+    category: 'kids-wear',
+    images: [
+      { url: '/images/nalmara/kidswear_butterfly_gown.jpg', alt: 'Kids Butterfly Gown', isMain: true },
+      { url: '/images/categories/kids-wear.jpg', alt: 'Kids Butterfly Gown Angle', isMain: false },
+    ],
+    rating: 4.9,
+    reviewCount: 64,
+    stock: 60,
+    sku: 'NAL-KID-05',
+    isActive: true,
+    hasBespokeTailoring: false,
+    attributes: {
+      Fabric: ['Soft Net & Shimmer Crepe'],
+      Work: ['Golden Sequin Embellishment'],
+      Occasion: ['Festive, Birthday & Celebration'],
+      Size: ['2-3 Y', '4-5 Y', '6-7 Y', '8-9 Y'],
+    },
+    variants: [
+      {
+        _id: 'var-kbg-1',
+        sku: 'NAL-KID-05-YEL',
+        price: 369,
+        stock: 30,
+        attributes: { color: 'Yellow', colorHex: '#EAB308', size: '4-5 Y' },
+      },
+      {
+        _id: 'var-kbg-2',
+        sku: 'NAL-KID-05-PNK',
+        price: 369,
+        stock: 30,
+        attributes: { color: 'Pink', colorHex: '#EC4899', size: '4-5 Y' },
+      },
+    ],
+  },
+  'butterfly-gown': {
+    _id: 'na-5',
+    name: 'Kids Butterfly Gown',
+    slug: 'kids-butterfly-gown',
+    price: 369,
+    compareAtPrice: 699,
+    description: 'Charming festive yellow butterfly gown for young girls, featuring circular tiers, sequined gold bodice, and lightweight twirling silhouette.',
+    shortDescription: 'Festive yellow ethnic butterfly gown for kids.',
+    category: 'kids-wear',
+    images: [
+      { url: '/images/nalmara/kidswear_butterfly_gown.jpg', alt: 'Kids Butterfly Gown', isMain: true },
+    ],
+    rating: 4.9,
+    reviewCount: 64,
+    stock: 60,
+    sku: 'NAL-KID-05',
+    isActive: true,
+    hasBespokeTailoring: false,
+  },
+  'semi-kanchivaram-silk-saree': {
+    _id: 'na-1',
+    name: 'Semi Kanchivaram Silk Saree',
+    slug: 'semi-kanchivaram-silk-saree',
+    price: 1299,
+    compareAtPrice: 1999,
+    description: 'Exquisite semi Kanchivaram silk saree with opulent golden floral motifs, radiant magenta body, and contrast temple border. Includes matching unstitched blouse piece.',
+    shortDescription: 'Designer semi Kanchivaram silk saree with antique zari borders.',
+    category: 'sarees',
+    images: [
+      { url: '/images/nalmara/category_semi_kanchivaram.jpg', alt: 'Semi Kanchivaram Silk Saree', isMain: true },
+      { url: '/images/nalmara/hero_maroon_saree.jpg', alt: 'Drape view' },
+    ],
+    rating: 4.8,
+    reviewCount: 115,
+    stock: 50,
+    sku: 'NAL-SK-01',
+    isActive: true,
+  },
+  'cotton-saree': {
+    _id: 'na-2',
+    name: 'Cotton Saree',
+    slug: 'cotton-saree',
+    price: 799,
+    compareAtPrice: 1199,
+    description: 'Authentic pure Chettinadu cotton saree with contrast woven temple borders and lightweight breathable feel.',
+    category: 'cotton-sarees',
+    images: [{ url: '/images/nalmara/cotton_saree_stack.jpg', alt: 'Cotton Saree', isMain: true }],
+    rating: 4.9,
+    reviewCount: 89,
+    stock: 65,
+    sku: 'NAL-COT-02',
+    isActive: true,
+  },
+  'party-wear-saree': {
+    _id: 'na-3',
+    name: 'Party Wear Saree',
+    slug: 'party-wear-saree',
+    price: 1489,
+    compareAtPrice: 1999,
+    description: 'Ethereal pastel lavender and gold semi tissue saree embellished with subtle sequin embroidery.',
+    category: 'party-wear',
+    images: [{ url: '/images/nalmara/category_party_wear.jpg', alt: 'Party Wear Saree', isMain: true }],
+    rating: 4.7,
+    reviewCount: 72,
+    stock: 40,
+    sku: 'NAL-TIS-03',
+    isActive: true,
+  },
+  'art-silk-saree': {
+    _id: 'na-4',
+    name: 'Art Silk Saree',
+    slug: 'art-silk-saree',
+    price: 909,
+    compareAtPrice: 1499,
+    description: 'Lustrous silver and royal blue dual-tone silk cotton saree crafted for festive evenings.',
+    category: 'sarees',
+    images: [{ url: '/images/bestsellers/traditional_silk_saree.jpg', alt: 'Art Silk Saree', isMain: true }],
+    rating: 4.8,
+    reviewCount: 95,
+    stock: 35,
+    sku: 'NAL-SC-04',
+    isActive: true,
+  },
+  'kanchivaram-saree': {
+    _id: 'bs-1',
+    name: 'Kanchivaram Saree',
+    slug: 'kanchivaram-saree',
+    price: 1499,
+    compareAtPrice: 2499,
+    description: 'Peerless royal Kanchivaram silk saree with heavy antique temple gold zari border and rich contrast pallu.',
+    category: 'sarees',
+    images: [{ url: '/images/bestsellers/traditional_silk_saree.jpg', alt: 'Kanchivaram Saree', isMain: true }],
+    rating: 5.0,
+    reviewCount: 135,
+    stock: 75,
+    sku: 'NAL-KAN-06',
+    isActive: true,
+  },
+};
+
 export default function ProductDetailPage() {
   const params = useParams();
   const router = useRouter();
@@ -79,13 +222,24 @@ export default function ProductDetailPage() {
           setProduct(prod);
 
           // Fetch related products
-          const relatedRes = await api.get(`/products/${prod._id}/related`);
-          if (relatedRes.data?.success) {
-            setRelatedProducts(relatedRes.data.data || []);
+          try {
+            const relatedRes = await api.get(`/products/${prod._id}/related`);
+            if (relatedRes.data?.success) {
+              setRelatedProducts(relatedRes.data.data || []);
+            }
+          } catch {
+            // non-fatal
           }
+          return;
         }
       } catch (error) {
-        console.error('Failed to load product details:', error);
+        // Fallback to local catalog if offline or slug not in remote db
+        const fallback = FALLBACK_PRODUCTS[slug];
+        if (fallback) {
+          setProduct(fallback as Product);
+          return;
+        }
+        console.warn('Product not found in remote API or local fallback:', error);
       } finally {
         setIsLoading(false);
       }
@@ -448,7 +602,7 @@ export default function ProductDetailPage() {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+    <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-12 space-y-14">
       {/* 1. Breadcrumbs */}
       <nav className="flex items-center gap-2 text-xs text-zinc-400 overflow-x-auto whitespace-nowrap">
         <Link href="/" className="hover:text-amber-600 transition-colors">
@@ -633,8 +787,8 @@ export default function ProductDetailPage() {
                       onClick={() => setSelectedSize(opt.size)}
                       className={`min-w-[44px] px-3.5 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
                         isSelected
-                          ? 'border-zinc-950 bg-zinc-950 text-white dark:border-amber-400 dark:bg-amber-400 dark:text-zinc-950 shadow-md scale-105'
-                          : 'border-zinc-200 dark:border-zinc-700 text-zinc-700 dark:text-zinc-300 hover:border-amber-400 bg-white dark:bg-zinc-900'
+                          ? 'border-[#4A0E17] bg-[#4A0E17] text-white shadow-md scale-105'
+                          : 'border-[#E8E2D5] text-zinc-700 hover:border-[#4A0E17] bg-white'
                       } ${isOutOfStock ? 'opacity-50 line-through' : ''}`}
                     >
                       {opt.size}
@@ -647,22 +801,22 @@ export default function ProductDetailPage() {
 
           {/* 4. TAILORING CUSTOMIZATION SUITE (Only if enabled in admin) */}
           {Boolean(product.hasBespokeTailoring) && (
-            <div className="p-5 rounded-2xl bg-zinc-50 dark:bg-zinc-900/60 border border-zinc-200/80 dark:border-zinc-800 space-y-4">
-              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-900 dark:text-zinc-100">
-                <Scissors className="w-4 h-4 text-amber-500" />
+            <div className="p-5 rounded-2xl bg-white border border-[#E8E2D5] space-y-4 shadow-xs">
+              <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-[#4A0E17]">
+                <Scissors className="w-4 h-4 text-[#D4AF37]" />
                 <span>Bespoke Tailoring Options</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
                 {/* Height Selector */}
                 <div>
-                  <label className="block text-zinc-600 dark:text-zinc-400 font-semibold mb-1">
+                  <label className="block text-zinc-600 font-semibold mb-1">
                     Height (Head to Toe):
                   </label>
                   <select
                     value={selectedHeight}
                     onChange={(e) => setSelectedHeight(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 font-medium focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-[#E8E2D5] bg-[#FAF7F2] text-zinc-800 font-medium focus:ring-1 focus:ring-[#4A0E17] focus:outline-none"
                   >
                     {["4'10\"", "4'11\"", "5'0\"", "5'1\"", "5'2\"", "5'3\"", "5'4\"", "5'5\"", "5'6\"", "5'7\"", "5'8\"+"].map((h) => (
                       <option key={h} value={h}>
@@ -674,13 +828,13 @@ export default function ProductDetailPage() {
 
                 {/* Neck Design Selector */}
                 <div>
-                  <label className="block text-zinc-600 dark:text-zinc-400 font-semibold mb-1">
+                  <label className="block text-zinc-600 font-semibold mb-1">
                     Neck Design:
                   </label>
                   <select
                     value={selectedNeckDesign}
                     onChange={(e) => setSelectedNeckDesign(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 font-medium focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-[#E8E2D5] bg-[#FAF7F2] text-zinc-800 font-medium focus:ring-1 focus:ring-[#4A0E17] focus:outline-none"
                   >
                     <option value="Standard (As shown)">Standard (As shown)</option>
                     <option value="Sweet Heart">Sweet Heart</option>
@@ -693,13 +847,13 @@ export default function ProductDetailPage() {
 
                 {/* Sleeves Preference */}
                 <div className="sm:col-span-2">
-                  <label className="block text-zinc-600 dark:text-zinc-400 font-semibold mb-1">
+                  <label className="block text-zinc-600 font-semibold mb-1">
                     Sleeves Style:
                   </label>
                   <select
                     value={selectedSleeves}
                     onChange={(e) => setSelectedSleeves(e.target.value)}
-                    className="w-full px-3 py-2 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 font-medium focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                    className="w-full px-3 py-2 rounded-xl border border-[#E8E2D5] bg-[#FAF7F2] text-zinc-800 font-medium focus:ring-1 focus:ring-[#4A0E17] focus:outline-none"
                   >
                     <option value="Standard (As shown)">Standard (As shown)</option>
                     <option value="Sleeveless">Sleeveless</option>
@@ -711,45 +865,45 @@ export default function ProductDetailPage() {
                 </div>
               </div>
 
-              {/* Custom Tailoring Add-ons (Checkboxes with dynamic price update) */}
-              <div className="pt-2 border-t border-zinc-200 dark:border-zinc-800 space-y-2">
+              {/* Custom Tailoring Add-ons */}
+              <div className="pt-2 border-t border-[#E8E2D5] space-y-2">
                 <span className="block text-[11px] font-bold uppercase tracking-wider text-zinc-500">
                   Optional Tailoring Add-ons:
                 </span>
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                  <label className="flex items-center gap-2 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 cursor-pointer hover:border-amber-400 transition-colors">
+                  <label className="flex items-center gap-2 p-2.5 rounded-xl border border-[#E8E2D5] bg-[#FAF7F2] cursor-pointer hover:border-[#4A0E17] transition-colors">
                     <input
                       type="checkbox"
                       checked={addOnCanCan}
                       onChange={(e) => setAddOnCanCan(e.target.checked)}
-                      className="rounded text-amber-600 focus:ring-amber-500 w-4 h-4"
+                      className="rounded text-[#4A0E17] focus:ring-[#4A0E17] w-4 h-4"
                     />
                     <span>Can Can Flare (+₹650)</span>
                   </label>
 
-                  <label className="flex items-center gap-2 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 cursor-pointer hover:border-amber-400 transition-colors">
+                  <label className="flex items-center gap-2 p-2.5 rounded-xl border border-[#E8E2D5] bg-[#FAF7F2] cursor-pointer hover:border-[#4A0E17] transition-colors">
                     <input
                       type="checkbox"
                       checked={addOnFeedingZip}
                       onChange={(e) => setAddOnFeedingZip(e.target.checked)}
-                      className="rounded text-amber-600 focus:ring-amber-500 w-4 h-4"
+                      className="rounded text-[#4A0E17] focus:ring-[#4A0E17] w-4 h-4"
                     />
                     <span>Feeding Zip (+₹250)</span>
                   </label>
 
-                  <label className="flex items-center gap-2 p-2.5 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 cursor-pointer hover:border-amber-400 transition-colors">
+                  <label className="flex items-center gap-2 p-2.5 rounded-xl border border-[#E8E2D5] bg-[#FAF7F2] cursor-pointer hover:border-[#4A0E17] transition-colors">
                     <input
                       type="checkbox"
                       checked={addOnBlousePad}
                       onChange={(e) => setAddOnBlousePad(e.target.checked)}
-                      className="rounded text-amber-600 focus:ring-amber-500 w-4 h-4"
+                      className="rounded text-[#4A0E17] focus:ring-[#4A0E17] w-4 h-4"
                     />
                     <span>Blouse Pad (+₹200)</span>
                   </label>
                 </div>
               </div>
 
-              {/* Custom Notes / Measurements */}
+              {/* Custom Notes */}
               <div className="pt-2">
                 <label className="block text-[11px] font-semibold text-zinc-500 mb-1">
                   Custom Measurements or Specific Requests (Optional):
@@ -759,16 +913,16 @@ export default function ProductDetailPage() {
                   placeholder="e.g. Bust 35, Waist 29, please add extra margin..."
                   value={customNotes}
                   onChange={(e) => setCustomNotes(e.target.value)}
-                  className="w-full px-3 py-2 rounded-xl text-xs border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-800 dark:text-zinc-200 focus:ring-1 focus:ring-amber-500 focus:outline-none"
+                  className="w-full px-3 py-2 rounded-xl text-xs border border-[#E8E2D5] bg-[#FAF7F2] text-zinc-800 focus:ring-1 focus:ring-[#4A0E17] focus:outline-none"
                 />
               </div>
             </div>
           )}
 
           {/* 5. PINCODE DELIVERY ESTIMATOR */}
-          <div className="p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 space-y-2">
-            <span className="text-xs font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
-              <Truck className="w-4 h-4 text-amber-500" /> Check Estimated Delivery Date:
+          <div className="p-4 rounded-2xl border border-[#E8E2D5] bg-white space-y-2 shadow-xs">
+            <span className="text-xs font-bold text-zinc-900 flex items-center gap-1.5">
+              <Truck className="w-4 h-4 text-[#D4AF37]" /> Check Estimated Delivery Date:
             </span>
             <form onSubmit={handlePincodeCheck} className="flex gap-2">
               <input
@@ -777,12 +931,12 @@ export default function ProductDetailPage() {
                 placeholder="Enter 6-digit PIN code..."
                 value={pincode}
                 onChange={(e) => setPincode(e.target.value.replace(/\D/g, ''))}
-                className="flex-1 px-3 py-2 rounded-xl text-xs border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white focus:outline-none focus:ring-1 focus:ring-amber-500 font-mono"
+                className="flex-1 px-3 py-2 rounded-xl text-xs border border-[#E8E2D5] bg-[#FAF7F2] text-zinc-900 focus:outline-none focus:ring-1 focus:ring-[#4A0E17] font-mono"
               />
               <button
                 type="submit"
                 disabled={isCheckingPincode}
-                className="px-4 py-2 rounded-xl bg-zinc-950 dark:bg-zinc-100 text-white dark:text-zinc-950 text-xs font-bold hover:bg-zinc-800 transition-colors disabled:opacity-50"
+                className="px-5 py-2 rounded-xl bg-[#4A0E17] text-white text-xs font-bold hover:bg-[#5E141F] transition-colors disabled:opacity-50"
               >
                 {isCheckingPincode ? 'Checking...' : 'Check'}
               </button>
@@ -790,7 +944,7 @@ export default function ProductDetailPage() {
             {pincodeStatus && (
               <p
                 className={`text-[11px] leading-relaxed pt-1 ${
-                  pincodeStatus.startsWith('✓') ? 'text-emerald-600 font-medium' : 'text-rose-500'
+                  pincodeStatus.startsWith('✓') ? 'text-emerald-700 font-medium' : 'text-rose-600'
                 }`}
               >
                 {pincodeStatus}
@@ -800,24 +954,24 @@ export default function ProductDetailPage() {
 
           {/* 6. QUANTITY & CTA BUTTONS */}
           <div className="space-y-3 pt-2">
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-3 sm:gap-4">
               {/* Quantity Selector */}
-              <div className="flex items-center border border-zinc-300 dark:border-zinc-700 rounded-full bg-white dark:bg-zinc-900 p-1">
+              <div className="flex items-center border border-[#E8E2D5] rounded-full bg-white p-1 shadow-xs">
                 <button
                   type="button"
                   onClick={() => setQuantity(Math.max(1, quantity - 1))}
-                  className="p-1.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600 disabled:opacity-30"
+                  className="p-1.5 rounded-full hover:bg-zinc-100 text-zinc-600 disabled:opacity-30"
                   disabled={quantity <= 1}
                 >
                   <Minus className="w-3.5 h-3.5" />
                 </button>
-                <span className="px-3 text-xs font-bold text-zinc-900 dark:text-white">
+                <span className="px-3 text-xs font-bold text-zinc-900">
                   {quantity}
                 </span>
                 <button
                   type="button"
                   onClick={() => setQuantity(quantity + 1)}
-                  className="p-1.5 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-600"
+                  className="p-1.5 rounded-full hover:bg-zinc-100 text-zinc-600"
                 >
                   <Plus className="w-3.5 h-3.5" />
                 </button>
@@ -827,7 +981,7 @@ export default function ProductDetailPage() {
               <button
                 type="button"
                 onClick={handleAddToCart}
-                className="flex-1 inline-flex items-center justify-center gap-2 bg-amber-400 hover:bg-amber-300 text-zinc-950 font-bold py-3.5 px-6 rounded-full text-xs uppercase tracking-widest transition-all shadow-md active:scale-95"
+                className="flex-1 inline-flex items-center justify-center gap-2 bg-[#4A0E17] hover:bg-[#5E141F] text-white font-bold py-3.5 px-6 rounded-full text-xs uppercase tracking-widest transition-all shadow-md active:scale-95"
               >
                 <ShoppingBag className="w-4 h-4" /> ADD TO CART
               </button>
@@ -836,10 +990,10 @@ export default function ProductDetailPage() {
               <button
                 type="button"
                 onClick={() => toggleWishlist(product)}
-                className={`p-3.5 rounded-full border transition-colors ${
+                className={`p-3.5 rounded-full border transition-colors shadow-xs ${
                   isLiked
-                    ? 'border-rose-500 bg-rose-50 dark:bg-rose-950 text-rose-500'
-                    : 'border-zinc-200 dark:border-zinc-700 text-zinc-500 hover:text-rose-500 hover:border-rose-300'
+                    ? 'border-rose-500 bg-rose-50 text-rose-600'
+                    : 'border-[#E8E2D5] text-zinc-500 hover:text-rose-600 hover:border-rose-300 bg-white'
                 }`}
                 aria-label="Wishlist"
               >
@@ -851,9 +1005,9 @@ export default function ProductDetailPage() {
             <button
               type="button"
               onClick={handleBuyNow}
-              className="w-full inline-flex items-center justify-center gap-2 bg-zinc-950 hover:bg-zinc-800 text-white font-bold py-3.5 px-6 rounded-full text-xs uppercase tracking-widest transition-all shadow-md active:scale-95"
+              className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#D4AF37] via-[#E5C07B] to-[#C5A059] hover:opacity-95 text-zinc-950 font-bold py-3.5 px-6 rounded-full text-xs uppercase tracking-widest transition-all shadow-md active:scale-95"
             >
-              <Zap className="w-4 h-4 text-amber-400 fill-current" /> BUY IT NOW
+              <Zap className="w-4 h-4 text-zinc-950 fill-current" /> BUY IT NOW
             </button>
           </div>
 

@@ -55,7 +55,7 @@ function LoginContent() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900 py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
+    <div className="min-h-screen bg-[#FAF7F2] text-zinc-900 py-16 px-4 sm:px-6 lg:px-8 flex items-center justify-center">
       <div className="max-w-md w-full space-y-6">
         {/* Brand Emblem & Welcome Header */}
         <div className="text-center space-y-3">
@@ -63,11 +63,11 @@ function LoginContent() {
             <BrandLogo size="lg" theme="light" />
           </div>
           <div className="pt-2">
-            <span className="text-[10px] font-bold uppercase tracking-widest text-[#B8860B] px-3 py-1 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30">
+            <span className="text-[10px] font-bold uppercase tracking-widest text-[#4A0E17] px-3 py-1 rounded-full bg-[#4A0E17]/10 border border-[#4A0E17]/20">
               Client Portal
             </span>
           </div>
-          <h1 className="font-serif text-3xl font-bold text-[#061811]">
+          <h1 className="font-serif text-3xl font-bold text-zinc-900">
             Welcome Back
           </h1>
           <p className="text-xs text-zinc-500 font-light max-w-xs mx-auto">
@@ -76,27 +76,27 @@ function LoginContent() {
         </div>
 
         {/* Auth Card */}
-        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#D4AF37]/30 shadow-xl space-y-5">
+        <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E2D5] shadow-xl space-y-5">
           {/* Demo Credentials Quick Fill Banner */}
-          <div className="p-3.5 bg-[#FAF8F5] rounded-2xl border border-[#D4AF37]/25 text-xs space-y-2">
-            <p className="font-bold text-[#061811] flex items-center gap-1.5 text-[11px]">
+          <div className="p-3.5 bg-[#FAF7F2] rounded-2xl border border-[#E8E2D5] text-xs space-y-2">
+            <p className="font-bold text-zinc-900 flex items-center gap-1.5 text-[11px]">
               <KeyRound className="w-3.5 h-3.5 text-[#D4AF37]" /> One-Click Demo Access:
             </p>
             <div className="grid grid-cols-2 gap-2">
               <button
                 type="button"
                 onClick={() => fillDemoAccount('customer')}
-                className="p-2 bg-white border border-zinc-200 rounded-xl text-left hover:border-[#D4AF37] transition-colors shadow-sm"
+                className="p-2 bg-white border border-[#E8E2D5] rounded-xl text-left hover:border-[#4A0E17] transition-colors shadow-2xs cursor-pointer"
               >
-                <span className="font-bold block text-[#061811] text-[11px]">Customer</span>
+                <span className="font-bold block text-zinc-900 text-[11px]">Customer</span>
                 <span className="text-[9px] text-zinc-400 truncate block">customer@ecommerce.com</span>
               </button>
               <button
                 type="button"
                 onClick={() => fillDemoAccount('admin')}
-                className="p-2 bg-white border border-zinc-200 rounded-xl text-left hover:border-[#D4AF37] transition-colors shadow-sm"
+                className="p-2 bg-white border border-[#E8E2D5] rounded-xl text-left hover:border-[#4A0E17] transition-colors shadow-2xs cursor-pointer"
               >
-                <span className="font-bold block text-[#B8860B] text-[11px]">Admin Concierge</span>
+                <span className="font-bold block text-[#4A0E17] text-[11px]">Admin Concierge</span>
                 <span className="text-[9px] text-zinc-400 truncate block">admin@ecommerce.com</span>
               </button>
             </div>
@@ -115,7 +115,7 @@ function LoginContent() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
-                  className="w-full bg-[#FAF8F5] border border-zinc-200 rounded-xl py-3 pl-10 pr-4 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-zinc-900"
+                  className="w-full bg-[#FAF7F2] border border-[#E8E2D5] rounded-xl py-3 pl-10 pr-4 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-zinc-900"
                 />
               </div>
             </div>
@@ -127,7 +127,7 @@ function LoginContent() {
                 </label>
                 <Link
                   href="/forgot-password"
-                  className="text-xs text-[#B8860B] hover:underline font-medium"
+                  className="text-xs text-[#4A0E17] hover:underline font-medium"
                 >
                   Forgot password?
                 </Link>
@@ -140,7 +140,7 @@ function LoginContent() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
-                  className="w-full bg-[#FAF8F5] border border-zinc-200 rounded-xl py-3 pl-10 pr-4 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-zinc-900"
+                  className="w-full bg-[#FAF7F2] border border-[#E8E2D5] rounded-xl py-3 pl-10 pr-4 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-zinc-900"
                 />
               </div>
             </div>
@@ -148,11 +148,11 @@ function LoginContent() {
             <button
               type="submit"
               disabled={isLoading}
-              className="w-full bg-[#D4AF37] hover:bg-[#B38F2E] text-zinc-950 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg transition-all hover:scale-[1.01] disabled:opacity-50 mt-2"
+              className="w-full bg-[#4A0E17] hover:bg-[#5E141F] text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-lg transition-all hover:scale-[1.01] disabled:opacity-50 mt-2 border border-[#7A1D2A] cursor-pointer"
             >
               {isLoading ? (
                 <>
-                  <Loader2 className="w-4 h-4 animate-spin text-zinc-950" />
+                  <Loader2 className="w-4 h-4 animate-spin text-[#D4AF37]" />
                   Verifying...
                 </>
               ) : (
@@ -165,7 +165,7 @@ function LoginContent() {
             Don&apos;t have an account yet?{' '}
             <Link
               href={`/signup?redirect=${redirectUrl}`}
-              className="font-bold text-[#061811] hover:text-[#B8860B] underline"
+              className="font-bold text-[#4A0E17] hover:underline"
             >
               Create Client Account
             </Link>

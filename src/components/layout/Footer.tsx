@@ -1,244 +1,272 @@
 'use client';
 
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import {
   Instagram,
   Facebook,
   Youtube,
   Share2,
+  ChevronDown,
+  CreditCard,
+  ShieldCheck,
 } from 'lucide-react';
-import { BrandLogo } from '../ui/BrandLogo';
-import { useCategoryStore } from '../../store/categoryStore';
+import { BrandLogo, LotusIcon } from '../ui/BrandLogo';
 
 export const Footer = () => {
-  const { categories, fetchCategories } = useCategoryStore();
+  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
+    shop: false,
+    care: false,
+    about: false,
+    connect: false,
+  });
 
-  useEffect(() => {
-    fetchCategories();
-  }, [fetchCategories]);
+  const toggleSection = (key: string) => {
+    setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
+  };
+
   return (
-    <footer className="bg-[#061811] text-[#FAF8F5] pt-16 pb-8 border-t border-[#D4AF37]/20 select-none">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Footer Columns */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-[#D4AF37]/20">
-          {/* Column 1: Brand & Socials */}
-          <div className="space-y-6 lg:pr-4">
-            <BrandLogo size="lg" theme="dark" />
-            <p className="text-xs text-zinc-300 leading-relaxed font-light">
-              NALMARA FASHION celebrates authentic Indian tradition, pure artisanal craftsmanship, and contemporary royal elegance.
-            </p>
-            {/* Social Icons */}
-            <div className="flex items-center gap-3 pt-1">
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-[#0E3324] border border-[#D4AF37]/30 flex items-center justify-center text-[#E5C07B] hover:bg-[#D4AF37] hover:text-zinc-950 transition-all"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-4 h-4" />
-              </a>
-              <a
-                href="https://www.instagram.com/nalmarafashion_official"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-[#0E3324] border border-[#D4AF37]/30 flex items-center justify-center text-[#E5C07B] hover:bg-[#D4AF37] hover:text-zinc-950 transition-all"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-[#0E3324] border border-[#D4AF37]/30 flex items-center justify-center text-[#E5C07B] hover:bg-[#D4AF37] hover:text-zinc-950 transition-all"
-                aria-label="YouTube"
-              >
-                <Youtube className="w-4 h-4" />
-              </a>
-              <a
-                href="https://pinterest.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-8 h-8 rounded-full bg-[#0E3324] border border-[#D4AF37]/30 flex items-center justify-center text-[#E5C07B] hover:bg-[#D4AF37] hover:text-zinc-950 transition-all"
-                aria-label="Pinterest"
-              >
-                <Share2 className="w-4 h-4" />
-              </a>
-            </div>
-          </div>
+    <footer className="bg-[#132E27] text-zinc-200 pt-12 sm:pt-16 pb-20 lg:pb-10 border-t border-[#0D201B] relative overflow-hidden">
+      {/* Subtle corner botanical flourish */}
+      <div className="absolute right-0 bottom-0 w-64 h-64 opacity-5 pointer-events-none">
+        <LotusIcon className="w-full h-full text-[#D4AF37]" />
+      </div>
 
-          {/* Column 2: Quick Links */}
-          <div className="space-y-4">
-            <h5 className="text-xs font-bold text-[#E5C07B] uppercase tracking-widest">
-              Quick Links
-            </h5>
-            <ul className="space-y-2.5 text-xs text-zinc-300 font-light">
+      <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
+        {/* Brand Header & Tagline */}
+        <div className="flex flex-col items-center justify-center text-center pb-10 border-b border-[#1F4539]">
+          <BrandLogo size="lg" theme="dark" showTagline={true} />
+        </div>
+
+        {/* 4 Footer Columns (Desktop Grid, Mobile Accordion) */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-10 border-b border-[#1F4539]">
+          {/* Column 1: Shop */}
+          <div className="border-b md:border-b-0 border-[#1F4539] pb-4 md:pb-0">
+            <button
+              onClick={() => toggleSection('shop')}
+              className="w-full flex items-center justify-between text-left font-serif font-bold text-sm tracking-wide text-[#F5E6BE] md:cursor-default"
+            >
+              <span>Shop</span>
+              <ChevronDown
+                className={`w-4 h-4 md:hidden transition-transform text-[#D4AF37] ${
+                  openSections.shop ? 'rotate-180' : ''
+                }`}
+              />
+            </button>
+            <ul
+              className={`space-y-2.5 text-xs text-zinc-600 font-light mt-3 ${
+                openSections.shop ? 'block' : 'hidden md:block'
+              }`}
+            >
               <li>
-                <Link href="/" className="hover:text-[#E5C07B] transition-colors">
-                  Home
+                <Link href="/shop?category=sarees" className="hover:text-[#4A0E17] transition-colors">
+                  All Sarees
                 </Link>
               </li>
               <li>
-                <Link href="/shop" className="hover:text-[#E5C07B] transition-colors">
-                  Shop
+                <Link href="/shop?filter=new-arrivals" className="hover:text-[#4A0E17] transition-colors">
+                  New Arrivals
                 </Link>
               </li>
               <li>
-                <Link href="/shop" className="hover:text-[#E5C07B] transition-colors">
-                  Collections
+                <Link href="/shop?filter=best-sellers" className="hover:text-[#4A0E17] transition-colors">
+                  Bestsellers
                 </Link>
               </li>
               <li>
-                <Link href="/about" className="hover:text-[#E5C07B] transition-colors">
-                  About Us
+                <Link href="/shop?category=festive" className="hover:text-[#4A0E17] transition-colors">
+                  Festive Collections
                 </Link>
               </li>
               <li>
-                <Link href="/contact" className="hover:text-[#E5C07B] transition-colors">
-                  Contact
+                <Link href="/shop?category=kids-wear" className="hover:text-[#4A0E17] transition-colors">
+                  Kidswear
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 3: Customer Service */}
-          <div className="space-y-4">
-            <h5 className="text-xs font-bold text-[#E5C07B] uppercase tracking-widest">
-              Customer Service
-            </h5>
-            <ul className="space-y-2.5 text-xs text-zinc-300 font-light">
+          {/* Column 2: Customer Care */}
+          <div className="border-b md:border-b-0 border-[#1F4539] pb-4 md:pb-0">
+            <button
+              onClick={() => toggleSection('care')}
+              className="w-full flex items-center justify-between text-left font-serif font-bold text-sm tracking-wide text-[#F5E6BE] md:cursor-default"
+            >
+              <span>Customer Care</span>
+              <ChevronDown
+                className={`w-4 h-4 md:hidden transition-transform text-[#D4AF37] ${
+                  openSections.care ? 'rotate-180' : ''
+                }`}
+              />
+            </button>
+            <ul
+              className={`space-y-2.5 text-xs text-zinc-300 font-light mt-3 ${
+                openSections.care ? 'block' : 'hidden md:block'
+              }`}
+            >
               <li>
-                <Link href="/track-order" className="hover:text-[#E5C07B] transition-colors">
-                  Track Order
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Contact Us
                 </Link>
               </li>
               <li>
-                <Link href="/shipping" className="hover:text-[#E5C07B] transition-colors">
+                <Link href="/shipping" className="hover:text-white transition-colors">
                   Shipping Policy
                 </Link>
               </li>
               <li>
-                <Link href="/returns" className="hover:text-[#E5C07B] transition-colors">
-                  Return & Exchange
+                <Link href="/returns" className="hover:text-white transition-colors">
+                  Returns & Exchanges
                 </Link>
               </li>
               <li>
-                <Link href="/faq" className="hover:text-[#E5C07B] transition-colors">
-                  FAQ
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-[#E5C07B] transition-colors">
-                  Support & Concierge
+                <Link href="/faq" className="hover:text-white transition-colors">
+                  FAQs
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Column 4: Our Collections (Dynamic) */}
-          <div className="space-y-4">
-            <h5 className="text-xs font-bold text-[#E5C07B] uppercase tracking-widest">
-              Our Collections
-            </h5>
-            <ul className="space-y-2.5 text-xs text-zinc-300 font-light">
-              {categories.length > 0 ? (
-                categories.map((cat) => (
-                  <li key={cat._id || cat.slug}>
-                    <Link
-                      href={`/shop?category=${cat.slug}`}
-                      className="hover:text-[#E5C07B] transition-colors capitalize"
-                    >
-                      {cat.name}
-                    </Link>
-                  </li>
-                ))
-              ) : (
-                <>
-                  <li>
-                    <Link href="/shop" className="hover:text-[#E5C07B] transition-colors">
-                      All Collections
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/shop" className="hover:text-[#E5C07B] transition-colors">
-                      New Arrivals
-                    </Link>
-                  </li>
-                </>
-              )}
+          {/* Column 3: About Us */}
+          <div className="border-b md:border-b-0 border-[#1F4539] pb-4 md:pb-0">
+            <button
+              onClick={() => toggleSection('about')}
+              className="w-full flex items-center justify-between text-left font-serif font-bold text-sm tracking-wide text-[#F5E6BE] md:cursor-default"
+            >
+              <span>About Us</span>
+              <ChevronDown
+                className={`w-4 h-4 md:hidden transition-transform text-[#D4AF37] ${
+                  openSections.about ? 'rotate-180' : ''
+                }`}
+              />
+            </button>
+            <ul
+              className={`space-y-2.5 text-xs text-zinc-300 font-light mt-3 ${
+                openSections.about ? 'block' : 'hidden md:block'
+              }`}
+            >
+              <li>
+                <Link href="/about" className="hover:text-white transition-colors">
+                  Our Story
+                </Link>
+              </li>
+              <li>
+                <Link href="/privacy" className="hover:text-white transition-colors">
+                  Privacy Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/terms" className="hover:text-white transition-colors">
+                  Terms & Conditions
+                </Link>
+              </li>
+              <li>
+                <Link href="/track-order" className="hover:text-white transition-colors">
+                  Track Order
+                </Link>
+              </li>
             </ul>
           </div>
 
-          {/* Column 5: Download Our App */}
-          <div className="space-y-4">
-            <h5 className="text-xs font-bold text-[#E5C07B] uppercase tracking-widest">
-              Download Our App
-            </h5>
-            <p className="text-xs text-zinc-300 font-light">
-              Get exclusive offers, early access and festive updates.
-            </p>
+          {/* Column 4: Connect */}
+          <div>
+            <button
+              onClick={() => toggleSection('connect')}
+              className="w-full flex items-center justify-between text-left font-serif font-bold text-sm tracking-wide text-[#F5E6BE] md:cursor-default"
+            >
+              <span>Connect</span>
+              <ChevronDown
+                className={`w-4 h-4 md:hidden transition-transform text-[#D4AF37] ${
+                  openSections.connect ? 'rotate-180' : ''
+                }`}
+              />
+            </button>
+            <div
+              className={`space-y-3 mt-3 text-xs text-zinc-300 font-light ${
+                openSections.connect ? 'block' : 'hidden md:block'
+              }`}
+            >
+              <p>
+                <a
+                  href="https://instagram.com/nalmarafashion_official"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5"
+                >
+                  <Instagram className="w-3.5 h-3.5 text-[#D4AF37]" /> Instagram
+                </a>
+              </p>
+              <p>
+                <a
+                  href="https://wa.me/916380163090"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors flex items-center gap-1.5"
+                >
+                  <span className="w-3.5 h-3.5 rounded-full bg-[#25D366] text-white flex items-center justify-center text-[9px] font-bold">W</span> WhatsApp Support
+                </a>
+              </p>
+              <p>
+                <a
+                  href="mailto:support@nalmarafashion.com"
+                  className="hover:text-white transition-colors"
+                >
+                  Email Support
+                </a>
+              </p>
 
-            <div className="space-y-3 pt-2">
-              {/* Google Play Button */}
-              <a
-                href="https://play.google.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-zinc-900 border border-zinc-700/80 hover:border-[#D4AF37] transition-all group"
-              >
-                <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M3.609 1.814L13.793 12 3.61 22.186A2.29 2.29 0 0 1 3 20.572V3.428c0-.622.222-1.203.609-1.614zm1.442-1.28l10.15 5.86-2.585 2.585-7.565-8.445zm0 22.932l7.565-8.445 2.585 2.585-10.15 5.86zM16.63 7.828l3.76 2.17c1.077.623 1.077 1.637 0 2.259l-3.76 2.17-2.837-2.837 2.837-2.837z" />
-                </svg>
-                <div className="text-left">
-                  <p className="text-[9px] uppercase tracking-wider text-zinc-400 leading-tight">
-                    GET IT ON
-                  </p>
-                  <p className="text-xs font-semibold text-white tracking-wide leading-tight group-hover:text-[#E5C07B]">
-                    Google Play
-                  </p>
-                </div>
-              </a>
-
-              {/* App Store Button */}
-              <a
-                href="https://apple.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-3 px-4 py-2.5 rounded-lg bg-zinc-900 border border-zinc-700/80 hover:border-[#D4AF37] transition-all group"
-              >
-                <svg className="w-5 h-5 text-white" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.37c.62-.75 1.04-1.8 1.01-2.87-.96.04-2.12.64-2.79 1.42-.59.68-1.11 1.76-.97 2.8 1.07.08 2.13-.57 2.75-1.35z" />
-                </svg>
-                <div className="text-left">
-                  <p className="text-[9px] uppercase tracking-wider text-zinc-400 leading-tight">
-                    Download on the
-                  </p>
-                  <p className="text-xs font-semibold text-white tracking-wide leading-tight group-hover:text-[#E5C07B]">
-                    App Store
-                  </p>
-                </div>
-              </a>
+              {/* Social Icons Row */}
+              <div className="flex items-center gap-2 pt-2">
+                <a
+                  href="https://facebook.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-7 h-7 rounded-full bg-white/10 border border-[#1F4539] flex items-center justify-center text-zinc-300 hover:bg-[#D4AF37] hover:text-zinc-950 transition-all shadow-sm"
+                  aria-label="Facebook"
+                >
+                  <Facebook className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href="https://instagram.com/nalmarafashion_official"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-7 h-7 rounded-full bg-white/10 border border-[#1F4539] flex items-center justify-center text-zinc-300 hover:bg-[#D4AF37] hover:text-zinc-950 transition-all shadow-sm"
+                  aria-label="Instagram"
+                >
+                  <Instagram className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href="https://youtube.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-7 h-7 rounded-full bg-white/10 border border-[#1F4539] flex items-center justify-center text-zinc-300 hover:bg-[#D4AF37] hover:text-zinc-950 transition-all shadow-sm"
+                  aria-label="YouTube"
+                >
+                  <Youtube className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href="https://pinterest.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-7 h-7 rounded-full bg-white/10 border border-[#1F4539] flex items-center justify-center text-zinc-300 hover:bg-[#D4AF37] hover:text-zinc-950 transition-all shadow-sm"
+                  aria-label="Pinterest"
+                >
+                  <Share2 className="w-3.5 h-3.5" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Bottom Bar: Copyright & Links */}
-        <div className="pt-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-400 font-light">
-          <p>© 2026 NALMARA FASHION. All rights reserved.</p>
-          <div className="flex items-center gap-4 text-zinc-400">
-            <Link href="/privacy" className="hover:text-[#E5C07B] transition-colors">
-              Privacy Policy
-            </Link>
-            <span className="text-zinc-600">|</span>
-            <Link href="/terms" className="hover:text-[#E5C07B] transition-colors">
-              Terms & Conditions
-            </Link>
-            <span className="text-zinc-600">|</span>
-            <Link href="/sitemap" className="hover:text-[#E5C07B] transition-colors">
-              Sitemap
-            </Link>
+        {/* Bottom Bar: Copyright & Payment Icons */}
+        <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-zinc-400 font-light text-center sm:text-left">
+          <p>© 2026 NALMARA FASHION. All rights reserved. Handcrafted with devotion.</p>
+          <div className="flex flex-wrap items-center justify-center sm:justify-end gap-1.5 sm:gap-3 text-[10px] sm:text-[11px] text-zinc-300">
+            <span className="px-2 py-0.5 rounded bg-white/10 border border-[#1F4539] shadow-xs">UPI</span>
+            <span className="px-2 py-0.5 rounded bg-white/10 border border-[#1F4539] shadow-xs">Visa</span>
+            <span className="px-2 py-0.5 rounded bg-white/10 border border-[#1F4539] shadow-xs">Mastercard</span>
+            <span className="px-2 py-0.5 rounded bg-white/10 border border-[#1F4539] shadow-xs">RuPay</span>
+            <span className="px-2 py-0.5 rounded bg-white/10 border border-[#1F4539] shadow-xs">NetBanking</span>
           </div>
         </div>
       </div>

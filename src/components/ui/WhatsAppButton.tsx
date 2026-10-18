@@ -12,7 +12,7 @@ export const WhatsAppButton: React.FC = () => {
   return (
     <aside
       aria-label="WhatsApp Support"
-      className="fixed bottom-6 right-6 z-40 flex items-center group pointer-events-auto"
+      className="fixed bottom-20 lg:bottom-6 right-4 sm:right-6 z-40 flex items-center group pointer-events-auto"
     >
       {/* Tooltip prompt */}
       <span className="hidden sm:inline-block mr-3 px-3.5 py-1.5 rounded-full bg-zinc-900 text-white text-xs font-semibold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap border border-zinc-800">

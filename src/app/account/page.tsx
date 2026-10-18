@@ -99,26 +99,26 @@ export default function AccountPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
+    <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
       {/* 1. HERO HEADER */}
-      <section className="relative overflow-hidden bg-[#061811] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
+      <section className="relative overflow-hidden bg-[#4A0E17] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
 
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+        <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
           <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
-            <div className="w-20 h-20 rounded-full bg-[#0E3324] border-2 border-[#D4AF37] flex items-center justify-center text-2xl font-serif font-bold text-[#E5C07B] shadow-xl">
+            <div className="w-20 h-20 rounded-full bg-[#5E141F] border-2 border-[#D4AF37] flex items-center justify-center text-2xl font-serif font-bold text-[#D4AF37] shadow-xl">
               {user.firstName[0]}
               {user.lastName ? user.lastName[0] : ''}
             </div>
             <div className="space-y-1">
-              <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-[#E5C07B] px-2.5 py-0.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/30">
+              <div className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] px-2.5 py-0.5 rounded-full bg-white/10 border border-[#D4AF37]/30">
                 <LotusIcon className="w-3 h-3" />
                 <span>Client Privilege Account</span>
               </div>
               <h1 className="font-serif text-2xl sm:text-3xl font-bold text-white">
                 {user.firstName} {user.lastName}
               </h1>
-              <p className="text-xs text-zinc-300 font-light">{user.email}</p>
+              <p className="text-xs text-zinc-200 font-light">{user.email}</p>
             </div>
           </div>
 
@@ -138,7 +138,7 @@ export default function AccountPage() {
                 logout();
                 router.push('/');
               }}
-              className="inline-flex items-center gap-2 border border-rose-500/50 text-rose-400 hover:bg-rose-500/10 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all"
+              className="inline-flex items-center gap-2 border border-rose-300 text-rose-200 hover:bg-rose-500/20 px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer"
             >
               <LogOut className="w-3.5 h-3.5" /> Sign Out
             </button>
@@ -147,16 +147,16 @@ export default function AccountPage() {
       </section>
 
       {/* 2. MAIN ACCOUNT CONTENT */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Navigation Tabs Sidebar */}
           <aside className="space-y-2">
             <button
               onClick={() => setActiveTab('overview')}
-              className={`w-full flex items-center gap-3 px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all text-left shadow-sm ${
+              className={`w-full flex items-center gap-3 px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all text-left shadow-sm cursor-pointer ${
                 activeTab === 'overview'
-                  ? 'bg-[#061811] text-[#E5C07B] border border-[#D4AF37]/40'
-                  : 'bg-white text-zinc-700 hover:bg-zinc-50 border border-zinc-200'
+                  ? 'bg-[#4A0E17] text-white border border-[#7A1D2A]'
+                  : 'bg-white text-zinc-700 hover:bg-zinc-50 border border-[#E8E2D5]'
               }`}
             >
               <UserIcon className="w-4 h-4 text-[#D4AF37]" /> Profile Overview
@@ -164,7 +164,7 @@ export default function AccountPage() {
 
             <Link
               href="/account/orders"
-              className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider bg-white text-zinc-700 hover:bg-zinc-50 border border-zinc-200 transition-all shadow-sm"
+              className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider bg-white text-zinc-700 hover:bg-zinc-50 border border-[#E8E2D5] transition-all shadow-sm"
             >
               <span className="flex items-center gap-3">
                 <Package className="w-4 h-4 text-[#D4AF37]" /> My Orders
@@ -174,7 +174,7 @@ export default function AccountPage() {
 
             <Link
               href="/track-order"
-              className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider bg-white text-zinc-700 hover:bg-zinc-50 border border-zinc-200 transition-all shadow-sm"
+              className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider bg-white text-zinc-700 hover:bg-zinc-50 border border-[#E8E2D5] transition-all shadow-sm"
             >
               <span className="flex items-center gap-3">
                 <Clock className="w-4 h-4 text-[#D4AF37]" /> Live Tracking
@@ -184,7 +184,7 @@ export default function AccountPage() {
 
             <Link
               href="/wishlist"
-              className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider bg-white text-zinc-700 hover:bg-zinc-50 border border-zinc-200 transition-all shadow-sm"
+              className="w-full flex items-center justify-between px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider bg-white text-zinc-700 hover:bg-zinc-50 border border-[#E8E2D5] transition-all shadow-sm"
             >
               <span className="flex items-center gap-3">
                 <Heart className="w-4 h-4 text-[#D4AF37]" /> Wishlist
@@ -194,10 +194,10 @@ export default function AccountPage() {
 
             <button
               onClick={() => setActiveTab('password')}
-              className={`w-full flex items-center gap-3 px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all text-left shadow-sm ${
+              className={`w-full flex items-center gap-3 px-5 py-3 rounded-2xl text-xs font-bold uppercase tracking-wider transition-all text-left shadow-sm cursor-pointer ${
                 activeTab === 'password'
-                  ? 'bg-[#061811] text-[#E5C07B] border border-[#D4AF37]/40'
-                  : 'bg-white text-zinc-700 hover:bg-zinc-50 border border-zinc-200'
+                  ? 'bg-[#4A0E17] text-white border border-[#7A1D2A]'
+                  : 'bg-white text-zinc-700 hover:bg-zinc-50 border border-[#E8E2D5]'
               }`}
             >
               <KeyRound className="w-4 h-4 text-[#D4AF37]" /> Security & Password
@@ -209,32 +209,32 @@ export default function AccountPage() {
             {activeTab === 'overview' && (
               <div className="space-y-8">
                 {/* Profile Card */}
-                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#D4AF37]/25 shadow-sm space-y-6">
-                  <h3 className="font-serif text-xl font-bold text-[#061811]">
+                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E2D5] shadow-sm space-y-6">
+                  <h3 className="font-serif text-xl font-bold text-zinc-900">
                     Client Particulars
                   </h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 text-xs">
-                    <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-zinc-100">
+                    <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E8E2D5]">
                       <span className="text-zinc-500 font-medium block">Full Name</span>
-                      <strong className="text-[#061811] text-sm mt-0.5 block font-serif">
+                      <strong className="text-zinc-900 text-sm mt-0.5 block font-serif">
                         {user.firstName} {user.lastName}
                       </strong>
                     </div>
-                    <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-zinc-100">
+                    <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E8E2D5]">
                       <span className="text-zinc-500 font-medium block">Registered Email</span>
-                      <strong className="text-[#061811] text-sm mt-0.5 block">
+                      <strong className="text-zinc-900 text-sm mt-0.5 block">
                         {user.email}
                       </strong>
                     </div>
-                    <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-zinc-100">
+                    <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E8E2D5]">
                       <span className="text-zinc-500 font-medium block">Mobile Contact</span>
-                      <strong className="text-[#061811] text-sm mt-0.5 block font-mono">
+                      <strong className="text-zinc-900 text-sm mt-0.5 block font-mono">
                         {user.phone || 'Not provided'}
                       </strong>
                     </div>
-                    <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-zinc-100">
+                    <div className="p-4 rounded-2xl bg-[#FAF7F2] border border-[#E8E2D5]">
                       <span className="text-zinc-500 font-medium block">Membership Tier</span>
-                      <strong className="text-[#B8860B] text-sm mt-0.5 block font-serif">
+                      <strong className="text-[#4A0E17] text-sm mt-0.5 block font-serif font-bold">
                         NALMARA Royal Patron
                       </strong>
                     </div>
@@ -242,14 +242,14 @@ export default function AccountPage() {
                 </div>
 
                 {/* Recent Orders Preview */}
-                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#D4AF37]/25 shadow-sm space-y-6">
+                <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E2D5] shadow-sm space-y-6">
                   <div className="flex items-center justify-between">
-                    <h3 className="font-serif text-xl font-bold text-[#061811]">
+                    <h3 className="font-serif text-xl font-bold text-zinc-900">
                       Recent Orders
                     </h3>
                     <Link
                       href="/account/orders"
-                      className="text-xs font-bold text-[#B8860B] hover:underline flex items-center gap-1"
+                      className="text-xs font-bold text-[#4A0E17] hover:underline flex items-center gap-1"
                     >
                       View All Orders <ArrowRight className="w-3.5 h-3.5" />
                     </Link>
@@ -260,7 +260,7 @@ export default function AccountPage() {
                       <p className="text-xs text-zinc-500">No recent orders found.</p>
                       <Link
                         href="/shop"
-                        className="inline-block text-xs font-bold text-[#061811] hover:underline"
+                        className="inline-block text-xs font-bold text-[#4A0E17] hover:underline"
                       >
                         Start Shopping →
                       </Link>
@@ -270,10 +270,10 @@ export default function AccountPage() {
                       {recentOrders.map((ord) => (
                         <div
                           key={ord._id}
-                          className="p-4 rounded-2xl border border-zinc-100 bg-[#FAF8F5] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs"
+                          className="p-4 rounded-2xl border border-[#E8E2D5] bg-[#FAF7F2] flex flex-col sm:flex-row sm:items-center justify-between gap-4 text-xs"
                         >
                           <div>
-                            <span className="font-mono font-bold text-[#061811]">
+                            <span className="font-mono font-bold text-zinc-900">
                               #{ord.orderNumber || ord._id.slice(-8).toUpperCase()}
                             </span>
                             <p className="text-zinc-500 text-[11px] mt-0.5">
@@ -285,15 +285,15 @@ export default function AccountPage() {
                             </p>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#0E3324] text-[#E5C07B]">
+                            <span className="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-[#4A0E17] text-white">
                               {ord.orderStatus}
                             </span>
-                            <span className="font-bold text-[#061811] font-serif">
+                            <span className="font-bold text-[#4A0E17] font-serif">
                               {formatCurrency(ord.totalAmount ?? ord.total ?? 0)}
                             </span>
                             <Link
                               href={`/account/orders/${ord._id}`}
-                              className="text-xs font-bold text-[#B8860B] hover:underline"
+                              className="text-xs font-bold text-[#4A0E17] hover:underline"
                             >
                               Details →
                             </Link>
@@ -307,8 +307,8 @@ export default function AccountPage() {
             )}
 
             {activeTab === 'password' && (
-              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#D4AF37]/25 shadow-sm space-y-6">
-                <h3 className="font-serif text-xl font-bold text-[#061811]">
+              <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E2D5] shadow-sm space-y-6">
+                <h3 className="font-serif text-xl font-bold text-zinc-900">
                   Change Password
                 </h3>
                 <form onSubmit={handleChangePassword} className="space-y-4 max-w-md">

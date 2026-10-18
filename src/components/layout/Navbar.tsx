@@ -10,12 +10,11 @@ import {
   User as UserIcon,
   Menu,
   X,
-  ChevronDown,
   LogOut,
-  ShieldCheck,
-  RotateCcw,
-  Tag,
-  Gift,
+  Instagram,
+  Facebook,
+  Youtube,
+  Share2,
 } from 'lucide-react';
 import { useCartStore } from '../../store/cartStore';
 import { useWishlistStore } from '../../store/wishlistStore';
@@ -28,7 +27,7 @@ export const Navbar = () => {
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isCollectionsOpen, setIsCollectionsOpen] = useState(false);
+  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -54,7 +53,7 @@ export const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 15);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -63,401 +62,330 @@ export const Navbar = () => {
   const totalCartCount = getTotalItemsCount();
   const wishlistCount = wishlistProducts.length;
 
-  const navCategories = categories.map((c) => ({
-    label: c.name,
-    href: `/shop?category=${c.slug}`,
-  }));
-
   const handleSearchSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (searchQuery.trim()) {
       router.push(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
+      setIsMobileSearchOpen(false);
     }
   };
 
+  const navLinks = [
+    { label: 'Home', href: '/' },
+    { label: 'Sarees', href: '/shop?category=sarees' },
+    { label: 'New Arrivals', href: '/shop?filter=new-arrivals' },
+    { label: 'Best Sellers', href: '/shop?filter=best-sellers' },
+    { label: 'Festive Collection', href: '/shop?category=festive' },
+    { label: 'Kidswear', href: '/shop?category=kids-wear' },
+    { label: 'Offers', href: '/shop?filter=offers' },
+    { label: 'About Us', href: '/about' },
+  ];
+
   return (
     <>
-      {/* 1. TOP ANNOUNCEMENT BAR (Dark Emerald & Gold Accents matching Mockup) */}
-      <div className="bg-[#030D08] text-[#FAF8F5] text-[10px] sm:text-[11px] border-b border-[#D4AF37]/25 py-2 px-3 sm:px-4 transition-colors">
-        <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4">
-          {/* Left item */}
-          <div className="flex items-center gap-1.5 text-[#E5C07B] font-medium truncate">
-            <Gift className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#E5C07B] shrink-0" />
-            <span className="truncate">Free Shipping on Orders Above ₹1,499</span>
-          </div>
-
-          {/* Center items */}
-          <div className="hidden lg:flex items-center gap-3 text-zinc-300 font-medium">
-            <div className="flex items-center gap-1.5 hover:text-[#E5C07B] transition-colors cursor-pointer">
-              <RotateCcw className="w-3.5 h-3.5 text-[#E5C07B]" />
-              <span>Easy Returns</span>
-            </div>
-            <span className="text-zinc-600">|</span>
-            <div className="flex items-center gap-1.5 hover:text-[#E5C07B] transition-colors cursor-pointer">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#E5C07B]" />
-              <span>Secure Payments</span>
-            </div>
-          </div>
-
-          {/* Right item */}
-          <div className="hidden sm:flex items-center gap-1.5 font-medium text-right shrink-0">
-            <Tag className="w-3.5 h-3.5 text-[#E5C07B] shrink-0" />
-            <span className="text-zinc-300">
-              10% OFF First Order | Code:{' '}
-              <strong className="text-[#E5C07B] tracking-wide font-bold">WELCOME10</strong>
+      {/* ========================================================= */}
+      {/* 01. TOP ANNOUNCEMENT BAR (Deep Pine Green #132E27)        */}
+      {/* ========================================================= */}
+      <div className="w-full max-w-full overflow-hidden bg-[#132E27] text-[#FAF8F5] text-[10px] sm:text-[11px] py-2 px-3 sm:px-6 transition-colors border-b border-[#0D201B]">
+        <div className="max-w-[1560px] mx-auto flex items-center justify-between gap-3 min-w-0">
+          {/* Centered / Left Announcement */}
+          <div className="flex-1 min-w-0 flex items-center justify-center lg:justify-start gap-1.5 sm:gap-2.5 text-center text-xs tracking-wider overflow-hidden">
+            <span className="text-[#D4AF37] text-xs">✦</span>
+            <span className="font-light truncate text-[10px] sm:text-xs text-zinc-100">
+              Free Shipping on Orders Above 1999
             </span>
+            <span className="text-[#D4AF37] opacity-80 text-[10px]">|</span>
+            <span className="hidden sm:inline font-light text-zinc-200">Easy Returns</span>
+            <span className="hidden sm:inline text-[#D4AF37] opacity-80 text-[10px]">|</span>
+            <span className="hidden sm:inline font-light text-zinc-200">Made with Love</span>
+          </div>
+
+          {/* Right Socials */}
+          <div className="hidden md:flex items-center gap-2.5 text-[11px] font-light text-zinc-200 shrink-0">
+            <span className="text-zinc-300">Follow us:</span>
+            <div className="flex items-center gap-2 text-zinc-300">
+              <a
+                href="https://instagram.com/nalmarafashion_official"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#D4AF37] transition-colors"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#D4AF37] transition-colors"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="https://pinterest.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#D4AF37] transition-colors"
+                aria-label="Pinterest"
+              >
+                <Share2 className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#D4AF37] transition-colors"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-3.5 h-3.5" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* 2. MAIN HEADER (Deep Forest Emerald #061811) */}
+      {/* ========================================================= */}
+      {/* MAIN HEADER (Ivory Cream #FAF7F2 matching Mockup)         */}
+      {/* ========================================================= */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 bg-[#061811] border-b border-[#D4AF37]/20 text-white ${
-          isScrolled ? 'shadow-2xl py-3 backdrop-blur-md bg-[#061811]/95' : 'py-3.5'
+        className={`sticky top-0 z-40 transition-all duration-300 bg-[#FAF7F2] border-b border-[#E8E2D5] ${
+          isScrolled ? 'shadow-md py-2 backdrop-blur-md bg-[#FAF7F2]/95' : 'py-3'
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 lg:gap-8">
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setIsMobileMenuOpen(true)}
-            className="lg:hidden p-1.5 text-zinc-200 hover:text-[#E5C07B] transition-colors"
-            aria-label="Open navigation menu"
-          >
-            <Menu className="w-6 h-6" />
-          </button>
-
-          {/* Brand Logo with Gold Lotus */}
-          <div className="flex-shrink-0">
-            <BrandLogo size="md" theme="dark" />
-          </div>
-
-          {/* Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7 text-xs tracking-wider font-medium text-zinc-200">
-            <Link
-              href="/"
-              className={`hover:text-[#E5C07B] transition-colors py-1 ${
-                pathname === '/' ? 'text-[#E5C07B] font-semibold border-b-2 border-[#E5C07B] pb-0.5' : ''
-              }`}
-            >
-              Home
-            </Link>
-
-            <Link
-              href="/shop"
-              className={`hover:text-[#E5C07B] transition-colors py-1 ${
-                pathname === '/shop' && !pathname.includes('category')
-                  ? 'text-[#E5C07B] font-semibold'
-                  : ''
-              }`}
-            >
-              Shop
-            </Link>
-
-            {/* Collections Dropdown */}
-            <div
-              className="relative"
-              onMouseEnter={() => setIsCollectionsOpen(true)}
-              onMouseLeave={() => setIsCollectionsOpen(false)}
-            >
+        <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
+          <div className="flex items-center justify-between gap-6">
+            {/* Left: Mobile/Drawer Menu Toggle + Logo */}
+            <div className="flex items-center gap-3 sm:gap-6">
               <button
-                className="flex items-center gap-1 hover:text-[#E5C07B] transition-colors py-1 focus:outline-none"
-                onClick={() => setIsCollectionsOpen(!isCollectionsOpen)}
+                onClick={() => setIsMobileMenuOpen(true)}
+                className="p-1.5 text-zinc-700 hover:text-[#4A0E17] transition-colors rounded-md focus:outline-none cursor-pointer"
+                aria-label="Open menu drawer"
               >
-                <span>Collections</span>
-                <ChevronDown className="w-3.5 h-3.5 text-[#E5C07B]" />
+                <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
               </button>
 
-              {isCollectionsOpen && (
-                <div className="absolute top-full left-0 w-56 bg-[#081D14] border border-[#D4AF37]/30 rounded-xl shadow-2xl py-2 mt-1 z-50 animate-fade-in backdrop-blur-md">
-                  <div className="px-4 py-1.5 text-[10px] font-bold uppercase tracking-widest text-[#E5C07B]/70 border-b border-[#D4AF37]/15">
-                    Explore Collections
-                  </div>
-                  {navCategories.length > 0 ? (
-                    navCategories.map((cat) => (
-                      <Link
-                        key={cat.label}
-                        href={cat.href}
-                        onClick={() => setIsCollectionsOpen(false)}
-                        className="block px-4 py-2 text-xs text-zinc-200 hover:bg-[#0E3324] hover:text-[#E5C07B] transition-colors capitalize"
-                      >
-                        {cat.label}
-                      </Link>
-                    ))
-                  ) : (
-                    <div className="px-4 py-2 text-xs text-zinc-400 italic">
-                      Loading collections...
-                    </div>
-                  )}
-                  <div className="border-t border-[#D4AF37]/15 mt-1 pt-1">
-                    <Link
-                      href="/shop"
-                      onClick={() => setIsCollectionsOpen(false)}
-                      className="block px-4 py-2 text-xs font-semibold text-[#E5C07B] hover:bg-[#0E3324]"
-                    >
-                      View All Collections →
-                    </Link>
-                  </div>
-                </div>
-              )}
+              {/* Brand Logo */}
+              <BrandLogo size="md" theme="light" showTagline={true} />
             </div>
 
-            <Link
-              href="/about"
-              className="hover:text-[#E5C07B] transition-colors py-1"
+            {/* Center: Search Bar (Rounded Pill with Search icon) */}
+            <form
+              onSubmit={handleSearchSubmit}
+              className="hidden md:flex flex-1 max-w-lg lg:max-w-xl mx-4 relative"
             >
-              About
-            </Link>
+              <input
+                type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                placeholder="Search sarees, fabrics, collections..."
+                className="w-full bg-white text-zinc-900 placeholder:text-zinc-400 text-xs px-5 py-2.5 pr-11 rounded-full border border-[#D9D1C2] focus:outline-none focus:ring-2 focus:ring-[#4A0E17]/25 focus:border-[#4A0E17] transition-all shadow-2xs font-light"
+              />
+              <button
+                type="submit"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-[#4A0E17] transition-colors"
+                aria-label="Search"
+              >
+                <Search className="w-4 h-4" />
+              </button>
+            </form>
 
-            <Link
-              href="/blog"
-              className="hover:text-[#E5C07B] transition-colors py-1"
-            >
-              Blog
-            </Link>
+            {/* Right: Icons (Search, User, Wishlist, Cart) */}
+            <div className="flex items-center gap-2 sm:gap-5 text-zinc-700">
+              {/* Search Button (Toggles search on mobile) */}
+              <button
+                onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
+                className="p-1.5 text-zinc-700 hover:text-[#4A0E17] transition-colors"
+                aria-label="Search"
+              >
+                <Search className="w-5 h-5" />
+              </button>
 
-            <Link
-              href="/contact"
-              className="hover:text-[#E5C07B] transition-colors py-1"
-            >
-              Contact
-            </Link>
-          </nav>
-
-          {/* Centered Search Bar Pill */}
-          <form
-            onSubmit={handleSearchSubmit}
-            className="flex-1 max-w-xs md:max-w-sm relative hidden sm:block"
-          >
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search for sarees, lehengas, kurtis..."
-              className="w-full bg-[#FAF8F5] text-zinc-900 placeholder:text-zinc-500 text-xs px-4 py-2 pr-9 rounded-full focus:outline-none focus:ring-2 focus:ring-[#D4AF37] border border-zinc-200/50 transition-all shadow-inner"
-            />
-            <button
-              type="submit"
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-600 hover:text-[#061811] transition-colors"
-              aria-label="Search"
-            >
-              <Search className="w-3.5 h-3.5" />
-            </button>
-          </form>
-
-          {/* Right Action Icons (User, Wishlist, Cart) */}
-          <div className="flex items-center gap-4 sm:gap-5">
-            {/* User Account */}
-            <div className="relative">
-              {isAuthenticated ? (
-                <button
-                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                  className="p-1 text-zinc-200 hover:text-[#E5C07B] transition-colors flex items-center"
-                  aria-label="User account"
-                >
-                  <UserIcon className="w-4 h-4" />
-                </button>
-              ) : (
-                <Link
-                  href="/login"
-                  className="p-1 text-zinc-200 hover:text-[#E5C07B] transition-colors flex items-center"
-                  aria-label="Sign in"
-                >
-                  <UserIcon className="w-4 h-4" />
-                </Link>
-              )}
-
-              {/* User Dropdown */}
-              {isUserMenuOpen && isAuthenticated && (
-                <div className="absolute right-0 top-full mt-2 w-52 bg-[#081D14] border border-[#D4AF37]/30 rounded-xl shadow-2xl py-2 z-50 animate-fade-in text-xs">
-                  <div className="px-4 py-2 border-b border-[#D4AF37]/15">
-                    <p className="font-semibold text-white truncate">
-                      {user?.firstName} {user?.lastName}
-                    </p>
-                    <p className="text-[10px] text-zinc-400 truncate">{user?.email}</p>
-                  </div>
-                  <Link
-                    href="/account"
-                    onClick={() => setIsUserMenuOpen(false)}
-                    className="block px-4 py-2 text-zinc-200 hover:bg-[#0E3324] hover:text-[#E5C07B]"
-                  >
-                    My Account
-                  </Link>
-                  <Link
-                    href="/account/orders"
-                    onClick={() => setIsUserMenuOpen(false)}
-                    className="block px-4 py-2 text-zinc-200 hover:bg-[#0E3324] hover:text-[#E5C07B]"
-                  >
-                    Order History
-                  </Link>
-                  {user?.role === 'admin' && (
-                    <a
-                      href="http://localhost:3001"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block px-4 py-2 text-[#E5C07B] hover:bg-[#0E3324] font-medium"
-                    >
-                      Admin Dashboard ↗
-                    </a>
-                  )}
+              {/* User Account - hidden on extra small mobile, visible on sm+ */}
+              <div className="relative hidden sm:block">
+                {isAuthenticated ? (
                   <button
-                    onClick={() => {
-                      setIsUserMenuOpen(false);
-                      setShowLogoutConfirm(true);
-                    }}
-                    className="w-full text-left px-4 py-2 text-rose-400 hover:bg-[#0E3324] flex items-center gap-2"
+                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                    className="p-1.5 text-zinc-700 hover:text-[#4A0E17] transition-colors flex items-center"
+                    aria-label="User account"
                   >
-                    <LogOut className="w-3.5 h-3.5" /> Logout
+                    <UserIcon className="w-5 h-5" />
                   </button>
-                </div>
-              )}
-            </div>
+                ) : (
+                  <Link
+                    href="/login"
+                    className="p-1.5 text-zinc-700 hover:text-[#4A0E17] transition-colors flex items-center"
+                    aria-label="Sign in"
+                  >
+                    <UserIcon className="w-5 h-5" />
+                  </Link>
+                )}
 
-            {/* Wishlist Link with Red Badge */}
-            <Link
-              href="/wishlist"
-              className="relative p-1 text-zinc-200 hover:text-[#E5C07B] transition-colors"
-              aria-label="Wishlist"
-            >
-              <Heart className="w-4 h-4" />
-              {wishlistCount > 0 && (
-                <span className="absolute -top-1 -right-2 bg-rose-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none shadow-sm">
-                  {wishlistCount}
-                </span>
-              )}
-            </Link>
+                {/* User Dropdown */}
+                {isUserMenuOpen && isAuthenticated && (
+                  <div className="absolute right-0 top-full mt-2 w-52 bg-white border border-[#E8E2D5] rounded-xl shadow-xl py-2 z-50 animate-fade-in text-xs">
+                    <div className="px-4 py-2 border-b border-[#E8E2D5]">
+                      <p className="font-semibold text-zinc-900 truncate">
+                        {user?.firstName} {user?.lastName}
+                      </p>
+                      <p className="text-[10px] text-zinc-500 truncate">{user?.email}</p>
+                    </div>
+                    <Link
+                      href="/account"
+                      onClick={() => setIsUserMenuOpen(false)}
+                      className="block px-4 py-2 text-zinc-700 hover:bg-[#FAF7F2] hover:text-[#4A0E17]"
+                    >
+                      My Account
+                    </Link>
+                    <Link
+                      href="/account/orders"
+                      onClick={() => setIsUserMenuOpen(false)}
+                      className="block px-4 py-2 text-zinc-700 hover:bg-[#FAF7F2] hover:text-[#4A0E17]"
+                    >
+                      Order History
+                    </Link>
+                    <button
+                      onClick={() => {
+                        setIsUserMenuOpen(false);
+                        setShowLogoutConfirm(true);
+                      }}
+                      className="w-full text-left px-4 py-2 text-rose-600 hover:bg-[#FAF7F2] flex items-center gap-2"
+                    >
+                      <LogOut className="w-3.5 h-3.5" /> Logout
+                    </button>
+                  </div>
+                )}
+              </div>
 
-            {/* Cart Button with Red Badge */}
-            <button
-              onClick={() => setIsCartOpen(true)}
-              className="relative p-1 text-zinc-200 hover:text-[#E5C07B] transition-colors"
-              aria-label="Shopping bag"
-            >
-              <ShoppingBag className="w-4 h-4" />
-              {totalCartCount > 0 && (
-                <span className="absolute -top-1 -right-2 bg-rose-600 text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none shadow-sm">
+              {/* Wishlist Link - hidden on extra small mobile, visible on sm+ */}
+              <Link
+                href="/wishlist"
+                className="relative p-1.5 text-zinc-700 hover:text-[#4A0E17] transition-colors hidden sm:block"
+                aria-label="Wishlist"
+              >
+                <Heart className="w-5 h-5" />
+                {wishlistCount > 0 && (
+                  <span className="absolute 0 top-0 -right-1 bg-[#4A0E17] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
+                    {wishlistCount}
+                  </span>
+                )}
+              </Link>
+
+              {/* Cart Button with Badge */}
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="relative p-1.5 text-zinc-700 hover:text-[#4A0E17] transition-colors"
+                aria-label="Shopping bag"
+              >
+                <ShoppingBag className="w-5 h-5" />
+                <span className="absolute 0 top-0 -right-1 bg-[#4A0E17] text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
                   {totalCartCount}
                 </span>
-              )}
-            </button>
+              </button>
+            </div>
           </div>
+
+          {/* Mobile Collapsible Search Form */}
+          {isMobileSearchOpen && (
+            <div className="md:hidden pt-3 pb-1 animate-fade-in">
+              <form onSubmit={handleSearchSubmit} className="relative">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search for sarees, fabrics, collections..."
+                  className="w-full bg-white text-zinc-900 placeholder:text-zinc-400 text-xs px-4 py-2.5 pr-10 rounded-full border border-[#D9D1C2] focus:outline-none focus:ring-2 focus:ring-[#4A0E17]"
+                  autoFocus
+                />
+                <button
+                  type="submit"
+                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-[#4A0E17]"
+                  aria-label="Search"
+                >
+                  <Search className="w-4 h-4" />
+                </button>
+              </form>
+            </div>
+          )}
         </div>
 
-        {/* Mobile Search Input */}
-        <div className="sm:hidden px-4 pt-2 pb-1">
-          <form onSubmit={handleSearchSubmit} className="relative">
-            <input
-              type="text"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              placeholder="Search for sarees, lehengas, kurtis..."
-              className="w-full bg-[#FAF8F5] text-zinc-900 placeholder:text-zinc-500 text-xs px-4 py-2 pr-9 rounded-full focus:outline-none focus:ring-2 focus:ring-[#D4AF37] border border-zinc-200/50 shadow-inner"
-            />
-            <button
-              type="submit"
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-600"
-              aria-label="Search"
-            >
-              <Search className="w-3.5 h-3.5" />
-            </button>
-          </form>
-        </div>
+        {/* ========================================================= */}
+        {/* SUB-NAVIGATION BAR (Desktop Centered Links)               */}
+        {/* ========================================================= */}
+        <nav className="hidden lg:block border-t border-[#E8E2D5] mt-2.5 pt-2.5 pb-1">
+          <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-center gap-8 xl:gap-12 text-xs font-serif tracking-wider uppercase text-zinc-800">
+            {navLinks.map((item) => {
+              const isActive =
+                item.href === '/'
+                  ? pathname === '/'
+                  : pathname.startsWith(item.href.split('?')[0]);
+              return (
+                <Link
+                  key={item.label}
+                  href={item.href}
+                  className={`relative py-1 transition-colors hover:text-[#4A0E17] ${
+                    isActive ? 'text-[#4A0E17] font-semibold' : ''
+                  }`}
+                >
+                  {item.label}
+                  {isActive && (
+                    <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#4A0E17] rounded-full" />
+                  )}
+                </Link>
+              );
+            })}
+          </div>
+        </nav>
       </header>
 
-      {/* 3. MOBILE SLIDEOUT DRAWER */}
+      {/* ========================================================= */}
+      {/* MOBILE SLIDEOUT DRAWER                                    */}
+      {/* ========================================================= */}
       {isMobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden">
           <div
-            className="fixed inset-0 bg-black/70 backdrop-blur-sm animate-fade-in"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm animate-fade-in"
             onClick={() => setIsMobileMenuOpen(false)}
           />
-          <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-[#061811] text-white p-6 shadow-2xl flex flex-col justify-between overflow-y-auto border-r border-[#D4AF37]/30">
+          <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-[#FAF7F2] text-zinc-900 p-6 shadow-2xl flex flex-col justify-between overflow-y-auto border-r border-[#E8E2D5]">
             <div>
-              <div className="flex items-center justify-between pb-6 border-b border-[#D4AF37]/20">
-                <BrandLogo size="sm" theme="dark" />
+              <div className="flex items-center justify-between pb-5 border-b border-[#E8E2D5]">
+                <BrandLogo size="sm" theme="light" />
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-1.5 text-zinc-400 hover:text-white"
+                  className="p-1.5 text-zinc-500 hover:text-zinc-900"
+                  aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="py-6 space-y-4">
-                <Link
-                  href="/"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-sm font-semibold tracking-wider text-zinc-200 hover:text-[#E5C07B]"
-                >
-                  Home
-                </Link>
-                <Link
-                  href="/shop"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-sm font-semibold tracking-wider text-zinc-200 hover:text-[#E5C07B]"
-                >
-                  Shop
-                </Link>
-
-                <div className="pt-2">
-                  <p className="text-[10px] font-bold uppercase tracking-widest text-[#E5C07B] mb-2">
-                    Our Collections
-                  </p>
-                  <div className="space-y-2 pl-3 border-l border-[#D4AF37]/20">
-                    {navCategories.length > 0 ? (
-                      navCategories.map((cat) => (
-                        <Link
-                          key={cat.label}
-                          href={cat.href}
-                          onClick={() => setIsMobileMenuOpen(false)}
-                          className="block text-xs text-zinc-300 hover:text-[#E5C07B] capitalize"
-                        >
-                          {cat.label}
-                        </Link>
-                      ))
-                    ) : (
-                      <span className="text-xs text-zinc-400 italic">Loading collections...</span>
-                    )}
-                  </div>
-                </div>
-
-                <div className="pt-2 space-y-3">
+              <div className="py-5 space-y-3">
+                {navLinks.map((item) => (
                   <Link
-                    href="/about"
+                    key={item.label}
+                    href={item.href}
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-sm font-semibold tracking-wider text-zinc-200 hover:text-[#E5C07B]"
+                    className="block text-sm font-medium text-zinc-800 hover:text-[#4A0E17] py-1 border-b border-zinc-200/50"
                   >
-                    About Us
+                    {item.label}
                   </Link>
-                  <Link
-                    href="/blog"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-sm font-semibold tracking-wider text-zinc-200 hover:text-[#E5C07B]"
-                  >
-                    Blog
-                  </Link>
-                  <Link
-                    href="/contact"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-sm font-semibold tracking-wider text-zinc-200 hover:text-[#E5C07B]"
-                  >
-                    Contact
-                  </Link>
-                </div>
+                ))}
               </div>
             </div>
 
-            <div className="border-t border-[#D4AF37]/20 pt-6 space-y-4">
+            <div className="border-t border-[#E8E2D5] pt-5 space-y-3 text-xs">
               {isAuthenticated ? (
                 <div className="space-y-2">
-                  <p className="text-xs text-zinc-300">
-                    Signed in as <strong className="text-white">{user?.firstName}</strong>
+                  <p className="text-zinc-500">
+                    Signed in as <strong className="text-zinc-800">{user?.firstName}</strong>
                   </p>
                   <button
                     onClick={() => {
                       setIsMobileMenuOpen(false);
                       setShowLogoutConfirm(true);
                     }}
-                    className="w-full text-center py-2 rounded-full border border-rose-500/50 text-rose-400 text-xs font-semibold hover:bg-rose-500/10"
+                    className="text-rose-600 font-semibold"
                   >
                     Logout
                   </button>
@@ -466,7 +394,7 @@ export const Navbar = () => {
                 <Link
                   href="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full text-center py-2.5 rounded-full bg-[#E5C07B] text-zinc-950 font-bold text-xs uppercase tracking-wider"
+                  className="block w-full py-2.5 text-center bg-[#4A0E17] text-white rounded-full font-semibold"
                 >
                   Sign In / Register
                 </Link>
@@ -478,47 +406,27 @@ export const Navbar = () => {
 
       {/* Logout Confirmation Modal */}
       {showLogoutConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-sm animate-fade-in">
-          <div className="bg-[#0B2518] border border-[#D4AF37]/50 rounded-2xl p-6 sm:p-7 max-w-sm w-full shadow-2xl text-center space-y-4 relative">
-            <button
-              onClick={() => setShowLogoutConfirm(false)}
-              className="absolute right-4 top-4 text-zinc-400 hover:text-white"
-              aria-label="Close"
-            >
-              <X className="w-4 h-4" />
-            </button>
-
-            <div className="w-12 h-12 rounded-full bg-rose-500/15 border border-rose-500/30 flex items-center justify-center mx-auto text-rose-400">
-              <LogOut className="w-6 h-6 stroke-[1.8]" />
-            </div>
-
-            <div className="space-y-1.5">
-              <h3 className="font-serif text-lg font-bold text-white">
-                Confirm Logout
-              </h3>
-              <p className="text-xs text-zinc-300 leading-relaxed">
-                Are you sure you want to log out of your <strong className="text-[#E5C07B]">NALMARA FASHION</strong> account?
-              </p>
-            </div>
-
-            <div className="flex items-center gap-3 pt-3">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
+          <div className="bg-white rounded-2xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl border border-zinc-200">
+            <h3 className="font-serif text-lg font-bold text-zinc-900">Sign Out</h3>
+            <p className="text-xs text-zinc-600">
+              Are you sure you want to sign out of your NALMARA FASHION account?
+            </p>
+            <div className="flex gap-3 pt-2">
               <button
-                type="button"
                 onClick={() => setShowLogoutConfirm(false)}
-                className="flex-1 py-2.5 rounded-full border border-zinc-500/40 text-xs font-semibold text-zinc-300 hover:bg-white/5 hover:text-white transition-colors"
+                className="flex-1 py-2 text-xs font-semibold rounded-full border border-zinc-300 text-zinc-700 hover:bg-zinc-50"
               >
                 Cancel
               </button>
               <button
-                type="button"
                 onClick={() => {
-                  setShowLogoutConfirm(false);
                   logout();
-                  router.push('/login');
+                  setShowLogoutConfirm(false);
                 }}
-                className="flex-1 py-2.5 rounded-full bg-rose-600 hover:bg-rose-700 text-white text-xs font-semibold shadow-lg shadow-rose-900/40 transition-colors"
+                className="flex-1 py-2 text-xs font-semibold rounded-full bg-[#4A0E17] text-white hover:bg-[#5E141F]"
               >
-                Yes, Log Out
+                Sign Out
               </button>
             </div>
           </div>

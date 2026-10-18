@@ -67,14 +67,14 @@ export default function ContactPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
+    <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
       {/* 1. HERO HEADER */}
-      <section className="relative overflow-hidden bg-[#061811] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
+      <section className="relative overflow-hidden bg-[#2D070C] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.18),transparent_70%)] pointer-events-none" />
 
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#E5C07B] text-xs font-semibold tracking-widest uppercase">
-            <LotusIcon className="w-4 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#F5E6BE] text-xs font-semibold tracking-widest uppercase">
+            <LotusIcon className="w-4 h-3.5 text-[#D4AF37]" />
             <span>Royal Concierge</span>
           </div>
 
@@ -82,32 +82,32 @@ export default function ContactPage() {
             Connect With Our Atelier
           </h1>
 
-          <p className="text-xs sm:text-sm text-zinc-300 font-light max-w-xl mx-auto leading-relaxed">
+          <p className="text-xs sm:text-sm text-zinc-200 font-light max-w-xl mx-auto leading-relaxed">
             Whether you seek custom bridal couture, bespoke saree draping consultations, or order assistance, our dedicated stylists are at your service.
           </p>
 
-          <div className="pt-1 flex items-center justify-center gap-2 text-xs text-[#E5C07B]">
-            <Link href="/" className="hover:underline">Home</Link>
-            <span className="text-zinc-500">/</span>
+          <div className="pt-1 flex items-center justify-center gap-2 text-xs text-[#D4AF37]">
+            <Link href="/" className="hover:underline text-zinc-300">Home</Link>
+            <span className="text-white/40">/</span>
             <span className="text-white font-medium">Contact Us</span>
           </div>
         </div>
       </section>
 
       {/* 2. CONTACT CHANNELS & ENQUIRY FORM */}
-      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+      <section className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 max-w-[1560px] mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
           
           {/* Left Column: Direct Contact Information (5 Cols) */}
           <div className="lg:col-span-5 space-y-6">
             <div className="space-y-2">
-              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#B8860B]">
+              <p className="text-[11px] font-bold uppercase tracking-[0.25em] text-[#8C6D2D]">
                 GET IN TOUCH
               </p>
-              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0B2518]">
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#4A0E17]">
                 We Would Love to Assist You
               </h2>
-              <p className="text-xs text-zinc-600 leading-relaxed">
+              <p className="text-xs text-zinc-600 leading-relaxed font-light">
                 Reach out to our personal styling team for custom fit requests, fabric sampling, or styling guidance.
               </p>
             </div>
@@ -329,14 +329,14 @@ export default function ContactPage() {
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-3.5 px-6 rounded-full bg-[#061811] hover:bg-[#0E3324] text-white text-xs font-bold uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 border border-[#D4AF37]/50 transition-all disabled:opacity-60"
+                    className="w-full py-3.5 px-6 rounded-full bg-[#4A0E17] hover:bg-[#5E141F] text-white text-xs font-bold uppercase tracking-wider shadow-lg flex items-center justify-center gap-2 border-2 border-[#D4AF37] transition-all disabled:opacity-60 cursor-pointer"
                   >
                     {loading ? (
                       <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     ) : (
                       <>
                         <span>Submit Royal Enquiry</span>
-                        <Send className="w-3.5 h-3.5 text-[#E5C07B]" />
+                        <Send className="w-3.5 h-3.5 text-[#D4AF37]" />
                       </>
                     )}
                   </button>

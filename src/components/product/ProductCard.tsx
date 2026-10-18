@@ -3,26 +3,29 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Heart, Star, ShoppingBag } from 'lucide-react';
+import { Heart, Star, ShoppingBag, ArrowRight } from 'lucide-react';
 import { Product } from '../../types';
 import { useCartStore } from '../../store/cartStore';
 import { useWishlistStore } from '../../store/wishlistStore';
 import { formatCurrency, getDiscountPercentage } from '../../lib/utils';
+import { toast } from 'sonner';
 
 interface ProductCardProps {
   product: Product;
+  viewMode?: 'grid' | 'list';
 }
 
-export const ProductCard = ({ product }: ProductCardProps) => {
+export const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) => {
   const { addItem } = useCartStore();
   const { toggleWishlist, isInWishlist } = useWishlistStore();
 
   const isLiked = isInWishlist(product._id);
   const discountPercent = getDiscountPercentage(product.compareAtPrice || 0, product.price);
+
   const mainImage =
-    product.images && product.images.length > 0
+    product.images && product.images.length > 0 && product.images[0]?.url
       ? product.images[0].url
-      : 'https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=600&q=80';
+      : (product as any).image || '/images/categories/sarees.jpg';
 
   const brandName =
     typeof product.brand === 'object' && product.brand !== null
@@ -38,10 +41,12 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       name: product.name,
       image: mainImage,
       price: product.price,
-      sku: product.sku,
+      sku: product.sku || `SKU-${product._id}`,
       quantity: 1,
       variantId: product.variants?.[0]?._id,
     });
+
+    toast.success(`${product.name} added to cart!`);
   };
 
   const handleLike = (e: React.MouseEvent) => {
@@ -50,33 +55,117 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     toggleWishlist(product);
   };
 
+  if (viewMode === 'list') {
+    return (
+      <div className="group bg-white rounded-2xl border border-[#E8E2D5] overflow-hidden shadow-xs hover:shadow-md transition-all duration-300 flex flex-col sm:flex-row">
+        <Link href={`/product/${product.slug}`} className="relative aspect-[3/4] sm:w-56 shrink-0 overflow-hidden bg-zinc-100 block">
+          <Image
+            src={mainImage}
+            alt={product.name}
+            fill
+            sizes="(max-width: 640px) 100vw, 250px"
+            className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+            unoptimized={typeof mainImage === 'string' && mainImage.startsWith('data:')}
+          />
+          {discountPercent > 0 && (
+            <span className="absolute top-2 left-2 bg-[#4A0E17] text-white text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm">
+              {discountPercent}% OFF
+            </span>
+          )}
+        </Link>
+
+        <div className="p-5 flex-1 flex flex-col justify-between space-y-3">
+          <div>
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-[10px] font-bold uppercase tracking-wider text-[#8C6D2D]">
+                {brandName || 'NALMARA Handloom'}
+              </span>
+              <button
+                onClick={handleLike}
+                className="p-1.5 rounded-full hover:bg-zinc-100 text-zinc-500 transition-colors"
+                aria-label="Wishlist"
+              >
+                <Heart className={`w-4 h-4 ${isLiked ? 'fill-rose-600 text-rose-600' : 'text-zinc-600'}`} />
+              </button>
+            </div>
+
+            <Link href={`/product/${product.slug}`}>
+              <h3 className="font-serif text-base sm:text-lg font-medium text-zinc-900 hover:text-[#4A0E17] transition-colors mt-1">
+                {product.name}
+              </h3>
+            </Link>
+
+            <p className="text-xs text-zinc-500 line-clamp-2 mt-1 font-light">
+              {product.shortDescription || product.description}
+            </p>
+
+            <div className="flex items-center gap-1.5 mt-2 text-[#D4AF37] text-xs">
+              <div className="flex">
+                {[...Array(5)].map((_, i) => (
+                  <Star
+                    key={i}
+                    className={`w-3 h-3 ${
+                      i < Math.round(product.rating || 5) ? 'fill-[#D4AF37]' : 'text-zinc-300'
+                    }`}
+                  />
+                ))}
+              </div>
+              <span className="text-zinc-400 text-[11px]">({product.reviewCount || 12})</span>
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between pt-3 border-t border-[#E8E2D5]">
+            <div className="flex items-baseline gap-2">
+              <span className="font-serif font-bold text-lg text-zinc-900">
+                {formatCurrency(product.price)}
+              </span>
+              {product.compareAtPrice && product.compareAtPrice > product.price && (
+                <span className="text-xs text-zinc-400 line-through">
+                  {formatCurrency(product.compareAtPrice)}
+                </span>
+              )}
+            </div>
+
+            <button
+              onClick={handleQuickAdd}
+              className="px-5 py-2 rounded-full bg-[#4A0E17] hover:bg-[#5E141F] text-white text-xs font-semibold tracking-wider flex items-center gap-1.5 transition-all shadow-sm"
+            >
+              <ShoppingBag className="w-3.5 h-3.5" />
+              <span>Add to Cart</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   return (
-    <div className="group relative flex flex-col bg-white dark:bg-zinc-900 rounded-2xl overflow-hidden transition-all duration-300 hover:shadow-xl hover:-translate-y-1 border border-zinc-100 dark:border-zinc-800">
+    <div className="group relative flex flex-col bg-white rounded-xl sm:rounded-2xl overflow-hidden border border-[#E8E2D5] shadow-xs hover:shadow-md hover:-translate-y-0.5 transition-all duration-300">
       {/* Product Image Container */}
-      <Link href={`/product/${product.slug}`} className="relative aspect-[3/4] w-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden block">
+      <Link href={`/product/${product.slug}`} className="relative aspect-[3/4] w-full bg-[#FAF7F2] overflow-hidden block">
         <Image
           src={mainImage}
           alt={product.name}
           fill
-          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+          sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
           className="object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
           unoptimized={typeof mainImage === 'string' && mainImage.startsWith('data:')}
         />
 
         {/* Badges */}
-        <div className="absolute top-3 left-3 flex flex-col gap-1.5 z-10">
+        <div className="absolute top-2 left-2 flex flex-col gap-1 z-10">
           {discountPercent > 0 && (
-            <span className="bg-rose-500 text-white text-[11px] font-bold px-2 py-0.5 rounded-full shadow-sm">
-              -{discountPercent}%
+            <span className="bg-[#4A0E17] text-white text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full shadow-sm tracking-wide">
+              {discountPercent}% OFF
             </span>
           )}
           {product.newArrival && (
-            <span className="bg-zinc-900 text-white text-[11px] font-semibold px-2 py-0.5 rounded-full shadow-sm">
+            <span className="bg-[#FAF7F2] text-[#4A0E17] border border-[#4A0E17]/20 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs">
               NEW
             </span>
           )}
           {product.bestSeller && !product.newArrival && (
-            <span className="bg-amber-500 text-white text-[11px] font-semibold px-2 py-0.5 rounded-full shadow-sm">
+            <span className="bg-[#D4AF37] text-zinc-950 text-[9px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full shadow-xs">
               BESTSELLER
             </span>
           )}
@@ -85,21 +174,17 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         {/* Wishlist Button */}
         <button
           onClick={handleLike}
-          className={`absolute top-3 right-3 p-2 rounded-full backdrop-blur-md transition-all duration-200 z-10 ${
-            isLiked
-              ? 'bg-rose-500 text-white shadow-md'
-              : 'bg-white/80 dark:bg-zinc-900/80 text-zinc-700 dark:text-zinc-200 hover:bg-white hover:text-rose-500 shadow-sm'
-          }`}
+          className="absolute top-2 right-2 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white/90 hover:bg-white text-zinc-700 flex items-center justify-center transition-all shadow-sm z-10"
           aria-label={isLiked ? 'Remove from wishlist' : 'Add to wishlist'}
         >
-          <Heart className={`w-4 h-4 ${isLiked ? 'fill-current' : ''}`} />
+          <Heart className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isLiked ? 'fill-rose-600 text-rose-600' : 'text-zinc-600'}`} />
         </button>
 
-        {/* Quick Add Overlay */}
-        <div className="absolute inset-x-3 bottom-3 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-10">
+        {/* Desktop Quick Add Hover Overlay */}
+        <div className="hidden sm:block absolute inset-x-2.5 bottom-2.5 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-2 group-hover:translate-y-0 z-10">
           <button
             onClick={handleQuickAdd}
-            className="w-full bg-zinc-900/90 hover:bg-zinc-900 text-white backdrop-blur-md py-2.5 rounded-xl text-xs font-semibold flex items-center justify-center gap-2 shadow-lg transition-colors"
+            className="w-full bg-[#4A0E17]/95 hover:bg-[#4A0E17] text-white backdrop-blur-xs py-2 rounded-full text-xs font-semibold tracking-wider flex items-center justify-center gap-1.5 shadow-lg transition-colors"
           >
             <ShoppingBag className="w-3.5 h-3.5" /> Quick Add
           </button>
@@ -107,44 +192,58 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       </Link>
 
       {/* Details */}
-      <div className="p-4 flex flex-col flex-1 justify-between">
+      <div className="p-3 sm:p-3.5 flex flex-col flex-1 justify-between space-y-2">
         <div>
           {brandName && (
-            <p className="text-[11px] uppercase tracking-wider text-zinc-400 font-semibold mb-1">
+            <p className="text-[10px] uppercase tracking-widest text-[#8C6D2D] font-semibold mb-0.5 truncate">
               {brandName}
             </p>
           )}
 
           <Link href={`/product/${product.slug}`}>
-            <h3 className="font-medium text-sm text-zinc-900 dark:text-zinc-100 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors line-clamp-1 mb-1.5">
+            <h3 className="font-serif font-medium text-xs sm:text-sm text-zinc-900 group-hover:text-[#4A0E17] transition-colors line-clamp-1">
               {product.name}
             </h3>
           </Link>
 
           {/* Rating */}
-          <div className="flex items-center gap-1.5 mb-2">
-            <div className="flex items-center text-amber-400">
-              <Star className="w-3.5 h-3.5 fill-current" />
+          <div className="flex items-center gap-1 mt-1 text-[#D4AF37] text-[10px]">
+            <div className="flex">
+              {[...Array(5)].map((_, i) => (
+                <Star
+                  key={i}
+                  className={`w-2.5 h-2.5 sm:w-3 sm:h-3 ${
+                    i < Math.round(product.rating || 5) ? 'fill-[#D4AF37]' : 'text-zinc-300'
+                  }`}
+                />
+              ))}
             </div>
-            <span className="text-xs font-semibold text-zinc-800 dark:text-zinc-200">
-              {product.rating > 0 ? product.rating.toFixed(1) : '5.0'}
-            </span>
-            <span className="text-[11px] text-zinc-400">
-              ({product.reviewCount || 12})
+            <span className="text-zinc-400 font-light">
+              ({product.reviewCount || 15})
             </span>
           </div>
         </div>
 
-        {/* Price Row */}
-        <div className="flex items-baseline gap-2 mt-2">
-          <span className="text-base font-bold text-zinc-900 dark:text-zinc-100">
-            {formatCurrency(product.price)}
-          </span>
-          {product.compareAtPrice && product.compareAtPrice > product.price && (
-            <span className="text-xs text-zinc-400 line-through">
-              {formatCurrency(product.compareAtPrice)}
+        {/* Price Row & Mobile Add to Cart */}
+        <div className="pt-1">
+          <div className="flex items-baseline gap-1.5">
+            <span className="font-serif font-bold text-xs sm:text-sm text-zinc-900">
+              {formatCurrency(product.price)}
             </span>
-          )}
+            {product.compareAtPrice && product.compareAtPrice > product.price && (
+              <span className="text-[10px] sm:text-xs text-zinc-400 line-through">
+                {formatCurrency(product.compareAtPrice)}
+              </span>
+            )}
+          </div>
+
+          {/* Mobile-only Add to Cart Button */}
+          <button
+            onClick={handleQuickAdd}
+            className="sm:hidden w-full mt-2 py-1.5 px-3 rounded-full bg-[#4A0E17] text-white text-[11px] font-semibold tracking-wide flex items-center justify-center gap-1 shadow-xs"
+          >
+            <ShoppingBag className="w-3 h-3" /> Add to Cart
+          </button>
         </div>
       </div>
     </div>

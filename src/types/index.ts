@@ -50,6 +50,7 @@ export interface Product {
   brand?: Brand | string;
   category: Category | string;
   images: ProductImage[];
+  image?: string;
   price: number;
   compareAtPrice?: number;
   costPrice?: number;
@@ -75,6 +76,7 @@ export interface CartItem {
   product: Product | string;
   variantId?: string;
   name: string;
+  slug?: string;
   image: string;
   price: number;
   quantity: number;
