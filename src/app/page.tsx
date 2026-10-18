@@ -22,6 +22,9 @@ import {
   Check,
   Plus,
   Minus,
+  Crown,
+  Flame,
+  ShoppingBag,
 } from 'lucide-react';
 import { api } from '../lib/api';
 import { Product } from '../types';
@@ -208,11 +211,12 @@ const BESTSELLERS_DATA = [
     price: 1499,
     compareAtPrice: 2499,
     priceDisplay: '₹1,499',
-    tag: 'Most Loved',
-    rating: 5,
-    reviewsCount: 135,
+    badge: 'BESTSELLER',
+    badgeType: 'crown',
+    rating: 4.8,
+    reviewsCount: '1.2k',
     colors: ['#881337', '#D4AF37'],
-    image: '/images/bestsellers/traditional_silk_saree.jpg',
+    image: '/images/nalmara/card_kanchivaram.jpg',
     slug: 'kanchivaram-saree',
   },
   {
@@ -221,11 +225,12 @@ const BESTSELLERS_DATA = [
     price: 1150,
     compareAtPrice: 1750,
     priceDisplay: '₹1,150',
-    tag: 'Trending',
-    rating: 5,
-    reviewsCount: 96,
+    badge: 'TRENDING',
+    badgeType: 'flame',
+    rating: 4.7,
+    reviewsCount: '980',
     colors: ['#F59E0B', '#EC4899'],
-    image: '/images/nalmara/category_semi_kanchivaram.jpg',
+    image: '/images/nalmara/card_semi_tissue.jpg',
     slug: 'semi-tissue-saree',
   },
   {
@@ -234,11 +239,12 @@ const BESTSELLERS_DATA = [
     price: 798,
     compareAtPrice: 1199,
     priceDisplay: '₹798',
-    tag: 'Trending',
-    rating: 5,
-    reviewsCount: 118,
+    badge: 'NEW ARRIVAL',
+    badgeType: 'star',
+    rating: 4.6,
+    reviewsCount: '742',
     colors: ['#10B981', '#3B82F6'],
-    image: '/images/nalmara/cotton_saree_stack.jpg',
+    image: '/images/nalmara/card_chettinadu.jpg',
     slug: 'chettinadu-cotton',
   },
   {
@@ -247,11 +253,12 @@ const BESTSELLERS_DATA = [
     price: 1200,
     compareAtPrice: 1850,
     priceDisplay: '₹1,200',
-    tag: 'Trending',
-    rating: 5,
-    reviewsCount: 82,
+    badge: 'TRENDING',
+    badgeType: 'flame',
+    rating: 4.8,
+    reviewsCount: '1.1k',
     colors: ['#881337', '#14B8A6'],
-    image: '/images/categories/sarees.jpg',
+    image: '/images/nalmara/card_designer.jpg',
     slug: 'designer-saree',
   },
   {
@@ -260,12 +267,27 @@ const BESTSELLERS_DATA = [
     price: 749,
     compareAtPrice: 1299,
     priceDisplay: '₹749',
-    tag: 'Trending',
-    rating: 5,
-    reviewsCount: 55,
+    badge: 'POPULAR',
+    badgeType: 'star',
+    rating: 4.6,
+    reviewsCount: '876',
     colors: ['#EC4899', '#8B5CF6'],
-    image: '/images/nalmara/category_party_wear.jpg',
+    image: '/images/nalmara/card_fancy_saree.jpg',
     slug: 'fancy-saree',
+  },
+  {
+    _id: 'bs-6',
+    name: 'Embroidered Saree',
+    price: 1099,
+    compareAtPrice: 1799,
+    priceDisplay: '₹1,099',
+    badge: 'LIMITED STOCK',
+    badgeType: 'crown',
+    rating: 4.7,
+    reviewsCount: '642',
+    colors: ['#C084FC', '#F43F5E'],
+    image: '/images/nalmara/card_embroidered_saree.jpg',
+    slug: 'embroidered-saree',
   },
 ];
 
@@ -834,147 +856,161 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================== */}
-      {/* 05. FESTIVE COLLECTION BANNER (Crystal-Clear Luxury Layout)     */}
+      {/* 05. FESTIVE COLLECTION (Ultra-HD Premium Luxury Edition)       */}
       {/* ============================================================== */}
-      <section className="w-full max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-10">
-        <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border border-[#D4AF37]/50 bg-[#26050B] group">
-          {/* Desktop Multi-Zone Layout (md:grid) */}
-          <div className="hidden md:grid md:grid-cols-12 items-stretch min-h-[220px] lg:min-h-[240px]">
-            {/* Zone 1: Text & Explore Button (Col span 4 - ~33% width) */}
-            <div className="col-span-4 bg-gradient-to-r from-[#220308] via-[#2F060D] to-[#27040A] p-6 lg:p-8 xl:p-10 flex flex-col justify-center items-start relative z-10">
-              {/* Corner Traditional Gold Flourish */}
-              <div className="absolute top-3 left-3 pointer-events-none opacity-40 select-none">
-                <svg className="w-12 h-12 text-[#D4AF37]" viewBox="0 0 50 50" fill="none">
-                  <path
-                    d="M2 2C16 2 26 12 26 26M2 2C2 16 12 26 26 26M2 2L18 18M6 2C6 14 14 22 26 22"
-                    stroke="currentColor"
-                    strokeWidth="1.2"
-                    strokeLinecap="round"
-                  />
-                </svg>
+      <section className="w-full max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-12 relative">
+        {/* Subtle royal background atmosphere */}
+        <div className="absolute left-1 top-2 pointer-events-none opacity-20 select-none hidden lg:block">
+          <BotanicalBranch className="w-36 h-36 text-[#C5A059]" />
+        </div>
+        <div className="absolute right-1 bottom-2 pointer-events-none opacity-20 select-none hidden lg:block rotate-180">
+          <BotanicalBranch className="w-36 h-36 text-[#C5A059]" />
+        </div>
+
+        {/* Master Festive Banner Card */}
+        <div className="relative w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D4AF37]/60 group transition-all duration-500 hover:shadow-[0_25px_60px_rgba(46,6,13,0.45)] bg-[#170206]">
+          {/* Inner hairline gold border */}
+          <div className="absolute inset-2 sm:inset-3 border border-[#D4AF37]/35 rounded-xl sm:rounded-2xl pointer-events-none z-20" />
+
+          {/* Delicate gold corner accents */}
+          <div className="absolute top-3 sm:top-4 left-3 sm:left-4 w-4 h-4 border-t-2 border-l-2 border-[#E5C158] pointer-events-none z-30" />
+          <div className="absolute top-3 sm:top-4 right-3 sm:right-4 w-4 h-4 border-t-2 border-r-2 border-[#E5C158] pointer-events-none z-30" />
+          <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 w-4 h-4 border-b-2 border-l-2 border-[#E5C158] pointer-events-none z-30" />
+          <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 w-4 h-4 border-b-2 border-r-2 border-[#E5C158] pointer-events-none z-30" />
+
+          {/* Panoramic Container */}
+          <div className="relative w-full min-h-[380px] sm:min-h-[420px] lg:min-h-[460px] xl:min-h-[490px] flex items-center">
+            {/* Background Ultra-HD Photographic Image */}
+            <Image
+              src="/images/nalmara/festive_panoramic_hd.jpg"
+              alt="NALMARA Festive Collection - Traditional Elegance"
+              fill
+              priority
+              unoptimized
+              sizes="100vw"
+              className="object-cover object-center group-hover:scale-[1.015] transition-transform duration-1000 select-none"
+            />
+
+            {/* Gradient shadow overlays for razor-sharp typography contrast */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#170206]/95 via-[#170206]/80 via-40% md:via-32% to-transparent pointer-events-none z-10" />
+            <div className="absolute right-0 inset-y-0 w-36 sm:w-44 bg-gradient-to-l from-[#170206]/90 via-[#170206]/60 to-transparent pointer-events-none z-10 hidden md:block" />
+
+            {/* Left Content: Razor-sharp typography and branding */}
+            <div className="relative z-20 w-full md:w-[48%] lg:w-[42%] xl:w-[37%] p-6 sm:p-8 lg:p-10 xl:p-12 flex flex-col justify-center items-start text-left">
+              {/* Brand Logo & Name */}
+              <div className="flex items-center gap-2.5 mb-3 sm:mb-4">
+                <LotusIcon className="w-7 h-7 sm:w-8 sm:h-8 text-[#E5C158] drop-shadow-[0_2px_8px_rgba(229,193,88,0.5)]" />
+                <div className="flex flex-col">
+                  <span className="font-serif tracking-[0.28em] text-xs sm:text-sm font-semibold text-white/95 uppercase leading-tight">
+                    NALMARA
+                  </span>
+                  <span className="tracking-[0.38em] text-[8px] sm:text-[9px] text-[#E5C158] uppercase font-medium">
+                    FASHION
+                  </span>
+                </div>
               </div>
 
-              <h2 className="font-serif text-2xl sm:text-3xl lg:text-[34px] xl:text-[38px] text-white font-normal tracking-wide leading-tight">
-                Festive Collection
+              {/* Subheading with divider lines */}
+              <div className="flex items-center gap-2.5 mb-2 sm:mb-3">
+                <span className="h-[1px] w-6 sm:w-8 bg-[#D4AF37]/80" />
+                <span className="text-[10px] sm:text-xs font-medium tracking-[0.25em] text-[#E5C158] uppercase">
+                  TRADITIONAL ELEGANCE
+                </span>
+                <span className="h-[1px] w-6 sm:w-8 bg-[#D4AF37]/80" />
+              </div>
+
+              {/* Festive Collection Headline */}
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white font-normal tracking-tight leading-[1.08] mb-2 sm:mb-3">
+                Festive{' '}
+                <span className="font-script text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#FFE59E] via-[#F3D079] to-[#C99E3A] italic drop-shadow-[0_2px_12px_rgba(212,175,55,0.4)]">
+                  Collection
+                </span>
               </h2>
-              <p className="text-xs sm:text-sm text-[#F5E6BE]/90 font-light mt-2 tracking-wide leading-relaxed">
+
+              {/* Tagline */}
+              <p className="text-xs sm:text-sm lg:text-base font-serif italic text-amber-100/90 tracking-wide mb-5 sm:mb-6">
                 Celebrate Tradition &nbsp;|&nbsp; Embrace Elegance
               </p>
 
+              {/* CTA Button */}
               <Link
                 href="/shop?category=festive"
-                className="mt-5 inline-flex items-center gap-2 px-6 py-2.5 rounded-full border border-white/40 hover:border-[#D4AF37] bg-white/10 hover:bg-white hover:text-[#220308] text-white text-xs font-medium tracking-wider transition-all duration-300 shadow-sm group/btn"
+                className="inline-flex items-center gap-3 px-6 sm:px-8 py-2.5 sm:py-3.5 rounded-full border border-[#D4AF37] bg-black/40 hover:bg-[#D4AF37] text-[#FFE59E] hover:text-[#170206] transition-all duration-300 text-xs sm:text-sm font-medium tracking-wider group shadow-lg hover:shadow-[0_0_25px_rgba(212,175,55,0.5)] backdrop-blur-sm"
               >
                 <span>Explore Collection</span>
-                <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+                <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform duration-300 group-hover:translate-x-1" />
               </Link>
             </div>
 
-            {/* Zone 2: Folded Silk Saree with Gold Zari & Lotus Flowers (Col span 4 - ~33% width) */}
-            <div className="col-span-4 relative overflow-hidden bg-[#180306]">
-              <Image
-                src="/images/nalmara/festive_folded_saree.jpg"
-                alt="Festive Handwoven Pure Zari Silk Saree"
-                fill
-                priority
-                className="object-cover object-center group-hover:scale-105 transition-transform duration-700"
-              />
-              {/* Subtle edge blend gradients */}
-              <div className="absolute inset-y-0 left-0 w-8 bg-gradient-to-r from-[#27040A] to-transparent pointer-events-none" />
-              <div className="absolute inset-y-0 right-0 w-8 bg-gradient-to-l from-[#180306] to-transparent pointer-events-none" />
-            </div>
+            {/* Right Side Vertical Trust Badges Panel (matching reference screenshot) */}
+            <div className="absolute right-0 inset-y-0 z-20 hidden md:flex flex-col justify-around py-6 px-4 lg:px-6 w-36 sm:w-40 lg:w-44 border-l border-[#D4AF37]/30 bg-[#170206]/50 backdrop-blur-[2px]">
+              {/* Badge 1 */}
+              <div className="flex flex-col items-center text-center group/badge">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#D4AF37]/60 flex items-center justify-center text-[#E5C158] mb-1.5 transition-transform duration-300 group-hover/badge:scale-110 group-hover/badge:border-[#E5C158] bg-[#170206]/60">
+                  <Sparkles className="w-4 h-4" />
+                </div>
+                <span className="text-[10px] sm:text-[11px] font-serif text-amber-100/90 leading-tight">
+                  Premium<br />Silk Sarees
+                </span>
+              </div>
 
-            {/* Zone 3: Model in Emerald Green Saree with Glowing Diyas (Col span 3 - ~25% width) */}
-            <div className="col-span-3 relative overflow-hidden bg-[#180306]">
-              <Image
-                src="/images/nalmara/festive_green_saree_model.jpg"
-                alt="Indian Model in Emerald Green Silk Saree with Glowing Diyas"
-                fill
-                priority
-                className="object-cover object-top group-hover:scale-105 transition-transform duration-700"
-              />
-              {/* Subtle edge blend gradients */}
-              <div className="absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-[#180306] to-transparent pointer-events-none" />
-              <div className="absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-[#1D0307] to-transparent pointer-events-none" />
-            </div>
+              {/* Badge 2 */}
+              <div className="flex flex-col items-center text-center group/badge">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#D4AF37]/60 flex items-center justify-center text-[#E5C158] mb-1.5 transition-transform duration-300 group-hover/badge:scale-110 group-hover/badge:border-[#E5C158] bg-[#170206]/60">
+                  <Gem className="w-4 h-4" />
+                </div>
+                <span className="text-[10px] sm:text-[11px] font-serif text-amber-100/90 leading-tight">
+                  Authentic<br />Craftsmanship
+                </span>
+              </div>
 
-            {/* Zone 4: Occasion Tags (Col span 1 - ~9% width) */}
-            <div className="col-span-1 bg-[#1D0307] border-l border-[#D4AF37]/25 p-3 flex flex-col justify-center items-center text-center z-10 space-y-2.5">
-              <LotusIcon className="w-5 h-4 text-[#D4AF37] mb-1 opacity-90" />
-              <Link
-                href="/shop?category=festive&occasion=diwali"
-                className="text-[11px] lg:text-xs text-[#F5E6BE] hover:text-white font-medium tracking-wider transition-all hover:translate-x-0.5 block py-0.5"
-              >
-                Diwali
-              </Link>
-              <Link
-                href="/shop?category=weddings"
-                className="text-[11px] lg:text-xs text-[#F5E6BE] hover:text-white font-medium tracking-wider transition-all hover:translate-x-0.5 block py-0.5"
-              >
-                Wedding
-              </Link>
-              <Link
-                href="/shop?category=festive"
-                className="text-[11px] lg:text-xs text-[#F5E6BE] hover:text-white font-medium tracking-wider transition-all hover:translate-x-0.5 block py-0.5"
-              >
-                Festive Wear
-              </Link>
-              <Link
-                href="/shop?category=gifting"
-                className="text-[11px] lg:text-xs text-[#F5E6BE] hover:text-white font-medium tracking-wider transition-all hover:translate-x-0.5 block py-0.5"
-              >
-                Gifting
-              </Link>
+              {/* Badge 3 */}
+              <div className="flex flex-col items-center text-center group/badge">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#D4AF37]/60 flex items-center justify-center text-[#E5C158] mb-1.5 transition-transform duration-300 group-hover/badge:scale-110 group-hover/badge:border-[#E5C158] bg-[#170206]/60">
+                  <Package className="w-4 h-4" />
+                </div>
+                <span className="text-[10px] sm:text-[11px] font-serif text-amber-100/90 leading-tight">
+                  Secure<br />Delivery
+                </span>
+              </div>
+
+              {/* Badge 4 */}
+              <div className="flex flex-col items-center text-center group/badge">
+                <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#D4AF37]/60 flex items-center justify-center text-[#E5C158] mb-1.5 transition-transform duration-300 group-hover/badge:scale-110 group-hover/badge:border-[#E5C158] bg-[#170206]/60">
+                  <Heart className="w-4 h-4" />
+                </div>
+                <span className="text-[10px] sm:text-[11px] font-serif text-amber-100/90 leading-tight">
+                  Made with<br />Love
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Mobile View: High Clarity Responsive Card (md:hidden) */}
-          <div className="md:hidden relative p-6 bg-gradient-to-br from-[#240409] via-[#32070E] to-[#1F0307] flex flex-col justify-between overflow-hidden">
-            {/* Background Festive Saree Vignette on right */}
-            <div className="absolute right-0 top-0 bottom-0 w-[45%] opacity-40 overflow-hidden pointer-events-none">
-              <Image
-                src="/images/nalmara/festive_folded_saree.jpg"
-                alt="Festive Sarees"
-                fill
-                className="object-cover object-right"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-[#240409] via-transparent to-transparent" />
-            </div>
-
-            <div className="relative z-10 space-y-2 max-w-[70%]">
-              <h3 className="font-serif text-2xl font-normal text-white leading-tight">
-                Festive Collection
-              </h3>
-              <p className="text-[11px] text-[#F5E6BE]/90 font-light leading-snug">
-                Celebrate Tradition &nbsp;|&nbsp; Embrace Elegance
-              </p>
-              <div className="pt-2">
-                <Link
-                  href="/shop?category=festive"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-white/40 bg-white/10 hover:bg-white hover:text-[#240409] text-white text-[11px] font-medium tracking-wide transition-all shadow-xs"
-                >
-                  <span>Explore Collection</span>
-                  <ArrowRight className="w-3 h-3" />
-                </Link>
+          {/* Mobile Badge Strip */}
+          <div className="relative z-20 md:hidden grid grid-cols-2 sm:grid-cols-4 gap-3 p-4 border-t border-[#D4AF37]/30 bg-[#170206]/95">
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-full border border-[#D4AF37]/60 flex items-center justify-center text-[#E5C158] shrink-0 bg-[#170206]">
+                <Sparkles className="w-3.5 h-3.5" />
               </div>
+              <span className="text-[10px] font-serif text-amber-100/90">Premium Silk Sarees</span>
             </div>
-
-            {/* Mobile Occasions Pills */}
-            <div className="relative z-10 flex items-center gap-2 mt-4 pt-4 border-t border-[#D4AF37]/20 overflow-x-auto scrollbar-none">
-              {[
-                { name: 'Diwali', link: '/shop?category=festive&occasion=diwali' },
-                { name: 'Wedding', link: '/shop?category=weddings' },
-                { name: 'Festive Wear', link: '/shop?category=festive' },
-                { name: 'Gifting', link: '/shop?category=gifting' },
-              ].map((occ) => (
-                <Link
-                  key={occ.name}
-                  href={occ.link}
-                  className="px-2.5 py-1 rounded-full bg-white/10 hover:bg-[#D4AF37] hover:text-[#240409] border border-[#D4AF37]/30 text-[#F5E6BE] text-[10px] font-medium whitespace-nowrap transition-all shrink-0"
-                >
-                  ✦ {occ.name}
-                </Link>
-              ))}
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-full border border-[#D4AF37]/60 flex items-center justify-center text-[#E5C158] shrink-0 bg-[#170206]">
+                <Gem className="w-3.5 h-3.5" />
+              </div>
+              <span className="text-[10px] font-serif text-amber-100/90">Authentic Craftsmanship</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-full border border-[#D4AF37]/60 flex items-center justify-center text-[#E5C158] shrink-0 bg-[#170206]">
+                <Package className="w-3.5 h-3.5" />
+              </div>
+              <span className="text-[10px] font-serif text-amber-100/90">Secure Delivery</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-full border border-[#D4AF37]/60 flex items-center justify-center text-[#E5C158] shrink-0 bg-[#170206]">
+                <Heart className="w-3.5 h-3.5" />
+              </div>
+              <span className="text-[10px] font-serif text-amber-100/90">Made with Love</span>
             </div>
           </div>
         </div>
@@ -1099,118 +1135,217 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================== */}
-      {/* 07. BESTSELLERS & TRENDING NOW (Rich Maroon Container)         */}
+      {/* 07. BESTSELLERS & TRENDING NOW (Exact Reference Mockup Look)   */}
       {/* ============================================================== */}
-      <section className="w-full max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10 sm:py-14">
-        <div className="bg-gradient-to-r from-[#2D070C] via-[#380B11] to-[#2D070C] rounded-3xl p-5 sm:p-8 shadow-xl border-2 border-[#D4AF37]/50 relative overflow-hidden">
-          {/* Header Bar */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-6 text-white">
-            <div>
-              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight text-white">
-                Bestsellers &amp; Trending Now
-              </h2>
-              <p className="text-xs sm:text-sm text-zinc-300 font-light mt-1">
-                Our most loved styles, handpicked for you.
-              </p>
-            </div>
-            <div className="flex items-center gap-3">
-              <Link
-                href="/shop?filter=best-sellers"
-                className="text-xs text-[#F5E6BE] hover:text-white font-semibold flex items-center gap-1 transition-colors"
-              >
-                <span>View All</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-              {/* Carousel Arrows */}
-              <div className="hidden sm:flex items-center gap-1.5">
-                <button
-                  onClick={() => scrollBestsellers('left')}
-                  className="w-8 h-8 rounded-full bg-white/20 hover:bg-white text-white hover:text-zinc-900 flex items-center justify-center transition-all cursor-pointer"
-                  aria-label="Scroll left"
-                >
-                  <ChevronLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() => scrollBestsellers('right')}
-                  className="w-8 h-8 rounded-full bg-white/20 hover:bg-white text-white hover:text-zinc-900 flex items-center justify-center transition-all cursor-pointer"
-                  aria-label="Scroll right"
-                >
-                  <ChevronRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
+      <section className="w-full max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-14 relative">
+        {/* Subtle background ambient sketches */}
+        <div className="absolute left-1 top-2 pointer-events-none opacity-20 select-none hidden lg:block">
+          <BotanicalBranch className="w-36 h-36 text-[#C5A059]" />
+        </div>
+        <div className="absolute right-1 bottom-2 pointer-events-none opacity-20 select-none hidden lg:block rotate-180">
+          <BotanicalBranch className="w-36 h-36 text-[#C5A059]" />
+        </div>
+
+        {/* Master Container with user background */}
+        <div className="relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D4AF37]/50 bg-[#160205]">
+          {/* Background Image: the exact clean background provided by user */}
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/images/nalmara/bestsellers_trending_bg.png"
+              alt="Bestsellers & Trending Now Background"
+              fill
+              priority
+              unoptimized
+              sizes="100vw"
+              className="object-cover object-center select-none"
+            />
+            {/* Deep Wine / Mahogany gradient overlay for crystal-clear readability & royal depth */}
+            <div className="absolute inset-0 bg-gradient-to-b from-[#180306]/92 via-[#220409]/82 to-[#180306]/95 pointer-events-none" />
           </div>
 
-          {/* 5 Product Cards Horizontal Row */}
-          <div
-            ref={bestsellersContainerRef}
-            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-5 overflow-x-auto pb-2 scrollbar-none"
-          >
-            {(bestsellers && bestsellers.length > 0 ? bestsellers.slice(0, 5) : BESTSELLERS_DATA).map((prod) => {
-              const prodId = prod._id || prod.id;
-              const inWish = isInWishlist(prodId);
-              const prodImg = prod.images?.[0]?.url || prod.image || '/images/bestsellers/traditional_silk_saree.jpg';
-              const priceText = prod.priceDisplay || (prod.price ? formatCurrency(prod.price) : '₹999');
-              const badgeTag = prod.tag || (prod.bestSeller ? 'Most Loved' : 'Trending');
+          {/* Inner hairline gold border */}
+          <div className="absolute inset-2 sm:inset-3 border border-[#D4AF37]/35 rounded-xl sm:rounded-2xl pointer-events-none z-20" />
 
-              return (
-                <div
-                  key={prodId}
-                  className="group bg-white rounded-2xl border border-white/20 overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 flex flex-col justify-between"
-                >
-                  {/* Image with Tag Pill & Wishlist */}
-                  <div className="relative aspect-[3/4] w-full overflow-hidden bg-zinc-100">
-                    <Link href={`/product/${prod.slug}`} className="block w-full h-full">
-                      <Image
-                        src={prodImg}
-                        alt={prod.name}
-                        fill
-                        className="object-cover group-hover:scale-108 transition-transform duration-700"
-                      />
-                    </Link>
+          {/* Gold corner accents */}
+          <div className="absolute top-3 sm:top-4 left-3 sm:left-4 w-4 h-4 border-t-2 border-l-2 border-[#E5C158] pointer-events-none z-30" />
+          <div className="absolute top-3 sm:top-4 right-3 sm:right-4 w-4 h-4 border-t-2 border-r-2 border-[#E5C158] pointer-events-none z-30" />
+          <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 w-4 h-4 border-b-2 border-l-2 border-[#E5C158] pointer-events-none z-30" />
+          <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 w-4 h-4 border-b-2 border-r-2 border-[#E5C158] pointer-events-none z-30" />
 
-                    {/* Badge Tag Pill */}
-                    <div className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-[#18181B]/80 text-[#FAF8F5] text-[9px] font-semibold uppercase tracking-wider backdrop-blur-xs">
-                      {badgeTag}
-                    </div>
-
-                    <button
-                      onClick={(e) => handleWishlistToggle(prod, e)}
-                      className="absolute top-2.5 right-2.5 w-7 h-7 rounded-full bg-white/90 hover:bg-white text-zinc-700 flex items-center justify-center transition-all shadow-sm z-10 cursor-pointer hover:scale-110"
-                      aria-label="Save to wishlist"
-                    >
-                      <Heart
-                        className={`w-3.5 h-3.5 ${
-                          inWish ? 'fill-rose-600 text-rose-600' : 'text-zinc-600'
-                        }`}
-                      />
-                    </button>
-                  </div>
-
-                  {/* Details */}
-                  <div className="p-3 sm:p-3.5 space-y-2 flex-1 flex flex-col justify-between">
-                    <div>
-                      <Link href={`/product/${prod.slug}`}>
-                        <h3 className="font-serif font-bold text-xs sm:text-sm text-zinc-900 line-clamp-1 group-hover:text-[#4A0E17] transition-colors">
-                          {prod.name}
-                        </h3>
-                      </Link>
-                      <p className="font-bold text-xs sm:text-sm text-zinc-900 mt-1">
-                        {priceText}
-                      </p>
-                    </div>
-
-                    {/* Add to Cart Button */}
-                    <button
-                      onClick={(e) => handleAddToCart(prod, e)}
-                      className="w-full mt-2 py-1.5 sm:py-2 px-3 rounded-full bg-[#18181B] hover:bg-[#132E27] text-white text-[11px] sm:text-xs font-semibold tracking-wide transition-all shadow-2xs hover:shadow-md cursor-pointer"
-                    >
-                      Add to Cart
-                    </button>
-                  </div>
+          {/* Content Wrapper */}
+          <div className="relative z-10 p-5 sm:p-7 lg:p-9 xl:p-10 flex flex-col justify-between">
+            {/* ================= HEADER BAR ================= */}
+            <div className="relative flex flex-col md:flex-row items-center justify-between gap-4 mb-6 sm:mb-8 text-center md:text-left">
+              {/* Left Brand Identity */}
+              <div className="hidden lg:flex items-center gap-2.5">
+                <LotusIcon className="w-8 h-8 text-[#E5C158] drop-shadow-[0_2px_8px_rgba(229,193,88,0.5)]" />
+                <div className="flex flex-col text-left">
+                  <span className="font-serif tracking-[0.28em] text-[13px] font-semibold text-white/95 uppercase leading-tight">
+                    NALMARA
+                  </span>
+                  <span className="tracking-[0.38em] text-[9px] text-[#E5C158] uppercase font-medium">
+                    FASHION
+                  </span>
                 </div>
-              );
-            })}
+              </div>
+
+              {/* Center Title & Subtitle */}
+              <div className="flex flex-col items-center text-center">
+                {/* Overline with divider lines */}
+                <div className="flex items-center gap-2.5 mb-1.5 sm:mb-2">
+                  <span className="h-[1px] w-6 sm:w-10 bg-gradient-to-r from-transparent to-[#D4AF37]" />
+                  <span className="text-[10px] sm:text-xs font-serif font-medium tracking-[0.28em] text-[#E5C158] uppercase">
+                    OUR MOST LOVED STYLES
+                  </span>
+                  <span className="h-[1px] w-6 sm:w-10 bg-gradient-to-l from-transparent to-[#D4AF37]" />
+                </div>
+
+                {/* Main Heading */}
+                <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white font-normal tracking-tight leading-tight">
+                  Bestsellers &amp;{' '}
+                  <span className="font-script text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#FFE59E] via-[#F3D079] to-[#C99E3A] italic drop-shadow-[0_2px_12px_rgba(212,175,55,0.4)]">
+                    Trending Now
+                  </span>
+                </h2>
+
+                {/* Subtitle with gold accent lines */}
+                <div className="flex items-center gap-2 mt-1 sm:mt-1.5">
+                  <span className="h-[1px] w-12 sm:w-20 bg-gradient-to-r from-transparent to-[#D4AF37]/60" />
+                  <p className="text-[11px] sm:text-xs lg:text-sm font-light text-amber-100/80 tracking-wide">
+                    Handpicked styles. Loved by you. Always in trend.
+                  </p>
+                  <span className="h-[1px] w-12 sm:w-20 bg-gradient-to-l from-transparent to-[#D4AF37]/60" />
+                </div>
+              </div>
+
+              {/* Right View All CTA */}
+              <div className="flex items-center">
+                <Link
+                  href="/shop?filter=best-sellers"
+                  className="inline-flex items-center gap-2 px-5 py-2 sm:px-6 sm:py-2.5 rounded-full border border-[#D4AF37] bg-black/40 hover:bg-[#D4AF37] text-white hover:text-[#180306] transition-all duration-300 text-xs font-medium tracking-wider group shadow-md hover:shadow-[0_0_20px_rgba(212,175,55,0.4)] backdrop-blur-xs"
+                >
+                  <span>View All</span>
+                  <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
+                </Link>
+              </div>
+            </div>
+
+            {/* ================= 6 PRODUCT CARDS CAROUSEL ================= */}
+            <div className="relative w-full">
+              {/* Left Carousel Arrow */}
+              <button
+                onClick={() => scrollBestsellers('left')}
+                className="absolute -left-3 sm:-left-4 lg:-left-5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#D4AF37]/70 bg-[#280409]/90 hover:bg-[#D4AF37] text-[#FFE59E] hover:text-[#180306] flex items-center justify-center transition-all duration-300 shadow-xl cursor-pointer backdrop-blur-xs hover:scale-110 active:scale-95"
+                aria-label="Scroll left"
+              >
+                <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+
+              {/* Right Carousel Arrow */}
+              <button
+                onClick={() => scrollBestsellers('right')}
+                className="absolute -right-3 sm:-right-4 lg:-right-5 top-1/2 -translate-y-1/2 z-30 w-8 h-8 sm:w-10 sm:h-10 rounded-full border border-[#D4AF37]/70 bg-[#280409]/90 hover:bg-[#D4AF37] text-[#FFE59E] hover:text-[#180306] flex items-center justify-center transition-all duration-300 shadow-xl cursor-pointer backdrop-blur-xs hover:scale-110 active:scale-95"
+                aria-label="Scroll right"
+              >
+                <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5" />
+              </button>
+
+              {/* Cards Track: 6-column on large screens */}
+              <div
+                ref={bestsellersContainerRef}
+                className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 overflow-x-auto pb-2 scrollbar-none scroll-smooth"
+              >
+                {BESTSELLERS_DATA.map((prod) => {
+                  const prodId = prod._id;
+                  const inWish = isInWishlist(prodId);
+
+                  return (
+                    <div
+                      key={prodId}
+                      className="group bg-[#FFFDF9] rounded-xl sm:rounded-2xl border border-[#D4AF37]/45 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
+                    >
+                      {/* Image Area */}
+                      <div className="relative aspect-[1/1] w-full overflow-hidden bg-zinc-100">
+                        <Link href={`/product/${prod.slug}`} className="block w-full h-full">
+                          <Image
+                            src={prod.image}
+                            alt={prod.name}
+                            fill
+                            unoptimized
+                            className="object-cover object-top group-hover:scale-106 transition-transform duration-700"
+                          />
+                        </Link>
+
+                        {/* Top-Left Badge Pill (Wine with gold icon & gold text) */}
+                        <div className="absolute top-2 left-2 z-10 px-2 py-0.5 rounded-md bg-[#42060E]/95 border border-[#D4AF37]/50 text-[#F5D57F] text-[8px] sm:text-[9px] font-semibold uppercase tracking-wider shadow-sm flex items-center gap-1 backdrop-blur-xs">
+                          {prod.badgeType === 'crown' && <Crown className="w-2.5 h-2.5 text-[#F5D57F]" />}
+                          {prod.badgeType === 'flame' && <Flame className="w-2.5 h-2.5 text-[#F5D57F]" />}
+                          {prod.badgeType === 'star' && <Star className="w-2.5 h-2.5 fill-[#F5D57F] text-[#F5D57F]" />}
+                          <span>{prod.badge}</span>
+                        </div>
+
+                        {/* Top-Right Wishlist Button */}
+                        <button
+                          onClick={(e) => handleWishlistToggle(prod, e)}
+                          className="absolute top-2 right-2 z-10 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#180306]/80 border border-[#D4AF37]/60 hover:bg-[#D4AF37] text-white hover:text-[#180306] flex items-center justify-center transition-all shadow-sm cursor-pointer hover:scale-110 active:scale-95"
+                          aria-label="Save to wishlist"
+                        >
+                          <Heart
+                            className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${
+                              inWish ? 'fill-rose-500 text-rose-500' : 'text-white'
+                            }`}
+                          />
+                        </button>
+                      </div>
+
+                      {/* Card Info: Cream Footer */}
+                      <div className="p-2.5 sm:p-3 bg-[#FFFDF9] flex-1 flex flex-col justify-between">
+                        <div>
+                          <Link href={`/product/${prod.slug}`}>
+                            <h3 className="font-serif font-bold text-xs sm:text-[13px] text-zinc-900 truncate group-hover:text-[#4A0E17] transition-colors">
+                              {prod.name}
+                            </h3>
+                          </Link>
+                          {/* Price & Rating */}
+                          <div className="flex items-center justify-between mt-1 gap-1">
+                            <span className="font-bold text-xs sm:text-[13px] text-zinc-900">
+                              {prod.priceDisplay}
+                            </span>
+                            <div className="flex items-center gap-0.5 text-[10px] text-zinc-600 font-medium">
+                              <Star className="w-3 h-3 fill-[#D4AF37] text-[#D4AF37]" />
+                              <span>{prod.rating}</span>
+                              <span className="text-zinc-400">({prod.reviewsCount})</span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Add to Cart Button */}
+                        <button
+                          onClick={(e) => handleAddToCart(prod, e)}
+                          className="w-full mt-2.5 py-1.5 px-2.5 rounded-full bg-[#35070E] hover:bg-[#D4AF37] text-white hover:text-[#180306] text-[10px] sm:text-[11px] font-semibold tracking-wide transition-all shadow-xs hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-98"
+                        >
+                          <ShoppingBag className="w-3 h-3" />
+                          <span>Add to Cart</span>
+                          <ArrowRight className="w-2.5 h-2.5" />
+                        </button>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* ================= BOTTOM INSIDE FOOTER BAR ================= */}
+            <div className="mt-6 sm:mt-8 pt-4 border-t border-[#D4AF37]/30 flex flex-col items-center gap-2">
+              <LotusIcon className="w-6 h-6 text-[#E5C158] opacity-80" />
+              <div className="flex items-center justify-center gap-2 sm:gap-4 text-[9px] sm:text-[11px] font-serif tracking-[0.25em] text-[#E5C158] uppercase text-center">
+                <span>TRADITIONAL ELEGANCE</span>
+                <span className="opacity-50">|</span>
+                <span>TIMELESS COLLECTIONS</span>
+                <span className="opacity-50">|</span>
+                <span>MADE WITH LOVE</span>
+              </div>
+            </div>
           </div>
         </div>
       </section>
