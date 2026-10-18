@@ -97,19 +97,118 @@ const HERO_SLIDES = [
 // ==============================================================
 // 04. CATEGORIES DATA (Mockup 5 Categories)
 // ==============================================================
+const RoyalRosetteBadge = ({ slug, className = 'w-10 h-10' }: { slug: string; className?: string }) => (
+  <div className={`relative flex items-center justify-center ${className}`}>
+    {/* Golden Laurel leaves on left and right */}
+    <svg viewBox="0 0 70 36" className="absolute -inset-x-3 top-1/2 -translate-y-1/2 w-[135%] h-[120%] pointer-events-none select-none text-[#D4AF37]" fill="none">
+      <path d="M16 18C12 16 8 12 7 8M16 18C13 20 9 23 6 27M16 18C11 18 6 18 3 18M11 13C8 10 6 7 5 3M11 23C8 26 6 29 5 33" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+      <path d="M54 18C58 16 62 12 63 8M54 18C57 20 61 23 64 27M54 18C59 18 64 18 67 18M59 13C62 10 64 7 65 3M59 23C62 26 64 29 65 33" stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" />
+    </svg>
+    {/* 12-lobed Scalloped Rosette Seal */}
+    <div className="relative w-full h-full rounded-full bg-gradient-to-br from-[#7D0E1F] via-[#5C0612] to-[#380208] border-2 border-[#D4AF37] shadow-[0_4px_14px_rgba(92,6,18,0.55)] flex items-center justify-center">
+      <div className="absolute inset-[2px] rounded-full border border-[#FFE59E]/40 pointer-events-none" />
+      <CategoryMedallionIcon slug={slug} className="w-4 h-4 lg:w-5 lg:h-5 text-[#FFE59E] drop-shadow-sm" />
+    </div>
+  </div>
+);
+
+const CategoryMedallionIcon = ({ slug, className = 'w-5 h-5' }: { slug: string; className?: string }) => {
+  switch (slug) {
+    case 'sarees':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+          <path d="M7 3L17 5L15 21L5 19L7 3Z" strokeLinejoin="round" />
+          <path d="M7 7L16 9" />
+          <path d="M6.5 11L15.5 13" />
+          <path d="M6 15L15 17" />
+        </svg>
+      );
+    case 'semi-kanchivaram':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+          <path d="M12 3L9 8H15L12 3Z" />
+          <path d="M9 8L5 21H19L15 8" strokeLinejoin="round" />
+          <path d="M9 13H15" />
+          <path d="M7 17H17" />
+        </svg>
+      );
+    case 'cotton-sarees':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+          <rect x="4" y="6" width="16" height="3.5" rx="1.5" />
+          <rect x="4" y="11" width="16" height="3.5" rx="1.5" />
+          <rect x="4" y="16" width="16" height="3.5" rx="1.5" />
+        </svg>
+      );
+    case 'party-wear':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+          <path d="M12 3L8 9L5 21H19L16 9L12 3Z" strokeLinejoin="round" />
+          <path d="M12 9V21" />
+          <circle cx="12" cy="6.5" r="1" fill="currentColor" />
+        </svg>
+      );
+    case 'kids-wear':
+    case 'kidswear':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+          <path d="M9 4L6 8L7 12L4 20H20L17 12L18 8L15 4L12 6L9 4Z" strokeLinejoin="round" />
+          <circle cx="12" cy="11" r="1.5" fill="currentColor" />
+        </svg>
+      );
+    case 'lehengas':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+          <path d="M8 5H16L19 20H5L8 5Z" strokeLinejoin="round" />
+          <path d="M6.5 15C10 17 14 17 17.5 15" />
+        </svg>
+      );
+    case 'anarkali':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+          <path d="M12 3L9 7H15L12 3Z" />
+          <path d="M9 7L4 21H20L15 7" strokeLinejoin="round" />
+        </svg>
+      );
+    case 'kurtis':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+          <path d="M8 3H16V9L18 10L17 21H7L6 10L8 9V3Z" strokeLinejoin="round" />
+          <path d="M12 3V9" />
+        </svg>
+      );
+    case 'salwar-suits':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+          <path d="M7 4H17L19 11L17 17H7L5 11L7 4Z" strokeLinejoin="round" />
+          <path d="M9 17L8 21H16L15 17" />
+        </svg>
+      );
+    case 'mens-wear':
+      return (
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className={className}>
+          <path d="M9 3H15L17 9L16 21H8L7 9L9 3Z" strokeLinejoin="round" />
+          <path d="M12 3V11" />
+        </svg>
+      );
+    default:
+      return <Sparkles className={className} />;
+  }
+};
+
 const CATEGORIES_DATA = [
   {
     id: 'sarees',
     title: 'Sarees',
-    image: '/images/nalmara/category_sarees_stack.jpg',
+    image: '/images/nalmara/card_kanchivaram.jpg',
     link: '/shop?category=sarees',
     slug: 'sarees',
   },
   {
     id: 'semi-kanchivaram',
-    title: 'Semi Kanchivaram',
+    title: 'Semi Kanchipuram',
     image: '/images/nalmara/category_semi_kanchivaram.jpg',
-    link: '/shop?category=semi-kanchivaram',
+    link: '/shop?category=semi-kanchipuram',
     slug: 'semi-kanchivaram',
   },
   {
@@ -127,11 +226,46 @@ const CATEGORIES_DATA = [
     slug: 'party-wear',
   },
   {
-    id: 'kidswear',
-    title: 'Kidswear',
+    id: 'kids-wear',
+    title: 'Kids',
     image: '/images/nalmara/kidswear_butterfly_gown.jpg',
     link: '/shop?category=kids-wear',
     slug: 'kids-wear',
+  },
+  {
+    id: 'lehengas',
+    title: 'Lehengas',
+    image: '/images/categories/lehengas.jpg',
+    link: '/shop?category=lehengas',
+    slug: 'lehengas',
+  },
+  {
+    id: 'anarkali',
+    title: 'Anarkali',
+    image: '/images/categories/anarkali.jpg',
+    link: '/shop?category=anarkali',
+    slug: 'anarkali',
+  },
+  {
+    id: 'kurtis',
+    title: 'Kurtis',
+    image: '/images/categories/kurtis.jpg',
+    link: '/shop?category=kurtis',
+    slug: 'kurtis',
+  },
+  {
+    id: 'salwar-suits',
+    title: 'Salwar Suits',
+    image: '/images/categories/salwar-suits.jpg',
+    link: '/shop?category=salwar-suits',
+    slug: 'salwar-suits',
+  },
+  {
+    id: 'mens-wear',
+    title: "Men's Wear",
+    image: '/images/categories/mens-wear.jpg',
+    link: '/shop?category=mens-wear',
+    slug: 'mens-wear',
   },
 ];
 
@@ -457,6 +591,31 @@ export default function HomePage() {
 
   // Live dynamic API state
   const [categories, setCategories] = useState<any[]>(CATEGORIES_DATA);
+
+  // Section 04: Shop by Category Auto-Slide State ("auto slice on")
+  const [activeCategoryIndex, setActiveCategoryIndex] = useState(0);
+  const [isCategoryPaused, setIsCategoryPaused] = useState(false);
+  const touchStartXRef = useRef<number | null>(null);
+
+  // Auto-slide every 3.5 seconds
+  useEffect(() => {
+    if (isCategoryPaused || !categories || categories.length === 0) return;
+    const interval = setInterval(() => {
+      setActiveCategoryIndex((prev) => (prev + 1) % categories.length);
+    }, 3500);
+    return () => clearInterval(interval);
+  }, [isCategoryPaused, categories]);
+
+  const handlePrevCategory = () => {
+    if (!categories || categories.length === 0) return;
+    setActiveCategoryIndex((prev) => (prev - 1 + categories.length) % categories.length);
+  };
+
+  const handleNextCategory = () => {
+    if (!categories || categories.length === 0) return;
+    setActiveCategoryIndex((prev) => (prev + 1) % categories.length);
+  };
+
   const [newArrivals, setNewArrivals] = useState<any[]>(NEW_ARRIVALS_DATA);
   const [bestsellers, setBestsellers] = useState<any[]>(BESTSELLERS_DATA);
   const [isLoadingApi, setIsLoadingApi] = useState(true);
@@ -830,87 +989,436 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================== */}
-      {/* 04. SHOP BY CATEGORY                                           */}
+      {/* 04. SHOP BY CATEGORY (Ultra-Grand Royal Couture Edition)       */}
       {/* ============================================================== */}
-      <section className="relative max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10 sm:py-14">
-        {/* Decorative botanical branch on right side (Desktop) */}
-        <div className="hidden lg:block absolute -right-4 top-8 pointer-events-none opacity-30 select-none">
-          <BotanicalBranch className="w-40 h-40 text-[#C5A059]" />
-        </div>
-
-        {/* Section Header */}
-        <div className="flex items-end justify-between gap-4 mb-6 sm:mb-8">
-          <div>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-zinc-900 tracking-tight">
-              Shop by Category
-            </h2>
-            <p className="text-xs sm:text-sm text-zinc-500 font-light mt-1">
-              Explore our handpicked collections for every occasion
-            </p>
+      <section className="relative w-full max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 my-6 sm:my-8">
+        {/* ========================================================================= */}
+        {/* DESKTOP VIEW: Majestic Champagne Silk Canvas with Auto-Slide (hidden md:block) */}
+        {/* ========================================================================= */}
+        <div
+          className="hidden md:block relative w-full aspect-[2048/740] rounded-3xl overflow-hidden shadow-[0_20px_55px_rgba(184,142,40,0.28)] border-2 border-[#D4AF37]/65 bg-[#FAF6EE] select-none group/sec"
+          onMouseEnter={() => setIsCategoryPaused(true)}
+          onMouseLeave={() => setIsCategoryPaused(false)}
+        >
+          {/* Authentic High-Resolution Champagne Satin Silk Fabric Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none select-none">
+            <Image
+              src="/images/nalmara/category_grand_silk_desktop_bg.jpg"
+              alt="Champagne Silk Background"
+              fill
+              priority
+              unoptimized
+              className="object-cover object-center"
+            />
+            {/* Soft luminous center vignette for razor-sharp typography and card clarity */}
+            <div className="absolute inset-0 bg-radial-gradient from-transparent via-[#FFFDF9]/20 to-[#FAF5ED]/40 pointer-events-none" />
           </div>
-          <Link
-            href="/shop"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-700 hover:text-[#132E27] transition-colors shrink-0"
-          >
-            <span>View All</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
-        </div>
 
-        {/* Mobile View: 5 Circular Story Avatars (sm:hidden) */}
-        <div className="flex sm:hidden items-center justify-between gap-3 overflow-x-auto pb-2 scrollbar-none">
-          {(categories && categories.length > 0 ? categories.slice(0, 5) : CATEGORIES_DATA).map((cat) => (
-            <Link
-              key={cat.id || cat.slug || cat.title}
-              href={cat.link || `/shop?category=${cat.slug}`}
-              className="flex flex-col items-center gap-1.5 shrink-0 group"
-            >
-              <div className="w-16 h-16 rounded-full p-0.5 border-2 border-[#D4AF37] group-hover:border-[#132E27] transition-all overflow-hidden bg-white shadow-xs">
-                <div className="relative w-full h-full rounded-full overflow-hidden">
-                  <Image
-                    src={cat.image || '/images/categories/sarees.jpg'}
-                    alt={cat.title || cat.name}
-                    fill
-                    className="object-cover group-hover:scale-110 transition-transform duration-500"
-                  />
+          {/* Inner Hairline 24K Gold Border with Corner Accents */}
+          <div className="absolute inset-2.5 sm:inset-3 border border-[#D4AF37]/40 rounded-2xl pointer-events-none z-10" />
+          <div className="absolute top-3.5 left-3.5 w-3.5 h-3.5 border-t-2 border-l-2 border-[#D4AF37] pointer-events-none z-10" />
+          <div className="absolute top-3.5 right-3.5 w-3.5 h-3.5 border-t-2 border-r-2 border-[#D4AF37] pointer-events-none z-10" />
+          <div className="absolute bottom-3.5 left-3.5 w-3.5 h-3.5 border-b-2 border-l-2 border-[#D4AF37] pointer-events-none z-10" />
+          <div className="absolute bottom-3.5 right-3.5 w-3.5 h-3.5 border-b-2 border-r-2 border-[#D4AF37] pointer-events-none z-10" />
+
+          {/* Master Content Layer */}
+          <div className="relative z-20 h-full flex flex-col justify-between py-4 px-6 lg:py-5 lg:px-10">
+            {/* Top Royal Header */}
+            <div className="flex flex-col items-center text-center">
+              {/* Crown Lotus Crest with Gold Rays */}
+              <div className="flex items-center justify-center gap-2 mb-0.5">
+                <span className="h-[1px] w-10 lg:w-16 bg-gradient-to-r from-transparent to-[#D4AF37]" />
+                <div className="p-0.5 rounded-full bg-[#FCFAF5]/80 border border-[#D4AF37]/60 shadow-xs">
+                  <LotusIcon className="w-5 h-5 lg:w-6 lg:h-6 text-[#B88E28] drop-shadow-[0_2px_8px_rgba(212,175,55,0.45)]" />
                 </div>
+                <span className="h-[1px] w-10 lg:w-16 bg-gradient-to-l from-transparent to-[#D4AF37]" />
               </div>
-              <span className="text-[11px] font-medium text-zinc-800 text-center tracking-tight truncate max-w-[70px]">
-                {cat.title || cat.name}
-              </span>
-            </Link>
-          ))}
-        </div>
 
-        {/* Desktop View: 5 Rectangular Cards (hidden sm:grid) */}
-        <div className="hidden sm:grid sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
-          {(categories && categories.length > 0 ? categories.slice(0, 5) : CATEGORIES_DATA).map((cat) => (
-            <Link
-              key={cat.id || cat.slug || cat.title}
-              href={cat.link || `/shop?category=${cat.slug}`}
-              className="group bg-white rounded-2xl border border-[#E8E2D5] hover:border-[#D4AF37] overflow-hidden shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col transform hover:-translate-y-1"
-            >
-              <div className="relative aspect-[4/5] w-full overflow-hidden bg-zinc-100">
-                <Image
-                  src={cat.image || '/images/categories/sarees.jpg'}
-                  alt={cat.title || cat.name}
-                  fill
-                  className="object-cover object-center group-hover:scale-108 transition-transform duration-700"
+              {/* Title & View All CTA Row */}
+              <div className="relative w-full flex items-center justify-center">
+                <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-extrabold text-[#1A0E08] tracking-tight drop-shadow-xs">
+                  Shop by{' '}
+                  <span className="font-script text-4xl sm:text-5xl lg:text-6xl font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#6B0D1A] via-[#8B1425] to-[#42060E] italic ml-1.5 drop-shadow-sm">
+                    Category
+                  </span>
+                </h2>
+
+                {/* Top Right "View All →" Grand Button */}
+                <Link
+                  href="/shop"
+                  title="Explore All Categories"
+                  className="absolute right-0 top-1/2 -translate-y-1/2 px-5 py-1.5 rounded-full border-2 border-[#D4AF37] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5ED] to-[#F5ECE0] hover:bg-[#D4AF37] text-[11px] lg:text-xs font-serif font-bold tracking-wider text-[#3D060D] hover:text-white transition-all duration-300 shadow-[0_4px_14px_rgba(184,142,40,0.2)] flex items-center gap-1.5 group/btn cursor-pointer backdrop-blur-xs hover:scale-105 active:scale-95"
+                >
+                  <span>View All</span>
+                  <div className="w-4 h-4 rounded-full bg-[#5C0612] text-[#FFE59E] group-hover/btn:bg-white group-hover/btn:text-[#5C0612] flex items-center justify-center transition-colors">
+                    <ArrowRight className="w-2.5 h-2.5 transition-transform duration-300 group-hover/btn:translate-x-0.5" />
+                  </div>
+                </Link>
+              </div>
+
+              {/* Lotus Filigree & Subtitle */}
+              <div className="flex items-center justify-center gap-1.5 mt-0.5 text-[#B88E28]">
+                <span className="h-[1px] w-8 bg-gradient-to-r from-transparent to-[#D4AF37]" />
+                <LotusIcon className="w-2.5 h-2.5 text-[#C5A059]" />
+                <span className="h-[1px] w-8 bg-gradient-to-l from-transparent to-[#D4AF37]" />
+              </div>
+              <p className="text-[11px] lg:text-xs font-serif italic text-[#6B5324] tracking-wide mt-0.5">
+                Explore our handpicked collections for every occasion
+              </p>
+            </div>
+
+            {/* Center Carousel Track with 5 Visible Grand Cards */}
+            <div className="relative w-full my-auto px-8 lg:px-12">
+              {/* Left Carousel Arrow */}
+              <button
+                onClick={handlePrevCategory}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-30 w-10 h-10 lg:w-11 lg:h-11 rounded-full border-2 border-[#D4AF37] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5ED] to-[#F5ECE0] shadow-[0_6px_20px_rgba(184,142,40,0.3)] hover:bg-[#5C0612] text-[#5C0612] hover:text-[#FFE59E] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-xs"
+                aria-label="Previous Category"
+                title="Previous Category"
+              >
+                <ChevronLeft className="w-5 h-5 text-current" />
+              </button>
+
+              {/* Right Carousel Arrow */}
+              <button
+                onClick={handleNextCategory}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-30 w-10 h-10 lg:w-11 lg:h-11 rounded-full border-2 border-[#D4AF37] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5ED] to-[#F5ECE0] shadow-[0_6px_20px_rgba(184,142,40,0.3)] hover:bg-[#5C0612] text-[#5C0612] hover:text-[#FFE59E] flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 cursor-pointer backdrop-blur-xs"
+                aria-label="Next Category"
+                title="Next Category"
+              >
+                <ChevronRight className="w-5 h-5 text-current" />
+              </button>
+
+              {/* 5-Card Grid Track */}
+              <div className="grid grid-cols-5 gap-3 lg:gap-5 items-end justify-center">
+                {[0, 1, 2, 3, 4].map((offset) => {
+                  const total = categories && categories.length > 0 ? categories.length : CATEGORIES_DATA.length;
+                  const catIdx = (activeCategoryIndex + offset) % total;
+                  const cat = (categories && categories[catIdx]) || CATEGORIES_DATA[catIdx % CATEGORIES_DATA.length];
+                  if (!cat) return null;
+
+                  return (
+                    <Link
+                      key={cat.id || cat.slug || offset}
+                      href={cat.link || `/shop?category=${cat.slug}`}
+                      title={`Explore ${cat.title || cat.name}`}
+                      className="group flex flex-col items-center transition-all duration-500 transform hover:-translate-y-1.5 cursor-pointer"
+                    >
+                      {/* Sculpted 24K Gold Circular Photo Frame */}
+                      <div className="relative w-28 h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full border-[3px] border-[#D4AF37] ring-3 ring-[#FAF7F0] ring-offset-2 ring-offset-[#D4AF37]/30 shadow-[0_10px_28px_rgba(184,142,40,0.3)] group-hover:shadow-[0_16px_36px_rgba(212,175,55,0.45)] overflow-hidden bg-white transition-all duration-500 group-hover:scale-105">
+                        <Image
+                          src={cat.image || '/images/categories/sarees.jpg'}
+                          alt={cat.title || cat.name}
+                          fill
+                          unoptimized
+                          className="object-cover object-center group-hover:scale-110 transition-transform duration-700 select-none"
+                        />
+                      </div>
+
+                      {/* Scalloped Fluted Rosette Medallion Badge with Laurel Leaves */}
+                      <div className="relative z-20 -mt-4 lg:-mt-5 group-hover:scale-110 transition-transform duration-300">
+                        <RoyalRosetteBadge slug={cat.slug} className="w-9 h-9 lg:w-10 lg:h-10" />
+                      </div>
+
+                      {/* Notched Baroque Ivory Cartouche Plaque */}
+                      <div className="relative w-full max-w-[140px] lg:max-w-[165px] mt-1.5 group-hover:scale-105 transition-all duration-300">
+                        <svg viewBox="0 0 200 64" className="absolute inset-0 w-full h-full filter drop-shadow-[0_6px_14px_rgba(184,142,40,0.2)]" preserveAspectRatio="none">
+                          <defs>
+                            <linearGradient id={`ivoryCardGrad-${offset}`} x1="0%" y1="0%" x2="0%" y2="100%">
+                              <stop offset="0%" stopColor="#FFFDF9" />
+                              <stop offset="45%" stopColor="#FAF5ED" />
+                              <stop offset="100%" stopColor="#F5ECE0" />
+                            </linearGradient>
+                          </defs>
+                          <path
+                            d="M 14 2 L 186 2 C 189 2 192 3.5 194 6 C 196.5 8.5 198 11.5 198 15 L 198 49 C 198 52.5 196.5 55.5 194 58 C 192 60.5 189 62 186 62 L 14 62 C 11 62 8 60.5 6 58 C 3.5 55.5 2 52.5 2 49 L 2 15 C 2 11.5 3.5 8.5 6 6 C 8 3.5 11 2 14 2 Z"
+                            fill={`url(#ivoryCardGrad-${offset})`}
+                            stroke="#D4AF37"
+                            strokeWidth="1.5"
+                          />
+                          <path
+                            d="M 16 5 L 184 5 C 186 5 188.5 6.2 190.5 8.2 C 192.5 10.2 194 12.5 194 15 L 194 49 C 194 51.5 192.5 53.8 190.5 55.8 C 188.5 57.8 186 59 184 59 L 16 59 C 14 59 11.5 57.8 9.5 55.8 C 7.5 53.8 6 51.5 6 49 L 6 15 C 6 12.5 7.5 10.2 9.5 8.2 C 11.5 6.2 14 5 16 5 Z"
+                            fill="none"
+                            stroke="#D4AF37"
+                            strokeWidth="0.65"
+                            strokeOpacity="0.75"
+                          />
+                        </svg>
+                        <div className="relative z-10 py-1.5 px-2.5 lg:py-2 text-center">
+                          <span className="block font-serif font-bold text-[11px] lg:text-[13px] text-[#42060E] tracking-wider truncate group-hover:text-[#6B0D1A] transition-colors">
+                            {cat.title || cat.name}
+                          </span>
+                          <div className="flex items-center justify-center gap-1 mt-0.5 text-[#B88E28]">
+                            <span className="h-[1px] w-3.5 lg:w-4 bg-gradient-to-r from-transparent to-[#D4AF37]" />
+                            <LotusIcon className="w-2 h-2 text-[#C5A059]" />
+                            <span className="h-[1px] w-3.5 lg:w-4 bg-gradient-to-l from-transparent to-[#D4AF37]" />
+                          </div>
+                        </div>
+                      </div>
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* Bottom Jewel Pagination Dots */}
+            <div className="flex items-center justify-center gap-1.5 mt-2 lg:mt-3 pb-0.5">
+              {categories.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveCategoryIndex(idx)}
+                  title={`Go to category ${idx + 1}`}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                    activeCategoryIndex === idx
+                      ? 'w-7 h-2 bg-gradient-to-r from-[#5C0612] via-[#8B1425] to-[#5C0612] border border-[#D4AF37] shadow-[0_2px_6px_rgba(92,6,18,0.4)]'
+                      : 'w-2 h-2 bg-[#D4AF37]/40 hover:bg-[#D4AF37]'
+                  }`}
+                  aria-label={`Category slide ${idx + 1}`}
                 />
-              </div>
-              <div className="p-3.5 flex items-center justify-between bg-white border-t border-[#E8E2D5]">
-                <span className="font-serif font-bold text-xs sm:text-sm text-zinc-900 group-hover:text-[#132E27] transition-colors tracking-wide">
-                  {cat.title || cat.name}
-                </span>
-                <span className="w-6 h-6 rounded-full bg-[#FAF7F2] border border-[#E8E2D5] flex items-center justify-center text-zinc-700 group-hover:bg-[#132E27] group-hover:text-[#D4AF37] transition-all text-xs">
-                  →
-                </span>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* ========================================================================= */}
+        {/* MOBILE VIEW: Portrait Grand Silk Canvas with Auto-Slide (md:hidden)       */}
+        {/* ========================================================================= */}
+        <div
+          className="md:hidden relative w-full aspect-[1364/2048] rounded-3xl overflow-hidden shadow-[0_25px_60px_rgba(184,142,40,0.35)] border-2 border-[#D4AF37]/65 bg-[#FAF6EE] select-none"
+          onTouchStart={(e) => {
+            setIsCategoryPaused(true);
+            touchStartXRef.current = e.touches[0].clientX;
+          }}
+          onTouchEnd={(e) => {
+            setIsCategoryPaused(false);
+            if (touchStartXRef.current !== null) {
+              const diff = touchStartXRef.current - e.changedTouches[0].clientX;
+              if (diff > 40) handleNextCategory();
+              else if (diff < -40) handlePrevCategory();
+              touchStartXRef.current = null;
+            }
+          }}
+        >
+          {/* Authentic High-Resolution Vertical Champagne Satin Silk Background */}
+          <div className="absolute inset-0 z-0 pointer-events-none select-none">
+            <Image
+              src="/images/nalmara/category_grand_silk_mobile_bg.jpg"
+              alt="Champagne Silk Mobile Background"
+              fill
+              priority
+              unoptimized
+              className="object-cover object-center"
+            />
+            {/* Luminous overlay for high-contrast typography and centered card focus */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#FFFDF9]/10 to-[#FAF5ED]/30 pointer-events-none" />
+          </div>
 
+          {/* Inner Hairline 24K Gold Border */}
+          <div className="absolute inset-3 border border-[#D4AF37]/45 rounded-2xl pointer-events-none z-10" />
+
+          {/* Mobile Master Content Layer */}
+          <div className="relative z-20 h-full flex flex-col justify-between py-6 px-4">
+            {/* Top Royal Header */}
+            <div className="flex flex-col items-center text-center pt-2">
+              {/* Crown Lotus Crest with Gold Rays */}
+              <div className="flex items-center justify-center gap-2.5 mb-1">
+                <span className="h-[1px] w-14 bg-gradient-to-r from-transparent to-[#D4AF37]" />
+                <div className="p-1 rounded-full bg-[#FCFAF5]/85 border border-[#D4AF37]/60 shadow-xs">
+                  <LotusIcon className="w-7 h-7 text-[#B88E28] drop-shadow-[0_2px_8px_rgba(212,175,55,0.45)]" />
+                </div>
+                <span className="h-[1px] w-14 bg-gradient-to-l from-transparent to-[#D4AF37]" />
+              </div>
+
+              <h2 className="font-serif text-3xl font-extrabold text-[#1A0E08] tracking-tight leading-tight drop-shadow-xs">
+                Shop by
+              </h2>
+              <div className="font-script text-5xl text-transparent bg-clip-text bg-gradient-to-r from-[#6B0D1A] via-[#8B1425] to-[#42060E] italic font-normal -mt-1 mb-1 drop-shadow-sm">
+                Category
+              </div>
+
+              {/* Lotus divider */}
+              <div className="flex items-center justify-center gap-2 text-[#B88E28] my-1">
+                <span className="h-[1px] w-10 bg-gradient-to-r from-transparent to-[#D4AF37]" />
+                <LotusIcon className="w-3.5 h-3.5 text-[#C5A059]" />
+                <span className="h-[1px] w-10 bg-gradient-to-l from-transparent to-[#D4AF37]" />
+              </div>
+
+              <p className="text-xs font-serif italic text-[#6B5324] max-w-[260px] mx-auto leading-relaxed mt-0.5">
+                Explore our handpicked collections<br />for every occasion
+              </p>
+            </div>
+
+            {/* 3-Card Stage with Prominent Center Active Category */}
+            <div className="relative flex items-center justify-center py-2 my-auto">
+              {/* Left Preview Card */}
+              {(() => {
+                const total = categories && categories.length > 0 ? categories.length : CATEGORIES_DATA.length;
+                const prevIdx = (activeCategoryIndex - 1 + total) % total;
+                const prevCat = (categories && categories[prevIdx]) || CATEGORIES_DATA[prevIdx % CATEGORIES_DATA.length];
+                return (
+                  <button
+                    type="button"
+                    onClick={handlePrevCategory}
+                    className="absolute left-[-24px] sm:left-[-12px] top-1/2 -translate-y-1/2 z-10 flex flex-col items-center opacity-40 scale-75 transform hover:opacity-70 transition-all duration-500 cursor-pointer pointer-events-auto"
+                    aria-label="Previous Category"
+                  >
+                    <div className="relative w-32 h-32 rounded-full border-[3px] border-[#D4AF37] ring-2 ring-[#FAF6F0] shadow-md overflow-hidden bg-white">
+                      <Image
+                        src={prevCat?.image || '/images/categories/sarees.jpg'}
+                        alt={prevCat?.title || ''}
+                        fill
+                        unoptimized
+                        className="object-cover object-center select-none"
+                      />
+                    </div>
+                    <div className="w-24 bg-[#FCFAF5]/90 border border-[#D4AF37]/75 rounded-xl px-2 py-1 mt-1 text-center shadow-xs">
+                      <span className="block font-serif text-[10px] text-[#42060E] truncate font-bold">
+                        {prevCat?.title || ''}
+                      </span>
+                    </div>
+                  </button>
+                );
+              })()}
+
+              {/* Left Circular Arrow (<) */}
+              <button
+                onClick={handlePrevCategory}
+                className="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border-2 border-[#D4AF37] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5ED] to-[#F5ECE0] shadow-[0_6px_20px_rgba(184,142,40,0.35)] hover:bg-[#5C0612] text-[#5C0612] hover:text-[#FFE59E] flex items-center justify-center transition-all duration-200 active:scale-90 cursor-pointer"
+                aria-label="Previous Category"
+                title="Previous Category"
+              >
+                <ChevronLeft className="w-6 h-6 text-current" />
+              </button>
+
+              {/* Center Active Category Card (Prominent Royal Gem) */}
+              {(() => {
+                const total = categories && categories.length > 0 ? categories.length : CATEGORIES_DATA.length;
+                const currentCat = (categories && categories[activeCategoryIndex]) || CATEGORIES_DATA[activeCategoryIndex % CATEGORIES_DATA.length];
+                if (!currentCat) return null;
+
+                return (
+                  <Link
+                    href={currentCat.link || `/shop?category=${currentCat.slug}`}
+                    title={`Explore ${currentCat.title || currentCat.name}`}
+                    className="relative z-20 flex flex-col items-center transform transition-all duration-500 cursor-pointer group"
+                  >
+                    {/* Large Center Circle with 24K Gold Rim */}
+                    <div className="relative w-44 h-44 sm:w-48 sm:h-48 rounded-full border-[4px] border-[#D4AF37] ring-4 ring-[#FAF6F0] ring-offset-2 ring-offset-[#D4AF37]/35 shadow-[0_16px_40px_rgba(184,142,40,0.45)] overflow-hidden bg-white group-active:scale-95 transition-transform duration-300">
+                      <Image
+                        src={currentCat.image || '/images/categories/sarees.jpg'}
+                        alt={currentCat.title || currentCat.name}
+                        fill
+                        unoptimized
+                        priority
+                        className="object-cover object-center select-none"
+                      />
+                    </div>
+
+                    {/* Scalloped Fluted Rosette Medallion Badge with Laurel Leaves */}
+                    <div className="relative z-30 -mt-6 group-active:scale-110 transition-transform duration-200">
+                      <RoyalRosetteBadge slug={currentCat.slug} className="w-12 h-12" />
+                    </div>
+
+                    {/* Notched Baroque Ivory Cartouche Plaque */}
+                    <div className="relative w-full min-w-[210px] max-w-[240px] mt-2 group-active:scale-98 transition-all">
+                      <svg viewBox="0 0 200 64" className="absolute inset-0 w-full h-full filter drop-shadow-[0_8px_20px_rgba(184,142,40,0.28)]" preserveAspectRatio="none">
+                        <defs>
+                          <linearGradient id="ivoryCardGradMobile" x1="0%" y1="0%" x2="0%" y2="100%">
+                            <stop offset="0%" stopColor="#FFFDF9" />
+                            <stop offset="45%" stopColor="#FAF5ED" />
+                            <stop offset="100%" stopColor="#F5ECE0" />
+                          </linearGradient>
+                        </defs>
+                        <path
+                          d="M 14 2 L 186 2 C 189 2 192 3.5 194 6 C 196.5 8.5 198 11.5 198 15 L 198 49 C 198 52.5 196.5 55.5 194 58 C 192 60.5 189 62 186 62 L 14 62 C 11 62 8 60.5 6 58 C 3.5 55.5 2 52.5 2 49 L 2 15 C 2 11.5 3.5 8.5 6 6 C 8 3.5 11 2 14 2 Z"
+                          fill="url(#ivoryCardGradMobile)"
+                          stroke="#D4AF37"
+                          strokeWidth="1.6"
+                        />
+                        <path
+                          d="M 16 5 L 184 5 C 186 5 188.5 6.2 190.5 8.2 C 192.5 10.2 194 12.5 194 15 L 194 49 C 194 51.5 192.5 53.8 190.5 55.8 C 188.5 57.8 186 59 184 59 L 16 59 C 14 59 11.5 57.8 9.5 55.8 C 7.5 53.8 6 51.5 6 49 L 6 15 C 6 12.5 7.5 10.2 9.5 8.2 C 11.5 6.2 14 5 16 5 Z"
+                          fill="none"
+                          stroke="#D4AF37"
+                          strokeWidth="0.7"
+                          strokeOpacity="0.75"
+                        />
+                      </svg>
+                      <div className="relative z-10 py-3 px-6 text-center">
+                        <span className="block font-serif font-bold text-base sm:text-lg text-[#42060E] tracking-wider truncate">
+                          {currentCat.title || currentCat.name}
+                        </span>
+                        <div className="flex items-center justify-center gap-2 mt-1 text-[#B88E28]">
+                          <span className="h-[1px] w-6 bg-gradient-to-r from-transparent to-[#D4AF37]" />
+                          <LotusIcon className="w-3.5 h-3.5 text-[#C5A059]" />
+                          <span className="h-[1px] w-6 bg-gradient-to-l from-transparent to-[#D4AF37]" />
+                        </div>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })()}
+
+              {/* Right Circular Arrow (>) */}
+              <button
+                onClick={handleNextCategory}
+                className="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full border-2 border-[#D4AF37] bg-gradient-to-b from-[#FFFDF9] via-[#FAF5ED] to-[#F5ECE0] shadow-[0_6px_20px_rgba(184,142,40,0.35)] hover:bg-[#5C0612] text-[#5C0612] hover:text-[#FFE59E] flex items-center justify-center transition-all duration-200 active:scale-90 cursor-pointer"
+                aria-label="Next Category"
+                title="Next Category"
+              >
+                <ChevronRight className="w-6 h-6 text-current" />
+              </button>
+
+              {/* Right Preview Card */}
+              {(() => {
+                const total = categories && categories.length > 0 ? categories.length : CATEGORIES_DATA.length;
+                const nextIdx = (activeCategoryIndex + 1) % total;
+                const nextCat = (categories && categories[nextIdx]) || CATEGORIES_DATA[nextIdx % CATEGORIES_DATA.length];
+                return (
+                  <button
+                    type="button"
+                    onClick={handleNextCategory}
+                    className="absolute right-[-24px] sm:right-[-12px] top-1/2 -translate-y-1/2 z-10 flex flex-col items-center opacity-40 scale-75 transform hover:opacity-70 transition-all duration-500 cursor-pointer pointer-events-auto"
+                    aria-label="Next Category"
+                  >
+                    <div className="relative w-32 h-32 rounded-full border-[3px] border-[#D4AF37] ring-2 ring-[#FAF6F0] shadow-md overflow-hidden bg-white">
+                      <Image
+                        src={nextCat?.image || '/images/categories/sarees.jpg'}
+                        alt={nextCat?.title || ''}
+                        fill
+                        unoptimized
+                        className="object-cover object-center select-none"
+                      />
+                    </div>
+                    <div className="w-24 bg-[#FCFAF5]/90 border border-[#D4AF37]/75 rounded-xl px-2 py-1 mt-1 text-center shadow-xs">
+                      <span className="block font-serif text-[10px] text-[#42060E] truncate font-bold">
+                        {nextCat?.title || ''}
+                      </span>
+                    </div>
+                  </button>
+                );
+              })()}
+            </div>
+
+            {/* Bottom Jewel Pagination Dots */}
+            <div className="flex items-center justify-center gap-1.5 pb-2">
+              {categories.map((_, idx) => (
+                <button
+                  key={idx}
+                  onClick={() => setActiveCategoryIndex(idx)}
+                  title={`Go to ${categories[idx]?.title || 'Category'} ${idx + 1}`}
+                  className={`transition-all duration-300 rounded-full cursor-pointer ${
+                    activeCategoryIndex === idx
+                      ? 'w-7 h-2.5 bg-gradient-to-r from-[#5C0612] via-[#8B1425] to-[#5C0612] border border-[#D4AF37] shadow-[0_2px_8px_rgba(92,6,18,0.4)]'
+                      : 'w-2 h-2 bg-[#D4AF37]/45 hover:bg-[#D4AF37]'
+                  }`}
+                  aria-label={`Category slide ${idx + 1}`}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ============================================================== */}
       {/* 05. FESTIVE COLLECTION (Ultra-HD Premium Luxury Edition)       */}
       {/* ============================================================== */}
