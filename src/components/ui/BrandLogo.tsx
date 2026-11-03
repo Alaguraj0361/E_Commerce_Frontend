@@ -129,7 +129,11 @@ export const BrandLogo = ({
         </div>
       </div>
       {showTagline && (
-        <span className="hidden md:inline-block text-[10px] sm:text-xs text-zinc-500 font-serif italic mt-1.5 tracking-wide text-center max-w-full">
+        <span
+          className={`hidden md:inline-block text-[10px] sm:text-xs font-serif italic mt-1.5 tracking-wide text-center max-w-full ${
+            isDark ? 'text-[#E8D7B4]/90' : 'text-zinc-500'
+          }`}
+        >
           Traditional Elegance • Timeless Collections • Made with Love
         </span>
       )}

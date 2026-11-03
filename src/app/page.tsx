@@ -524,6 +524,8 @@ const CUSTOMER_REVIEWS_DATA = [
   {
     id: 1,
     name: 'Priya S.',
+    location: 'Chennai',
+    tag: 'Signature Silk Saree',
     quote: 'Product quality was superb. Loved entire packaging!',
     rating: 5,
     avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80',
@@ -532,7 +534,9 @@ const CUSTOMER_REVIEWS_DATA = [
   {
     id: 2,
     name: 'Meena K.',
-    quote: 'Beautiful collection! Exactly happy!',
+    location: 'Coimbatore',
+    tag: 'Semi Kanchivaram',
+    quote: 'Beautiful collection! Extremely happy!',
     rating: 5,
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=120&q=80',
     verified: true,
@@ -540,6 +544,8 @@ const CUSTOMER_REVIEWS_DATA = [
   {
     id: 3,
     name: 'Divya R.',
+    location: 'Bengaluru',
+    tag: 'Festive Collection',
     quote: 'Great customer support! Fast delivery.',
     rating: 5,
     avatar: 'https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=120&q=80',
@@ -553,27 +559,39 @@ const CUSTOMER_REVIEWS_DATA = [
 const FAQ_ITEMS = [
   {
     id: 1,
+    category: 'Fabric & Length',
+    summary: '6.3m Total • With Unstitched Blouse',
     question: 'What is the fabric and saree length?',
     answer:
-      'All our sarees are 6.3 meters in total length including an unstitched 0.8 meter blouse piece. We use authentic semi-kanchivaram silk, pure cotton, art silk, and tissue weaves.',
+      'All our sarees measure a full 6.3 meters in total length, including an unstitched 0.8 meter matching blouse piece. Each drape is crafted from authentic semi-kanchivaram silk, pure cotton, art silk, or zari tissue weaves.',
+    highlight: '100% Authentic Loom Quality',
   },
   {
     id: 2,
+    category: 'Order Tracking',
+    summary: 'Instant SMS & WhatsApp Updates',
     question: 'How can I track my order?',
     answer:
-      'Once your order is dispatched, you will receive an SMS and WhatsApp message with your tracking ID and courier link. You can also track from your account dashboard.',
+      'As soon as your order is carefully packed and dispatched, you receive an instant SMS and WhatsApp notification with your live tracking link. You can also monitor real-time status from your My Orders page.',
+    highlight: '24–48 Hr Express Dispatch',
   },
   {
     id: 3,
+    category: 'Shipping Charges',
+    summary: 'Complimentary Above ₹1,999',
     question: 'What are the shipping charges?',
     answer:
-      'We offer Free Shipping across India on all orders above ₹1,999. For orders below ₹1,999, a nominal flat delivery fee of ₹79 is applied at checkout.',
+      'Enjoy complimentary insured shipping across India on all orders above ₹1,999. For orders below ₹1,999, a nominal flat delivery charge of ₹79 is applied transparently at checkout.',
+    highlight: 'Pan-India Insured Delivery',
   },
   {
     id: 4,
+    category: 'Saree Care',
+    summary: 'Dry Clean & Heritage Preservation',
     question: 'How should I wash my saree?',
     answer:
-      'For silk, semi-kanchivaram, and tissue sarees, we strictly recommend dry cleaning. Pure cotton sarees can be gently hand-washed in cold water with mild detergent.',
+      'To preserve the rich zari lustre of silk, semi-kanchivaram, and tissue sarees, we recommend professional dry cleaning. Pure cotton sarees may be gently hand-washed separately in cold water.',
+    highlight: 'Long-Lasting Zari Brilliance',
   },
 ];
 
@@ -1393,8 +1411,8 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
-
+      </section>
+
       {/* ============================================================== */}
       {/* 05. FESTIVE COLLECTION (Ultra-HD Premium Luxury Edition)       */}
       {/* ============================================================== */}
@@ -1554,8 +1572,8 @@ export default function HomePage() {
               </span>
             </div>
           </div>
-        </div>
-
+        </div>
+
         {/* Mobile View: 100% Coded Luxury Master Festive Banner */}
         <div className="md:hidden relative w-full rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D4AF37]/60 bg-[#170206] select-none p-5 text-white flex flex-col justify-between min-h-[640px]">
           {/* Background image & gradient */}
@@ -1682,8 +1700,8 @@ export default function HomePage() {
             </div>
           </div>
         </div>
-      </section>
-
+      </section>
+
       {/* ============================================================== */}
       {/* 06. NEW ARRIVALS                                               */}
       {/* ============================================================== */}
@@ -2337,8 +2355,8 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
-
+      </section>
+
       {/* ============================================================== */}
       {/* 11. NEWSLETTER & QUICK WHATSAPP SUPPORT BANNER                 */}
       {/* ============================================================== */}
@@ -2419,91 +2437,255 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================== */}
-      {/* 12. BRAND STORY & WHAT OUR CUSTOMERS SAY (Side by Side)        */}
+      {/* 12. BRAND STORY & WHAT OUR CUSTOMERS SAY (Haute Couture Edition) */}
       {/* ============================================================== */}
-      <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10 sm:py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
-          {/* Left Column (~55% width, 7 cols): Our Brand Story */}
-          <div className="lg:col-span-7 bg-white rounded-3xl border border-[#E8E2D5] overflow-hidden shadow-xs p-6 sm:p-8 flex flex-col justify-between">
-            <div className="grid grid-cols-1 sm:grid-cols-12 gap-6 items-center">
-              {/* Unboxing Photo (5 cols) */}
-              <div className="sm:col-span-5 relative aspect-[4/3] rounded-2xl overflow-hidden bg-zinc-100 border border-[#E8E2D5]">
-                <Image
-                  src="/images/nalmara/brand_story_box.jpg"
-                  alt="Our Brand Story - NALMARA FASHION Gift Box"
-                  fill
-                  className="object-cover"
-                />
+      <section className="relative w-full max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pt-12 sm:pt-16 pb-8 sm:pb-12">
+        {/* Ambient Royal Botanical Filigree Watermarks */}
+        <div className="absolute left-0 top-8 pointer-events-none opacity-20 select-none hidden xl:block">
+          <BotanicalBranch className="w-36 h-36 text-[#C5A059]" />
+        </div>
+        <div className="absolute right-0 bottom-8 pointer-events-none opacity-20 select-none hidden xl:block rotate-180">
+          <BotanicalBranch className="w-36 h-36 text-[#C5A059]" />
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-stretch relative z-10">
+          {/* ============================================================ */}
+          {/* LEFT COLUMN (7 cols): OUR BRAND STORY — Royal Heritage Card  */}
+          {/* ============================================================ */}
+          <div className="lg:col-span-7 relative rounded-3xl border-2 border-[#D4AF37]/70 bg-gradient-to-br from-[#FFFDF9] via-[#FAF3E6] to-[#F2E4CC] overflow-hidden shadow-[0_20px_55px_rgba(43,5,12,0.12)] p-6 sm:p-8 lg:p-10 flex flex-col justify-between group transition-all duration-500 hover:shadow-[0_25px_65px_rgba(61,8,17,0.18)]">
+            {/* Pearlescent Silk Backdrop Texture */}
+            <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+              <Image
+                src="/images/nalmara/category_pearl_silk_desktop_bg.jpg"
+                alt="Silk Texture"
+                fill
+                unoptimized
+                className="object-cover"
+              />
+            </div>
+
+            {/* Warm Radial Gold Aura */}
+            <div className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-[#D4AF37]/15 blur-3xl pointer-events-none z-0" />
+            <div className="absolute -bottom-24 -right-24 w-72 h-72 rounded-full bg-[#5C0612]/10 blur-3xl pointer-events-none z-0" />
+
+            {/* Double Hairline 24K Gold Inner Frame */}
+            <div className="absolute inset-2.5 sm:inset-3.5 border border-[#D4AF37]/45 rounded-2xl pointer-events-none z-10" />
+
+            {/* Sculpted 24K Gold Corner Filigree Brackets */}
+            <div className="absolute top-4 left-4 w-5 h-5 border-t-2 border-l-2 border-[#B88E28] pointer-events-none z-20" />
+            <div className="absolute top-4 right-4 w-5 h-5 border-t-2 border-r-2 border-[#B88E28] pointer-events-none z-20" />
+            <div className="absolute bottom-4 left-4 w-5 h-5 border-b-2 border-l-2 border-[#B88E28] pointer-events-none z-20" />
+            <div className="absolute bottom-4 right-4 w-5 h-5 border-b-2 border-r-2 border-[#B88E28] pointer-events-none z-20" />
+
+            <div className="relative z-20 grid grid-cols-1 sm:grid-cols-12 gap-6 sm:gap-8 items-center my-auto">
+              {/* Left Unboxing Photo Frame (5 cols) */}
+              <div className="sm:col-span-5 relative">
+                {/* Decorative Gold Offset Backplate */}
+                <div className="absolute -inset-1.5 rounded-2xl bg-gradient-to-br from-[#D4AF37]/45 via-[#FFE59E]/20 to-[#5C0612]/30 blur-[2px] pointer-events-none" />
+
+                <div className="relative aspect-[4/3.4] sm:aspect-[4/4.3] rounded-2xl overflow-hidden bg-[#24040A] border-2 border-[#D4AF37] shadow-[0_16px_38px_rgba(36,4,10,0.28)]">
+                  <Image
+                    src="/images/nalmara/brand_story_box.jpg"
+                    alt="Our Brand Story - NALMARA FASHION Signature Gift Box"
+                    fill
+                    unoptimized
+                    className="object-cover group-hover:scale-108 transition-transform duration-700"
+                  />
+                  {/* Inner gold bevel frame */}
+                  <div className="absolute inset-2 border border-[#FFE59E]/45 rounded-xl pointer-events-none z-10" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#160205]/80 via-[#160205]/15 to-transparent pointer-events-none" />
+
+                  {/* Top-Left Floating Royal Monogram Seal */}
+                  <div className="absolute top-3 left-3 z-20 w-10 h-10 rounded-full bg-gradient-to-b from-[#3D0811] to-[#1A0206] border border-[#D4AF37] shadow-lg flex flex-col items-center justify-center">
+                    <Crown className="w-2.5 h-2.5 text-[#FFE59E] -mb-0.5" />
+                    <span className="font-serif font-bold text-[10px] text-[#FFE59E] tracking-tighter leading-none">
+                      NM
+                    </span>
+                  </div>
+
+                  {/* Bottom Royal Glassmorphic Caption Bar */}
+                  <div className="absolute bottom-3 inset-x-3 z-20 px-3 py-2 rounded-xl bg-[#1F0308]/90 border border-[#D4AF37]/60 backdrop-blur-md flex items-center justify-between shadow-md">
+                    <div className="flex items-center gap-1.5">
+                      <LotusIcon className="w-3.5 h-3.5 text-[#E5C158]" />
+                      <span className="text-[9.5px] font-serif uppercase tracking-[0.18em] text-[#FFE59E] font-semibold">
+                        Royal Gift Packaging
+                      </span>
+                    </div>
+                    <Sparkles className="w-3 h-3 text-[#E5C158]" />
+                  </div>
+                </div>
               </div>
 
-              {/* Story Details (7 cols) */}
-              <div className="sm:col-span-7 space-y-2.5">
-                <span className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-[#8C6D2D]">
-                  Our Brand Story
-                </span>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-zinc-900 leading-snug">
+              {/* Right Story Content (7 cols) */}
+              <div className="sm:col-span-7 space-y-3.5 text-left">
+                {/* Overline Badge */}
+                <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#3D0811] to-[#5C0612] border border-[#D4AF37]/80 shadow-xs">
+                  <LotusIcon className="w-3.5 h-3.5 text-[#FFE59E]" />
+                  <span className="text-[10px] sm:text-[11px] font-serif font-bold tracking-[0.25em] uppercase text-[#FFE59E]">
+                    Our Brand Story
+                  </span>
+                </div>
+
+                {/* Stately Two-Line Headline */}
+                <h3 className="font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#1A080B] leading-[1.15] tracking-tight">
                   A Dream. A Brand. <br />
-                  A Beautiful Beginning.
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#5C0612] via-[#8F1124] to-[#B08227] italic font-serif">
+                    A Beautiful Beginning.
+                  </span>
                 </h3>
-                <p className="text-xs sm:text-sm text-zinc-600 font-light leading-relaxed">
-                  NALMARA FASHION is born from a love for traditional fashion and a dream to make beautiful ethnic styles accessible to every woman and child.
+
+                {/* Gold Filigree Divider */}
+                <div className="flex items-center gap-2">
+                  <span className="h-[1.5px] w-14 bg-gradient-to-r from-[#D4AF37] to-transparent" />
+                  <LotusIcon className="w-3 h-3 text-[#B88E28]" />
+                  <span className="text-[10px] font-serif italic text-[#8C6D2D] tracking-wide">
+                    Crafted with Heritage &amp; Grace
+                  </span>
+                </div>
+
+                {/* Story Paragraph */}
+                <p className="text-xs sm:text-[13.5px] text-[#3F2E26] leading-relaxed font-normal">
+                  <strong className="font-serif font-bold text-[#4A0812]">NALMARA FASHION</strong> is born from a love for traditional fashion and a dream to make beautiful ethnic styles accessible to every woman and child.
                 </p>
-                <div className="pt-2">
+
+                {/* 3 Heritage Promise Pills */}
+                <div className="grid grid-cols-3 gap-2 pt-1">
+                  <div className="bg-white/85 border border-[#D4AF37]/45 rounded-xl px-2.5 py-2 text-center shadow-2xs">
+                    <span className="block font-serif font-bold text-xs sm:text-sm text-[#4A0812]">100%</span>
+                    <span className="block text-[9px] uppercase tracking-wider text-[#6B5324] font-medium">Authentic Weaves</span>
+                  </div>
+                  <div className="bg-white/85 border border-[#D4AF37]/45 rounded-xl px-2.5 py-2 text-center shadow-2xs">
+                    <span className="block font-serif font-bold text-xs sm:text-sm text-[#4A0812]">Curated</span>
+                    <span className="block text-[9px] uppercase tracking-wider text-[#6B5324] font-medium">Luxury Box</span>
+                  </div>
+                  <div className="bg-white/85 border border-[#D4AF37]/45 rounded-xl px-2.5 py-2 text-center shadow-2xs">
+                    <span className="block font-serif font-bold text-xs sm:text-sm text-[#4A0812]">Pan-India</span>
+                    <span className="block text-[9px] uppercase tracking-wider text-[#6B5324] font-medium">Insured Delivery</span>
+                  </div>
+                </div>
+
+                {/* CTA Button: DISCOVER OUR STORY → */}
+                <div className="pt-2 flex items-center gap-4">
                   <Link
                     href="/about"
-                    className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#18181B] hover:bg-[#132E27] text-white text-xs font-semibold tracking-wider uppercase transition-all shadow-xs"
+                    className="inline-flex items-center gap-3 px-7 py-3 rounded-full bg-gradient-to-r from-[#240409] via-[#4A0812] to-[#240409] hover:from-[#4A0812] hover:to-[#630B19] border border-[#D4AF37] text-[#FFE59E] hover:text-white text-xs font-serif font-bold tracking-[0.18em] uppercase transition-all duration-300 shadow-[0_8px_24px_rgba(36,4,9,0.35)] hover:shadow-[0_10px_28px_rgba(212,175,55,0.45)] hover:scale-105 active:scale-95 group/btn"
                   >
                     <span>Discover Our Story</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
+                    <ArrowRight className="w-4 h-4 text-[#E5C158] transition-transform duration-300 group-hover/btn:translate-x-1" />
                   </Link>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right Column (~45% width, 5 cols): What Our Customers Say */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
-            <div className="flex items-end justify-between gap-4 mb-4">
+          {/* ============================================================ */}
+          {/* RIGHT COLUMN (5 cols): WHAT OUR CUSTOMERS SAY — Royal Panel  */}
+          {/* ============================================================ */}
+          <div className="lg:col-span-5 relative rounded-3xl border-2 border-[#D4AF37]/70 bg-gradient-to-b from-[#FFFDF9] via-[#FAF3E6] to-[#F2E4CC] overflow-hidden shadow-[0_20px_55px_rgba(43,5,12,0.12)] p-6 sm:p-7 lg:p-8 flex flex-col justify-between">
+            {/* Pearlescent Silk Backdrop Texture */}
+            <div className="absolute inset-0 z-0 pointer-events-none opacity-30">
+              <Image
+                src="/images/nalmara/category_pearl_silk_desktop_bg.jpg"
+                alt="Silk Texture"
+                fill
+                unoptimized
+                className="object-cover"
+              />
+            </div>
+
+            {/* Inner Hairline Gold Frame */}
+            <div className="absolute inset-2.5 sm:inset-3 border border-[#D4AF37]/40 rounded-2xl pointer-events-none z-10" />
+
+            {/* Sculpted 24K Gold Corner Filigree Brackets */}
+            <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-[#B88E28] pointer-events-none z-20" />
+            <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#B88E28] pointer-events-none z-20" />
+            <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-[#B88E28] pointer-events-none z-20" />
+            <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-[#B88E28] pointer-events-none z-20" />
+
+            {/* Top Header Row */}
+            <div className="relative z-20 flex items-start justify-between gap-3 mb-4 pb-3.5 border-b border-[#D4AF37]/35">
               <div>
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-zinc-900">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#3D0811]/10 border border-[#D4AF37]/50 mb-1.5">
+                  <div className="flex items-center gap-0.5">
+                    <Star className="w-2.5 h-2.5 fill-[#D4AF37] text-[#D4AF37]" />
+                    <Star className="w-2.5 h-2.5 fill-[#D4AF37] text-[#D4AF37]" />
+                    <Star className="w-2.5 h-2.5 fill-[#D4AF37] text-[#D4AF37]" />
+                    <Star className="w-2.5 h-2.5 fill-[#D4AF37] text-[#D4AF37]" />
+                    <Star className="w-2.5 h-2.5 fill-[#D4AF37] text-[#D4AF37]" />
+                  </div>
+                  <span className="text-[9.5px] font-serif font-bold tracking-[0.18em] text-[#5C0612] uppercase">
+                    4.9 / 5 Rating
+                  </span>
+                </div>
+                <h3 className="font-serif text-xl sm:text-2xl lg:text-[26px] font-bold text-[#1A080B] leading-tight tracking-tight">
                   What Our Customers Say
                 </h3>
-                <p className="text-xs text-zinc-500 font-light mt-0.5">
+                <p className="text-xs text-[#6B5324] font-serif italic mt-0.5">
                   Real people. Real stories.
                 </p>
               </div>
+
               <Link
                 href="/reviews"
-                className="text-xs text-zinc-600 hover:text-[#132E27] font-semibold flex items-center gap-1 transition-colors"
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-[#D4AF37] bg-white/95 hover:bg-[#3D0811] text-[#3D0811] hover:text-[#FFE59E] text-[11px] font-serif font-bold tracking-wider uppercase transition-all duration-300 shadow-xs hover:shadow-md shrink-0 mt-1 group/revlink"
               >
                 <span>View All Reviews</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3 h-3 transition-transform group-hover/revlink:translate-x-0.5" />
               </Link>
             </div>
 
-            {/* 3 Review Cards */}
-            <div className="space-y-3 flex-1">
+            {/* 3 Stacked Royal Testimonial Plaques */}
+            <div className="relative z-20 space-y-3 flex-1 flex flex-col justify-center">
               {CUSTOMER_REVIEWS_DATA.map((rev) => (
                 <div
                   key={rev.id}
-                  className="bg-white rounded-2xl border border-[#E8E2D5] p-3.5 sm:p-4 shadow-2xs hover:border-[#D4AF37] transition-colors flex items-center justify-between gap-3"
+                  className="group/rev relative bg-gradient-to-r from-[#FFFDF9] via-white to-[#FAF4E8] rounded-2xl border border-[#D4AF37]/60 hover:border-[#B88E28] p-3.5 sm:px-4 sm:py-3.5 shadow-[0_4px_16px_rgba(180,140,60,0.1)] hover:shadow-[0_10px_25px_rgba(61,8,17,0.12)] transition-all duration-300 flex items-center justify-between gap-3 hover:-translate-y-0.5 overflow-hidden"
                 >
-                  <div className="space-y-1 min-w-0">
-                    <p className="text-xs text-zinc-700 italic font-light line-clamp-2">
-                      &ldquo;{rev.quote}&rdquo;
-                    </p>
-                    <div className="flex items-center gap-2">
-                      <span className="font-semibold text-xs text-zinc-900">
-                        — {rev.name}
+                  {/* Left 24K Gold Accent Bar */}
+                  <div className="absolute left-0 inset-y-0 w-1.5 bg-gradient-to-b from-[#D4AF37] via-[#5C0612] to-[#D4AF37]" />
+
+                  {/* Subtle Decorative Quote Watermark */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute right-24 -bottom-4 font-serif text-6xl text-[#D4AF37]/12 select-none pointer-events-none leading-none"
+                  >
+                    &rdquo;
+                  </span>
+
+                  {/* Left Avatar Medallion + Quote & Author */}
+                  <div className="flex items-center gap-3.5 min-w-0 pl-1.5">
+                    {/* Royal Monogram Medallion */}
+                    <div className="relative w-10 h-10 rounded-full bg-gradient-to-b from-[#5C0612] via-[#3D0811] to-[#1F0308] border-2 border-[#D4AF37] text-[#FFE59E] font-serif font-bold text-sm flex items-center justify-center shrink-0 shadow-sm group-hover/rev:scale-105 transition-transform">
+                      {rev.name.charAt(0)}
+                      <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-600 border border-white flex items-center justify-center">
+                        <Check className="w-2 h-2 text-white stroke-[3]" />
                       </span>
+                    </div>
+
+                    <div className="space-y-1 min-w-0">
+                      <p className="text-xs sm:text-[13.5px] text-[#24130D] italic font-serif leading-snug line-clamp-2">
+                        &ldquo;{rev.quote}&rdquo;
+                      </p>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="font-serif font-bold text-xs text-[#3D0811]">
+                          — {rev.name}
+                        </span>
+                        {rev.tag && (
+                          <span className="text-[9.5px] font-serif text-[#8C6D2D] bg-[#FAF3E3] border border-[#D4AF37]/40 px-2 py-0.2 rounded-full">
+                            {rev.tag}
+                          </span>
+                        )}
+                      </div>
                     </div>
                   </div>
 
-                  {/* 5 Stars */}
-                  <div className="flex text-[#D4AF37] shrink-0">
-                    {[...Array(rev.rating)].map((_, i) => (
-                      <Star key={i} className="w-3 h-3 fill-[#D4AF37]" />
-                    ))}
+                  {/* Right 5 Gold Stars Plaque */}
+                  <div className="flex flex-col items-end shrink-0 relative z-10">
+                    <div className="flex items-center gap-0.5 px-2.5 py-1 rounded-full bg-gradient-to-r from-[#FAF3E3] to-[#F3E4C2] border border-[#D4AF37]/60 shadow-2xs">
+                      {[...Array(rev.rating)].map((_, i) => (
+                        <Star key={i} className="w-3 h-3 fill-[#D4AF37] text-[#B88E28]" />
+                      ))}
+                    </div>
                   </div>
                 </div>
               ))}
@@ -2513,57 +2695,218 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================== */}
-      {/* 13. FREQUENTLY ASKED QUESTIONS (FAQ)                           */}
+      {/* ORNATE ROYAL LOTUS FILIGREE SECTION DIVIDER                    */}
       {/* ============================================================== */}
-      <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-10 sm:py-14 border-t border-[#E8E2D5]/70">
-        <div className="flex items-end justify-between gap-4 mb-6 sm:mb-8">
-          <div>
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-zinc-900 tracking-tight">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xs sm:text-sm text-zinc-500 font-light mt-1">
-              Quick answers to your queries.
-            </p>
-          </div>
-          <Link
-            href="/faqs"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-zinc-700 hover:text-[#132E27] transition-colors shrink-0"
-          >
-            <span>View All FAQs</span>
-            <ArrowRight className="w-3.5 h-3.5" />
-          </Link>
+      <div className="w-full max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-3 flex items-center justify-center gap-4">
+        <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37]/60 to-[#B88E28]" />
+        <div className="flex items-center gap-2.5 px-4 py-1.5 rounded-full border border-[#D4AF37]/60 bg-[#FFFDF9] shadow-[0_4px_14px_rgba(184,142,40,0.15)]">
+          <Sparkles className="w-3 h-3 text-[#C5A059]" />
+          <LotusIcon className="w-4 h-4 text-[#8C6D2D]" />
+          <Sparkles className="w-3 h-3 text-[#C5A059]" />
+        </div>
+        <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#D4AF37]/60 to-[#B88E28]" />
+      </div>
+
+      {/* ============================================================== */}
+      {/* 13. FREQUENTLY ASKED QUESTIONS (Imperial Couture Salon Edition) */}
+      {/* ============================================================== */}
+      <section className="relative w-full max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 pb-16 sm:pb-22 pt-6">
+        {/* Subtle Ambient Botanical Flourishes */}
+        <div className="absolute left-2 top-8 pointer-events-none opacity-18 select-none hidden xl:block">
+          <BotanicalBranch className="w-36 h-36 text-[#C5A059]" />
+        </div>
+        <div className="absolute right-2 bottom-8 pointer-events-none opacity-18 select-none hidden xl:block rotate-180">
+          <BotanicalBranch className="w-36 h-36 text-[#C5A059]" />
         </div>
 
-        {/* 4 Interactive Accordions */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {FAQ_ITEMS.map((faq) => {
-            const isOpen = openFaq === faq.id;
-            return (
-              <div
-                key={faq.id}
-                className="bg-white rounded-2xl border border-[#E8E2D5] overflow-hidden shadow-2xs hover:border-[#D4AF37] transition-all"
-              >
-                <button
-                  onClick={() => setOpenFaq(isOpen ? null : faq.id)}
-                  className="w-full p-4 text-left flex items-start justify-between gap-3 cursor-pointer focus:outline-none"
-                  aria-expanded={isOpen}
-                >
-                  <span className="font-serif font-bold text-xs sm:text-sm text-zinc-900 leading-snug">
-                    {faq.question}
-                  </span>
-                  <span className="w-6 h-6 rounded-full bg-[#FAF7F2] border border-[#E8E2D5] flex items-center justify-center text-zinc-700 shrink-0 text-xs">
-                    {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
-                  </span>
-                </button>
+        {/* Master Luminous Champagne & Pearl Silk Pavilion */}
+        <div className="relative rounded-3xl overflow-hidden shadow-[0_24px_65px_rgba(43,5,12,0.12)] border-2 border-[#D4AF37]/65 bg-gradient-to-b from-[#FFFDFB] via-[#FCF8F0] to-[#F6ECDC] p-6 sm:p-9 lg:p-12">
+          {/* Pearlescent Silk Backdrop Texture */}
+          <div className="absolute inset-0 z-0 pointer-events-none opacity-25">
+            <Image
+              src="/images/nalmara/category_pearl_silk_desktop_bg.jpg"
+              alt="Silk Texture"
+              fill
+              unoptimized
+              className="object-cover"
+            />
+          </div>
 
-                {isOpen && (
-                  <div className="px-4 pb-4 pt-1 text-xs text-zinc-600 font-light leading-relaxed border-t border-[#E8E2D5]/50 animate-in fade-in duration-200">
-                    {faq.answer}
-                  </div>
-                )}
+          {/* Soft Radial Champagne & Garnet Glows */}
+          <div className="absolute -top-28 left-1/2 -translate-x-1/2 w-[520px] h-56 rounded-full bg-[#D4AF37]/15 blur-3xl pointer-events-none z-0" />
+
+          {/* Double Hairline 24K Gold Inner Architectural Frame */}
+          <div className="absolute inset-3 sm:inset-4 border border-[#D4AF37]/40 rounded-2xl pointer-events-none z-10" />
+
+          {/* Sculpted 24K Gold Corner Filigree Brackets */}
+          <div className="absolute top-5 left-5 w-5 h-5 border-t-2 border-l-2 border-[#B88E28] pointer-events-none z-20" />
+          <div className="absolute top-5 right-5 w-5 h-5 border-t-2 border-r-2 border-[#B88E28] pointer-events-none z-20" />
+          <div className="absolute bottom-5 left-5 w-5 h-5 border-b-2 border-l-2 border-[#B88E28] pointer-events-none z-20" />
+          <div className="absolute bottom-5 right-5 w-5 h-5 border-b-2 border-r-2 border-[#B88E28] pointer-events-none z-20" />
+
+          {/* Editorial Header Row */}
+          <div className="relative z-20 flex flex-col md:flex-row md:items-end justify-between gap-5 mb-8 sm:mb-10 pb-5 border-b border-[#D4AF37]/35">
+            <div className="space-y-1.5 text-left">
+              {/* Royal Kicker with Lotus Crest */}
+              <div className="flex items-center gap-2.5 text-[#8C6D2D]">
+                <LotusIcon className="w-4 h-4 text-[#B88E28] drop-shadow-2xs" />
+                <span className="text-[10px] sm:text-[11px] font-serif font-bold tracking-[0.28em] uppercase text-[#6E501B]">
+                  Royal Concierge &amp; Care Guide
+                </span>
+                <span className="h-[1px] w-12 bg-gradient-to-r from-[#D4AF37] to-transparent" />
               </div>
-            );
-          })}
+
+              {/* Stately Serif + Script Calligraphy Title */}
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-[42px] font-bold text-[#1A080B] tracking-tight leading-none">
+                Frequently Asked{' '}
+                <span className="font-script text-4xl sm:text-5xl lg:text-[54px] font-normal text-[#5C0612] italic ml-1 drop-shadow-2xs">
+                  Questions
+                </span>
+              </h2>
+
+              {/* Whisper-Luxury Subtitle */}
+              <p className="text-xs sm:text-sm font-serif italic text-[#6B5324] tracking-wide pt-0.5">
+                Quick answers to your queries — transparent details on fabrics, shipping, and heritage care.
+              </p>
+            </div>
+
+            {/* Right CTA Pill: View All FAQs → */}
+            <div className="flex items-center gap-3 self-start md:self-end shrink-0">
+              <Link
+                href="/faq"
+                className="relative inline-flex items-center gap-3 px-6 py-2.5 sm:px-7 sm:py-3 rounded-full border border-[#D4AF37] bg-gradient-to-r from-[#240409] via-[#4A0812] to-[#240409] hover:from-[#4A0812] hover:to-[#630B19] text-[#FFE59E] hover:text-white text-xs font-serif font-bold tracking-[0.18em] uppercase transition-all duration-300 shadow-[0_8px_22px_rgba(36,4,9,0.28)] hover:shadow-[0_10px_28px_rgba(212,175,55,0.4)] hover:scale-105 active:scale-95 group/faqbtn"
+              >
+                <span>View All FAQs</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#E5C158] transition-transform duration-300 group-hover/faqbtn:translate-x-1" />
+              </Link>
+            </div>
+          </div>
+
+          {/* 4 Sculpted Couture Accordion Plaques (4-Column Row on Desktop, 2x2 on Tablet, 1-Col on Mobile) */}
+          <div className="relative z-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6 items-start">
+            {FAQ_ITEMS.map((faq, idx) => {
+              const isOpen = openFaq === faq.id;
+              return (
+                <div
+                  key={faq.id}
+                  className={`group relative rounded-2xl transition-all duration-500 overflow-hidden ${
+                    isOpen
+                      ? 'bg-[#FFFDFB] border-2 border-[#5C0612] shadow-[0_20px_45px_rgba(92,6,18,0.16)] -translate-y-1.5'
+                      : 'bg-gradient-to-b from-[#FFFDF9] via-white to-[#FAF4E8] border border-[#D4AF37]/75 hover:border-[#5C0612]/70 shadow-[0_8px_26px_rgba(180,140,60,0.12)] hover:shadow-[0_16px_38px_rgba(61,8,17,0.14)] hover:-translate-y-1'
+                  }`}
+                >
+                  {/* Inner Hairline Gold Filigree Rim */}
+                  <div
+                    className={`absolute inset-1.5 rounded-xl border pointer-events-none transition-colors duration-300 ${
+                      isOpen
+                        ? 'border-[#D4AF37]/50'
+                        : 'border-[#D4AF37]/25 group-hover:border-[#D4AF37]/55'
+                    }`}
+                  />
+
+                  {/* Subtle Watermark Roman Numeral in Corner */}
+                  <span
+                    aria-hidden="true"
+                    className="absolute right-12 -top-2 font-serif font-bold text-5xl text-[#D4AF37]/10 select-none pointer-events-none leading-none"
+                  >
+                    0{idx + 1}
+                  </span>
+
+                  <button
+                    onClick={() => setOpenFaq(isOpen ? null : faq.id)}
+                    className="relative z-10 w-full p-5 sm:p-5.5 text-left flex flex-col justify-between gap-3.5 cursor-pointer focus:outline-none"
+                    aria-expanded={isOpen}
+                  >
+                    {/* Top Row: Royal Icon Medallion + Category Tag + Plus/Minus Jewel Button */}
+                    <div className="w-full flex items-center justify-between gap-2">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        {/* Sculpted Garnet & 24K Gold Medallion */}
+                        <div
+                          className={`w-9 h-9 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 shadow-xs ${
+                            isOpen
+                              ? 'bg-gradient-to-b from-[#5C0612] to-[#240409] border-[#D4AF37] text-[#FFE59E] scale-105'
+                              : 'bg-gradient-to-b from-[#FAF3E3] to-[#F2E3C6] border-[#D4AF37]/80 text-[#4A0812] group-hover:from-[#5C0612] group-hover:to-[#240409] group-hover:text-[#FFE59E] group-hover:border-[#D4AF37]'
+                          }`}
+                        >
+                          {idx === 0 && <Sparkles className="w-4 h-4" />}
+                          {idx === 1 && <Package className="w-4 h-4" />}
+                          {idx === 2 && <Gem className="w-4 h-4" />}
+                          {idx === 3 && <Heart className="w-4 h-4" />}
+                        </div>
+
+                        <div className="min-w-0">
+                          <span className="block text-[9.5px] font-serif font-bold uppercase tracking-[0.22em] text-[#8C6D2D] truncate">
+                            0{idx + 1} &bull; {faq.category}
+                          </span>
+                          <span className="block text-[10.5px] font-serif italic text-[#6B5324]/90 truncate">
+                            {faq.summary}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Right Circular 24K Gold Plus/Minus Toggle Medallion */}
+                      <span
+                        className={`w-8 h-8 rounded-full border flex items-center justify-center shrink-0 transition-all duration-300 shadow-2xs ${
+                          isOpen
+                            ? 'bg-gradient-to-b from-[#5C0612] to-[#240409] border-[#D4AF37] text-[#FFE59E] rotate-180 shadow-md'
+                            : 'bg-[#FFFDF9] border-[#D4AF37]/80 text-[#3D0811] group-hover:bg-[#3D0811] group-hover:text-[#FFE59E] group-hover:border-[#D4AF37]'
+                        }`}
+                      >
+                        {isOpen ? <Minus className="w-3.5 h-3.5" /> : <Plus className="w-3.5 h-3.5" />}
+                      </span>
+                    </div>
+
+                    {/* Fine Gold Hairline Divider */}
+                    <div className="w-full h-[1px] bg-gradient-to-r from-[#D4AF37]/45 via-[#D4AF37]/25 to-transparent" />
+
+                    {/* Question Headline */}
+                    <h3 className="font-serif font-bold text-[15px] sm:text-base text-[#1A080B] group-hover:text-[#5C0612] transition-colors leading-snug">
+                      {faq.question}
+                    </h3>
+                  </button>
+
+                  {/* Velvet-Smooth Expandable Answer Drawer */}
+                  {isOpen && (
+                    <div className="relative z-10 px-5 pb-5 pt-1 text-xs sm:text-[13px] text-[#3F2E26] leading-relaxed border-t border-[#D4AF37]/30 bg-gradient-to-b from-[#FAF4E8]/60 to-[#FFFDFB] animate-in fade-in duration-200">
+                      <div className="pl-3.5 border-l-2 border-[#D4AF37] space-y-2.5 pt-2">
+                        <p className="font-normal text-[#35231B] leading-relaxed">
+                          {faq.answer}
+                        </p>
+                        {faq.highlight && (
+                          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#3D0811]/8 border border-[#D4AF37]/50 text-[10px] font-serif font-bold text-[#5C0612] tracking-wider uppercase">
+                            <Check className="w-3 h-3 text-[#8C6D2D]" />
+                            <span>{faq.highlight}</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Bottom Royal Styling Concierge Bar */}
+          <div className="relative z-20 mt-8 pt-5 border-t border-[#D4AF37]/35 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div className="flex items-center gap-2.5 text-center sm:text-left">
+              <div className="w-7 h-7 rounded-full bg-[#3D0811] border border-[#D4AF37] flex items-center justify-center text-[#FFE59E] shrink-0 shadow-2xs">
+                <LotusIcon className="w-3.5 h-3.5 text-[#FFE59E]" />
+              </div>
+              <p className="text-xs sm:text-[13px] font-serif text-[#3F2E26]">
+                Still have a question about draping, blouse measurements, or bulk wedding orders?
+              </p>
+            </div>
+
+            <a
+              href="https://wa.me/916380163909?text=Hello%20NALMARA%20FASHION,%20I%20have%20a%20query"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/90 hover:bg-[#3D0811] border border-[#D4AF37]/80 text-[#3D0811] hover:text-[#FFE59E] text-xs font-serif font-bold tracking-wider transition-all duration-300 shadow-2xs shrink-0"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-600" />
+              <span>Chat with Our Stylist →</span>
+            </a>
+          </div>
         </div>
       </section>
     </div>
