@@ -145,7 +145,7 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
                         {product.name}
                       </h4>
                       <p className="text-xs text-zinc-500 dark:text-zinc-400">
-                        {typeof product.category === 'object' ? product.category.name : 'Category'}
+                        {product.category && typeof product.category === 'object' ? product.category.name : 'Category'}
                       </p>
                     </div>
                   </div>

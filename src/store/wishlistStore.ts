@@ -17,6 +17,10 @@ export const useWishlistStore = create<WishlistState>((set, get) => ({
   isLoading: false,
 
   fetchWishlist: async () => {
+    if (typeof window !== 'undefined' && !localStorage.getItem('auth_token')) {
+      set({ products: [], isLoading: false });
+      return;
+    }
     try {
       set({ isLoading: true });
       const res = await api.get('/wishlist');

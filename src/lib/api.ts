@@ -1,7 +1,11 @@
 import axios from 'axios';
 import { getGuestId } from './utils';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'https://e-commerce-backend-4c4d.onrender.com/api';
+const ENV_API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_BASE_URL =
+  typeof window !== 'undefined'
+    ? '/api/proxy'
+    : ENV_API_URL || 'https://e-commerce-backend-4c4d.onrender.com/api';
 
 export const api = axios.create({
   baseURL: API_BASE_URL,

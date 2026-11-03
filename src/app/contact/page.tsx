@@ -123,14 +123,23 @@ export default function ContactPage() {
                   <p className="text-[11px] uppercase tracking-wider text-zinc-500 font-semibold">
                     Concierge Helpline & WhatsApp
                   </p>
+                  <div className="flex flex-wrap items-center gap-1.5 text-sm font-bold text-[#0B2518]">
+                    <a
+                      href="tel:+916383163609"
+                      className="hover:text-[#B8860B] transition-colors"
+                    >
+                      6383163609
+                    </a>
+                    <span className="text-zinc-400 font-normal px-1">|</span>
+                    <a
+                      href="tel:+917871207631"
+                      className="hover:text-[#B8860B] transition-colors"
+                    >
+                      7871207631
+                    </a>
+                  </div>
                   <a
-                    href="tel:+917871207631"
-                    className="text-sm font-bold text-[#0B2518] hover:text-[#B8860B] transition-colors block"
-                  >
-                    +91 78712 07631
-                  </a>
-                  <a
-                    href="https://wa.me/917871207631?text=Hello%20NALMARA%20FASHION%20team,%20I%20have%20an%20enquiry%20regarding%20your%20luxury%20ethnic%20wear."
+                    href="https://wa.me/916383163609?text=Hello%20NALMARA%20FASHION%20team,%20I%20have%20an%20enquiry%20regarding%20your%20luxury%20ethnic%20wear."
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 text-xs text-emerald-700 font-semibold hover:underline pt-0.5"
@@ -159,6 +168,14 @@ export default function ContactPage() {
                   <p className="text-[11px] text-zinc-500">
                     Average response time: within 4 hours
                   </p>
+                  <a
+                    href="https://www.instagram.com/nalmarafashion"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs text-[#6B0D1A] font-semibold hover:underline pt-1"
+                  >
+                    <span>Follow us on Instagram: @nalmarafashion</span>
+                  </a>
                 </div>
               </div>
 

@@ -307,13 +307,13 @@ export default function FAQPage() {
                 Have an Unanswered Question?
               </h3>
               <p className="text-xs text-zinc-300 font-light leading-relaxed">
-                Our bespoke styling concierges and master artisans are available via WhatsApp or telephone to guide your selection.
+                Our bespoke styling concierges and master artisans are available via WhatsApp or telephone (<span className="text-[#E5C07B] font-medium">6383163609 &nbsp;|&nbsp; 7871207631</span>) to guide your selection.
               </p>
             </div>
 
             <div className="flex flex-col sm:flex-row md:flex-col gap-3 justify-end">
               <a
-                href="https://wa.me/919876543210"
+                href="https://wa.me/916383163609"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2.5 px-6 py-3 rounded-full bg-[#25D366] text-zinc-950 text-xs font-bold uppercase tracking-wider hover:bg-[#20ba59] transition-all shadow-lg"

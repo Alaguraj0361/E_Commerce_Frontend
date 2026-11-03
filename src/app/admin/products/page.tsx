@@ -92,7 +92,7 @@ export default function AdminProductsPage() {
       name: p.name,
       description: p.description,
       shortDescription: p.shortDescription || '',
-      category: typeof p.category === 'object' ? p.category._id : p.category,
+      category: p.category && typeof p.category === 'object' ? p.category._id : p.category || '',
       price: p.price,
       compareAtPrice: p.compareAtPrice || 0,
       sku: p.sku,
@@ -243,7 +243,7 @@ export default function AdminProductsPage() {
                     </td>
                     <td className="py-4 px-6 font-mono text-zinc-500">{p.sku}</td>
                     <td className="py-4 px-6 text-zinc-500">
-                      {typeof p.category === 'object' ? p.category.name : 'Category'}
+                      {p.category && typeof p.category === 'object' ? p.category.name : 'Category'}
                     </td>
                     <td className="py-4 px-6 font-bold text-zinc-900 dark:text-zinc-100">
                       {formatCurrency(p.price)}

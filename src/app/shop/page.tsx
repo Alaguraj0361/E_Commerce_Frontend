@@ -123,6 +123,9 @@ function ShopContent() {
         if (hasDiscount) params.set('hasDiscount', 'true');
         if (sort) params.set('sort', sort);
         if (searchQuery) params.set('search', searchQuery);
+        if (searchParams.get('filter') === 'new-arrivals') params.set('newArrival', 'true');
+        if (searchParams.get('filter') === 'best-sellers') params.set('bestSeller', 'true');
+        if (searchParams.get('filter') === 'offers') params.set('hasDiscount', 'true');
         params.set('page', page.toString());
         params.set('limit', '12');
 

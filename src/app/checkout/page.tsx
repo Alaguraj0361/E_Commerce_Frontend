@@ -185,7 +185,7 @@ export default function CheckoutPage() {
 
     try {
       const checkoutItems = items.map((i) => ({
-        productId: typeof i.product === 'object' ? (i.product as any)._id : i.product,
+        productId: i.product && typeof i.product === 'object' ? (i.product as any)._id : i.product,
         variantId: i.variantId,
         quantity: i.quantity,
       }));

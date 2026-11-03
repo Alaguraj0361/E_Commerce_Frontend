@@ -334,7 +334,7 @@ export const Footer = () => {
               >
                 {/* Instagram Direct Link */}
                 <a
-                  href="https://instagram.com/nalmarafashion_official"
+                  href="https://www.instagram.com/nalmarafashion"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group/con flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all"
@@ -342,13 +342,20 @@ export const Footer = () => {
                   <span className="w-7 h-7 rounded-full bg-[#2B060C] border border-[#D4AF37]/55 group-hover/con:border-[#FFE59E] flex items-center justify-center text-[#E5C158] transition-colors shrink-0">
                     <Instagram className="w-3.5 h-3.5" />
                   </span>
-                  <span>Instagram</span>
-                  <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/con:opacity-100 transition-opacity text-[#E5C158]" />
+                  <div className="flex flex-col leading-tight">
+                    <span className="flex items-center gap-1">
+                      Instagram
+                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/con:opacity-100 transition-opacity text-[#E5C158]" />
+                    </span>
+                    <span className="text-[11px] text-[#E8D5B0]/90 font-serif tracking-wider mt-0.5">
+                      @nalmarafashion
+                    </span>
+                  </div>
                 </a>
 
                 {/* WhatsApp Support */}
                 <a
-                  href="https://wa.me/916380163909"
+                  href="https://wa.me/916383163609"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group/con flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all"
@@ -356,7 +363,12 @@ export const Footer = () => {
                   <span className="w-7 h-7 rounded-full bg-[#25D366]/20 border border-[#25D366]/60 group-hover/con:bg-[#25D366] flex items-center justify-center text-[#25D366] group-hover/con:text-white transition-colors shrink-0">
                     <MessageCircle className="w-3.5 h-3.5" />
                   </span>
-                  <span>WhatsApp Support</span>
+                  <div className="flex flex-col leading-tight">
+                    <span>WhatsApp Support</span>
+                    <span className="text-[11px] text-[#E8D5B0]/90 font-serif tracking-wider mt-0.5">
+                      6383163609 &nbsp;|&nbsp; 7871207631
+                    </span>
+                  </div>
                 </a>
 
                 {/* Email Support */}
@@ -382,7 +394,7 @@ export const Footer = () => {
                     <Facebook className="w-3.5 h-3.5" />
                   </a>
                   <a
-                    href="https://instagram.com/nalmarafashion_official"
+                    href="https://www.instagram.com/nalmarafashion"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-8 h-8 rounded-full bg-[#2B060C] border border-[#D4AF37]/60 flex items-center justify-center text-[#E8D5B0] hover:bg-[#D4AF37] hover:text-[#180306] hover:border-[#FFE59E] hover:scale-110 transition-all duration-300 shadow-sm"
