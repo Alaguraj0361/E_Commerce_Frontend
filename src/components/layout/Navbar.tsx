@@ -94,12 +94,19 @@ export const Navbar = () => {
           <div className="flex-1 min-w-0 flex items-center justify-center lg:justify-start gap-2 sm:gap-3 text-center text-xs tracking-wider overflow-hidden">
             <Sparkles className="w-3 h-3 text-[#FFE59E] shrink-0" />
             <span className="font-serif font-medium truncate text-[10.5px] sm:text-xs text-[#FFE59E]">
-              Free Insured Shipping on Orders Above ₹1,999
+              Free Insured Shipping Above ₹1,999
             </span>
             <span className="text-[#D4AF37]/70 text-[10px]">|</span>
-            <span className="hidden sm:inline font-serif text-[#E8D5B0]">Easy Returns</span>
-            <span className="hidden sm:inline text-[#D4AF37]/70 text-[10px]">|</span>
-            <span className="hidden sm:inline font-serif text-[#E8D5B0]">100% Authentic Weaves</span>
+            <span className="hidden sm:inline font-serif text-[#E8D5B0]">100% Verified Loom Quality</span>
+            <span className="hidden lg:inline text-[#D4AF37]/70 text-[10px]">|</span>
+            <a
+              href="https://wa.me/916383163609"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden lg:inline font-serif text-[#FFE59E] hover:underline"
+            >
+              WhatsApp Concierge: 6383163609 &bull; 7871207631
+            </a>
           </div>
 
           {/* Right Socials */}

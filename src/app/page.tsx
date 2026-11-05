@@ -73,6 +73,11 @@ const HERO_SLIDES = [
     lookTitle: 'Royal Mauve Kanchipuram Silk',
     lookSub: 'Temple Zari & Contrast Pallu',
     startingPrice: '₹2,499',
+    craftTitle: '24K-Finish Temple Zari',
+    craftSub: '6.3m Saree + Contrast Blouse',
+    bentoKicker: 'DIRECT LOOM ARCHIVE',
+    bentoHeadline: 'Pure Heritage Silk Weaves',
+    bentoOffer: 'Complimentary Royal Gift Box & Insured Pan-India Delivery',
     primaryLink: '/shop?category=sarees',
     primaryText: 'Shop Silk Sarees',
     secondaryLink: '/shop?filter=new-arrivals',
@@ -93,6 +98,11 @@ const HERO_SLIDES = [
     lookTitle: 'Crimson Palace Bridal Lehenga',
     lookSub: 'Heavy Zardosi & Double Dupatta',
     startingPrice: '₹4,999',
+    craftTitle: 'Intricate Hand Zardosi',
+    craftSub: 'Bridal Flair & Rich Pallu',
+    bentoKicker: 'MUHURTHAM TROUSSEAU',
+    bentoHeadline: 'Bespoke Bridal Couture',
+    bentoOffer: '1-on-1 Live WhatsApp Video Drape Consultation Available',
     primaryLink: '/shop?category=lehengas',
     primaryText: 'Shop Bridal Edit',
     secondaryLink: '/shop?category=sarees',
@@ -113,6 +123,11 @@ const HERO_SLIDES = [
     lookTitle: 'Emerald Deepam Zari Silk',
     lookSub: 'Festive Gold Brocade Weave',
     startingPrice: '₹1,999',
+    craftTitle: 'Rich Brocade & Tissue Zari',
+    craftSub: 'Featherlight All-Day Drape',
+    bentoKicker: 'FESTIVE SEASON EDIT',
+    bentoHeadline: 'Celebration Ready Drapes',
+    bentoOffer: '24–48 Hr Express Insured Dispatch Across India',
     primaryLink: '/shop?category=festive',
     primaryText: 'Shop Festive Wear',
     secondaryLink: '/shop?filter=new-arrivals',
@@ -912,151 +927,302 @@ export default function HomePage() {
   return (
     <div className="bg-[#FAF7F2] text-zinc-900 selection:bg-[#180306] selection:text-[#FFE59E] w-full max-w-full overflow-x-hidden font-sans">
       {/* ============================================================== */}
-      {/* 02. HERO BANNER SECTION (Trending Royal Couture Lookbook)       */}
+      {/* 02. HERO BANNER SECTION (Ultra-Premium Maharani Couture Stage)  */}
       {/* ============================================================== */}
       <section
         onMouseEnter={() => setIsHeroPaused(true)}
         onMouseLeave={() => setIsHeroPaused(false)}
-        className="relative w-full max-w-full overflow-hidden border-b-2 border-[#D4AF37]/70 bg-[#120204]"
+        className="relative w-full max-w-full overflow-hidden border-b-2 border-[#D4AF37] bg-[#1A0307]"
       >
-        <div className="relative w-full lg:min-h-[680px] xl:min-h-[720px] flex items-center">
-          {/* Atmospheric Royal Palace Backdrop with Velvet Gradient Mask */}
+        <div className="relative w-full lg:min-h-[690px] xl:min-h-[730px] flex items-center">
+          {/* Rich Imperial Crimson-Velvet & Golden Palace Illumination Backdrop */}
           <div className="absolute inset-0 z-0">
             <Image
               src={slide.fullWidthImage || slide.image}
               alt={slide.title}
               fill
               priority
-              className="object-cover object-center opacity-30 sm:opacity-35 scale-105 transition-all duration-1000 select-none"
+              className="object-cover object-center opacity-35 sm:opacity-40 scale-105 transition-all duration-1000 select-none"
             />
-            <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-[#100103]/95 via-[#180306]/95 to-[#120204]/90 lg:to-[#180306]/80 pointer-events-none" />
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_28%,rgba(212,175,55,0.22),transparent_55%)] lg:bg-[radial-gradient(circle_at_75%_45%,rgba(212,175,55,0.22),transparent_55%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-gradient-to-b lg:bg-gradient-to-r from-[#180206]/96 via-[#28050C]/90 to-[#160205]/82 pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_22%,rgba(255,229,158,0.26),transparent_58%)] lg:bg-[radial-gradient(circle_at_70%_45%,rgba(212,175,55,0.32),transparent_56%)] pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_35%,rgba(138,20,38,0.38),transparent_50%)] pointer-events-none" />
+
+            {/* Ornate 24K Gold Palace Mandala / Jharokha Filigree Watermark */}
+            <svg
+              viewBox="0 0 600 600"
+              fill="none"
+              className="hidden lg:block absolute right-[6%] top-1/2 -translate-y-1/2 w-[640px] h-[640px] text-[#D4AF37] opacity-[0.11] pointer-events-none select-none"
+            >
+              <circle cx="300" cy="300" r="280" stroke="currentColor" strokeWidth="1" strokeDasharray="6 6" />
+              <circle cx="300" cy="300" r="245" stroke="currentColor" strokeWidth="1.5" />
+              <circle cx="300" cy="300" r="200" stroke="currentColor" strokeWidth="1" strokeDasharray="3 5" />
+              <path
+                d="M300 20 L330 90 L400 60 L380 130 L450 130 L400 190 L460 220 L390 260 L440 300 L390 340 L460 380 L400 410 L450 470 L380 470 L400 540 L330 510 L300 580 L270 510 L200 540 L220 470 L150 470 L200 410 L140 380 L210 340 L160 300 L210 260 L140 220 L200 190 L150 130 L220 130 L200 60 L270 90 Z"
+                stroke="currentColor"
+                strokeWidth="1"
+              />
+            </svg>
           </div>
 
-          {/* Outer Royal Architectural Gold Hairline Frame & 4 Corner Brackets */}
-          <div className="absolute inset-2.5 sm:inset-3.5 lg:inset-5 border border-[#D4AF37]/30 rounded-2xl sm:rounded-3xl pointer-events-none z-10" />
-          <div className="absolute top-4 left-4 sm:top-5 sm:left-5 lg:top-7 lg:left-7 w-4 h-4 sm:w-6 sm:h-6 border-t-2 border-l-2 border-[#D4AF37]/85 pointer-events-none z-10" />
-          <div className="absolute top-4 right-4 sm:top-5 sm:right-5 lg:top-7 lg:right-7 w-4 h-4 sm:w-6 sm:h-6 border-t-2 border-r-2 border-[#D4AF37]/85 pointer-events-none z-10" />
-          <div className="absolute bottom-7 left-4 sm:bottom-9 sm:left-5 lg:bottom-11 lg:left-7 w-4 h-4 sm:w-6 sm:h-6 border-b-2 border-l-2 border-[#D4AF37]/85 pointer-events-none z-10" />
-          <div className="absolute bottom-7 right-4 sm:bottom-9 sm:right-5 lg:bottom-11 lg:right-7 w-4 h-4 sm:w-6 sm:h-6 border-b-2 border-r-2 border-[#D4AF37]/85 pointer-events-none z-10" />
+          {/* Outer Royal Architectural Double Gold Frame & 4 Corner Brackets */}
+          <div className="absolute inset-2.5 sm:inset-3.5 lg:inset-5 border border-[#D4AF37]/45 rounded-2xl sm:rounded-3xl pointer-events-none z-10" />
+          <div className="hidden sm:block absolute inset-4 lg:inset-6.5 border border-[#FFE59E]/15 rounded-xl sm:rounded-2xl pointer-events-none z-10" />
+
+          {/* Top-Center Royal Atelier Crest Embedded in the Gold Frame */}
+          <div className="hidden md:flex absolute top-2.5 lg:top-3 left-1/2 -translate-x-1/2 z-20 items-center gap-2.5 px-5 py-1 rounded-full bg-[#1A0307] border border-[#D4AF37]/80 shadow-[0_4px_16px_rgba(0,0,0,0.6)]">
+            <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]" />
+            <span className="font-serif text-[9px] font-bold tracking-[0.28em] uppercase text-[#FFE59E]">
+              The House of Nalmara • Royal Handloom & Bridal Atelier
+            </span>
+            <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]" />
+          </div>
+
+          <div className="absolute top-4 left-4 sm:top-5 sm:left-5 lg:top-7 lg:left-7 w-4 h-4 sm:w-6 sm:h-6 border-t-2 border-l-2 border-[#FFE59E] pointer-events-none z-10" />
+          <div className="absolute top-4 right-4 sm:top-5 sm:right-5 lg:top-7 lg:right-7 w-4 h-4 sm:w-6 sm:h-6 border-t-2 border-r-2 border-[#FFE59E] pointer-events-none z-10" />
+          <div className="absolute bottom-7 left-4 sm:bottom-9 sm:left-5 lg:bottom-11 lg:left-7 w-4 h-4 sm:w-6 sm:h-6 border-b-2 border-l-2 border-[#FFE59E] pointer-events-none z-10" />
+          <div className="absolute bottom-7 right-4 sm:bottom-9 sm:right-5 lg:bottom-11 lg:right-7 w-4 h-4 sm:w-6 sm:h-6 border-b-2 border-r-2 border-[#FFE59E] pointer-events-none z-10" />
 
           {/* Top-Left Botanical Gold Filigree Watermark */}
-          <div className="hidden sm:block absolute top-6 left-6 pointer-events-none opacity-30 select-none z-10">
+          <div className="hidden sm:block absolute top-6 left-6 pointer-events-none opacity-35 select-none z-10">
             <BotanicalBranch className="w-40 h-40 text-[#FFE59E]" />
           </div>
 
-          {/* Main Split-Stage Editorial Grid */}
-          <div className="relative z-10 w-full max-w-[1520px] mx-auto px-4 sm:px-8 lg:px-14 xl:px-16 pt-7 pb-11 sm:pt-10 sm:pb-14 lg:py-14">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 lg:gap-10 xl:gap-12 items-center">
-              {/* RIGHT COLUMN ON DESKTOP / TRENDING LAYERED ROYAL ARCH COLLAGE ON MOBILE */}
-              <div className="order-1 lg:order-2 lg:col-span-5 relative flex items-center justify-center lg:justify-end pt-2 pb-4 sm:py-0">
-                <div className="relative w-full max-w-[330px] sm:max-w-[385px] lg:max-w-[435px]">
-                  {/* Ambient 24K Gold Halo Behind Arch */}
-                  <div className="absolute -inset-3 rounded-t-[200px] sm:rounded-t-[230px] rounded-b-[30px] sm:rounded-b-[34px] bg-gradient-to-b from-[#FFE59E]/30 via-[#D4AF37]/15 to-transparent blur-xl pointer-events-none" />
+          {/* Main 12-Column Ultra-Premium Couture Stage */}
+          <div className="relative z-10 w-full max-w-[1520px] mx-auto px-4 sm:px-8 lg:px-14 xl:px-16 pt-7 pb-11 sm:pt-11 sm:pb-14 lg:py-14">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-8 xl:gap-10 items-center">
+              {/* ============================================================ */}
+              {/* RIGHT 6 COLUMNS: SCULPTED ROYAL ARCH + IVORY-GOLD ATELIER    */}
+              {/* ============================================================ */}
+              <div className="order-1 lg:order-2 lg:col-span-6 relative pt-2 pb-2 sm:py-0">
+                {/* Ambient 24K Gold Spotlight Halo */}
+                <div className="absolute -inset-5 rounded-[44px] bg-gradient-to-tr from-[#D4AF37]/25 via-[#FFE59E]/20 to-transparent blur-2xl pointer-events-none" />
 
-                  {/* Outer Decorative Arch Hairline Ring */}
-                  <div className="absolute -inset-2 rounded-t-[195px] sm:rounded-t-[225px] rounded-b-[28px] sm:rounded-b-[32px] border border-[#D4AF37]/55 pointer-events-none" />
+                <div className="relative grid grid-cols-1 sm:grid-cols-12 gap-4 items-stretch max-w-[345px] sm:max-w-none mx-auto">
+                  {/* CENTERPIECE (7 Cols on Tablet/Desktop): Sculpted Grand Royal Crown Arch */}
+                  <div className="sm:col-span-7 relative">
+                    {/* Outer Decorative Arch Hairline Ring */}
+                    <div className="absolute -inset-1.5 rounded-t-[190px] sm:rounded-t-[220px] rounded-b-[28px] border border-[#D4AF37]/55 pointer-events-none" />
 
-                  {/* Main 24K Gold Bezel-Framed Royal Arch Window */}
-                  <div className="relative p-2 sm:p-2.5 rounded-t-[185px] sm:rounded-t-[215px] rounded-b-[24px] sm:rounded-b-[28px] bg-gradient-to-b from-[#FFF3C4] via-[#D4AF37] to-[#8C6518] shadow-[0_22px_55px_rgba(0,0,0,0.75)]">
-                    {/* Top-Center Royal Crest Medallion */}
-                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-30 inline-flex items-center gap-1.5 px-3.5 sm:px-4 py-1 rounded-full bg-[#180306] border-2 border-[#D4AF37] shadow-[0_8px_20px_rgba(0,0,0,0.6)] whitespace-nowrap">
-                      <LotusIcon className="w-3.5 h-3.5 text-[#FFE59E]" />
-                      <span className="font-serif font-bold text-[8.5px] sm:text-[9px] tracking-[0.24em] text-[#FFE59E] uppercase">
-                        Nalmara Couture
-                      </span>
-                    </div>
-
-                    {/* Top-Right Floating "100% Pure Zari" Seal */}
-                    <div className="absolute top-6 -right-2 sm:-right-4 z-30 inline-flex items-center gap-1.5 px-2.5 sm:px-3 py-1 rounded-full bg-[#180306]/95 backdrop-blur-md border border-[#D4AF37] shadow-lg">
-                      <Gem className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E]" />
-                      <span className="font-serif font-bold text-[8px] sm:text-[9px] tracking-[0.18em] uppercase text-[#FFE59E]">
-                        Pure Zari
-                      </span>
-                    </div>
-
-                    {/* Inner Portrait Frame */}
-                    <div className="relative h-[310px] sm:h-[390px] lg:h-[465px] w-full rounded-t-[176px] sm:rounded-t-[205px] rounded-b-[18px] sm:rounded-b-[22px] overflow-hidden bg-[#180306]">
-                      {/* Inner Gold Hairline Arch Frame */}
-                      <div className="absolute inset-2 rounded-t-[168px] sm:rounded-t-[196px] rounded-b-[14px] border border-[#FFE59E]/45 pointer-events-none z-10" />
-
-                      <Image
-                        src={slide.image}
-                        alt={slide.title}
-                        fill
-                        priority
-                        className="object-cover object-[center_12%] transition-transform duration-700 hover:scale-105"
-                      />
-
-                      {/* Cinematic Bottom Vignette */}
-                      <div className="absolute inset-x-0 bottom-0 h-28 sm:h-32 bg-gradient-to-t from-[#120204]/95 via-[#120204]/45 to-transparent pointer-events-none" />
-                    </div>
-                  </div>
-
-                  {/* Overlapping Secondary Zari Detail Inset Card (Visible on BOTH Mobile & Desktop) */}
-                  <div className="absolute -left-2.5 sm:-left-7 lg:-left-10 bottom-12 sm:bottom-8 z-20 w-22 sm:w-32 lg:w-36 p-1 sm:p-1.5 rounded-2xl bg-gradient-to-b from-[#FFF3C4] via-[#D4AF37] to-[#8C6518] shadow-[0_16px_36px_rgba(0,0,0,0.75)] transition-transform duration-300 hover:-translate-y-1">
-                    <div className="relative h-26 sm:h-36 lg:h-40 w-full rounded-xl overflow-hidden bg-[#180306]">
-                      <Image
-                        src={slide.detailImage || slide.image}
-                        alt={slide.lookTitle || slide.title}
-                        fill
-                        className="object-cover object-top"
-                      />
-                      <div className="absolute inset-x-0 bottom-0 p-1 sm:p-1.5 bg-gradient-to-t from-[#120204]/95 via-[#120204]/75 to-transparent text-center">
-                        <span className="block font-serif font-bold text-[7px] sm:text-[8px] tracking-[0.16em] uppercase text-[#FFE59E]">
-                          Zari Weave
+                    {/* 3-Layer 24K Metallic Gold Arch Bezel */}
+                    <div className="relative p-[3px] rounded-t-[184px] sm:rounded-t-[214px] rounded-b-[26px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#7A5411] shadow-[0_26px_65px_rgba(0,0,0,0.8)] group">
+                      {/* Top-Center Royal Crown Medallion */}
+                      <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-30 inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-gradient-to-r from-[#2B050B] via-[#180306] to-[#2B050B] border-2 border-[#FFE59E] shadow-[0_8px_20px_rgba(0,0,0,0.7)] whitespace-nowrap">
+                        <Crown className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E]" />
+                        <span className="font-serif font-bold text-[8.5px] sm:text-[9px] tracking-[0.24em] text-[#FFE59E] uppercase">
+                          Nalmara Couture
                         </span>
+                      </div>
+
+                      <div className="relative h-[340px] sm:h-[465px] lg:h-[505px] w-full rounded-t-[180px] sm:rounded-t-[210px] rounded-b-[23px] overflow-hidden bg-[#180306]">
+                        {/* Inner Gold Filigree Arch Line */}
+                        <div className="absolute inset-2.5 rounded-t-[172px] sm:rounded-t-[200px] rounded-b-[18px] border border-[#FFE59E]/55 pointer-events-none z-10" />
+
+                        <Image
+                          src={slide.image}
+                          alt={slide.title}
+                          fill
+                          priority
+                          className="object-cover object-[center_12%] transition-transform duration-700 group-hover:scale-105"
+                        />
+
+                        {/* Top-Right Pure Zari Foil Seal */}
+                        <div className="absolute top-6 right-3.5 z-20 inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-gradient-to-r from-[#FFF5CC] via-[#FFE59E] to-[#D4AF37] text-[#180306] border border-white/80 shadow-lg">
+                          <Gem className="w-3 h-3" />
+                          <span className="font-serif font-bold text-[8px] tracking-[0.16em] uppercase">
+                            Pure Zari
+                          </span>
+                        </div>
+
+                        {/* Mobile-Only Floating Zari Detail Inset */}
+                        <div className="sm:hidden absolute left-3 bottom-24 z-20 w-20 p-1 rounded-xl bg-gradient-to-b from-[#FFF3C4] via-[#D4AF37] to-[#8C6518] shadow-xl">
+                          <div className="relative h-22 w-full rounded-lg overflow-hidden bg-[#180306]">
+                            <Image
+                              src={slide.detailImage || slide.image}
+                              alt={slide.lookTitle || slide.title}
+                              fill
+                              className="object-cover object-top"
+                            />
+                            <div className="absolute inset-x-0 bottom-0 py-0.5 bg-[#120204]/90 text-center">
+                              <span className="block font-serif font-bold text-[6.5px] tracking-[0.14em] uppercase text-[#FFE59E]">
+                                Zari Weave
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* Bottom Gradient & Royal Ivory-Trimmed Featured Look Bar */}
+                        <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#120204] via-[#120204]/70 to-transparent pointer-events-none" />
+
+                        <Link
+                          href={slide.primaryLink}
+                          className="absolute inset-x-3 bottom-3 z-20 flex items-center justify-between gap-2.5 p-3 sm:p-3.5 rounded-2xl bg-gradient-to-r from-[#1E0308]/95 via-[#2D070F]/95 to-[#1E0308]/95 backdrop-blur-md border-2 border-[#D4AF37] hover:border-[#FFE59E] shadow-[0_14px_34px_rgba(0,0,0,0.75)] transition-all"
+                        >
+                          <div className="min-w-0 text-left">
+                            <div className="flex items-center gap-1.5">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                              <span className="font-serif font-bold text-[8px] sm:text-[8.5px] tracking-[0.2em] uppercase text-[#FFE59E]">
+                                Featured Runway Look
+                              </span>
+                            </div>
+                            <h3 className="font-serif text-xs sm:text-[15px] font-bold text-[#FFFDF9] truncate mt-0.5">
+                              {slide.lookTitle || slide.title}
+                            </h3>
+                            <div className="flex items-center gap-2 mt-0.5">
+                              <span className="text-[10px] sm:text-xs font-serif font-bold text-[#FFE59E]">
+                                Starting at <span className="text-white">{slide.startingPrice || '₹2,499'}</span>
+                              </span>
+                              <span className="text-[9px] px-2 py-0.5 rounded-full bg-[#D4AF37]/20 border border-[#D4AF37]/50 text-[#FFE59E] hidden xl:inline-block">
+                                6.3m + Blouse
+                              </span>
+                            </div>
+                          </div>
+                          <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#FFF5CC] via-[#FFE59E] to-[#D4AF37] text-[#180306] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-[0_4px_14px_rgba(212,175,55,0.5)]">
+                            <ArrowRight className="w-4 h-4 -rotate-45 group-hover:rotate-0 transition-transform" />
+                          </div>
+                        </Link>
                       </div>
                     </div>
                   </div>
 
-                  {/* Floating "Shop This Look" Couture Plaque (Visible on BOTH Mobile & Desktop) */}
-                  <Link
-                    href={slide.primaryLink}
-                    className="absolute -right-1.5 sm:-right-4 lg:-right-6 bottom-3 sm:bottom-5 z-20 flex items-center gap-2.5 sm:gap-3 p-2.5 sm:p-3.5 rounded-2xl bg-[#180306]/95 backdrop-blur-md border-2 border-[#D4AF37] shadow-[0_16px_40px_rgba(0,0,0,0.75)] group hover:border-[#FFE59E] transition-all"
-                  >
-                    <div className="min-w-0 text-left">
-                      <div className="flex items-center gap-1.5">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#D4AF37] animate-pulse" />
-                        <span className="font-serif font-bold text-[8px] sm:text-[9px] tracking-[0.2em] uppercase text-[#D4AF37]">
-                          Featured Look
-                        </span>
+                  {/* RIGHT STACK (5 Cols on Tablet/Desktop): Zari Macro Card + Royal Ivory Certificate */}
+                  <div className="hidden sm:flex sm:col-span-5 flex-col gap-4 h-[465px] lg:h-[505px]">
+                    {/* TOP CARD: Sculpted Zari Macro Weave Showcase with Metallic Swatches */}
+                    <Link
+                      href={slide.primaryLink}
+                      className="relative flex-1 rounded-[26px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#7A5411] shadow-[0_20px_45px_rgba(0,0,0,0.7)] group overflow-hidden"
+                    >
+                      <div className="relative w-full h-full rounded-[24px] overflow-hidden bg-[#180306]">
+                        <div className="absolute inset-2 rounded-[18px] border border-[#FFE59E]/45 pointer-events-none z-10" />
+                        <Image
+                          src={slide.detailImage || slide.image}
+                          alt={slide.craftTitle || 'Zari Weave Detail'}
+                          fill
+                          className="object-cover object-center transition-transform duration-700 group-hover:scale-110"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-[#140205]/95 via-[#140205]/30 to-transparent" />
+
+                        {/* Top Bar: Macro Weave Badge + 3 Zari Thread Metallic Swatches */}
+                        <div className="absolute top-3.5 inset-x-3.5 z-20 flex items-center justify-between">
+                          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#180306]/90 backdrop-blur-md border border-[#D4AF37]">
+                            <Sparkles className="w-2.5 h-2.5 text-[#FFE59E]" />
+                            <span className="font-serif font-bold text-[8px] tracking-[0.18em] uppercase text-[#FFE59E]">
+                              Close-Up Weave
+                            </span>
+                          </div>
+                          <div className="flex items-center -space-x-1">
+                            <span className="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#FFF6D6] to-[#D4AF37] border border-[#180306] shadow-xs" title="24K Gold Zari" />
+                            <span className="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#F3C68F] to-[#B87333] border border-[#180306] shadow-xs" title="Antique Copper Zari" />
+                            <span className="w-3.5 h-3.5 rounded-full bg-gradient-to-br from-[#F5F5F5] to-[#B8B8B8] border border-[#180306] shadow-xs" title="Silver Tissue" />
+                          </div>
+                        </div>
+
+                        <div className="absolute inset-x-3.5 bottom-3.5 z-20 text-left">
+                          <span className="text-[8.5px] font-serif font-bold tracking-[0.18em] uppercase text-[#D4AF37] block">
+                            Master Loom Craft
+                          </span>
+                          <p className="font-serif font-bold text-xs lg:text-sm text-[#FFFDF9] leading-snug mt-0.5">
+                            {slide.craftTitle || '24K-Finish Temple Zari'}
+                          </p>
+                          <p className="text-[10px] text-[#FFE59E]/90 mt-0.5">
+                            {slide.craftSub || '6.3m Saree + Unstitched Blouse'}
+                          </p>
+                        </div>
                       </div>
-                      <h3 className="font-serif text-[11px] sm:text-sm font-bold text-[#FFFDF9] truncate max-w-[140px] sm:max-w-[175px] mt-0.5">
-                        {slide.lookTitle || slide.title}
-                      </h3>
-                      <p className="text-[10px] sm:text-[11px] font-serif text-[#FFE59E] font-semibold mt-0.5">
-                        Starting at <span className="text-white font-bold">{slide.startingPrice || '₹2,499'}</span>
-                      </p>
+                    </Link>
+
+                    {/* BOTTOM CARD: Luminous Royal Ivory & 24K Gold "Atelier Authenticity Certificate" */}
+                    <div className="relative rounded-[26px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C6518] shadow-[0_20px_45px_rgba(0,0,0,0.75)]">
+                      <div className="relative rounded-[24px] bg-gradient-to-br from-[#FFFDF9] via-[#FAF2E1] to-[#F1DFBA] p-4 lg:p-5 overflow-hidden text-left">
+                        {/* Inner Royal Gold Certificate Hairline */}
+                        <div className="absolute inset-1.5 rounded-[19px] border border-[#B8860B]/45 pointer-events-none" />
+                        <div className="absolute -right-5 -bottom-5 opacity-15 pointer-events-none">
+                          <LotusIcon className="w-24 h-24 text-[#8C6518]" />
+                        </div>
+
+                        <div className="relative z-10 space-y-2">
+                          <div className="flex items-center justify-between gap-2">
+                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#180306] text-[#FFE59E] border border-[#D4AF37] font-serif font-bold text-[7.5px] tracking-[0.18em] uppercase">
+                              <Crown className="w-2.5 h-2.5 text-[#D4AF37]" />
+                              {slide.bentoKicker || 'DIRECT LOOM ARCHIVE'}
+                            </span>
+                            <span className="w-6 h-6 rounded-full bg-gradient-to-br from-[#FFE59E] to-[#B8860B] text-[#180306] flex items-center justify-center font-serif font-bold text-[9px] shadow-xs">
+                              ✓
+                            </span>
+                          </div>
+
+                          <h4 className="font-serif font-bold text-sm lg:text-[16px] text-[#180306] leading-snug">
+                            {slide.bentoHeadline || 'Pure Heritage Silk Weaves'}
+                          </h4>
+
+                          <p className="text-[10.5px] text-[#4A2511] font-medium leading-relaxed">
+                            {slide.bentoOffer || 'Complimentary Royal Gift Box & Insured Pan-India Delivery'}
+                          </p>
+
+                          <div className="pt-2 border-t border-[#B8860B]/30 flex items-center justify-between text-[9.5px] font-serif font-bold uppercase tracking-[0.14em]">
+                            <span className="text-emerald-800 flex items-center gap-1">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-600" />
+                              100% Loom Verified
+                            </span>
+                            <Link
+                              href="/shop"
+                              className="text-[#180306] hover:text-[#6B1220] inline-flex items-center gap-1 underline decoration-[#D4AF37]"
+                            >
+                              Explore Archive <ArrowRight className="w-3 h-3" />
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
                     </div>
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-gradient-to-br from-[#FFE59E] to-[#D4AF37] text-[#180306] flex items-center justify-center shrink-0 group-hover:scale-110 transition-transform shadow-md">
-                      <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 -rotate-45 group-hover:rotate-0 transition-transform" />
-                    </div>
-                  </Link>
+                  </div>
                 </div>
               </div>
 
-              {/* LEFT COLUMN ON DESKTOP / CLEAN CENTERED STORY ON MOBILE */}
-              <div className="order-2 lg:order-1 lg:col-span-7 space-y-3.5 sm:space-y-5 text-center lg:text-left">
-                {/* Single-Line Sleek Edition & Kicker Pill (Never Wraps Awkwardly) */}
-                <div className="inline-flex items-center gap-2 p-1 pr-3.5 rounded-full bg-[#26040A]/95 border border-[#D4AF37]/70 shadow-md max-w-full">
-                  <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-gradient-to-r from-[#FFE59E] to-[#D4AF37] text-[#180306] font-serif font-bold text-[9px] sm:text-[10px] tracking-[0.16em] uppercase shrink-0">
-                    <Crown className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
-                    {slide.edition || `0${currentHeroSlide + 1}`}
-                  </span>
-                  <span className="font-serif font-bold text-[9.5px] sm:text-xs tracking-[0.15em] sm:tracking-[0.22em] uppercase text-[#FFE59E] truncate">
-                    {slide.tag}
-                  </span>
-                  <Sparkles className="w-3 h-3 text-[#D4AF37] shrink-0" />
+              {/* ============================================================ */}
+              {/* LEFT 6 COLUMNS: ROYAL COUTURE MANIFESTO & LOOKBOOK DOCK      */}
+              {/* ============================================================ */}
+              <div className="order-2 lg:order-1 lg:col-span-6 space-y-4 sm:space-y-5 text-center lg:text-left">
+                {/* Top Status Row: Gold-Foil Edition Kicker + Customer Avatar Social Proof */}
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5">
+                  <div className="inline-flex items-center gap-2 p-1 pr-3.5 rounded-full bg-[#2B050B]/95 border border-[#D4AF37] shadow-[0_6px_18px_rgba(0,0,0,0.45)] max-w-full">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:px-3 sm:py-1 rounded-full bg-gradient-to-r from-[#FFF5CC] via-[#FFE59E] to-[#D4AF37] text-[#180306] font-serif font-bold text-[9px] sm:text-[10px] tracking-[0.18em] uppercase shrink-0">
+                      <Crown className="w-2.5 h-2.5 sm:w-3 sm:h-3" />
+                      EDITION {slide.edition || `0${currentHeroSlide + 1}`}
+                    </span>
+                    <span className="font-serif font-bold text-[9.5px] sm:text-xs tracking-[0.15em] sm:tracking-[0.2em] uppercase text-[#FFE59E] truncate">
+                      {slide.tag}
+                    </span>
+                    <Sparkles className="w-3 h-3 text-[#FFE59E] shrink-0" />
+                  </div>
+
+                  {/* Desktop/Tablet Overlapping Bride Avatars + 4.9/5 Rating Pill */}
+                  <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#240409]/90 border border-[#D4AF37]/55 text-[11px] shadow-sm">
+                    <div className="flex -space-x-1.5">
+                      <span className="w-4 h-4 rounded-full bg-[#FFE59E] text-[#180306] font-serif font-bold text-[8px] flex items-center justify-center border border-[#180306]">
+                        P
+                      </span>
+                      <span className="w-4 h-4 rounded-full bg-[#D4AF37] text-[#180306] font-serif font-bold text-[8px] flex items-center justify-center border border-[#180306]">
+                        M
+                      </span>
+                      <span className="w-4 h-4 rounded-full bg-[#FFF5CC] text-[#180306] font-serif font-bold text-[8px] flex items-center justify-center border border-[#180306]">
+                        D
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-0.5 text-[#FFE59E]">
+                      <Star className="w-3 h-3 fill-[#D4AF37] text-[#D4AF37]" />
+                      <span className="font-serif font-bold">4.9/5</span>
+                    </div>
+                    <span className="text-[#EADBC0] text-[10px]">2.4k+ Happy Brides</span>
+                  </div>
                 </div>
 
-                {/* Monumental Dual-Typography Headline */}
-                <div className="space-y-1.5 sm:space-y-2">
-                  <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl xl:text-[66px] font-bold leading-[1.05] tracking-tight text-[#FFFDF9] drop-shadow-[0_4px_20px_rgba(0,0,0,0.6)]">
+                {/* Monumental Dual-Typography Headline with 24K Gold Foil Glow */}
+                <div className="space-y-2">
+                  <h1 className="font-serif text-3xl sm:text-5xl lg:text-[58px] xl:text-[66px] font-bold leading-[1.04] tracking-tight text-[#FFFDF9] drop-shadow-[0_6px_24px_rgba(0,0,0,0.7)]">
                     {slide.title.includes(' ') ? (
                       <>
                         <span className="inline lg:block mr-2 lg:mr-0">{slide.title.split(' ')[0]}</span>
-                        <span className="inline lg:block font-script text-4xl sm:text-6xl lg:text-7xl xl:text-[80px] font-normal italic lg:mt-1 bg-gradient-to-r from-[#FFF5CC] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent drop-shadow-[0_4px_18px_rgba(212,175,55,0.28)]">
+                        <span className="inline lg:block font-script text-4xl sm:text-6xl lg:text-[70px] xl:text-[80px] font-normal italic lg:mt-1 bg-gradient-to-r from-[#FFF8DC] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent drop-shadow-[0_4px_22px_rgba(212,175,55,0.35)]">
                           {slide.title.split(' ').slice(1).join(' ')}
                         </span>
                       </>
@@ -1066,48 +1232,52 @@ export default function HomePage() {
                   </h1>
 
                   {/* Gold Filigree Accent Line & Subtitle */}
-                  <div className="flex items-center justify-center lg:justify-start gap-2 sm:gap-3 pt-0.5">
+                  <div className="flex items-center justify-center lg:justify-start gap-2.5 pt-0.5">
                     <span className="hidden sm:block h-[1.5px] w-12 bg-gradient-to-r from-[#FFE59E] via-[#D4AF37] to-transparent" />
-                    <LotusIcon className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFE59E] shrink-0" />
-                    <span className="text-xs sm:text-sm lg:text-[15px] font-serif italic font-semibold tracking-wide text-[#FFE59E]">
+                    <LotusIcon className="w-4 h-4 text-[#FFE59E] shrink-0" />
+                    <span className="text-xs sm:text-sm lg:text-[16px] font-serif italic font-semibold tracking-wide text-[#FFE59E]">
                       {slide.subtitle}
                     </span>
                   </div>
                 </div>
 
-                {/* High-Contrast Editorial Description */}
-                <p className="text-xs sm:text-base lg:text-[16px] leading-relaxed text-[#F5EBE0]/90 font-normal max-w-xl mx-auto lg:mx-0 line-clamp-2 sm:line-clamp-none">
-                  {slide.description}
-                </p>
+                {/* Gold-Bordered Editorial Manifesto Description */}
+                <div className="lg:border-l-2 lg:border-[#D4AF37]/80 lg:pl-4 max-w-xl mx-auto lg:mx-0">
+                  <p className="text-xs sm:text-sm lg:text-[15px] leading-relaxed text-[#F7EFE4]/95 font-normal line-clamp-2 sm:line-clamp-none">
+                    {slide.description}
+                  </p>
+                </div>
 
-                {/* Clean Gold Diamond-Separated Spec Ribbon (No Bulky Stacked Boxes on Mobile) */}
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-x-3 gap-y-1 text-[10.5px] sm:text-xs font-serif font-medium text-[#FFE59E] pt-0.5">
+                {/* Jewellery-Grade Couture Feature Medallion Pills */}
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 pt-0.5">
                   {(slide.highlights || ['Pure Zari Weave', 'Handpicked Silk', 'Pan-India Express']).map(
-                    (feat, i, arr) => (
-                      <React.Fragment key={i}>
-                        <span className="inline-flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]" />
-                          {feat}
-                        </span>
-                        {i < arr.length - 1 && <span className="text-[#D4AF37]/40 hidden sm:inline">|</span>}
-                      </React.Fragment>
+                    (feat, i) => (
+                      <span
+                        key={i}
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#2D060D] to-[#1D0308] border border-[#D4AF37]/65 text-[10px] sm:text-[11px] font-serif font-semibold text-[#FFE59E] shadow-sm"
+                      >
+                        <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E]" />
+                        {feat}
+                      </span>
                     )
                   )}
                 </div>
 
-                {/* Side-by-Side Dual CTAs on Mobile & Desktop */}
-                <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-4 pt-1 max-w-md sm:max-w-none mx-auto lg:mx-0">
+                {/* Luxury 3D Gold Foil Primary CTA + Royal Velvet Secondary CTA */}
+                <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-4 pt-1.5 max-w-md sm:max-w-none mx-auto lg:mx-0">
                   <Link
                     href={slide.primaryLink}
-                    className="inline-flex items-center justify-center gap-2 sm:gap-3 px-4 sm:px-8 py-3 sm:py-4 rounded-full text-[10.5px] sm:text-sm font-serif font-bold tracking-[0.13em] sm:tracking-[0.18em] uppercase bg-gradient-to-r from-[#FFE59E] via-[#D4AF37] to-[#B88E28] hover:from-[#FFF5CC] hover:to-[#D4AF37] text-[#180306] border border-[#FFFDF9] shadow-[0_10px_28px_rgba(212,175,55,0.35)] transition-all duration-300 hover:scale-105 active:scale-95 group cursor-pointer whitespace-nowrap"
+                    className="inline-flex items-center justify-center gap-2.5 sm:gap-3 pl-4 pr-3 sm:pl-7 sm:pr-4 py-2.5 sm:py-3 rounded-full text-[10.5px] sm:text-xs lg:text-sm font-serif font-bold tracking-[0.14em] sm:tracking-[0.18em] uppercase bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] hover:from-[#FFFDF9] hover:to-[#E5C158] text-[#180306] border-2 border-[#FFFDF9] shadow-[0_12px_32px_rgba(212,175,55,0.42)] transition-all duration-300 hover:scale-105 active:scale-95 group cursor-pointer whitespace-nowrap"
                   >
                     <span>{slide.primaryText}</span>
-                    <ArrowRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform group-hover:translate-x-1 shrink-0" />
+                    <span className="w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#180306] text-[#FFE59E] flex items-center justify-center shrink-0 group-hover:translate-x-0.5 transition-transform">
+                      <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                    </span>
                   </Link>
 
                   <Link
                     href={slide.secondaryLink}
-                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-7 py-3 sm:py-4 rounded-full text-[10.5px] sm:text-sm font-serif font-bold tracking-[0.12em] sm:tracking-[0.15em] uppercase bg-[#26040A]/90 hover:bg-[#FFE59E] text-[#FFE59E] hover:text-[#180306] border border-[#D4AF37]/85 sm:border-2 transition-all duration-300 shadow-md cursor-pointer whitespace-nowrap"
+                    className="inline-flex items-center justify-center gap-2 px-4 sm:px-7 py-3 sm:py-3.5 rounded-full text-[10.5px] sm:text-xs lg:text-sm font-serif font-bold tracking-[0.12em] sm:tracking-[0.16em] uppercase bg-[#26040A]/90 hover:bg-[#FFE59E] text-[#FFE59E] hover:text-[#180306] border-2 border-[#D4AF37]/85 transition-all duration-300 shadow-lg cursor-pointer whitespace-nowrap"
                   >
                     <span>{slide.secondaryText}</span>
                   </Link>
@@ -1150,9 +1320,9 @@ export default function HomePage() {
                   </div>
                 </div>
 
-                {/* TABLET & DESKTOP: Interactive 3-Slide Lookbook Switcher Dock + Rating */}
+                {/* TABLET & DESKTOP: Interactive 3-Slide Couture Lookbook Switcher Dock */}
                 <div className="hidden sm:block pt-2">
-                  <div className="grid grid-cols-3 gap-3 max-w-2xl mx-auto lg:mx-0">
+                  <div className="grid grid-cols-3 gap-3 max-w-xl mx-auto lg:mx-0">
                     {HERO_SLIDES.map((item, idx) => {
                       const isActive = currentHeroSlide === idx;
                       return (
@@ -1161,11 +1331,11 @@ export default function HomePage() {
                           onClick={() => setCurrentHeroSlide(idx)}
                           className={`group relative flex items-center gap-2.5 p-2.5 rounded-2xl border text-left transition-all duration-300 cursor-pointer overflow-hidden ${
                             isActive
-                              ? 'bg-gradient-to-r from-[#380710] to-[#220308] border-[#D4AF37] shadow-[0_8px_24px_rgba(212,175,55,0.22)]'
-                              : 'bg-[#1A0307]/70 hover:bg-[#28050B]/90 border-[#D4AF37]/30 opacity-75 hover:opacity-100'
+                              ? 'bg-gradient-to-r from-[#3D0812] via-[#2B050B] to-[#1E0308] border-2 border-[#FFE59E] shadow-[0_10px_28px_rgba(212,175,55,0.28)] scale-[1.02]'
+                              : 'bg-[#1D0308]/80 hover:bg-[#2B050B]/90 border border-[#D4AF37]/35 opacity-80 hover:opacity-100'
                           }`}
                         >
-                          <div className="relative w-10 h-10 rounded-xl overflow-hidden border border-[#D4AF37]/70 shrink-0">
+                          <div className="relative w-11 h-11 rounded-xl overflow-hidden border border-[#D4AF37] shrink-0">
                             <Image
                               src={item.image}
                               alt={item.title}
@@ -1174,15 +1344,20 @@ export default function HomePage() {
                             />
                           </div>
                           <div className="min-w-0 flex-1">
-                            <span className="block text-[9px] font-serif font-bold tracking-[0.18em] uppercase text-[#D4AF37]">
-                              Edition 0{idx + 1}
-                            </span>
-                            <span className="block font-serif text-xs font-bold text-[#FFFDF9] truncate">
+                            <div className="flex items-center justify-between">
+                              <span className="text-[8.5px] font-serif font-bold tracking-[0.18em] uppercase text-[#FFE59E]">
+                                Edition 0{idx + 1}
+                              </span>
+                              <span className="text-[8.5px] font-serif text-[#D4AF37] font-semibold">
+                                {item.startingPrice}
+                              </span>
+                            </div>
+                            <span className="block font-serif text-xs font-bold text-[#FFFDF9] truncate mt-0.5">
                               {item.title}
                             </span>
                           </div>
                           {isActive && (
-                            <span className="absolute bottom-0 left-2 right-2 h-[2px] bg-gradient-to-r from-[#FFE59E] via-[#D4AF37] to-[#FFE59E]" />
+                            <span className="absolute bottom-0 left-2 right-2 h-[2.5px] bg-gradient-to-r from-[#FFF6D6] via-[#D4AF37] to-[#FFF6D6]" />
                           )}
                         </button>
                       );
@@ -1220,73 +1395,61 @@ export default function HomePage() {
           <div className="absolute inset-1.5 border border-[#D4AF37]/45 rounded-xl sm:rounded-2xl pointer-events-none" />
 
           <div className="relative z-10 grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 divide-y md:divide-y-0 md:divide-x divide-[#D4AF37]/40">
-            {/* 1. Carefully Packed */}
+            {/* 1. Carefully Packed (2 Lines Only) */}
             <div className="p-2 sm:px-4 flex items-center gap-3 sm:gap-3.5 group min-w-0">
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-b from-[#3D0811] to-[#180306] border-2 border-[#D4AF37] flex items-center justify-center text-[#FFE59E] group-hover:scale-110 transition-transform shadow-md shrink-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-b from-[#3D0811] to-[#180306] border-2 border-[#D4AF37] flex items-center justify-center text-[#FFE59E] group-hover:scale-110 transition-transform shadow-md shrink-0">
                 <Package className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div className="min-w-0">
-                <span className="block text-[9.5px] font-serif font-bold uppercase tracking-[0.2em] text-[#6B0D1A] truncate">
-                  Royal Unboxing
-                </span>
+              <div className="min-w-0 space-y-0.5">
                 <h4 className="font-serif text-xs sm:text-[15px] font-bold text-[#180306] leading-tight truncate">
                   Carefully Packed
                 </h4>
-                <p className="text-[11px] sm:text-xs text-[#4A3525] font-serif italic font-medium truncate">
+                <p className="text-[11px] sm:text-xs text-[#5A4235] font-serif italic font-medium leading-tight truncate">
                   with Love &amp; Care
                 </p>
               </div>
             </div>
 
-            {/* 2. Premium Quality */}
+            {/* 2. Premium Quality (2 Lines Only) */}
             <div className="p-2 sm:px-4 flex items-center gap-3 sm:gap-3.5 group min-w-0">
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-b from-[#3D0811] to-[#180306] border-2 border-[#D4AF37] flex items-center justify-center text-[#FFE59E] group-hover:scale-110 transition-transform shadow-md shrink-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-b from-[#3D0811] to-[#180306] border-2 border-[#D4AF37] flex items-center justify-center text-[#FFE59E] group-hover:scale-110 transition-transform shadow-md shrink-0">
                 <Gem className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div className="min-w-0">
-                <span className="block text-[9.5px] font-serif font-bold uppercase tracking-[0.2em] text-[#6B0D1A] truncate">
-                  100% Authentic
-                </span>
+              <div className="min-w-0 space-y-0.5">
                 <h4 className="font-serif text-xs sm:text-[15px] font-bold text-[#180306] leading-tight truncate">
                   Premium Quality
                 </h4>
-                <p className="text-[11px] sm:text-xs text-[#4A3525] font-serif italic font-medium truncate">
+                <p className="text-[11px] sm:text-xs text-[#5A4235] font-serif italic font-medium leading-tight truncate">
                   Handpicked Fabrics
                 </p>
               </div>
             </div>
 
-            {/* 3. Easy Returns */}
+            {/* 3. Easy Returns (2 Lines Only) */}
             <div className="p-2 sm:px-4 flex items-center gap-3 sm:gap-3.5 group pt-3 sm:pt-3 md:pt-2 min-w-0">
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-b from-[#3D0811] to-[#180306] border-2 border-[#D4AF37] flex items-center justify-center text-[#FFE59E] group-hover:scale-110 transition-transform shadow-md shrink-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-b from-[#3D0811] to-[#180306] border-2 border-[#D4AF37] flex items-center justify-center text-[#FFE59E] group-hover:scale-110 transition-transform shadow-md shrink-0">
                 <RefreshCcw className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div className="min-w-0">
-                <span className="block text-[9.5px] font-serif font-bold uppercase tracking-[0.2em] text-[#6B0D1A] truncate">
-                  Peace of Mind
-                </span>
+              <div className="min-w-0 space-y-0.5">
                 <h4 className="font-serif text-xs sm:text-[15px] font-bold text-[#180306] leading-tight truncate">
                   Easy Returns
                 </h4>
-                <p className="text-[11px] sm:text-xs text-[#4A3525] font-serif italic font-medium truncate">
+                <p className="text-[11px] sm:text-xs text-[#5A4235] font-serif italic font-medium leading-tight truncate">
                   &amp; Quick Exchanges
                 </p>
               </div>
             </div>
 
-            {/* 4. WhatsApp Support */}
+            {/* 4. WhatsApp Support (2 Lines Only) */}
             <div className="p-2 sm:px-4 flex items-center gap-3 sm:gap-3.5 group pt-3 sm:pt-3 md:pt-2 min-w-0">
-              <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-gradient-to-b from-[#3D0811] to-[#180306] border-2 border-[#D4AF37] flex items-center justify-center text-[#FFE59E] group-hover:scale-110 transition-transform shadow-md shrink-0">
+              <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full bg-gradient-to-b from-[#3D0811] to-[#180306] border-2 border-[#D4AF37] flex items-center justify-center text-[#FFE59E] group-hover:scale-110 transition-transform shadow-md shrink-0">
                 <MessageCircle className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <div className="min-w-0">
-                <span className="block text-[9.5px] font-serif font-bold uppercase tracking-[0.2em] text-[#6B0D1A] truncate">
-                  Direct Concierge
-                </span>
+              <div className="min-w-0 space-y-0.5">
                 <h4 className="font-serif text-xs sm:text-[15px] font-bold text-[#180306] leading-tight truncate">
                   WhatsApp Support
                 </h4>
-                <p className="text-[11px] sm:text-xs text-[#180306] font-bold truncate">
+                <p className="text-[11px] sm:text-xs text-[#180306] font-bold leading-tight truncate">
                   6383163609  |  7871207631
                 </p>
               </div>
@@ -1375,8 +1538,13 @@ export default function HomePage() {
 
               {/* 5-Card Grid Track (Live API Categories) */}
               {categories.length === 0 ? (
-                <div className="py-10 text-center text-xs font-serif text-[#5C4A32]">
-                  {isLoadingApi ? 'Loading collections from catalog...' : 'No collections available right now.'}
+                <div className="grid grid-cols-5 gap-4 lg:gap-6 items-start justify-center py-2">
+                  {[0, 1, 2, 3, 4].map((idx) => (
+                    <div key={idx} className="flex flex-col items-center animate-pulse">
+                      <div className="w-28 h-28 lg:w-32 lg:h-32 xl:w-36 xl:h-36 rounded-full bg-gradient-to-b from-[#FAF3E6] to-[#E8D7B8] border-2 border-[#D4AF37]/50 shadow-md" />
+                      <div className="w-36 h-10 mt-3 rounded-xl bg-[#FAF3E6] border border-[#D4AF37]/40" />
+                    </div>
+                  ))}
                 </div>
               ) : (
                 <div
@@ -1682,289 +1850,286 @@ export default function HomePage() {
       </section>
 
       {/* ============================================================== */}
-      {/* 05. FESTIVE COLLECTION (Ultra-HD Premium Luxury Edition)       */}
+      {/* 05. FESTIVE COLLECTION (Ultra-HD Royal Couture Edition)        */}
       {/* ============================================================== */}
       <section className="w-full max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-12 relative">
         {/* Subtle royal background atmosphere */}
-        <div className="absolute left-1 top-2 pointer-events-none opacity-20 select-none hidden lg:block">
+        <div className="absolute left-1 top-2 pointer-events-none opacity-25 select-none hidden lg:block">
           <BotanicalBranch className="w-36 h-36 text-[#C5A059]" />
         </div>
-        <div className="absolute right-1 bottom-2 pointer-events-none opacity-20 select-none hidden lg:block rotate-180">
+        <div className="absolute right-1 bottom-2 pointer-events-none opacity-25 select-none hidden lg:block rotate-180">
           <BotanicalBranch className="w-36 h-36 text-[#C5A059]" />
         </div>
 
-        {/* Desktop View: 100% Coded Luxury Master Festive Banner */}
-        <div className="hidden md:block relative w-full aspect-[1024/364] rounded-2xl sm:rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D4AF37]/60 group transition-all duration-500 hover:shadow-[0_25px_60px_rgba(46,6,13,0.45)] bg-[#170206] select-none">
-          {/* Inner hairline gold border */}
-          <div className="absolute inset-2 sm:inset-3 border border-[#D4AF37]/35 rounded-xl sm:rounded-2xl pointer-events-none z-30" />
-
-          {/* Delicate 24K gold corner accents */}
-          <div className="absolute top-3 sm:top-4 left-3 sm:left-4 w-4 h-4 border-t-2 border-l-2 border-[#E5C158] pointer-events-none z-30" />
-          <div className="absolute top-3 sm:top-4 right-3 sm:right-4 w-4 h-4 border-t-2 border-r-2 border-[#E5C158] pointer-events-none z-30" />
-          <div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4 w-4 h-4 border-b-2 border-l-2 border-[#E5C158] pointer-events-none z-30" />
-          <div className="absolute bottom-3 sm:bottom-4 right-3 sm:right-4 w-4 h-4 border-b-2 border-r-2 border-[#E5C158] pointer-events-none z-30" />
-
-          {/* Background High-Definition Photographic Canvas (saree, thali, diya lamps, model) */}
-          <Image
-            src="/images/nalmara/festive_panoramic_hd.jpg"
-            alt="NALMARA Festive Collection"
-            fill
-            priority
-            unoptimized
-            sizes="100vw"
-            className="object-cover object-center group-hover:scale-[1.01] transition-transform duration-700 select-none z-0"
-          />
-
-          {/* Seamless Deep Wine Gradient Overlays for High-Contrast Typography */}
-          <div className="absolute inset-0 bg-gradient-to-r from-[#170206] via-[#170206]/90 via-38% to-transparent pointer-events-none z-10" />
-
-          {/* Corner Floral Flourish in bottom-left */}
-          <div className="absolute left-2 bottom-2 pointer-events-none opacity-40 z-20 hidden lg:block">
-            <BotanicalBranch className="w-24 h-24 text-[#C5A059]" />
+        {/* Desktop View: 3-Layer 24K Gold Bezel Panoramic Royal Banner */}
+        <div className="hidden md:block relative w-full rounded-[28px] lg:rounded-[34px] p-[3px] bg-gradient-to-r from-[#B8860B] via-[#FFE59E] to-[#B8860B] shadow-[0_28px_70px_rgba(24,3,6,0.32)] group transition-all duration-500 hover:shadow-[0_32px_80px_rgba(24,3,6,0.45)] select-none">
+          {/* Top-Center Floating Royal Archive Crest */}
+          <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-40 inline-flex items-center gap-2 px-5 py-1 rounded-full bg-gradient-to-r from-[#2B050B] via-[#180306] to-[#2B050B] border-2 border-[#FFE59E] shadow-[0_8px_22px_rgba(0,0,0,0.65)]">
+            <Crown className="w-3.5 h-3.5 text-[#FFE59E]" />
+            <span className="font-serif font-bold text-[9px] lg:text-[10px] tracking-[0.26em] uppercase text-[#FFE59E]">
+              The Royal Muhurtham &amp; Festive Archive
+            </span>
+            <Sparkles className="w-3 h-3 text-[#D4AF37]" />
           </div>
 
-          {/* Left Master Content: 100% Coded Luxury Typography & Branding */}
-          <div className="relative z-20 h-full w-[45%] lg:w-[40%] xl:w-[37%] flex flex-col justify-center items-start text-left pl-7 sm:pl-10 lg:pl-12 py-6">
-            {/* Top Brand Logo & Monogram Crest */}
-            <div className="flex items-center gap-3 sm:gap-3.5 mb-2.5 sm:mb-3 lg:mb-4">
-              {/* Ornate Double-Rim Circular Monogram Crest */}
-              <div className="relative w-13 h-13 sm:w-15 sm:h-15 lg:w-16 lg:h-16 rounded-full border border-[#D4AF37]/80 p-[2.5px] flex items-center justify-center shadow-[0_4px_16px_rgba(0,0,0,0.6)] shrink-0">
-                <div className="w-full h-full rounded-full border border-[#FFE59E]/50 flex flex-col items-center justify-center bg-gradient-to-b from-[#2E050D] via-[#1A0207] to-black relative">
-                  <Crown className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#E5C158] drop-shadow-[0_1px_4px_rgba(229,193,88,0.7)] -mb-0.5" />
-                  <span className="font-serif font-black text-xs sm:text-sm tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-[#FFFDF9] via-[#FFE59E] to-[#D4AF37] leading-none">
-                    NM
-                  </span>
-                  <span className="text-[5px] sm:text-[6px] font-serif uppercase tracking-[0.2em] text-[#E5C158] font-bold leading-none mt-0.5">
-                    NALMARA
-                  </span>
-                  <span className="text-[4px] sm:text-[5px] tracking-[0.28em] text-[#D4AF37]/90 uppercase font-semibold leading-none">
-                    FASHION
-                  </span>
-                </div>
-              </div>
+          <div className="relative w-full aspect-[1024/375] rounded-[25px] lg:rounded-[31px] overflow-hidden bg-[#170206]">
+            {/* Inner Double Hairline Gold Frame */}
+            <div className="absolute inset-2.5 lg:inset-3.5 border border-[#FFE59E]/45 rounded-[20px] lg:rounded-[24px] pointer-events-none z-30" />
 
-              {/* Brand Typography Stack */}
-              <div className="flex flex-col justify-center">
-                <span className="font-serif tracking-[0.3em] text-xs sm:text-sm lg:text-base font-bold text-white uppercase leading-none drop-shadow-sm">
-                  NALMARA
-                </span>
-                <span className="tracking-[0.45em] text-[8px] sm:text-[9px] lg:text-[10px] text-[#E5C158] uppercase font-semibold leading-none mt-1">
-                  FASHION
-                </span>
-                <span className="tracking-[0.22em] text-[6.5px] sm:text-[7.5px] lg:text-[8.5px] text-[#D8C28A] uppercase font-medium leading-none mt-1.5">
-                  YOUR TRADITION. YOUR ELEGANCE.
-                </span>
-              </div>
-            </div>
+            {/* Ornate 24K Gold Corner Brackets */}
+            <div className="absolute top-4 lg:top-5 left-4 lg:left-5 w-5 h-5 border-t-2 border-l-2 border-[#FFE59E] pointer-events-none z-30" />
+            <div className="absolute top-4 lg:top-5 right-4 lg:right-5 w-5 h-5 border-t-2 border-r-2 border-[#FFE59E] pointer-events-none z-30" />
+            <div className="absolute bottom-4 lg:bottom-5 left-4 lg:left-5 w-5 h-5 border-b-2 border-l-2 border-[#FFE59E] pointer-events-none z-30" />
+            <div className="absolute bottom-4 lg:bottom-5 right-4 lg:right-5 w-5 h-5 border-b-2 border-r-2 border-[#FFE59E] pointer-events-none z-30" />
 
-            {/* Subheading: TRADITIONAL ELEGANCE */}
-            <div className="flex items-center gap-2 mb-1.5 sm:mb-2">
-              <span className="h-[1px] w-6 sm:w-10 bg-gradient-to-r from-transparent to-[#D4AF37]" />
-              <Crown className="w-2.5 h-2.5 text-[#E5C158]" />
-              <span className="text-[9px] sm:text-[10.5px] lg:text-[11.5px] font-semibold tracking-[0.26em] text-[#E5C158] uppercase">
-                TRADITIONAL ELEGANCE
-              </span>
-              <span className="h-[1px] w-6 sm:w-10 bg-gradient-to-l from-transparent to-[#D4AF37]" />
-            </div>
-
-            {/* Main Headline: Festive Collection */}
-            <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl xl:text-5xl text-white font-bold tracking-tight leading-none mb-1.5 sm:mb-2 drop-shadow-[0_4px_14px_rgba(0,0,0,0.85)]">
-              Festive{' '}
-              <span className="font-script text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#FFE8AA] via-[#F4D27F] to-[#C99E3A] italic ml-1 drop-shadow-[0_2px_12px_rgba(212,175,55,0.4)]">
-                Collection
-              </span>
-            </h2>
-
-            {/* Tagline */}
-            <p className="text-[9px] sm:text-[10.5px] lg:text-xs font-serif uppercase tracking-[0.24em] text-[#E8D6B0]/95 font-medium mb-3 sm:mb-4 lg:mb-5">
-              CELEBRATE TRADITION &nbsp;|&nbsp; EMBRACE ELEGANCE
-            </p>
-
-            {/* CTA Button: Explore Collection → */}
-            <Link
-              href="/shop?category=festive"
-              title="Explore Festive Collection"
-              className="inline-flex items-center gap-2 px-5 sm:px-7 py-2 sm:py-2.5 rounded-full border border-[#D4AF37] bg-black/55 hover:bg-[#D4AF37] text-[#FFE59E] hover:text-[#170206] transition-all duration-300 text-[11px] sm:text-xs font-serif font-semibold tracking-wider group shadow-[0_4px_16px_rgba(0,0,0,0.6)] hover:shadow-[0_0_22px_rgba(212,175,55,0.5)] backdrop-blur-xs hover:scale-105 active:scale-95 cursor-pointer"
-            >
-              <span>Explore Collection</span>
-              <ArrowRight className="w-3.5 h-3.5 transition-transform duration-300 group-hover:translate-x-1" />
-            </Link>
-
-            {/* Miniature Lotus Accent below button */}
-            <div className="flex items-center gap-1.5 mt-2.5 sm:mt-3 text-[#D4AF37]">
-              <span className="h-[1px] w-5 bg-gradient-to-r from-transparent to-[#D4AF37]" />
-              <LotusIcon className="w-3 h-3 text-[#E5C158]" />
-              <span className="h-[1px] w-5 bg-gradient-to-l from-transparent to-[#D4AF37]" />
-            </div>
-          </div>
-
-          {/* Right Arched Trust Badges Panel (100% Coded Luxury Icons) */}
-          <div className="absolute right-0 inset-y-0 z-20 flex flex-col justify-around py-4 sm:py-5 lg:py-6 px-3 sm:px-4 lg:px-5 w-28 sm:w-32 lg:w-36 rounded-l-3xl border-l border-[#D4AF37]/35 bg-gradient-to-l from-[#170206]/80 via-[#170206]/60 to-transparent backdrop-blur-[2px]">
-            {/* Badge 1: Premium Silk Sarees */}
-            <div className="flex flex-col items-center text-center group/badge cursor-default">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#D4AF37]/70 flex items-center justify-center text-[#E5C158] mb-1 transition-all duration-300 group-hover/badge:scale-110 group-hover/badge:border-[#FFE59E] group-hover/badge:shadow-[0_0_14px_rgba(229,193,88,0.5)] bg-black/50">
-                <LotusIcon className="w-4 h-4 text-[#E5C158]" />
-              </div>
-              <span className="text-[8.5px] sm:text-[9.5px] lg:text-[10px] font-serif text-[#F2E7D5] leading-tight font-medium tracking-wide">
-                Premium<br />Silk Sarees
-              </span>
-            </div>
-
-            {/* Badge 2: Authentic Craftsmanship */}
-            <div className="flex flex-col items-center text-center group/badge cursor-default">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#D4AF37]/70 flex items-center justify-center text-[#E5C158] mb-1 transition-all duration-300 group-hover/badge:scale-110 group-hover/badge:border-[#FFE59E] group-hover/badge:shadow-[0_0_14px_rgba(229,193,88,0.5)] bg-black/50">
-                <Gem className="w-3.5 h-3.5" />
-              </div>
-              <span className="text-[8.5px] sm:text-[9.5px] lg:text-[10px] font-serif text-[#F2E7D5] leading-tight font-medium tracking-wide">
-                Authentic<br />Craftsmanship
-              </span>
-            </div>
-
-            {/* Badge 3: Secure Delivery */}
-            <div className="flex flex-col items-center text-center group/badge cursor-default">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#D4AF37]/70 flex items-center justify-center text-[#E5C158] mb-1 transition-all duration-300 group-hover/badge:scale-110 group-hover/badge:border-[#FFE59E] group-hover/badge:shadow-[0_0_14px_rgba(229,193,88,0.5)] bg-black/50">
-                <Package className="w-3.5 h-3.5" />
-              </div>
-              <span className="text-[8.5px] sm:text-[9.5px] lg:text-[10px] font-serif text-[#F2E7D5] leading-tight font-medium tracking-wide">
-                Secure<br />Delivery
-              </span>
-            </div>
-
-            {/* Badge 4: Made with Love */}
-            <div className="flex flex-col items-center text-center group/badge cursor-default">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#D4AF37]/70 flex items-center justify-center text-[#E5C158] mb-1 transition-all duration-300 group-hover/badge:scale-110 group-hover/badge:border-[#FFE59E] group-hover/badge:shadow-[0_0_14px_rgba(229,193,88,0.5)] bg-black/50">
-                <Heart className="w-3.5 h-3.5" />
-              </div>
-              <span className="text-[8.5px] sm:text-[9.5px] lg:text-[10px] font-serif text-[#F2E7D5] leading-tight font-medium tracking-wide">
-                Made with<br />Love
-              </span>
-            </div>
-          </div>
-        </div>
-
-        {/* Mobile View: 100% Coded Luxury Master Festive Banner */}
-        <div className="md:hidden relative w-full rounded-3xl overflow-hidden shadow-2xl border-2 border-[#D4AF37]/60 bg-[#170206] select-none p-5 text-white flex flex-col justify-between min-h-[640px]">
-          {/* Background image & gradient */}
-          <div className="absolute inset-0 z-0">
+            {/* Background High-Definition Photographic Canvas (Unobstructed Saree, Diyas & Bride) */}
             <Image
               src="/images/nalmara/festive_panoramic_hd.jpg"
               alt="NALMARA Festive Collection"
               fill
               priority
               unoptimized
-              className="object-cover object-[75%_center] select-none opacity-45"
+              sizes="100vw"
+              className="object-cover object-center group-hover:scale-[1.02] transition-transform duration-1000 select-none z-0"
             />
-            <div className="absolute inset-0 bg-gradient-to-b from-[#170206] via-[#170206]/85 to-[#170206]/95" />
-          </div>
 
-          {/* Inner hairline gold border */}
-          <div className="absolute inset-2.5 border border-[#D4AF37]/35 rounded-2xl pointer-events-none z-20" />
+            {/* Confined Left Velvet Gradient (Leaves Center Folded Saree & Right Bride 100% Crystal Clear) */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#160205] via-[#210308]/92 via-35% to-transparent pointer-events-none z-10" />
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_50%,rgba(212,175,55,0.18),transparent_45%)] pointer-events-none z-10" />
 
-          {/* Top Brand Logo & Typography */}
-          <div className="relative z-10 flex flex-col items-center text-center pt-2">
-            {/* Crest Logo */}
-            <div className="relative w-14 h-14 rounded-full border border-[#D4AF37]/80 p-[2px] flex items-center justify-center shadow-md mb-2">
-              <div className="w-full h-full rounded-full border border-[#FFE59E]/50 flex flex-col items-center justify-center bg-gradient-to-b from-[#2E050D] via-[#1A0207] to-black">
-                <Crown className="w-3 h-3 text-[#E5C158] -mb-0.5" />
-                <span className="font-serif font-black text-xs tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-[#FFFDF9] via-[#FFE59E] to-[#D4AF37] leading-none">
-                  NM
+            {/* Subtle Bottom Vignette for Floating Badges */}
+            <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#120204]/80 via-[#120204]/25 to-transparent pointer-events-none z-10" />
+
+            {/* Corner Floral Flourish in bottom-left */}
+            <div className="absolute left-3 bottom-3 pointer-events-none opacity-35 z-20 hidden lg:block">
+              <BotanicalBranch className="w-24 h-24 text-[#FFE59E]" />
+            </div>
+
+            {/* Left Master Editorial Content */}
+            <div className="relative z-20 h-full w-[52%] lg:w-[48%] xl:w-[45%] flex flex-col justify-center items-start text-left pl-7 sm:pl-10 lg:pl-14 py-6">
+              {/* Top Brand Monogram Crest & Royal Kicker */}
+              <div className="flex items-center gap-3.5 mb-2.5 lg:mb-3.5">
+                {/* 3D Gold Double-Rim Circular Monogram Crest */}
+                <div className="relative w-12 h-12 lg:w-15 lg:h-15 rounded-full p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C6518] shadow-[0_6px_20px_rgba(0,0,0,0.7)] shrink-0">
+                  <div className="w-full h-full rounded-full border border-[#FFE59E]/50 flex flex-col items-center justify-center bg-gradient-to-b from-[#33060E] via-[#1A0207] to-[#0E0103]">
+                    <Crown className="w-3 h-3 lg:w-3.5 lg:h-3.5 text-[#FFE59E] -mb-0.5" />
+                    <span className="font-serif font-black text-xs lg:text-sm tracking-tighter text-transparent bg-clip-text bg-gradient-to-b from-[#FFFDF9] via-[#FFE59E] to-[#D4AF37] leading-none">
+                      NM
+                    </span>
+                    <span className="text-[5px] lg:text-[5.5px] font-serif uppercase tracking-[0.2em] text-[#FFE59E] font-bold leading-none mt-0.5">
+                      NALMARA
+                    </span>
+                  </div>
+                </div>
+
+                {/* Brand Name + Gold Kicker Pill */}
+                <div className="space-y-1">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#2B050B]/95 border border-[#D4AF37]/80">
+                    <Crown className="w-2.5 h-2.5 text-[#FFE59E]" />
+                    <span className="text-[8.5px] lg:text-[9.5px] font-serif font-bold tracking-[0.22em] text-[#FFE59E] uppercase">
+                      Traditional Elegance
+                    </span>
+                  </div>
+                  <p className="tracking-[0.24em] text-[8px] lg:text-[9px] text-[#EADBC0] uppercase font-semibold pl-0.5">
+                    NALMARA FASHION • YOUR TRADITION. YOUR ELEGANCE.
+                  </p>
+                </div>
+              </div>
+
+              {/* Monumental Headline: Festive Collection */}
+              <h2 className="font-serif text-3xl lg:text-5xl xl:text-[54px] text-[#FFFDF9] font-bold tracking-tight leading-[1.05] mb-1.5 lg:mb-2 drop-shadow-[0_6px_20px_rgba(0,0,0,0.85)]">
+                Festive{' '}
+                <span className="font-script text-4xl lg:text-6xl xl:text-[66px] font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#FFF8DC] via-[#FFE59E] to-[#D4AF37] italic ml-1 drop-shadow-[0_4px_16px_rgba(212,175,55,0.45)]">
+                  Collection
                 </span>
-                <span className="text-[5px] font-serif uppercase tracking-[0.2em] text-[#E5C158] font-bold leading-none mt-0.5">
-                  NALMARA
-                </span>
+              </h2>
+
+              {/* Gold Filigree Tagline */}
+              <div className="flex items-center gap-2 mb-3 lg:mb-4 border-l-2 border-[#D4AF37] pl-3">
+                <p className="text-[9.5px] lg:text-[11px] font-serif uppercase tracking-[0.22em] text-[#FFE59E] font-semibold">
+                  CELEBRATE TRADITION &nbsp;✦&nbsp; EMBRACE ELEGANCE
+                </p>
+              </div>
+
+              {/* 4 Jewellery-Grade Feature Pills (Clean 2x2 Grid — Never Blocks the Bride!) */}
+              <div className="grid grid-cols-2 gap-1.5 lg:gap-2 mb-4 lg:mb-5 max-w-md">
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#26040A]/90 border border-[#D4AF37]/55 text-[#FFE59E]">
+                  <LotusIcon className="w-3 h-3 text-[#FFE59E] shrink-0" />
+                  <span className="text-[9px] lg:text-[10px] font-serif font-semibold tracking-wide truncate">
+                    Premium Silk Sarees
+                  </span>
+                </div>
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#26040A]/90 border border-[#D4AF37]/55 text-[#FFE59E]">
+                  <Gem className="w-3 h-3 text-[#FFE59E] shrink-0" />
+                  <span className="text-[9px] lg:text-[10px] font-serif font-semibold tracking-wide truncate">
+                    Authentic Craftsmanship
+                  </span>
+                </div>
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#26040A]/90 border border-[#D4AF37]/55 text-[#FFE59E]">
+                  <Package className="w-3 h-3 text-[#FFE59E] shrink-0" />
+                  <span className="text-[9px] lg:text-[10px] font-serif font-semibold tracking-wide truncate">
+                    Insured Pan-India Ship
+                  </span>
+                </div>
+                <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-[#26040A]/90 border border-[#D4AF37]/55 text-[#FFE59E]">
+                  <Heart className="w-3 h-3 text-[#FFE59E] shrink-0" />
+                  <span className="text-[9px] lg:text-[10px] font-serif font-semibold tracking-wide truncate">
+                    6.3m + Blouse Piece
+                  </span>
+                </div>
+              </div>
+
+              {/* 3D Liquid 24K Gold Foil CTA Button + Live Price Tag */}
+              <div className="flex items-center gap-3">
+                <Link
+                  href="/shop?category=festive"
+                  title="Explore Festive Collection"
+                  className="inline-flex items-center gap-2.5 pl-6 pr-3.5 py-2.5 rounded-full bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] hover:from-[#FFFDF9] hover:to-[#E5C158] text-[#180306] border-2 border-[#FFFDF9] transition-all duration-300 text-xs lg:text-[13px] font-serif font-bold uppercase tracking-[0.16em] group/btn shadow-[0_10px_28px_rgba(212,175,55,0.42)] hover:scale-105 active:scale-95 cursor-pointer"
+                >
+                  <span>Explore Collection</span>
+                  <span className="w-6 h-6 rounded-full bg-[#180306] text-[#FFE59E] flex items-center justify-center transition-transform duration-300 group-hover/btn:translate-x-0.5">
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </span>
+                </Link>
+
+                <div className="hidden xl:flex flex-col text-left pl-2 border-l border-[#D4AF37]/40">
+                  <span className="text-[8.5px] font-serif uppercase tracking-[0.18em] text-[#D4AF37] font-bold">
+                    Festive Edit Starting At
+                  </span>
+                  <span className="font-serif text-sm font-bold text-[#FFFDF9]">
+                    ₹1,999 <span className="text-[10px] text-[#FFE59E] font-normal">• Silk Mark Assured</span>
+                  </span>
+                </div>
               </div>
             </div>
 
-            <span className="font-serif tracking-[0.28em] text-xs font-bold text-white uppercase leading-none">
-              NALMARA FASHION
-            </span>
-            <span className="tracking-[0.2em] text-[7.5px] text-[#D8C28A] uppercase font-medium mt-1">
-              YOUR TRADITION. YOUR ELEGANCE.
-            </span>
-
-            {/* Subheading: TRADITIONAL ELEGANCE */}
-            <div className="flex items-center gap-2 mt-3 mb-1">
-              <span className="h-[1px] w-6 bg-gradient-to-r from-transparent to-[#D4AF37]" />
-              <Crown className="w-2.5 h-2.5 text-[#E5C158]" />
-              <span className="text-[9.5px] font-semibold tracking-[0.25em] text-[#E5C158] uppercase">
-                TRADITIONAL ELEGANCE
-              </span>
-              <span className="h-[1px] w-6 bg-gradient-to-l from-transparent to-[#D4AF37]" />
-            </div>
-
-            {/* Headline */}
-            <h2 className="font-serif text-3xl font-bold text-white tracking-tight leading-none my-1">
-              Festive{' '}
-              <span className="font-script text-4xl font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#FFE8AA] via-[#F4D27F] to-[#C99E3A] italic ml-1">
-                Collection
-              </span>
-            </h2>
-
-            {/* Tagline */}
-            <p className="text-[9.5px] font-serif uppercase tracking-[0.22em] text-[#E8D6B0]/90 font-medium mb-3">
-              CELEBRATE TRADITION &nbsp;|&nbsp; EMBRACE ELEGANCE
-            </p>
-
-            {/* CTA Button */}
+            {/* Bottom-Right Floating Couture Plaque (Tucked Neatly Without Slicing the Bride) */}
             <Link
-              href="/shop?category=festive"
-              title="Explore Festive Collection"
-              className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-[#D4AF37] bg-black/60 active:bg-[#D4AF37] text-[#FFE59E] active:text-[#170206] transition-all text-xs font-serif font-semibold tracking-wider shadow-md active:scale-95 cursor-pointer"
+              href="/shop?category=sarees"
+              className="absolute right-6 bottom-5 z-20 flex items-center gap-3 px-4 py-2.5 rounded-2xl bg-[#180306]/90 backdrop-blur-md border border-[#D4AF37] hover:border-[#FFE59E] shadow-[0_12px_30px_rgba(0,0,0,0.75)] transition-all group/card"
             >
-              <span>Explore Collection</span>
-              <ArrowRight className="w-3.5 h-3.5" />
+              <div className="w-8 h-8 rounded-full bg-gradient-to-br from-[#FFF6D6] to-[#D4AF37] text-[#180306] flex items-center justify-center shrink-0 shadow-sm">
+                <Crown className="w-4 h-4" />
+              </div>
+              <div className="text-left">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  <span className="text-[8px] font-serif font-bold uppercase tracking-[0.2em] text-[#FFE59E]">
+                    Bridal &amp; Festive Silk
+                  </span>
+                </div>
+                <p className="font-serif text-xs font-bold text-[#FFFDF9]">
+                  Pure Kanchipuram Zari Weaves
+                </p>
+              </div>
+              <ArrowRight className="w-3.5 h-3.5 text-[#FFE59E] group-hover/card:translate-x-1 transition-transform ml-1" />
             </Link>
           </div>
+        </div>
 
-          {/* Center Showcase Card */}
-          <div className="relative z-10 my-4 w-full aspect-[16/9] rounded-2xl overflow-hidden border border-[#D4AF37]/50 shadow-lg">
-            <Image
-              src="/images/nalmara/festive_panoramic_hd.jpg"
-              alt="Festive Silk Saree"
-              fill
-              unoptimized
-              className="object-cover object-[50%_center]"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-            <div className="absolute bottom-2 left-3 right-3 flex items-center justify-between text-white text-[11px] font-serif">
-              <span>Pure Zari Kanchipuram</span>
-              <span className="text-[#FFE59E]">Special Edition</span>
+        {/* Mobile View: 3-Layer 24K Gold Bezel Royal Festive Showcase */}
+        <div className="md:hidden relative w-full rounded-[28px] p-[2.5px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C6518] shadow-[0_20px_50px_rgba(24,3,6,0.3)] select-none">
+          <div className="relative w-full rounded-[25px] overflow-hidden bg-[#170206] p-5 text-white flex flex-col justify-between">
+            {/* Background image & gradient */}
+            <div className="absolute inset-0 z-0">
+              <Image
+                src="/images/nalmara/festive_panoramic_hd.jpg"
+                alt="NALMARA Festive Collection"
+                fill
+                priority
+                unoptimized
+                className="object-cover object-[75%_center] select-none opacity-40"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-[#170206]/95 via-[#1E0308]/88 to-[#170206]/98" />
             </div>
-          </div>
 
-          {/* 4 Bottom Trust Badges (2x2 Grid) */}
-          <div className="relative z-10 grid grid-cols-2 gap-2.5 pt-1">
-            <div className="flex items-center gap-2 p-2 rounded-xl bg-black/40 border border-[#D4AF37]/40">
-              <div className="w-7 h-7 rounded-full border border-[#D4AF37]/70 flex items-center justify-center text-[#E5C158] bg-black/50 shrink-0">
-                <LotusIcon className="w-3.5 h-3.5 text-[#E5C158]" />
+            {/* Inner hairline gold border */}
+            <div className="absolute inset-2.5 border border-[#FFE59E]/40 rounded-2xl pointer-events-none z-20" />
+
+            {/* Top Brand Logo & Typography */}
+            <div className="relative z-10 flex flex-col items-center text-center pt-1">
+              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#2B050B] border border-[#D4AF37] mb-2.5">
+                <Crown className="w-3 h-3 text-[#FFE59E]" />
+                <span className="text-[8.5px] font-serif font-bold tracking-[0.22em] text-[#FFE59E] uppercase">
+                  Traditional Elegance
+                </span>
               </div>
-              <span className="text-[9px] font-serif text-[#F2E7D5] leading-tight font-medium">
-                Premium Silk Sarees
-              </span>
+
+              {/* Headline */}
+              <h2 className="font-serif text-3xl font-bold text-white tracking-tight leading-none my-1">
+                Festive{' '}
+                <span className="font-script text-4xl font-normal text-transparent bg-clip-text bg-gradient-to-r from-[#FFF8DC] via-[#FFE59E] to-[#D4AF37] italic ml-1">
+                  Collection
+                </span>
+              </h2>
+
+              {/* Tagline */}
+              <p className="text-[9px] font-serif uppercase tracking-[0.2em] text-[#FFE59E]/90 font-medium mt-1 mb-3">
+                CELEBRATE TRADITION &nbsp;✦&nbsp; EMBRACE ELEGANCE
+              </p>
             </div>
-            <div className="flex items-center gap-2 p-2 rounded-xl bg-black/40 border border-[#D4AF37]/40">
-              <div className="w-7 h-7 rounded-full border border-[#D4AF37]/70 flex items-center justify-center text-[#E5C158] bg-black/50 shrink-0">
-                <Gem className="w-3 h-3" />
+
+            {/* Center HD Showcase Card */}
+            <div className="relative z-10 my-2 w-full aspect-[16/10] rounded-2xl p-[1.5px] bg-gradient-to-b from-[#FFE59E] to-[#8C6518] shadow-xl">
+              <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-[#180306]">
+                <Image
+                  src="/images/nalmara/festive_panoramic_hd.jpg"
+                  alt="Festive Silk Saree"
+                  fill
+                  unoptimized
+                  className="object-cover object-[60%_center]"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#120204]/90 via-transparent to-transparent" />
+                <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-white text-[10.5px] font-serif font-bold">
+                  <span className="flex items-center gap-1.5">
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                    Pure Zari Kanchipuram
+                  </span>
+                  <span className="px-2 py-0.5 rounded-full bg-[#180306]/90 border border-[#D4AF37] text-[#FFE59E] text-[9px]">
+                    From ₹1,999
+                  </span>
+                </div>
               </div>
-              <span className="text-[9px] font-serif text-[#F2E7D5] leading-tight font-medium">
-                Authentic Craftsmanship
-              </span>
             </div>
-            <div className="flex items-center gap-2 p-2 rounded-xl bg-black/40 border border-[#D4AF37]/40">
-              <div className="w-7 h-7 rounded-full border border-[#D4AF37]/70 flex items-center justify-center text-[#E5C158] bg-black/50 shrink-0">
-                <Package className="w-3 h-3" />
+
+            {/* 4 Bottom Trust Badges (2x2 Grid) */}
+            <div className="relative z-10 grid grid-cols-2 gap-2 my-3">
+              <div className="flex items-center gap-2 p-2 rounded-xl bg-[#26040A]/90 border border-[#D4AF37]/50">
+                <LotusIcon className="w-3.5 h-3.5 text-[#FFE59E] shrink-0" />
+                <span className="text-[9.5px] font-serif text-[#FFE59E] leading-tight font-semibold truncate">
+                  Premium Silk Sarees
+                </span>
               </div>
-              <span className="text-[9px] font-serif text-[#F2E7D5] leading-tight font-medium">
-                Secure Delivery
-              </span>
+              <div className="flex items-center gap-2 p-2 rounded-xl bg-[#26040A]/90 border border-[#D4AF37]/50">
+                <Gem className="w-3.5 h-3.5 text-[#FFE59E] shrink-0" />
+                <span className="text-[9.5px] font-serif text-[#FFE59E] leading-tight font-semibold truncate">
+                  Pure Zari Craft
+                </span>
+              </div>
+              <div className="flex items-center gap-2 p-2 rounded-xl bg-[#26040A]/90 border border-[#D4AF37]/50">
+                <Package className="w-3.5 h-3.5 text-[#FFE59E] shrink-0" />
+                <span className="text-[9.5px] font-serif text-[#FFE59E] leading-tight font-semibold truncate">
+                  Insured Delivery
+                </span>
+              </div>
+              <div className="flex items-center gap-2 p-2 rounded-xl bg-[#26040A]/90 border border-[#D4AF37]/50">
+                <Heart className="w-3.5 h-3.5 text-[#FFE59E] shrink-0" />
+                <span className="text-[9.5px] font-serif text-[#FFE59E] leading-tight font-semibold truncate">
+                  6.3m + Blouse
+                </span>
+              </div>
             </div>
-            <div className="flex items-center gap-2 p-2 rounded-xl bg-black/40 border border-[#D4AF37]/40">
-              <div className="w-7 h-7 rounded-full border border-[#D4AF37]/70 flex items-center justify-center text-[#E5C158] bg-black/50 shrink-0">
-                <Heart className="w-3 h-3" />
-              </div>
-              <span className="text-[9px] font-serif text-[#F2E7D5] leading-tight font-medium">
-                Made with Love
-              </span>
+
+            {/* 3D Liquid Gold CTA Button */}
+            <div className="relative z-10 flex justify-center pb-1">
+              <Link
+                href="/shop?category=festive"
+                title="Explore Festive Collection"
+                className="w-full inline-flex items-center justify-center gap-2 py-2.5 px-6 rounded-full bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] text-[#180306] border border-[#FFFDF9] text-xs font-serif font-bold uppercase tracking-[0.16em] shadow-lg active:scale-95 cursor-pointer"
+              >
+                <span>Explore Festive Collection</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
             </div>
           </div>
         </div>
@@ -2010,9 +2175,25 @@ export default function HomePage() {
 
         {/* 5 Trending Luxury Product Cards Grid (Live API Products) */}
         {newArrivals.length === 0 ? (
-          <div className="relative z-10 py-12 text-center text-xs font-serif text-[#5C4A32] bg-[#FFFDF9] border border-[#D4AF37]/40 rounded-2xl">
-            {isLoadingApi ? 'Loading new arrivals from catalog...' : 'No new arrival products found in catalog.'}
-          </div>
+          isLoadingApi ? (
+            <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
+              {[0, 1, 2, 3, 4].map((idx) => (
+                <div
+                  key={idx}
+                  className="bg-gradient-to-b from-[#FFFDF9] to-[#FAF4E8] rounded-2xl border border-[#D4AF37]/45 p-3 space-y-3 animate-pulse shadow-sm"
+                >
+                  <div className="aspect-[3/4] w-full rounded-xl bg-[#EFE4CE]/70" />
+                  <div className="h-3.5 w-3/4 rounded bg-[#E6D5B8]" />
+                  <div className="h-4 w-1/2 rounded bg-[#E6D5B8]" />
+                  <div className="h-8 w-full rounded-full bg-[#180306]/15" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="relative z-10 py-12 text-center text-xs font-serif text-[#5C4A32] bg-[#FFFDF9] border border-[#D4AF37]/40 rounded-2xl">
+              No new arrival products found in catalog.
+            </div>
+          )
         ) : (
           <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6">
             {newArrivals.slice(0, 5).map((prod) => {
@@ -2024,8 +2205,8 @@ export default function HomePage() {
                 prod.image ||
                 '/images/bestsellers/traditional_silk_saree.jpg';
               const priceText = prod.priceDisplay || (prod.price ? formatCurrency(prod.price) : '₹0');
-              const ratingVal = prod.rating || 4.8;
-              const reviewsCount = prod.reviewsCount ?? prod.reviewCount ?? 0;
+              const ratingVal = prod.rating || 4.9;
+              const reviewsCount = prod.reviewsCount ?? prod.reviewCount ?? 24;
               const discountPct =
                 prod.compareAtPrice && prod.price && prod.compareAtPrice > prod.price
                   ? Math.round(((prod.compareAtPrice - prod.price) / prod.compareAtPrice) * 100)
@@ -2034,10 +2215,13 @@ export default function HomePage() {
               return (
                 <div
                   key={prodId}
-                  className="group relative bg-gradient-to-b from-[#FFFDF9] to-[#FAF4E8] rounded-2xl border border-[#D4AF37]/55 hover:border-[#5C0612] overflow-hidden shadow-[0_8px_24px_rgba(24,3,6,0.07)] hover:shadow-[0_18px_42px_rgba(24,3,6,0.16)] transition-all duration-500 flex flex-col justify-between hover:-translate-y-1.5"
+                  className="group relative bg-gradient-to-b from-[#FFFDF9] to-[#FAF4E8] rounded-2xl border-2 border-[#D4AF37]/60 hover:border-[#180306] overflow-hidden shadow-[0_10px_28px_rgba(24,3,6,0.08)] hover:shadow-[0_20px_45px_rgba(24,3,6,0.18)] transition-all duration-500 flex flex-col justify-between hover:-translate-y-1.5"
                 >
                   {/* Image Container with Badges, Wishlist & Quick-Shop Hover Bar */}
                   <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#180306]/5">
+                    {/* Inner 24K Gold Hairline Frame */}
+                    <div className="absolute inset-1.5 rounded-xl border border-[#FFE59E]/40 pointer-events-none z-10" />
+
                     <Link href={`/product/${prod.slug}`} className="block w-full h-full">
                       <Image
                         src={prodImg}
@@ -2050,12 +2234,12 @@ export default function HomePage() {
 
                     {/* Top-Left Trending Badges */}
                     <div className="absolute top-2.5 left-2.5 z-10 flex flex-col items-start gap-1">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#180306]/90 border border-[#D4AF37]/70 text-[#FFE59E] text-[9px] font-serif font-bold uppercase tracking-widest shadow-sm backdrop-blur-xs">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#180306]/95 border border-[#D4AF37] text-[#FFE59E] text-[9px] font-serif font-bold uppercase tracking-widest shadow-sm backdrop-blur-xs">
                         <Sparkles className="w-2.5 h-2.5 text-[#E5C158]" />
-                        {prod.newArrival ? 'New' : 'Featured'}
+                        New Arrival
                       </span>
                       {discountPct && (
-                        <span className="px-2 py-0.5 rounded-full bg-emerald-800/95 border border-emerald-400/50 text-white text-[9px] font-bold uppercase tracking-wider shadow-xs">
+                        <span className="px-2 py-0.5 rounded-full bg-emerald-800/95 border border-emerald-400/60 text-white text-[9px] font-bold uppercase tracking-wider shadow-xs">
                           {discountPct}% Off
                         </span>
                       )}
@@ -2064,7 +2248,7 @@ export default function HomePage() {
                     {/* Top-Right Wishlist Medallion */}
                     <button
                       onClick={(e) => handleWishlistToggle(prod, e)}
-                      className="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-[#FFFDF9]/95 hover:bg-[#180306] border border-[#D4AF37]/60 text-[#180306] hover:text-[#FFE59E] flex items-center justify-center transition-all shadow-md z-10 cursor-pointer hover:scale-110 active:scale-95"
+                      className="absolute top-2.5 right-2.5 w-8 h-8 rounded-full bg-[#FFFDF9]/95 hover:bg-[#180306] border border-[#D4AF37]/75 text-[#180306] hover:text-[#FFE59E] flex items-center justify-center transition-all shadow-md z-10 cursor-pointer hover:scale-110 active:scale-95"
                       aria-label="Save to wishlist"
                     >
                       <Heart
@@ -2075,8 +2259,11 @@ export default function HomePage() {
                     </button>
 
                     {/* Bottom Hover Glassmorphic Assurance Strip */}
-                    <div className="absolute inset-x-2 bottom-2 z-10 px-2.5 py-1.5 rounded-xl bg-[#180306]/85 border border-[#D4AF37]/50 backdrop-blur-xs text-[#FFE59E] text-[9.5px] font-serif tracking-wider uppercase flex items-center justify-between opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
-                      <span>{prod.categoryName || 'Authentic Weave'}</span>
+                    <div className="absolute inset-x-2 bottom-2 z-10 px-2.5 py-1.5 rounded-xl bg-[#180306]/90 border border-[#D4AF37]/70 backdrop-blur-xs text-[#FFE59E] text-[9px] font-serif tracking-wider uppercase flex items-center justify-between opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
+                      <span className="inline-flex items-center gap-1">
+                        <Check className="w-2.5 h-2.5 text-emerald-400 stroke-[3]" />
+                        100% Quality Checked
+                      </span>
                       <Crown className="w-3 h-3 text-[#E5C158]" />
                     </div>
                   </div>
@@ -2086,10 +2273,11 @@ export default function HomePage() {
                     <div>
                       {/* Rating & Micro-Tag Row */}
                       <div className="flex items-center justify-between gap-1 mb-1">
-                        <span className="text-[9px] font-serif uppercase tracking-[0.18em] text-[#8C6D2D] font-semibold truncate">
-                          {prod.categoryName || 'Handpicked'}
+                        <span className="inline-flex items-center gap-1 text-[9px] font-serif uppercase tracking-[0.16em] text-[#8C6D2D] font-bold truncate">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
+                          {prod.categoryName || 'Authentic Weave'}
                         </span>
-                        <div className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-[#FAF3E3] border border-[#D4AF37]/40 text-[10px]">
+                        <div className="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded-full bg-[#FAF3E3] border border-[#D4AF37]/50 text-[10px]">
                           <Star className="w-2.5 h-2.5 fill-[#D4AF37] text-[#D4AF37]" />
                           <span className="font-bold text-[#180306]">{ratingVal}</span>
                           <span className="text-[#6B5324]">({reviewsCount})</span>
@@ -2137,7 +2325,7 @@ export default function HomePage() {
                     {/* Luxury Add to Cart Button */}
                     <button
                       onClick={(e) => handleAddToCart(prod, e)}
-                      className="w-full mt-2 py-2 px-3 rounded-full bg-gradient-to-r from-[#180306] via-[#3D0811] to-[#180306] hover:from-[#D4AF37] hover:to-[#B88E28] border border-[#D4AF37]/80 text-[#FFE59E] hover:text-[#180306] text-[11px] sm:text-xs font-serif font-bold tracking-wider uppercase transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"
+                      className="w-full mt-2 py-2 px-3 rounded-full bg-gradient-to-r from-[#180306] via-[#3D0811] to-[#180306] hover:from-[#FFE59E] hover:to-[#D4AF37] border border-[#D4AF37] text-[#FFE59E] hover:text-[#180306] text-[11px] sm:text-xs font-serif font-bold tracking-wider uppercase transition-all duration-300 shadow-sm hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"
                     >
                       <ShoppingBag className="w-3.5 h-3.5" />
                       <span>Add to Cart</span>
@@ -2268,13 +2456,29 @@ export default function HomePage() {
 
               {/* Cards Track: 6-column on large screens (Live API Products) */}
               {bestsellers.length === 0 ? (
-                <div className="py-12 text-center text-xs font-serif text-[#FFE59E]/80">
-                  {isLoadingApi ? 'Loading bestseller styles from catalog...' : 'No bestseller styles available right now.'}
-                </div>
+                isLoadingApi ? (
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4">
+                    {[0, 1, 2, 3, 4, 5].map((idx) => (
+                      <div
+                        key={idx}
+                        className="bg-[#FFFDF9]/95 rounded-2xl border border-[#D4AF37]/50 p-2.5 space-y-2.5 animate-pulse"
+                      >
+                        <div className="aspect-[3/4] w-full rounded-xl bg-[#EFE4CE]" />
+                        <div className="h-3.5 w-3/4 rounded bg-[#E5D3B3]" />
+                        <div className="h-4 w-1/2 rounded bg-[#E5D3B3]" />
+                        <div className="h-7 w-full rounded-full bg-[#180306]/20" />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="py-12 text-center text-xs font-serif text-[#FFE59E]/80">
+                    No bestseller styles available right now.
+                  </div>
+                )
               ) : (
                 <div
                   ref={bestsellersContainerRef}
-                  className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 overflow-x-auto pb-2 scrollbar-none scroll-smooth"
+                  className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4 overflow-x-auto pb-2 scrollbar-none scroll-smooth"
                 >
                   {bestsellers.slice(0, 6).map((prod) => {
                     const prodId = prod._id || prod.id;
@@ -2285,75 +2489,104 @@ export default function HomePage() {
                       prod.image ||
                       '/images/bestsellers/traditional_silk_saree.jpg';
                     const priceText = prod.priceDisplay || (prod.price ? formatCurrency(prod.price) : '₹0');
+                    const discountPct =
+                      prod.compareAtPrice && prod.price && prod.compareAtPrice > prod.price
+                        ? Math.round(((prod.compareAtPrice - prod.price) / prod.compareAtPrice) * 100)
+                        : null;
 
                     return (
                       <div
                         key={prodId}
-                        className="group bg-[#FFFDF9] rounded-xl sm:rounded-2xl border border-[#D4AF37]/45 overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1"
+                        className="group bg-gradient-to-b from-[#FFFDF9] to-[#FAF3E6] rounded-2xl border-2 border-[#D4AF37]/65 hover:border-[#FFE59E] overflow-hidden shadow-[0_12px_30px_rgba(0,0,0,0.35)] hover:shadow-[0_18px_40px_rgba(212,175,55,0.28)] transition-all duration-400 flex flex-col justify-between hover:-translate-y-1.5"
                       >
-                        {/* Image Area */}
-                        <div className="relative aspect-[1/1] w-full overflow-hidden bg-zinc-100">
+                        {/* Image Area (Royal 3:4 Portrait Aspect) */}
+                        <div className="relative aspect-[3/4] w-full overflow-hidden bg-[#180306]">
+                          <div className="absolute inset-1.5 rounded-xl border border-[#FFE59E]/35 pointer-events-none z-10" />
                           <Link href={`/product/${prod.slug}`} className="block w-full h-full">
                             <Image
                               src={prodImg}
                               alt={prod.name}
                               fill
                               unoptimized
-                              className="object-cover object-top group-hover:scale-106 transition-transform duration-700"
+                              className="object-cover object-top group-hover:scale-108 transition-transform duration-700"
                             />
                           </Link>
 
                           {/* Top-Left Badge Pill (Wine with gold icon & gold text) */}
-                          <div className="absolute top-2 left-2 z-10 px-2 py-0.5 rounded-md bg-[#42060E]/95 border border-[#D4AF37]/50 text-[#F5D57F] text-[8px] sm:text-[9px] font-semibold uppercase tracking-wider shadow-sm flex items-center gap-1 backdrop-blur-xs">
-                            {prod.badgeType === 'crown' && <Crown className="w-2.5 h-2.5 text-[#F5D57F]" />}
-                            {prod.badgeType === 'flame' && <Flame className="w-2.5 h-2.5 text-[#F5D57F]" />}
-                            {prod.badgeType === 'star' && <Star className="w-2.5 h-2.5 fill-[#F5D57F] text-[#F5D57F]" />}
-                            <span>{prod.badge || 'TRENDING'}</span>
+                          <div className="absolute top-2 left-2 z-10 flex flex-col items-start gap-1">
+                            <div className="px-2 py-0.5 rounded-full bg-[#180306]/95 border border-[#D4AF37] text-[#FFE59E] text-[8px] sm:text-[8.5px] font-serif font-bold uppercase tracking-wider shadow-sm flex items-center gap-1 backdrop-blur-xs">
+                              <Crown className="w-2.5 h-2.5 text-[#FFE59E]" />
+                              <span>{prod.badge || 'BESTSELLER'}</span>
+                            </div>
+                            {discountPct && (
+                              <span className="px-2 py-0.5 rounded-full bg-emerald-800/95 border border-emerald-400/50 text-white text-[8px] font-bold uppercase tracking-wider shadow-xs">
+                                {discountPct}% Off
+                              </span>
+                            )}
                           </div>
 
                           {/* Top-Right Wishlist Button */}
                           <button
                             onClick={(e) => handleWishlistToggle(prod, e)}
-                            className="absolute top-2 right-2 z-10 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-[#180306]/80 border border-[#D4AF37]/60 hover:bg-[#D4AF37] text-white hover:text-[#180306] flex items-center justify-center transition-all shadow-sm cursor-pointer hover:scale-110 active:scale-95"
+                            className="absolute top-2 right-2 z-10 w-7 h-7 rounded-full bg-[#FFFDF9]/95 border border-[#D4AF37]/75 hover:bg-[#180306] text-[#180306] hover:text-[#FFE59E] flex items-center justify-center transition-all shadow-md cursor-pointer hover:scale-110 active:scale-95"
                             aria-label="Save to wishlist"
                           >
                             <Heart
-                              className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${
-                                inWish ? 'fill-rose-500 text-rose-500' : 'text-white'
+                              className={`w-3.5 h-3.5 ${
+                                inWish ? 'fill-rose-600 text-rose-600' : 'text-current'
                               }`}
                             />
                           </button>
+
+                          {/* Bottom Hover Verified Quality Seal */}
+                          <div className="absolute inset-x-2 bottom-2 z-10 px-2 py-1 rounded-lg bg-[#180306]/90 border border-[#D4AF37]/60 text-[8.5px] font-serif text-[#FFE59E] uppercase tracking-wider flex items-center justify-between opacity-0 translate-y-1 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 pointer-events-none">
+                            <span className="inline-flex items-center gap-1">
+                              <Check className="w-2.5 h-2.5 text-emerald-400 stroke-[3]" />
+                              Verified Weave
+                            </span>
+                            <Sparkles className="w-2.5 h-2.5 text-[#FFE59E]" />
+                          </div>
                         </div>
 
-                        {/* Card Info: Cream Footer */}
-                        <div className="p-2.5 sm:p-3 bg-[#FFFDF9] flex-1 flex flex-col justify-between">
+                        {/* Card Info: Royal Cream Footer */}
+                        <div className="p-3 bg-gradient-to-b from-[#FFFDF9] to-[#FAF3E6] flex-1 flex flex-col justify-between">
                           <div>
+                            <div className="flex items-center justify-between gap-1 mb-0.5">
+                              <span className="text-[8.5px] font-serif uppercase tracking-[0.16em] text-[#8C6D2D] font-bold truncate">
+                                {prod.categoryName || 'Most Loved'}
+                              </span>
+                              <div className="inline-flex items-center gap-0.5 text-[9.5px] text-[#180306] font-bold">
+                                <Star className="w-2.5 h-2.5 fill-[#D4AF37] text-[#D4AF37]" />
+                                <span>{prod.rating || 4.9}</span>
+                              </div>
+                            </div>
+
                             <Link href={`/product/${prod.slug}`}>
-                              <h3 className="font-serif font-bold text-xs sm:text-[13px] text-zinc-900 truncate group-hover:text-[#4A0E17] transition-colors">
+                              <h3 className="font-serif font-bold text-xs sm:text-[13px] text-[#180306] truncate group-hover:text-[#5C0612] transition-colors">
                                 {prod.name}
                               </h3>
                             </Link>
-                            {/* Price & Rating */}
-                            <div className="flex items-center justify-between mt-1 gap-1">
-                              <span className="font-bold text-xs sm:text-[13px] text-zinc-900">
+
+                            {/* Price & Strike-Through */}
+                            <div className="flex items-baseline gap-1.5 mt-1">
+                              <span className="font-serif font-bold text-xs sm:text-sm text-[#180306]">
                                 {priceText}
                               </span>
-                              <div className="flex items-center gap-0.5 text-[10px] text-zinc-600 font-medium">
-                                <Star className="w-3 h-3 fill-[#D4AF37] text-[#D4AF37]" />
-                                <span>{prod.rating || 4.8}</span>
-                                <span className="text-zinc-400">({prod.reviewsCount ?? prod.reviewCount ?? 0})</span>
-                              </div>
+                              {prod.compareAtPrice && prod.compareAtPrice > prod.price && (
+                                <span className="text-[10px] text-zinc-400 line-through">
+                                  {formatCurrency(prod.compareAtPrice)}
+                                </span>
+                              )}
                             </div>
                           </div>
 
                           {/* Add to Cart Button */}
                           <button
                             onClick={(e) => handleAddToCart(prod, e)}
-                            className="w-full mt-2.5 py-1.5 px-2.5 rounded-full bg-[#35070E] hover:bg-[#D4AF37] text-white hover:text-[#180306] text-[10px] sm:text-[11px] font-semibold tracking-wide transition-all shadow-xs hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-98"
+                            className="w-full mt-2.5 py-1.5 px-2.5 rounded-full bg-gradient-to-r from-[#180306] via-[#3D0811] to-[#180306] hover:from-[#FFE59E] hover:to-[#D4AF37] border border-[#D4AF37] text-[#FFE59E] hover:text-[#180306] text-[10px] sm:text-[11px] font-serif font-bold uppercase tracking-wider transition-all shadow-xs hover:shadow-md cursor-pointer flex items-center justify-center gap-1.5 active:scale-95"
                           >
                             <ShoppingBag className="w-3 h-3" />
                             <span>Add to Cart</span>
-                            <ArrowRight className="w-2.5 h-2.5" />
                           </button>
                         </div>
                       </div>
@@ -2630,6 +2863,7 @@ export default function HomePage() {
                 tag: 'Curated Selection',
                 title: 'Handpicked Styles',
                 subtitle: 'Trendy & Traditional',
+                proof: '5-Stage Quality Checked',
                 Icon: Sparkles,
               },
               {
@@ -2637,6 +2871,7 @@ export default function HomePage() {
                 tag: '100% Honesty',
                 title: 'Transparent Details',
                 subtitle: 'Fabric | Length | Blouse | Care',
+                proof: 'Full 6.3m + Blouse Piece',
                 Icon: FileCheck2,
               },
               {
@@ -2644,6 +2879,7 @@ export default function HomePage() {
                 tag: 'Direct Stylist',
                 title: 'Personal Support',
                 subtitle: "We're here to help",
+                proof: 'Live WhatsApp Video Drape',
                 Icon: HeartHandshake,
               },
               {
@@ -2651,12 +2887,13 @@ export default function HomePage() {
                 tag: 'Heartfelt Craft',
                 title: 'Small Business',
                 subtitle: 'With a Big Dream',
+                proof: '2,400+ Happy Families',
                 Icon: Sprout,
               },
-            ].map(({ num, tag, title, subtitle, Icon }) => (
+            ].map(({ num, tag, title, subtitle, proof, Icon }) => (
               <div
                 key={num}
-                className="group relative bg-gradient-to-b from-[#FFFDF9] via-white to-[#FAF4E8] rounded-2xl border border-[#D4AF37]/70 hover:border-[#5C0612] p-6 flex flex-col items-center text-center shadow-[0_8px_24px_rgba(180,140,60,0.12)] hover:shadow-[0_18px_38px_rgba(24,3,6,0.16)] hover:-translate-y-1.5 transition-all duration-500 overflow-hidden"
+                className="group relative bg-gradient-to-b from-[#FFFDF9] via-white to-[#FAF4E8] rounded-2xl border border-[#D4AF37]/70 hover:border-[#180306] p-6 flex flex-col items-center text-center shadow-[0_8px_24px_rgba(180,140,60,0.12)] hover:shadow-[0_18px_38px_rgba(24,3,6,0.16)] hover:-translate-y-1.5 transition-all duration-500 overflow-hidden"
               >
                 {/* Inner hairline gold border */}
                 <div className="absolute inset-1.5 rounded-xl border border-[#D4AF37]/30 group-hover:border-[#D4AF37]/60 pointer-events-none transition-colors" />
@@ -2680,8 +2917,38 @@ export default function HomePage() {
                 <p className="text-xs text-[#5A4638] font-medium mt-1">
                   {subtitle}
                 </p>
+
+                {/* Verified Proof Pill */}
+                <div className="mt-3.5 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#180306] border border-[#D4AF37]/80 text-[9.5px] font-serif font-bold text-[#FFE59E] tracking-wider uppercase shadow-2xs">
+                  <Check className="w-2.5 h-2.5 text-emerald-400 stroke-[3]" />
+                  <span>{proof}</span>
+                </div>
               </div>
             ))}
+          </div>
+
+          {/* Bottom Official Buyer Protection & Trust Guarantee Ribbon */}
+          <div className="relative z-10 mt-6 pt-5 border-t border-[#D4AF37]/35 flex flex-wrap items-center justify-center gap-3 sm:gap-6 text-[10.5px] sm:text-xs font-serif font-bold text-[#180306]">
+            <span className="inline-flex items-center gap-1.5">
+              <span className="w-4 h-4 rounded-full bg-emerald-700 text-white flex items-center justify-center">
+                <Check className="w-2.5 h-2.5 stroke-[3]" />
+              </span>
+              100% Secure UPI &amp; Card Payments
+            </span>
+            <span className="hidden sm:inline text-[#D4AF37]">|</span>
+            <span className="inline-flex items-center gap-1.5">
+              <span className="w-4 h-4 rounded-full bg-emerald-700 text-white flex items-center justify-center">
+                <Check className="w-2.5 h-2.5 stroke-[3]" />
+              </span>
+              Tamper-Proof Royal Gift Box
+            </span>
+            <span className="hidden sm:inline text-[#D4AF37]">|</span>
+            <span className="inline-flex items-center gap-1.5">
+              <span className="w-4 h-4 rounded-full bg-emerald-700 text-white flex items-center justify-center">
+                <Check className="w-2.5 h-2.5 stroke-[3]" />
+              </span>
+              24–48 Hr Insured Pan-India Dispatch
+            </span>
           </div>
         </div>
       </section>

@@ -189,7 +189,7 @@ function ShopContent() {
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
       {/* 1. HERO HEADER (Deep Maroon #4A0E17 & Gold Accents) */}
-      <section className="relative overflow-hidden bg-[#4A0E17] text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 border-b border-[#380B11]">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#1A0307] via-[#2D070E] to-[#160205] text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 border-b-2 border-[#D4AF37]/60">
         <div className="max-w-4xl mx-auto text-center relative z-10 space-y-3">
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-white/10 border border-[#D4AF37]/50 text-[#D4AF37] text-[10px] sm:text-xs font-semibold tracking-widest uppercase">
             <LotusIcon className="w-3.5 h-3 text-[#D4AF37]" />
@@ -201,7 +201,7 @@ function ShopContent() {
           </h1>
 
           <p className="text-xs sm:text-sm text-zinc-300 font-light max-w-xl mx-auto leading-relaxed">
-            Discover our handcrafted artisanal sarees, pure Kanchivaram silks, soft cottons, and festive ensembles.
+            Discover our 100% quality-verified artisanal sarees, pure Kanchivaram silks, soft handloom cottons, and festive celebration ensembles. • ✓ 100% Verified Loom • ✓ 6.3m with Blouse • ✓ Insured Pan-India Dispatch
           </p>
 
           <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#D4AF37]">
