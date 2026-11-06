@@ -41,10 +41,15 @@ export const metadata: Metadata = {
     'party wear saree',
     'kidswear ethnic',
   ],
+  icons: {
+    icon: '/images/nalmara-logo.jpg',
+    apple: '/images/nalmara-logo.jpg',
+  },
   openGraph: {
     title: 'NALMARA FASHION • Tradition Woven in Elegance',
     description: 'Discover beautiful sarees and timeless ethnic styles for every special moment.',
     type: 'website',
+    images: ['/images/nalmara-logo.jpg'],
   },
 };
 
@@ -55,7 +60,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${jost.variable} ${playfair.variable} ${alexBrush.variable}`}>
-      <body className="font-sans min-h-screen flex flex-col bg-[#FAF7F2] text-zinc-900 selection:bg-[#4A0E17] selection:text-white w-full max-w-full overflow-x-hidden relative">
+      <body className="font-sans min-h-screen flex flex-col bg-[#FAF7F2] text-[#0E0B09] selection:bg-[#0E0B09] selection:text-[#FFE59E] w-full max-w-full overflow-x-hidden relative">
         <ToastProvider />
         <Navbar />
         <CartDrawer />

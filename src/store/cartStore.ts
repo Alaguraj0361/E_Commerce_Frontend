@@ -21,6 +21,7 @@ interface CartState {
     variantId?: string;
     quantity?: number;
     name: string;
+    slug?: string;
     image: string;
     price: number;
     sku?: string;

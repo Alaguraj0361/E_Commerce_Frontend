@@ -2,72 +2,73 @@ import React from 'react';
 import Link from 'next/link';
 import {
   RotateCcw,
-  ShieldCheck,
   CheckCircle2,
   AlertCircle,
-  HelpCircle,
-  ArrowRight,
-  Sparkles,
-  Package,
   CreditCard,
   Truck,
 } from 'lucide-react';
-import { LotusIcon } from '@/components/ui/BrandLogo';
+import { NalmaraEmblem } from '@/components/ui/BrandLogo';
 
 export const metadata = {
-  title: 'Return & Exchange Policy | NALMARA FASHION • 7-Day Easy Returns',
+  title: 'Return & Exchange Policy | NALMARA FASHION • Thoothukudi, Tamil Nadu',
   description:
-    'Enjoy peace of mind with NALMARA FASHION’s 7-Day Easy Return & Exchange policy. Doorstep pickup, transparent refunds, and dedicated concierge support.',
+    'Easy 7-Day Return & Exchange policy at NALMARA FASHION, Thoothukudi. Simple exchange process and fast customer support.',
 };
 
 export default function ReturnsPage() {
   const steps = [
     {
       step: '01',
-      title: 'Initiate Request',
-      desc: 'Submit a return or exchange request within 7 days of delivery via your Account portal or our WhatsApp concierge.',
+      title: 'Message Us Within 7 Days',
+      desc: 'Contact our WhatsApp support (6383163609) or go to My Orders within 7 days of receiving your parcel.',
     },
     {
       step: '02',
-      title: 'Free Reverse Pickup',
-      desc: 'Our courier representative will pick up the securely packaged parcel from your doorstep with zero pickup fee.',
+      title: 'Easy Doorstep Pickup',
+      desc: 'We arrange courier pickup from your home or guide you on quick return shipping to our Thoothukudi store.',
     },
     {
       step: '03',
-      title: 'Atelier Quality Check',
-      desc: 'Our artisans verify that the garment is unworn, unwashed, and retained with original tags and security ribbons.',
+      title: 'Quick Quality Check',
+      desc: 'Once received at our Thoothukudi shop, we verify that the saree/dress is unused with original tags intact.',
     },
     {
       step: '04',
-      title: 'Instant Refund / Exchange',
-      desc: 'Refund is processed immediately to your original payment mode or UPI, or your replacement size is dispatched.',
+      title: 'Fast Exchange or Refund',
+      desc: 'We immediately ship your replacement saree/size or refund the full amount to your UPI or bank account.',
     },
   ];
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
-      {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden bg-[#061811] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
+    <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
+      {/* 1. ROYAL HERO SECTION (Obsidian #0E0B09 & 24K Gold matching Home Page) */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0E0B09] via-[#17120D] to-[#0E0B09] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b-2 border-[#D4AF37]/80">
+        <div className="max-w-[1440px] mx-auto relative rounded-3xl border border-[#D4AF37]/35 bg-[#120E0A]/60 p-8 sm:p-12 text-center space-y-4">
+          <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]/80 pointer-events-none" />
+          <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]/80 pointer-events-none" />
+          <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]/80 pointer-events-none" />
+          <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]/80 pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#E5C07B] text-xs font-semibold tracking-widest uppercase">
-            <LotusIcon className="w-4 h-3.5" />
-            <span>Hassle-Free Assurance</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0E0B09] border border-[#D4AF37]/75 text-[#FFE59E] text-[10px] font-bold tracking-[0.22em] uppercase">
+            <NalmaraEmblem className="w-4 h-4" />
+            <span>Easy &amp; Customer Friendly</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
-            Return & Exchange Policy
+          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#FFFDF9] leading-tight">
+            Return &amp;{' '}
+            <span className="font-script italic font-normal text-4xl sm:text-6xl bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent">
+              Exchange Policy
+            </span>
           </h1>
 
-          <p className="text-xs sm:text-sm text-zinc-300 font-light max-w-2xl mx-auto leading-relaxed">
-            Your delight is our foremost promise. If your ensemble isn&apos;t a perfect fit or match, we make returns and size exchanges effortless.
+          <p className="text-xs sm:text-sm text-[#EDE3D2]/85 font-light max-w-2xl mx-auto leading-relaxed">
+            Your happiness matters most to us. If you need a different size or wish to exchange your saree or dress, our Thoothukudi team makes it simple and quick.
           </p>
 
-          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#E5C07B]">
-            <Link href="/" className="hover:underline">Home</Link>
-            <span className="text-zinc-500">/</span>
-            <span className="text-white font-medium">Return & Exchange</span>
+          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#D4AF37]">
+            <Link href="/" className="hover:text-[#FFE59E] text-[#EDE3D2]/70">Home</Link>
+            <span className="text-[#D4AF37]/50">/</span>
+            <span className="text-[#FFFDF9] font-semibold">Return &amp; Exchange</span>
           </div>
         </div>
       </section>
@@ -75,38 +76,38 @@ export default function ReturnsPage() {
       {/* 2. THREE CORE GUARANTEES */}
       <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 -mt-8 relative z-20">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white rounded-3xl p-6 border border-[#D4AF37]/30 shadow-lg flex items-start gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#0E3324] border border-[#D4AF37]/30 flex items-center justify-center text-[#E5C07B] shrink-0">
-              <RotateCcw className="w-6 h-6" />
+          <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF3E6] to-[#F5E9D3] rounded-3xl p-6 border-2 border-[#D4AF37]/65 shadow-lg flex items-start gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-[#0E0B09] border border-[#D4AF37] flex items-center justify-center text-[#FFE59E] shrink-0">
+              <RotateCcw className="w-6 h-6 text-[#D4AF37]" />
             </div>
             <div>
-              <h4 className="font-serif font-bold text-base text-[#061811]">7-Day Window</h4>
-              <p className="text-xs text-zinc-600 mt-1 font-light leading-relaxed">
-                Generous 7 days from the moment of doorstep receipt to request an exchange or return.
+              <h4 className="font-serif font-bold text-base text-[#0E0B09]">7-Day Easy Exchange</h4>
+              <p className="text-xs text-[#5C4934] mt-1 font-normal leading-relaxed">
+                7 days from delivery date to request a size change, saree exchange, or return.
               </p>
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl p-6 border border-[#D4AF37]/30 shadow-lg flex items-start gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#0E3324] border border-[#D4AF37]/30 flex items-center justify-center text-[#E5C07B] shrink-0">
-              <Truck className="w-6 h-6" />
+          <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF3E6] to-[#F5E9D3] rounded-3xl p-6 border-2 border-[#D4AF37]/65 shadow-lg flex items-start gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-[#0E0B09] border border-[#D4AF37] flex items-center justify-center text-[#FFE59E] shrink-0">
+              <Truck className="w-6 h-6 text-[#D4AF37]" />
             </div>
             <div>
-              <h4 className="font-serif font-bold text-base text-[#061811]">Free Doorstep Pickup</h4>
-              <p className="text-xs text-zinc-600 mt-1 font-light leading-relaxed">
-                Pan-India reverse pickup arranged directly from your home with no extra pickup charges.
+              <h4 className="font-serif font-bold text-base text-[#0E0B09]">Easy Pickup Support</h4>
+              <p className="text-xs text-[#5C4934] mt-1 font-normal leading-relaxed">
+                Doorstep return pickup arranged across Tamil Nadu &amp; India.
               </p>
             </div>
           </div>
 
-          <div className="bg-white rounded-3xl p-6 border border-[#D4AF37]/30 shadow-lg flex items-start gap-4">
-            <div className="w-12 h-12 rounded-2xl bg-[#0E3324] border border-[#D4AF37]/30 flex items-center justify-center text-[#E5C07B] shrink-0">
-              <CreditCard className="w-6 h-6" />
+          <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF3E6] to-[#F5E9D3] rounded-3xl p-6 border-2 border-[#D4AF37]/65 shadow-lg flex items-start gap-4">
+            <div className="w-12 h-12 rounded-2xl bg-[#0E0B09] border border-[#D4AF37] flex items-center justify-center text-[#FFE59E] shrink-0">
+              <CreditCard className="w-6 h-6 text-[#D4AF37]" />
             </div>
             <div>
-              <h4 className="font-serif font-bold text-base text-[#061811]">100% Full Refunds</h4>
-              <p className="text-xs text-zinc-600 mt-1 font-light leading-relaxed">
-                Direct refunds to original cards, UPI, net banking, or store credits with zero deductions.
+              <h4 className="font-serif font-bold text-base text-[#0E0B09]">Quick UPI / Bank Refund</h4>
+              <p className="text-xs text-[#5C4934] mt-1 font-normal leading-relaxed">
+                Fast refund directly to your Google Pay, PhonePe, UPI, or bank card.
               </p>
             </div>
           </div>
@@ -116,14 +117,17 @@ export default function ReturnsPage() {
       {/* 3. STEP BY STEP PROCESS */}
       <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-16 sm:py-20 space-y-12">
         <div className="text-center max-w-2xl mx-auto space-y-2">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#B8860B]">
-            HOW IT WORKS
+          <p className="text-xs font-extrabold uppercase tracking-[0.25em] text-[#8C6518]">
+            ✦ HOW IT WORKS
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#061811] font-bold">
-            Four Simple Steps to Exchange or Return
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#0E0B09] font-bold">
+            4 Simple Steps to{' '}
+            <span className="font-script italic font-normal text-4xl sm:text-5xl text-[#8C6518]">
+              Exchange or Return
+            </span>
           </h2>
-          <p className="text-xs sm:text-sm text-zinc-600 font-light">
-            We handle logistics so you can shop with complete luxury confidence.
+          <p className="text-xs sm:text-sm text-[#5C4934] font-normal">
+            Simple, clear, and worry-free shopping for your whole family.
           </p>
         </div>
 
@@ -131,15 +135,15 @@ export default function ReturnsPage() {
           {steps.map((item, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-3xl p-6 border border-[#D4AF37]/25 shadow-sm hover:shadow-xl transition-all space-y-3 relative overflow-hidden"
+              className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF3E6] to-[#F5E9D3] rounded-3xl p-6 border-2 border-[#D4AF37]/65 shadow-sm space-y-3 relative overflow-hidden"
             >
-              <div className="text-3xl font-serif font-bold text-[#D4AF37]/40">
+              <div className="text-3xl font-serif font-extrabold text-[#8C6518]">
                 {item.step}
               </div>
-              <h3 className="font-serif text-lg font-bold text-[#061811]">
+              <h3 className="font-serif text-lg font-bold text-[#0E0B09]">
                 {item.title}
               </h3>
-              <p className="text-xs text-zinc-600 leading-relaxed font-light">
+              <p className="text-xs text-[#5C4934] leading-relaxed font-normal">
                 {item.desc}
               </p>
             </div>
@@ -148,91 +152,64 @@ export default function ReturnsPage() {
       </section>
 
       {/* 4. ELIGIBILITY CRITERIA & REFUND TIMELINES */}
-      <section className="bg-white border-y border-[#D4AF37]/20 py-16 px-4 sm:px-6 lg:px-8">
+      <section className="bg-[#F5EFE4] border-t-2 border-[#D4AF37]/50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto space-y-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Eligible Items */}
-            <div className="p-6 rounded-3xl bg-[#FAF8F5] border border-emerald-600/30 space-y-4">
-              <div className="flex items-center gap-2 text-emerald-800 font-serif font-bold text-lg">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600" />
-                <span>Items Eligible for Return</span>
+            <div className="p-6 rounded-3xl bg-[#FFFDF9] border-2 border-[#D4AF37]/60 space-y-4">
+              <div className="flex items-center gap-2 text-[#0E0B09] font-serif font-bold text-lg">
+                <CheckCircle2 className="w-5 h-5 text-emerald-700" />
+                <span>What Can Be Returned / Exchanged</span>
               </div>
-              <ul className="space-y-2.5 text-xs text-zinc-700 leading-relaxed font-light">
-                <li className="flex items-start gap-2">
-                  <span className="text-emerald-600 font-bold">•</span>
-                  Ready-to-wear sarees, lehengas, kurtis, and unstitched dress materials.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-emerald-600 font-bold">•</span>
-                  Garments in original pristine condition with brand tags, barcode labels, and security seal intact.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-emerald-600 font-bold">•</span>
-                  Items returned in original protective cloth bags and rigid courier box.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-emerald-600 font-bold">•</span>
-                  Size exchanges for identical product in an alternate size.
-                </li>
+              <ul className="space-y-2.5 text-xs text-[#3F3122] leading-relaxed font-normal">
+                <li>• Sarees, salwar suits, kurtis, lehengas, and kids wear in unused condition.</li>
+                <li>• Items with original price tags, folding, and gift box intact.</li>
+                <li>• Size exchanges for kurtis, salwars, or kids dresses.</li>
+                <li>• Immediate replacement if any transit damage is shown in parcel opening video.</li>
               </ul>
             </div>
 
-            {/* Ineligible Items */}
-            <div className="p-6 rounded-3xl bg-[#FAF8F5] border border-rose-600/30 space-y-4">
-              <div className="flex items-center gap-2 text-rose-800 font-serif font-bold text-lg">
-                <AlertCircle className="w-5 h-5 text-rose-600" />
-                <span>Non-Returnable Exceptions</span>
+            <div className="p-6 rounded-3xl bg-[#FFFDF9] border-2 border-[#D4AF37]/60 space-y-4">
+              <div className="flex items-center gap-2 text-[#0E0B09] font-serif font-bold text-lg">
+                <AlertCircle className="w-5 h-5 text-[#8C6518]" />
+                <span>Items That Cannot Be Returned</span>
               </div>
-              <ul className="space-y-2.5 text-xs text-zinc-700 leading-relaxed font-light">
-                <li className="flex items-start gap-2">
-                  <span className="text-rose-600 font-bold">•</span>
-                  Customized bespoke couture (blouses stitched to custom body measurements, custom neck/sleeve modifications).
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-rose-600 font-bold">•</span>
-                  Sarees with completed fall, pico, or tassel customization services.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-rose-600 font-bold">•</span>
-                  Garments showing visible perfume smell, makeup stains, or detached tags.
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="text-rose-600 font-bold">•</span>
-                  Products purchased on final clearance or archival archive sales.
-                </li>
+              <ul className="space-y-2.5 text-xs text-[#3F3122] leading-relaxed font-normal">
+                <li>• Sarees where the blouse piece has been cut or stitched.</li>
+                <li>• Custom-stitched blouses or dresses altered to your measurements.</li>
+                <li>• Used, washed, or perfume-sprayed garments without tags.</li>
               </ul>
             </div>
           </div>
 
           {/* Refund Timelines Table */}
           <div className="space-y-4">
-            <h3 className="font-serif text-xl font-bold text-[#061811]">
-              Refund Settlement Methods & Durations
+            <h3 className="font-serif text-xl font-bold text-[#0E0B09]">
+              How Fast Will I Get My Refund?
             </h3>
-            <div className="overflow-x-auto rounded-2xl border border-[#D4AF37]/30">
+            <div className="overflow-x-auto rounded-2xl border-2 border-[#D4AF37]/65">
               <table className="w-full text-xs text-left">
-                <thead className="bg-[#061811] text-[#E5C07B] uppercase tracking-wider font-semibold">
+                <thead className="bg-[#0E0B09] text-[#FFE59E] uppercase tracking-wider font-extrabold">
                   <tr>
-                    <th className="py-3 px-4">Payment Method</th>
-                    <th className="py-3 px-4">Refund Destination</th>
-                    <th className="py-3 px-4">Settlement Time</th>
+                    <th className="py-3.5 px-4">How You Paid</th>
+                    <th className="py-3.5 px-4">How You Get Refund</th>
+                    <th className="py-3.5 px-4">Time Taken</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-zinc-200 bg-[#FAF8F5]">
+                <tbody className="divide-y divide-[#D4AF37]/30 bg-[#FFFDF9]">
                   <tr>
-                    <td className="py-3 px-4 font-medium text-zinc-900">UPI / QR Code / GPay / PhonePe</td>
-                    <td className="py-3 px-4 text-zinc-600">Original UPI linked Bank Account</td>
-                    <td className="py-3 px-4 text-emerald-700 font-semibold">Instant (within 24 hours)</td>
+                    <td className="py-3.5 px-4 font-bold text-[#0E0B09]">GPay / PhonePe / Paytm / UPI</td>
+                    <td className="py-3.5 px-4 text-[#5C4934]">Same UPI Bank Account</td>
+                    <td className="py-3.5 px-4 text-emerald-800 font-bold">Within 24 Hours</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4 font-medium text-zinc-900">Credit / Debit Cards (Razorpay/Stripe)</td>
-                    <td className="py-3 px-4 text-zinc-600">Original Issuing Bank Card</td>
-                    <td className="py-3 px-4 text-zinc-600">3 – 5 Business Days</td>
+                    <td className="py-3.5 px-4 font-bold text-[#0E0B09]">Debit / Credit Card / NetBanking</td>
+                    <td className="py-3.5 px-4 text-[#5C4934]">Same Bank Account / Card</td>
+                    <td className="py-3.5 px-4 text-[#5C4934]">3 – 5 Working Days</td>
                   </tr>
                   <tr>
-                    <td className="py-3 px-4 font-medium text-zinc-900">Cash on Delivery (COD)</td>
-                    <td className="py-3 px-4 text-zinc-600">Direct Bank Transfer (NEFT/IMPS) or UPI ID</td>
-                    <td className="py-3 px-4 text-zinc-600">1 – 2 Business Days post-pickup</td>
+                    <td className="py-3.5 px-4 font-bold text-[#0E0B09]">Cash on Delivery (COD)</td>
+                    <td className="py-3.5 px-4 text-[#5C4934]">Sent to your GPay / PhonePe / Bank Account</td>
+                    <td className="py-3.5 px-4 text-[#5C4934]">1 – 2 Working Days</td>
                   </tr>
                 </tbody>
               </table>
@@ -240,27 +217,27 @@ export default function ReturnsPage() {
           </div>
 
           {/* Help Banner */}
-          <div className="p-6 rounded-3xl bg-[#061811] text-white flex flex-col sm:flex-row items-center justify-between gap-4 border border-[#D4AF37]/40 shadow-xl">
+          <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#0E0B09] via-[#17120D] to-[#0E0B09] text-white flex flex-col sm:flex-row items-center justify-between gap-4 border-2 border-[#D4AF37] shadow-xl">
             <div className="space-y-1 text-center sm:text-left">
-              <h4 className="font-serif text-lg font-bold text-[#E5C07B]">
-                Ready to Initiate an Exchange or Return?
+              <h4 className="font-serif text-lg font-bold text-[#FFE59E]">
+                Need Help With an Exchange or Return?
               </h4>
-              <p className="text-xs text-zinc-300 font-light">
-                Sign in to your orders or message our support team on WhatsApp for fast approval.
+              <p className="text-xs text-[#EDE3D2]/85 font-normal">
+                Message our Thoothukudi support team on WhatsApp (<strong className="text-[#FFE59E]">6383163609 | 7871207631</strong>) for quick help.
               </p>
             </div>
             <div className="flex items-center gap-3">
               <Link
                 href="/account/orders"
-                className="px-5 py-2.5 rounded-full bg-[#D4AF37] hover:bg-[#B38F2E] text-zinc-950 text-xs font-bold uppercase tracking-wider transition-all"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] text-[#0E0B09] border border-[#FFFDF9] text-xs font-extrabold uppercase tracking-wider transition-all"
               >
-                Go To Orders
+                My Orders
               </Link>
               <Link
                 href="/contact"
-                className="px-5 py-2.5 rounded-full border border-[#D4AF37] text-[#E5C07B] hover:bg-[#0E3324] text-xs font-bold uppercase tracking-wider transition-all"
+                className="px-5 py-2.5 rounded-full border border-[#D4AF37] text-[#FFE59E] hover:bg-[#1F1811] text-xs font-extrabold uppercase tracking-wider transition-all"
               >
-                Support Concierge
+                Contact Support
               </Link>
             </div>
           </div>

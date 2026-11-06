@@ -7,36 +7,30 @@ import {
   Trash2,
   Plus,
   Minus,
-  ArrowRight,
   ShoppingBag,
-  Tag,
-  Check,
-  X,
+  ArrowRight,
   ShieldCheck,
+  Tag,
+  X,
   Sparkles,
-  Truck,
-  RotateCcw,
-  Gift,
 } from 'lucide-react';
 import { useCartStore } from '../../store/cartStore';
-import { useWishlistStore } from '../../store/wishlistStore';
-import { formatCurrency } from '../../lib/utils';
-import { LotusIcon } from '../../components/ui/BrandLogo';
-import { toast } from 'sonner';
+import { formatCurrency, resolveMediaUrl } from '../../lib/utils';
+import { LotusIcon, NalmaraEmblem } from '../../components/ui/BrandLogo';
 
 export default function CartPage() {
   const {
     items,
     updateQuantity,
     removeItem,
-    appliedCoupon,
-    applyCoupon,
-    removeCoupon,
     getSubtotal,
     getDiscount,
     getShippingFee,
     getTax,
     getTotal,
+    appliedCoupon,
+    applyCoupon,
+    removeCoupon,
   } = useCartStore();
 
   const [couponCode, setCouponCode] = useState('');
@@ -52,219 +46,205 @@ export default function CartPage() {
     e.preventDefault();
     if (!couponCode.trim()) return;
 
-    setIsApplying(true);
-    const success = await applyCoupon(couponCode.trim());
-    setIsApplying(false);
-    if (success) {
-      setCouponCode('');
+    try {
+      setIsApplying(true);
+      const ok = await applyCoupon(couponCode.trim());
+      if (ok) {
+        setCouponCode('');
+      }
+    } finally {
+      setIsApplying(false);
     }
   };
 
   if (items.length === 0) {
     return (
-      <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
-        {/* Empty State Hero */}
-        <section className="relative overflow-hidden bg-[#4A0E17] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30 text-center">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
-          <div className="max-w-2xl mx-auto space-y-4 relative z-10">
-            <div className="w-16 h-16 rounded-full bg-[#5E141F] border border-[#D4AF37]/40 flex items-center justify-center mx-auto text-[#D4AF37] shadow-xl">
-              <ShoppingBag className="w-8 h-8" />
-            </div>
-            <h1 className="font-serif text-3xl sm:text-4xl font-bold text-white">
-              Your Couture Bag is Empty
-            </h1>
-            <p className="text-xs sm:text-sm text-zinc-200 font-light max-w-md mx-auto leading-relaxed">
-              You have no garments reserved in your shopping bag. Discover our newest handwoven silks, festive sarees, and royal wedding attire.
-            </p>
-            <div className="pt-4">
-              <Link
-                href="/shop"
-                className="inline-flex items-center gap-2 bg-[#D4AF37] hover:bg-[#B38F2E] text-zinc-950 px-8 py-3.5 rounded-full text-xs font-bold uppercase tracking-widest shadow-xl transition-all"
-              >
-                Explore Collections <ArrowRight className="w-4 h-4" />
-              </Link>
-            </div>
+      <div className="min-h-[75vh] bg-[#FDF6EC] flex flex-col items-center justify-center px-4 text-center">
+        <div className="relative max-w-md w-full bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] p-10 rounded-3xl border-2 border-[#D4AF37]/80 shadow-[0_20px_50px_rgba(56,7,37,0.12)] space-y-5">
+          <div className="absolute inset-[5px] rounded-[20px] border border-[#D4AF37]/30 pointer-events-none" />
+          <div className="w-20 h-20 rounded-full bg-gradient-to-b from-[#380725] to-[#280619] border-2 border-[#D4AF37] flex items-center justify-center text-[#FFE59E] mx-auto shadow-lg">
+            <ShoppingBag className="w-9 h-9 text-[#FFE59E]" />
           </div>
-        </section>
-
-        {/* Value badges below empty cart */}
-        <div className="max-w-4xl mx-auto px-4 py-16 grid grid-cols-1 sm:grid-cols-3 gap-6">
-          <div className="bg-white rounded-2xl p-5 border border-[#E8E2D5] shadow-xs text-center space-y-2">
-            <Truck className="w-6 h-6 text-[#D4AF37] mx-auto" />
-            <h4 className="font-serif font-bold text-sm text-zinc-900">Free Express Shipping</h4>
-            <p className="text-[11px] text-zinc-500 font-light">On all orders above ₹1,499</p>
-          </div>
-          <div className="bg-white rounded-2xl p-5 border border-[#E8E2D5] shadow-xs text-center space-y-2">
-            <RotateCcw className="w-6 h-6 text-[#D4AF37] mx-auto" />
-            <h4 className="font-serif font-bold text-sm text-zinc-900">7-Day Easy Returns</h4>
-            <p className="text-[11px] text-zinc-500 font-light">Doorstep reverse pickup</p>
-          </div>
-          <div className="bg-white rounded-2xl p-5 border border-[#E8E2D5] shadow-xs text-center space-y-2">
-            <ShieldCheck className="w-6 h-6 text-[#D4AF37] mx-auto" />
-            <h4 className="font-serif font-bold text-sm text-zinc-900">100% Authentic Handloom</h4>
-            <p className="text-[11px] text-zinc-500 font-light">Pure silk mark certified</p>
-          </div>
+          <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#280619]">
+            Your Royal Bag is{' '}
+            <span className="font-script italic font-normal text-3xl sm:text-4xl text-[#5B0E3D]">
+              Empty
+            </span>
+          </h1>
+          <p className="text-xs sm:text-sm text-[#5C3D1E] font-normal leading-relaxed">
+            Explore our pure Kanchipuram silk sarees, soft cotton drapes, and festive family collections crafted with authentic Zari.
+          </p>
+          <Link
+            href="/shop"
+            className="inline-flex items-center gap-2 bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] text-[#280619] border border-[#FFFDF9] px-8 py-3.5 rounded-full text-xs font-extrabold uppercase tracking-[0.2em] transition-all shadow-[0_10px_25px_rgba(212,175,55,0.4)] hover:scale-[1.02]"
+          >
+            Explore Collections <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
-      {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden bg-[#4A0E17] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
+    <div className="min-h-screen bg-[#FDF6EC] pb-20">
+      {/* 1. ROYAL PALACE HEADER BANNER */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#280619] via-[#3D0829] to-[#280619] text-white py-10 sm:py-14 px-4 border-b-2 border-[#D4AF37] shadow-lg">
+        <div className="max-w-[1440px] mx-auto relative rounded-3xl border border-[#D4AF37]/45 bg-[#220415]/65 p-6 sm:p-8 text-center space-y-2.5">
+          <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#FFE59E] pointer-events-none" />
+          <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#FFE59E] pointer-events-none" />
+          <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-[#FFE59E] pointer-events-none" />
+          <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#FFE59E] pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 border border-[#D4AF37]/40 text-[#D4AF37] text-xs font-semibold tracking-widest uppercase">
-            <LotusIcon className="w-4 h-3.5" />
-            <span>Reserved Ensembles</span>
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#FFE59E]/85 text-[#FFE59E] text-[10px] font-bold tracking-[0.22em] uppercase">
+            <NalmaraEmblem className="w-4 h-4" />
+            <span>NALMARA FASHION • THOOTHUKUDI</span>
           </div>
-
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
-            Your Shopping Bag
+          <h1 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#FFFDF9]">
+            Your Shopping{' '}
+            <span className="font-script italic font-normal text-4xl sm:text-5xl bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent">
+              Bag
+            </span>
           </h1>
-
-          <p className="text-xs sm:text-sm text-zinc-200 font-light max-w-xl mx-auto leading-relaxed">
-            Review your selected handcrafted couture pieces before proceeding to insured royal dispatch.
+          <p className="text-xs text-[#FAF0DD]/85 font-light">
+            Check your selected sarees and dresses and apply discount codes before checkout.
           </p>
-
-          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#D4AF37]">
-            <Link href="/" className="hover:underline text-zinc-200">Home</Link>
-            <span className="text-white/50">/</span>
-            <Link href="/shop" className="hover:underline text-zinc-200">Shop</Link>
-            <span className="text-white/50">/</span>
-            <span className="text-white font-medium">Bag ({items.reduce((sum, i) => sum + i.quantity, 0)})</span>
-          </div>
         </div>
       </section>
 
-      {/* 2. MAIN BAG CONTENT */}
-      <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10">
-          {/* Items List */}
-          <div className="lg:col-span-8 space-y-6">
-            <div className="bg-white rounded-3xl p-6 sm:p-8 border border-[#E8E2D5] shadow-sm divide-y divide-[#E8E2D5]/70">
-              {items.map((item) => (
-                <div key={item._id || item.sku} className="py-6 first:pt-0 last:pb-0 flex flex-col sm:flex-row gap-6">
-                  {/* Product Thumbnail */}
-                  <div className="relative w-24 sm:w-28 aspect-[3/4] rounded-2xl overflow-hidden bg-zinc-100 shrink-0 border border-[#E8E2D5]">
-                    <Image
-                      src={
-                        item.image ||
-                        '/images/bestsellers/traditional_silk_saree.jpg'
-                      }
-                      alt={item.name}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+          {/* Cart Items Table / List */}
+          <div className="lg:col-span-8 space-y-4">
+            <div className="space-y-4">
+              {items.map((item) => {
+                const imgSrc = resolveMediaUrl(item.image, '/images/nalmara/hd/cat_sarees_hd.jpg');
+                return (
+                  <div
+                    key={item._id || item.sku}
+                    className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] p-4 sm:p-6 rounded-2xl border-2 border-[#D4AF37]/75 flex flex-col sm:flex-row gap-5 shadow-[0_10px_28px_rgba(56,7,37,0.08)]"
+                  >
+                    <div className="absolute top-2 left-2 w-3 h-3 border-t-2 border-l-2 border-[#B88228] pointer-events-none" />
+                    <div className="absolute top-2 right-2 w-3 h-3 border-t-2 border-r-2 border-[#B88228] pointer-events-none" />
 
-                  {/* Details & Controls */}
-                  <div className="flex-1 flex flex-col justify-between space-y-4">
-                    <div className="space-y-1">
-                      <div className="flex justify-between items-start gap-2">
-                        {(() => {
-                          const itemSlug = item.slug || (typeof item.product === 'object' && item.product ? item.product.slug : item.product);
-                          return (
-                            <Link href={itemSlug ? `/product/${itemSlug}` : '/shop'}>
-                              <h3 className="font-serif font-bold text-base text-zinc-900 hover:text-[#4A0E17] transition-colors">
-                                {item.name}
-                              </h3>
-                            </Link>
-                          );
-                        })()}
-                        <button
-                          onClick={() => removeItem(item._id!)}
-                          className="text-zinc-400 hover:text-rose-600 transition-colors p-1"
-                          aria-label="Remove item"
-                        >
-                          <Trash2 className="w-4 h-4" />
-                        </button>
-                      </div>
-
-                      {item.attributes && Object.keys(item.attributes).length > 0 && (
-                        <div className="flex flex-wrap gap-2 pt-1 text-[11px] text-zinc-500">
-                          {Object.entries(item.attributes).map(([key, value]) => (
-                            <span
-                              key={key}
-                              className="px-2.5 py-0.5 rounded-full bg-[#FAF7F2] border border-[#E8E2D5] text-zinc-700 capitalize font-medium"
-                            >
-                              {key}: {value}
-                            </span>
-                          ))}
-                        </div>
-                      )}
+                    {/* Product Image */}
+                    <div className="relative w-full sm:w-28 h-36 rounded-xl overflow-hidden bg-[#280619] border-2 border-[#D4AF37]/75 shrink-0 shadow-sm">
+                      <Image
+                        src={imgSrc}
+                        alt={item.name}
+                        fill
+                        unoptimized
+                        className="object-cover object-top"
+                      />
                     </div>
 
-                    <div className="flex items-center justify-between pt-2">
-                      {/* Quantity Controller */}
-                      <div className="flex items-center border border-[#E8E2D5] rounded-full overflow-hidden bg-white shadow-2xs">
-                        <button
-                          onClick={() => updateQuantity(item._id!, Math.max(1, item.quantity - 1))}
-                          className="p-1.5 px-3 text-zinc-600 hover:bg-[#FAF7F2] transition-colors cursor-pointer"
-                          aria-label="Decrease quantity"
-                        >
-                          <Minus className="w-3.5 h-3.5" />
-                        </button>
-                        <span className="w-8 text-center text-xs font-bold text-zinc-900">
-                          {item.quantity}
-                        </span>
-                        <button
-                          onClick={() => updateQuantity(item._id!, item.quantity + 1)}
-                          className="p-1.5 px-3 text-zinc-600 hover:bg-[#FAF7F2] transition-colors cursor-pointer"
-                          aria-label="Increase quantity"
-                        >
-                          <Plus className="w-3.5 h-3.5" />
-                        </button>
-                      </div>
+                    {/* Product Details */}
+                    <div className="flex-1 flex flex-col justify-between space-y-3">
+                      <div>
+                        <div className="flex justify-between items-start gap-2">
+                          <Link href={item.slug ? `/product/${item.slug}` : '/shop'}>
+                            <h3 className="font-serif font-bold text-base sm:text-lg text-[#280619] hover:text-[#5B0E3D] transition-colors">
+                              {item.name}
+                            </h3>
+                          </Link>
+                          <button
+                            onClick={() => removeItem(item._id!)}
+                            className="text-[#8C7A65] hover:text-rose-600 transition-colors p-1 cursor-pointer"
+                            aria-label="Remove item"
+                          >
+                            <Trash2 className="w-4 h-4" />
+                          </button>
+                        </div>
 
-                      {/* Price */}
-                      <div className="text-right">
-                        <span className="font-serif text-base font-bold text-[#4A0E17]">
-                          {formatCurrency(item.price * item.quantity)}
-                        </span>
-                        {item.quantity > 1 && (
-                          <span className="block text-[10px] text-zinc-400">
-                            {formatCurrency(item.price)} each
-                          </span>
+                        {item.attributes && Object.keys(item.attributes).length > 0 && (
+                          <div className="flex flex-wrap gap-2 pt-1.5 text-[11px]">
+                            {Object.entries(item.attributes).map(([key, value]) => (
+                              <span
+                                key={key}
+                                className="px-2.5 py-0.5 rounded-full bg-[#FFFDF9] border border-[#D4AF37]/60 text-[#280619] capitalize font-semibold"
+                              >
+                                {key}: {Array.isArray(value) ? value.join(', ') : String(value)}
+                              </span>
+                            ))}
+                          </div>
                         )}
                       </div>
+
+                      <div className="flex items-center justify-between pt-2 border-t border-[#D4AF37]/30">
+                        {/* Quantity Controller */}
+                        <div className="flex items-center border border-[#D4AF37]/75 rounded-full overflow-hidden bg-[#FFFDF9] shadow-2xs">
+                          <button
+                            onClick={() => updateQuantity(item._id!, Math.max(1, item.quantity - 1))}
+                            className="p-1.5 px-3 text-[#280619] hover:bg-[#FAF0DD] transition-colors cursor-pointer"
+                            aria-label="Decrease quantity"
+                          >
+                            <Minus className="w-3.5 h-3.5" />
+                          </button>
+                          <span className="w-8 text-center text-xs font-extrabold text-[#280619]">
+                            {item.quantity}
+                          </span>
+                          <button
+                            onClick={() => updateQuantity(item._id!, item.quantity + 1)}
+                            className="p-1.5 px-3 text-[#280619] hover:bg-[#FAF0DD] transition-colors cursor-pointer"
+                            aria-label="Increase quantity"
+                          >
+                            <Plus className="w-3.5 h-3.5" />
+                          </button>
+                        </div>
+
+                        {/* Price */}
+                        <div className="text-right">
+                          <span className="font-serif text-lg font-extrabold text-[#280619]">
+                            {formatCurrency(item.price * item.quantity)}
+                          </span>
+                          {item.quantity > 1 && (
+                            <span className="block text-[10px] text-[#5C3D1E] font-medium">
+                              {formatCurrency(item.price)} each
+                            </span>
+                          )}
+                        </div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
 
             {/* Back to Shopping Link */}
             <div className="pt-2">
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-1.5 text-xs font-bold text-[#4A0E17] hover:underline"
+                className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#380725] hover:text-[#8C5818] transition-colors"
               >
-                ← Continue Exploring Collections
+                ← Continue Exploring Royal Collections
               </Link>
             </div>
           </div>
 
-          {/* Order Summary Sidebar */}
+          {/* Order Summary Sidebar (Royal Silk Cream & 24K Gold Plaque) */}
           <div className="lg:col-span-4">
-            <div className="bg-white p-6 sm:p-8 rounded-3xl border border-[#E8E2D5] shadow-lg space-y-6 sticky top-28">
-              <h2 className="font-serif text-xl font-bold text-zinc-900">
-                Order Summary
-              </h2>
+            <div className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] p-6 sm:p-8 rounded-3xl border-2 border-[#D4AF37]/80 shadow-[0_20px_50px_rgba(56,7,37,0.12)] space-y-6 sticky top-28">
+              <div className="absolute inset-[5px] rounded-[20px] border border-[#D4AF37]/30 pointer-events-none" />
+              <div className="absolute top-2.5 left-2.5 w-3.5 h-3.5 border-t-2 border-l-2 border-[#B88228] pointer-events-none" />
+              <div className="absolute top-2.5 right-2.5 w-3.5 h-3.5 border-t-2 border-r-2 border-[#B88228] pointer-events-none" />
+
+              <div className="relative z-10 flex items-center justify-between border-b border-[#D4AF37]/40 pb-3">
+                <h2 className="font-serif text-xl font-bold text-[#280619]">
+                  Order Summary
+                </h2>
+                <LotusIcon className="w-5 h-4 text-[#8C5818]" />
+              </div>
 
               {/* Coupon Code Input */}
-              <div className="space-y-2">
+              <div className="relative z-10 space-y-2">
                 {appliedCoupon ? (
-                  <div className="flex items-center justify-between bg-[#4A0E17]/5 border border-[#4A0E17]/20 p-3 rounded-xl text-xs">
-                    <div className="flex items-center gap-2 text-[#4A0E17] font-semibold">
-                      <Tag className="w-3.5 h-3.5 text-[#D4AF37]" />
+                  <div className="flex items-center justify-between bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#D4AF37] p-3 rounded-xl text-xs text-[#FFE59E]">
+                    <div className="flex items-center gap-2 font-bold">
+                      <Tag className="w-3.5 h-3.5 text-[#FFE59E]" />
                       <span>Code {appliedCoupon.code} Applied</span>
                     </div>
                     <button
                       onClick={removeCoupon}
-                      className="text-zinc-400 hover:text-rose-500 p-1 cursor-pointer"
+                      className="text-[#FFE59E]/75 hover:text-rose-400 p-1 cursor-pointer"
                       aria-label="Remove coupon"
                     >
                       <X className="w-3.5 h-3.5" />
@@ -276,70 +256,67 @@ export default function CartPage() {
                       type="text"
                       value={couponCode}
                       onChange={(e) => setCouponCode(e.target.value.toUpperCase())}
-                      placeholder="Coupon Code"
-                      className="flex-1 bg-[#FAF7F2] border border-[#E8E2D5] rounded-xl px-3 py-2 text-xs uppercase font-mono tracking-wider focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
+                      placeholder="Privilege Code"
+                      className="flex-1 bg-[#FFFDF9] border border-[#D4AF37]/65 rounded-xl px-3.5 py-2 text-xs uppercase font-mono font-bold tracking-wider text-[#280619] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
                     />
                     <button
                       type="submit"
                       disabled={isApplying}
-                      className="bg-[#4A0E17] hover:bg-[#5E141F] text-white border border-[#7A1D2A] px-4 py-2 rounded-xl text-xs font-bold uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer"
+                      className="bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] text-[#FFE59E] border border-[#D4AF37] px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer"
                     >
-                      {isApplying ? 'Checking...' : 'Apply'}
+                      {isApplying ? '...' : 'Apply'}
                     </button>
                   </form>
                 )}
-                <p className="text-[10px] text-zinc-400">
-                  Try coupon: <span className="font-mono font-bold text-[#4A0E17]">WELCOME10</span> (10% OFF)
-                </p>
               </div>
 
               {/* Cost Breakdown */}
-              <div className="space-y-3 pt-4 border-t border-[#E8E2D5]/70 text-xs">
-                <div className="flex justify-between text-zinc-600">
+              <div className="relative z-10 space-y-3 pt-4 border-t border-[#D4AF37]/40 text-xs">
+                <div className="flex justify-between text-[#5C3D1E]">
                   <span>Subtotal</span>
-                  <span className="font-semibold text-zinc-900">
+                  <span className="font-bold text-[#280619]">
                     {formatCurrency(subtotal)}
                   </span>
                 </div>
 
                 {discount > 0 && (
-                  <div className="flex justify-between text-rose-700 font-semibold">
-                    <span>Special Discount</span>
+                  <div className="flex justify-between text-emerald-800 font-bold">
+                    <span>Privilege Discount</span>
                     <span>-{formatCurrency(discount)}</span>
                   </div>
                 )}
 
-                <div className="flex justify-between text-zinc-600">
-                  <span>Estimated Shipping</span>
-                  <span className="font-semibold text-emerald-700">
+                <div className="flex justify-between text-[#5C3D1E]">
+                  <span>Insured Express Shipping</span>
+                  <span className="font-bold text-emerald-800">
                     {shippingFee === 0 ? 'FREE' : formatCurrency(shippingFee)}
                   </span>
                 </div>
 
-                <div className="flex justify-between text-zinc-600">
+                <div className="flex justify-between text-[#5C3D1E]">
                   <span>Integrated GST (Included)</span>
-                  <span className="font-semibold text-zinc-900">
+                  <span className="font-bold text-[#280619]">
                     {formatCurrency(tax)}
                   </span>
                 </div>
 
-                <div className="flex justify-between text-base font-serif font-bold text-zinc-900 pt-3 border-t border-[#E8E2D5]">
-                  <span>Total Amount</span>
-                  <span className="text-[#4A0E17]">{formatCurrency(total)}</span>
+                <div className="flex justify-between text-base font-serif font-extrabold text-[#280619] pt-3 border-t border-[#D4AF37]/50">
+                  <span>Total Payable</span>
+                  <span className="text-lg text-[#280619]">{formatCurrency(total)}</span>
                 </div>
               </div>
 
-              {/* Checkout CTA */}
+              {/* Checkout CTA (3D Liquid 24K Gold Foil) */}
               <Link
                 href="/checkout"
-                className="w-full bg-[#4A0E17] hover:bg-[#5E141F] text-white py-3.5 rounded-full text-xs font-bold uppercase tracking-widest flex items-center justify-center gap-2 shadow-xl transition-all hover:scale-[1.01] border border-[#7A1D2A]"
+                className="relative z-10 w-full bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] text-[#280619] border border-[#FFFDF9] py-4 rounded-full text-xs font-extrabold uppercase tracking-[0.2em] flex items-center justify-center gap-2 shadow-[0_12px_28px_rgba(212,175,55,0.45)] transition-all hover:scale-[1.01]"
               >
-                PROCEED TO SECURE CHECKOUT <ArrowRight className="w-4 h-4" />
+                PROCEED TO ROYAL CHECKOUT <ArrowRight className="w-4 h-4" />
               </Link>
 
-              <div className="flex items-center justify-center gap-2 text-[11px] text-zinc-500 pt-1">
-                <ShieldCheck className="w-4 h-4 text-[#D4AF37]" />
-                <span>256-Bit SSL Encrypted Royal Checkout</span>
+              <div className="relative z-10 flex items-center justify-center gap-2 text-[11px] text-[#5C3D1E] font-medium pt-1">
+                <ShieldCheck className="w-4 h-4 text-[#8C5818]" />
+                <span>256-Bit SSL Encrypted • 100% Authentic Loom</span>
               </div>
             </div>
           </div>

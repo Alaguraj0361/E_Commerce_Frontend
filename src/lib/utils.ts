@@ -32,3 +32,26 @@ export function getGuestId(): string {
   }
   return guestId;
 }
+
+const BACKEND_ORIGIN =
+  process.env.NEXT_PUBLIC_API_URL?.replace(/\/api\/?$/, '') ||
+  'https://e-commerce-backend-4c4d.onrender.com';
+
+export function resolveMediaUrl(rawUrl?: string, fallback: string = '/images/nalmara/hd/cat_sarees_hd.jpg'): string {
+  if (!rawUrl || typeof rawUrl !== 'string') return fallback;
+  const trimmed = rawUrl.trim();
+  if (!trimmed) return fallback;
+  if (
+    trimmed.startsWith('http://') ||
+    trimmed.startsWith('https://') ||
+    trimmed.startsWith('data:image/') ||
+    trimmed.startsWith('/images/')
+  ) {
+    return trimmed;
+  }
+  if (trimmed.startsWith('/uploads/')) {
+    return `${BACKEND_ORIGIN}${trimmed}`;
+  }
+  return trimmed.startsWith('/') ? trimmed : `/${trimmed}`;
+}
+

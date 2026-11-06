@@ -7,6 +7,7 @@ import { Search, X, Loader2, ArrowRight } from 'lucide-react';
 import { api } from '../../lib/api';
 import { Product } from '../../types';
 import { formatCurrency } from '../../lib/utils';
+import { useCategoryStore } from '../../store/categoryStore';
 
 interface SearchModalProps {
   isOpen: boolean;
@@ -19,6 +20,7 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
   const [results, setResults] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { categories } = useCategoryStore();
 
   useEffect(() => {
     if (isOpen) {
@@ -107,20 +109,18 @@ export const SearchModal = ({ isOpen, onClose }: SearchModalProps) => {
           {!query.trim() ? (
             <div>
               <p className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-3 px-2">
-                Popular Searches
+                Browse Categories
               </p>
               <div className="flex flex-wrap gap-2 px-2">
-                {['Overcoat', 'ANC Headphones', 'Chelsea Boots', 'Leather Bag', 'Cashmere', 'Ceramic Pour-Over'].map(
-                  (tag) => (
-                    <button
-                      key={tag}
-                      onClick={() => setQuery(tag)}
-                      className="text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 px-3 py-1.5 rounded-full transition-colors"
-                    >
-                      {tag}
-                    </button>
-                  )
-                )}
+                {categories.map((cat) => (
+                  <button
+                    key={cat._id}
+                    onClick={() => setQuery(cat.name)}
+                    className="text-xs bg-zinc-100 dark:bg-zinc-800 hover:bg-zinc-200 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 px-3 py-1.5 rounded-full transition-colors"
+                  >
+                    {cat.name}
+                  </button>
+                ))}
               </div>
             </div>
           ) : results.length > 0 ? (

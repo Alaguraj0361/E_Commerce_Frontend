@@ -18,40 +18,49 @@ export const BottomNav = () => {
   const wishlistCount = wishlistProducts.length;
 
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#FAF7F2]/95 backdrop-blur-md border-t border-[#E8E2D5] py-1.5 px-4 shadow-[0_-4px_12px_rgba(0,0,0,0.05)]">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0E0B09] border-t-2 border-[#D4AF37]/75 py-1.5 px-2 shadow-[0_-8px_24px_rgba(0,0,0,0.35)]">
       <div className="flex items-center justify-around max-w-md mx-auto">
         {/* Home */}
         <Link
           href="/"
-          className={`flex flex-col items-center gap-0.5 py-1 px-3 text-[10px] font-medium transition-colors ${
-            pathname === '/' ? 'text-[#4A0E17] font-semibold' : 'text-zinc-500 hover:text-[#4A0E17]'
+          className={`relative flex flex-col items-center gap-0.5 py-1 px-3 text-[10px] font-medium transition-all ${
+            pathname === '/' ? 'text-[#FFE59E] font-bold' : 'text-[#EADBC0]/70 hover:text-[#FFE59E]'
           }`}
         >
-          <Home className="w-5 h-5" />
+          {pathname === '/' && (
+            <span className="absolute -top-1.5 inset-x-2 h-[2.5px] rounded-full bg-gradient-to-r from-[#FFE59E] to-[#D4AF37]" />
+          )}
+          <Home className={`w-5 h-5 ${pathname === '/' ? 'text-[#D4AF37]' : ''}`} />
           <span>Home</span>
         </Link>
 
         {/* Categories */}
         <Link
           href="/shop"
-          className={`flex flex-col items-center gap-0.5 py-1 px-3 text-[10px] font-medium transition-colors ${
-            pathname === '/shop' ? 'text-[#4A0E17] font-semibold' : 'text-zinc-500 hover:text-[#4A0E17]'
+          className={`relative flex flex-col items-center gap-0.5 py-1 px-3 text-[10px] font-medium transition-all ${
+            pathname === '/shop' ? 'text-[#FFE59E] font-bold' : 'text-[#EADBC0]/70 hover:text-[#FFE59E]'
           }`}
         >
-          <Grid className="w-5 h-5" />
-          <span>Shop</span>
+          {pathname === '/shop' && (
+            <span className="absolute -top-1.5 inset-x-2 h-[2.5px] rounded-full bg-gradient-to-r from-[#FFE59E] to-[#D4AF37]" />
+          )}
+          <Grid className={`w-5 h-5 ${pathname === '/shop' ? 'text-[#D4AF37]' : ''}`} />
+          <span>Categories</span>
         </Link>
 
         {/* Wishlist */}
         <Link
           href="/wishlist"
-          className={`relative flex flex-col items-center gap-0.5 py-1 px-3 text-[10px] font-medium transition-colors ${
-            pathname === '/wishlist' ? 'text-[#4A0E17] font-semibold' : 'text-zinc-500 hover:text-[#4A0E17]'
+          className={`relative flex flex-col items-center gap-0.5 py-1 px-3 text-[10px] font-medium transition-all ${
+            pathname === '/wishlist' ? 'text-[#FFE59E] font-bold' : 'text-[#EADBC0]/70 hover:text-[#FFE59E]'
           }`}
         >
-          <Heart className="w-5 h-5" />
+          {pathname === '/wishlist' && (
+            <span className="absolute -top-1.5 inset-x-2 h-[2.5px] rounded-full bg-gradient-to-r from-[#FFE59E] to-[#D4AF37]" />
+          )}
+          <Heart className={`w-5 h-5 ${pathname === '/wishlist' ? 'text-[#D4AF37]' : ''}`} />
           {wishlistCount > 0 && (
-            <span className="absolute top-0 right-2 bg-[#4A0E17] text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">
+            <span className="absolute top-0 right-2 bg-[#D4AF37] text-[#0E0B09] text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">
               {wishlistCount}
             </span>
           )}
@@ -61,11 +70,11 @@ export const BottomNav = () => {
         {/* Cart */}
         <button
           onClick={() => setIsCartOpen(true)}
-          className="relative flex flex-col items-center gap-0.5 py-1 px-3 text-[10px] font-medium text-zinc-500 hover:text-[#4A0E17] transition-colors"
+          className="relative flex flex-col items-center gap-0.5 py-1 px-3 text-[10px] font-medium text-[#EADBC0]/70 hover:text-[#FFE59E] transition-all"
         >
           <ShoppingBag className="w-5 h-5" />
           {totalCartCount > 0 && (
-            <span className="absolute top-0 right-2 bg-[#4A0E17] text-white text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">
+            <span className="absolute top-0 right-2 bg-[#D4AF37] text-[#0E0B09] text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">
               {totalCartCount}
             </span>
           )}
@@ -75,14 +84,17 @@ export const BottomNav = () => {
         {/* Account */}
         <Link
           href={isAuthenticated ? '/account' : '/login'}
-          className={`flex flex-col items-center gap-0.5 py-1 px-3 text-[10px] font-medium transition-colors ${
+          className={`relative flex flex-col items-center gap-0.5 py-1 px-3 text-[10px] font-medium transition-all ${
             pathname.startsWith('/account') || pathname.startsWith('/login')
-              ? 'text-[#4A0E17] font-semibold'
-              : 'text-zinc-500 hover:text-[#4A0E17]'
+              ? 'text-[#FFE59E] font-bold'
+              : 'text-[#EADBC0]/70 hover:text-[#FFE59E]'
           }`}
         >
-          <User className="w-5 h-5" />
-          <span>{isAuthenticated ? 'Profile' : 'Login'}</span>
+          {(pathname.startsWith('/account') || pathname.startsWith('/login')) && (
+            <span className="absolute -top-1.5 inset-x-2 h-[2.5px] rounded-full bg-gradient-to-r from-[#FFE59E] to-[#D4AF37]" />
+          )}
+          <User className={`w-5 h-5 ${pathname.startsWith('/account') || pathname.startsWith('/login') ? 'text-[#D4AF37]' : ''}`} />
+          <span>{isAuthenticated ? 'Account' : 'Login'}</span>
         </Link>
       </div>
     </nav>

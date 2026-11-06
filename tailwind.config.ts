@@ -8,6 +8,13 @@ const config: Config = {
   ],
   theme: {
     extend: {
+      spacing: {
+        '0.2': '0.05rem',
+        '13': '3.25rem',
+        '15': '3.75rem',
+        '18': '4.5rem',
+        '22': '5.5rem',
+      },
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',

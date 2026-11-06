@@ -5,11 +5,8 @@ import {
   Calendar,
   Clock,
   ArrowRight,
-  Sparkles,
-  BookOpen,
-  Share2,
 } from 'lucide-react';
-import { LotusIcon } from '@/components/ui/BrandLogo';
+import { NalmaraEmblem } from '@/components/ui/BrandLogo';
 
 export const metadata = {
   title: 'The Royal Journal | NALMARA FASHION • Handloom Heritage & Couture Chronicles',
@@ -20,130 +17,123 @@ export const metadata = {
 const ARTICLES = [
   {
     slug: 'sacred-heritage-of-kanchipuram-pure-silk',
-    title: 'The Sacred Heritage of Kanchipuram: Weaving Gold Zari and Eternity',
-    category: 'Handloom Heritage',
-    readTime: '5 min read',
+    title: 'How to Choose the Best Kanchipuram & Soft Silk Sarees for Weddings',
+    category: 'Saree Guide',
+    readTime: '4 min read',
     date: 'September 28, 2026',
     excerpt:
-      'Unravel the timeless artistry of Tamil Nadu’s temple weavers, where pure Mulberry silk intertwines with silver and gold electroplated zari to craft heirlooms passed through generations.',
-    image: 'https://images.unsplash.com/photo-1610030469983-98e550d6193c?auto=format&fit=crop&w=1000&q=80',
+      'Simple tips from our Thoothukudi store team on choosing rich zari borders, contrast pallus, and auspicious colours for Tamil Nadu weddings and functions.',
+    image: '/images/banners/royal_handlooms_hero.png',
   },
   {
     slug: 'bridal-lehengas-royal-velvet-zardozi',
-    title: 'Bridal Couture 2026: The Resurgence of Royal Velvet and Pure Zardozi',
-    category: 'Bridal Trends',
-    readTime: '6 min read',
+    title: 'Trending Festival Colours & Lightweight Sarees for Family Celebrations',
+    category: 'Festival Trends',
+    readTime: '3 min read',
     date: 'September 22, 2026',
     excerpt:
-      'Discover why contemporary brides are turning toward deep jewel tones, Mughal-inspired motifs, and intricate French wire needlework for their sacred ceremonies.',
-    image: 'https://images.unsplash.com/photo-1583391733956-3750e0ff4e8b?auto=format&fit=crop&w=1000&q=80',
+      'Discover why soft silk, semi-tissue, and breathable Chettinad cotton sarees are the most loved choices for comfortable all-day festival wear.',
+    image: '/images/banners/traditional_elegance_hero.png',
   },
   {
     slug: 'timeless-saree-draping-styles',
-    title: '5 Timeless Saree Draping Styles for Modern Celebrations',
-    category: 'Styling Guides',
-    readTime: '4 min read',
+    title: '5 Easy Tips to Keep Your Silk & Zari Sarees Shining Like New',
+    category: 'Saree Care',
+    readTime: '3 min read',
     date: 'September 15, 2026',
     excerpt:
-      'From the regal pleated pallu of royal courts to effortless fusion belts and cape accents, elevate your ethnic presence with our master stylist guide.',
-    image: 'https://images.unsplash.com/photo-1597983073493-88cd35cf93b0?auto=format&fit=crop&w=1000&q=80',
-  },
-  {
-    slug: 'pure-silk-and-zari-care-guide',
-    title: 'How to Care for Pure Mulberry Silk & Zari: A Connoisseur’s Guide',
-    category: 'Fabric Care',
-    readTime: '4 min read',
-    date: 'September 08, 2026',
-    excerpt:
-      'Essential conservation techniques to keep your handloom drapes radiant for decades. Why muslin wrapping, dry cleaning, and gentle airing safeguard zari sheen.',
-    image: 'https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=1000&q=80',
+      'Learn how to fold, store in cotton cloth, and care for your silk and zari sarees at home so they stay bright for years.',
+    image: '/images/banners/festive_splendor_hero.png',
   },
 ];
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
-      {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden bg-[#061811] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
+    <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
+      {/* 1. ROYAL HERO SECTION (Obsidian #0E0B09 & 24K Gold matching Home Page) */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0E0B09] via-[#17120D] to-[#0E0B09] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b-2 border-[#D4AF37]/80">
+        <div className="max-w-[1440px] mx-auto relative rounded-3xl border border-[#D4AF37]/35 bg-[#120E0A]/60 p-8 sm:p-12 text-center space-y-4">
+          <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]/80 pointer-events-none" />
+          <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]/80 pointer-events-none" />
+          <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]/80 pointer-events-none" />
+          <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]/80 pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#E5C07B] text-xs font-semibold tracking-widest uppercase">
-            <LotusIcon className="w-4 h-3.5" />
-            <span>The Royal Journal</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0E0B09] border border-[#D4AF37]/75 text-[#FFE59E] text-[10px] font-bold tracking-[0.22em] uppercase">
+            <NalmaraEmblem className="w-4 h-4" />
+            <span>Nalmara Fashion • Thoothukudi</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
-            Chronicles of Craft & Couture
+          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#FFFDF9] leading-tight">
+            Saree Style &amp;{' '}
+            <span className="font-script italic font-normal text-4xl sm:text-6xl bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent">
+              Care Guide
+            </span>
           </h1>
 
-          <p className="text-xs sm:text-sm text-zinc-300 font-light max-w-xl mx-auto leading-relaxed">
-            Stories celebrating Indian textile artistry, bridal heritage, styling wisdom, and generational master weavers.
+          <p className="text-xs sm:text-sm text-[#EDE3D2]/85 font-light max-w-xl mx-auto leading-relaxed">
+            Helpful tips on choosing wedding silk sarees, festival fashion trends, and easy saree care from Nalmara Fashion, Thoothukudi.
           </p>
 
-          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#E5C07B]">
-            <Link href="/" className="hover:underline">Home</Link>
-            <span className="text-zinc-500">/</span>
-            <span className="text-white font-medium">Journal</span>
+          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#D4AF37]">
+            <Link href="/" className="hover:text-[#FFE59E] text-[#EDE3D2]/70">Home</Link>
+            <span className="text-[#D4AF37]/50">/</span>
+            <span className="text-[#FFFDF9] font-semibold">Journal</span>
           </div>
         </div>
       </section>
 
       {/* 2. ARTICLES GRID */}
       <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-16 sm:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-8 lg:gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
           {ARTICLES.map((article) => (
             <article
               key={article.slug}
-              className="bg-white rounded-3xl border border-[#D4AF37]/25 overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between group"
+              className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF3E6] to-[#F5E9D3] rounded-3xl border-2 border-[#D4AF37]/65 overflow-hidden shadow-[0_14px_34px_rgba(14,11,9,0.08)] hover:border-[#D4AF37] transition-all duration-300 flex flex-col justify-between group p-2.5"
             >
               {/* Image banner */}
-              <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-zinc-100">
+              <div className="relative h-64 sm:h-72 w-full rounded-2xl overflow-hidden bg-[#0E0B09] border border-[#D4AF37]/50">
                 <Image
                   src={article.image}
                   alt={article.title}
                   fill
                   className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                <span className="absolute top-4 left-4 px-3 py-1 rounded-full bg-[#0E3324]/90 backdrop-blur-sm text-[#E5C07B] text-[10px] font-bold uppercase tracking-wider border border-[#D4AF37]/40">
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0E0B09]/70 via-transparent to-transparent" />
+                <span className="absolute top-3.5 left-3.5 px-3 py-1 rounded-full bg-[#0E0B09]/90 text-[#FFE59E] text-[10px] font-extrabold uppercase tracking-wider border border-[#D4AF37]">
                   {article.category}
                 </span>
               </div>
 
               {/* Content */}
-              <div className="p-6 sm:p-8 space-y-3 flex-1 flex flex-col justify-between">
-                <div className="space-y-2">
-                  <div className="flex items-center gap-4 text-[11px] text-zinc-400">
+              <div className="p-5 sm:p-6 space-y-3 flex-1 flex flex-col justify-between">
+                <div className="space-y-2.5">
+                  <div className="flex items-center gap-4 text-[11px] text-[#6B5740] font-semibold">
                     <span className="flex items-center gap-1.5">
-                      <Calendar className="w-3.5 h-3.5 text-[#D4AF37]" />
+                      <Calendar className="w-3.5 h-3.5 text-[#8C6518]" />
                       {article.date}
                     </span>
                     <span>•</span>
                     <span className="flex items-center gap-1.5">
-                      <Clock className="w-3.5 h-3.5 text-[#D4AF37]" />
+                      <Clock className="w-3.5 h-3.5 text-[#8C6518]" />
                       {article.readTime}
                     </span>
                   </div>
 
-                  <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#061811] group-hover:text-[#B8860B] transition-colors leading-snug">
+                  <h3 className="font-serif text-xl font-bold text-[#0E0B09] group-hover:text-[#8C6518] transition-colors leading-snug">
                     {article.title}
                   </h3>
 
-                  <p className="text-xs sm:text-sm text-zinc-600 font-light leading-relaxed line-clamp-3">
+                  <p className="text-xs sm:text-sm text-[#5C4934] font-light leading-relaxed line-clamp-3">
                     {article.excerpt}
                   </p>
                 </div>
 
-                <div className="pt-4 border-t border-zinc-100 flex items-center justify-between text-xs">
-                  <span className="font-bold text-[#061811] flex items-center gap-1.5 group-hover:text-[#B8860B] transition-colors">
-                    Read Chronicle <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
-                  </span>
+                <div className="pt-4 border-t border-[#D4AF37]/35 flex items-center justify-between text-xs">
                   <Link
                     href="/shop"
-                    className="text-[#B8860B] hover:underline text-[11px] font-medium"
+                    className="font-extrabold text-[#0E0B09] flex items-center gap-1.5 group-hover:text-[#8C6518] transition-colors uppercase tracking-wider"
                   >
-                    Explore Handlooms →
+                    Explore Handlooms <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
               </div>

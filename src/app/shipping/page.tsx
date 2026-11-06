@@ -11,70 +11,76 @@ import {
   ArrowRight,
   Sparkles,
 } from 'lucide-react';
-import { LotusIcon } from '@/components/ui/BrandLogo';
+import { NalmaraEmblem } from '@/components/ui/BrandLogo';
 
 export const metadata = {
-  title: 'Shipping Policy | NALMARA FASHION • Luxury Ethnic Couture Delivery',
+  title: 'Shipping & Delivery | NALMARA FASHION • Thoothukudi, Tamil Nadu',
   description:
-    'Experience seamless, insured luxury shipping for your royal couture. Free delivery on orders above ₹1,499 across India. Global international shipping available.',
+    'Fast 1–3 day delivery across Thoothukudi, Tirunelveli, Madurai, Chennai, Coimbatore, and all of Tamil Nadu. Free shipping on orders above ₹1,499.',
 };
 
 export default function ShippingPage() {
   const deliveryTiers = [
     {
-      title: 'Metro Express Delivery',
-      time: '2 – 4 Business Days',
-      coverage: 'Mumbai, Bengaluru, Delhi NCR, Chennai, Hyderabad, Kolkata',
-      charge: 'FREE on orders above ₹1,499 (Standard: ₹99)',
+      title: 'Thoothukudi, Tirunelveli & South TN',
+      time: '1 – 2 Business Days',
+      coverage: 'Thoothukudi, Tirunelveli, Kovilpatti, Nagercoil, Madurai, Virudhunagar, Tenkasi, Ramanathapuram',
+      charge: 'FREE on orders above ₹1,499 (Below ₹1,499: ₹99)',
+      badge: 'Fast Local Delivery',
+    },
+    {
+      title: 'All Over Tamil Nadu & Puducherry',
+      time: '2 – 3 Business Days',
+      coverage: 'Chennai, Coimbatore, Trichy, Salem, Erode, Tiruppur, Vellore, Thanjavur & all TN districts',
+      charge: 'FREE on orders above ₹1,499 (Below ₹1,499: ₹99)',
       badge: 'Most Popular',
     },
     {
-      title: 'Rest of India',
-      time: '4 – 6 Business Days',
-      coverage: 'All Tier 2 & Tier 3 cities across all Indian states and Union Territories',
-      charge: 'FREE on orders above ₹1,499 (Standard: ₹149)',
-      badge: 'Pan-India Insured',
+      title: 'South India & Rest of India',
+      time: '3 – 5 Business Days',
+      coverage: 'Bengaluru, Kerala, Andhra Pradesh, Telangana, Mumbai, Delhi & all Indian states',
+      charge: 'FREE on orders above ₹1,499 (Below ₹1,499: ₹99)',
+      badge: 'All-India Courier',
     },
     {
-      title: 'Bespoke Tailoring & Bridal',
-      time: '7 – 12 Business Days',
-      coverage: 'Custom blouse stitching, fall/pico, feeding zips, can-can & bridal sets',
-      charge: 'Includes artisan crafting & express priority dispatch',
-      badge: 'Crafted For You',
-    },
-    {
-      title: 'Worldwide International',
-      time: '6 – 10 Business Days',
-      coverage: 'USA, UK, Canada, UAE, Singapore, Australia, and 60+ countries',
-      charge: 'Calculated at checkout based on destination weight',
-      badge: 'Global Courier',
+      title: 'Custom Stitching & Bulk Wedding Orders',
+      time: '4 – 7 Business Days',
+      coverage: 'Sarees with blouse stitching, fall/pico finishing, or family wedding bulk sets',
+      charge: 'Dispatched with priority express courier',
+      badge: 'Custom Ready',
     },
   ];
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
-      {/* 1. HERO SECTION (Royal Dark Emerald & Gold Filigree) */}
-      <section className="relative overflow-hidden bg-[#061811] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
+    <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
+      {/* 1. ROYAL HERO SECTION (Obsidian #0E0B09 & 24K Gold matching Home Page) */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0E0B09] via-[#17120D] to-[#0E0B09] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b-2 border-[#D4AF37]/80">
+        <div className="max-w-[1440px] mx-auto relative rounded-3xl border border-[#D4AF37]/35 bg-[#120E0A]/60 p-8 sm:p-12 text-center space-y-4">
+          <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]/80 pointer-events-none" />
+          <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]/80 pointer-events-none" />
+          <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]/80 pointer-events-none" />
+          <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]/80 pointer-events-none" />
 
-        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#E5C07B] text-xs font-semibold tracking-widest uppercase">
-            <LotusIcon className="w-4 h-3.5" />
-            <span>White-Glove Logistics</span>
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0E0B09] border border-[#D4AF37]/75 text-[#FFE59E] text-[10px] font-bold tracking-[0.22em] uppercase">
+            <NalmaraEmblem className="w-4 h-4" />
+            <span>Dispatched from Thoothukudi, Tamil Nadu</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
-            Shipping & Delivery Policy
+          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#FFFDF9] leading-tight">
+            Shipping &amp;{' '}
+            <span className="font-script italic font-normal text-4xl sm:text-6xl bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent">
+              Delivery Info
+            </span>
           </h1>
 
-          <p className="text-xs sm:text-sm text-zinc-300 font-light max-w-2xl mx-auto leading-relaxed">
-            Every NALMARA FASHION heirloom is packed with utmost reverence and dispatched via premier insured courier networks right to your doorstep.
+          <p className="text-xs sm:text-sm text-[#EDE3D2]/85 font-light max-w-2xl mx-auto leading-relaxed">
+            Every order is carefully checked, neatly packed in our gift box at our Thoothukudi store, and shipped fast to your home anywhere in Tamil Nadu and India.
           </p>
 
-          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#E5C07B]">
-            <Link href="/" className="hover:underline">Home</Link>
-            <span className="text-zinc-500">/</span>
-            <span className="text-white font-medium">Shipping Policy</span>
+          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#D4AF37]">
+            <Link href="/" className="hover:text-[#FFE59E] text-[#EDE3D2]/70">Home</Link>
+            <span className="text-[#D4AF37]/50">/</span>
+            <span className="text-[#FFFDF9] font-semibold">Shipping Policy</span>
           </div>
         </div>
       </section>
@@ -85,35 +91,35 @@ export default function ShippingPage() {
           {[
             {
               icon: Gift,
-              title: 'Free Express Shipping',
-              desc: 'Complimentary shipping on all prepaid orders exceeding ₹1,499.',
+              title: 'Free Shipping Above ₹1,499',
+              desc: 'Free delivery across Tamil Nadu & India on orders over ₹1,499.',
             },
             {
               icon: ShieldCheck,
-              title: '100% Insured Transit',
-              desc: 'Every parcel is fully insured against damage or loss in transit.',
+              title: '100% Safe Delivery',
+              desc: 'Waterproof & tamper-proof packing so your saree reaches safely.',
             },
             {
               icon: PackageCheck,
-              title: 'Heirloom Packaging',
-              desc: 'Delivered in tamper-proof royal emerald boxes with luxury ribbons.',
+              title: 'Neat Gift Box Packing',
+              desc: 'Packed with care — ready for weddings, functions & gifting.',
             },
             {
               icon: Clock,
-              title: 'Real-Time Tracking',
-              desc: 'Live SMS and WhatsApp notifications at every milestone.',
+              title: 'WhatsApp Tracking Updates',
+              desc: 'Get instant courier tracking details on your WhatsApp & SMS.',
             },
           ].map((item, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-2xl p-5 border border-[#D4AF37]/25 shadow-md flex items-start gap-4 transition-all hover:shadow-xl hover:border-[#D4AF37]"
+              className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF3E6] to-[#F5E9D3] rounded-2xl p-5 border-2 border-[#D4AF37]/65 shadow-md flex items-start gap-4"
             >
-              <div className="w-10 h-10 rounded-xl bg-[#0E3324] border border-[#D4AF37]/30 flex items-center justify-center text-[#E5C07B] shrink-0">
-                <item.icon className="w-5 h-5" />
+              <div className="w-10 h-10 rounded-xl bg-[#0E0B09] border border-[#D4AF37] flex items-center justify-center text-[#FFE59E] shrink-0">
+                <item.icon className="w-5 h-5 text-[#D4AF37]" />
               </div>
               <div className="space-y-1">
-                <h4 className="font-serif font-bold text-sm text-[#061811]">{item.title}</h4>
-                <p className="text-xs text-zinc-600 leading-relaxed font-light">{item.desc}</p>
+                <h4 className="font-serif font-bold text-sm text-[#0E0B09]">{item.title}</h4>
+                <p className="text-xs text-[#5C4934] leading-relaxed font-normal">{item.desc}</p>
               </div>
             </div>
           ))}
@@ -123,14 +129,17 @@ export default function ShippingPage() {
       {/* 3. DELIVERY TIMELINES & TIERS */}
       <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-16 sm:py-20 space-y-10">
         <div className="text-center max-w-2xl mx-auto space-y-2">
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-[#B8860B]">
-            DISPATCH ESTIMATES
+          <p className="text-xs font-extrabold uppercase tracking-[0.25em] text-[#8C6518]">
+            ✦ DELIVERY TIME
           </p>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#061811] font-bold">
-            Delivery Timelines & Charges
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#0E0B09] font-bold">
+            Delivery Time &amp;{' '}
+            <span className="font-script italic font-normal text-4xl sm:text-5xl text-[#8C6518]">
+              Charges
+            </span>
           </h2>
-          <p className="text-xs sm:text-sm text-zinc-600 font-light">
-            All ready-to-ship garments are carefully inspected and dispatched within 24–48 hours of order confirmation.
+          <p className="text-xs sm:text-sm text-[#5C4934] font-normal">
+            All ready-stock sarees and dresses are packed and dispatched from our Thoothukudi store within 24 hours.
           </p>
         </div>
 
@@ -138,30 +147,30 @@ export default function ShippingPage() {
           {deliveryTiers.map((tier, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-3xl p-6 sm:p-8 border border-[#D4AF37]/25 shadow-sm hover:shadow-lg transition-all space-y-4 relative overflow-hidden"
+              className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF3E6] to-[#F5E9D3] rounded-3xl p-6 sm:p-8 border-2 border-[#D4AF37]/65 shadow-sm space-y-4 overflow-hidden"
             >
-              <div className="flex items-center justify-between gap-2 border-b border-zinc-100 pb-4">
+              <div className="flex items-center justify-between gap-2 border-b border-[#D4AF37]/35 pb-4">
                 <div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#0E3324] text-[#E5C07B]">
+                  <span className="text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-full bg-[#0E0B09] text-[#FFE59E] border border-[#D4AF37]">
                     {tier.badge}
                   </span>
-                  <h3 className="font-serif text-xl font-bold text-[#061811] mt-2">
+                  <h3 className="font-serif text-xl font-bold text-[#0E0B09] mt-2">
                     {tier.title}
                   </h3>
                 </div>
                 <div className="text-right">
-                  <span className="text-sm font-bold text-[#0E3324] block">
+                  <span className="text-sm font-extrabold text-[#8C6518] block">
                     {tier.time}
                   </span>
                 </div>
               </div>
 
               <div className="space-y-2 text-xs">
-                <p className="text-zinc-600">
-                  <strong className="text-[#061811]">Coverage:</strong> {tier.coverage}
+                <p className="text-[#5C4934]">
+                  <strong className="text-[#0E0B09]">Cities Covered:</strong> {tier.coverage}
                 </p>
-                <p className="text-zinc-600">
-                  <strong className="text-[#061811]">Shipping Charges:</strong> {tier.charge}
+                <p className="text-[#5C4934]">
+                  <strong className="text-[#0E0B09]">Delivery Charge:</strong> {tier.charge}
                 </p>
               </div>
             </div>
@@ -169,75 +178,65 @@ export default function ShippingPage() {
         </div>
       </section>
 
-      {/* 4. DETAILED POLICY INFORMATION ACCORDION / CARDS */}
-      <section className="bg-white border-y border-[#D4AF37]/20 py-16 px-4 sm:px-6 lg:px-8">
+      {/* 4. DETAILED POLICY INFORMATION CARDS */}
+      <section className="bg-[#F5EFE4] border-t-2 border-[#D4AF37]/50 py-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto space-y-8">
           <div className="text-center space-y-2">
-            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#061811]">
-              Important Shipping Guidelines
+            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#0E0B09]">
+              Simple Delivery Guidelines
             </h3>
-            <p className="text-xs text-zinc-600 font-light">
-              Clear terms designed for a smooth luxury shopping experience.
+            <p className="text-xs text-[#5C4934] font-normal">
+              Everything you need to know about how your order reaches you.
             </p>
           </div>
 
-          <div className="space-y-6 text-xs sm:text-sm text-zinc-700 leading-relaxed font-light">
-            <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#D4AF37]/20 space-y-2">
-              <h4 className="font-serif font-bold text-base text-[#061811] flex items-center gap-2">
-                <Truck className="w-4 h-4 text-[#D4AF37]" />
-                Order Tracking & Milestone Notifications
+          <div className="space-y-5 text-xs sm:text-sm text-[#3F3122] leading-relaxed font-normal">
+            <div className="p-6 rounded-2xl bg-[#FFFDF9] border border-[#D4AF37]/55 space-y-2">
+              <h4 className="font-serif font-bold text-base text-[#0E0B09] flex items-center gap-2">
+                <Truck className="w-4 h-4 text-[#8C6518]" />
+                Trusted Courier Partners (ST Courier, Professional, BlueDart &amp; Delhivery)
               </h4>
               <p>
-                Once your package is picked up by our logistics partner (BlueDart, Delhivery, or DHL Express), a tracking AWB number is immediately sent to your registered email and mobile via WhatsApp. You can also monitor real-time shipment updates on our <Link href="/track-order" className="text-[#B8860B] font-semibold hover:underline">Track Order</Link> page.
+                We ship via Tamil Nadu&apos;s fastest and most reliable courier services (including ST Courier, Professional Couriers, BlueDart, and Delhivery). As soon as your parcel is shipped, we send your tracking number on WhatsApp and SMS, or you can check it anytime on our <Link href="/track-order" className="text-[#8C6518] font-bold hover:underline">Track Order</Link> page.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#D4AF37]/20 space-y-2">
-              <h4 className="font-serif font-bold text-base text-[#061811] flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-[#D4AF37]" />
-                Bespoke Couture & Custom Tailoring Delays
+            <div className="p-6 rounded-2xl bg-[#FFFDF9] border border-[#D4AF37]/55 space-y-2">
+              <h4 className="font-serif font-bold text-base text-[#0E0B09] flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-[#8C6518]" />
+                Custom Stitching &amp; Fall/Pico Orders
               </h4>
               <p>
-                Items with custom neck styling, blouse stitching, feeding zips, or custom length requests undergo tailored hand-crafting at our atelier. Please allow an additional 3–5 business days prior to dispatch for bespoke orders.
+                If you choose custom blouse stitching or saree fall/pico work, please allow 2–3 extra days for neat tailoring before we ship your order.
               </p>
             </div>
 
-            <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#D4AF37]/20 space-y-2">
-              <h4 className="font-serif font-bold text-base text-[#061811] flex items-center gap-2">
-                <Globe2 className="w-4 h-4 text-[#D4AF37]" />
-                International Customs & Import Taxes
+            <div className="p-6 rounded-2xl bg-[#FFFDF9] border border-[#D4AF37]/55 space-y-2">
+              <h4 className="font-serif font-bold text-base text-[#0E0B09] flex items-center gap-2">
+                <HelpCircle className="w-4 h-4 text-[#8C6518]" />
+                Need to Change Your Delivery Address?
               </h4>
               <p>
-                For international deliveries outside India, import duties, customs taxes, and VAT are determined by the destination country&apos;s customs authorities and must be borne by the recipient upon delivery.
-              </p>
-            </div>
-
-            <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#D4AF37]/20 space-y-2">
-              <h4 className="font-serif font-bold text-base text-[#061811] flex items-center gap-2">
-                <HelpCircle className="w-4 h-4 text-[#D4AF37]" />
-                Failed Delivery Attempts & Address Corrections
-              </h4>
-              <p>
-                Our courier partners attempt delivery up to 3 times before returning the parcel to our Chennai / Bangalore hub. If you need to modify your address after placing an order, contact our concierge team within 4 hours at <a href="mailto:support@nalmarafashion.com" className="text-[#B8860B] font-medium hover:underline">support@nalmarafashion.com</a>.
+                If you made a mistake in your address or pincode, please call or WhatsApp our Thoothukudi store team immediately at <strong className="text-[#0E0B09]">6383163609 | 7871207631</strong> before the parcel is dispatched.
               </p>
             </div>
           </div>
 
-          {/* Concierge Callout */}
-          <div className="p-6 rounded-3xl bg-[#061811] text-white flex flex-col sm:flex-row items-center justify-between gap-4 border border-[#D4AF37]/40 shadow-xl">
+          {/* Urgent Delivery Callout */}
+          <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-[#0E0B09] via-[#17120D] to-[#0E0B09] text-white flex flex-col sm:flex-row items-center justify-between gap-4 border-2 border-[#D4AF37] shadow-xl">
             <div className="space-y-1 text-center sm:text-left">
-              <h4 className="font-serif text-lg font-bold text-[#E5C07B]">
-                Need Urgent Delivery for a Wedding or Celebration?
+              <h4 className="font-serif text-lg font-bold text-[#FFE59E]">
+                Need Urgent Next-Day Delivery for a Function or Wedding?
               </h4>
-              <p className="text-xs text-zinc-300 font-light">
-                Our Royal Concierge offers priority expedited dispatch for urgent wedding events.
+              <p className="text-xs text-[#EDE3D2]/85 font-normal">
+                Call or WhatsApp us at 6383163609 for priority same-day dispatch from Thoothukudi.
               </p>
             </div>
             <Link
               href="/contact"
-              className="px-6 py-2.5 rounded-full bg-[#D4AF37] hover:bg-[#B38F2E] text-zinc-950 text-xs font-bold uppercase tracking-wider shrink-0 transition-all shadow-md inline-flex items-center gap-2"
+              className="px-6 py-3 rounded-full bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] text-[#0E0B09] border border-[#FFFDF9] text-xs font-extrabold uppercase tracking-wider shrink-0 transition-all shadow-md inline-flex items-center gap-2"
             >
-              Contact Concierge <ArrowRight className="w-4 h-4" />
+              Contact Store <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
         </div>

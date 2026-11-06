@@ -1,283 +1,143 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import { X, Ruler, Sparkles, Check } from 'lucide-react';
+import { X, Ruler, Sparkles, CheckCircle2 } from "lucide-react";
+import { NalmaraEmblem } from "@/components/ui/BrandLogo";
 
 interface SizeChartModalProps {
   isOpen: boolean;
   onClose: () => void;
+  category?: string;
 }
 
-export const SizeChartModal: React.FC<SizeChartModalProps> = ({ isOpen, onClose }) => {
-  const [activeTab, setActiveTab] = useState<'chart' | 'necklines' | 'guide'>('chart');
-  const [unit, setUnit] = useState<'inches' | 'cm'>('inches');
+const BLOUSE_KURTI_SIZES = [
+  { size: "XS (32)", bust: '32"', waist: '26"', hip: '35"', shoulder: '13.5"' },
+  { size: "S (34)", bust: '34"', waist: '28"', hip: '37"', shoulder: '14.0"' },
+  { size: "M (36)", bust: '36"', waist: '30"', hip: '39"', shoulder: '14.5"' },
+  { size: "L (38)", bust: '38"', waist: '32"', hip: '41"', shoulder: '15.0"' },
+  { size: "XL (40)", bust: '40"', waist: '34"', hip: '43"', shoulder: '15.5"' },
+  { size: "XXL (42)", bust: '42"', waist: '36"', hip: '45"', shoulder: '16.0"' },
+];
 
+export function SizeChartModal({
+  isOpen,
+  onClose,
+}: SizeChartModalProps) {
   if (!isOpen) return null;
 
-  const sizeData = [
-    { size: 'XXXS', bust: 28, waist: 22, hip: 32, armhole: 13, length: 52 },
-    { size: 'XXS', bust: 30, waist: 24, hip: 34, armhole: 13.5, length: 53 },
-    { size: 'XS', bust: 32, waist: 26, hip: 36, armhole: 14, length: 54 },
-    { size: 'S', bust: 34, waist: 28, hip: 38, armhole: 15, length: 54 },
-    { size: 'M', bust: 36, waist: 30, hip: 40, armhole: 16, length: 55 },
-    { size: 'L', bust: 38, waist: 32, hip: 42, armhole: 17, length: 55 },
-    { size: 'XL', bust: 40, waist: 34, hip: 44, armhole: 18, length: 56 },
-    { size: '2XL', bust: 42, waist: 36, hip: 46, armhole: 19, length: 56 },
-    { size: '3XL', bust: 44, waist: 38, hip: 48, armhole: 20, length: 56 },
-    { size: '4XL', bust: 46, waist: 40, hip: 50, armhole: 21, length: 56 },
-    { size: '5XL', bust: 48, waist: 42, hip: 52, armhole: 22, length: 56 },
-  ];
-
-  const necklines = [
-    {
-      name: 'Sweet Heart',
-      desc: 'Romance-inspired sweetheart curve accentuating collarbones and necklace sets.',
-      tag: 'Most Popular',
-    },
-    {
-      name: 'Round Square',
-      desc: 'Modern blend of classic round curve with soft structured square shoulders.',
-      tag: 'Classic',
-    },
-    {
-      name: 'U-Round',
-      desc: 'Graceful deep U curve flattering traditional ethnic drapes and sarees.',
-      tag: 'Traditional',
-    },
-    {
-      name: 'Boat Neck',
-      desc: 'Wide, modest bateau line drawing attention to delicate ear jewelry and shoulder posture.',
-      tag: 'Regal',
-    },
-    {
-      name: 'Square Neck',
-      desc: 'Sharp, architectural square cutout for contemporary festive and party styling.',
-      tag: 'Contemporary',
-    },
-  ];
-
-  const formatVal = (inchesVal: number) => {
-    if (unit === 'inches') return `${inchesVal}"`;
-    return `${Math.round(inchesVal * 2.54)} cm`;
-  };
-
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
-      {/* Backdrop */}
-      <div className="fixed inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose} />
-
-      {/* Modal Dialog */}
-      <div className="relative w-full max-w-3xl bg-white dark:bg-zinc-900 rounded-3xl shadow-2xl border border-zinc-200 dark:border-zinc-800 overflow-hidden z-10 my-8">
-        {/* Header */}
-        <div className="px-6 py-5 border-b border-zinc-100 dark:border-zinc-800 flex items-center justify-between bg-zinc-50/50 dark:bg-zinc-900/50">
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-amber-100 dark:bg-amber-950/40 text-amber-600 flex items-center justify-center">
-              <Ruler className="w-4 h-4" />
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0E0B09]/80 backdrop-blur-md p-4 animate-in fade-in duration-200"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-2xl bg-[#FAF7F2] rounded-2xl border-2 border-[#D4AF37] shadow-[0_28px_80px_rgba(0,0,0,0.65)] overflow-hidden"
+        onClick={(e) => e.stopPropagation()}
+      >
+        {/* Royal Obsidian & 24K Gold Header */}
+        <div className="relative bg-gradient-to-r from-[#0E0B09] via-[#17120D] to-[#0E0B09] text-[#FFFDF9] px-6 py-5 flex items-center justify-between border-b-2 border-[#D4AF37]/60">
+          <div className="flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-[#17120D] border border-[#D4AF37] flex items-center justify-center text-[#FFE59E] shadow-md">
+              <NalmaraEmblem className="w-6 h-6" />
             </div>
             <div>
-              <h3 className="text-lg font-bold text-zinc-900 dark:text-zinc-100">
-                Size & Tailoring Guide
-              </h3>
-              <p className="text-xs text-zinc-500">
-                NALMARA FASHION Couture • Standard Sizes & Custom Tailoring Options
+              <p className="text-[10px] font-bold uppercase tracking-[0.28em] text-[#D4AF37]">
+                Nalmara Bespoke Atelier
               </p>
+              <h3 className="text-lg font-serif font-normal text-[#FFFDF9] flex items-center gap-2">
+                <Ruler className="w-4 h-4 text-[#FFE59E]" /> Standard Size & Drape Guide
+              </h3>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-2 rounded-full text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors"
+            aria-label="Close Size Guide"
+            className="w-9 h-9 rounded-full bg-[#1F1811] border border-[#D4AF37]/50 hover:border-[#FFE59E] flex items-center justify-center text-[#FFE59E] transition-colors"
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         </div>
 
-        {/* Tab Controls */}
-        <div className="flex items-center justify-between px-6 pt-4 border-b border-zinc-100 dark:border-zinc-800 bg-white dark:bg-zinc-900">
-          <div className="flex gap-4">
-            <button
-              onClick={() => setActiveTab('chart')}
-              className={`pb-3 text-xs font-bold uppercase tracking-wider transition-all relative ${
-                activeTab === 'chart'
-                  ? 'text-amber-600 dark:text-amber-400'
-                  : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200'
-              }`}
-            >
-              Standard Size Chart
-              {activeTab === 'chart' && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-amber-500 rounded-full" />
-              )}
-            </button>
-            <button
-              onClick={() => setActiveTab('necklines')}
-              className={`pb-3 text-xs font-bold uppercase tracking-wider transition-all relative ${
-                activeTab === 'necklines'
-                  ? 'text-amber-600 dark:text-amber-400'
-                  : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200'
-              }`}
-            >
-              Neckline Guide
-              {activeTab === 'necklines' && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-amber-500 rounded-full" />
-              )}
-            </button>
-            <button
-              onClick={() => setActiveTab('guide')}
-              className={`pb-3 text-xs font-bold uppercase tracking-wider transition-all relative ${
-                activeTab === 'guide'
-                  ? 'text-amber-600 dark:text-amber-400'
-                  : 'text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-200'
-              }`}
-            >
-              How to Measure
-              {activeTab === 'guide' && (
-                <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-amber-500 rounded-full" />
-              )}
-            </button>
+        {/* Body */}
+        <div className="p-6 md:p-8 space-y-6 max-h-[80vh] overflow-y-auto">
+          {/* Saree Standard Dimensions */}
+          <div className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF3E6] to-[#F5E9D3] border-2 border-[#D4AF37]/60 rounded-xl p-5 space-y-2 shadow-sm">
+            <div className="flex items-center gap-2 text-[#8C6518] font-extrabold text-xs uppercase tracking-[0.2em]">
+              <Sparkles className="w-4 h-4 text-[#D4AF37]" /> Handloom Saree Dimensions (Free Size)
+            </div>
+            <p className="text-xs text-[#4A3B2C] leading-relaxed font-medium">
+              All Nalmara Kanchipuram, Banarasi, and Designer sarees are woven to royal full-length specifications:{" "}
+              <strong className="text-[#0E0B09]">5.5 Meters</strong> drape length +{" "}
+              <strong className="text-[#0E0B09]">0.8 Meters</strong> unstitched matching Zari blouse piece (Total 6.3 Meters, Width 44&quot;–45&quot;).
+            </p>
           </div>
 
-          {activeTab === 'chart' && (
-            <div className="flex items-center bg-zinc-100 dark:bg-zinc-800 rounded-lg p-0.5 text-xs font-semibold mb-2">
-              <button
-                onClick={() => setUnit('inches')}
-                className={`px-3 py-1 rounded-md transition-all ${
-                  unit === 'inches'
-                    ? 'bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white shadow-sm'
-                    : 'text-zinc-500'
-                }`}
-              >
-                Inches
-              </button>
-              <button
-                onClick={() => setUnit('cm')}
-                className={`px-3 py-1 rounded-md transition-all ${
-                  unit === 'cm'
-                    ? 'bg-white dark:bg-zinc-900 text-zinc-900 dark:text-white shadow-sm'
-                    : 'text-zinc-500'
-                }`}
-              >
-                CM
-              </button>
+          {/* Blouse / Salwar / Kurti Table */}
+          <div className="space-y-3">
+            <div className="flex items-center justify-between">
+              <h4 className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#0E0B09]">
+                Stitched Blouse, Salwar & Kurti Measurements (Inches)
+              </h4>
+              <span className="text-[11px] text-[#8C6518] font-bold">
+                2&quot; Interior Margin Included
+              </span>
             </div>
-          )}
-        </div>
 
-        {/* Tab Content */}
-        <div className="p-6 max-h-[60vh] overflow-y-auto">
-          {activeTab === 'chart' && (
-            <div className="space-y-4">
-              <div className="overflow-x-auto rounded-xl border border-zinc-200 dark:border-zinc-800">
-                <table className="w-full text-left text-xs">
-                  <thead className="bg-zinc-50 dark:bg-zinc-800/60 text-zinc-500 dark:text-zinc-400 font-bold uppercase border-b border-zinc-200 dark:border-zinc-800">
-                    <tr>
-                      <th className="py-3 px-4">Size</th>
-                      <th className="py-3 px-4">Bust / Chest</th>
-                      <th className="py-3 px-4">Waist</th>
-                      <th className="py-3 px-4">Hips</th>
-                      <th className="py-3 px-4">Armhole</th>
-                      <th className="py-3 px-4">Outfit Length</th>
+            <div className="overflow-x-auto rounded-xl border-2 border-[#D4AF37]/60 bg-[#FFFDF9] shadow-sm">
+              <table className="w-full text-left border-collapse">
+                <thead>
+                  <tr className="bg-gradient-to-r from-[#0E0B09] via-[#17120D] to-[#0E0B09] text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#FFE59E] border-b border-[#D4AF37]/50">
+                    <th className="py-3.5 px-4">Size</th>
+                    <th className="py-3.5 px-4">Bust</th>
+                    <th className="py-3.5 px-4">Waist</th>
+                    <th className="py-3.5 px-4">Hip</th>
+                    <th className="py-3.5 px-4">Shoulder</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-[#D4AF37]/25 text-xs">
+                  {BLOUSE_KURTI_SIZES.map((row) => (
+                    <tr
+                      key={row.size}
+                      className="hover:bg-[#FAF3E6]/70 transition-colors"
+                    >
+                      <td className="py-3 px-4 font-bold text-[#0E0B09]">
+                        {row.size}
+                      </td>
+                      <td className="py-3 px-4 text-[#4A3B2C] font-medium">
+                        {row.bust}
+                      </td>
+                      <td className="py-3 px-4 text-[#4A3B2C] font-medium">
+                        {row.waist}
+                      </td>
+                      <td className="py-3 px-4 text-[#4A3B2C] font-medium">
+                        {row.hip}
+                      </td>
+                      <td className="py-3 px-4 text-[#4A3B2C] font-medium">
+                        {row.shoulder}
+                      </td>
                     </tr>
-                  </thead>
-                  <tbody className="divide-y divide-zinc-100 dark:divide-zinc-800 font-medium text-zinc-800 dark:text-zinc-200">
-                    {sizeData.map((row) => (
-                      <tr
-                        key={row.size}
-                        className="hover:bg-amber-50/30 dark:hover:bg-amber-950/20 transition-colors"
-                      >
-                        <td className="py-3 px-4 font-bold text-amber-600 dark:text-amber-400">
-                          {row.size}
-                        </td>
-                        <td className="py-3 px-4">{formatVal(row.bust)}</td>
-                        <td className="py-3 px-4">{formatVal(row.waist)}</td>
-                        <td className="py-3 px-4">{formatVal(row.hip)}</td>
-                        <td className="py-3 px-4">{formatVal(row.armhole)}</td>
-                        <td className="py-3 px-4">{formatVal(row.length)}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-              <p className="text-[11px] text-zinc-500 italic">
-                * Note: All our outfits include a 2-inch inner margin for easy home alteration. Need a custom fit? Select &ldquo;Custom&rdquo; size on the product page and enter your exact measurements.
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* Fitting Tips */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+            <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#FFFDF9] border border-[#D4AF37]/45">
+              <CheckCircle2 className="w-4 h-4 text-[#8C6518] shrink-0 mt-0.5" />
+              <p className="text-[11px] text-[#4A3B2C] leading-relaxed font-medium">
+                <strong className="text-[#0E0B09]">Between Sizes?</strong> We recommend selecting the next size up for effortless movement during ceremonies.
               </p>
             </div>
-          )}
-
-          {activeTab === 'necklines' && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {necklines.map((neck) => (
-                <div
-                  key={neck.name}
-                  className="p-4 rounded-2xl border border-zinc-200 dark:border-zinc-800 bg-zinc-50/50 dark:bg-zinc-800/40 space-y-2 hover:border-amber-400 transition-colors"
-                >
-                  <div className="flex items-center justify-between">
-                    <h4 className="font-bold text-sm text-zinc-900 dark:text-zinc-100 flex items-center gap-2">
-                      <Sparkles className="w-3.5 h-3.5 text-amber-500" />
-                      {neck.name}
-                    </h4>
-                    <span className="text-[10px] font-bold px-2 py-0.5 bg-amber-100 dark:bg-amber-950 text-amber-700 dark:text-amber-300 rounded-full">
-                      {neck.tag}
-                    </span>
-                  </div>
-                  <p className="text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-                    {neck.desc}
-                  </p>
-                </div>
-              ))}
+            <div className="flex items-start gap-2.5 p-3.5 rounded-xl bg-[#FFFDF9] border border-[#D4AF37]/45">
+              <CheckCircle2 className="w-4 h-4 text-[#8C6518] shrink-0 mt-0.5" />
+              <p className="text-[11px] text-[#4A3B2C] leading-relaxed font-medium">
+                <strong className="text-[#0E0B09]">Bespoke Tailoring:</strong> Our master tailors contact you on WhatsApp after checkout to confirm custom blouse necklines.
+              </p>
             </div>
-          )}
-
-          {activeTab === 'guide' && (
-            <div className="space-y-4 text-xs text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 text-amber-900 dark:text-amber-200 space-y-1">
-                <p className="font-bold">✨ Pro Measuring Tip:</p>
-                <p>
-                  Always keep the measuring tape comfortably snug, not tight. Measure wearing the same innerwear you plan to style with the outfit.
-                </p>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
-                <div className="space-y-1.5 p-3 rounded-xl border border-zinc-100 dark:border-zinc-800">
-                  <span className="font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-500" /> 1. Bust / Chest
-                  </span>
-                  <p>Measure horizontally around the fullest part of your bust.</p>
-                </div>
-                <div className="space-y-1.5 p-3 rounded-xl border border-zinc-100 dark:border-zinc-800">
-                  <span className="font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-500" /> 2. Waist
-                  </span>
-                  <p>Measure around your natural waistline, usually 1 inch above the navel.</p>
-                </div>
-                <div className="space-y-1.5 p-3 rounded-xl border border-zinc-100 dark:border-zinc-800">
-                  <span className="font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-500" /> 3. Hips
-                  </span>
-                  <p>Stand with feet together and measure around the fullest curve of your hips.</p>
-                </div>
-                <div className="space-y-1.5 p-3 rounded-xl border border-zinc-100 dark:border-zinc-800">
-                  <span className="font-bold text-zinc-900 dark:text-zinc-100 flex items-center gap-1.5">
-                    <Check className="w-3.5 h-3.5 text-emerald-500" /> 4. Outfit Length
-                  </span>
-                  <p>Measure vertically from the highest point of your shoulder down to your desired hem.</p>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Footer */}
-        <div className="px-6 py-4 bg-zinc-50 dark:bg-zinc-800/50 border-t border-zinc-100 dark:border-zinc-800 flex items-center justify-between text-xs">
-          <span className="text-zinc-500">Need personal sizing advice?</span>
-          <a
-            href="https://wa.me/916383163609?text=Hi%2C%20I%20need%20help%20with%20sizing%20and%20measurements"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-bold text-emerald-600 hover:text-emerald-500 underline"
-          >
-            Chat with Stylist on WhatsApp (6383163609 | 7871207631)
-          </a>
+          </div>
         </div>
       </div>
     </div>
   );
-};
+}

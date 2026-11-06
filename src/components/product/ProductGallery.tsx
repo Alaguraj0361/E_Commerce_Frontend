@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { ChevronLeft, ChevronRight, Maximize2, X } from 'lucide-react';
 import { ProductImage } from '../../types';
+import { resolveMediaUrl } from '../../lib/utils';
 
 interface ProductGalleryProps {
   images: ProductImage[];
@@ -25,10 +26,13 @@ export const ProductGallery = ({ images, productName, activeImageIndex }: Produc
 
   const galleryImages =
     images && images.length > 0
-      ? images
+      ? images.map((img) => ({
+          ...img,
+          url: resolveMediaUrl(img.url, '/images/nalmara/hd/cat_sarees_hd.jpg'),
+        }))
       : [
           {
-            url: 'https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=1200&q=85',
+            url: '/images/nalmara/hd/cat_sarees_hd.jpg',
             alt: productName,
           },
         ];
@@ -54,15 +58,15 @@ export const ProductGallery = ({ images, productName, activeImageIndex }: Produc
     <div className="flex flex-col-reverse md:flex-row gap-4">
       {/* Thumbnails (Horizontal on mobile, vertical on desktop) */}
       {galleryImages.length > 1 && (
-        <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto max-h-[580px] scrollbar-none py-1">
+        <div className="flex md:flex-col gap-3 overflow-x-auto md:overflow-y-auto max-h-[600px] scrollbar-none py-1">
           {galleryImages.map((img, idx) => (
             <button
               key={img.url + idx}
               onClick={() => setSelectedIndex(idx)}
-              className={`relative w-16 h-20 md:w-20 md:h-24 rounded-xl overflow-hidden flex-shrink-0 border-2 transition-all ${
+              className={`relative w-16 h-20 md:w-20 md:h-24 rounded-xl overflow-hidden flex-shrink-0 border-2 transition-all cursor-pointer ${
                 selectedIndex === idx
-                  ? 'border-zinc-900 dark:border-white shadow-md'
-                  : 'border-transparent opacity-60 hover:opacity-100'
+                  ? 'border-[#D4AF37] ring-2 ring-[#380725] shadow-lg scale-105'
+                  : 'border-[#D4AF37]/35 opacity-70 hover:opacity-100'
               }`}
             >
               <Image
@@ -70,17 +74,23 @@ export const ProductGallery = ({ images, productName, activeImageIndex }: Produc
                 alt={img.alt || `${productName} thumbnail ${idx + 1}`}
                 fill
                 className="object-cover"
-                unoptimized={Boolean(img.url?.startsWith('data:'))}
+                unoptimized
               />
             </button>
           ))}
         </div>
       )}
 
-      {/* Main Image Display */}
-      <div className="relative flex-1 aspect-[3/4] md:max-h-[580px] bg-zinc-100 dark:bg-zinc-900 rounded-3xl overflow-hidden border border-zinc-100 dark:border-zinc-800">
+      {/* Main Image Display with 24K Gold Bezel & Corner Brackets */}
+      <div className="relative flex-1 aspect-[3/4] md:max-h-[600px] bg-gradient-to-b from-[#380725] to-[#240415] rounded-3xl overflow-hidden border-2 border-[#D4AF37] shadow-[0_20px_50px_rgba(40,6,25,0.28)] p-1.5">
+        {/* Corner Filigree Brackets */}
+        <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#FFE59E] z-20 pointer-events-none" />
+        <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#FFE59E] z-20 pointer-events-none" />
+        <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#FFE59E] z-20 pointer-events-none" />
+        <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#FFE59E] z-20 pointer-events-none" />
+
         <div
-          className="relative w-full h-full cursor-crosshair overflow-hidden"
+          className="relative w-full h-full cursor-crosshair overflow-hidden rounded-[20px] border border-[#D4AF37]/50"
           onMouseEnter={() => setIsZoomed(true)}
           onMouseLeave={() => setIsZoomed(false)}
           onMouseMove={handleMouseMove}
@@ -94,7 +104,7 @@ export const ProductGallery = ({ images, productName, activeImageIndex }: Produc
             className={`object-cover object-center transition-transform duration-200 ${
               isZoomed ? 'scale-150' : 'scale-100'
             }`}
-            unoptimized={Boolean(currentImage.url?.startsWith('data:'))}
+            unoptimized
             style={
               isZoomed
                 ? {
@@ -110,14 +120,14 @@ export const ProductGallery = ({ images, productName, activeImageIndex }: Produc
           <>
             <button
               onClick={handlePrev}
-              className="absolute left-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md text-zinc-800 dark:text-zinc-200 hover:bg-white shadow-md transition-all"
+              className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-[#280619]/90 border border-[#D4AF37] text-[#FFE59E] hover:bg-[#380725] shadow-lg transition-all cursor-pointer"
               aria-label="Previous image"
             >
               <ChevronLeft className="w-5 h-5" />
             </button>
             <button
               onClick={handleNext}
-              className="absolute right-3 top-1/2 -translate-y-1/2 p-2.5 rounded-full bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md text-zinc-800 dark:text-zinc-200 hover:bg-white shadow-md transition-all"
+              className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full bg-[#280619]/90 border border-[#D4AF37] text-[#FFE59E] hover:bg-[#380725] shadow-lg transition-all cursor-pointer"
               aria-label="Next image"
             >
               <ChevronRight className="w-5 h-5" />
@@ -128,7 +138,7 @@ export const ProductGallery = ({ images, productName, activeImageIndex }: Produc
         {/* Fullscreen Trigger */}
         <button
           onClick={() => setIsFullscreen(true)}
-          className="absolute bottom-4 right-4 p-2.5 rounded-full bg-white/80 dark:bg-zinc-900/80 backdrop-blur-md text-zinc-700 dark:text-zinc-200 hover:bg-white shadow-md transition-colors"
+          className="absolute bottom-5 right-5 z-20 p-2.5 rounded-full bg-[#280619]/90 border border-[#D4AF37] text-[#FFE59E] hover:bg-[#380725] shadow-lg transition-colors cursor-pointer"
           aria-label="View fullscreen"
         >
           <Maximize2 className="w-4 h-4" />
@@ -137,21 +147,22 @@ export const ProductGallery = ({ images, productName, activeImageIndex }: Produc
 
       {/* Fullscreen Gallery Lightbox Modal */}
       {isFullscreen && (
-        <div className="fixed inset-0 z-50 bg-black/95 backdrop-blur-lg flex items-center justify-center p-4">
+        <div className="fixed inset-0 z-50 bg-[#1C0411]/95 backdrop-blur-lg flex items-center justify-center p-4">
           <button
             onClick={() => setIsFullscreen(false)}
-            className="absolute top-6 right-6 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+            className="absolute top-6 right-6 p-3 rounded-full bg-[#380725] border border-[#D4AF37] text-[#FFE59E] hover:bg-[#5B0E3D] transition-colors cursor-pointer"
             aria-label="Close fullscreen view"
           >
             <X className="w-6 h-6" />
           </button>
 
-          <div className="relative w-full max-w-4xl h-[80vh]">
+          <div className="relative w-full max-w-4xl h-[80vh] border border-[#D4AF37]/50 rounded-2xl overflow-hidden">
             <Image
               src={currentImage.url}
               alt={currentImage.alt || productName}
               fill
               className="object-contain"
+              unoptimized
             />
           </div>
 
@@ -159,13 +170,13 @@ export const ProductGallery = ({ images, productName, activeImageIndex }: Produc
             <>
               <button
                 onClick={handlePrev}
-                className="absolute left-6 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+                className="absolute left-6 top-1/2 -translate-y-1/2 p-4 rounded-full bg-[#380725] border border-[#D4AF37] text-[#FFE59E] hover:bg-[#5B0E3D] transition-colors cursor-pointer"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
               <button
                 onClick={handleNext}
-                className="absolute right-6 top-1/2 -translate-y-1/2 p-4 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors"
+                className="absolute right-6 top-1/2 -translate-y-1/2 p-4 rounded-full bg-[#380725] border border-[#D4AF37] text-[#FFE59E] hover:bg-[#5B0E3D] transition-colors cursor-pointer"
               >
                 <ChevronRight className="w-6 h-6" />
               </button>

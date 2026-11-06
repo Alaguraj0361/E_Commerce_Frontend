@@ -6,19 +6,15 @@ import Link from 'next/link';
 import Image from 'next/image';
 import {
   ArrowLeft,
-  Package,
   Truck,
   CheckCircle2,
-  Clock,
   MapPin,
   CreditCard,
-  ShieldCheck,
-  AlertCircle,
 } from 'lucide-react';
 import { api } from '../../../../lib/api';
 import { Order } from '../../../../types';
 import { formatCurrency } from '../../../../lib/utils';
-import { LotusIcon } from '../../../../components/ui/BrandLogo';
+import { NalmaraEmblem } from '../../../../components/ui/BrandLogo';
 
 const STATUS_STEPS = ['Confirmed', 'Processing', 'Packed', 'Shipped', 'Delivered'];
 
@@ -51,7 +47,7 @@ export default function OrderDetailPage() {
 
   if (isLoading) {
     return (
-      <div className="min-h-[50vh] flex items-center justify-center text-zinc-400">
+      <div className="min-h-[50vh] bg-[#FAF7F2] flex items-center justify-center text-[#5C4934] font-serif">
         Loading order particulars...
       </div>
     );
@@ -60,55 +56,53 @@ export default function OrderDetailPage() {
   if (!order) {
     return (
       <div className="max-w-2xl mx-auto px-4 py-20 text-center space-y-4">
-        <h2 className="text-xl font-bold">Order Not Found</h2>
-        <Link href="/account/orders" className="text-xs font-bold underline">
+        <h2 className="text-xl font-serif font-bold text-[#0E0B09]">Order Not Found</h2>
+        <Link href="/account/orders" className="text-xs font-extrabold text-[#8C6518] underline">
           Return to Orders
         </Link>
       </div>
     );
   }
 
-  // Determine active step index
   const currentStepIndex = STATUS_STEPS.indexOf(order.orderStatus);
 
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
-      {/* 1. HERO HEADER */}
-      <section className="relative overflow-hidden bg-[#4A0E17] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
-
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+      {/* 1. ROYAL HERO HEADER */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0E0B09] via-[#17120D] to-[#0E0B09] text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 border-b-2 border-[#D4AF37]/80">
+        <div className="max-w-5xl mx-auto relative rounded-3xl border border-[#D4AF37]/35 bg-[#120E0A]/60 p-6 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="space-y-2 text-center md:text-left">
             <Link
               href="/account/orders"
-              className="inline-flex items-center gap-1.5 text-xs text-[#D4AF37] hover:underline mb-1"
+              className="inline-flex items-center gap-1.5 text-xs text-[#FFE59E] hover:underline mb-1"
             >
               <ArrowLeft className="w-3.5 h-3.5" /> Back to All Orders
             </Link>
             <div className="flex items-center justify-center md:justify-start gap-2">
-              <span className="text-[10px] font-bold uppercase tracking-widest text-[#D4AF37] px-2.5 py-0.5 rounded-full bg-white/10 border border-[#D4AF37]/30">
-                Order Particulars
+              <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E] px-3 py-0.5 rounded-full bg-[#0E0B09] border border-[#D4AF37]">
+                <NalmaraEmblem className="w-3.5 h-3.5" />
+                <span>Order Details</span>
               </span>
             </div>
-            <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-white">
+            <h1 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-[#FFFDF9]">
               Order #{order.orderNumber || order._id.slice(-8).toUpperCase()}
             </h1>
-            <p className="text-xs text-zinc-200 font-light">
+            <p className="text-xs text-[#EDE3D2]/80 font-light">
               Placed on {new Date(order.createdAt).toLocaleDateString('en-IN', { dateStyle: 'full' })}
             </p>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-center md:justify-end gap-2.5 sm:gap-3">
             <span
-              className={`text-xs font-bold px-3.5 py-1.5 rounded-full ${
+              className={`text-xs font-extrabold px-3.5 py-1.5 rounded-full ${
                 order.paymentStatus === 'Paid'
                   ? 'bg-emerald-950/80 text-emerald-400 border border-emerald-500/40'
-                  : 'bg-amber-950/80 text-amber-400 border border-amber-500/40'
+                  : 'bg-[#0E0B09] text-[#FFE59E] border border-[#D4AF37]'
               }`}
             >
               Payment: {order.paymentStatus}
             </span>
-            <span className="text-xs font-bold bg-[#4A0E17] text-[#D4AF37] border border-[#7A1D2A] px-3.5 py-1.5 rounded-full">
+            <span className="text-xs font-extrabold bg-[#0E0B09] text-[#FFE59E] border border-[#D4AF37] px-3.5 py-1.5 rounded-full">
               Status: {order.orderStatus}
             </span>
           </div>
@@ -116,165 +110,159 @@ export default function OrderDetailPage() {
       </section>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
-
-      {/* 1. VISUAL ORDER TIMELINE STEPPER */}
-      <div className="bg-white dark:bg-zinc-900 p-6 sm:p-8 rounded-3xl border border-zinc-200/80 dark:border-zinc-800 shadow-sm">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-zinc-400 mb-8">
-          Fulfillment Progress
-        </h3>
-
-        <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-2">
-          {STATUS_STEPS.map((step, idx) => {
-            const isCompleted = currentStepIndex >= idx;
-            const isCurrent = currentStepIndex === idx;
-
-            return (
-              <div key={step} className="flex md:flex-col items-center gap-4 md:gap-2 z-10 w-full md:w-auto">
-                <div
-                  className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-colors shadow-sm ${
-                    isCompleted
-                      ? 'bg-emerald-600 text-white'
-                      : isCurrent
-                      ? 'bg-zinc-900 text-white ring-4 ring-zinc-200'
-                      : 'bg-zinc-100 text-zinc-400 dark:bg-zinc-800'
-                  }`}
-                >
-                  {isCompleted ? <CheckCircle2 className="w-5 h-5" /> : idx + 1}
-                </div>
-                <div className="text-left md:text-center">
-                  <span
-                    className={`text-xs font-bold block ${
-                      isCompleted || isCurrent
-                        ? 'text-zinc-900 dark:text-zinc-100'
-                        : 'text-zinc-400'
-                    }`}
-                  >
-                    {step}
-                  </span>
-                  {isCurrent && (
-                    <span className="text-[10px] text-emerald-600 font-semibold block">
-                      Current Stage
-                    </span>
-                  )}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {order.trackingNumber && (
-          <div className="mt-8 p-4 bg-zinc-50 dark:bg-zinc-800/50 rounded-2xl flex items-center justify-between text-xs">
-            <div className="flex items-center gap-2 text-zinc-600 dark:text-zinc-400">
-              <Truck className="w-4 h-4 text-zinc-900 dark:text-white" />
-              <span>Courier Tracking Number:</span>
-              <strong className="font-mono text-zinc-900 dark:text-white">{order.trackingNumber}</strong>
-            </div>
-            <span className="text-emerald-600 font-semibold">Live Transit</span>
-          </div>
-        )}
-      </div>
-
-      {/* 2. Order Breakdown and Shipping Summary */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-        {/* Items List */}
-        <div className="lg:col-span-2 bg-white dark:bg-zinc-900 p-6 sm:p-8 rounded-3xl border border-zinc-200/80 dark:border-zinc-800 space-y-6">
-          <h3 className="font-bold text-base text-zinc-900 dark:text-zinc-100">
-            Purchased Artifacts
+        {/* 1. VISUAL ORDER TIMELINE STEPPER */}
+        <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF3E6] to-[#F5E9D3] p-6 sm:p-8 rounded-3xl border-2 border-[#D4AF37]/65 shadow-sm">
+          <h3 className="text-xs font-extrabold uppercase tracking-[0.2em] text-[#8C6518] mb-8">
+            Fulfillment Progress
           </h3>
 
-          <div className="divide-y divide-zinc-100 dark:divide-zinc-800">
-            {order.items.map((item, idx) => (
-              <div key={idx} className="py-4 first:pt-0 last:pb-0 flex items-center justify-between gap-4">
-                <div className="flex items-center gap-4">
-                  <div className="relative w-16 h-20 rounded-xl overflow-hidden bg-zinc-100 dark:bg-zinc-800 flex-shrink-0">
-                    <Image
-                      src={item.image || 'https://images.unsplash.com/photo-1544923246-77307dd654cb?auto=format&fit=crop&w=200&q=80'}
-                      alt={item.name}
-                      fill
-                      className="object-cover"
-                    />
+          <div className="relative flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-2">
+            {STATUS_STEPS.map((step, idx) => {
+              const isCompleted = currentStepIndex >= idx;
+              const isCurrent = currentStepIndex === idx;
+
+              return (
+                <div key={step} className="flex md:flex-col items-center gap-4 md:gap-2 z-10 w-full md:w-auto">
+                  <div
+                    className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-xs transition-colors shadow-sm ${
+                      isCompleted
+                        ? 'bg-[#0E0B09] text-[#FFE59E] border-2 border-[#D4AF37]'
+                        : isCurrent
+                        ? 'bg-[#0E0B09] text-[#FFE59E] ring-4 ring-[#D4AF37]/40'
+                        : 'bg-[#FFFDF9] text-[#8C7A65] border border-[#D4AF37]/40'
+                    }`}
+                  >
+                    {isCompleted ? <CheckCircle2 className="w-5 h-5 text-[#D4AF37]" /> : idx + 1}
                   </div>
-                  <div>
-                    <h4 className="font-semibold text-sm text-zinc-900 dark:text-zinc-100">
-                      {item.name}
-                    </h4>
-                    <p className="text-xs text-zinc-400 mt-0.5">
-                      SKU: {item.sku} • Quantity: {item.quantity}
-                    </p>
-                    <p className="text-xs font-bold text-zinc-900 dark:text-zinc-100 mt-1">
-                      {formatCurrency(item.price)} each
-                    </p>
+                  <div className="text-left md:text-center">
+                    <span
+                      className={`text-xs font-serif font-bold block ${
+                        isCompleted || isCurrent ? 'text-[#0E0B09]' : 'text-[#8C7A65]'
+                      }`}
+                    >
+                      {step}
+                    </span>
+                    {isCurrent && (
+                      <span className="text-[10px] text-[#8C6518] font-bold block">
+                        Current Stage
+                      </span>
+                    )}
                   </div>
                 </div>
-                <span className="font-extrabold text-sm text-zinc-900 dark:text-zinc-100">
-                  {formatCurrency(item.price * item.quantity)}
-                </span>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
-          <div className="pt-6 border-t border-zinc-100 dark:border-zinc-800 space-y-2 text-xs">
-            <div className="flex justify-between text-zinc-500">
-              <span>Subtotal</span>
-              <span>{formatCurrency(order.subtotal)}</span>
-            </div>
-            {order.discount > 0 && (
-              <div className="flex justify-between text-emerald-600 font-semibold">
-                <span>Promotional Discount ({order.couponCode})</span>
-                <span>-{formatCurrency(order.discount)}</span>
+          {order.trackingNumber && (
+            <div className="mt-8 p-4 bg-[#FFFDF9] border border-[#D4AF37]/50 rounded-2xl flex items-center justify-between text-xs">
+              <div className="flex items-center gap-2 text-[#5C4934]">
+                <Truck className="w-4 h-4 text-[#8C6518]" />
+                <span>Courier Tracking Number:</span>
+                <strong className="font-mono text-[#0E0B09]">{order.trackingNumber}</strong>
               </div>
-            )}
-            <div className="flex justify-between text-zinc-500">
-              <span>Shipping Fee</span>
-              <span>{order.shippingFee === 0 ? 'Complimentary' : formatCurrency(order.shippingFee)}</span>
+              <span className="text-emerald-800 font-bold">Live Transit</span>
             </div>
-            <div className="flex justify-between text-zinc-500">
-              <span>GST (5% Integrated Tax)</span>
-              <span>{formatCurrency(order.tax)}</span>
-            </div>
-            <div className="flex justify-between text-base font-black text-zinc-900 dark:text-zinc-100 pt-3 border-t border-zinc-200 dark:border-zinc-800">
-              <span>Total Paid</span>
-              <span>{formatCurrency(order.total)}</span>
-            </div>
-          </div>
+          )}
         </div>
 
-        {/* Shipping & Payment Meta */}
-        <div className="space-y-6">
-          <div className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200/80 dark:border-zinc-800 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-400">
-              <MapPin className="w-4 h-4" /> Delivery Destination
+        {/* 2. Order Breakdown and Shipping Summary */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Items List */}
+          <div className="lg:col-span-2 bg-gradient-to-b from-[#FFFDF9] via-[#FAF3E6] to-[#F5E9D3] p-6 sm:p-8 rounded-3xl border-2 border-[#D4AF37]/65 space-y-6">
+            <h3 className="font-serif font-bold text-lg text-[#0E0B09] border-b border-[#D4AF37]/35 pb-3">
+              Purchased Couture Ensembles
+            </h3>
+
+            <div className="divide-y divide-[#D4AF37]/30">
+              {order.items.map((item, idx) => (
+                <div key={idx} className="py-4 first:pt-0 last:pb-0 flex items-center justify-between gap-4">
+                  <div className="flex items-center gap-4">
+                    <div className="relative w-16 h-20 rounded-xl overflow-hidden bg-[#0E0B09] border border-[#D4AF37] flex-shrink-0">
+                      <Image
+                        src={item.image || '/images/bestsellers/traditional_silk_saree.jpg'}
+                        alt={item.name}
+                        fill
+                        className="object-cover"
+                      />
+                    </div>
+                    <div>
+                      <h4 className="font-serif font-bold text-sm text-[#0E0B09]">
+                        {item.name}
+                      </h4>
+                      <p className="text-xs text-[#6B5740] mt-0.5">
+                        SKU: {item.sku} • Quantity: {item.quantity}
+                      </p>
+                      <p className="text-xs font-bold text-[#0E0B09] mt-1">
+                        {formatCurrency(item.price)} each
+                      </p>
+                    </div>
+                  </div>
+                  <span className="font-serif font-extrabold text-sm text-[#0E0B09]">
+                    {formatCurrency(item.price * item.quantity)}
+                  </span>
+                </div>
+              ))}
             </div>
-            <div className="text-xs text-zinc-600 dark:text-zinc-300 space-y-1">
-              <p className="font-bold text-zinc-900 dark:text-zinc-100 text-sm">
-                {order.shippingAddress.fullName}
-              </p>
-              <p>{order.shippingAddress.addressLine1} {order.shippingAddress.addressLine2}</p>
-              <p>{order.shippingAddress.city}, {order.shippingAddress.state} {order.shippingAddress.postalCode}</p>
-              <p>{order.shippingAddress.country}</p>
-              <p className="pt-2 text-zinc-400">Contact: {order.shippingAddress.phone}</p>
+
+            <div className="pt-6 border-t border-[#D4AF37]/40 space-y-2 text-xs">
+              <div className="flex justify-between text-[#5C4934]">
+                <span>Subtotal</span>
+                <span className="font-bold text-[#0E0B09]">{formatCurrency(order.subtotal)}</span>
+              </div>
+              {order.discount > 0 && (
+                <div className="flex justify-between text-emerald-800 font-bold">
+                  <span>Promotional Discount ({order.couponCode})</span>
+                  <span>-{formatCurrency(order.discount)}</span>
+                </div>
+              )}
+              <div className="flex justify-between text-[#5C4934]">
+                <span>Shipping Fee</span>
+                <span className="font-bold text-emerald-800">
+                  {order.shippingFee === 0 ? 'Complimentary' : formatCurrency(order.shippingFee)}
+                </span>
+              </div>
+              <div className="flex justify-between text-[#5C4934]">
+                <span>GST (5% Integrated Tax)</span>
+                <span className="font-bold text-[#0E0B09]">{formatCurrency(order.tax)}</span>
+              </div>
+              <div className="flex justify-between text-base font-serif font-extrabold text-[#0E0B09] pt-3 border-t border-[#D4AF37]/50">
+                <span>Total Paid</span>
+                <span>{formatCurrency(order.total)}</span>
+              </div>
             </div>
           </div>
 
-          <div className="bg-white dark:bg-zinc-900 p-6 rounded-3xl border border-zinc-200/80 dark:border-zinc-800 space-y-4">
-            <div className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-zinc-400">
-              <CreditCard className="w-4 h-4" /> Payment Details
-            </div>
-            <div className="text-xs text-zinc-600 dark:text-zinc-300 space-y-1">
-              <p className="font-semibold text-zinc-900 dark:text-zinc-100 capitalize">
-                Method: {order.paymentMethod}
-              </p>
-              <p className="text-emerald-600 font-semibold">Payment Status: {order.paymentStatus}</p>
-              {order.stripeSessionId && (
-                <p className="font-mono text-[10px] text-zinc-400 pt-1">
-                  Session: {order.stripeSessionId.slice(0, 20)}...
+          {/* Shipping & Payment Meta */}
+          <div className="space-y-6">
+            <div className="bg-gradient-to-b from-[#FFFDF9] to-[#FAF3E6] p-6 rounded-3xl border-2 border-[#D4AF37]/65 space-y-4">
+              <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#8C6518]">
+                <MapPin className="w-4 h-4" /> Delivery Destination
+              </div>
+              <div className="text-xs text-[#5C4934] space-y-1">
+                <p className="font-serif font-bold text-[#0E0B09] text-sm">
+                  {order.shippingAddress.fullName}
                 </p>
-              )}
+                <p>{order.shippingAddress.addressLine1} {order.shippingAddress.addressLine2}</p>
+                <p>{order.shippingAddress.city}, {order.shippingAddress.state} {order.shippingAddress.postalCode}</p>
+                <p>{order.shippingAddress.country}</p>
+                <p className="pt-2 text-[#6B5740] font-semibold">Contact: {order.shippingAddress.phone}</p>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-b from-[#FFFDF9] to-[#FAF3E6] p-6 rounded-3xl border-2 border-[#D4AF37]/65 space-y-4">
+              <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#8C6518]">
+                <CreditCard className="w-4 h-4" /> Payment Details
+              </div>
+              <div className="text-xs text-[#5C4934] space-y-1">
+                <p className="font-bold text-[#0E0B09] capitalize">
+                  Method: {order.paymentMethod}
+                </p>
+                <p className="text-emerald-800 font-bold">Payment Status: {order.paymentStatus}</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
     </div>
   );
 }

@@ -1,220 +1,112 @@
-'use client';
+"use client";
 
-import React, { useEffect } from 'react';
-import Link from 'next/link';
-import {
-  Compass,
-  ShoppingBag,
-  Sparkles,
-  HelpCircle,
-  ShieldCheck,
-  User,
-  ExternalLink,
-} from 'lucide-react';
-import { LotusIcon } from '@/components/ui/BrandLogo';
-import { useCategoryStore } from '@/store/categoryStore';
+import Link from "next/link";
+import { Compass, ArrowUpRight } from "lucide-react";
+import { NalmaraEmblem } from "@/components/ui/BrandLogo";
+
+const DIRECTORY = [
+  {
+    heading: "Saree & Ethnic Collections",
+    links: [
+      { label: "All Collections", href: "/shop" },
+      { label: "Silk & Soft Silk Sarees", href: "/shop?category=sarees" },
+      { label: "Bridal & Wedding Sarees", href: "/shop?category=wedding-silk" },
+      { label: "Festival & Party Wear", href: "/shop?category=festive-wear" },
+      { label: "Salwar Suits & Kurtis", href: "/shop?category=salwar-suits" },
+      { label: "Kids Traditional Wear", href: "/shop?category=kids-wear" },
+    ],
+  },
+  {
+    heading: "My Account & Shopping Bag",
+    links: [
+      { label: "Sign In", href: "/login" },
+      { label: "Create Account", href: "/signup" },
+      { label: "My Account & Profile", href: "/account" },
+      { label: "My Orders", href: "/account/orders" },
+      { label: "Saved Wishlist", href: "/wishlist" },
+      { label: "Shopping Bag", href: "/cart" },
+    ],
+  },
+  {
+    heading: "Nalmara Fashion & Customer Help",
+    links: [
+      { label: "About Our Thoothukudi Shop", href: "/about" },
+      { label: "Saree & Style Blog", href: "/blog" },
+      { label: "Track Your Order", href: "/track-order" },
+      { label: "Shipping & Tamil Nadu Delivery", href: "/shipping" },
+      { label: "Returns & Exchanges", href: "/returns" },
+      { label: "Frequently Asked Questions", href: "/faq" },
+      { label: "Contact Us (Thoothukudi)", href: "/contact" },
+      { label: "Privacy Policy", href: "/privacy" },
+      { label: "Terms & Conditions", href: "/terms" },
+    ],
+  },
+];
 
 export default function SitemapPage() {
-  const { categories, fetchCategories } = useCategoryStore();
-
-  useEffect(() => {
-    fetchCategories();
-  }, [fetchCategories]);
-
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-zinc-900">
-      {/* 1. HERO SECTION */}
-      <section className="relative overflow-hidden bg-[#061811] text-white py-16 sm:py-24 px-4 sm:px-6 lg:px-8 border-b border-[#D4AF37]/30">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.15),transparent_70%)] pointer-events-none" />
+    <div className="min-h-screen bg-[#FAF7F2] text-[#0E0B09]">
+      {/* Royal Obsidian & 24K Gold Hero Header */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0E0B09] via-[#17120D] to-[#0E0B09] text-[#FFFDF9] py-16 md:py-20 px-4 border-b-2 border-[#D4AF37]/50">
+        <div className="pointer-events-none absolute inset-[6px] border border-[#D4AF37]/15" />
+        <span className="pointer-events-none absolute top-3 left-3 h-4 w-4 border-t-2 border-l-2 border-[#D4AF37]/75" />
+        <span className="pointer-events-none absolute top-3 right-3 h-4 w-4 border-t-2 border-r-2 border-[#D4AF37]/75" />
+        <span className="pointer-events-none absolute bottom-3 left-3 h-4 w-4 border-b-2 border-l-2 border-[#D4AF37]/75" />
+        <span className="pointer-events-none absolute bottom-3 right-3 h-4 w-4 border-b-2 border-r-2 border-[#D4AF37]/75" />
+        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.16),transparent_65%)]" />
 
-        <div className="max-w-4xl mx-auto text-center relative z-10 space-y-4">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#D4AF37]/15 border border-[#D4AF37]/40 text-[#E5C07B] text-xs font-semibold tracking-widest uppercase">
-            <LotusIcon className="w-4 h-3.5" />
-            <span>Navigation Directory</span>
+        <div className="max-w-5xl mx-auto text-center space-y-3 relative z-10">
+          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#17120D]/90 border border-[#D4AF37]/50 shadow-[0_6px_20px_rgba(0,0,0,0.5)]">
+            <NalmaraEmblem className="w-5 h-5" />
+            <span className="text-[10px] uppercase tracking-[0.3em] text-[#FFE59E] font-bold">
+              Nalmara Fashion • Thoothukudi
+            </span>
           </div>
-
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-white leading-tight">
-            Sitemap & Directory
+          <h1 className="text-3xl sm:text-5xl font-serif font-normal text-[#FFFDF9]">
+            Website{" "}
+            <span className="font-script italic font-normal bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent pr-1">
+              Pages
+            </span>
           </h1>
-
-          <p className="text-xs sm:text-sm text-zinc-300 font-light max-w-xl mx-auto leading-relaxed">
-            Quickly navigate across our couture catalog, client services, order tracking, and atelier stories.
+          <p className="text-[#FAF7F2]/75 text-sm max-w-md mx-auto">
+            All pages, collections, and customer help links for Nalmara Fashion, Thoothukudi.
           </p>
-
-          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#E5C07B]">
-            <Link href="/" className="hover:underline">Home</Link>
-            <span className="text-zinc-500">/</span>
-            <span className="text-white font-medium">Sitemap</span>
-          </div>
         </div>
       </section>
 
-      {/* 2. DIRECTORY COLUMNS */}
-      <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {/* Column 1: Main Pages */}
-          <div className="bg-white rounded-3xl p-6 border border-[#D4AF37]/25 shadow-sm space-y-4">
-            <div className="flex items-center gap-2.5 pb-3 border-b border-zinc-100">
-              <Compass className="w-4 h-4 text-[#B8860B]" />
-              <h3 className="font-serif text-base font-bold text-[#061811]">
-                Boutique & Catalog
-              </h3>
-            </div>
-            <ul className="space-y-2 text-xs text-zinc-600 font-light">
-              <li>
-                <Link href="/" className="hover:text-[#B8860B] transition-colors">
-                  Home Page
-                </Link>
-              </li>
-              <li>
-                <Link href="/shop" className="hover:text-[#B8860B] transition-colors">
-                  All Collections & Shop
-                </Link>
-              </li>
-              <li>
-                <Link href="/cart" className="hover:text-[#B8860B] transition-colors">
-                  Shopping Bag
-                </Link>
-              </li>
-              <li>
-                <Link href="/wishlist" className="hover:text-[#B8860B] transition-colors">
-                  Wishlist & Saved Items
-                </Link>
-              </li>
-              <li>
-                <Link href="/checkout" className="hover:text-[#B8860B] transition-colors">
-                  Checkout Portal
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-[#B8860B] transition-colors">
-                  About NALMARA Atelier
-                </Link>
-              </li>
-              <li>
-                <Link href="/blog" className="hover:text-[#B8860B] transition-colors">
-                  The Royal Journal & Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-[#B8860B] transition-colors">
-                  Contact & Atelier Location
-                </Link>
-              </li>
-            </ul>
-          </div>
+      <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16 grid grid-cols-1 md:grid-cols-3 gap-6">
+        {DIRECTORY.map((group) => (
+          <div
+            key={group.heading}
+            className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF3E6]/90 to-[#F5E9D3]/75 rounded-2xl border-2 border-[#D4AF37]/60 p-6 md:p-8 shadow-[0_16px_40px_-12px_rgba(14,11,9,0.14)]"
+          >
+            <div className="pointer-events-none absolute inset-[4px] rounded-[12px] border border-[#D4AF37]/25" />
+            <span className="pointer-events-none absolute top-2.5 left-2.5 h-3 w-3 border-t-2 border-l-2 border-[#D4AF37]" />
+            <span className="pointer-events-none absolute top-2.5 right-2.5 h-3 w-3 border-t-2 border-r-2 border-[#D4AF37]" />
 
-          {/* Column 2: Our Categories (Dynamic) */}
-          <div className="bg-white rounded-3xl p-6 border border-[#D4AF37]/25 shadow-sm space-y-4">
-            <div className="flex items-center gap-2.5 pb-3 border-b border-zinc-100">
-              <Sparkles className="w-4 h-4 text-[#B8860B]" />
-              <h3 className="font-serif text-base font-bold text-[#061811]">
-                Our Collections
-              </h3>
-            </div>
-            <ul className="space-y-2 text-xs text-zinc-600 font-light">
-              {categories.length > 0 ? (
-                categories.map((c) => (
-                  <li key={c._id || c.slug}>
+            <div className="relative z-10">
+              <div className="flex items-center gap-2.5 mb-5 pb-3 border-b border-[#D4AF37]/35">
+                <Compass className="w-4 h-4 text-[#8C6518]" />
+                <h2 className="text-base font-serif font-bold text-[#0E0B09]">
+                  {group.heading}
+                </h2>
+              </div>
+              <ul className="space-y-3">
+                {group.links.map((item) => (
+                  <li key={item.href}>
                     <Link
-                      href={`/shop?category=${c.slug}`}
-                      className="hover:text-[#B8860B] transition-colors capitalize"
+                      href={item.href}
+                      className="group flex items-center justify-between text-sm text-[#4A3B2C] hover:text-[#0E0B09] font-medium transition-colors"
                     >
-                      {c.name}
+                      <span>{item.label}</span>
+                      <ArrowUpRight className="w-3.5 h-3.5 text-[#8C6518] group-hover:text-[#D4AF37] group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-all" />
                     </Link>
                   </li>
-                ))
-              ) : (
-                <>
-                  <li>
-                    <Link href="/shop" className="hover:text-[#B8860B] transition-colors">
-                      All Weaves
-                    </Link>
-                  </li>
-                  <li>
-                    <Link href="/shop" className="hover:text-[#B8860B] transition-colors">
-                      New Arrivals
-                    </Link>
-                  </li>
-                </>
-              )}
-            </ul>
-          </div>
-
-          {/* Column 3: Customer Service */}
-          <div className="bg-white rounded-3xl p-6 border border-[#D4AF37]/25 shadow-sm space-y-4">
-            <div className="flex items-center gap-2.5 pb-3 border-b border-zinc-100">
-              <HelpCircle className="w-4 h-4 text-[#B8860B]" />
-              <h3 className="font-serif text-base font-bold text-[#061811]">
-                Customer Service
-              </h3>
+                ))}
+              </ul>
             </div>
-            <ul className="space-y-2 text-xs text-zinc-600 font-light">
-              <li>
-                <Link href="/track-order" className="hover:text-[#B8860B] transition-colors font-medium text-[#061811]">
-                  Track Order Online
-                </Link>
-              </li>
-              <li>
-                <Link href="/shipping" className="hover:text-[#B8860B] transition-colors">
-                  Shipping & Delivery Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/returns" className="hover:text-[#B8860B] transition-colors">
-                  7-Day Return & Exchange
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="hover:text-[#B8860B] transition-colors">
-                  Frequently Asked Questions (FAQ)
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-[#B8860B] transition-colors">
-                  Bespoke Styling Concierge
-                </Link>
-              </li>
-            </ul>
           </div>
-
-          {/* Column 4: Account & Legal */}
-          <div className="bg-white rounded-3xl p-6 border border-[#D4AF37]/25 shadow-sm space-y-4">
-            <div className="flex items-center gap-2.5 pb-3 border-b border-zinc-100">
-              <ShieldCheck className="w-4 h-4 text-[#B8860B]" />
-              <h3 className="font-serif text-base font-bold text-[#061811]">
-                Account & Governance
-              </h3>
-            </div>
-            <ul className="space-y-2 text-xs text-zinc-600 font-light">
-              <li>
-                <Link href="/account" className="hover:text-[#B8860B] transition-colors">
-                  Client Account
-                </Link>
-              </li>
-              <li>
-                <Link href="/account/orders" className="hover:text-[#B8860B] transition-colors">
-                  Order History & Invoices
-                </Link>
-              </li>
-              <li>
-                <Link href="/login" className="hover:text-[#B8860B] transition-colors">
-                  Sign In / Register
-                </Link>
-              </li>
-              <li>
-                <Link href="/privacy" className="hover:text-[#B8860B] transition-colors">
-                  Privacy Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" className="hover:text-[#B8860B] transition-colors">
-                  Terms & Conditions
-                </Link>
-              </li>
-            </ul>
-          </div>
-        </div>
+        ))}
       </section>
     </div>
   );

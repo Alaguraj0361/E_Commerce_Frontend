@@ -340,9 +340,9 @@ export async function GET() {
 
   return NextResponse.json({
     success: true,
-    source: 'curated_nalmarafashion_feed',
+    source: 'live_api_only',
     profileUrl: 'https://www.instagram.com/nalmarafashion',
     handle: '@nalmarafashion',
-    posts: FALLBACK_NALMARA_POSTS,
+    posts: [],
   });
 }

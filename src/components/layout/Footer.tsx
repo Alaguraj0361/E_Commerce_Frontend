@@ -7,453 +7,338 @@ import {
   Facebook,
   Youtube,
   Share2,
-  ChevronDown,
-  ShieldCheck,
-  Sparkles,
   Mail,
+  Phone,
+  MapPin,
+  Heart,
   MessageCircle,
-  ArrowUpRight,
-  Gem,
-  Package,
-  HeartHandshake,
 } from 'lucide-react';
-import { BrandLogo, LotusIcon } from '../ui/BrandLogo';
+import { toast } from 'sonner';
+import { useCategoryStore } from '../../store/categoryStore';
 
 export const Footer = () => {
-  const [openSections, setOpenSections] = useState<Record<string, boolean>>({
-    shop: false,
-    care: false,
-    about: false,
-    connect: false,
-  });
+  const [email, setEmail] = useState('');
+  const { categories } = useCategoryStore();
 
-  const toggleSection = (key: string) => {
-    setOpenSections((prev) => ({ ...prev, [key]: !prev[key] }));
+  const handleSubscribe = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email.trim()) return;
+    toast.success('Subscribed! You will receive our latest collections & offers.');
+    setEmail('');
   };
 
   return (
-    <footer className="relative bg-[#180306] text-[#EDE3D2] pt-14 sm:pt-18 pb-24 lg:pb-12 overflow-hidden select-none">
-      {/* Top 24K Gold Shimmer Border */}
-      <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent opacity-90" />
-      <div className="absolute top-[5px] inset-x-8 h-[1px] bg-gradient-to-r from-transparent via-[#D4AF37]/40 to-transparent pointer-events-none" />
-
-      {/* Ambient Radial Gold & Garnet Glow Behind Crest */}
-      <div className="absolute -top-28 left-1/2 -translate-x-1/2 w-[640px] h-64 rounded-full bg-[#D4AF37]/12 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[520px] h-48 rounded-full bg-[#4A0812]/35 blur-3xl pointer-events-none" />
-
-      {/* Subtle Corner Lotus Watermarks */}
-      <div className="absolute -left-16 -bottom-12 w-72 h-72 opacity-[0.05] pointer-events-none">
-        <LotusIcon className="w-full h-full text-[#D4AF37]" />
-      </div>
-      <div className="absolute -right-12 -bottom-10 w-80 h-80 opacity-[0.06] pointer-events-none">
-        <LotusIcon className="w-full h-full text-[#D4AF37]" />
-      </div>
-
-      {/* Main Content Container */}
-      <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 relative z-10">
-        {/* Outer Subtle 24K Gold Architectural Frame on #180306 */}
-        <div className="relative rounded-3xl border border-[#D4AF37]/35 bg-gradient-to-b from-[#24050A]/80 via-[#180306]/90 to-[#120204]/95 px-5 sm:px-8 lg:px-12 py-8 sm:py-11 shadow-[0_24px_65px_rgba(0,0,0,0.55)] backdrop-blur-[2px]">
-          {/* Inner Hairline Gold Rim */}
-          <div className="absolute inset-2.5 border border-[#D4AF37]/20 rounded-2xl pointer-events-none" />
-
-          {/* Sculpted 24K Gold Corner Filigree Brackets */}
-          <div className="absolute top-4 left-4 w-4 h-4 border-t-2 border-l-2 border-[#E5C158]/80 pointer-events-none" />
-          <div className="absolute top-4 right-4 w-4 h-4 border-t-2 border-r-2 border-[#E5C158]/80 pointer-events-none" />
-          <div className="absolute bottom-4 left-4 w-4 h-4 border-b-2 border-l-2 border-[#E5C158]/80 pointer-events-none" />
-          <div className="absolute bottom-4 right-4 w-4 h-4 border-b-2 border-r-2 border-[#E5C158]/80 pointer-events-none" />
-
-          {/* ============================================================ */}
-          {/* 1. ROYAL BRAND CREST HEADER & HERITAGE PILLARS               */}
-          {/* ============================================================ */}
-          <div className="flex flex-col items-center justify-center text-center pb-8 sm:pb-10 border-b border-[#D4AF37]/25">
-            {/* Decorative Gold Wings Flanking Logo */}
-            <div className="flex items-center justify-center gap-4 sm:gap-8 w-full max-w-2xl">
-              <div className="hidden sm:flex items-center gap-2 flex-1">
-                <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#D4AF37]/75" />
-                <Sparkles className="w-3.5 h-3.5 text-[#E5C158]" />
-              </div>
-
-              <BrandLogo size="lg" theme="dark" showTagline={false} />
-
-              <div className="hidden sm:flex items-center gap-2 flex-1">
-                <Sparkles className="w-3.5 h-3.5 text-[#E5C158]" />
-                <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#D4AF37]/75" />
-              </div>
+    <footer className="relative bg-[#220517] text-[#F7E8D0] overflow-hidden select-none">
+      {/* ============================================================ */}
+      {/* 1. STAY UPDATED NEWSLETTER STRIP                             */}
+      {/* ============================================================ */}
+      <div className="relative bg-gradient-to-r from-[#380725] via-[#540D3A] to-[#380725] border-t-2 border-b border-[#D4AF37]/60 py-4 px-4 sm:px-6 lg:px-10">
+        <div className="max-w-[1340px] mx-auto flex flex-col lg:flex-row items-center justify-between gap-4">
+          {/* Left: Envelope Icon + Stay Updated */}
+          <div className="flex items-center gap-3 text-center sm:text-left">
+            <div className="w-10 h-10 rounded-xl bg-[#2A051C] border border-[#D4AF37]/75 flex items-center justify-center text-[#FFE59E] shrink-0 shadow-sm">
+              <Mail className="w-5 h-5" />
             </div>
-
-            {/* Luminous Champagne Tagline */}
-            <p className="font-serif italic text-xs sm:text-sm text-[#E8D5B0] tracking-wider mt-2.5">
-              Traditional Elegance &bull; Timeless Collections &bull; Made with Love
-            </p>
-
-            {/* 3 Mini Royal Assurance Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 mt-5">
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#2B060C]/90 border border-[#D4AF37]/45 text-[10px] sm:text-[11px] font-serif text-[#F5E6BE] tracking-wide shadow-2xs">
-                <Gem className="w-3 h-3 text-[#E5C158]" />
-                <span>100% Authentic Weaves</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#2B060C]/90 border border-[#D4AF37]/45 text-[10px] sm:text-[11px] font-serif text-[#F5E6BE] tracking-wide shadow-2xs">
-                <Package className="w-3 h-3 text-[#E5C158]" />
-                <span>Signature Luxury Packaging</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#2B060C]/90 border border-[#D4AF37]/45 text-[10px] sm:text-[11px] font-serif text-[#F5E6BE] tracking-wide shadow-2xs">
-                <HeartHandshake className="w-3 h-3 text-[#E5C158]" />
-                <span>Dedicated Stylist Support</span>
-              </div>
-            </div>
-          </div>
-
-          {/* ============================================================ */}
-          {/* 2. 4 ARCHITECTURAL FOOTER COLUMNS                            */}
-          {/* ============================================================ */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 py-9 sm:py-11">
-            {/* Column 1: Shop */}
-            <div className="border-b md:border-b-0 border-[#D4AF37]/20 pb-4 md:pb-0">
-              <button
-                onClick={() => toggleSection('shop')}
-                className="w-full flex items-center justify-between text-left md:cursor-default group"
-              >
-                <div>
-                  <span className="block font-serif font-bold text-sm sm:text-base tracking-[0.14em] uppercase text-[#FFE59E]">
-                    Shop
-                  </span>
-                  <span className="hidden md:block h-[1.5px] w-9 bg-gradient-to-r from-[#D4AF37] to-transparent mt-1.5" />
-                </div>
-                <ChevronDown
-                  className={`w-4 h-4 md:hidden transition-transform text-[#D4AF37] ${
-                    openSections.shop ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-
-              <ul
-                className={`space-y-3 text-xs sm:text-[13px] text-[#E6DEC8] font-normal mt-4 ${
-                  openSections.shop ? 'block' : 'hidden md:block'
-                }`}
-              >
-                <li>
-                  <Link
-                    href="/shop?category=sarees"
-                    className="group/link inline-flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all duration-200 hover:translate-x-1"
-                  >
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]/60 group-hover/link:bg-[#FFE59E] transition-colors" />
-                    <span>All Sarees</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/shop?filter=new-arrivals"
-                    className="group/link inline-flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all duration-200 hover:translate-x-1"
-                  >
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]/60 group-hover/link:bg-[#FFE59E] transition-colors" />
-                    <span>New Arrivals</span>
-                    <span className="px-1.5 py-0.2 rounded-full bg-[#4A0812] border border-[#D4AF37]/60 text-[8.5px] font-serif font-bold uppercase tracking-wider text-[#FFE59E]">
-                      New
-                    </span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/shop?filter=best-sellers"
-                    className="group/link inline-flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all duration-200 hover:translate-x-1"
-                  >
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]/60 group-hover/link:bg-[#FFE59E] transition-colors" />
-                    <span>Bestsellers</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/shop?category=festive"
-                    className="group/link inline-flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all duration-200 hover:translate-x-1"
-                  >
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]/60 group-hover/link:bg-[#FFE59E] transition-colors" />
-                    <span>Festive Collections</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/shop?category=kids-wear"
-                    className="group/link inline-flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all duration-200 hover:translate-x-1"
-                  >
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]/60 group-hover/link:bg-[#FFE59E] transition-colors" />
-                    <span>Kidswear</span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 2: Customer Care */}
-            <div className="border-b md:border-b-0 border-[#D4AF37]/20 pb-4 md:pb-0">
-              <button
-                onClick={() => toggleSection('care')}
-                className="w-full flex items-center justify-between text-left md:cursor-default"
-              >
-                <div>
-                  <span className="block font-serif font-bold text-sm sm:text-base tracking-[0.14em] uppercase text-[#FFE59E]">
-                    Customer Care
-                  </span>
-                  <span className="hidden md:block h-[1.5px] w-9 bg-gradient-to-r from-[#D4AF37] to-transparent mt-1.5" />
-                </div>
-                <ChevronDown
-                  className={`w-4 h-4 md:hidden transition-transform text-[#D4AF37] ${
-                    openSections.care ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-
-              <ul
-                className={`space-y-3 text-xs sm:text-[13px] text-[#E6DEC8] font-normal mt-4 ${
-                  openSections.care ? 'block' : 'hidden md:block'
-                }`}
-              >
-                <li>
-                  <Link
-                    href="/contact"
-                    className="group/link inline-flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all duration-200 hover:translate-x-1"
-                  >
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]/60 group-hover/link:bg-[#FFE59E] transition-colors" />
-                    <span>Contact Us</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/shipping"
-                    className="group/link inline-flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all duration-200 hover:translate-x-1"
-                  >
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]/60 group-hover/link:bg-[#FFE59E] transition-colors" />
-                    <span>Shipping Policy</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/returns"
-                    className="group/link inline-flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all duration-200 hover:translate-x-1"
-                  >
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]/60 group-hover/link:bg-[#FFE59E] transition-colors" />
-                    <span>Returns &amp; Exchanges</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/faq"
-                    className="group/link inline-flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all duration-200 hover:translate-x-1"
-                  >
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]/60 group-hover/link:bg-[#FFE59E] transition-colors" />
-                    <span>FAQs</span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 3: About Us */}
-            <div className="border-b md:border-b-0 border-[#D4AF37]/20 pb-4 md:pb-0">
-              <button
-                onClick={() => toggleSection('about')}
-                className="w-full flex items-center justify-between text-left md:cursor-default"
-              >
-                <div>
-                  <span className="block font-serif font-bold text-sm sm:text-base tracking-[0.14em] uppercase text-[#FFE59E]">
-                    About Us
-                  </span>
-                  <span className="hidden md:block h-[1.5px] w-9 bg-gradient-to-r from-[#D4AF37] to-transparent mt-1.5" />
-                </div>
-                <ChevronDown
-                  className={`w-4 h-4 md:hidden transition-transform text-[#D4AF37] ${
-                    openSections.about ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-
-              <ul
-                className={`space-y-3 text-xs sm:text-[13px] text-[#E6DEC8] font-normal mt-4 ${
-                  openSections.about ? 'block' : 'hidden md:block'
-                }`}
-              >
-                <li>
-                  <Link
-                    href="/about"
-                    className="group/link inline-flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all duration-200 hover:translate-x-1"
-                  >
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]/60 group-hover/link:bg-[#FFE59E] transition-colors" />
-                    <span>Our Story</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/privacy"
-                    className="group/link inline-flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all duration-200 hover:translate-x-1"
-                  >
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]/60 group-hover/link:bg-[#FFE59E] transition-colors" />
-                    <span>Privacy Policy</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/terms"
-                    className="group/link inline-flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all duration-200 hover:translate-x-1"
-                  >
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]/60 group-hover/link:bg-[#FFE59E] transition-colors" />
-                    <span>Terms &amp; Conditions</span>
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/track-order"
-                    className="group/link inline-flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all duration-200 hover:translate-x-1"
-                  >
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]/60 group-hover/link:bg-[#FFE59E] transition-colors" />
-                    <span>Track Order</span>
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* Column 4: Connect */}
             <div>
-              <button
-                onClick={() => toggleSection('connect')}
-                className="w-full flex items-center justify-between text-left md:cursor-default"
-              >
-                <div>
-                  <span className="block font-serif font-bold text-sm sm:text-base tracking-[0.14em] uppercase text-[#FFE59E]">
-                    Connect
-                  </span>
-                  <span className="hidden md:block h-[1.5px] w-9 bg-gradient-to-r from-[#D4AF37] to-transparent mt-1.5" />
-                </div>
-                <ChevronDown
-                  className={`w-4 h-4 md:hidden transition-transform text-[#D4AF37] ${
-                    openSections.connect ? 'rotate-180' : ''
-                  }`}
-                />
-              </button>
-
-              <div
-                className={`space-y-3 mt-4 text-xs sm:text-[13px] text-[#E6DEC8] ${
-                  openSections.connect ? 'block' : 'hidden md:block'
-                }`}
-              >
-                {/* Instagram Direct Link */}
-                <a
-                  href="https://www.instagram.com/nalmarafashion"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group/con flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all"
-                >
-                  <span className="w-7 h-7 rounded-full bg-[#2B060C] border border-[#D4AF37]/55 group-hover/con:border-[#FFE59E] flex items-center justify-center text-[#E5C158] transition-colors shrink-0">
-                    <Instagram className="w-3.5 h-3.5" />
-                  </span>
-                  <div className="flex flex-col leading-tight">
-                    <span className="flex items-center gap-1">
-                      Instagram
-                      <ArrowUpRight className="w-3 h-3 opacity-0 group-hover/con:opacity-100 transition-opacity text-[#E5C158]" />
-                    </span>
-                    <span className="text-[11px] text-[#E8D5B0]/90 font-serif tracking-wider mt-0.5">
-                      @nalmarafashion
-                    </span>
-                  </div>
-                </a>
-
-                {/* WhatsApp Support */}
-                <a
-                  href="https://wa.me/916383163609"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group/con flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all"
-                >
-                  <span className="w-7 h-7 rounded-full bg-[#25D366]/20 border border-[#25D366]/60 group-hover/con:bg-[#25D366] flex items-center justify-center text-[#25D366] group-hover/con:text-white transition-colors shrink-0">
-                    <MessageCircle className="w-3.5 h-3.5" />
-                  </span>
-                  <div className="flex flex-col leading-tight">
-                    <span>WhatsApp Support</span>
-                    <span className="text-[11px] text-[#E8D5B0]/90 font-serif tracking-wider mt-0.5">
-                      6383163609 &nbsp;|&nbsp; 7871207631
-                    </span>
-                  </div>
-                </a>
-
-                {/* Email Support */}
-                <a
-                  href="mailto:support@nalmarafashion.com"
-                  className="group/con flex items-center gap-2.5 text-[#E6DEC8] hover:text-[#FFE59E] transition-all"
-                >
-                  <span className="w-7 h-7 rounded-full bg-[#2B060C] border border-[#D4AF37]/55 group-hover/con:border-[#FFE59E] flex items-center justify-center text-[#E5C158] transition-colors shrink-0">
-                    <Mail className="w-3.5 h-3.5" />
-                  </span>
-                  <span>Email Support</span>
-                </a>
-
-                {/* 4 Royal Gold Social Medallions */}
-                <div className="flex items-center gap-2.5 pt-2">
-                  <a
-                    href="https://facebook.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-[#2B060C] border border-[#D4AF37]/60 flex items-center justify-center text-[#E8D5B0] hover:bg-[#D4AF37] hover:text-[#180306] hover:border-[#FFE59E] hover:scale-110 transition-all duration-300 shadow-sm"
-                    aria-label="Facebook"
-                  >
-                    <Facebook className="w-3.5 h-3.5" />
-                  </a>
-                  <a
-                    href="https://www.instagram.com/nalmarafashion"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-[#2B060C] border border-[#D4AF37]/60 flex items-center justify-center text-[#E8D5B0] hover:bg-[#D4AF37] hover:text-[#180306] hover:border-[#FFE59E] hover:scale-110 transition-all duration-300 shadow-sm"
-                    aria-label="Instagram"
-                  >
-                    <Instagram className="w-3.5 h-3.5" />
-                  </a>
-                  <a
-                    href="https://youtube.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-[#2B060C] border border-[#D4AF37]/60 flex items-center justify-center text-[#E8D5B0] hover:bg-[#D4AF37] hover:text-[#180306] hover:border-[#FFE59E] hover:scale-110 transition-all duration-300 shadow-sm"
-                    aria-label="YouTube"
-                  >
-                    <Youtube className="w-3.5 h-3.5" />
-                  </a>
-                  <a
-                    href="https://pinterest.com"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-full bg-[#2B060C] border border-[#D4AF37]/60 flex items-center justify-center text-[#E8D5B0] hover:bg-[#D4AF37] hover:text-[#180306] hover:border-[#FFE59E] hover:scale-110 transition-all duration-300 shadow-sm"
-                    aria-label="Share"
-                  >
-                    <Share2 className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* ============================================================ */}
-          {/* 3. BOTTOM COPYRIGHT & LUXURY PAYMENT BADGES BAR              */}
-          {/* ============================================================ */}
-          <div className="pt-6 border-t border-[#D4AF37]/25 flex flex-col lg:flex-row items-center justify-between gap-4 text-xs text-[#D5C9B4]">
-            {/* Left Copyright */}
-            <div className="flex items-center gap-2 text-center sm:text-left">
-              <LotusIcon className="w-4 h-4 text-[#E5C158] shrink-0 hidden sm:block" />
-              <p className="font-serif tracking-wide">
-                © 2026 <strong className="text-[#FFE59E] font-semibold">NALMARA FASHION</strong>. All rights reserved. Handcrafted with devotion.
+              <h3 className="font-serif text-base sm:text-lg font-bold text-[#FFFDF9] leading-tight">
+                Stay Updated
+              </h3>
+              <p className="text-[11px] sm:text-xs text-[#EED9BA]/90">
+                Get the latest collections &amp; offers!
               </p>
             </div>
+          </div>
 
-            {/* Right Payment Methods & Security Shield */}
-            <div className="flex flex-wrap items-center justify-center sm:justify-end gap-2">
-              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#2B060C] border border-emerald-500/40 text-[10px] text-emerald-300 font-medium mr-1">
-                <ShieldCheck className="w-3 h-3 text-emerald-400" />
-                100% Secure
-              </span>
-              {['UPI', 'Visa', 'Mastercard', 'RuPay', 'NetBanking'].map((method) => (
-                <span
-                  key={method}
-                  className="px-3 py-1 rounded-md bg-gradient-to-b from-[#33070E] to-[#1D0307] border border-[#D4AF37]/50 text-[10.5px] font-serif font-semibold tracking-wider text-[#F5E6BE] shadow-xs"
-                >
-                  {method}
-                </span>
-              ))}
+          {/* Center: Email Input + Gold Subscribe Button */}
+          <form
+            onSubmit={handleSubscribe}
+            className="w-full max-w-md flex items-center gap-2"
+          >
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="Enter your email address"
+              className="flex-1 bg-[#FFFDF9] text-[#23120B] placeholder:text-zinc-400 text-xs sm:text-sm px-4 py-2.5 rounded-full border border-[#D4AF37]/70 focus:outline-none focus:ring-2 focus:ring-[#E5B85B]"
+            />
+            <button
+              type="submit"
+              className="px-6 py-2.5 rounded-full bg-gradient-to-b from-[#F4CF76] via-[#E2B049] to-[#C68E28] hover:from-[#FFE59E] hover:to-[#D4AF37] text-[#23120B] font-serif font-bold text-xs sm:text-sm shadow-md transition-all cursor-pointer shrink-0"
+            >
+              Subscribe
+            </button>
+          </form>
+
+          {/* Right: Connect with us + 5 Gold Social Icons */}
+          <div className="flex flex-col items-center lg:items-end gap-1.5">
+            <span className="text-[11px] font-serif text-[#F9E6C4] tracking-wide">
+              Connect with us
+            </span>
+            <div className="flex items-center gap-2">
+              <a
+                href="https://www.instagram.com/nalmarafashion"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-7 h-7 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#C8902B] text-[#2A051C] flex items-center justify-center hover:scale-110 transition-transform shadow-xs"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="https://youtube.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-7 h-7 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#C8902B] text-[#2A051C] flex items-center justify-center hover:scale-110 transition-transform shadow-xs"
+                aria-label="YouTube"
+              >
+                <Youtube className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="https://pinterest.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-7 h-7 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#C8902B] text-[#2A051C] flex items-center justify-center hover:scale-110 transition-transform shadow-xs"
+                aria-label="Pinterest"
+              >
+                <Share2 className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="https://wa.me/916383163609"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-7 h-7 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#C8902B] text-[#2A051C] flex items-center justify-center hover:scale-110 transition-transform shadow-xs"
+                aria-label="WhatsApp"
+              >
+                <MessageCircle className="w-3.5 h-3.5" />
+              </a>
+              <a
+                href="https://facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-7 h-7 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#C8902B] text-[#2A051C] flex items-center justify-center hover:scale-110 transition-transform shadow-xs"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-3.5 h-3.5" />
+              </a>
             </div>
           </div>
         </div>
+      </div>
+
+      {/* ============================================================ */}
+      {/* 2. MAIN 5-COLUMN ROYAL BURGUNDY/PLUM FOOTER                  */}
+      {/* ============================================================ */}
+      <div className="relative bg-gradient-to-b from-[#2A061C] via-[#220517] to-[#1A0311] py-10 sm:py-12 px-4 sm:px-6 lg:px-10">
+        {/* Left & Right Gold Floral Mandala Corner Ornaments */}
+        <svg
+          viewBox="0 0 200 200"
+          fill="none"
+          className="absolute -left-12 top-0 w-44 h-44 text-[#D4AF37]/30 pointer-events-none"
+        >
+          <circle cx="100" cy="100" r="85" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
+          <circle cx="100" cy="100" r="65" stroke="currentColor" strokeWidth="1.2" />
+          <path
+            d="M100 10 L115 55 L160 40 L140 85 L185 100 L140 115 L160 160 L115 145 L100 190 L85 145 L40 160 L60 115 L15 100 L60 85 L40 40 L85 55 Z"
+            stroke="currentColor"
+            strokeWidth="1.2"
+          />
+        </svg>
+        <svg
+          viewBox="0 0 200 200"
+          fill="none"
+          className="absolute -right-12 bottom-0 w-48 h-48 text-[#D4AF37]/30 pointer-events-none"
+        >
+          <circle cx="100" cy="100" r="85" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
+          <circle cx="100" cy="100" r="65" stroke="currentColor" strokeWidth="1.2" />
+          <path
+            d="M100 10 L115 55 L160 40 L140 85 L185 100 L140 115 L160 160 L115 145 L100 190 L85 145 L40 160 L60 115 L15 100 L60 85 L40 40 L85 55 Z"
+            stroke="currentColor"
+            strokeWidth="1.2"
+          />
+        </svg>
+
+        <div className="max-w-[1340px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 relative z-10">
+          {/* Col 1 (3 cols): Official Emblem + NALMARA FASHION + Your Design, Our Craft */}
+          <div className="lg:col-span-3 flex flex-col items-center sm:items-start text-center sm:text-left">
+            <Link href="/" className="flex flex-col items-center sm:items-start group">
+              <div className="w-16 h-16 rounded-full p-[2px] bg-gradient-to-b from-[#FFE59E] via-[#D4AF37] to-[#8C6518] shadow-lg mb-2.5">
+                <div className="w-full h-full rounded-full overflow-hidden bg-[#0E0B09]">
+                  <img
+                    src="/images/nalmara-logo.jpg"
+                    alt="NALMARA FASHION"
+                    className="w-full h-full object-cover scale-[1.34]"
+                  />
+                </div>
+              </div>
+              <span className="font-serif text-xl sm:text-2xl font-bold tracking-[0.16em] text-[#FFE59E] uppercase">
+                NALMARA
+              </span>
+              <div className="flex items-center gap-2 mt-0.5">
+                <span className="h-[1px] w-6 bg-[#D4AF37]/60" />
+                <span className="text-[9px] tracking-[0.28em] text-[#E5C158] uppercase font-medium">
+                  FASHION
+                </span>
+                <span className="h-[1px] w-6 bg-[#D4AF37]/60" />
+              </div>
+            </Link>
+
+            <p className="font-serif italic text-xs sm:text-sm text-[#F5DFB8] mt-3 inline-flex items-center gap-1.5">
+              <span>Your Design, Our Craft</span>
+              <Heart className="w-3.5 h-3.5 text-[#FFE59E]" />
+            </p>
+          </div>
+
+          {/* Col 2 (2 cols): Shop Links */}
+          <div className="lg:col-span-2 space-y-2.5 text-center sm:text-left">
+            <h4 className="font-serif font-bold text-sm sm:text-base text-[#FFE59E]">
+              Shop Links
+            </h4>
+            <ul className="space-y-2 text-xs sm:text-[13px] text-[#F2E2C8]">
+              <li>
+                <Link href="/shop" className="hover:text-[#FFE59E] transition-colors">
+                  All Collections
+                </Link>
+              </li>
+              {categories.slice(0, 6).map((cat) => (
+                <li key={cat._id}>
+                  <Link
+                    href={`/shop?category=${cat.slug}`}
+                    className="hover:text-[#FFE59E] transition-colors"
+                  >
+                    {cat.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Col 3 (2 cols): Customer Service */}
+          <div className="lg:col-span-2 space-y-2.5 text-center sm:text-left">
+            <h4 className="font-serif font-bold text-sm sm:text-base text-[#FFE59E]">
+              Customer Service
+            </h4>
+            <ul className="space-y-2 text-xs sm:text-[13px] text-[#F2E2C8]">
+              <li>
+                <Link href="/track-order" className="hover:text-[#FFE59E] transition-colors">
+                  Track Order
+                </Link>
+              </li>
+              <li>
+                <Link href="/shipping" className="hover:text-[#FFE59E] transition-colors">
+                  Shipping Policy
+                </Link>
+              </li>
+              <li>
+                <Link href="/returns" className="hover:text-[#FFE59E] transition-colors">
+                  Return &amp; Exchange
+                </Link>
+              </li>
+              <li>
+                <Link href="/faq" className="hover:text-[#FFE59E] transition-colors">
+                  FAQs
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-[#FFE59E] transition-colors">
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 4 (2 cols): About Us */}
+          <div className="lg:col-span-2 space-y-2.5 text-center sm:text-left">
+            <h4 className="font-serif font-bold text-sm sm:text-base text-[#FFE59E]">
+              About Us
+            </h4>
+            <ul className="space-y-2 text-xs sm:text-[13px] text-[#F2E2C8]">
+              <li>
+                <Link href="/about" className="hover:text-[#FFE59E] transition-colors">
+                  Our Story
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-[#FFE59E] transition-colors">
+                  Why Nalmara
+                </Link>
+              </li>
+              <li>
+                <Link href="/reviews" className="hover:text-[#FFE59E] transition-colors">
+                  Testimonials
+                </Link>
+              </li>
+              <li>
+                <Link href="/about" className="hover:text-[#FFE59E] transition-colors">
+                  Blog
+                </Link>
+              </li>
+              <li>
+                <Link href="/contact" className="hover:text-[#FFE59E] transition-colors">
+                  Careers
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Col 5 (3 cols): Contact Us & Payment Methods */}
+          <div className="lg:col-span-3 space-y-3 text-center sm:text-left">
+            <h4 className="font-serif font-bold text-sm sm:text-base text-[#FFE59E]">
+              Contact Us
+            </h4>
+
+            <div className="space-y-2 text-xs sm:text-[13px] text-[#F2E2C8]">
+              <div className="flex items-center justify-center sm:justify-start gap-2">
+                <Phone className="w-4 h-4 text-[#E5B85B] shrink-0" />
+                <span>
+                  <a href="tel:+916383163609" className="hover:text-[#FFE59E]">
+                    6383163609
+                  </a>{' '}
+                  |{' '}
+                  <a href="tel:+917871207631" className="hover:text-[#FFE59E]">
+                    7871207631
+                  </a>
+                </span>
+              </div>
+
+              <div className="flex items-center justify-center sm:justify-start gap-2">
+                <MapPin className="w-4 h-4 text-[#E5B85B] shrink-0" />
+                <span>Thoothukudi, Tamil Nadu, India</span>
+              </div>
+            </div>
+
+            {/* Payment Method Badges: UPI | VISA | Mastercard | RuPay */}
+            <div className="pt-2 flex flex-wrap items-center justify-center sm:justify-start gap-2">
+              <span className="px-2.5 py-1 rounded bg-white text-[#1A1A1A] font-extrabold text-[10px] tracking-wider shadow-xs">
+                UPI
+              </span>
+              <span className="px-2.5 py-1 rounded bg-white text-[#1A1F71] font-extrabold text-[10px] tracking-wider shadow-xs">
+                VISA
+              </span>
+              <span className="px-2.5 py-1 rounded bg-white text-[#EB001B] font-extrabold text-[10px] tracking-wider shadow-xs flex items-center gap-0.5">
+                <span className="w-2.5 h-2.5 rounded-full bg-[#EB001B] inline-block" />
+                <span className="w-2.5 h-2.5 rounded-full bg-[#F79E1B] -ml-1 inline-block" />
+              </span>
+              <span className="px-2.5 py-1 rounded bg-white text-[#097969] font-extrabold text-[10px] tracking-wider shadow-xs">
+                RuPay
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ============================================================ */}
+      {/* 3. BOTTOM COPYRIGHT BAR                                      */}
+      {/* ============================================================ */}
+      <div className="bg-[#18020F] border-t border-[#D4AF37]/30 py-3 px-4 text-center text-[11px] sm:text-xs text-[#EED9BA]/85">
+        <p className="flex flex-wrap items-center justify-center gap-2">
+          <span>© 2026 NALMARA FASHION. All rights reserved.</span>
+          <span className="opacity-50">|</span>
+          <span className="inline-flex items-center gap-1 text-[#FFE59E]">
+            Elegance &bull; Tradition &bull; You
+            <Heart className="w-3 h-3 fill-[#E5B85B] text-[#E5B85B]" />
+          </span>
+        </p>
       </div>
     </footer>
   );

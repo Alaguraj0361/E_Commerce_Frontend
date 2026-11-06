@@ -67,6 +67,26 @@ export const LotusIcon = ({ className = 'w-6 h-6 text-[#C5A059]' }: { className?
   </svg>
 );
 
+interface NalmaraEmblemProps {
+  className?: string;
+  sizePx?: number;
+}
+
+export const NalmaraEmblem = ({ className = 'w-12 h-12', sizePx = 64 }: NalmaraEmblemProps) => (
+  <div
+    className={`relative rounded-full overflow-hidden border border-[#D4AF37] bg-[#0D0A08] shadow-[0_4px_16px_rgba(0,0,0,0.45)] shrink-0 select-none ${className}`}
+  >
+    <Image
+      src="/images/nalmara-logo.jpg"
+      alt="NALMARA FASHION Official Logo"
+      width={sizePx}
+      height={sizePx}
+      unoptimized
+      className="w-full h-full object-cover object-center scale-[1.35] select-none"
+    />
+  </div>
+);
+
 interface BrandLogoProps {
   size?: 'sm' | 'md' | 'lg';
   theme?: 'dark' | 'light' | 'maroon';
@@ -81,27 +101,30 @@ export const BrandLogo = ({
   showTagline = false,
 }: BrandLogoProps) => {
   const isDark = theme === 'dark';
-  const textColor = isDark ? 'text-white' : 'text-[#4A0E17]';
-  const subColor = isDark ? 'text-amber-200/80' : 'text-[#8C6D2D]';
+  const textColor = isDark ? 'text-[#FFFDF9]' : 'text-[#0D0A08]';
+  const subColor = isDark ? 'text-[#E5C158]' : 'text-[#9E7024]';
 
   const sizeConfigs = {
     sm: {
-      motif: 'w-4 h-3.5',
+      emblem: 'w-9 h-9 sm:w-10 sm:h-10',
+      px: 48,
       mainText: 'text-sm sm:text-base tracking-[0.18em]',
       subText: 'text-[7px] tracking-[0.28em]',
-      gap: 'gap-0.5',
+      gap: 'gap-2 sm:gap-2.5',
     },
     md: {
-      motif: 'w-6 h-5',
-      mainText: 'text-lg sm:text-xl lg:text-2xl tracking-[0.2em]',
+      emblem: 'w-11 h-11 sm:w-13 sm:h-13',
+      px: 64,
+      mainText: 'text-base sm:text-xl lg:text-2xl tracking-[0.2em]',
       subText: 'text-[8px] sm:text-[9px] tracking-[0.32em]',
-      gap: 'gap-0.5 sm:gap-1',
+      gap: 'gap-2.5 sm:gap-3',
     },
     lg: {
-      motif: 'w-8 h-6',
-      mainText: 'text-2xl sm:text-3xl tracking-[0.22em]',
+      emblem: 'w-14 h-14 sm:w-16 sm:h-16',
+      px: 80,
+      mainText: 'text-xl sm:text-3xl tracking-[0.22em]',
       subText: 'text-[10px] sm:text-[11px] tracking-[0.36em]',
-      gap: 'gap-1',
+      gap: 'gap-3 sm:gap-3.5',
     },
   };
 
@@ -113,9 +136,12 @@ export const BrandLogo = ({
       className={`inline-flex flex-col items-center justify-center select-none group text-center focus:outline-none ${className}`}
       aria-label="NALMARA FASHION Home"
     >
-      <div className={`flex flex-col items-center ${cfg.gap}`}>
-        <LotusIcon className={`${cfg.motif} transition-transform duration-300 group-hover:scale-110`} />
-        <div className="flex flex-col items-center">
+      <div className={`flex items-center ${cfg.gap}`}>
+        <NalmaraEmblem
+          className={`${cfg.emblem} transition-transform duration-300 group-hover:scale-105 ring-1 ring-[#D4AF37]/60`}
+          sizePx={cfg.px}
+        />
+        <div className="flex flex-col items-start text-left">
           <span
             className={`font-serif font-bold uppercase leading-none ${textColor} ${cfg.mainText} transition-colors`}
           >
@@ -126,17 +152,17 @@ export const BrandLogo = ({
           >
             FASHION
           </span>
+          {showTagline && (
+            <span
+              className={`hidden lg:inline-block text-[9.5px] font-serif italic mt-1 tracking-wide ${
+                isDark ? 'text-[#E8D7B4]/90' : 'text-[#5A4632]'
+              }`}
+            >
+              Traditional Elegance • Timeless Collections
+            </span>
+          )}
         </div>
       </div>
-      {showTagline && (
-        <span
-          className={`hidden md:inline-block text-[10px] sm:text-xs font-serif italic mt-1.5 tracking-wide text-center max-w-full ${
-            isDark ? 'text-[#E8D7B4]/90' : 'text-zinc-500'
-          }`}
-        >
-          Traditional Elegance • Timeless Collections • Made with Love
-        </span>
-      )}
     </Link>
   );
 };

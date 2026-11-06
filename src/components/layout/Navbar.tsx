@@ -6,29 +6,29 @@ import { usePathname, useRouter } from 'next/navigation';
 import {
   Search,
   Heart,
-  ShoppingBag,
+  ShoppingCart,
   User as UserIcon,
   Menu,
   X,
   LogOut,
   Instagram,
-  Facebook,
   Youtube,
   Share2,
-  Sparkles,
+  Truck,
+  Gem,
+  ChevronDown,
 } from 'lucide-react';
 import { useCartStore } from '../../store/cartStore';
 import { useWishlistStore } from '../../store/wishlistStore';
 import { useAuthStore } from '../../store/authStore';
 import { useCategoryStore } from '../../store/categoryStore';
-import { BrandLogo } from '../ui/BrandLogo';
 
 export const Navbar = () => {
   const pathname = usePathname();
   const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
@@ -37,7 +37,7 @@ export const Navbar = () => {
     useCartStore();
   const { products: wishlistProducts, fetchWishlist } = useWishlistStore();
   const { user, isAuthenticated, checkAuth, logout } = useAuthStore();
-  const { categories: liveCategories, fetchCategories } = useCategoryStore();
+  const { categories, fetchCategories } = useCategoryStore();
 
   useEffect(() => {
     checkAuth();
@@ -67,87 +67,86 @@ export const Navbar = () => {
     e.preventDefault();
     if (searchQuery.trim()) {
       router.push(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
-      setIsMobileSearchOpen(false);
+      setIsSearchOpen(false);
     }
   };
 
-  const navLinks = [
-    { label: 'Home', href: '/' },
-    { label: 'Shop All', href: '/shop' },
-    ...liveCategories.slice(0, 5).map((cat) => ({
+  const shopDropdownItems = [
+    { label: 'All Collections', href: '/shop' },
+    ...categories.map((cat) => ({
       label: cat.name,
       href: `/shop?category=${cat.slug}`,
     })),
-    { label: 'New Arrivals', href: '/shop?filter=new-arrivals' },
-    { label: 'Best Sellers', href: '/shop?filter=best-sellers' },
-    { label: 'About Us', href: '/about' },
+  ];
+
+  const stitchingDropdownItems = [
+    { label: 'All Stitching Services', href: '/stitching-services' },
+    { label: 'Saree Blouse Stitching', href: '/stitching-services/saree-blouse-stitching' },
+    { label: 'Bridal & Designer Blouses', href: '/stitching-services/bridal-designer-blouses' },
+    { label: "Girls' Frocks & Gowns", href: '/stitching-services/girls-frocks-gowns' },
+    { label: 'Pavadai Sattai & Pattu Pavadai', href: '/stitching-services/pavadai-sattai-pattu-pavadai' },
+    { label: 'Lehenga Choli & Half Saree', href: '/stitching-services/lehenga-choli-half-saree' },
+    { label: 'Kurti & Salwar Stitching', href: '/stitching-services/kurti-salwar-stitching' },
   ];
 
   return (
     <>
       {/* ========================================================= */}
-      {/* 01. TOP ANNOUNCEMENT BAR (Royal Wine #180306 & 24K Gold)  */}
+      {/* 01. TOP ANNOUNCEMENT BAR (Deep Royal Plum & 24K Gold)     */}
       {/* ========================================================= */}
-      <div className="w-full max-w-full overflow-hidden bg-[#180306] text-[#FAF8F5] text-[10px] sm:text-[11px] py-2 px-3 sm:px-6 transition-colors border-b border-[#D4AF37]/45">
-        <div className="max-w-[1560px] mx-auto flex items-center justify-between gap-3 min-w-0">
-          {/* Centered / Left Announcement */}
-          <div className="flex-1 min-w-0 flex items-center justify-center lg:justify-start gap-2 sm:gap-3 text-center text-xs tracking-wider overflow-hidden">
-            <Sparkles className="w-3 h-3 text-[#FFE59E] shrink-0" />
-            <span className="font-serif font-medium truncate text-[10.5px] sm:text-xs text-[#FFE59E]">
-              Free Insured Shipping Above ₹1,999
+      <div className="w-full max-w-full overflow-hidden bg-gradient-to-r from-[#2D051E] via-[#4B0B32] to-[#2D051E] text-[#FDF6EC] text-[11px] sm:text-xs py-1.5 px-3 sm:px-8 border-b border-[#D4AF37]/50">
+        <div className="max-w-[1400px] mx-auto flex items-center justify-between gap-3">
+          {/* Left Spacer on Desktop for true center alignment */}
+          <div className="hidden lg:block w-44 shrink-0" />
+
+          {/* Center Perks: Free Shipping Across India | Premium Quality | Stitched with Love */}
+          <div className="flex-1 flex items-center justify-center gap-2.5 sm:gap-5 text-center whitespace-nowrap overflow-hidden">
+            <span className="inline-flex items-center gap-1.5 text-[#FFF3D6] font-medium tracking-wide">
+              <Truck className="w-3.5 h-3.5 text-[#F5C85B] shrink-0" />
+              <span>Free Shipping Across India</span>
             </span>
-            <span className="text-[#D4AF37]/70 text-[10px]">|</span>
-            <span className="hidden sm:inline font-serif text-[#E8D5B0]">100% Verified Loom Quality</span>
-            <span className="hidden lg:inline text-[#D4AF37]/70 text-[10px]">|</span>
-            <a
-              href="https://wa.me/916383163609"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hidden lg:inline font-serif text-[#FFE59E] hover:underline"
-            >
-              WhatsApp Concierge: 6383163609 &bull; 7871207631
-            </a>
+            <span className="text-[#D4AF37]/70">|</span>
+            <span className="inline-flex items-center gap-1.5 text-[#FFF3D6] font-medium tracking-wide">
+              <Gem className="w-3.5 h-3.5 text-[#F5C85B] shrink-0" />
+              <span>Premium Quality</span>
+            </span>
+            <span className="hidden sm:inline text-[#D4AF37]/70">|</span>
+            <span className="hidden sm:inline-flex items-center gap-1.5 text-[#FFF3D6] font-medium tracking-wide">
+              <Heart className="w-3.5 h-3.5 text-[#F5C85B] fill-[#F5C85B] shrink-0" />
+              <span>Stitched with Love</span>
+            </span>
           </div>
 
-          {/* Right Socials */}
-          <div className="hidden md:flex items-center gap-2.5 text-[11px] font-serif text-[#E8D5B0] shrink-0">
-            <span className="text-[#FFE59E]/90">Follow us:</span>
-            <div className="flex items-center gap-2.5 text-[#E8D5B0]">
+          {/* Right Socials: Follow Us : [IG] [YT] [Pin] */}
+          <div className="hidden md:flex items-center justify-end gap-2 text-[11px] text-[#FFF3D6] w-44 shrink-0">
+            <span className="opacity-90 font-medium">Follow Us :</span>
+            <div className="flex items-center gap-1.5">
               <a
                 href="https://www.instagram.com/nalmarafashion"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#FFE59E] transition-colors"
+                className="w-5 h-5 rounded bg-gradient-to-b from-[#F5D37E]/25 to-[#C8912E]/25 border border-[#E5B85B]/75 text-[#FFE59E] hover:bg-[#D4AF37] hover:text-[#2A061C] flex items-center justify-center transition-all"
                 aria-label="Instagram"
               >
-                <Instagram className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#FFE59E] transition-colors"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="https://pinterest.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#FFE59E] transition-colors"
-                aria-label="Pinterest"
-              >
-                <Share2 className="w-3.5 h-3.5" />
+                <Instagram className="w-3 h-3" />
               </a>
               <a
                 href="https://youtube.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#FFE59E] transition-colors"
+                className="w-5 h-5 rounded bg-gradient-to-b from-[#F5D37E]/25 to-[#C8912E]/25 border border-[#E5B85B]/75 text-[#FFE59E] hover:bg-[#D4AF37] hover:text-[#2A061C] flex items-center justify-center transition-all"
                 aria-label="YouTube"
               >
-                <Youtube className="w-3.5 h-3.5" />
+                <Youtube className="w-3 h-3" />
+              </a>
+              <a
+                href="https://pinterest.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-5 h-5 rounded bg-gradient-to-b from-[#F5D37E]/25 to-[#C8912E]/25 border border-[#E5B85B]/75 text-[#FFE59E] hover:bg-[#D4AF37] hover:text-[#2A061C] flex items-center justify-center transition-all"
+                aria-label="Pinterest"
+              >
+                <Share2 className="w-3 h-3" />
               </a>
             </div>
           </div>
@@ -155,196 +154,298 @@ export const Navbar = () => {
       </div>
 
       {/* ========================================================= */}
-      {/* MAIN HEADER (Ivory Cream #FAF7F2 with 24K Gold Trim)      */}
+      {/* 02. MAIN HEADER BAR (Royal Champagne Silk & 24K Gold)     */}
       {/* ========================================================= */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 bg-[#FAF7F2] border-b border-[#D4AF37]/40 ${
-          isScrolled ? 'shadow-[0_10px_30px_rgba(24,3,6,0.08)] py-2 backdrop-blur-md bg-[#FAF7F2]/95' : 'py-3'
+        className={`sticky top-0 z-40 transition-all duration-300 bg-gradient-to-r from-[#F4DFC0] via-[#FFF9F0] to-[#F4DFC0] border-b-2 border-[#D4AF37] relative ${
+          isScrolled
+            ? 'shadow-[0_10px_30px_rgba(45,5,30,0.18)] py-2'
+            : 'shadow-[0_4px_18px_rgba(90,45,15,0.08)] py-2.5 sm:py-3'
         }`}
       >
-        <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12">
-          <div className="flex items-center justify-between gap-6">
-            {/* Left: Mobile/Drawer Menu Toggle + Logo */}
-            <div className="flex items-center gap-3 sm:gap-6">
-              <button
-                onClick={() => setIsMobileMenuOpen(true)}
-                className="p-2 text-[#180306] hover:text-[#5C0612] hover:bg-[#FAF3E3] border border-transparent hover:border-[#D4AF37]/50 transition-all rounded-full focus:outline-none cursor-pointer"
-                aria-label="Open menu drawer"
-              >
-                <Menu className="w-5 h-5 sm:w-6 sm:h-6" />
-              </button>
+        {/* Top Inner Gold Hairline */}
+        <div className="absolute top-0 inset-x-0 h-[1px] bg-gradient-to-r from-transparent via-[#FFFDF9] to-transparent pointer-events-none" />
 
-              {/* Brand Logo */}
-              <BrandLogo size="md" theme="light" showTagline={true} />
+        {/* Left & Right Ornamental Gold Filigree Watermarks */}
+        <svg
+          viewBox="0 0 160 80"
+          fill="none"
+          className="hidden xl:block absolute left-2 top-1/2 -translate-y-1/2 w-32 h-16 text-[#C8912E]/35 pointer-events-none"
+        >
+          <path
+            d="M4 68 C28 52, 54 28, 108 12 M28 56 C24 34, 40 18, 60 16 M56 42 C54 24, 70 14, 88 12"
+            stroke="currentColor"
+            strokeWidth="1.4"
+            strokeLinecap="round"
+          />
+          <circle cx="60" cy="16" r="2.5" fill="currentColor" />
+          <circle cx="88" cy="12" r="2" fill="currentColor" />
+          <circle cx="108" cy="12" r="2.5" fill="currentColor" />
+        </svg>
+        <svg
+          viewBox="0 0 160 80"
+          fill="none"
+          className="hidden xl:block absolute right-2 top-1/2 -translate-y-1/2 w-32 h-16 text-[#C8912E]/35 pointer-events-none -scale-x-100"
+        >
+          <path
+            d="M4 68 C28 52, 54 28, 108 12 M28 56 C24 34, 40 18, 60 16 M56 42 C54 24, 70 14, 88 12"
+            stroke="currentColor"
+            strokeWidth="1.4"
+            strokeLinecap="round"
+          />
+          <circle cx="60" cy="16" r="2.5" fill="currentColor" />
+          <circle cx="88" cy="12" r="2" fill="currentColor" />
+          <circle cx="108" cy="12" r="2.5" fill="currentColor" />
+        </svg>
+
+        <div className="max-w-[1360px] mx-auto px-3 sm:px-6 lg:px-10 flex items-center justify-between gap-4 relative z-10">
+          {/* Left: Mobile Menu Button + Official Circular Emblem & Brand Title */}
+          <div className="flex items-center gap-2.5 sm:gap-3.5">
+            <button
+              onClick={() => setIsMobileMenuOpen(true)}
+              className="lg:hidden p-2 rounded-lg text-[#2A0E1B] hover:bg-[#EED9BA]/60 transition-colors"
+              aria-label="Open menu"
+            >
+              <Menu className="w-5 h-5" />
+            </button>
+
+            <Link href="/" className="flex items-center gap-3 sm:gap-3.5 group">
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full p-[2.5px] bg-gradient-to-b from-[#FFF2B8] via-[#D4AF37] to-[#8C6518] shadow-[0_4px_14px_rgba(90,45,15,0.28)] group-hover:scale-105 transition-transform shrink-0">
+                <div className="w-full h-full rounded-full overflow-hidden bg-[#0E0B09] border border-[#FFF6D6]/50">
+                  <img
+                    src="/images/nalmara-logo.jpg"
+                    alt="NALMARA FASHION"
+                    className="w-full h-full object-cover scale-[1.34]"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col items-center sm:items-start leading-none">
+                <span className="font-serif text-xl sm:text-[26px] font-bold tracking-[0.14em] text-[#23120B] uppercase drop-shadow-[0_1px_0_rgba(255,255,255,0.8)]">
+                  NALMARA
+                </span>
+                <div className="flex items-center gap-2 mt-1 w-full">
+                  <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#8C6518]" />
+                  <span className="text-[9px] sm:text-[10px] font-semibold tracking-[0.3em] text-[#5C3D1E] uppercase">
+                    FASHION
+                  </span>
+                  <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#8C6518]" />
+                </div>
+              </div>
+            </Link>
+          </div>
+
+          {/* Center: Navigation Links (Home | Shop v | Stitching Services v | About Us | Contact Us) */}
+          <nav className="hidden lg:flex items-center gap-7 xl:gap-9 text-[14.5px] font-serif font-semibold text-[#23120B]">
+            <Link
+              href="/"
+              className={`relative py-1.5 transition-colors hover:text-[#5B0E3D] ${
+                pathname === '/'
+                  ? 'text-[#5B0E3D] font-bold after:content-[""] after:absolute after:bottom-0 after:inset-x-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-[#C8912E] after:to-transparent'
+                  : ''
+              }`}
+            >
+              Home
+            </Link>
+
+            {/* Shop Dropdown */}
+            <div className="relative group py-1.5">
+              <Link
+                href="/shop"
+                className={`inline-flex items-center gap-1 hover:text-[#5B0E3D] transition-colors ${
+                  pathname.startsWith('/shop') ? 'font-bold text-[#5B0E3D]' : ''
+                }`}
+              >
+                <span>Shop</span>
+                <ChevronDown className="w-3.5 h-3.5 text-[#8C6518] group-hover:rotate-180 transition-transform" />
+              </Link>
+              <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="w-52 rounded-2xl bg-[#FFFDF9] border-[1.5px] border-[#D4AF37] shadow-[0_14px_32px_rgba(45,5,30,0.18)] py-2 px-1.5 font-sans">
+                  {shopDropdownItems.map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className="block px-3.5 py-2 rounded-xl text-xs font-semibold text-[#23120B] hover:bg-[#FAF0DF] hover:text-[#5B0E3D] transition-colors"
+                    >
+                      {item.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             </div>
 
-            {/* Center: Search Bar (Luxury Gold-Trimmed Pill) */}
-            <form
-              onSubmit={handleSearchSubmit}
-              className="hidden md:flex flex-1 max-w-lg lg:max-w-xl mx-4 relative"
+            {/* Stitching Services Dropdown */}
+            <div className="relative group py-1.5">
+              <Link
+                href="/stitching-services"
+                className={`inline-flex items-center gap-1 hover:text-[#5B0E3D] transition-colors ${
+                  pathname.startsWith('/stitching-services')
+                    ? 'font-bold text-[#5B0E3D] after:content-[""] after:absolute after:bottom-0 after:inset-x-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-[#C8912E] after:to-transparent'
+                    : ''
+                }`}
+              >
+                <span>Stitching Services</span>
+                <ChevronDown className="w-3.5 h-3.5 text-[#8C6518] group-hover:rotate-180 transition-transform" />
+              </Link>
+              <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                <div className="w-64 rounded-2xl bg-[#FFFDF9] border-[1.5px] border-[#D4AF37] shadow-[0_14px_32px_rgba(45,5,30,0.18)] py-2 px-1.5 font-sans">
+                  {stitchingDropdownItems.map((item) => {
+                    const isItemActive = pathname === item.href;
+                    return (
+                      <Link
+                        key={item.label}
+                        href={item.href}
+                        className={`block px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors ${
+                          isItemActive
+                            ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E]'
+                            : 'text-[#23120B] hover:bg-[#FAF0DF] hover:text-[#5B0E3D]'
+                        }`}
+                      >
+                        {item.label}
+                      </Link>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+
+            <Link
+              href="/about"
+              className={`relative py-1.5 hover:text-[#5B0E3D] transition-colors ${
+                pathname === '/about'
+                  ? 'font-bold text-[#5B0E3D] after:content-[""] after:absolute after:bottom-0 after:inset-x-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-[#C8912E] after:to-transparent'
+                  : ''
+              }`}
             >
+              About Us
+            </Link>
+
+            <Link
+              href="/contact"
+              className={`relative py-1.5 hover:text-[#5B0E3D] transition-colors ${
+                pathname === '/contact'
+                  ? 'font-bold text-[#5B0E3D] after:content-[""] after:absolute after:bottom-0 after:inset-x-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-[#C8912E] after:to-transparent'
+                  : ''
+              }`}
+            >
+              Contact Us
+            </Link>
+          </nav>
+
+          {/* Right: Luxury Icon Medallions (Search, User, Wishlist Heart, Cart) */}
+          <div className="flex items-center gap-2.5 sm:gap-3.5 text-[#23120B]">
+            {/* Search Toggle */}
+            <button
+              onClick={() => setIsSearchOpen(!isSearchOpen)}
+              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#5B0E3D] flex items-center justify-center shadow-xs transition-all cursor-pointer hover:scale-105"
+              aria-label="Search"
+            >
+              <Search className="w-[18px] h-[18px] stroke-[2.2]" />
+            </button>
+
+            {/* User Account */}
+            <div className="relative">
+              {isAuthenticated ? (
+                <button
+                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#5B0E3D] flex items-center justify-center shadow-xs transition-all cursor-pointer hover:scale-105"
+                  aria-label="User account"
+                >
+                  <UserIcon className="w-[18px] h-[18px] stroke-[2.2]" />
+                </button>
+              ) : (
+                <Link
+                  href="/login"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#5B0E3D] flex items-center justify-center shadow-xs transition-all hover:scale-105"
+                  aria-label="Sign in"
+                >
+                  <UserIcon className="w-[18px] h-[18px] stroke-[2.2]" />
+                </Link>
+              )}
+
+              {isUserMenuOpen && isAuthenticated && (
+                <div className="absolute right-0 top-full mt-2 w-56 bg-[#FFFDF9] border border-[#D4AF37]/70 rounded-2xl shadow-xl py-2 z-50 text-xs">
+                  <div className="px-4 py-2.5 border-b border-[#D4AF37]/30">
+                    <p className="font-serif font-bold text-[#23120B] truncate">
+                      {user?.firstName} {user?.lastName}
+                    </p>
+                    <p className="text-[10px] text-zinc-500 truncate">{user?.email}</p>
+                  </div>
+                  <Link
+                    href="/account"
+                    onClick={() => setIsUserMenuOpen(false)}
+                    className="block px-4 py-2 text-zinc-700 hover:bg-[#FAF3E3] hover:text-[#5B0E3D] font-medium"
+                  >
+                    My Account
+                  </Link>
+                  <Link
+                    href="/account/orders"
+                    onClick={() => setIsUserMenuOpen(false)}
+                    className="block px-4 py-2 text-zinc-700 hover:bg-[#FAF3E3] hover:text-[#5B0E3D] font-medium"
+                  >
+                    Order History
+                  </Link>
+                  <button
+                    onClick={() => {
+                      setIsUserMenuOpen(false);
+                      setShowLogoutConfirm(true);
+                    }}
+                    className="w-full text-left px-4 py-2 text-rose-600 hover:bg-[#FAF3E3] flex items-center gap-2 font-medium"
+                  >
+                    <LogOut className="w-3.5 h-3.5" /> Logout
+                  </button>
+                </div>
+              )}
+            </div>
+
+            {/* Wishlist Heart with Deep Royal Plum & Gold Badge */}
+            <Link
+              href="/wishlist"
+              className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#5B0E3D] flex items-center justify-center shadow-xs transition-all hover:scale-105"
+              aria-label="Wishlist"
+            >
+              <Heart className="w-[18px] h-[18px] fill-[#23120B] text-[#23120B]" />
+              <span className="absolute -top-1 -right-1 bg-gradient-to-b from-[#7A124E] to-[#42062A] border border-[#FFE59E] text-[#FFFDF9] text-[10px] font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center leading-none shadow-sm">
+                {wishlistCount}
+              </span>
+            </Link>
+
+            {/* Cart with Deep Royal Plum & Gold Badge */}
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#5B0E3D] flex items-center justify-center shadow-xs transition-all cursor-pointer hover:scale-105"
+              aria-label="Shopping cart"
+            >
+              <ShoppingCart className="w-[18px] h-[18px] fill-[#23120B] text-[#23120B]" />
+              <span className="absolute -top-1 -right-1 bg-gradient-to-b from-[#7A124E] to-[#42062A] border border-[#FFE59E] text-[#FFFDF9] text-[10px] font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center leading-none shadow-sm">
+                {totalCartCount}
+              </span>
+            </button>
+          </div>
+        </div>
+
+        {/* Expandable Search Bar */}
+        {isSearchOpen && (
+          <div className="max-w-xl mx-auto px-4 pt-2.5 pb-1 animate-fade-in">
+            <form onSubmit={handleSearchSubmit} className="relative flex items-center">
+              <Search className="w-4 h-4 text-[#8C6518] absolute left-3.5 pointer-events-none" />
               <input
                 type="text"
+                autoFocus
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search sarees, Kanchivaram silks, festive wear..."
-                className="w-full bg-[#FFFDF9] text-[#180306] placeholder:text-zinc-400 text-xs px-5 py-2.5 pr-11 rounded-full border border-[#D4AF37]/60 focus:outline-none focus:ring-2 focus:ring-[#5C0612]/20 focus:border-[#5C0612] transition-all shadow-2xs font-normal"
+                placeholder="Search sarees, blouses, kidswear, lehengas..."
+                className="w-full bg-[#FFFDF9] text-[#23120B] placeholder:text-zinc-400 text-xs pl-9 pr-20 py-2.5 rounded-full border border-[#D4AF37] focus:outline-none shadow-sm"
               />
               <button
                 type="submit"
-                className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full bg-[#180306] hover:bg-[#5C0612] text-[#FFE59E] flex items-center justify-center transition-colors cursor-pointer"
-                aria-label="Search"
+                className="absolute right-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#5B0E3D] to-[#3D0829] text-[#FFE59E] text-[10px] font-bold uppercase tracking-wider"
               >
-                <Search className="w-3.5 h-3.5" />
+                Search
               </button>
             </form>
-
-            {/* Right: Icons (Search, User, Wishlist, Cart) */}
-            <div className="flex items-center gap-2 sm:gap-3.5 text-[#180306]">
-              {/* Search Button (Toggles search on mobile) */}
-              <button
-                onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
-                className="p-2 rounded-full hover:bg-[#FAF3E3] text-[#180306] hover:text-[#5C0612] transition-colors md:hidden"
-                aria-label="Search"
-              >
-                <Search className="w-5 h-5" />
-              </button>
-
-              {/* User Account - hidden on extra small mobile, visible on sm+ */}
-              <div className="relative hidden sm:block">
-                {isAuthenticated ? (
-                  <button
-                    onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
-                    className="w-9 h-9 rounded-full bg-[#FFFDF9] border border-[#D4AF37]/55 hover:border-[#5C0612] text-[#180306] hover:text-[#5C0612] transition-all flex items-center justify-center shadow-2xs cursor-pointer"
-                    aria-label="User account"
-                  >
-                    <UserIcon className="w-4 h-4" />
-                  </button>
-                ) : (
-                  <Link
-                    href="/login"
-                    className="w-9 h-9 rounded-full bg-[#FFFDF9] border border-[#D4AF37]/55 hover:border-[#5C0612] text-[#180306] hover:text-[#5C0612] transition-all flex items-center justify-center shadow-2xs"
-                    aria-label="Sign in"
-                  >
-                    <UserIcon className="w-4 h-4" />
-                  </Link>
-                )}
-
-                {/* User Dropdown */}
-                {isUserMenuOpen && isAuthenticated && (
-                  <div className="absolute right-0 top-full mt-2 w-56 bg-[#FFFDF9] border border-[#D4AF37]/60 rounded-2xl shadow-xl py-2 z-50 animate-fade-in text-xs">
-                    <div className="px-4 py-2.5 border-b border-[#D4AF37]/30">
-                      <p className="font-serif font-bold text-[#180306] truncate">
-                        {user?.firstName} {user?.lastName}
-                      </p>
-                      <p className="text-[10px] text-zinc-500 truncate">{user?.email}</p>
-                    </div>
-                    <Link
-                      href="/account"
-                      onClick={() => setIsUserMenuOpen(false)}
-                      className="block px-4 py-2 text-zinc-700 hover:bg-[#FAF3E3] hover:text-[#5C0612] font-medium"
-                    >
-                      My Account
-                    </Link>
-                    <Link
-                      href="/account/orders"
-                      onClick={() => setIsUserMenuOpen(false)}
-                      className="block px-4 py-2 text-zinc-700 hover:bg-[#FAF3E3] hover:text-[#5C0612] font-medium"
-                    >
-                      Order History
-                    </Link>
-                    <button
-                      onClick={() => {
-                        setIsUserMenuOpen(false);
-                        setShowLogoutConfirm(true);
-                      }}
-                      className="w-full text-left px-4 py-2 text-rose-600 hover:bg-[#FAF3E3] flex items-center gap-2 font-medium"
-                    >
-                      <LogOut className="w-3.5 h-3.5" /> Logout
-                    </button>
-                  </div>
-                )}
-              </div>
-
-              {/* Wishlist Link */}
-              <Link
-                href="/wishlist"
-                className="relative w-9 h-9 rounded-full bg-[#FFFDF9] border border-[#D4AF37]/55 hover:border-[#5C0612] text-[#180306] hover:text-[#5C0612] transition-all hidden sm:flex items-center justify-center shadow-2xs"
-                aria-label="Wishlist"
-              >
-                <Heart className="w-4 h-4" />
-                {wishlistCount > 0 && (
-                  <span className="absolute -top-1 -right-1 bg-[#5C0612] border border-[#D4AF37] text-[#FFE59E] text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none">
-                    {wishlistCount}
-                  </span>
-                )}
-              </Link>
-
-              {/* Cart Button with Badge */}
-              <button
-                onClick={() => setIsCartOpen(true)}
-                className="relative w-9 h-9 rounded-full bg-[#180306] hover:bg-[#4A0812] border border-[#D4AF37] text-[#FFE59E] transition-all flex items-center justify-center shadow-sm cursor-pointer"
-                aria-label="Shopping bag"
-              >
-                <ShoppingBag className="w-4 h-4" />
-                <span className="absolute -top-1 -right-1 bg-[#D4AF37] text-[#180306] text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center leading-none shadow-2xs">
-                  {totalCartCount}
-                </span>
-              </button>
-            </div>
           </div>
-
-          {/* Mobile Collapsible Search Form */}
-          {isMobileSearchOpen && (
-            <div className="md:hidden pt-3 pb-1 animate-fade-in">
-              <form onSubmit={handleSearchSubmit} className="relative">
-                <input
-                  type="text"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  placeholder="Search for sarees, fabrics, collections..."
-                  className="w-full bg-white text-[#180306] placeholder:text-zinc-400 text-xs px-4 py-2.5 pr-10 rounded-full border border-[#D4AF37]/70 focus:outline-none focus:ring-2 focus:ring-[#5C0612]"
-                  autoFocus
-                />
-                <button
-                  type="submit"
-                  className="absolute right-3.5 top-1/2 -translate-y-1/2 text-[#180306] hover:text-[#5C0612]"
-                  aria-label="Search"
-                >
-                  <Search className="w-4 h-4" />
-                </button>
-              </form>
-            </div>
-          )}
-        </div>
-
-        {/* ========================================================= */}
-        {/* SUB-NAVIGATION BAR (Desktop Centered Links)               */}
-        {/* ========================================================= */}
-        <nav className="hidden lg:block border-t border-[#D4AF37]/30 mt-2.5 pt-2.5 pb-1">
-          <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 flex items-center justify-center gap-8 xl:gap-11 text-xs font-serif font-semibold tracking-[0.14em] uppercase text-[#2A1810]">
-            {navLinks.map((item) => {
-              const isActive =
-                item.href === '/'
-                  ? pathname === '/'
-                  : pathname.startsWith(item.href.split('?')[0]);
-              return (
-                <Link
-                  key={item.label}
-                  href={item.href}
-                  className={`relative py-1 transition-colors hover:text-[#5C0612] ${
-                    isActive ? 'text-[#5C0612] font-bold' : ''
-                  }`}
-                >
-                  {item.label}
-                  {isActive && (
-                    <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-gradient-to-r from-[#5C0612] via-[#D4AF37] to-[#5C0612] rounded-full" />
-                  )}
-                </Link>
-              );
-            })}
-          </div>
-        </nav>
+        )}
       </header>
 
       {/* ========================================================= */}
@@ -356,38 +457,98 @@ export const Navbar = () => {
             className="fixed inset-0 bg-black/60 backdrop-blur-sm animate-fade-in"
             onClick={() => setIsMobileMenuOpen(false)}
           />
-          <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-[#FAF7F2] text-zinc-900 p-6 shadow-2xl flex flex-col justify-between overflow-y-auto border-r-2 border-[#D4AF37]/60">
+          <div className="fixed inset-y-0 left-0 w-full max-w-xs bg-[#FDF6EC] text-[#23120B] p-6 shadow-2xl flex flex-col justify-between overflow-y-auto border-r-2 border-[#D4AF37]/60">
             <div>
-              <div className="flex items-center justify-between pb-5 border-b border-[#D4AF37]/35">
-                <BrandLogo size="sm" theme="light" />
+              <div className="flex items-center justify-between pb-4 border-b border-[#D4AF37]/40">
+                <div className="flex items-center gap-2.5">
+                  <div className="w-10 h-10 rounded-full overflow-hidden border border-[#D4AF37] bg-[#0E0B09]">
+                    <img
+                      src="/images/nalmara-logo.jpg"
+                      alt="NALMARA FASHION"
+                      className="w-full h-full object-cover scale-[1.34]"
+                    />
+                  </div>
+                  <span className="font-serif font-bold text-base tracking-[0.14em] text-[#23120B]">
+                    NALMARA
+                  </span>
+                </div>
                 <button
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="p-1.5 text-zinc-500 hover:text-[#180306]"
+                  className="p-1.5 text-zinc-600 hover:text-[#23120B]"
                   aria-label="Close menu"
                 >
                   <X className="w-5 h-5" />
                 </button>
               </div>
 
-              <div className="py-5 space-y-3">
-                {navLinks.map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="block text-sm font-serif font-semibold text-[#180306] hover:text-[#5C0612] py-1.5 border-b border-[#D4AF37]/25"
-                  >
-                    {item.label}
-                  </Link>
-                ))}
+              <div className="py-4 space-y-2.5">
+                <Link
+                  href="/"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#5B0E3D] py-1.5 border-b border-[#D4AF37]/25"
+                >
+                  Home
+                </Link>
+                <Link
+                  href="/shop"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#5B0E3D] py-1.5 border-b border-[#D4AF37]/25"
+                >
+                  Shop All Collections
+                </Link>
+                <div className="pl-3 space-y-1.5 py-1 border-b border-[#D4AF37]/25">
+                  {shopDropdownItems.map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block text-xs font-medium text-[#5C3D1E] hover:text-[#5B0E3D] py-1"
+                    >
+                      • {item.label}
+                    </Link>
+                  ))}
+                </div>
+                <Link
+                  href="/stitching-services"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#5B0E3D] py-1.5 border-b border-[#D4AF37]/25"
+                >
+                  Stitching Services
+                </Link>
+                <div className="pl-3 space-y-1.5 py-1 border-b border-[#D4AF37]/25">
+                  {stitchingDropdownItems.slice(1).map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="block text-xs font-medium text-[#5C3D1E] hover:text-[#5B0E3D] py-1"
+                    >
+                      • {item.label}
+                    </Link>
+                  ))}
+                </div>
+                <Link
+                  href="/about"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#5B0E3D] py-1.5 border-b border-[#D4AF37]/25"
+                >
+                  About Us
+                </Link>
+                <Link
+                  href="/contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#5B0E3D] py-1.5 border-b border-[#D4AF37]/25"
+                >
+                  Contact Us
+                </Link>
               </div>
             </div>
 
-            <div className="border-t border-[#D4AF37]/35 pt-5 space-y-3 text-xs">
+            <div className="border-t border-[#D4AF37]/40 pt-4 text-xs">
               {isAuthenticated ? (
                 <div className="space-y-2">
-                  <p className="text-zinc-500">
-                    Signed in as <strong className="text-[#180306]">{user?.firstName}</strong>
+                  <p className="text-zinc-600">
+                    Signed in as <strong className="text-[#23120B]">{user?.firstName}</strong>
                   </p>
                   <button
                     onClick={() => {
@@ -403,7 +564,7 @@ export const Navbar = () => {
                 <Link
                   href="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full py-2.5 text-center bg-[#180306] border border-[#D4AF37] text-[#FFE59E] rounded-full font-serif font-bold tracking-wider uppercase"
+                  className="block w-full py-2.5 text-center bg-gradient-to-r from-[#5B0E3D] to-[#3D0829] border border-[#D4AF37] text-[#FFE59E] rounded-full font-serif font-bold tracking-wider uppercase"
                 >
                   Sign In / Register
                 </Link>
@@ -417,7 +578,7 @@ export const Navbar = () => {
       {showLogoutConfirm && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm animate-fade-in">
           <div className="bg-[#FFFDF9] rounded-2xl max-w-sm w-full p-6 text-center space-y-4 shadow-2xl border-2 border-[#D4AF37]/60">
-            <h3 className="font-serif text-lg font-bold text-[#180306]">Sign Out</h3>
+            <h3 className="font-serif text-lg font-bold text-[#23120B]">Sign Out</h3>
             <p className="text-xs text-zinc-600">
               Are you sure you want to sign out of your NALMARA FASHION account?
             </p>
@@ -433,7 +594,7 @@ export const Navbar = () => {
                   logout();
                   setShowLogoutConfirm(false);
                 }}
-                className="flex-1 py-2 text-xs font-semibold rounded-full bg-[#180306] border border-[#D4AF37] text-[#FFE59E] hover:bg-[#4A0812]"
+                className="flex-1 py-2 text-xs font-semibold rounded-full bg-[#3D0829] border border-[#D4AF37] text-[#FFE59E] hover:bg-[#5B0E3D]"
               >
                 Sign Out
               </button>
