@@ -24,6 +24,7 @@ import {
   MessageCircle,
   CheckCircle2,
   FolderTree,
+  Crown,
 } from 'lucide-react';
 import { useCartStore } from '../store/cartStore';
 import { useWishlistStore } from '../store/wishlistStore';
@@ -2769,88 +2770,153 @@ export default function HomePage() {
       {/* =================================================================== */}
       {/* 04. NEW ARRIVALS — GRAND 5-PRODUCTS-IN-A-ROW ROYAL SHOWCASE         */}
       {/* =================================================================== */}
-      <section className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 pt-4 pb-10 sm:pt-6 sm:pb-14">
-        <RoyalCornerMandala className="hidden lg:block absolute top-2 left-4 w-28 h-28 pointer-events-none" />
-        <RoyalCornerMandala className="hidden lg:block absolute top-2 right-4 w-28 h-28 -scale-x-100 pointer-events-none" />
+      <section className="relative max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-10 pt-4 pb-10 sm:pt-8 sm:pb-14 overflow-hidden">
+        {/* =============================================================== */}
+        {/* STAGE WRAPPER WITH PERFECTLY ANCHORED 3D FLORAL & SILK CORNERS  */}
+        {/* =============================================================== */}
+        <div className="relative max-w-[1360px] mx-auto">
+          {/* Top-Left 3D Cream & Burgundy Floral Bouquet with Gold Leaves */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_tl.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute -top-4 -left-4 lg:-top-6 lg:-left-6 w-40 md:w-52 lg:w-64 pointer-events-none z-30 select-none"
+          />
+          {/* Top-Right 3D Cream & Burgundy Floral Bouquet with Gold Leaves */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_tr.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute -top-4 -right-4 lg:-top-6 lg:-right-6 w-40 md:w-52 lg:w-64 pointer-events-none z-30 select-none"
+          />
 
-        <GoldSectionHeader
-          badge="LATEST COUTURE DROP"
-          title="New Arrivals"
-          subtitle="Fresh Styles, Just for You!"
-        />
+          {/* Bottom-Left 3D Floral Bouquet & Sweeping Royal Purple Silk Wave */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_bl.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute -bottom-5 -left-4 lg:-bottom-7 lg:-left-6 w-48 md:w-64 lg:w-80 pointer-events-none z-30 select-none"
+          />
+          {/* Bottom-Right 3D Floral Bouquet & Sweeping Royal Purple Silk Wave */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_br.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute -bottom-5 -right-4 lg:-bottom-7 lg:-right-6 w-48 md:w-64 lg:w-80 pointer-events-none z-30 select-none"
+          />
 
-        {/* Grand 5-in-a-Row Luxury Showroom Stage */}
-        <div className="relative rounded-[32px] p-[2.5px] bg-gradient-to-b from-[#FFE59E] via-[#D4AF37] to-[#8C5818] shadow-[0_24px_60px_rgba(40,6,25,0.16)]">
-          {/* Top Royal Crown Emblem Stud */}
-          <span className="hidden sm:block absolute -top-2 left-1/2 -translate-x-1/2 z-30 w-4 h-4 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#B88228] border-[1.5px] border-[#5B0E3D] shadow-md" />
+          {/* ============================================================= */}
+          {/* 1. 3D SCALLOPED ROYAL PLUM & 24K GOLD CROWN CARTOUCHE HEADER  */}
+          {/* ============================================================= */}
+          <div className="relative z-20 flex items-center justify-center w-full max-w-[1140px] mx-auto mb-1 sm:mb-2 px-2">
+            {/* Left Extending Gold Filigree Line */}
+            <div className="hidden md:block h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8963E]/70 to-[#9A6816] -mr-4 mt-3" />
 
-          <div className="relative rounded-[29.5px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF1DF] to-[#F1DFBD] p-2.5 sm:p-6 lg:p-8 overflow-hidden">
-            {/* Ambient Radial Gold Spotlight */}
-            <div
-              className="absolute inset-0 pointer-events-none z-0"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle at 18% 15%, rgba(212,175,55,0.18) 0%, transparent 42%), radial-gradient(circle at 82% 85%, rgba(91,14,61,0.07) 0%, transparent 42%)',
-              }}
-            />
+            {/* Exact 3D Sculpted Gold Crown & Royal Plum Cartouche Plaque */}
+            <div className="relative w-[330px] sm:w-[500px] md:w-[590px] lg:w-[630px] aspect-[420/94] shrink-0 select-none">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/nalmara/hd/showcase_cartouche_header.png"
+                alt=""
+                aria-hidden="true"
+                className="w-full h-full object-contain pointer-events-none drop-shadow-[0_10px_22px_rgba(40,6,25,0.22)]"
+              />
+              {/* Crisp Live Typography Centered Inside the Velvet Cartouche */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center pt-3 sm:pt-4 md:pt-5 pb-1 px-12 text-center">
+                <h2 className="font-serif font-extrabold text-[20px] sm:text-[32px] md:text-[38px] lg:text-[41px] text-transparent bg-clip-text bg-gradient-to-b from-[#FFFDF9] via-[#FFE8A3] to-[#D4AF37] tracking-wide leading-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.65)]">
+                  New Arrivals
+                </h2>
+                <p className="font-serif italic text-[#F8E7C8] text-[10px] sm:text-[14px] md:text-[15.5px] tracking-wide mt-0.5 sm:mt-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)]">
+                  Fresh Styles, Just for You!
+                </p>
+              </div>
+            </div>
 
-            {/* Top Grand Curated Toolbar — Single-Row Symmetrical Arrangement */}
-            <div className="relative z-10 flex items-center justify-between gap-2 px-2.5 sm:px-4 py-2 sm:py-2.5 mb-4 sm:mb-6 rounded-2xl bg-gradient-to-r from-[#FFFDF9] via-[#FAF1DE] to-[#FFFDF9] border border-[#D4AF37]/75 shadow-[0_6px_18px_rgba(40,6,25,0.06)]">
-              {/* Left: Royal Edition Badge + Desktop Trust Tags */}
-              <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] text-[#FFE59E] border border-[#D4AF37] text-[9px] sm:text-[10.5px] font-bold uppercase tracking-[0.12em] sm:tracking-[0.16em] shadow-xs shrink-0">
-                  <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#FFE59E] shrink-0" />
-                  <span className="sm:hidden">New Drops</span>
-                  <span className="hidden sm:inline">Handpicked New Drops</span>
-                </span>
+            {/* Right Extending Gold Filigree Line */}
+            <div className="hidden md:block h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8963E]/70 to-[#9A6816] -ml-4 mt-3" />
+          </div>
 
-                <span className="hidden md:inline-block w-[1px] h-4 bg-[#D4AF37]/60 shrink-0" />
+          {/* ============================================================= */}
+          {/* 2. OVERLAPPING UPPER CREAM & 24K GOLD PILL TOOLBAR            */}
+          {/* ============================================================= */}
+          <div className="relative z-20 max-w-[1220px] mx-auto px-2 sm:px-8 -mb-5 sm:-mb-6">
+            {/* Top-Center 24K Gold Diamond Clasp Connecting Header to Toolbar */}
+            <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#8C5818] border border-[#4A0830] shadow-xs" />
 
-                <span className="hidden md:inline-flex items-center gap-1.5 text-[11px] font-bold text-[#3D1D1A] truncate">
-                  <Check className="w-3.5 h-3.5 text-[#9E1946] stroke-[2.8] shrink-0" />
+            <div className="rounded-full p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_12px_28px_rgba(40,6,25,0.16)]">
+              <div className="rounded-full bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EED9B3] px-2.5 sm:px-4 py-1.5 sm:py-2 flex items-center justify-between gap-2 border border-[#FFFDF9]/85">
+                {/* Left Group: Handpicked New Drops Pill + Verified Text + Custom Blouse Fit Gold Pill */}
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                  {/* Dark Royal Plum Pill Badge with Hanger SVG */}
+                  <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] text-[#FFE59E] border-[1.5px] border-[#D4AF37] text-[9.5px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.13em] shadow-sm shrink-0">
+                    <svg
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFE59E] shrink-0"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="M12 6a2 2 0 1 0-2-2c0 1.1.9 2 2 2v2L3.6 14.3A2 2 0 0 0 4.8 18h14.4a2 2 0 0 0 1.2-3.7L12 8" />
+                    </svg>
+                    <span className="sm:hidden">New Drops</span>
+                    <span className="hidden sm:inline">Handpicked New Drops</span>
+                  </span>
+
+                <span className="hidden md:inline-block w-[1.5px] h-5 bg-[#C8963E]/55 shrink-0" />
+
+                {/* Gold Checkmark Circle + Direct Loom Price Text */}
+                <span className="hidden md:inline-flex items-center gap-1.5 text-[11.5px] lg:text-xs font-bold text-[#220915] truncate">
+                  <span className="w-4 h-4 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#B88228] border border-[#8C5818] flex items-center justify-center shrink-0 shadow-2xs">
+                    <Check className="w-2.5 h-2.5 text-[#220915] stroke-[3]" />
+                  </span>
                   <span>Full 6.3m Verified • Direct Loom Price</span>
                 </span>
 
-                <span className="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#380725]/10 border border-[#D4AF37]/50 text-[10.5px] font-bold text-[#5B0E3D] shrink-0">
-                  <Scissors className="w-3 h-3 text-[#9E1946]" />
+                {/* 3D Champagne-Gold Custom Blouse Fit Pill */}
+                <Link
+                  href="/stitching-services"
+                  className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-b from-[#FFF6D6] via-[#EED294] to-[#C8963E] hover:brightness-105 border border-[#8C5818] text-[11px] font-bold text-[#220915] shadow-xs transition-all shrink-0"
+                >
+                  <Scissors className="w-3.5 h-3.5 text-[#380725]" />
                   <span>Custom Blouse Fit</span>
-                </span>
+                </Link>
               </div>
 
-              {/* Right: Unified Prev/Next Rocker Capsule + View All CTA */}
-              <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
-                {/* Unified Segmented Prev / Next Pill */}
-                <div className="inline-flex items-center rounded-full bg-[#FFFDF9] border-[1.5px] border-[#D4AF37] p-0.5 shadow-2xs">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setProdStartIndex(
-                        (prev) =>
-                          (prev - 1 + newArrivalProducts.length) % newArrivalProducts.length
-                      )
-                    }
-                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#280619] hover:bg-[#380725] hover:text-[#FFE59E] flex items-center justify-center transition-colors cursor-pointer"
-                    aria-label="Previous new arrivals"
-                  >
-                    <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  </button>
-                  <span className="w-[1px] h-4 bg-[#D4AF37]/55" />
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setProdStartIndex((prev) => (prev + 1) % newArrivalProducts.length)
-                    }
-                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#280619] hover:bg-[#380725] hover:text-[#FFE59E] flex items-center justify-center transition-colors cursor-pointer"
-                    aria-label="Next new arrivals"
-                  >
-                    <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  </button>
-                </div>
+              {/* Right Group: Separate Circular < > Buttons + View All New Arrivals Pill */}
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setProdStartIndex(
+                      (prev) =>
+                        (prev - 1 + newArrivalProducts.length) % newArrivalProducts.length
+                    )
+                  }
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
+                  aria-label="Previous new arrivals"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setProdStartIndex((prev) => (prev + 1) % newArrivalProducts.length)
+                  }
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
+                  aria-label="Next new arrivals"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+                </button>
 
-                {/* Primary View All Pill Button */}
                 <Link
                   href="/shop?sort=newest"
-                  className="group inline-flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFE59E] border-[1.5px] border-[#D4AF37] text-[10.5px] sm:text-xs font-serif font-bold shadow-[0_4px_12px_rgba(56,7,37,0.22)] transition-all"
+                  className="group inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10.5px] sm:text-xs font-serif font-bold shadow-[0_4px_12px_rgba(40,6,25,0.25)] transition-all"
                 >
                   <span>View All</span>
                   <span className="hidden sm:inline">New Arrivals</span>
@@ -2858,16 +2924,32 @@ export default function HomePage() {
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* =============================================================== */}
+        {/* 3. MAIN 24K GOLD SHOWROOM STAGE WITH 5 CARDS IN A ROW           */}
+        {/* =============================================================== */}
+        <div className="relative z-10 rounded-[26px] sm:rounded-[34px] p-[2.5px] bg-gradient-to-b from-[#FFE8A3] via-[#D4AF37] to-[#8C5818] shadow-[0_24px_60px_rgba(40,6,25,0.18)]">
+          <div className="relative rounded-[23.5px] sm:rounded-[31.5px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EFE0BE] pt-8 sm:pt-10 pb-6 sm:pb-8 px-2.5 sm:px-5 lg:px-6 overflow-hidden border border-[#FFFDF9]/70">
+            {/* Ambient Warm Gold Glow */}
+            <div
+              className="absolute inset-0 pointer-events-none z-0"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle at 20% 20%, rgba(212,175,55,0.16) 0%, transparent 45%), radial-gradient(circle at 80% 80%, rgba(91,14,61,0.06) 0%, transparent 45%)',
+              }}
+            />
 
             {/* 2 CARDS PER ROW ON MOBILE (`grid-cols-2`), 5 IN A ROW ON DESKTOP (`lg:grid-cols-5`) */}
             {isProductsLoading ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-4 xl:gap-5 relative z-10">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5 xl:gap-4 relative z-10">
                 {[...Array(5)].map((_, idx) => (
                   <div
                     key={idx}
-                    className="rounded-[20px] sm:rounded-[24px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#EFE0C2] border-2 border-[#C8963E]/60 p-2 sm:p-3 animate-pulse space-y-2.5"
+                    className="rounded-[20px] sm:rounded-[22px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#EFE0C2] border-2 border-[#C8963E]/60 p-2 sm:p-2.5 animate-pulse space-y-2.5"
                   >
-                    <div className="h-[195px] sm:h-[290px] w-full rounded-[14px] sm:rounded-[18px] bg-[#EED9BA]" />
+                    <div className="h-[195px] sm:h-[280px] w-full rounded-[14px] sm:rounded-[16px] bg-[#EED9BA]" />
                     <div className="h-3 w-1/2 rounded bg-[#E5CCA4]" />
                     <div className="h-4 w-4/5 rounded bg-[#E5CCA4]" />
                     <div className="h-8 w-full rounded-full bg-[#D9BC8C]" />
@@ -2875,7 +2957,7 @@ export default function HomePage() {
                 ))}
               </div>
             ) : (
-              <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-4 xl:gap-5 items-stretch">
+              <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5 xl:gap-4 items-stretch">
                 {visibleNewArrivals.slice(0, 5).map((prod, idx) => {
                   const inWish = isInWishlist(prod._id);
                   const categoryObj = typeof prod.category === 'object' ? prod.category : null;
@@ -2887,27 +2969,18 @@ export default function HomePage() {
                   const hasDiscount =
                     Number(prod.compareAtPrice) > 0 &&
                     Number(prod.compareAtPrice) > Number(prod.price);
-                  const discountPct = hasDiscount
-                    ? Math.round(
-                        ((Number(prod.compareAtPrice) - Number(prod.price)) /
-                          Number(prod.compareAtPrice)) *
-                          100
-                      )
-                    : 0;
-                  const ratingVal =
-                    Number(prod.rating) > 0 ? Number(prod.rating).toFixed(1) : '4.9';
 
                   return (
                     <div
                       key={`new-${prod._id}-${idx}`}
-                      className="group relative rounded-[20px] sm:rounded-[24px] p-[2px] bg-gradient-to-b from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] shadow-[0_12px_28px_rgba(40,6,25,0.14)] hover:shadow-[0_22px_46px_rgba(40,6,25,0.28)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col"
+                      className="group relative rounded-[20px] sm:rounded-[22px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_24px_rgba(40,6,25,0.14)] hover:shadow-[0_20px_42px_rgba(40,6,25,0.26)] transition-all duration-300 hover:-translate-y-1 flex flex-col"
                     >
-                      {/* Top Gold Crown Jewel Stud on Each Card */}
-                      <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-20 w-2 sm:w-2.5 h-2 sm:h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#B88228] border border-[#6E450A] shadow-2xs" />
+                      {/* Top-Center 24K Gold Diamond Star Finial on Each Card */}
+                      <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-20 w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6816] border border-[#5B0E3D] shadow-2xs" />
 
-                      <div className="h-full rounded-[18px] sm:rounded-[22px] bg-gradient-to-b from-[#FFFDF9] via-[#FFF9EE] to-[#F3E1BF] p-2 sm:p-3 flex flex-col justify-between relative">
-                        {/* TALL UNOBSTRUCTED ROYAL PORTRAIT IMAGE STAGE */}
-                        <div className="relative h-[195px] sm:h-[290px] xl:h-[315px] w-full rounded-t-[14px] sm:rounded-t-[18px] rounded-b-[10px] sm:rounded-b-[12px] overflow-hidden bg-[#280619] border-[1.5px] border-[#D4AF37]/85 shadow-inner">
+                      <div className="h-full rounded-[18px] sm:rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EED9B3] p-2 sm:p-2.5 flex flex-col justify-between relative">
+                        {/* TALL ROYAL PORTRAIT IMAGE FRAME */}
+                        <div className="relative h-[195px] sm:h-[275px] xl:h-[295px] w-full rounded-[14px] sm:rounded-[16px] overflow-hidden bg-[#280619] border-[1.5px] border-[#D4AF37] shadow-inner">
                           <Link href={`/product/${prod.slug}`} className="block w-full h-full">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
@@ -2919,61 +2992,46 @@ export default function HomePage() {
                                   target.src = fallbackImg;
                                 }
                               }}
-                              className="w-full h-full object-cover object-top group-hover:scale-108 transition-transform duration-700"
+                              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                             />
                           </Link>
 
-                          {/* Inner 24K Gold Hairline Frame */}
-                          <div className="absolute inset-1 sm:inset-1.5 border border-[#FFE59E]/40 rounded-t-[11px] sm:rounded-t-[14px] rounded-b-[7px] sm:rounded-b-[8px] pointer-events-none z-10" />
-
-                          {/* Top-Left Edition Rank & Discount Pill */}
-                          <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 z-20 flex flex-col gap-1">
-                            <span className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#FFE59E] text-[#FFE59E] text-[8px] sm:text-[9px] font-bold tracking-[0.12em] sm:tracking-[0.14em] uppercase shadow-md">
-                              <Sparkles className="w-2 h-2 sm:w-2.5 sm:h-2.5 text-[#FFE59E]" />
+                          {/* Top-Left `✦ NEW #1` Royal Plum & Gold Pill */}
+                          <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 z-20">
+                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] border border-[#D4AF37] text-[#FFE59E] text-[8px] sm:text-[9.5px] font-bold tracking-[0.08em] uppercase shadow-md">
+                              <Sparkles className="w-2.5 h-2.5 text-[#FFE59E] fill-[#FFE59E]" />
                               <span>NEW #{idx + 1}</span>
                             </span>
-                            {hasDiscount && (
-                              <span className="inline-flex items-center px-1.5 sm:px-2 py-0.5 rounded-full bg-[#9E1946] border border-[#FFE59E] text-white text-[8px] sm:text-[9px] font-extrabold uppercase tracking-wider shadow-sm w-fit">
-                                {discountPct}% OFF
-                              </span>
-                            )}
                           </div>
 
-                          {/* Top-Right Wishlist Button */}
+                          {/* Top-Right Circular White Wishlist Heart Button */}
                           <button
                             type="button"
                             onClick={(e) => handleWishlistToggle(prod, e)}
-                            className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#FFFDF9]/95 hover:bg-[#380725] border border-[#D4AF37] flex items-center justify-center text-[#23120B] hover:text-[#FFE59E] shadow-md cursor-pointer transition-all hover:scale-110"
+                            className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white hover:bg-[#FFF5F7] border border-[#E5D3B3] flex items-center justify-center shadow-md cursor-pointer transition-transform hover:scale-110"
                             aria-label="Add to wishlist"
                           >
                             <Heart
-                              className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${
+                              className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
                                 inWish
                                   ? 'fill-rose-600 text-rose-600'
-                                  : 'fill-[#3D1D1A] text-[#3D1D1A]'
+                                  : 'fill-[#4A0830] text-[#4A0830]'
                               }`}
                             />
                           </button>
 
-                          {/* Subtle Corner Rating Pill */}
-                          <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 z-20 inline-flex items-center gap-0.5 sm:gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-[#240316]/85 backdrop-blur-md border border-[#FFE59E]/75 text-[#FFE59E] text-[9px] sm:text-[10px] font-bold shadow-md">
-                            <span>{ratingVal}</span>
-                            <Star className="w-2.5 h-2.5 fill-[#F5C84C] text-[#F5C84C]" />
+                          {/* Bottom-Right Dark Royal Plum & 24K Gold Oval Price Badge Inside Image */}
+                          <div className="absolute bottom-2 right-2 z-20 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#3D0626] via-[#240216] to-[#12000A] border-[1.5px] border-[#D4AF37] text-[#FFE59E] font-serif font-extrabold text-[11px] sm:text-[13.5px] shadow-[0_4px_12px_rgba(0,0,0,0.45)]">
+                            {formatCurrency(prod.price)}
                           </div>
                         </div>
 
-                        {/* Ornamental Gold Filigree Divider */}
-                        <div className="flex items-center justify-center gap-1.5 my-1.5 sm:my-2.5">
-                          <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#C8963E]" />
-                          <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]" />
-                          <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#C8963E]" />
-                        </div>
-
-                        {/* GRAND PRODUCT DETAILS & ACTION BAR */}
-                        <div className="px-0.5 flex flex-col justify-between flex-1">
+                        {/* PRODUCT DETAILS & ACTION BAR */}
+                        <div className="pt-2 sm:pt-2.5 px-0.5 flex flex-col justify-between flex-1">
                           <div>
+                            {/* Row 1: Warm Tan Category Pill + Green `● Ready` */}
                             <div className="flex items-center justify-between gap-1">
-                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-[#380725]/10 border border-[#D4AF37]/60 text-[7.5px] sm:text-[8.5px] font-extrabold tracking-[0.12em] sm:tracking-[0.15em] text-[#5B0E3D] uppercase truncate">
+                              <span className="px-2 sm:px-2.5 py-0.5 rounded-full bg-gradient-to-b from-[#F5E3BE] to-[#E3C68C] border border-[#C8963E]/85 text-[7.5px] sm:text-[8.5px] font-extrabold tracking-[0.08em] text-[#2B1206] uppercase truncate shadow-2xs">
                                 {categoryLabel}
                               </span>
                               <span className="text-[8.5px] sm:text-[9.5px] font-bold text-[#15803D] inline-flex items-center gap-1 shrink-0">
@@ -2982,36 +3040,37 @@ export default function HomePage() {
                               </span>
                             </div>
 
-                            <Link href={`/product/${prod.slug}`} className="block mt-1 sm:mt-1.5">
-                              <h3 className="font-serif font-bold text-[13px] sm:text-[16px] text-[#220915] group-hover:text-[#9E1946] transition-colors line-clamp-1">
+                            {/* Row 2: Bold Uppercase Serif Title */}
+                            <Link href={`/product/${prod.slug}`} className="block mt-1.5">
+                              <h3 className="font-serif font-extrabold text-[11.5px] sm:text-[13.5px] uppercase tracking-tight text-[#1E0A10] group-hover:text-[#7A1138] transition-colors truncate">
                                 {prod.name}
                               </h3>
                             </Link>
                           </div>
 
-                          {/* Price Row + Add to Cart Bar */}
-                          <div className="mt-2 sm:mt-2.5 pt-1.5 sm:pt-2 border-t border-[#D4AF37]/35">
-                            <div className="flex items-baseline justify-between gap-1 mb-2 sm:mb-2.5">
-                              <div className="flex items-baseline gap-1 sm:gap-1.5">
-                                <span className="font-serif font-extrabold text-[14px] sm:text-[18px] text-[#280619]">
+                          {/* Row 3 & 4: Price + FREE SHIP & Add to Cart Pill + Arrow Circle */}
+                          <div className="mt-1.5 sm:mt-2">
+                            <div className="flex items-baseline justify-between gap-1 mb-2">
+                              <div className="flex items-baseline gap-1.5">
+                                <span className="font-serif font-extrabold text-[14px] sm:text-[16.5px] text-[#1E0A10]">
                                   {formatCurrency(prod.price)}
                                 </span>
                                 {hasDiscount && (
-                                  <span className="text-[10px] sm:text-[11px] text-[#7A5B3E] line-through font-medium">
+                                  <span className="text-[9.5px] sm:text-[10.5px] text-[#7A5B3E] line-through font-medium">
                                     {formatCurrency(Number(prod.compareAtPrice))}
                                   </span>
                                 )}
                               </div>
-                              <span className="hidden sm:inline text-[9px] font-bold text-[#8C5818] uppercase tracking-wider">
-                                Free Ship
+                              <span className="text-[8px] sm:text-[9px] font-extrabold text-[#4A2C11] uppercase tracking-[0.06em]">
+                                FREE SHIP
                               </span>
                             </div>
 
-                            <div className="flex items-center gap-1 sm:gap-1.5">
+                            <div className="flex items-center gap-1.5">
                               <button
                                 type="button"
                                 onClick={(e) => handleAddToCart(prod, e)}
-                                className="flex-1 py-1.5 sm:py-2 px-2 sm:px-3 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFE59E] border border-[#D4AF37] text-[10px] sm:text-[11px] font-serif font-bold flex items-center justify-center gap-1 sm:gap-1.5 shadow-[0_6px_16px_rgba(56,7,37,0.25)] cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+                                className="flex-1 py-1.5 sm:py-2 px-2.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10px] sm:text-[11px] font-serif font-bold flex items-center justify-center gap-1.5 shadow-[0_6px_14px_rgba(38,3,22,0.3)] cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
                               >
                                 <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E] shrink-0" />
                                 <span className="truncate">Add to Cart</span>
@@ -3019,10 +3078,10 @@ export default function HomePage() {
 
                               <Link
                                 href={`/product/${prod.slug}`}
-                                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FFFDF9] hover:bg-[#380725] text-[#280619] hover:text-[#FFE59E] border border-[#D4AF37] flex items-center justify-center shadow-2xs transition-all shrink-0"
+                                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#1E0A10] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all shrink-0"
                                 aria-label={`View ${prod.name}`}
                               >
-                                <ArrowRight className="w-3.5 h-3.5" />
+                                <ArrowRight className="w-3.5 h-3.5 stroke-[2.2]" />
                               </Link>
                             </div>
                           </div>
@@ -3033,31 +3092,53 @@ export default function HomePage() {
                 })}
               </div>
             )}
+          </div>
+        </div>
 
-            {/* Bottom Grand Couture Assurance Strip */}
-            <div className="relative z-10 mt-6 pt-4 border-t border-[#D4AF37]/45 flex flex-wrap items-center justify-between gap-3 text-[11px] font-semibold text-[#4A2511]">
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-                <span className="inline-flex items-center gap-1.5">
-                  <ShieldCheck className="w-4 h-4 text-[#9E1946]" />
+        {/* =============================================================== */}
+        {/* 4. LOWER ATTACHED ROYAL PLUM & 24K GOLD ASSURANCE & CATALOG BAR */}
+        {/* =============================================================== */}
+        <div className="relative z-20 max-w-[1320px] mx-auto px-1 sm:px-4 -mt-3 sm:-mt-3.5">
+          {/* Top-Center & Bottom-Center Ornate 24K Gold Diamond Clasps */}
+          <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
+          <span className="hidden sm:block absolute -bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
+
+          <div className="rounded-2xl lg:rounded-full p-[2px] bg-gradient-to-r from-[#8C5818] via-[#FFE59E] to-[#8C5818] shadow-[0_16px_36px_rgba(32,2,18,0.32)]">
+            <div className="rounded-[14px] lg:rounded-full bg-gradient-to-b from-[#3D0626] via-[#260217] to-[#14000B] px-3.5 sm:px-6 py-2.5 sm:py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
+              {/* Left / Center 3 Gold-Icon Trust Pillars */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-5 text-[10.5px] sm:text-xs font-medium text-[#F8E7C8]">
+                <span className="inline-flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] shrink-0" />
                   <span>5-Step Daylight Weave Inspection</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <Scissors className="w-4 h-4 text-[#9E1946]" />
+
+                <span className="hidden sm:inline-block w-[1px] h-4 bg-[#D4AF37]/40" />
+
+                <span className="inline-flex items-center gap-2">
+                  <Crown className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] fill-[#D4AF37] shrink-0" />
                   <span>Optional Custom Princess / Aari Blouse Stitching</span>
                 </span>
-                <span className="hidden md:inline-flex items-center gap-1.5">
-                  <Package className="w-4 h-4 text-[#9E1946]" />
+
+                <span className="hidden md:inline-block w-[1px] h-4 bg-[#D4AF37]/40" />
+
+                <span className="hidden md:inline-flex items-center gap-2">
+                  <Package className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] shrink-0" />
                   <span>Packed in Signature Nalmara Royal Box</span>
                 </span>
               </div>
+
+              {/* Right: 3D Metallic 24K Gold Pill CTA Button */}
               <Link
                 href="/shop?sort=newest"
-                className="font-serif font-bold text-[#5B0E3D] hover:text-[#9E1946] underline underline-offset-4"
+                className="group inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-b from-[#FFF4B8] via-[#DFB752] to-[#9A6816] hover:brightness-105 border border-[#FFF6D6] text-[#1E0A10] font-serif font-extrabold text-[10.5px] sm:text-xs shadow-[0_4px_14px_rgba(0,0,0,0.4)] transition-all shrink-0"
               >
-                Explore Complete New Arrivals Catalog →
+                <Sparkles className="w-3.5 h-3.5 text-[#3D0626] fill-[#3D0626]" />
+                <span>Explore Complete New Arrivals Catalog</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#1E0A10] group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
           </div>
+        </div>
         </div>
       </section>
 
@@ -3400,107 +3481,178 @@ export default function HomePage() {
       {/* =================================================================== */}
       {/* 06. BEST SELLERS — GRAND 5-PRODUCTS-IN-A-ROW ROYAL SHOWCASE         */}
       {/* =================================================================== */}
-      <section className="relative max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 pt-6 pb-10 sm:pt-8 sm:pb-14">
-        <RoyalCornerMandala className="hidden lg:block absolute top-2 left-4 w-28 h-28 pointer-events-none" />
-        <RoyalCornerMandala className="hidden lg:block absolute top-2 right-4 w-28 h-28 -scale-x-100 pointer-events-none" />
+      <section className="relative max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-10 pt-4 pb-10 sm:pt-8 sm:pb-14 overflow-hidden">
+        {/* =============================================================== */}
+        {/* STAGE WRAPPER WITH PERFECTLY ANCHORED 3D FLORAL & SILK CORNERS  */}
+        {/* =============================================================== */}
+        <div className="relative max-w-[1360px] mx-auto">
+          {/* Top-Left 3D Cream & Burgundy Floral Bouquet with Gold Leaves */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_tl.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute -top-4 -left-4 lg:-top-6 lg:-left-6 w-40 md:w-52 lg:w-64 pointer-events-none z-30 select-none"
+          />
+          {/* Top-Right 3D Cream & Burgundy Floral Bouquet with Gold Leaves */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_tr.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute -top-4 -right-4 lg:-top-6 lg:-right-6 w-40 md:w-52 lg:w-64 pointer-events-none z-30 select-none"
+          />
 
-        <GoldSectionHeader
-          badge="MOST LOVED SIGNATURES"
-          title="Best Sellers"
-          subtitle="Customer Favorites & Top-Rated Royal Weaves!"
-        />
+          {/* Bottom-Left 3D Floral Bouquet & Sweeping Royal Purple Silk Wave */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_bl.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute -bottom-5 -left-4 lg:-bottom-7 lg:-left-6 w-48 md:w-64 lg:w-80 pointer-events-none z-30 select-none"
+          />
+          {/* Bottom-Right 3D Floral Bouquet & Sweeping Royal Purple Silk Wave */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_br.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute -bottom-5 -right-4 lg:-bottom-7 lg:-right-6 w-48 md:w-64 lg:w-80 pointer-events-none z-30 select-none"
+          />
 
-        {/* Grand 5-in-a-Row Luxury Showroom Stage — Best Sellers */}
-        <div className="relative rounded-[32px] p-[2.5px] bg-gradient-to-b from-[#FFE59E] via-[#D4AF37] to-[#8C5818] shadow-[0_24px_60px_rgba(40,6,25,0.16)]">
-          {/* Top Royal Crown Emblem Stud */}
-          <span className="hidden sm:block absolute -top-2 left-1/2 -translate-x-1/2 z-30 w-4 h-4 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#B88228] border-[1.5px] border-[#5B0E3D] shadow-md" />
+          {/* ============================================================= */}
+          {/* 1. 3D SCALLOPED ROYAL PLUM & 24K GOLD CROWN CARTOUCHE HEADER  */}
+          {/* ============================================================= */}
+          <div className="relative z-20 flex items-center justify-center w-full max-w-[1140px] mx-auto mb-1 sm:mb-2 px-2">
+            {/* Left Extending Gold Filigree Line */}
+            <div className="hidden md:block h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8963E]/70 to-[#9A6816] -mr-4 mt-3" />
 
-          <div className="relative rounded-[29.5px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF1DF] to-[#F1DFBD] p-2.5 sm:p-6 lg:p-8 overflow-hidden">
-            {/* Ambient Radial Gold Spotlight */}
-            <div
-              className="absolute inset-0 pointer-events-none z-0"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle at 82% 15%, rgba(212,175,55,0.18) 0%, transparent 42%), radial-gradient(circle at 18% 85%, rgba(91,14,61,0.07) 0%, transparent 42%)',
-              }}
-            />
+            {/* Exact 3D Sculpted Gold Crown & Royal Plum Cartouche Plaque */}
+            <div className="relative w-[330px] sm:w-[500px] md:w-[590px] lg:w-[630px] aspect-[420/94] shrink-0 select-none">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/nalmara/hd/showcase_cartouche_header.png"
+                alt=""
+                aria-hidden="true"
+                className="w-full h-full object-contain pointer-events-none drop-shadow-[0_10px_22px_rgba(40,6,25,0.22)]"
+              />
+              {/* Crisp Live Typography Centered Inside the Velvet Cartouche */}
+              <div className="absolute inset-0 flex flex-col items-center justify-center pt-3 sm:pt-4 md:pt-5 pb-1 px-12 text-center">
+                <h2 className="font-serif font-extrabold text-[20px] sm:text-[32px] md:text-[38px] lg:text-[41px] text-transparent bg-clip-text bg-gradient-to-b from-[#FFFDF9] via-[#FFE8A3] to-[#D4AF37] tracking-wide leading-none drop-shadow-[0_2px_6px_rgba(0,0,0,0.65)]">
+                  Best Sellers
+                </h2>
+                <p className="font-serif italic text-[#F8E7C8] text-[10px] sm:text-[13.5px] md:text-[15px] tracking-wide mt-0.5 sm:mt-1 drop-shadow-[0_1px_3px_rgba(0,0,0,0.7)] truncate max-w-full">
+                  Customer Favorites &amp; Top-Rated Royal Weaves!
+                </p>
+              </div>
+            </div>
 
-            {/* Top Grand Curated Toolbar — Single-Row Symmetrical Arrangement */}
-            <div className="relative z-10 flex items-center justify-between gap-2 px-2.5 sm:px-4 py-2 sm:py-2.5 mb-4 sm:mb-6 rounded-2xl bg-gradient-to-r from-[#FFFDF9] via-[#FAF1DE] to-[#FFFDF9] border border-[#D4AF37]/75 shadow-[0_6px_18px_rgba(40,6,25,0.06)]">
-              {/* Left: Royal Edition Badge + Desktop Trust Tags */}
-              <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] text-[#FFE59E] border border-[#D4AF37] text-[9px] sm:text-[10.5px] font-bold uppercase tracking-[0.12em] sm:tracking-[0.16em] shadow-xs shrink-0">
-                  <Star className="w-2.5 h-2.5 sm:w-3 sm:h-3 fill-[#FFE59E] text-[#FFE59E] shrink-0" />
-                  <span className="sm:hidden">Top Favorites</span>
-                  <span className="hidden sm:inline">Top Customer Favorites</span>
+            {/* Right Extending Gold Filigree Line */}
+            <div className="hidden md:block h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8963E]/70 to-[#9A6816] -ml-4 mt-3" />
+          </div>
+
+          {/* ============================================================= */}
+          {/* 2. OVERLAPPING UPPER CREAM & 24K GOLD PILL TOOLBAR            */}
+          {/* ============================================================= */}
+          <div className="relative z-20 max-w-[1220px] mx-auto px-2 sm:px-8 -mb-5 sm:-mb-6">
+            {/* Top-Center 24K Gold Diamond Clasp Connecting Header to Toolbar */}
+            <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#8C5818] border border-[#4A0830] shadow-xs" />
+
+            <div className="rounded-full p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_12px_28px_rgba(40,6,25,0.16)]">
+              <div className="rounded-full bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EED9B3] px-2.5 sm:px-4 py-1.5 sm:py-2 flex items-center justify-between gap-2 border border-[#FFFDF9]/85">
+                {/* Left Group: Top Customer Favorites Pill + Verified Text + Custom Blouse Fit Gold Pill */}
+                <div className="flex items-center gap-2 sm:gap-3 min-w-0">
+                  {/* Dark Royal Plum Pill Badge with Crown Icon */}
+                  <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] text-[#FFE59E] border-[1.5px] border-[#D4AF37] text-[9.5px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.13em] shadow-sm shrink-0">
+                    <Crown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFE59E] fill-[#D4AF37] shrink-0" />
+                    <span className="sm:hidden">Top Favorites</span>
+                    <span className="hidden sm:inline">Top Customer Favorites</span>
+                  </span>
+
+                <span className="hidden md:inline-block w-[1.5px] h-5 bg-[#C8963E]/55 shrink-0" />
+
+                {/* Gold Checkmark Circle + Rated Text */}
+                <span className="hidden md:inline-flex items-center gap-1.5 text-[11.5px] lg:text-xs font-bold text-[#220915] truncate">
+                  <span className="w-4 h-4 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#B88228] border border-[#8C5818] flex items-center justify-center shrink-0 shadow-2xs">
+                    <Check className="w-2.5 h-2.5 text-[#220915] stroke-[3]" />
+                  </span>
+                  <span>4.9★ Rated Across Tamil Nadu • Direct Loom Price</span>
                 </span>
 
-                <span className="hidden md:inline-block w-[1px] h-4 bg-[#D4AF37]/60 shrink-0" />
-
-                <span className="hidden md:inline-flex items-center gap-1.5 text-[11px] font-bold text-[#3D1D1A] truncate">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#9E1946] shrink-0" />
-                  <span>4.9★ Rated Across Tamil Nadu</span>
-                </span>
-
-                <span className="hidden xl:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#380725]/10 border border-[#D4AF37]/50 text-[10.5px] font-bold text-[#5B0E3D] shrink-0">
-                  <Gem className="w-3 h-3 text-[#9E1946]" />
-                  <span>Signature Gift Box</span>
-                </span>
+                {/* 3D Champagne-Gold Custom Blouse Fit Pill */}
+                <Link
+                  href="/stitching-services"
+                  className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-b from-[#FFF6D6] via-[#EED294] to-[#C8963E] hover:brightness-105 border border-[#8C5818] text-[11px] font-bold text-[#220915] shadow-xs transition-all shrink-0"
+                >
+                  <Scissors className="w-3.5 h-3.5 text-[#380725]" />
+                  <span>Custom Blouse Fit</span>
+                </Link>
               </div>
 
-              {/* Right: Unified Prev/Next Rocker Capsule + Explore All CTA */}
-              <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
-                {/* Unified Segmented Prev / Next Pill */}
-                <div className="inline-flex items-center rounded-full bg-[#FFFDF9] border-[1.5px] border-[#D4AF37] p-0.5 shadow-2xs">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setBestSellerStartIndex(
-                        (prev) =>
-                          (prev - 1 + bestSellerProducts.length) % bestSellerProducts.length
-                      )
-                    }
-                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#280619] hover:bg-[#380725] hover:text-[#FFE59E] flex items-center justify-center transition-colors cursor-pointer"
-                    aria-label="Previous best sellers"
-                  >
-                    <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  </button>
-                  <span className="w-[1px] h-4 bg-[#D4AF37]/55" />
-                  <button
-                    type="button"
-                    onClick={() =>
-                      setBestSellerStartIndex(
-                        (prev) => (prev + 1) % bestSellerProducts.length
-                      )
-                    }
-                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full text-[#280619] hover:bg-[#380725] hover:text-[#FFE59E] flex items-center justify-center transition-colors cursor-pointer"
-                    aria-label="Next best sellers"
-                  >
-                    <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  </button>
-                </div>
+              {/* Right Group: Separate Circular < > Buttons + View All Best Sellers Pill */}
+              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={() =>
+                    setBestSellerStartIndex(
+                      (prev) =>
+                        (prev - 1 + bestSellerProducts.length) % bestSellerProducts.length
+                    )
+                  }
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
+                  aria-label="Previous best sellers"
+                >
+                  <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() =>
+                    setBestSellerStartIndex(
+                      (prev) => (prev + 1) % bestSellerProducts.length
+                    )
+                  }
+                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
+                  aria-label="Next best sellers"
+                >
+                  <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+                </button>
 
-                {/* Primary Explore All Pill Button */}
                 <Link
                   href="/shop"
-                  className="group inline-flex items-center gap-1 sm:gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFE59E] border-[1.5px] border-[#D4AF37] text-[10.5px] sm:text-xs font-serif font-bold shadow-[0_4px_12px_rgba(56,7,37,0.22)] transition-all"
+                  className="group inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10.5px] sm:text-xs font-serif font-bold shadow-[0_4px_12px_rgba(40,6,25,0.25)] transition-all"
                 >
-                  <span>Explore All</span>
+                  <span>View All</span>
                   <span className="hidden sm:inline">Best Sellers</span>
                   <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E] group-hover:translate-x-0.5 transition-transform" />
                 </Link>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* =============================================================== */}
+        {/* 3. MAIN 24K GOLD SHOWROOM STAGE WITH 5 CARDS IN A ROW           */}
+        {/* =============================================================== */}
+        <div className="relative z-10 rounded-[26px] sm:rounded-[34px] p-[2.5px] bg-gradient-to-b from-[#FFE8A3] via-[#D4AF37] to-[#8C5818] shadow-[0_24px_60px_rgba(40,6,25,0.18)]">
+          <div className="relative rounded-[23.5px] sm:rounded-[31.5px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EFE0BE] pt-8 sm:pt-10 pb-6 sm:pb-8 px-2.5 sm:px-5 lg:px-6 overflow-hidden border border-[#FFFDF9]/70">
+            {/* Ambient Warm Gold Glow */}
+            <div
+              className="absolute inset-0 pointer-events-none z-0"
+              style={{
+                backgroundImage:
+                  'radial-gradient(circle at 80% 20%, rgba(212,175,55,0.16) 0%, transparent 45%), radial-gradient(circle at 20% 80%, rgba(91,14,61,0.06) 0%, transparent 45%)',
+              }}
+            />
 
             {/* 2 CARDS PER ROW ON MOBILE (`grid-cols-2`), 5 IN A ROW ON DESKTOP (`lg:grid-cols-5`) */}
             {isProductsLoading ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-4 xl:gap-5 relative z-10">
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5 xl:gap-4 relative z-10">
                 {[...Array(5)].map((_, idx) => (
                   <div
                     key={idx}
-                    className="rounded-[20px] sm:rounded-[24px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#EFE0C2] border-2 border-[#C8963E]/60 p-2 sm:p-3 animate-pulse space-y-2.5"
+                    className="rounded-[20px] sm:rounded-[22px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#EFE0C2] border-2 border-[#C8963E]/60 p-2 sm:p-2.5 animate-pulse space-y-2.5"
                   >
-                    <div className="h-[195px] sm:h-[290px] w-full rounded-[14px] sm:rounded-[18px] bg-[#EED9BA]" />
+                    <div className="h-[195px] sm:h-[280px] w-full rounded-[14px] sm:rounded-[16px] bg-[#EED9BA]" />
                     <div className="h-3 w-1/2 rounded bg-[#E5CCA4]" />
                     <div className="h-4 w-4/5 rounded bg-[#E5CCA4]" />
                     <div className="h-8 w-full rounded-full bg-[#D9BC8C]" />
@@ -3508,7 +3660,7 @@ export default function HomePage() {
                 ))}
               </div>
             ) : (
-              <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-4 xl:gap-5 items-stretch">
+              <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5 xl:gap-4 items-stretch">
                 {visibleBestSellers.slice(0, 5).map((prod, idx) => {
                   const inWish = isInWishlist(prod._id);
                   const categoryObj = typeof prod.category === 'object' ? prod.category : null;
@@ -3520,27 +3672,18 @@ export default function HomePage() {
                   const hasDiscount =
                     Number(prod.compareAtPrice) > 0 &&
                     Number(prod.compareAtPrice) > Number(prod.price);
-                  const discountPct = hasDiscount
-                    ? Math.round(
-                        ((Number(prod.compareAtPrice) - Number(prod.price)) /
-                          Number(prod.compareAtPrice)) *
-                          100
-                      )
-                    : 0;
-                  const ratingVal =
-                    Number(prod.rating) > 0 ? Number(prod.rating).toFixed(1) : '4.9';
 
                   return (
                     <div
                       key={`best-${prod._id}-${idx}`}
-                      className="group relative rounded-[20px] sm:rounded-[24px] p-[2px] bg-gradient-to-b from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] shadow-[0_12px_28px_rgba(40,6,25,0.14)] hover:shadow-[0_22px_46px_rgba(40,6,25,0.28)] transition-all duration-300 hover:-translate-y-1.5 flex flex-col"
+                      className="group relative rounded-[20px] sm:rounded-[22px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_24px_rgba(40,6,25,0.14)] hover:shadow-[0_20px_42px_rgba(40,6,25,0.26)] transition-all duration-300 hover:-translate-y-1 flex flex-col"
                     >
-                      {/* Top Gold Crown Jewel Stud on Each Card */}
-                      <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-20 w-2 sm:w-2.5 h-2 sm:h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#B88228] border border-[#6E450A] shadow-2xs" />
+                      {/* Top-Center 24K Gold Diamond Star Finial on Each Card */}
+                      <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-20 w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6816] border border-[#5B0E3D] shadow-2xs" />
 
-                      <div className="h-full rounded-[18px] sm:rounded-[22px] bg-gradient-to-b from-[#FFFDF9] via-[#FFF9EE] to-[#F3E1BF] p-2 sm:p-3 flex flex-col justify-between relative">
-                        {/* TALL UNOBSTRUCTED ROYAL PORTRAIT IMAGE STAGE */}
-                        <div className="relative h-[195px] sm:h-[290px] xl:h-[315px] w-full rounded-t-[14px] sm:rounded-t-[18px] rounded-b-[10px] sm:rounded-b-[12px] overflow-hidden bg-[#280619] border-[1.5px] border-[#D4AF37]/85 shadow-inner">
+                      <div className="h-full rounded-[18px] sm:rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EED9B3] p-2 sm:p-2.5 flex flex-col justify-between relative">
+                        {/* TALL ROYAL PORTRAIT IMAGE FRAME */}
+                        <div className="relative h-[195px] sm:h-[275px] xl:h-[295px] w-full rounded-[14px] sm:rounded-[16px] overflow-hidden bg-[#280619] border-[1.5px] border-[#D4AF37] shadow-inner">
                           <Link href={`/product/${prod.slug}`} className="block w-full h-full">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img
@@ -3552,99 +3695,85 @@ export default function HomePage() {
                                   target.src = fallbackImg;
                                 }
                               }}
-                              className="w-full h-full object-cover object-top group-hover:scale-108 transition-transform duration-700"
+                              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
                             />
                           </Link>
 
-                          {/* Inner 24K Gold Hairline Frame */}
-                          <div className="absolute inset-1 sm:inset-1.5 border border-[#FFE59E]/40 rounded-t-[11px] sm:rounded-t-[14px] rounded-b-[7px] sm:rounded-b-[8px] pointer-events-none z-10" />
-
-                          {/* Top-Left Bestseller Rank & Discount Pill */}
-                          <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 z-20 flex flex-col gap-1">
-                            <span className="inline-flex items-center gap-1 px-2 sm:px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#FFE59E] text-[#FFE59E] text-[8px] sm:text-[9px] font-bold tracking-[0.12em] sm:tracking-[0.14em] uppercase shadow-md">
-                              <Star className="w-2 h-2 sm:w-2.5 sm:h-2.5 fill-[#FFE59E] text-[#FFE59E]" />
+                          {/* Top-Left `✦ TOP #1` Royal Plum & Gold Pill */}
+                          <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 z-20">
+                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] border border-[#D4AF37] text-[#FFE59E] text-[8px] sm:text-[9.5px] font-bold tracking-[0.08em] uppercase shadow-md">
+                              <Sparkles className="w-2.5 h-2.5 text-[#FFE59E] fill-[#FFE59E]" />
                               <span>TOP #{idx + 1}</span>
                             </span>
-                            {hasDiscount && (
-                              <span className="inline-flex items-center px-1.5 sm:px-2 py-0.5 rounded-full bg-[#9E1946] border border-[#FFE59E] text-white text-[8px] sm:text-[9px] font-extrabold uppercase tracking-wider shadow-sm w-fit">
-                                {discountPct}% OFF
-                              </span>
-                            )}
                           </div>
 
-                          {/* Top-Right Wishlist Button */}
+                          {/* Top-Right Circular White Wishlist Heart Button */}
                           <button
                             type="button"
                             onClick={(e) => handleWishlistToggle(prod, e)}
-                            className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#FFFDF9]/95 hover:bg-[#380725] border border-[#D4AF37] flex items-center justify-center text-[#23120B] hover:text-[#FFE59E] shadow-md cursor-pointer transition-all hover:scale-110"
+                            className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white hover:bg-[#FFF5F7] border border-[#E5D3B3] flex items-center justify-center shadow-md cursor-pointer transition-transform hover:scale-110"
                             aria-label="Add to wishlist"
                           >
                             <Heart
-                              className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${
+                              className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
                                 inWish
                                   ? 'fill-rose-600 text-rose-600'
-                                  : 'fill-[#3D1D1A] text-[#3D1D1A]'
+                                  : 'fill-[#4A0830] text-[#4A0830]'
                               }`}
                             />
                           </button>
 
-                          {/* Subtle Corner Rating Pill */}
-                          <div className="absolute bottom-1.5 right-1.5 sm:bottom-2 sm:right-2 z-20 inline-flex items-center gap-0.5 sm:gap-1 px-2 sm:px-2.5 py-0.5 sm:py-1 rounded-full bg-[#240316]/85 backdrop-blur-md border border-[#FFE59E]/75 text-[#FFE59E] text-[9px] sm:text-[10px] font-bold shadow-md">
-                            <span>{ratingVal}</span>
-                            <Star className="w-2.5 h-2.5 fill-[#F5C84C] text-[#F5C84C]" />
+                          {/* Bottom-Right Dark Royal Plum & 24K Gold Oval Price Badge Inside Image */}
+                          <div className="absolute bottom-2 right-2 z-20 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#3D0626] via-[#240216] to-[#12000A] border-[1.5px] border-[#D4AF37] text-[#FFE59E] font-serif font-extrabold text-[11px] sm:text-[13.5px] shadow-[0_4px_12px_rgba(0,0,0,0.45)]">
+                            {formatCurrency(prod.price)}
                           </div>
                         </div>
 
-                        {/* Ornamental Gold Filigree Divider */}
-                        <div className="flex items-center justify-center gap-1.5 my-1.5 sm:my-2.5">
-                          <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-[#C8963E]" />
-                          <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37]" />
-                          <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-[#C8963E]" />
-                        </div>
-
-                        {/* GRAND PRODUCT DETAILS & ACTION BAR */}
-                        <div className="px-0.5 flex flex-col justify-between flex-1">
+                        {/* PRODUCT DETAILS & ACTION BAR */}
+                        <div className="pt-2 sm:pt-2.5 px-0.5 flex flex-col justify-between flex-1">
                           <div>
+                            {/* Row 1: Warm Tan Category Pill + Green `● Ready` */}
                             <div className="flex items-center justify-between gap-1">
-                              <span className="px-1.5 sm:px-2 py-0.5 rounded-full bg-[#380725]/10 border border-[#D4AF37]/60 text-[7.5px] sm:text-[8.5px] font-extrabold tracking-[0.12em] sm:tracking-[0.15em] text-[#5B0E3D] uppercase truncate">
+                              <span className="px-2 sm:px-2.5 py-0.5 rounded-full bg-gradient-to-b from-[#F5E3BE] to-[#E3C68C] border border-[#C8963E]/85 text-[7.5px] sm:text-[8.5px] font-extrabold tracking-[0.08em] text-[#2B1206] uppercase truncate shadow-2xs">
                                 {categoryLabel}
                               </span>
-                              <span className="text-[8.5px] sm:text-[9.5px] font-bold text-[#9E1946] inline-flex items-center gap-1 shrink-0">
-                                <Sparkles className="w-2.5 h-2.5" />
-                                Hot
+                              <span className="text-[8.5px] sm:text-[9.5px] font-bold text-[#15803D] inline-flex items-center gap-1 shrink-0">
+                                <span className="w-1.5 h-1.5 rounded-full bg-[#15803D]" />
+                                Ready
                               </span>
                             </div>
 
-                            <Link href={`/product/${prod.slug}`} className="block mt-1 sm:mt-1.5">
-                              <h3 className="font-serif font-bold text-[13px] sm:text-[16px] text-[#220915] group-hover:text-[#9E1946] transition-colors line-clamp-1">
+                            {/* Row 2: Bold Uppercase Serif Title */}
+                            <Link href={`/product/${prod.slug}`} className="block mt-1.5">
+                              <h3 className="font-serif font-extrabold text-[11.5px] sm:text-[13.5px] uppercase tracking-tight text-[#1E0A10] group-hover:text-[#7A1138] transition-colors truncate">
                                 {prod.name}
                               </h3>
                             </Link>
                           </div>
 
-                          {/* Price Row + Add to Cart Bar */}
-                          <div className="mt-2 sm:mt-2.5 pt-1.5 sm:pt-2 border-t border-[#D4AF37]/35">
-                            <div className="flex items-baseline justify-between gap-1 mb-2 sm:mb-2.5">
-                              <div className="flex items-baseline gap-1 sm:gap-1.5">
-                                <span className="font-serif font-extrabold text-[14px] sm:text-[18px] text-[#280619]">
+                          {/* Row 3 & 4: Price + FREE SHIP & Add to Cart Pill + Arrow Circle */}
+                          <div className="mt-1.5 sm:mt-2">
+                            <div className="flex items-baseline justify-between gap-1 mb-2">
+                              <div className="flex items-baseline gap-1.5">
+                                <span className="font-serif font-extrabold text-[14px] sm:text-[16.5px] text-[#1E0A10]">
                                   {formatCurrency(prod.price)}
                                 </span>
                                 {hasDiscount && (
-                                  <span className="text-[10px] sm:text-[11px] text-[#7A5B3E] line-through font-medium">
+                                  <span className="text-[9.5px] sm:text-[10.5px] text-[#7A5B3E] line-through font-medium">
                                     {formatCurrency(Number(prod.compareAtPrice))}
                                   </span>
                                 )}
                               </div>
-                              <span className="hidden sm:inline text-[9px] font-bold text-[#8C5818] uppercase tracking-wider">
-                                Gift Box
+                              <span className="text-[8px] sm:text-[9px] font-extrabold text-[#4A2C11] uppercase tracking-[0.06em]">
+                                FREE SHIP
                               </span>
                             </div>
 
-                            <div className="flex items-center gap-1 sm:gap-1.5">
+                            <div className="flex items-center gap-1.5">
                               <button
                                 type="button"
                                 onClick={(e) => handleAddToCart(prod, e)}
-                                className="flex-1 py-1.5 sm:py-2 px-2 sm:px-3 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFE59E] border border-[#D4AF37] text-[10px] sm:text-[11px] font-serif font-bold flex items-center justify-center gap-1 sm:gap-1.5 shadow-[0_6px_16px_rgba(56,7,37,0.25)] cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+                                className="flex-1 py-1.5 sm:py-2 px-2.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10px] sm:text-[11px] font-serif font-bold flex items-center justify-center gap-1.5 shadow-[0_6px_14px_rgba(38,3,22,0.3)] cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
                               >
                                 <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E] shrink-0" />
                                 <span className="truncate">Add to Cart</span>
@@ -3652,10 +3781,10 @@ export default function HomePage() {
 
                               <Link
                                 href={`/product/${prod.slug}`}
-                                className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FFFDF9] hover:bg-[#380725] text-[#280619] hover:text-[#FFE59E] border border-[#D4AF37] flex items-center justify-center shadow-2xs transition-all shrink-0"
+                                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#1E0A10] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all shrink-0"
                                 aria-label={`View ${prod.name}`}
                               >
-                                <ArrowRight className="w-3.5 h-3.5" />
+                                <ArrowRight className="w-3.5 h-3.5 stroke-[2.2]" />
                               </Link>
                             </div>
                           </div>
@@ -3666,117 +3795,247 @@ export default function HomePage() {
                 })}
               </div>
             )}
+          </div>
+        </div>
 
-            {/* Bottom Grand Couture Assurance Strip */}
-            <div className="relative z-10 mt-6 pt-4 border-t border-[#D4AF37]/45 flex flex-wrap items-center justify-between gap-3 text-[11px] font-semibold text-[#4A2511]">
-              <div className="flex flex-wrap items-center gap-4 sm:gap-6">
-                <span className="inline-flex items-center gap-1.5">
-                  <Star className="w-4 h-4 fill-[#D4AF37] text-[#9E1946]" />
-                  <span>Most Re-Ordered by 2,400+ Families</span>
+        {/* =============================================================== */}
+        {/* 4. LOWER ATTACHED ROYAL PLUM & 24K GOLD ASSURANCE & CATALOG BAR */}
+        {/* =============================================================== */}
+        <div className="relative z-20 max-w-[1320px] mx-auto px-1 sm:px-4 -mt-3 sm:-mt-3.5">
+          {/* Top-Center & Bottom-Center Ornate 24K Gold Diamond Clasps */}
+          <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
+          <span className="hidden sm:block absolute -bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
+
+          <div className="rounded-2xl lg:rounded-full p-[2px] bg-gradient-to-r from-[#8C5818] via-[#FFE59E] to-[#8C5818] shadow-[0_16px_36px_rgba(32,2,18,0.32)]">
+            <div className="rounded-[14px] lg:rounded-full bg-gradient-to-b from-[#3D0626] via-[#260217] to-[#14000B] px-3.5 sm:px-6 py-2.5 sm:py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
+              {/* Left / Center 3 Gold-Icon Trust Pillars */}
+              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-5 text-[10.5px] sm:text-xs font-medium text-[#F8E7C8]">
+                <span className="inline-flex items-center gap-2">
+                  <ShieldCheck className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] shrink-0" />
+                  <span>5-Step Daylight Weave Inspection</span>
                 </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <Scissors className="w-4 h-4 text-[#9E1946]" />
-                  <span>Custom Bridal Aari &amp; Princess Tailoring Available</span>
+
+                <span className="hidden sm:inline-block w-[1px] h-4 bg-[#D4AF37]/40" />
+
+                <span className="inline-flex items-center gap-2">
+                  <Crown className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] fill-[#D4AF37] shrink-0" />
+                  <span>Optional Custom Princess / Aari Blouse Stitching</span>
                 </span>
-                <span className="hidden md:inline-flex items-center gap-1.5">
-                  <Package className="w-4 h-4 text-[#9E1946]" />
-                  <span>1–3 Day Express Delivery Across Tamil Nadu</span>
+
+                <span className="hidden md:inline-block w-[1px] h-4 bg-[#D4AF37]/40" />
+
+                <span className="hidden md:inline-flex items-center gap-2">
+                  <Package className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] shrink-0" />
+                  <span>Packed in Signature Nalmara Royal Box</span>
                 </span>
               </div>
+
+              {/* Right: 3D Metallic 24K Gold Pill CTA Button */}
               <Link
                 href="/shop"
-                className="font-serif font-bold text-[#5B0E3D] hover:text-[#9E1946] underline underline-offset-4"
+                className="group inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-b from-[#FFF4B8] via-[#DFB752] to-[#9A6816] hover:brightness-105 border border-[#FFF6D6] text-[#1E0A10] font-serif font-extrabold text-[10.5px] sm:text-xs shadow-[0_4px_14px_rgba(0,0,0,0.4)] transition-all shrink-0"
               >
-                Explore All Bestsellers →
+                <Sparkles className="w-3.5 h-3.5 text-[#3D0626] fill-[#3D0626]" />
+                <span>Explore Complete Best Sellers Catalog</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#1E0A10] group-hover:translate-x-0.5 transition-transform" />
               </Link>
             </div>
           </div>
         </div>
+        </div>
       </section>
 
       {/* =================================================================== */}
-      {/* 06. WHY CHOOSE NALMARA FASHION? (4 Royal Heritage Pillar Cards)     */}
+      {/* 06. WHY CHOOSE NALMARA FASHION? (4 Royal Mughal Arch Shield Cards)  */}
       {/* =================================================================== */}
-      <section className="relative w-full py-8 sm:py-10 overflow-hidden">
-        <div className="relative z-10 max-w-[1260px] mx-auto px-4 sm:px-8 lg:px-12">
-          <GoldSectionHeader
-            badge="THE NALMARA PROMISE"
-            title="Why Choose NALMARA FASHION?"
-            subtitle="Crafted with devotion in Thoothukudi for families across Tamil Nadu & India"
+      <section className="relative max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-10 py-6 sm:py-10 overflow-hidden">
+        <div
+          className="relative max-w-[1360px] mx-auto rounded-[28px] sm:rounded-[36px] px-3 sm:px-8 lg:px-12 pt-6 pb-8 sm:pt-9 sm:pb-11 overflow-hidden border border-[#D4AF37]/45 shadow-[0_18px_48px_rgba(40,6,25,0.10)]"
+          style={{
+            background:
+              'radial-gradient(circle at 50% 18%, #FFFDF9 0%, #FAF0DC 52%, #EFE0BE 100%)',
+          }}
+        >
+          {/* Subtle Champagne Silk Drape Highlights */}
+          <div
+            className="absolute inset-0 pointer-events-none z-0"
+            style={{
+              backgroundImage:
+                'radial-gradient(ellipse at 20% 0%, rgba(255,253,249,0.85) 0%, transparent 50%), radial-gradient(ellipse at 80% 0%, rgba(255,253,249,0.85) 0%, transparent 50%), radial-gradient(circle at 50% 65%, rgba(212,175,55,0.15) 0%, transparent 55%)',
+            }}
           />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 pt-1">
-            {/* Card 1: Handpicked Styles */}
-            <div className="group relative rounded-2xl p-[2px] bg-gradient-to-b from-[#D4AF37] via-[#FFE59E] to-[#9E6B18] shadow-[0_10px_24px_rgba(90,45,15,0.1)] hover:-translate-y-1.5 transition-all">
-              <div className="h-full rounded-[14px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF1DF] to-[#F2DFBE] px-5 pt-6 pb-5 text-center flex flex-col items-center">
-                <div className="w-13 h-13 rounded-full bg-gradient-to-b from-[#FFF2B8] via-[#D4AF37] to-[#9E6B18] text-[#23120B] border-2 border-[#FFF8D6] flex items-center justify-center mb-3 shadow-md group-hover:scale-108 transition-transform">
-                  <Gem className="w-6 h-6" />
-                </div>
-                <h3 className="font-serif font-bold text-base sm:text-[16.5px] text-[#23120B]">
-                  Handpicked Styles
-                </h3>
-                <p className="text-xs font-bold text-[#681145] uppercase tracking-wider mt-0.5">
-                  Latest Trends
-                </p>
-                <p className="text-[11.5px] text-[#5C3D1E] mt-1.5 leading-relaxed">
-                  Curated Kanchipuram silks, bridal lehengas &amp; festive kidswear updated weekly.
-                </p>
-              </div>
+          {/* Top-Left & Top-Right 3D Cream & Burgundy Floral Bouquets with 24K Gold Leaves */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_tl.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute top-0 left-0 w-36 md:w-48 lg:w-60 pointer-events-none z-20 select-none"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_tr.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute top-0 right-0 w-36 md:w-48 lg:w-60 pointer-events-none z-20 select-none"
+          />
+
+          {/* Bottom-Left & Bottom-Right 3D Floral Bouquets & Sweeping Royal Purple Silk Waves */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_bl.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute bottom-0 left-0 w-44 md:w-60 lg:w-72 pointer-events-none z-20 select-none"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_br.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute bottom-0 right-0 w-44 md:w-60 lg:w-72 pointer-events-none z-20 select-none"
+          />
+
+          {/* ============================================================= */}
+          {/* 1. 3D CROWN & "THE NALMARA PROMISE" SCALLOPED PLAQUE HEADER   */}
+          {/* ============================================================= */}
+          <div className="relative z-10 flex flex-col items-center text-center max-w-[980px] mx-auto">
+            {/* Top Crown & Promise Plaque Flanked by Extending Gold Filigree Lines */}
+            <div className="flex items-center justify-center w-full max-w-[920px] mx-auto">
+              <div className="hidden md:block h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8963E] to-[#9A6816] -mr-3 mt-4" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/nalmara/hd/why_choose_promise_plaque.png"
+                alt="The Nalmara Promise"
+                className="w-[290px] sm:w-[400px] md:w-[460px] h-auto object-contain select-none drop-shadow-[0_8px_18px_rgba(40,6,25,0.18)]"
+              />
+              <div className="hidden md:block h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8963E] to-[#9A6816] -ml-3 mt-4" />
             </div>
 
-            {/* Card 2: Premium Quality */}
-            <div className="group relative rounded-2xl p-[2px] bg-gradient-to-b from-[#D4AF37] via-[#FFE59E] to-[#9E6B18] shadow-[0_10px_24px_rgba(90,45,15,0.1)] hover:-translate-y-1.5 transition-all">
-              <div className="h-full rounded-[14px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF1DF] to-[#F2DFBE] px-5 pt-6 pb-5 text-center flex flex-col items-center">
-                <div className="w-13 h-13 rounded-full bg-gradient-to-b from-[#FFF2B8] via-[#D4AF37] to-[#9E6B18] text-[#23120B] border-2 border-[#FFF8D6] flex items-center justify-center mb-3 shadow-md group-hover:scale-108 transition-transform">
-                  <ShieldCheck className="w-6 h-6" />
-                </div>
-                <h3 className="font-serif font-bold text-base sm:text-[16.5px] text-[#23120B]">
-                  Premium Quality
-                </h3>
-                <p className="text-xs font-bold text-[#681145] uppercase tracking-wider mt-0.5">
-                  Best Fabrics
-                </p>
-                <p className="text-[11.5px] text-[#5C3D1E] mt-1.5 leading-relaxed">
-                  100% quality-inspected weaves, skin-friendly linings &amp; rich zari borders.
-                </p>
-              </div>
-            </div>
+            {/* Main Royal Burgundy-Plum Serif Headline */}
+            <h2 className="font-serif font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-[#4A0830] tracking-tight leading-[1.1] mt-1 sm:mt-1.5 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
+              Why Choose NALMARA FASHION?
+            </h2>
 
-            {/* Card 3: Perfect Fit & Stitching */}
-            <div className="group relative rounded-2xl p-[2px] bg-gradient-to-b from-[#D4AF37] via-[#FFE59E] to-[#9E6B18] shadow-[0_10px_24px_rgba(90,45,15,0.1)] hover:-translate-y-1.5 transition-all">
-              <div className="h-full rounded-[14px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF1DF] to-[#F2DFBE] px-5 pt-6 pb-5 text-center flex flex-col items-center">
-                <div className="w-13 h-13 rounded-full bg-gradient-to-b from-[#FFF8D6] to-[#E5C158] border-2 border-[#C8912E] flex items-center justify-center mb-3 shadow-md group-hover:scale-108 transition-transform">
-                  <MannequinDummyIcon className="w-8 h-8" />
-                </div>
-                <h3 className="font-serif font-bold text-base sm:text-[16.5px] text-[#23120B]">
-                  Perfect Fit &amp; Stitching
-                </h3>
-                <p className="text-xs font-bold text-[#681145] uppercase tracking-wider mt-0.5">
-                  With Care
-                </p>
-                <p className="text-[11.5px] text-[#5C3D1E] mt-1.5 leading-relaxed">
-                  Master tailors crafting custom Aari blouses, pattu pavadais &amp; bridal gowns.
-                </p>
-              </div>
-            </div>
+            {/* Italic Subtitle */}
+            <p className="font-serif italic text-xs sm:text-base lg:text-[18px] text-[#220915] font-medium mt-1 sm:mt-1.5">
+              Crafted with devotion in Thoothukudi for families across Tamil Nadu &amp; India
+            </p>
 
-            {/* Card 4: Trusted Customer Service */}
-            <div className="group relative rounded-2xl p-[2px] bg-gradient-to-b from-[#D4AF37] via-[#FFE59E] to-[#9E6B18] shadow-[0_10px_24px_rgba(90,45,15,0.1)] hover:-translate-y-1.5 transition-all">
-              <div className="h-full rounded-[14px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF1DF] to-[#F2DFBE] px-5 pt-6 pb-5 text-center flex flex-col items-center">
-                <div className="w-13 h-13 rounded-full bg-gradient-to-b from-[#FFF2B8] via-[#D4AF37] to-[#9E6B18] text-[#23120B] border-2 border-[#FFF8D6] flex items-center justify-center mb-3 shadow-md group-hover:scale-108 transition-transform">
-                  <Headphones className="w-6 h-6" />
-                </div>
-                <h3 className="font-serif font-bold text-base sm:text-[16.5px] text-[#23120B]">
-                  Trusted Customer Service
-                </h3>
-                <p className="text-xs font-bold text-[#681145] uppercase tracking-wider mt-0.5">
-                  Always Here for You
-                </p>
-                <p className="text-[11.5px] text-[#5C3D1E] mt-1.5 leading-relaxed">
-                  Personal WhatsApp styling assistance &amp; fast doorstep delivery across India.
-                </p>
-              </div>
+            {/* Upper 3D Golden Lotus Divider */}
+            <div className="flex items-center justify-center gap-2 mt-1.5 sm:mt-2 mb-2 sm:mb-3">
+              <span className="h-[1px] w-14 sm:w-24 bg-gradient-to-r from-transparent to-[#B88228]" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/nalmara/hd/why_choose_gold_lotus.png"
+                alt=""
+                aria-hidden="true"
+                className="w-24 sm:w-28 h-auto object-contain select-none"
+              />
+              <span className="h-[1px] w-14 sm:w-24 bg-gradient-to-l from-transparent to-[#B88228]" />
             </div>
+          </div>
+
+          {/* ============================================================= */}
+          {/* 2. 4 SCULPTED 3D ROYAL MUGHAL ARCH SHIELD PILLAR CARDS        */}
+          {/* ============================================================= */}
+          <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5 lg:gap-6 max-w-[1220px] mx-auto">
+            {[
+              {
+                medallion: '/images/nalmara/hd/why_choose_medallion_1.png',
+                title: 'Handpicked Styles',
+                kicker: 'LATEST TRENDS',
+                desc: 'Curated Kanchipuram silks, bridal lehengas & festive kidswear updated weekly.',
+              },
+              {
+                medallion: '/images/nalmara/hd/why_choose_medallion_2.png',
+                title: 'Premium Quality',
+                kicker: 'BEST FABRICS',
+                desc: '100% quality-inspected weaves, skin-friendly linings & rich zari borders.',
+              },
+              {
+                medallion: '/images/nalmara/hd/why_choose_medallion_3.png',
+                title: 'Perfect Fit & Stitching',
+                kicker: 'WITH CARE',
+                desc: 'Master tailors crafting custom Aari blouses, pattu pavadais & bridal gowns.',
+              },
+              {
+                medallion: '/images/nalmara/hd/why_choose_medallion_4.png',
+                title: 'Trusted Customer Service',
+                kicker: 'ALWAYS HERE FOR YOU',
+                desc: 'Personal WhatsApp styling assistance & fast doorstep delivery across India.',
+              },
+            ].map((card, idx) => (
+              <div
+                key={card.title}
+                className="group relative aspect-[240/272] w-full flex flex-col items-center justify-between text-center select-none transition-transform duration-300 hover:-translate-y-1.5"
+              >
+                {/* Sculpted 3D Royal Mughal Arch Shield Card Frame with Bottom Gold Lotus */}
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/nalmara/hd/why_choose_arch_shield_card.png"
+                  alt=""
+                  aria-hidden="true"
+                  className="absolute inset-0 w-full h-full object-fill pointer-events-none drop-shadow-[0_14px_28px_rgba(60,25,8,0.16)]"
+                />
+
+                {/* Card Interior Content Aligned Inside the Mughal Arch Shield */}
+                <div className="relative z-10 w-full h-full flex flex-col items-center justify-start pt-[11%] sm:pt-[11.5%] pb-[14%] px-[9%] sm:px-[10%]">
+                  {/* 3D Royal Plum & 24K Gold Medallion Icon */}
+                  <div className="w-[31%] sm:w-[33%] aspect-square shrink-0 mb-1.5 sm:mb-2.5 group-hover:scale-105 transition-transform duration-300">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={card.medallion}
+                      alt={card.title}
+                      className="w-full h-full object-contain drop-shadow-[0_6px_12px_rgba(40,6,25,0.22)]"
+                    />
+                  </div>
+
+                  {/* Bold Serif Pillar Title */}
+                  <h3
+                    className={`font-serif font-extrabold text-[#1E0A10] leading-[1.15] tracking-tight ${
+                      idx === 3
+                        ? 'text-[11.5px] sm:text-[16.5px] xl:text-[18px]'
+                        : 'text-[12.5px] sm:text-[18px] xl:text-[20px]'
+                    }`}
+                  >
+                    {card.title}
+                  </h3>
+
+                  {/* Scalloped Deep Royal Plum & 24K Gold Kicker Pill with 4-Point Stars */}
+                  <div className="mt-1 sm:mt-2 mb-1.5 sm:mb-2.5 inline-flex items-center">
+                    <span className="hidden sm:inline-block w-1.5 h-1.5 rotate-45 bg-[#D4AF37] -mr-1 z-10" />
+                    <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] border border-[#D4AF37] text-[#FFFDF9] text-[7px] sm:text-[9.5px] font-bold uppercase tracking-[0.08em] sm:tracking-[0.12em] shadow-[0_3px_8px_rgba(40,6,25,0.25)] whitespace-nowrap">
+                      <span className="text-[#FFE59E] text-[7px] sm:text-[9px]">✦</span>
+                      <span>{card.kicker}</span>
+                      <span className="text-[#FFE59E] text-[7px] sm:text-[9px]">✦</span>
+                    </span>
+                    <span className="hidden sm:inline-block w-1.5 h-1.5 rotate-45 bg-[#D4AF37] -ml-1 z-10" />
+                  </div>
+
+                  {/* Crisp 3-Line Description */}
+                  <p className="text-[9.5px] sm:text-[12.5px] xl:text-[13px] font-medium text-[#220915] leading-[1.35] sm:leading-[1.45] line-clamp-3">
+                    {card.desc}
+                  </p>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* ============================================================= */}
+          {/* 3. LOWER 3D GOLDEN LOTUS EMBLEM & FILIGREE RULE               */}
+          {/* ============================================================= */}
+          <div className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 mt-4 sm:mt-6">
+            <span className="h-[1.5px] w-20 sm:w-44 md:w-56 bg-gradient-to-r from-transparent via-[#C8963E] to-[#9A6816]" />
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/nalmara/hd/why_choose_gold_lotus.png"
+              alt=""
+              aria-hidden="true"
+              className="w-28 sm:w-36 h-auto object-contain select-none drop-shadow-[0_4px_10px_rgba(90,52,16,0.2)]"
+            />
+            <span className="h-[1.5px] w-20 sm:w-44 md:w-56 bg-gradient-to-l from-transparent via-[#C8963E] to-[#9A6816]" />
           </div>
         </div>
       </section>
