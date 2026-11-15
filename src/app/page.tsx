@@ -471,21 +471,43 @@ const STITCHING_ATELIER_CARDS = [
 const FAQ_ITEMS = [
   {
     id: 1,
+    category: 'Master Tailoring',
     question: 'What types of stitching services do you offer?',
     answer:
-      "We offer Saree Blouse Stitching, Bridal & Designer Aari Work Blouses, Girls' Frocks & Gowns, Pavadai Sattai & Pattu Pavadai, Lehenga Choli & Half Sarees, and Kurti & Salwar Stitching with perfect custom fitting.",
+      "We offer Saree Blouse Stitching, Bridal & Designer Aari Work Blouses, Girls' Frocks & Gowns, Pavadai Sattai & Pattu Pavadai, Lehenga Choli & Half Sarees, and Kurti & Salwar Stitching with perfect custom fitting and pure mulmul cotton lining.",
+    highlights: ['Princess & Katori Cut', 'Bridal Hand Aari & Zardozi', 'Soft Mulmul Lining'],
   },
   {
     id: 2,
-    question: 'Do you provide custom designs?',
+    category: 'Bespoke Design',
+    question: 'Do you provide custom neck designs & WhatsApp measurement support?',
     answer:
-      'Yes! You can share your reference neck designs, sleeve patterns, or measurements on WhatsApp (6383163609 | 7871207631) and our master tailors will stitch it to perfection.',
+      'Yes! You can share your reference neck designs, sleeve patterns, or sample garment measurements on WhatsApp (+91 63831 63609 | +91 78712 07631) and our master tailors in Thoothukudi will craft it to your exact fit.',
+    highlights: ['Video Call Assistance', 'Custom Neck & Sleeve Catalogue', 'Exact Fit Guarantee'],
   },
   {
     id: 3,
-    question: 'What is your delivery time?',
+    category: 'Express Shipping',
+    question: 'What is your delivery time across Tamil Nadu & India?',
     answer:
-      'Ready-to-ship sarees and dresses reach across Tamil Nadu in 1–3 business days (3–5 days across India). Custom stitched outfits are dispatched within 3–5 days.',
+      'Ready-to-ship silk sarees, kurtis, and festive kidswear reach across Tamil Nadu in 1–3 business days (3–5 days across India). Custom-stitched blouses and bridal outfits are dispatched within 2–5 business days with live tracking.',
+    highlights: ['1–3 Days in Tamil Nadu', '3–5 Days Pan-India', 'Insured Doorstep Courier'],
+  },
+  {
+    id: 4,
+    category: 'Saree + Blouse',
+    question: 'Can I order a saree with custom blouse stitching & fall-pico done?',
+    answer:
+      'Absolutely! When ordering any Kanchipuram silk, soft silk, or designer saree, you can opt for ready-to-wear finishing including saree fall & pico edging, tassel (kuchu) knotting, and custom-stitched blouse before dispatch.',
+    highlights: ['Fall & Pico Finishing', 'Bridal Tassel Work', 'Ready-to-Drape Delivery'],
+  },
+  {
+    id: 5,
+    category: 'Kids Couture',
+    question: "How do you ensure comfort in Girls' Pattu Pavadai & Party Frocks?",
+    answer:
+      'Every kidswear outfit is lined with 100% breathable, hypoallergenic soft cotton so zari borders and sequins never touch delicate skin. We also include extra inner seam allowance (growth tuck) so the outfit grows with your child.',
+    highlights: ['Skin-Friendly Cotton Lining', 'Extra Growth Seam Margin', 'Featherlight Cancan'],
   },
 ];
 
@@ -574,11 +596,24 @@ export default function HomePage() {
   const [bestSellerStartIndex, setBestSellerStartIndex] = useState(0);
 
   const [liveReviews, setLiveReviews] = useState<any[]>([]);
+  const [googleReviews, setGoogleReviews] = useState<any[]>([]);
+  const [googleMeta, setGoogleMeta] = useState<{
+    overallRating: number;
+    totalReviews: number;
+    googleMapsUrl: string;
+    googleReviewUrl: string;
+  }>({
+    overallRating: 5.0,
+    totalReviews: 9,
+    googleMapsUrl: 'https://g.page/r/CTOKP0LCfhhDEAE/review',
+    googleReviewUrl: 'https://g.page/r/CTOKP0LCfhhDEAE/review',
+  });
   const [isReviewsLoading, setIsReviewsLoading] = useState(true);
   const [reviewStartIndex, setReviewStartIndex] = useState(0);
 
   const [igPosts, setIgPosts] = useState<any[]>([]);
   const [likedInspire, setLikedInspire] = useState<Record<string, boolean>>({});
+  const [instaStartIndex, setInstaStartIndex] = useState(0);
 
   const { addItem, setIsCartOpen } = useCartStore();
   const { toggleWishlist, isInWishlist } = useWishlistStore();
@@ -662,8 +697,29 @@ export default function HomePage() {
       }
     };
 
+    const loadGoogleReviews = async () => {
+      try {
+        const res = await fetch('/api/google-reviews');
+        const data = await res.json();
+        if (isMounted && Array.isArray(data?.reviews) && data.reviews.length > 0) {
+          setGoogleReviews(data.reviews);
+          setGoogleMeta({
+            overallRating: Number(data.overallRating) || 5.0,
+            totalReviews: Number(data.totalReviews) || (data.reviews?.length ?? 9),
+            googleMapsUrl:
+              data.googleMapsUrl || 'https://g.page/r/CTOKP0LCfhhDEAE/review',
+            googleReviewUrl:
+              data.googleReviewUrl || 'https://g.page/r/CTOKP0LCfhhDEAE/review',
+          });
+        }
+      } catch {
+        // Ignore
+      }
+    };
+
     loadLiveCatalogAndReviews();
     loadInstagramFeed();
+    loadGoogleReviews();
 
     return () => {
       isMounted = false;
@@ -809,32 +865,192 @@ export default function HomePage() {
         )
       : bestSellerProducts;
 
-  const visibleReviews =
-    liveReviews.length > 3
-      ? Array.from({ length: 3 }, (_, i) => liveReviews[(reviewStartIndex + i) % liveReviews.length])
-      : liveReviews;
+  const allHappyReviews = React.useMemo(() => {
+    const defaultGoogleReviews = [
+      {
+        _id: 'serp-vidhya-b',
+        rating: 5,
+        comment:
+          "Thank you, Nalmara, for this beautiful saree! ❤️ I really loved it. The colour shade is exactly what I expected, and I'm so happy that I received the same colour I had in mind. The quality is really good and totally worth the price. The packaging was neat, and the delivery was also on time. Truly satisfied with the overall experience! 😊✨",
+        authorBadge: 'Local Guide • 4 reviews',
+        relativeTime: '3 weeks ago',
+        reviewUrl: googleMeta.googleReviewUrl,
+        isGoogle: true,
+        user: {
+          firstName: 'Vidhya',
+          lastName: 'B',
+          avatar:
+            'https://lh3.googleusercontent.com/a-/ALV-UjUOKE0PanhBD9XX_QvgxQRK_a2G5J7Femqy7dRiWHqJGekUb0ue=s64-c-rp-mo-br100',
+        },
+      },
+      {
+        _id: 'serp-ranjini-priya',
+        rating: 5,
+        comment:
+          'I had a wonderful shopping experience with Nalmara Fashion! ❤️ I purchased a saree for my mom, and the product was absolutely beautiful. The design was lovely, the quality was excellent, and the price was very reasonable. The saree was exactly what I expected, and the delivery was quick and right on time as promised. Highly recommended! 💖✨',
+        authorBadge: 'Local Guide • 2 reviews',
+        relativeTime: 'a month ago',
+        reviewUrl: googleMeta.googleReviewUrl,
+        isGoogle: true,
+        user: {
+          firstName: 'Ranjini',
+          lastName: 'priya',
+          avatar:
+            'https://lh3.googleusercontent.com/a-/ALV-UjURuyIfqgxPq8WV7nzpadG7EgnqVcs4h_mJHilkA_srVviJlZgScg=s64-c-rp-mo-br100',
+        },
+      },
+      {
+        _id: 'serp-kalai-selvi',
+        rating: 5,
+        comment:
+          'Recently I came across Nalmara Fashion on Instagram and saw their kurti and saree collections. I ordered a kurti and the experience was beyond expectations! The material, lining, and custom stitching were tailored perfectly to my size. The fabric quality is really good and the fitting & finishing are just perfect 😍💜. Packed beautifully and shipped so quickly!',
+        authorBadge: 'Verified Google Reviewer',
+        relativeTime: '3 weeks ago',
+        reviewUrl: googleMeta.googleReviewUrl,
+        isGoogle: true,
+        user: {
+          firstName: 'Kalai',
+          lastName: 'Selvi',
+          avatar:
+            'https://lh3.googleusercontent.com/a-/ALV-UjXGQdnN_lZdv9dXmp76m2L8iOqSJourUOVvjLQ_G7lcciZ05Ro=s64-c-rp-mo-br100',
+        },
+      },
+      {
+        _id: 'serp-jayashree-s',
+        rating: 5,
+        comment:
+          'Love the collection at Nalmara Fashion! Great quality, beautiful styles, and wonderful customer service. Highly recommended!',
+        authorBadge: 'Local Guide • 3 reviews',
+        relativeTime: '3 weeks ago',
+        reviewUrl: googleMeta.googleReviewUrl,
+        isGoogle: true,
+        user: {
+          firstName: 'Jayashree',
+          lastName: 'S',
+          avatar:
+            'https://lh3.googleusercontent.com/a-/ALV-UjVigjwyFIdB2kJj-M0JAyguG6YACPLZySDK4L0Mk91uQ_UeThav=s64-c-rp-mo-br100',
+        },
+      },
+      {
+        _id: 'serp-brindha-selvi',
+        rating: 5,
+        comment:
+          "Fabric is soft, color doesn't bleed, border is neat, falls nicely when draped and delivery was on time. Value for money. Thank you! Nalmara Fashion :)",
+        authorBadge: 'Local Guide • 2 reviews',
+        relativeTime: '3 weeks ago',
+        reviewUrl: googleMeta.googleReviewUrl,
+        isGoogle: true,
+        user: {
+          firstName: 'brindha',
+          lastName: 'selvi',
+          avatar:
+            'https://lh3.googleusercontent.com/a-/ALV-UjXNs4wgc_hjDjBImYlL_5u1xsC0Q8YZq4VZGHmWsRO8DXYh49mK=s64-c-rp-mo-br100',
+        },
+      },
+      {
+        _id: 'serp-surya-k',
+        rating: 5,
+        comment:
+          'I purchased this saree from Nalmara Fashion for my family. The quality is really good, and the design is beautiful. The saree looks elegant and is worth the price. My family is happy with the purchase. Thank you, Nalmara Fashion! ❤️',
+        authorBadge: 'Local Guide • 3 reviews',
+        relativeTime: '3 weeks ago',
+        reviewUrl: googleMeta.googleReviewUrl,
+        isGoogle: true,
+        user: {
+          firstName: 'Surya',
+          lastName: 'K',
+          avatar:
+            'https://lh3.googleusercontent.com/a-/ALV-UjVWPNYCzlLPqHOWL-OvZDCe1AN0uuHlfF688tHe0EtnotjF50h5=s64-c-rp-mo-br100',
+        },
+      },
+    ];
 
-  // Derive Style Inspiration items from live Instagram feed or live API products
-  const styleInspirationList =
-    igPosts.length > 0
-      ? igPosts.slice(0, 6).map((post: any) => ({
-          id: String(post.id),
-          title: post.title || '@nalmarafashion',
-          image: resolveMediaUrl(post.image),
-          href: post.permalink || 'https://www.instagram.com/nalmarafashion',
-          external: true,
-        }))
-      : liveProducts.slice(0, 6).map((prod) => ({
-          id: String(prod._id),
-          title: prod.name,
-          image:
-            resolveMediaUrl(prod.images?.[0]?.url) ||
-            getCategoryFallbackImage(
-              typeof prod.category === 'object' ? prod.category?.slug : prod.name
-            ),
-          href: `/product/${prod.slug}`,
-          external: false,
-        }));
+    const normalizedGoogle =
+      googleReviews.length > 0
+        ? googleReviews.map((g: any, idx: number) => {
+            const parts = String(g.authorName || 'Preethi Sundar').split(' ');
+            return {
+              _id: g.id || `g-rev-${idx}`,
+              rating: Number(g.rating) || 5,
+              comment: g.comment,
+              authorBadge: g.authorBadge || 'Verified Google Review',
+              relativeTime: g.relativeTime || 'Recent on Google',
+              reviewUrl: g.reviewUrl || googleMeta.googleMapsUrl,
+              isGoogle: true,
+              user: {
+                firstName: parts[0] || 'Preethi',
+                lastName: parts.slice(1).join(' ') || 'Sundar',
+                avatar: g.avatar || '/images/nalmara/hd/happy_faq_reviewer_avatar.png',
+              },
+            };
+          })
+        : defaultGoogleReviews;
+
+    const normalizedLive = liveReviews.map((rev: any) => ({
+      ...rev,
+      authorBadge: 'Verified Google & Store Patron',
+      relativeTime: 'Verified Purchase',
+      reviewUrl: googleMeta.googleMapsUrl,
+      isGoogle: true,
+    }));
+
+    return [...normalizedGoogle, ...normalizedLive];
+  }, [googleReviews, liveReviews, googleMeta.googleMapsUrl]);
+
+  const displayHappyReviews = React.useMemo(() => {
+    return Array.from(
+      { length: 3 },
+      (_, i) => allHappyReviews[(reviewStartIndex + i) % allHappyReviews.length]
+    );
+  }, [allHappyReviews, reviewStartIndex]);
+
+  // Derive Style Inspiration items from live Instagram feed or live API products (always ensuring at least 5 items)
+  const styleInspirationList = React.useMemo(() => {
+    const primary =
+      igPosts.length > 0
+        ? igPosts.map((post: any) => ({
+            id: String(post.id),
+            title: post.title || '@nalmarafashion',
+            image: resolveMediaUrl(post.image),
+            href: post.permalink || 'https://www.instagram.com/nalmarafashion',
+            external: true,
+          }))
+        : liveProducts.map((prod) => ({
+            id: String(prod._id),
+            title: prod.name,
+            image:
+              resolveMediaUrl(prod.images?.[0]?.url) ||
+              getCategoryFallbackImage(
+                typeof prod.category === 'object' ? prod.category?.slug : prod.name
+              ),
+            href: `/product/${prod.slug}`,
+            external: false,
+          }));
+
+    if (primary.length >= 5) return primary;
+
+    const padded = [...primary];
+    for (let i = primary.length; i < 5; i++) {
+      const fb = HERO_SHOWCASE_FALLBACK[i % HERO_SHOWCASE_FALLBACK.length];
+      padded.push({
+        id: `fallback-insta-${fb.id}-${i}`,
+        title: fb.name,
+        image: fb.image,
+        href: '/shop',
+        external: false,
+      });
+    }
+    return padded;
+  }, [igPosts, liveProducts]);
+
+  const visibleStyleInspiration = React.useMemo(
+    () =>
+      Array.from(
+        { length: 5 },
+        (_, i) => styleInspirationList[(instaStartIndex + i) % styleInspirationList.length]
+      ),
+    [styleInspirationList, instaStartIndex]
+  );
 
   const handleAddToCart = async (prod: Product, e: React.MouseEvent) => {
     e.preventDefault();
@@ -4043,303 +4259,1388 @@ export default function HomePage() {
       {/* =================================================================== */}
       {/* 07. STYLE INSPIRATION ("Follow Us @nalmarafashion" — Live Feed)     */}
       {/* =================================================================== */}
-      {styleInspirationList.length > 0 && (
-        <section className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12 py-6 sm:py-9">
-          <GoldSectionHeader
-            badge="ROYAL LOOKBOOK"
-            title="Style Inspiration"
-            subtitle="Follow Us @nalmarafashion"
+      {visibleStyleInspiration.length > 0 && (
+        <section
+          className="relative w-full overflow-hidden py-10 sm:py-14 border-b border-[#D4AF37]/45"
+          style={{
+            background:
+              'radial-gradient(ellipse at 50% 18%, #FFFDF9 0%, #FDF5E6 48%, #F4E0BE 100%)',
+          }}
+        >
+          {/* Ambient Champagne-Silk Diagonal Drapery Folds & Golden Glow */}
+          <div
+            className="pointer-events-none absolute inset-0 opacity-85"
+            style={{
+              backgroundImage:
+                'radial-gradient(circle at 50% 12%, rgba(255,244,194,0.55) 0%, transparent 45%), linear-gradient(125deg, rgba(255,253,249,0.92) 0%, rgba(235,205,156,0.32) 28%, rgba(255,253,249,0.94) 54%, rgba(230,196,142,0.38) 78%, rgba(255,253,249,0.90) 100%)',
+            }}
           />
 
-          <div className="flex flex-col lg:flex-row items-center gap-4">
-            {/* Live Lookbook Cards */}
-            <div className="flex-1 w-full grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5">
-              {styleInspirationList.map((item) => {
-                const isLiked = Boolean(likedInspire[item.id]);
-                const fallbackImg = getCategoryFallbackImage(item.title);
-                return (
-                  <div
-                    key={item.id}
-                    className="group relative aspect-[4/3.6] rounded-2xl p-[2px] bg-gradient-to-b from-[#FFE59E] via-[#C8963E] to-[#8C5818] shadow-[0_8px_22px_rgba(90,45,15,0.16)] hover:-translate-y-1.5 transition-all"
+          {/* 4-CORNER DEDICATED 3D ROYAL ROSE BOUQUETS & BOTTOM ROYAL PURPLE SILK WAVES */}
+          {/* Top-Left 3D Burgundy & Cream Rose Bouquet */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/insta_corner_tl.png"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none select-none absolute top-0 left-0 w-28 sm:w-44 lg:w-60 h-auto object-contain z-20"
+          />
+          {/* Top-Right 3D Burgundy & Cream Rose Bouquet */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/insta_corner_tr.png"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none select-none absolute top-0 right-0 w-28 sm:w-44 lg:w-60 h-auto object-contain z-20"
+          />
+          {/* Bottom-Left Sweeping 3D Royal Purple Silk Waves & Corner Rose Bouquet */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/insta_corner_bl.png"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none select-none absolute bottom-0 left-0 w-48 sm:w-80 lg:w-[470px] h-auto object-contain z-20"
+          />
+          {/* Bottom-Right Sweeping 3D Royal Purple Silk Waves & Corner Rose Bouquet */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/insta_corner_br.png"
+            alt=""
+            aria-hidden="true"
+            className="pointer-events-none select-none absolute bottom-0 right-0 w-48 sm:w-80 lg:w-[470px] h-auto object-contain z-20"
+          />
+
+          <div className="relative z-20 max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-14">
+            {/* TOP HEADER BLOCK: 3D GOLD CROWN & "ROYAL LOOKBOOK" PLAQUE + HEADLINE + INSTAGRAM MEDALLION DIVIDER */}
+            <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
+              {/* Crown & ROYAL LOOKBOOK Plaque Flanked by Horizontal Tapered Gold Lines */}
+              <div className="flex items-center justify-center w-full max-w-[920px]">
+                <span className="hidden sm:block h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8922E] to-[#8C5818]" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/nalmara/hd/insta_royal_lookbook_plaque.png"
+                  alt="Royal Lookbook"
+                  className="w-[270px] sm:w-[370px] lg:w-[430px] h-auto object-contain mx-1 sm:mx-2 drop-shadow-[0_8px_18px_rgba(74,10,46,0.22)]"
+                />
+                <span className="hidden sm:block h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8922E] to-[#8C5818]" />
+              </div>
+
+              {/* Main Serif Title: Style Inspiration */}
+              <h2 className="font-serif font-bold text-2xl sm:text-4xl lg:text-[48px] text-[#4A0830] tracking-tight leading-[1.1] mt-1 drop-shadow-[0_2px_6px_rgba(255,253,249,0.95)]">
+                Style Inspiration
+              </h2>
+
+              {/* Subtitle Link: Follow Us @nalmarafashion */}
+              <a
+                href="https://www.instagram.com/nalmarafashion"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-serif font-bold text-sm sm:text-lg lg:text-[21px] text-[#4A0830] hover:text-[#6E0D48] transition-colors mt-1"
+              >
+                Follow Us @nalmarafashion
+              </a>
+
+              {/* Centered Royal Plum Instagram Medallion & 3D Faceted Gold Diamond Divider */}
+              <div className="flex items-center justify-center gap-2 sm:gap-2.5 mt-2 w-full max-w-[460px]">
+                <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8922E] to-[#8C5818]" />
+                <span className="w-1.5 h-1.5 rotate-45 bg-[#C8922E] shrink-0" />
+                <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
+                <a
+                  href="https://www.instagram.com/nalmarafashion"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram @nalmarafashion"
+                  className="w-7.5 h-7.5 sm:w-8.5 sm:h-8.5 rounded-full p-[1.5px] bg-gradient-to-b from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] shadow-[0_4px_12px_rgba(74,10,46,0.32)] hover:scale-110 transition-transform shrink-0"
+                >
+                  <span
+                    className="w-full h-full rounded-full flex items-center justify-center text-[#FFFDF9] border border-[#FFE59E]/50"
+                    style={{
+                      background:
+                        'radial-gradient(circle at 50% 35%, #630E42 0%, #2B031A 100%)',
+                    }}
                   >
-                    <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-[#EED9BA]">
-                      <Link
-                        href={item.href}
-                        target={item.external ? '_blank' : undefined}
-                        rel={item.external ? 'noopener noreferrer' : undefined}
-                        className="block w-full h-full"
-                      >
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src={item.image || fallbackImg}
-                          alt={item.title}
-                          onError={(e) => {
-                            const target = e.currentTarget;
-                            if (target.src !== fallbackImg) {
-                              target.src = fallbackImg;
-                            }
-                          }}
-                          className="w-full h-full object-cover object-top group-hover:scale-110 transition-transform duration-500"
-                        />
-                        {/* Bottom Subtle Luxury Label Overlay */}
-                        <div className="absolute inset-x-0 bottom-0 pt-6 pb-2 px-2 bg-gradient-to-t from-[#220415]/85 via-[#220415]/40 to-transparent">
-                          <p className="text-[10.5px] font-serif font-semibold text-[#FFF4C2] text-center truncate">
-                            {item.title}
-                          </p>
-                        </div>
-                      </Link>
-                      <button
-                        type="button"
-                        onClick={() =>
-                          setLikedInspire((prev) => ({ ...prev, [item.id]: !prev[item.id] }))
-                        }
-                        className="absolute top-2 right-2 z-10 w-6.5 h-6.5 rounded-full bg-[#FFFDF9]/95 border border-[#D4AF37] flex items-center justify-center text-[#23120B] shadow-sm cursor-pointer transition-transform hover:scale-110"
-                        aria-label="Like style"
-                      >
-                        <Heart
-                          className={`w-3.5 h-3.5 ${
-                            isLiked
-                              ? 'fill-rose-600 text-rose-600'
-                              : 'fill-[#3D1D1A] text-[#3D1D1A]'
-                          }`}
-                        />
-                      </button>
-                    </div>
-                  </div>
-                );
-              })}
+                    <Instagram className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2]" />
+                  </span>
+                </a>
+                <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
+                <span className="w-1.5 h-1.5 rotate-45 bg-[#C8922E] shrink-0" />
+                <span className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8922E] to-[#8C5818]" />
+              </div>
             </div>
 
-            {/* Right Side: "Follow Us →" Pill Button + Instagram Icon */}
-            <div className="flex lg:flex-col items-center justify-center gap-3 shrink-0 lg:pl-2">
-              <a
-                href="https://www.instagram.com/nalmarafashion"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#5B0E3D] to-[#3D0829] hover:from-[#73134E] hover:to-[#5B0E3D] text-[#FFFDF9] border border-[#D4AF37] text-xs font-serif font-bold shadow-md transition-all hover:scale-105"
+            {/* 5-CARD ROYAL LOOKBOOK GALLERY WITH LEFT < AND RIGHT > PEARL-GOLD ARROWS */}
+            <div className="relative px-2 sm:px-6 lg:px-8">
+              {/* Subtle Gold Leaf Sprigs Behind Outer Left & Outer Right Cards */}
+              <svg
+                viewBox="0 0 90 90"
+                fill="none"
+                aria-hidden="true"
+                className="hidden lg:block pointer-events-none absolute -top-9 left-2 w-20 h-20 opacity-70 z-0"
               >
-                <span>Follow Us</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#FFE59E]" />
-              </a>
+                <path
+                  d="M15 78C26 52 46 30 74 14"
+                  stroke="#B88228"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                />
+                <path d="M30 56C22 48 20 36 28 32C34 38 34 48 30 56Z" stroke="#B88228" strokeWidth="1.2" fill="#E8C77B" fillOpacity="0.38" />
+                <path d="M46 40C38 32 36 20 44 16C50 22 50 32 46 40Z" stroke="#B88228" strokeWidth="1.2" fill="#E8C77B" fillOpacity="0.38" />
+                <path d="M42 60C52 56 62 58 64 66C56 68 46 66 42 60Z" stroke="#B88228" strokeWidth="1.2" fill="#E8C77B" fillOpacity="0.38" />
+              </svg>
+              <svg
+                viewBox="0 0 90 90"
+                fill="none"
+                aria-hidden="true"
+                className="hidden lg:block pointer-events-none absolute -top-9 right-2 w-20 h-20 opacity-70 -scale-x-100 z-0"
+              >
+                <path
+                  d="M15 78C26 52 46 30 74 14"
+                  stroke="#B88228"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                />
+                <path d="M30 56C22 48 20 36 28 32C34 38 34 48 30 56Z" stroke="#B88228" strokeWidth="1.2" fill="#E8C77B" fillOpacity="0.38" />
+                <path d="M46 40C38 32 36 20 44 16C50 22 50 32 46 40Z" stroke="#B88228" strokeWidth="1.2" fill="#E8C77B" fillOpacity="0.38" />
+                <path d="M42 60C52 56 62 58 64 66C56 68 46 66 42 60Z" stroke="#B88228" strokeWidth="1.2" fill="#E8C77B" fillOpacity="0.38" />
+              </svg>
+
+              {/* Left Circular Pearl & 24K Gold Bezel Navigation Arrow */}
+              <button
+                type="button"
+                onClick={() =>
+                  setInstaStartIndex(
+                    (prev) =>
+                      (prev - 1 + Math.max(1, styleInspirationList.length)) %
+                      Math.max(1, styleInspirationList.length)
+                  )
+                }
+                aria-label="Previous lookbook inspiration"
+                className="absolute -left-1.5 sm:-left-1 lg:-left-2.5 top-1/2 -translate-y-1/2 z-30 w-9.5 h-9.5 sm:w-11 sm:h-11 rounded-full p-[2.5px] bg-gradient-to-b from-[#FFF9E2] via-[#D4AF37] to-[#8C5818] shadow-[0_8px_22px_rgba(74,10,46,0.32)] hover:scale-108 active:scale-95 transition-transform cursor-pointer"
+              >
+                <span
+                  className="w-full h-full rounded-full flex items-center justify-center text-[#380523] border border-[#FFFDF9] shadow-inner"
+                  style={{
+                    background:
+                      'radial-gradient(circle at 50% 35%, #FFFDF9 0%, #FAF0DC 62%, #E5C892 100%)',
+                  }}
+                >
+                  <ChevronLeft className="w-5 h-5 stroke-[2.6]" />
+                </span>
+              </button>
+
+              {/* Right Circular Pearl & 24K Gold Bezel Navigation Arrow */}
+              <button
+                type="button"
+                onClick={() =>
+                  setInstaStartIndex(
+                    (prev) => (prev + 1) % Math.max(1, styleInspirationList.length)
+                  )
+                }
+                aria-label="Next lookbook inspiration"
+                className="absolute -right-1.5 sm:-right-1 lg:-right-2.5 top-1/2 -translate-y-1/2 z-30 w-9.5 h-9.5 sm:w-11 sm:h-11 rounded-full p-[2.5px] bg-gradient-to-b from-[#FFF9E2] via-[#D4AF37] to-[#8C5818] shadow-[0_8px_22px_rgba(74,10,46,0.32)] hover:scale-108 active:scale-95 transition-transform cursor-pointer"
+              >
+                <span
+                  className="w-full h-full rounded-full flex items-center justify-center text-[#380523] border border-[#FFFDF9] shadow-inner"
+                  style={{
+                    background:
+                      'radial-gradient(circle at 50% 35%, #FFFDF9 0%, #FAF0DC 62%, #E5C892 100%)',
+                  }}
+                >
+                  <ChevronRight className="w-5 h-5 stroke-[2.6]" />
+                </span>
+              </button>
+
+              {/* 5 Portrait Sculpted 3D 24K Gold Royal Lookbook Cards */}
+              <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
+                {visibleStyleInspiration.map((item, idx) => {
+                  const isLiked = Boolean(likedInspire[item.id]);
+                  const fallbackImg = getCategoryFallbackImage(item.title);
+                  return (
+                    <div
+                      key={`${item.id}-${idx}`}
+                      className={`group relative aspect-[3/3.88] rounded-[22px] p-[3.5px] shadow-[0_16px_34px_rgba(68,20,8,0.26)] hover:-translate-y-1.5 transition-all duration-300 ${
+                        idx === 4
+                          ? 'col-span-2 sm:col-span-1 max-w-[240px] sm:max-w-none mx-auto w-full'
+                          : ''
+                      }`}
+                      style={{
+                        background:
+                          'linear-gradient(145deg, #FFFDF7 0%, #FFE59E 22%, #D4AF37 52%, #8C5818 82%, #FFE59E 100%)',
+                      }}
+                    >
+                      {/* Top-Left & Bottom-Right 24K Gold Specular Gleam */}
+                      <span className="pointer-events-none absolute -top-0.5 left-6 w-12 h-[2px] bg-gradient-to-r from-transparent via-[#FFFDF9] to-transparent z-30" />
+                      <span className="pointer-events-none absolute -bottom-0.5 right-6 w-12 h-[2px] bg-gradient-to-r from-transparent via-[#FFFDF9] to-transparent z-30" />
+
+                      {/* Inner Sculpted 24K Gold Double Bevel Frame */}
+                      <div className="relative w-full h-full rounded-[18.5px] p-[3px] bg-gradient-to-b from-[#FFF8E2] via-[#E5C278] to-[#9E6B18] shadow-inner">
+                        {/* Corner Royal Gold Bracket Filigrees */}
+                        <span className="pointer-events-none absolute top-1.5 left-1.5 w-3.5 h-3.5 rounded-tl-[8px] border-t-2 border-l-2 border-[#FFF9E6] z-30" />
+                        <span className="pointer-events-none absolute top-1.5 right-1.5 w-3.5 h-3.5 rounded-tr-[8px] border-t-2 border-r-2 border-[#FFF9E6] z-30" />
+                        <span className="pointer-events-none absolute bottom-1.5 left-1.5 w-3.5 h-3.5 rounded-bl-[8px] border-b-2 border-l-2 border-[#FFE59E] z-30" />
+                        <span className="pointer-events-none absolute bottom-1.5 right-1.5 w-3.5 h-3.5 rounded-br-[8px] border-b-2 border-r-2 border-[#FFE59E] z-30" />
+
+                        <div className="relative w-full h-full rounded-[15.5px] overflow-hidden bg-[#2A041A] border border-[#FFF4C2]/80">
+                          <Link
+                            href={item.href}
+                            target={item.external ? '_blank' : undefined}
+                            rel={item.external ? 'noopener noreferrer' : undefined}
+                            className="block w-full h-full"
+                          >
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img
+                              src={item.image || fallbackImg}
+                              alt={item.title}
+                              onError={(e) => {
+                                const target = e.currentTarget;
+                                if (target.src !== fallbackImg) {
+                                  target.src = fallbackImg;
+                                }
+                              }}
+                              className="w-full h-full object-cover object-top group-hover:scale-108 transition-transform duration-500"
+                            />
+                            {/* Subtle bottom vignette for legibility */}
+                            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-22 bg-gradient-to-t from-[#1A010E]/80 via-[#1A010E]/25 to-transparent" />
+                          </Link>
+
+                          {/* Top-Right 3D Embossed Pearl-Ivory & Gold Coin Badge with Deep Plum Instagram Icon */}
+                          <a
+                            href={item.external ? item.href : 'https://www.instagram.com/nalmarafashion'}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`View ${item.title} on Instagram`}
+                            className="absolute top-2.5 right-2.5 z-20 w-8.5 h-8.5 sm:w-9.5 sm:h-9.5 rounded-full p-[2px] bg-gradient-to-b from-[#FFF9E2] via-[#D4AF37] to-[#8C5818] shadow-[0_5px_14px_rgba(0,0,0,0.45)] hover:scale-110 transition-transform"
+                          >
+                            <span
+                              className="w-full h-full rounded-full flex items-center justify-center border border-[#FFFDF9]"
+                              style={{
+                                background:
+                                  'radial-gradient(circle at 50% 30%, #FFFDF9 0%, #F7E8C8 65%, #DFBF82 100%)',
+                              }}
+                            >
+                              <span className="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-[6px] bg-gradient-to-b from-[#520A35] to-[#220214] flex items-center justify-center text-[#FFFDF9] shadow-2xs">
+                                <Instagram className="w-3.5 h-3.5 stroke-[2.3]" />
+                              </span>
+                            </span>
+                          </a>
+
+                          {/* Bottom Sculpted 3D Royal Plum & 24K Gold Capsule Bar with Heart + Uppercase Title */}
+                          <div className="absolute inset-x-1.5 sm:inset-x-2 bottom-1.5 sm:bottom-2 z-20">
+                            <div
+                              className="relative rounded-full p-[1.8px] shadow-[0_8px_18px_rgba(14,1,8,0.82)]"
+                              style={{
+                                background:
+                                  'linear-gradient(90deg, #9E6B18 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #9E6B18 100%)',
+                              }}
+                            >
+                              <div
+                                className="px-2.5 py-1.5 rounded-full border border-[#FFE59E]/45 flex items-center gap-1.5 shadow-[inset_0_1px_2px_rgba(255,244,194,0.38)]"
+                                style={{
+                                  background:
+                                    'linear-gradient(180deg, #560B37 0%, #2D031B 58%, #16010D 100%)',
+                                }}
+                              >
+                                <button
+                                  type="button"
+                                  onClick={(e) => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    setLikedInspire((prev) => ({
+                                      ...prev,
+                                      [item.id]: !prev[item.id],
+                                    }));
+                                  }}
+                                  aria-label="Like style"
+                                  className="shrink-0 text-[#FFF4C2] hover:scale-115 transition-transform cursor-pointer"
+                                >
+                                  <Heart
+                                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
+                                      isLiked
+                                        ? 'fill-rose-500 text-rose-500'
+                                        : 'text-[#FFE59E] stroke-[2.2]'
+                                    }`}
+                                  />
+                                </button>
+                                <Link
+                                  href={item.href}
+                                  target={item.external ? '_blank' : undefined}
+                                  rel={item.external ? 'noopener noreferrer' : undefined}
+                                  className="flex-1 min-w-0 font-serif font-bold text-[9.5px] sm:text-[10.5px] lg:text-[11px] uppercase tracking-[0.04em] text-[#FFFDF9] truncate text-center pr-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)]"
+                                >
+                                  {item.title}
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+
+            {/* BOTTOM CENTERED SCALLOPED 3D ROYAL PLUM & 24K GOLD "Follow Us →" CTA BUTTON */}
+            <div className="mt-7 sm:mt-9 flex items-center justify-center gap-2.5 sm:gap-4 max-w-[820px] mx-auto">
+              {/* Left Tapered Gold Filigree Line + 3D Faceted Triple Diamond Finials */}
+              <div className="flex items-center gap-1.5 flex-1">
+                <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8922E] to-[#8C5818]" />
+                <span className="w-1.5 h-1.5 rotate-45 bg-gradient-to-br from-[#FFE59E] to-[#8C5818] shrink-0" />
+                <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
+                <span className="w-3 h-3 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#E5B84B] to-[#8C5818] border border-[#6E420C] shadow-xs shrink-0" />
+              </div>
 
               <a
                 href="https://www.instagram.com/nalmarafashion"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-9 h-9 rounded-xl bg-gradient-to-b from-[#FFFDF9] to-[#F3E0C0] border-[1.5px] border-[#23120B] text-[#23120B] hover:bg-[#5B0E3D] hover:text-[#FFE59E] hover:border-[#D4AF37] flex items-center justify-center shadow-xs transition-all"
-                aria-label="Instagram @nalmarafashion"
+                className="group relative rounded-full p-[3.5px] shadow-[0_14px_32px_rgba(42,4,26,0.48)] hover:scale-105 active:scale-95 transition-transform shrink-0"
+                style={{
+                  background:
+                    'linear-gradient(90deg, #9E6B18 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #9E6B18 100%)',
+                }}
               >
-                <Instagram className="w-4.5 h-4.5" />
+                <span
+                  className="inline-flex items-center gap-2.5 px-7 sm:px-10 py-2 sm:py-2.5 rounded-full border border-[#FFE59E]/85 font-serif font-bold text-sm sm:text-base lg:text-[18.5px] text-[#FFFDF9] tracking-wide shadow-[inset_0_1px_3px_rgba(255,244,194,0.5)]"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, #5E0E3F 0%, #360422 55%, #1B0110 100%)',
+                  }}
+                >
+                  <Instagram className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[#FFFDF9] stroke-[2.2]" />
+                  <span>Follow Us</span>
+                  <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#FFE59E] group-hover:translate-x-1 transition-transform" />
+                </span>
               </a>
+
+              {/* Right 3D Faceted Triple Diamond Finials + Tapered Gold Filigree Line */}
+              <div className="flex items-center gap-1.5 flex-1">
+                <span className="w-3 h-3 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#E5B84B] to-[#8C5818] border border-[#6E420C] shadow-xs shrink-0" />
+                <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
+                <span className="w-1.5 h-1.5 rotate-45 bg-gradient-to-br from-[#FFE59E] to-[#8C5818] shrink-0" />
+                <span className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8922E] to-[#8C5818]" />
+              </div>
             </div>
           </div>
         </section>
       )}
 
       {/* =================================================================== */}
-      {/* 08. SPLIT SECTION: HAPPY CUSTOMERS (LIVE API REVIEWS) & FAQs        */}
+      {/* 08. DEDICATED SECTION: HAPPY CUSTOMERS & GOOGLE VERIFIED REVIEWS    */}
       {/* =================================================================== */}
-      <section className="max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12 pt-4 pb-12 sm:pb-14">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
-          {/* LEFT 7 COLUMNS: Happy Customers (100% Live API Reviews) */}
-          <div className="lg:col-span-7 rounded-3xl p-[2px] bg-gradient-to-b from-[#D4AF37] via-[#FFE59E] to-[#9E6B18] shadow-[0_14px_34px_rgba(90,45,15,0.1)]">
-            <div className="h-full rounded-[22px] bg-gradient-to-b from-[#FAF0DD] to-[#F3E0C0] p-5 sm:p-7 flex flex-col justify-between relative">
-              <div className="text-center mb-5">
-                <span className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-[#5B0E3D]/10 border border-[#C8963E]/60 text-[9.5px] font-bold uppercase tracking-[0.2em] text-[#5B0E3D] mb-1.5">
-                  Verified Patron Reviews
+      <section className="relative max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-10 py-6 sm:py-10 overflow-hidden">
+        <div
+          className="relative max-w-[1360px] mx-auto rounded-[28px] sm:rounded-[36px] px-4 sm:px-8 lg:px-12 pt-7 pb-9 sm:pt-10 sm:pb-12 overflow-hidden border border-[#D4AF37]/45 shadow-[0_18px_48px_rgba(40,6,25,0.10)]"
+          style={{
+            background:
+              'radial-gradient(circle at 50% 18%, #FFFDF9 0%, #FAF0DC 52%, #EFE0BE 100%)',
+          }}
+        >
+          {/* Subtle Champagne Silk Drape Highlights */}
+          <div
+            className="absolute inset-0 pointer-events-none z-0"
+            style={{
+              backgroundImage:
+                'radial-gradient(ellipse at 20% 0%, rgba(255,253,249,0.85) 0%, transparent 50%), radial-gradient(ellipse at 80% 0%, rgba(255,253,249,0.85) 0%, transparent 50%), radial-gradient(circle at 50% 65%, rgba(212,175,55,0.15) 0%, transparent 55%)',
+            }}
+          />
+
+          {/* Top-Left & Top-Right 3D Cream & Burgundy Floral Bouquets with 24K Gold Leaves */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_tl.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute top-0 left-0 w-36 md:w-48 lg:w-60 pointer-events-none z-20 select-none"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_tr.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute top-0 right-0 w-36 md:w-48 lg:w-60 pointer-events-none z-20 select-none"
+          />
+
+          {/* Bottom-Left & Bottom-Right 3D Floral Bouquets & Sweeping Royal Purple Silk Waves */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_bl.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute bottom-0 left-0 w-44 md:w-60 lg:w-72 pointer-events-none z-20 select-none"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_br.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute bottom-0 right-0 w-44 md:w-60 lg:w-72 pointer-events-none z-20 select-none"
+          />
+
+          {/* ============================================================= */}
+          {/* 1. TOP CENTERED ROYAL HEADER + GOOGLE BUSINESS RATING PILL    */}
+          {/* ============================================================= */}
+          <div className="relative z-10 flex flex-col items-center text-center max-w-[980px] mx-auto">
+            {/* Scalloped Royal Plum & Gold "OUR HAPPY FAMILY" Plaque Flanked by Extending Gold Filigree Lines */}
+            <div className="flex items-center justify-center w-full max-w-[780px] mx-auto">
+              <div className="hidden sm:block h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8963E] to-[#9A6816]" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/nalmara/hd/happy_faq_top_plaque.png"
+                alt="Our Happy Family"
+                className="w-[190px] sm:w-[240px] md:w-[265px] h-auto object-contain mx-2 select-none drop-shadow-[0_6px_14px_rgba(40,6,25,0.18)]"
+              />
+              <div className="hidden sm:block h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8963E] to-[#9A6816]" />
+            </div>
+
+            {/* Main Royal Burgundy-Plum Serif Headline */}
+            <h2 className="font-serif font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-[#4A0830] tracking-tight leading-[1.1] mt-1 sm:mt-1.5 drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]">
+              Happy Customers &amp; Google Reviews
+            </h2>
+
+            {/* Italic Subtitle */}
+            <p className="font-serif italic text-xs sm:text-base lg:text-[19px] text-[#220915] font-medium mt-1 inline-flex items-center justify-center gap-1.5">
+              <span>Your trust inspires us to do better</span>
+              <Heart className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#4A0830] stroke-[2.2]" />
+            </p>
+
+            {/* Upper 3D Golden Lotus Divider */}
+            <div className="flex items-center justify-center gap-2 mt-1.5 mb-3">
+              <span className="h-[1px] w-14 sm:w-28 bg-gradient-to-r from-transparent to-[#B88228]" />
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/nalmara/hd/why_choose_gold_lotus.png"
+                alt=""
+                aria-hidden="true"
+                className="w-24 sm:w-28 h-auto object-contain select-none"
+              />
+              <span className="h-[1px] w-14 sm:w-28 bg-gradient-to-l from-transparent to-[#B88228]" />
+            </div>
+
+            {/* Official Google Business Profile Summary Pill Bar + 5 Smiling Patron Avatars */}
+            <a
+              href={googleMeta.googleReviewUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex flex-wrap items-center justify-center gap-2.5 sm:gap-4 px-4 sm:px-6 py-2 rounded-full bg-gradient-to-r from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0BD] border-[1.5px] border-[#D4AF37] shadow-[0_8px_22px_rgba(65,10,38,0.10)] hover:shadow-[0_12px_28px_rgba(65,10,38,0.18)] hover:-translate-y-0.5 transition-all mb-6 sm:mb-8"
+            >
+              {/* Multi-Color Official Google "G" Badge */}
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-b from-[#4A0830] to-[#240114] border border-[#D4AF37] text-[#FFE59E] text-[10.5px] sm:text-xs font-serif font-bold">
+                <span className="w-[18px] h-[18px] rounded-full bg-white flex items-center justify-center shrink-0">
+                  <svg viewBox="0 0 24 24" width={12} height={12} className="w-3 h-3">
+                    <path
+                      fill="#4285F4"
+                      d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"
+                    />
+                    <path
+                      fill="#34A853"
+                      d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"
+                    />
+                    <path
+                      fill="#FBBC05"
+                      d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"
+                    />
+                    <path
+                      fill="#EA4335"
+                      d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"
+                    />
+                  </svg>
                 </span>
-                <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#23120B]">
-                  Happy Customers
-                </h2>
-                <div className="flex items-center justify-center gap-2 mt-0.5">
-                  <span className="h-[1px] w-10 bg-[#C8963E]" />
-                  <p className="text-xs text-[#4A2C2A] font-medium inline-flex items-center gap-1">
-                    <span>Your Happiness is Our Joy</span>
-                    <Heart className="w-3.5 h-3.5 text-[#5B0E3D] fill-[#5B0E3D]/20" />
-                  </p>
-                  <span className="h-[1px] w-10 bg-[#C8963E]" />
+                <span>Google Verified</span>
+              </span>
+
+              {/* 4.9 ★★★★★ (248+ Google Reviews) */}
+              <div className="inline-flex items-center gap-1.5">
+                <span className="font-serif font-extrabold text-sm sm:text-base text-[#231008]">
+                  {googleMeta.overallRating.toFixed(1)}
+                </span>
+                <div className="flex items-center gap-0.5">
+                  {[...Array(5)].map((_, i) => (
+                    <Star
+                      key={i}
+                      className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-[#FBBC05] text-[#D99B00]"
+                    />
+                  ))}
+                </div>
+                <span className="text-xs font-bold text-[#4A0830]">
+                  ({googleMeta.totalReviews}+ Reviews)
+                </span>
+              </div>
+
+              <span className="hidden md:inline-block h-4 w-[1px] bg-[#C8922E]/50" />
+
+              {/* 5 Circular Smiling Patron Portraits Strip + "Join our happy customers ♡" */}
+              <div className="hidden sm:inline-flex items-center gap-2">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src="/images/nalmara/hd/happy_faq_avatars_strip.png"
+                  alt="Happy Nalmara Patrons"
+                  className="h-7 sm:h-8 w-auto object-contain rounded-full"
+                />
+                <span className="font-serif font-bold text-xs sm:text-[13.5px] text-[#231008] group-hover:text-[#4A0830] transition-colors">
+                  Join our happy customers ♡
+                </span>
+              </div>
+            </a>
+          </div>
+
+          {/* ============================================================= */}
+          {/* 2. 3 SCULPTED 3D ROYAL GOOGLE REVIEW CARDS WITH < > ARROWS    */}
+          {/* ============================================================= */}
+          <div className="relative z-10 max-w-[1180px] mx-auto px-2 sm:px-7">
+            {/* Left Circular Pearl & 24K Gold Bezel Navigation Arrow */}
+            <button
+              type="button"
+              onClick={() =>
+                setReviewStartIndex(
+                  (prev) =>
+                    (prev - 1 + Math.max(1, allHappyReviews.length)) %
+                    Math.max(1, allHappyReviews.length)
+                )
+              }
+              aria-label="Previous Google review"
+              className="absolute -left-1.5 sm:-left-1 lg:-left-2.5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full p-[2.5px] bg-gradient-to-b from-[#FFF9E2] via-[#D4AF37] to-[#8C5818] shadow-[0_8px_22px_rgba(74,10,46,0.28)] hover:scale-105 active:scale-95 transition-transform cursor-pointer"
+            >
+              <span
+                className="w-full h-full rounded-full flex items-center justify-center text-[#380523] border border-[#FFFDF9] shadow-inner"
+                style={{
+                  background:
+                    'radial-gradient(circle at 50% 35%, #FFFDF9 0%, #FAF0DC 62%, #E5C892 100%)',
+                }}
+              >
+                <ChevronLeft className="w-5 h-5 stroke-[2.6]" />
+              </span>
+            </button>
+
+            {/* Right Circular Pearl & 24K Gold Bezel Navigation Arrow */}
+            <button
+              type="button"
+              onClick={() =>
+                setReviewStartIndex(
+                  (prev) => (prev + 1) % Math.max(1, allHappyReviews.length)
+                )
+              }
+              aria-label="Next Google review"
+              className="absolute -right-1.5 sm:-right-1 lg:-right-2.5 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-11 sm:h-11 rounded-full p-[2.5px] bg-gradient-to-b from-[#FFF9E2] via-[#D4AF37] to-[#8C5818] shadow-[0_8px_22px_rgba(74,10,46,0.28)] hover:scale-105 active:scale-95 transition-transform cursor-pointer"
+            >
+              <span
+                className="w-full h-full rounded-full flex items-center justify-center text-[#380523] border border-[#FFFDF9] shadow-inner"
+                style={{
+                  background:
+                    'radial-gradient(circle at 50% 35%, #FFFDF9 0%, #FAF0DC 62%, #E5C892 100%)',
+                }}
+              >
+                <ChevronRight className="w-5 h-5 stroke-[2.6]" />
+              </span>
+            </button>
+
+            {/* 3 Sculpted 3D Royal Gold-Framed Google Review Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 items-stretch pt-3">
+              {displayHappyReviews.map((rev, idx) => {
+                const firstName = rev.user?.firstName || 'Preethi';
+                const lastName = rev.user?.lastName || 'Sundar';
+                const fullName = `${firstName} ${lastName}`.trim();
+                const rawAvatar = rev.user?.avatar || '';
+                const avatarUrl =
+                  rawAvatar.startsWith('/images/') ||
+                  rawAvatar.startsWith('http://') ||
+                  rawAvatar.startsWith('https://')
+                    ? rawAvatar
+                    : resolveMediaUrl(rawAvatar) ||
+                      '/images/nalmara/hd/happy_faq_reviewer_avatar.png';
+                const stars = Math.max(1, Math.min(5, Number(rev.rating) || 5));
+                const quoteText =
+                  rev.comment ||
+                  rev.title ||
+                  "The zari work and the full circular flare look spectacular in person. Don't think twice, just buy!";
+                const badgeText = rev.authorBadge || 'Verified Google Review';
+                const timeText = rev.relativeTime || 'Recent on Google';
+
+                return (
+                  <a
+                    key={`${rev._id || idx}-${idx}`}
+                    href={rev.reviewUrl || googleMeta.googleReviewUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="group relative rounded-[24px] p-[2.5px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_14px_32px_rgba(60,25,8,0.16)] hover:shadow-[0_20px_42px_rgba(60,25,8,0.24)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
+                  >
+                    {/* Top Overlapping Scalloped Royal Burgundy & 24K Gold "★ Verified Reviews" Pill */}
+                    <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20">
+                      <div className="rounded-full p-[1.5px] bg-gradient-to-r from-[#9E6B18] via-[#FFE59E] to-[#9E6B18] shadow-[0_4px_12px_rgba(42,4,26,0.34)]">
+                        <div
+                          className="px-4 py-0.5 rounded-full flex items-center gap-1.5 border border-[#FFE59E]/65 whitespace-nowrap"
+                          style={{
+                            background:
+                              'linear-gradient(180deg, #5E0E3F 0%, #360422 58%, #1E0112 100%)',
+                          }}
+                        >
+                          <Star className="w-3 h-3 fill-[#FFE59E] text-[#FFE59E] shrink-0" />
+                          <span className="font-serif font-bold text-[11px] text-[#FFFDF9] tracking-wide">
+                            Verified Reviews
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Top-Right Official Google "G" + 3D Gold Rosette Medallion */}
+                    <div
+                      className="absolute top-3 right-3 z-20 w-8 h-8 rounded-full p-[1.5px] bg-gradient-to-b from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] shadow-xs"
+                      title="Posted on Google"
+                    >
+                      <span className="w-full h-full rounded-full bg-white flex items-center justify-center">
+                        <svg viewBox="0 0 24 24" className="w-4 h-4">
+                          <path
+                            fill="#4285F4"
+                            d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47c-.29 1.48-1.14 2.73-2.4 3.58v3h3.86c2.26-2.09 3.56-5.17 3.56-8.82z"
+                          />
+                          <path
+                            fill="#34A853"
+                            d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.86-3c-1.08.72-2.45 1.16-4.07 1.16-3.13 0-5.78-2.11-6.73-4.96H1.29v3.09C3.26 21.3 7.31 24 12 24z"
+                          />
+                          <path
+                            fill="#FBBC05"
+                            d="M5.27 14.29c-.25-.72-.38-1.49-.38-2.29s.13-1.57.38-2.29V6.62H1.29C.47 8.24 0 10.06 0 12s.47 3.76 1.29 5.38l3.98-3.09z"
+                          />
+                          <path
+                            fill="#EA4335"
+                            d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.31 0 3.26 2.7 1.29 6.62l3.98 3.09c.95-2.85 3.6-4.96 6.73-4.96z"
+                          />
+                        </svg>
+                      </span>
+                    </div>
+
+                    {/* Card Interior */}
+                    <div
+                      className="h-full rounded-[21.5px] pt-7 pb-5 px-5 flex flex-col justify-between border border-[#FFFDF9]"
+                      style={{
+                        background:
+                          'linear-gradient(180deg, #FFFDF9 0%, #FAF0DD 58%, #F2DFBC 100%)',
+                      }}
+                    >
+                      {/* Centered Italic Quote Text with Ornamental Gold Quotation Marks */}
+                      <div className="relative text-center my-auto px-1 py-2">
+                        <span
+                          aria-hidden="true"
+                          className="font-serif font-bold text-2xl leading-none text-[#9E6B18] select-none mr-1 align-top"
+                        >
+                          &ldquo;
+                        </span>
+                        <span className="font-serif italic text-[13.5px] sm:text-[14.5px] text-[#231008] leading-[1.6] line-clamp-6">
+                          {quoteText}
+                        </span>
+                        <span
+                          aria-hidden="true"
+                          className="font-serif font-bold text-2xl leading-none text-[#9E6B18] select-none ml-1 align-bottom"
+                        >
+                          &rdquo;
+                        </span>
+                      </div>
+
+                      {/* Bottom Reviewer Avatar + Full Name + 5 Gold Stars + Google Metadata */}
+                      <div className="flex items-center gap-3 mt-3 pt-3 border-t border-[#D4AF37]/40">
+                        <div className="relative w-12 h-12 rounded-full p-[2px] bg-gradient-to-b from-[#FFE59E] via-[#D4AF37] to-[#8C5818] shadow-sm shrink-0">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={avatarUrl}
+                            alt={fullName}
+                            onError={(e) => {
+                              const target = e.currentTarget;
+                              if (
+                                !target.src.includes(
+                                  'happy_faq_reviewer_avatar.png'
+                                )
+                              ) {
+                                target.src =
+                                  '/images/nalmara/hd/happy_faq_reviewer_avatar.png';
+                              }
+                            }}
+                            className="w-full h-full rounded-full object-cover object-top"
+                          />
+                          <span className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#15803D] border border-white flex items-center justify-center text-white">
+                            <Check className="w-2.5 h-2.5 stroke-[3]" />
+                          </span>
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <div className="flex items-center justify-between gap-1">
+                            <h4 className="font-serif font-bold text-[14.5px] sm:text-[15.5px] text-[#1E0A10] group-hover:text-[#4A0830] transition-colors truncate">
+                              {fullName}
+                            </h4>
+                            <span className="text-[10px] text-[#7A542E] font-semibold shrink-0">
+                              {timeText}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-0.5 mt-0.5">
+                            {[...Array(stars)].map((_, i) => (
+                              <Star
+                                key={i}
+                                className="w-3.5 h-3.5 fill-[#FBBC05] text-[#D99B00]"
+                              />
+                            ))}
+                          </div>
+                          <p className="text-[10.5px] font-bold text-[#6E420C] truncate mt-0.5">
+                            {badgeText}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                );
+              })}
+            </div>
+          </div>
+
+          {/* ============================================================= */}
+          {/* 3. 3 3D EMBOSSED ROSETTE SEALS + "Write a Google Review →"    */}
+          {/* ============================================================= */}
+          <div className="relative z-10 flex flex-col items-center mt-7 sm:mt-8">
+            {/* 3 3D Embossed Scalloped Rosette Trust Seals Separated by Vertical Gold Filigree Dividers */}
+            <div className="flex items-center justify-center gap-4 sm:gap-8 mb-6">
+              {[
+                {
+                  id: 'seal-quality',
+                  alt: 'Premium Quality',
+                  src: '/images/nalmara/hd/happy_faq_seal_1.png',
+                },
+                {
+                  id: 'seal-trusted',
+                  alt: 'Trusted Brand',
+                  src: '/images/nalmara/hd/happy_faq_seal_2.png',
+                },
+                {
+                  id: 'seal-loved',
+                  alt: 'Loved by Thousands',
+                  src: '/images/nalmara/hd/happy_faq_seal_3.png',
+                },
+              ].map((seal, sIdx) => (
+                <React.Fragment key={seal.id}>
+                  {sIdx > 0 && (
+                    <div className="flex flex-col items-center justify-center h-18 sm:h-22 shrink-0">
+                      <span className="w-[1.5px] flex-1 bg-gradient-to-b from-transparent via-[#B88228] to-[#8C5818]" />
+                      <span className="w-2 h-2 rotate-45 bg-[#B88228] my-1 shrink-0" />
+                      <span className="w-[1.5px] flex-1 bg-gradient-to-t from-transparent via-[#B88228] to-[#8C5818]" />
+                    </div>
+                  )}
+                  <div className="relative w-22 h-22 sm:w-26 sm:h-26 flex items-center justify-center shrink-0 hover:scale-105 transition-transform">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={seal.src}
+                      alt={seal.alt}
+                      className="w-full h-full object-contain drop-shadow-[0_6px_14px_rgba(90,45,15,0.16)]"
+                    />
+                  </div>
+                </React.Fragment>
+              ))}
+            </div>
+
+            {/* Bottom Centered Scalloped 3D Royal Plum & 24K Gold "Write a Google Review →" Button */}
+            <div className="flex items-center justify-center gap-2.5 sm:gap-4 w-full max-w-[820px] mx-auto">
+              <div className="flex items-center gap-1.5 flex-1">
+                <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8922E] to-[#8C5818]" />
+                <span className="w-1.5 h-1.5 rotate-45 bg-gradient-to-br from-[#FFE59E] to-[#8C5818] shrink-0" />
+                <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
+              </div>
+
+              <a
+                href={googleMeta.googleReviewUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative rounded-full p-[3px] shadow-[0_14px_32px_rgba(42,4,26,0.42)] hover:scale-105 active:scale-95 transition-transform shrink-0"
+                style={{
+                  background:
+                    'linear-gradient(90deg, #9E6B18 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #9E6B18 100%)',
+                }}
+              >
+                <span
+                  className="inline-flex items-center gap-2.5 px-6 sm:px-9 py-2 sm:py-2.5 rounded-full border border-[#FFE59E]/85 font-serif font-bold text-xs sm:text-base text-[#FFFDF9] tracking-wide shadow-[inset_0_1px_3px_rgba(255,244,194,0.5)]"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, #5E0E3F 0%, #360422 55%, #1B0110 100%)',
+                  }}
+                >
+                  <Star className="w-4 h-4 fill-[#FFE59E] text-[#FFE59E]" />
+                  <span>Write a Google Review</span>
+                  <ArrowRight className="w-4 h-4 text-[#FFE59E] group-hover:translate-x-1 transition-transform" />
+                </span>
+              </a>
+
+              <div className="flex items-center gap-1.5 flex-1">
+                <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
+                <span className="w-1.5 h-1.5 rotate-45 bg-gradient-to-br from-[#FFE59E] to-[#8C5818] shrink-0" />
+                <span className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8922E] to-[#8C5818]" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =================================================================== */}
+      {/* 09. DEDICATED SECTION: FREQUENTLY ASKED QUESTIONS (FAQs)            */}
+      {/* =================================================================== */}
+      <section className="relative max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-10 py-6 sm:py-10 overflow-hidden">
+        <div
+          className="relative max-w-[1360px] mx-auto rounded-[28px] sm:rounded-[36px] px-4 sm:px-8 lg:px-12 pt-8 pb-10 sm:pt-11 sm:pb-14 overflow-hidden border border-[#D4AF37]/45 shadow-[0_18px_48px_rgba(40,6,25,0.10)]"
+          style={{
+            background:
+              'radial-gradient(circle at 50% 18%, #FFFDF9 0%, #FAF0DC 52%, #EFE0BE 100%)',
+          }}
+        >
+          {/* Subtle Champagne Silk Drape Highlights */}
+          <div
+            className="absolute inset-0 pointer-events-none z-0"
+            style={{
+              backgroundImage:
+                'radial-gradient(ellipse at 20% 0%, rgba(255,253,249,0.85) 0%, transparent 50%), radial-gradient(ellipse at 80% 0%, rgba(255,253,249,0.85) 0%, transparent 50%), radial-gradient(circle at 50% 65%, rgba(212,175,55,0.15) 0%, transparent 55%)',
+            }}
+          />
+
+          {/* Top-Left & Top-Right 3D Cream & Burgundy Floral Bouquets with 24K Gold Leaves */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_tl.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute top-0 left-0 w-36 md:w-48 lg:w-60 pointer-events-none z-20 select-none"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_tr.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute top-0 right-0 w-36 md:w-48 lg:w-60 pointer-events-none z-20 select-none"
+          />
+
+          {/* Bottom-Left & Bottom-Right 3D Floral Bouquets & Sweeping Royal Purple Silk Waves */}
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_bl.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute bottom-0 left-0 w-44 md:w-60 lg:w-72 pointer-events-none z-20 select-none"
+          />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/showcase_corner_br.png"
+            alt=""
+            aria-hidden="true"
+            className="hidden sm:block absolute bottom-0 right-0 w-44 md:w-60 lg:w-72 pointer-events-none z-20 select-none"
+          />
+
+          {/* ============================================================= */}
+          {/* 1. 3D CROWN & ROYAL FAQ HEADER (CRISP VECTOR FILIGREE)        */}
+          {/* ============================================================= */}
+          <div className="relative z-10 flex flex-col items-center text-center max-w-[980px] mx-auto mb-7 sm:mb-9">
+            {/* Top 3D Gold Crown + Scalloped Royal Plum Plaque */}
+            <div className="flex flex-col items-center w-full max-w-[880px] mx-auto">
+              {/* Crisp 3D 24K Gold Crown SVG (Never Clipped) */}
+              <svg
+                viewBox="0 0 64 32"
+                fill="none"
+                width={52}
+                height={26}
+                className="w-11 sm:w-[52px] h-auto -mb-1.5 relative z-20 drop-shadow-[0_3px_6px_rgba(42,4,26,0.28)]"
+              >
+                <path
+                  d="M8 26L4 11L19 18L32 4L45 18L60 11L56 26H8Z"
+                  fill="url(#faqCrownGold)"
+                  stroke="#7A4B0E"
+                  strokeWidth="1.4"
+                  strokeLinejoin="round"
+                />
+                <rect
+                  x="7"
+                  y="26"
+                  width="50"
+                  height="4"
+                  rx="2"
+                  fill="url(#faqCrownGold)"
+                  stroke="#7A4B0E"
+                  strokeWidth="1.2"
+                />
+                <circle cx="32" cy="3.5" r="2.5" fill="#FFF4C2" stroke="#7A4B0E" strokeWidth="1" />
+                <circle cx="18.5" cy="10" r="2" fill="#FFF4C2" stroke="#7A4B0E" strokeWidth="1" />
+                <circle cx="45.5" cy="10" r="2" fill="#FFF4C2" stroke="#7A4B0E" strokeWidth="1" />
+                <circle cx="4" cy="10.5" r="2" fill="#FFE59E" stroke="#7A4B0E" strokeWidth="1" />
+                <circle cx="60" cy="10.5" r="2" fill="#FFE59E" stroke="#7A4B0E" strokeWidth="1" />
+                <defs>
+                  <linearGradient id="faqCrownGold" x1="4" y1="4" x2="60" y2="30" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#FFF4C2" />
+                    <stop offset="0.45" stopColor="#E5B84B" />
+                    <stop offset="1" stopColor="#8C5818" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              {/* Filigree Lines + Royal Plum Scalloped Badge */}
+              <div className="flex items-center justify-center w-full gap-2 sm:gap-3">
+                <div className="hidden sm:flex items-center gap-1.5 flex-1">
+                  <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8963E] to-[#8C5818]" />
+                  <span className="w-1.5 h-1.5 rotate-45 bg-[#B88228] shrink-0" />
+                  <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shrink-0" />
+                </div>
+
+                <div
+                  className="rounded-full p-[2.5px] shadow-[0_8px_22px_rgba(42,4,26,0.32)] shrink-0"
+                  style={{
+                    background:
+                      'linear-gradient(90deg, #9E6B18 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #9E6B18 100%)',
+                  }}
+                >
+                  <div
+                    className="px-5 sm:px-7 py-1.5 rounded-full border border-[#FFE59E]/75 flex items-center gap-2.5 shadow-[inset_0_1px_2px_rgba(255,244,194,0.45)]"
+                    style={{
+                      background:
+                        'linear-gradient(180deg, #5B0E3D 0%, #360422 55%, #1D0111 100%)',
+                    }}
+                  >
+                    <span className="text-[#FFE59E] text-xs">✦</span>
+                    <span className="font-serif font-bold text-[11px] sm:text-[13px] tracking-[0.2em] uppercase text-[#FFF4C2]">
+                      NALMARA CONCIERGE &amp; ATELIER DESK
+                    </span>
+                    <span className="text-[#FFE59E] text-xs">✦</span>
+                  </div>
+                </div>
+
+                <div className="hidden sm:flex items-center gap-1.5 flex-1">
+                  <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shrink-0" />
+                  <span className="w-1.5 h-1.5 rotate-45 bg-[#B88228] shrink-0" />
+                  <span className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8963E] to-[#8C5818]" />
+                </div>
+              </div>
+            </div>
+
+            <h2 className="font-serif font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-[#4A0830] tracking-tight leading-[1.12] mt-2.5 sm:mt-3 drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]">
+              Frequently Asked Questions
+            </h2>
+
+            <p className="font-serif italic text-xs sm:text-base lg:text-[18px] text-[#220915] font-medium mt-1">
+              Everything you need to know about our silks, bespoke Aari tailoring &amp; doorstep delivery
+            </p>
+
+            {/* Pure Vector 3D Golden Lotus & Filigree Divider (Zero Box Artifact) */}
+            <div className="flex items-center justify-center gap-2.5 mt-2">
+              <span className="h-[1.5px] w-16 sm:w-28 bg-gradient-to-r from-transparent via-[#C8963E] to-[#8C5818]" />
+              <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#FFF4C2] to-[#8C5818] shrink-0" />
+              <svg
+                viewBox="0 0 60 28"
+                fill="none"
+                width={52}
+                height={24}
+                className="w-12 sm:w-14 h-auto shrink-0 drop-shadow-[0_2px_4px_rgba(140,88,24,0.25)]"
+              >
+                <path
+                  d="M30 3C26 10 23 16 30 24C37 16 34 10 30 3Z"
+                  fill="url(#lotusCenterFaq)"
+                  stroke="#7A4B0E"
+                  strokeWidth="1"
+                />
+                <path
+                  d="M30 24C21 20 15 13 18 7C23 9 26 14 30 24Z"
+                  fill="url(#lotusSideFaq)"
+                  stroke="#7A4B0E"
+                  strokeWidth="1"
+                />
+                <path
+                  d="M30 24C39 20 45 13 42 7C37 9 34 14 30 24Z"
+                  fill="url(#lotusSideFaq)"
+                  stroke="#7A4B0E"
+                  strokeWidth="1"
+                />
+                <path
+                  d="M30 24C16 23 8 18 9 12C15 13 22 17 30 24Z"
+                  fill="url(#lotusOuterFaq)"
+                  stroke="#7A4B0E"
+                  strokeWidth="0.9"
+                />
+                <path
+                  d="M30 24C44 23 52 18 51 12C45 13 38 17 30 24Z"
+                  fill="url(#lotusOuterFaq)"
+                  stroke="#7A4B0E"
+                  strokeWidth="0.9"
+                />
+                <ellipse cx="30" cy="25" rx="10" ry="2" fill="#8C5818" />
+                <defs>
+                  <linearGradient id="lotusCenterFaq" x1="30" y1="3" x2="30" y2="24" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#FFF4C2" />
+                    <stop offset="0.5" stopColor="#E5B84B" />
+                    <stop offset="1" stopColor="#9E6B18" />
+                  </linearGradient>
+                  <linearGradient id="lotusSideFaq" x1="18" y1="7" x2="42" y2="24" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#FFE59E" />
+                    <stop offset="1" stopColor="#A6721E" />
+                  </linearGradient>
+                  <linearGradient id="lotusOuterFaq" x1="9" y1="12" x2="51" y2="24" gradientUnits="userSpaceOnUse">
+                    <stop stopColor="#F5D37E" />
+                    <stop offset="1" stopColor="#8C5818" />
+                  </linearGradient>
+                </defs>
+              </svg>
+              <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#FFF4C2] to-[#8C5818] shrink-0" />
+              <span className="h-[1.5px] w-16 sm:w-28 bg-gradient-to-l from-transparent via-[#C8963E] to-[#8C5818]" />
+            </div>
+          </div>
+
+          {/* ============================================================= */}
+          {/* 2. GRAND 12-COLUMN ROYAL ATELIER SHOWCASE + FAQ ACCORDION     */}
+          {/* ============================================================= */}
+          <div className="relative z-10 max-w-[1220px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 items-stretch">
+            {/* LEFT COLUMN (4 COLS): ROYAL BRIDAL ATELIER & STYLING DESK CARD */}
+            <div className="lg:col-span-4 flex flex-col pt-4">
+              <div className="relative flex-1 rounded-[26px] p-[2.5px] bg-gradient-to-b from-[#FFE59E] via-[#D4AF37] to-[#9E6B18] shadow-[0_18px_40px_rgba(80,35,10,0.16)] flex flex-col">
+                <div
+                  className="flex-1 rounded-[23.5px] p-4 sm:p-5 border border-[#FFFDF9] flex flex-col justify-between relative overflow-hidden"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, #4B0A30 0%, #2E041D 55%, #1B0110 100%)',
+                  }}
+                >
+                  {/* Subtle Gold Mandala / Radial Glow Inside Dark Royal Card */}
+                  <div
+                    className="absolute inset-0 pointer-events-none opacity-25"
+                    style={{
+                      backgroundImage:
+                        'radial-gradient(circle at 50% 25%, rgba(255,229,158,0.45) 0%, transparent 65%)',
+                    }}
+                  />
+
+                  {/* Top Ornate 24K Gold Arch Portrait Window */}
+                  <div className="relative z-10">
+                    <div className="rounded-t-[110px] rounded-b-[18px] p-[2.5px] bg-gradient-to-b from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_24px_rgba(0,0,0,0.35)]">
+                      <div className="relative h-56 sm:h-60 rounded-t-[107px] rounded-b-[15.5px] overflow-hidden bg-[#2A041A]">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                          src="/images/nalmara/hd/happy_faq_bride_arch.jpg"
+                          alt="Nalmara Bridal Silk & Custom Tailoring Atelier"
+                          className="w-full h-full object-cover object-top transform hover:scale-105 transition-transform duration-700"
+                        />
+                        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#1B0110] via-[#1B0110]/65 to-transparent" />
+
+                        {/* Bottom Floating Atelier Caption */}
+                        <div className="absolute bottom-2.5 inset-x-3 text-center">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#FFFDF9]/95 border border-[#D4AF37] text-[10.5px] font-bold tracking-wider uppercase text-[#4A0830] shadow-xs">
+                            <Sparkles className="w-3 h-3 text-[#B88228]" />
+                            Master Tailoring &amp; Silk Desk
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Concierge Title & Promise */}
+                    <div className="text-center mt-4 px-1">
+                      <h3 className="font-serif font-bold text-lg sm:text-xl text-[#FFF4C2] tracking-wide">
+                        Personal Styling &amp; Fit Assistance
+                      </h3>
+                      <p className="text-xs text-[#F5E4C5]/85 mt-1 leading-relaxed">
+                        Need help with blouse measurements, bridal Aari work, or silk saree selection?
+                      </p>
+                    </div>
+
+                    {/* 3 Royal Service Highlights */}
+                    <div className="mt-4 space-y-2">
+                      <div className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-[#FFFDF9]/10 border border-[#FFE59E]/25">
+                        <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#FFF4C2] to-[#B88228] text-[#2B031A] flex items-center justify-center shrink-0 font-serif font-bold text-xs shadow-2xs">
+                          01
+                        </span>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-[#FFFDF9] leading-tight">
+                            2–4 Days Express Stitching
+                          </p>
+                          <p className="text-[11px] text-[#FFE59E]/80 truncate">
+                            Saree Blouses, Bridal Aari &amp; Kids Pattu
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-[#FFFDF9]/10 border border-[#FFE59E]/25">
+                        <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#FFF4C2] to-[#B88228] text-[#2B031A] flex items-center justify-center shrink-0 font-serif font-bold text-xs shadow-2xs">
+                          02
+                        </span>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-[#FFFDF9] leading-tight">
+                            WhatsApp Measurement Guide
+                          </p>
+                          <p className="text-[11px] text-[#FFE59E]/80 truncate">
+                            +91 63831 63609 • Direct Tailor Support
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-[#FFFDF9]/10 border border-[#FFE59E]/25">
+                        <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#FFF4C2] to-[#B88228] text-[#2B031A] flex items-center justify-center shrink-0 font-serif font-bold text-xs shadow-2xs">
+                          03
+                        </span>
+                        <div className="min-w-0">
+                          <p className="text-xs font-bold text-[#FFFDF9] leading-tight">
+                            100% Quality-Checked Weaves
+                          </p>
+                          <p className="text-[11px] text-[#FFE59E]/80 truncate">
+                            Insured Pan-India Doorstep Delivery
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Bottom Direct WhatsApp Concierge CTA inside Left Card */}
+                  <div className="relative z-10 mt-4 pt-3 border-t border-[#FFE59E]/20">
+                    <a
+                      href="https://wa.me/916383163609?text=Hi%20Nalmara%20Fashion!%20I%20have%20a%20question%20about%20your%20collections%20and%20custom%20stitching."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full py-2.5 px-4 rounded-full bg-gradient-to-r from-[#FFF4C2] via-[#E5B84B] to-[#C8922E] text-[#2A041A] font-serif font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-[0_6px_18px_rgba(0,0,0,0.3)] hover:brightness-105 transition-all"
+                    >
+                      <span>Chat with Master Tailor</span>
+                      <ArrowRight className="w-4 h-4" />
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* RIGHT COLUMN (8 COLS): SCULPTED 3D ROYAL FAQ ACCORDION DECK */}
+            <div className="lg:col-span-8 relative pt-4 flex flex-col">
+              {/* Overlapping Top Scalloped Royal Plum & 24K Gold Header Plaque */}
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 z-30 w-[90%] max-w-[430px]">
+                <div
+                  className="rounded-full p-[2.5px] shadow-[0_10px_24px_rgba(42,4,26,0.38)]"
+                  style={{
+                    background:
+                      'linear-gradient(90deg, #9E6B18 0%, #FFE59E 25%, #FFFDF9 50%, #FFE59E 75%, #9E6B18 100%)',
+                  }}
+                >
+                  <div
+                    className="px-5 py-2 rounded-full border border-[#FFE59E]/70 text-center shadow-[inset_0_1px_2px_rgba(255,244,194,0.45)] flex items-center justify-center gap-2"
+                    style={{
+                      background:
+                        'linear-gradient(180deg, #5B0E3D 0%, #380524 55%, #1E0112 100%)',
+                    }}
+                  >
+                    <span className="text-[#FFE59E] text-xs">✦</span>
+                    <h3 className="font-serif font-bold text-sm sm:text-lg text-[#FFFDF9] tracking-wide whitespace-nowrap">
+                      Quick Answers to Your Queries
+                    </h3>
+                    <span className="text-[#FFE59E] text-xs">✦</span>
+                  </div>
                 </div>
               </div>
 
-              <div className="relative px-2 sm:px-6 my-auto">
-                {/* Left & Right Gold Arrows when more than 3 live reviews exist */}
-                {liveReviews.length > 3 && (
-                  <>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setReviewStartIndex(
-                          (prev) => (prev - 1 + liveReviews.length) % liveReviews.length
-                        )
-                      }
-                      className="hidden sm:flex absolute -left-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-gradient-to-b from-[#D4AF37] to-[#9E6B18] text-white items-center justify-center shadow-xs hover:from-[#5B0E3D] hover:to-[#3D0829] transition-all cursor-pointer"
-                      aria-label="Previous reviews"
-                    >
-                      <ChevronLeft className="w-4 h-4" />
-                    </button>
-                    <button
-                      type="button"
-                      onClick={() =>
-                        setReviewStartIndex((prev) => (prev + 1) % liveReviews.length)
-                      }
-                      className="hidden sm:flex absolute -right-2 top-1/2 -translate-y-1/2 z-10 w-7 h-7 rounded-full bg-gradient-to-b from-[#D4AF37] to-[#9E6B18] text-white items-center justify-center shadow-xs hover:from-[#5B0E3D] hover:to-[#3D0829] transition-all cursor-pointer"
-                      aria-label="Next reviews"
-                    >
-                      <ChevronRight className="w-4 h-4" />
-                    </button>
-                  </>
-                )}
-
-                {isReviewsLoading ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-                    {[...Array(3)].map((_, idx) => (
-                      <div
-                        key={idx}
-                        className="rounded-2xl bg-[#FFFDF9] border border-[#D4AF37]/60 p-4 h-36 animate-pulse space-y-3"
-                      >
-                        <div className="flex items-center gap-2.5">
-                          <div className="w-10 h-10 rounded-full bg-[#EED9BA]" />
-                          <div className="space-y-1.5 flex-1">
-                            <div className="h-3 w-2/3 rounded bg-[#EED9BA]" />
-                            <div className="h-2.5 w-1/2 rounded bg-[#EED9BA]" />
-                          </div>
-                        </div>
-                        <div className="h-3 w-full rounded bg-[#EED9BA]" />
-                        <div className="h-3 w-4/5 rounded bg-[#EED9BA]" />
-                      </div>
-                    ))}
+              {/* FAQ Card Body */}
+              <div className="flex-1 w-full rounded-[26px] p-[2.5px] bg-gradient-to-b from-[#FFE59E] via-[#D4AF37] to-[#9E6B18] shadow-[0_18px_40px_rgba(80,35,10,0.16)] flex flex-col">
+                <div
+                  className="flex-1 rounded-[23.5px] pt-9 sm:pt-11 pb-5 sm:pb-6 px-3.5 sm:px-6 border border-[#FFFDF9] flex flex-col justify-between"
+                  style={{
+                    background:
+                      'linear-gradient(180deg, #FAF0DD 0%, #F5E4C5 55%, #EDD5AB 100%)',
+                  }}
+                >
+                  {/* Subtitle Flanked by Tapered Gold Lines */}
+                  <div className="flex items-center justify-center gap-2.5 mb-3.5 px-2">
+                    <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#B88228] to-[#8C5818]" />
+                    <p className="text-[11px] sm:text-[13px] font-semibold uppercase tracking-[0.14em] text-[#5B0E3D]">
+                      Click any question below to view details
+                    </p>
+                    <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#B88228] to-[#8C5818]" />
                   </div>
-                ) : visibleReviews.length > 0 ? (
-                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
-                    {visibleReviews.map((rev) => {
-                      const firstName = rev.user?.firstName || 'Valued';
-                      const lastName = rev.user?.lastName || 'Patron';
-                      const fullName = `${firstName} ${lastName}`.trim();
-                      const initials = `${firstName.charAt(0)}${lastName.charAt(0) || ''}`.toUpperCase();
-                      const avatarUrl = resolveMediaUrl(rev.user?.avatar);
-                      const stars = Math.max(1, Math.min(5, Number(rev.rating) || 5));
-                      const productName =
-                        typeof rev.product === 'object' && rev.product?.name
-                          ? rev.product.name
-                          : 'Verified Purchase';
 
+                  {/* Accordion Items (Q1 - Q5) */}
+                  <div className="space-y-2.5 sm:space-y-3 my-auto">
+                    {FAQ_ITEMS.map((faq, idx) => {
+                      const isOpen = openFaq === faq.id;
                       return (
-                        <div
-                          key={rev._id}
-                          className="relative rounded-2xl bg-[#FFFDF9] border border-[#D4AF37]/80 p-4 shadow-xs flex flex-col justify-between hover:shadow-md transition-all"
-                        >
-                          <div>
-                            <div className="flex items-center gap-2.5 mb-2.5">
-                              <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-[#D4AF37] shrink-0 bg-gradient-to-b from-[#4A0B32] to-[#28041A] text-[#FFE59E] flex items-center justify-center font-serif font-bold text-xs shadow-2xs">
-                                {avatarUrl ? (
-                                  /* eslint-disable-next-line @next/next/no-img-element */
-                                  <img
-                                    src={avatarUrl}
-                                    alt={fullName}
-                                    className="w-full h-full object-cover"
-                                  />
-                                ) : (
-                                  <span>{initials}</span>
+                        <div key={faq.id} className="space-y-2">
+                          {/* Question Pill Header */}
+                          <button
+                            type="button"
+                            onClick={() => setOpenFaq(isOpen ? null : faq.id)}
+                            className="w-full rounded-2xl p-[1.5px] bg-gradient-to-r from-[#E5C687] via-[#D4AF37] to-[#E5C687] shadow-[0_4px_12px_rgba(90,45,15,0.08)] cursor-pointer transition-transform active:scale-[0.995]"
+                          >
+                            <span
+                              className="w-full px-3 sm:px-5 py-2.5 sm:py-3 rounded-[14.5px] flex items-center justify-between gap-3 text-left border border-[#FFFDF9]"
+                              style={{
+                                background: isOpen
+                                  ? 'linear-gradient(90deg, #F6DFD8 0%, #FDF2EA 50%, #FAF0E2 100%)'
+                                  : 'linear-gradient(90deg, #FDF6EC 0%, #FFFDF9 55%, #FAF0DD 100%)',
+                              }}
+                            >
+                              <span className="inline-flex items-center gap-2.5 sm:gap-3.5 min-w-0 flex-1">
+                                {/* Circular Deep Royal Burgundy Q1..Q5 Badge */}
+                                <span
+                                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#D4AF37] text-[#FFFDF9] font-serif font-bold text-xs sm:text-[14px] flex items-center justify-center shrink-0 shadow-xs"
+                                  style={{
+                                    background:
+                                      'radial-gradient(circle at 50% 35%, #630E42 0%, #2B031A 100%)',
+                                  }}
+                                >
+                                  Q{idx + 1}
+                                </span>
+                                <span className="font-serif font-bold text-xs sm:text-[15.5px] text-[#231008] leading-snug">
+                                  {faq.question}
+                                </span>
+                              </span>
+
+                              <span className="inline-flex items-center gap-2 shrink-0">
+                                {/* Category Tag Pill on Desktop */}
+                                {faq.category && (
+                                  <span className="hidden md:inline-flex items-center px-2.5 py-0.5 rounded-full bg-[#FAF0DC] border border-[#D4AF37]/65 text-[10.5px] font-bold text-[#5B0E3D] tracking-wide">
+                                    {faq.category}
+                                  </span>
+                                )}
+
+                                {/* Right Circular Cream & Gold Ring + / − Button */}
+                                <span
+                                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border flex items-center justify-center shrink-0 shadow-2xs transition-colors ${
+                                    isOpen
+                                      ? 'bg-gradient-to-b from-[#5B0E3D] to-[#2B031A] border-[#D4AF37] text-[#FFE59E]'
+                                      : 'bg-gradient-to-b from-[#FFFDF9] to-[#F2DFB8] border-[#D4AF37] text-[#231008]'
+                                  }`}
+                                >
+                                  {isOpen ? (
+                                    <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+                                  ) : (
+                                    <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+                                  )}
+                                </span>
+                              </span>
+                            </span>
+                          </button>
+
+                          {/* Expanded Answer Panel with Vintage Royal Burgundy & Gold Sewing Machine */}
+                          {isOpen && (
+                            <div className="rounded-2xl bg-[#FFFDF9]/95 border border-[#D4AF37]/70 px-3.5 sm:px-5 py-3.5 shadow-inner flex flex-col sm:flex-row items-start sm:items-center gap-3.5 sm:gap-4">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src="/images/nalmara/hd/happy_faq_sewing_machine.png"
+                                alt=""
+                                aria-hidden="true"
+                                className="w-14 sm:w-[72px] h-auto object-contain shrink-0"
+                              />
+                              <div className="flex-1 min-w-0">
+                                <p className="text-xs sm:text-[14px] text-[#231008] leading-[1.6] font-medium">
+                                  {faq.answer}
+                                </p>
+                                {faq.highlights && faq.highlights.length > 0 && (
+                                  <div className="flex flex-wrap items-center gap-1.5 mt-2.5">
+                                    {faq.highlights.map((tag) => (
+                                      <span
+                                        key={tag}
+                                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF0DC] border border-[#D4AF37]/60 text-[10.5px] font-bold text-[#4A0830]"
+                                      >
+                                        <span className="text-[#B88228]">✦</span>
+                                        {tag}
+                                      </span>
+                                    ))}
+                                  </div>
                                 )}
                               </div>
-                              <div className="min-w-0">
-                                <div className="flex items-center gap-1">
-                                  <h4 className="font-serif font-bold text-xs sm:text-[13.5px] text-[#23120B] truncate">
-                                    {fullName}
-                                  </h4>
-                                  <CheckCircle2 className="w-3 h-3 text-emerald-700 shrink-0" />
-                                </div>
-                                <div className="flex items-center gap-0.5 mt-0.5">
-                                  {[...Array(stars)].map((_, i) => (
-                                    <Star
-                                      key={i}
-                                      className="w-2.5 h-2.5 fill-[#E5A93B] text-[#E5A93B]"
-                                    />
-                                  ))}
-                                </div>
-                              </div>
                             </div>
-
-                            <p className="text-[11.5px] sm:text-xs text-[#3D251E] italic font-serif leading-relaxed line-clamp-3">
-                              &ldquo;{rev.comment || rev.title}&rdquo;
-                            </p>
-                          </div>
-
-                          <p className="text-[9.5px] font-semibold text-[#8C5818] mt-2.5 pt-2 border-t border-[#D4AF37]/25 truncate">
-                            Verified Buyer • {productName}
-                          </p>
+                          )}
                         </div>
                       );
                     })}
                   </div>
-                ) : (
-                  <div className="rounded-2xl bg-[#FFFDF9] border border-[#D4AF37]/80 p-6 text-center space-y-2">
-                    <div className="flex items-center justify-center gap-1 text-[#E5A93B]">
-                      {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 fill-[#E5A93B]" />
-                      ))}
-                    </div>
-                    <p className="font-serif font-bold text-sm text-[#23120B]">
-                      Share Your NALMARA Experience
-                    </p>
-                    <p className="text-xs text-[#5C3D1E] max-w-md mx-auto">
-                      Purchase your favourite saree or custom-stitched outfit and leave a verified review on the product page!
-                    </p>
-                  </div>
-                )}
+                </div>
               </div>
             </div>
           </div>
 
-          {/* RIGHT 5 COLUMNS: Frequently Asked Questions */}
-          <div className="lg:col-span-5 rounded-3xl p-[2px] bg-gradient-to-b from-[#D4AF37] via-[#FFE59E] to-[#9E6B18] shadow-[0_14px_34px_rgba(90,45,15,0.1)]">
-            <div className="h-full rounded-[22px] bg-gradient-to-b from-[#FAF0DD] to-[#F3E0C0] p-5 sm:p-7 flex flex-col justify-between">
-              <div className="text-center mb-4">
-                <span className="inline-flex items-center gap-1 px-3 py-0.5 rounded-full bg-[#5B0E3D]/10 border border-[#C8963E]/60 text-[9.5px] font-bold uppercase tracking-[0.2em] text-[#5B0E3D] mb-1.5">
-                  Customer Care
-                </span>
-                <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#23120B]">
-                  Frequently Asked Questions
-                </h2>
-                <p className="text-xs text-[#4A2C2A] font-medium mt-0.5">
-                  Find quick answers to your queries
-                </p>
-              </div>
+          {/* ============================================================= */}
+          {/* 3. BOTTOM CENTERED "Still Have Questions? Contact Us →" CTA   */}
+          {/* ============================================================= */}
+          <div className="relative z-10 mt-7 sm:mt-9 flex items-center justify-center gap-2.5 sm:gap-4 max-w-[860px] mx-auto">
+            <div className="flex items-center gap-1.5 flex-1">
+              <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8922E] to-[#8C5818]" />
+              <span className="w-1.5 h-1.5 rotate-45 bg-gradient-to-br from-[#FFE59E] to-[#8C5818] shrink-0" />
+              <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
+            </div>
 
-              <div className="space-y-2.5 my-auto">
-                {FAQ_ITEMS.map((faq, idx) => {
-                  const isOpen = openFaq === faq.id;
-                  return (
-                    <div
-                      key={faq.id}
-                      className="rounded-xl bg-[#FFFDF9] border border-[#D4AF37]/80 overflow-hidden shadow-2xs"
-                    >
-                      <button
-                        type="button"
-                        onClick={() => setOpenFaq(isOpen ? null : faq.id)}
-                        className="w-full px-4 py-3 text-left flex items-center justify-between gap-3 cursor-pointer hover:bg-[#FAF3E6] transition-colors"
+            <Link
+              href="/contact"
+              className="group relative rounded-full p-[3px] shadow-[0_14px_32px_rgba(42,4,26,0.42)] hover:scale-105 active:scale-95 transition-transform shrink-0"
+              style={{
+                background:
+                  'linear-gradient(90deg, #9E6B18 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #9E6B18 100%)',
+              }}
+            >
+              <span
+                className="inline-flex items-center gap-3 px-6 sm:px-9 py-2.5 sm:py-3 rounded-full border border-[#FFE59E]/85 shadow-[inset_0_1px_3px_rgba(255,244,194,0.5)]"
+                style={{
+                  background:
+                    'linear-gradient(180deg, #5E0E3F 0%, #360422 55%, #1B0110 100%)',
+                }}
+              >
+                {/* Properly Sized 24K Gold Headset Icon Badge */}
+                <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FFFDF9]/10 border border-[#FFE59E]/50 flex items-center justify-center shrink-0">
+                  <svg
+                    viewBox="0 0 40 40"
+                    fill="none"
+                    width={22}
+                    height={22}
+                    className="w-5 h-5 sm:w-[22px] sm:h-[22px] shrink-0"
+                  >
+                    <path
+                      d="M8 22V19C8 12.4 13.4 7 20 7C26.6 7 32 12.4 32 19V22"
+                      stroke="url(#headsetGoldFaq)"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <rect
+                      x="5"
+                      y="19"
+                      width="5.5"
+                      height="10"
+                      rx="2.75"
+                      fill="url(#headsetGoldFaq)"
+                    />
+                    <rect
+                      x="29.5"
+                      y="19"
+                      width="5.5"
+                      height="10"
+                      rx="2.75"
+                      fill="url(#headsetGoldFaq)"
+                    />
+                    <path
+                      d="M32 28C32 31.5 28.5 34 23 34H19"
+                      stroke="url(#headsetGoldFaq)"
+                      strokeWidth="2.4"
+                      strokeLinecap="round"
+                    />
+                    <circle cx="19" cy="34" r="2.2" fill="#FFE59E" />
+                    <path
+                      d="M20 25.5C20 25.5 14 21.5 14 17C14 14.8 15.7 13.2 17.6 13.2C18.8 13.2 19.6 13.9 20 14.8C20.4 13.9 21.2 13.2 22.4 13.2C24.3 13.2 26 14.8 26 17C26 21.5 20 25.5 20 25.5Z"
+                      fill="url(#headsetGoldFaq)"
+                    />
+                    <defs>
+                      <linearGradient
+                        id="headsetGoldFaq"
+                        x1="5"
+                        y1="7"
+                        x2="35"
+                        y2="35"
+                        gradientUnits="userSpaceOnUse"
                       >
-                        <span className="inline-flex items-center gap-2.5 text-xs sm:text-[13px] font-bold text-[#23120B]">
-                          <span className="w-5 h-5 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#D4AF37] text-[#23120B] text-[10px] font-serif font-bold flex items-center justify-center shrink-0">
-                            0{idx + 1}
-                          </span>
-                          <span>{faq.question}</span>
-                        </span>
-                        {isOpen ? (
-                          <Minus className="w-4 h-4 text-[#5B0E3D] shrink-0" />
-                        ) : (
-                          <Plus className="w-4 h-4 text-[#23120B] shrink-0" />
-                        )}
-                      </button>
-                      {isOpen && (
-                        <div className="px-4 pb-3 pt-1.5 text-xs text-[#4A2C2A] border-t border-[#D4AF37]/30 leading-relaxed">
-                          {faq.answer}
-                        </div>
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
+                        <stop stopColor="#FFF4C2" />
+                        <stop offset="0.5" stopColor="#E5B84B" />
+                        <stop offset="1" stopColor="#9E6B18" />
+                      </linearGradient>
+                    </defs>
+                  </svg>
+                </span>
+
+                <span className="font-serif font-bold text-xs sm:text-base text-[#FFFDF9] tracking-wide whitespace-nowrap">
+                  Still Have Questions?{' '}
+                  <span className="text-[#FFE59E] underline decoration-[#FFE59E]/50 underline-offset-4">
+                    Contact Us
+                  </span>
+                </span>
+
+                <ArrowRight className="w-4 h-4 text-[#FFE59E] group-hover:translate-x-1 transition-transform shrink-0" />
+              </span>
+            </Link>
+
+            <div className="flex items-center gap-1.5 flex-1">
+              <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
+              <span className="w-1.5 h-1.5 rotate-45 bg-gradient-to-br from-[#FFE59E] to-[#8C5818] shrink-0" />
+              <span className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8922E] to-[#8C5818]" />
             </div>
           </div>
         </div>
