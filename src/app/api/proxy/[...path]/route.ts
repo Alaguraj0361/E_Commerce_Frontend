@@ -49,11 +49,15 @@ async function handleProxy(
     });
 
     const data = await res.text();
+    const headers: Record<string, string> = {
+      'Content-Type': res.headers.get('content-type') || 'application/json',
+    };
+    const setCookie = res.headers.get('set-cookie');
+    if (setCookie) headers['Set-Cookie'] = setCookie;
+
     return new NextResponse(data, {
       status: res.status,
-      headers: {
-        'Content-Type': res.headers.get('content-type') || 'application/json',
-      },
+      headers,
     });
   } catch {
     // Local port 5000 is not running; proceed to live Cloud Backend
@@ -71,11 +75,15 @@ async function handleProxy(
     });
 
     const data = await res.text();
+    const headers: Record<string, string> = {
+      'Content-Type': res.headers.get('content-type') || 'application/json',
+    };
+    const setCookie = res.headers.get('set-cookie');
+    if (setCookie) headers['Set-Cookie'] = setCookie;
+
     return new NextResponse(data, {
       status: res.status,
-      headers: {
-        'Content-Type': res.headers.get('content-type') || 'application/json',
-      },
+      headers,
     });
   } catch (error: any) {
     return NextResponse.json(

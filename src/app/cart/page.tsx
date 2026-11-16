@@ -17,6 +17,7 @@ import {
 import { useCartStore } from '../../store/cartStore';
 import { formatCurrency, resolveMediaUrl } from '../../lib/utils';
 import { LotusIcon, NalmaraEmblem } from '../../components/ui/BrandLogo';
+import { InnerPageBanner } from '../../components/layout/InnerPageBanner';
 
 export default function CartPage() {
   const {
@@ -87,29 +88,15 @@ export default function CartPage() {
 
   return (
     <div className="min-h-screen bg-[#FDF6EC] pb-20">
-      {/* 1. ROYAL PALACE HEADER BANNER */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#280619] via-[#3D0829] to-[#280619] text-white py-10 sm:py-14 px-4 border-b-2 border-[#D4AF37] shadow-lg">
-        <div className="max-w-[1440px] mx-auto relative rounded-3xl border border-[#D4AF37]/45 bg-[#220415]/65 p-6 sm:p-8 text-center space-y-2.5">
-          <div className="absolute top-3 left-3 w-4 h-4 border-t-2 border-l-2 border-[#FFE59E] pointer-events-none" />
-          <div className="absolute top-3 right-3 w-4 h-4 border-t-2 border-r-2 border-[#FFE59E] pointer-events-none" />
-          <div className="absolute bottom-3 left-3 w-4 h-4 border-b-2 border-l-2 border-[#FFE59E] pointer-events-none" />
-          <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#FFE59E] pointer-events-none" />
-
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#FFE59E]/85 text-[#FFE59E] text-[10px] font-bold tracking-[0.22em] uppercase">
-            <NalmaraEmblem className="w-4 h-4" />
-            <span>NALMARA FASHION • THOOTHUKUDI</span>
-          </div>
-          <h1 className="font-serif text-3xl sm:text-4xl font-bold tracking-tight text-[#FFFDF9]">
-            Your Shopping{' '}
-            <span className="font-script italic font-normal text-4xl sm:text-5xl bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent">
-              Bag
-            </span>
-          </h1>
-          <p className="text-xs text-[#FAF0DD]/85 font-light">
-            Check your selected sarees and dresses and apply discount codes before checkout.
-          </p>
-        </div>
-      </section>
+      {/* 1. ROYAL PALACE 450PX HERO BANNER */}
+      <InnerPageBanner
+        title="Your Shopping"
+        titleHighlight="Bag"
+        badge="NALMARA FASHION • THOOTHUKUDI"
+        image="/images/nalmara/category_grand_silk_desktop_bg.jpg"
+        subtitle="Review your curated handpicked sarees and couture ensembles. Apply promotional coupon codes before checkout."
+        breadcrumb={[{ label: 'Shopping Bag' }]}
+      />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 sm:pt-12">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">

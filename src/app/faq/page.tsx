@@ -16,6 +16,7 @@ import {
   Sparkle,
 } from 'lucide-react';
 import { LotusIcon, NalmaraEmblem } from '@/components/ui/BrandLogo';
+import { InnerPageBanner } from '@/components/layout/InnerPageBanner';
 
 const FAQ_DATA = [
   {
@@ -129,51 +130,29 @@ export default function FAQPage() {
 
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
-      {/* 1. ROYAL HERO SECTION (Obsidian #0E0B09 & 24K Gold matching Home Page) */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0E0B09] via-[#17120D] to-[#0E0B09] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b-2 border-[#D4AF37]/80">
-        <div className="max-w-[1440px] mx-auto relative rounded-3xl border border-[#D4AF37]/35 bg-[#120E0A]/60 p-8 sm:p-12 text-center space-y-4">
-          <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]/80 pointer-events-none" />
-          <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]/80 pointer-events-none" />
-          <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]/80 pointer-events-none" />
-          <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]/80 pointer-events-none" />
-
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0E0B09] border border-[#D4AF37]/75 text-[#FFE59E] text-[10px] font-bold tracking-[0.22em] uppercase">
-            <NalmaraEmblem className="w-4 h-4" />
-            <span>Customer Help Center • Thoothukudi</span>
-          </div>
-
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#FFFDF9] leading-tight">
-            Frequently Asked{' '}
-            <span className="font-script italic font-normal text-4xl sm:text-6xl bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent">
-              Questions
-            </span>
-          </h1>
-
-          <p className="text-xs sm:text-sm text-[#EDE3D2]/85 font-light max-w-2xl mx-auto leading-relaxed">
-            Simple, clear answers about saree length, blouse pieces, Tamil Nadu delivery time, and WhatsApp ordering from our Thoothukudi store.
-          </p>
-
-          {/* Search Box in Hero */}
-          <div className="max-w-md mx-auto pt-2">
-            <div className="relative">
-              <Search className="w-4 h-4 text-[#8C6518] absolute left-4 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search questions (e.g. delivery, blouse, return)..."
-                className="w-full bg-[#FFFDF9] text-[#0E0B09] placeholder:text-[#7A6651] text-xs px-4 py-3 pl-11 rounded-full focus:outline-none focus:ring-2 focus:ring-[#D4AF37] border-2 border-[#D4AF37]/70 shadow-lg"
-              />
-            </div>
-          </div>
-
-          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#D4AF37]">
-            <Link href="/" className="hover:text-[#FFE59E] text-[#EDE3D2]/70">Home</Link>
-            <span className="text-[#D4AF37]/50">/</span>
-            <span className="text-[#FFFDF9] font-semibold">FAQ</span>
+      {/* 1. ROYAL HERO BANNER (Height: 450px) */}
+      <InnerPageBanner
+        title="Frequently Asked"
+        titleHighlight="Questions"
+        badge="CUSTOMER HELP CENTER • THOOTHUKUDI"
+        image="/images/nalmara/hd/happy_faq_palace_bg.jpg"
+        subtitle="Simple, clear answers about saree length, blouse pieces, Tamil Nadu delivery time, and WhatsApp ordering from our Thoothukudi store."
+        breadcrumb={[{ label: 'FAQ' }]}
+      >
+        {/* Search Box in Hero */}
+        <div className="max-w-md mx-auto pt-2">
+          <div className="relative">
+            <Search className="w-4 h-4 text-[#8C6518] absolute left-4 top-1/2 -translate-y-1/2" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Search questions (e.g. delivery, blouse, return)..."
+              className="w-full bg-[#FFFDF9] text-[#0E0B09] placeholder:text-[#7A6651] text-xs px-4 py-3 pl-11 rounded-full focus:outline-none focus:ring-2 focus:ring-[#D4AF37] border-2 border-[#D4AF37]/80 shadow-[0_8px_24px_rgba(0,0,0,0.35)]"
+            />
           </div>
         </div>
-      </section>
+      </InnerPageBanner>
 
       {/* 2. CATEGORY PILLS BAR */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 -mt-5 relative z-20">

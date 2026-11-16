@@ -18,6 +18,7 @@ import { api } from '../../lib/api';
 import { Product, Category, Brand } from '../../types';
 import { ProductCard } from '../../components/product/ProductCard';
 import { LotusIcon, NalmaraEmblem } from '../../components/ui/BrandLogo';
+import { InnerPageBanner } from '../../components/layout/InnerPageBanner';
 
 const BACKEND_ORIGIN =
   process.env.NEXT_PUBLIC_API_URL?.replace(/\/api\/?$/, '') ||
@@ -305,156 +306,54 @@ function ShopContent() {
 
   return (
     <div className="min-h-screen bg-[#FDF6EC] text-[#23120B]">
-      {/* 1. ROYAL ATELIER SPLIT HERO BANNER (Exact Same Look & Dynamic Category Content) */}
-      <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#FFFDF9] via-[#FDF5E6] to-[#F4E3C3] border-b-2 border-[#D4AF37]/60 py-8 sm:py-12">
-        <div
-          className="absolute inset-0 pointer-events-none z-0"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 18% 24%, rgba(212,175,55,0.16) 0%, transparent 45%), radial-gradient(circle at 78% 50%, rgba(91,14,61,0.08) 0%, transparent 48%)',
-          }}
-        />
+      {/* 1. ROYAL PALACE 450PX HERO BANNER */}
+      <InnerPageBanner
+        title={heroProfile.line1 || 'Royal Couture'}
+        titleHighlight={heroProfile.line2 || 'Collections'}
+        badge={heroProfile.badge || 'HANDPICKED SILKS & ATELIER TAILORING'}
+        image={heroProfile.image || '/images/nalmara/hd/hero_panoramic_master.jpg'}
+        subtitle={heroProfile.description}
+        breadcrumb={[
+          { label: 'Shop', href: '/shop' },
+          ...(selectedCategory ? [{ label: selectedCategory.replace(/-/g, ' ') }] : []),
+        ]}
+      />
 
-        <div className="relative z-10 max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-14 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10">
-          {/* Left Column: Dynamic Page/Category Headline, Craft Pills & Interactive Category Switcher */}
-          <div
-            key={selectedCategory || 'all'}
-            className="w-full lg:w-[54%] flex flex-col items-center text-center lg:items-start lg:text-left animate-hero-text-up"
-          >
-            {/* Breadcrumb & Kicker Pill */}
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-3">
-              <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#D4AF37] shadow-sm">
-                <Sparkles className="w-3 h-3 text-[#FFE59E] shrink-0" />
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-[#FFE59E]">
-                  {heroProfile.badge}
-                </span>
-              </div>
-
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFDF9]/90 border border-[#D4AF37]/60 text-[10.5px] sm:text-[11px] font-semibold text-[#5C3D1E]">
-                <Link href="/" className="hover:text-[#380725]">
-                  Home
-                </Link>
-                <span>/</span>
+      {/* QUICK CATEGORY PILLS BAR */}
+      {categories.length > 0 && (
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-5 relative z-20">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none justify-start sm:justify-center">
+            <button
+              type="button"
+              onClick={() => handleCategorySelect('')}
+              className={`px-4 py-2 rounded-full text-xs font-serif font-bold whitespace-nowrap transition-all shadow-md cursor-pointer border ${
+                !selectedCategory
+                  ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37]'
+                  : 'bg-[#FFFDF9] text-[#280619] border-[#D4AF37]/50 hover:border-[#D4AF37]'
+              }`}
+            >
+              All Collections
+            </button>
+            {categories.map((cat) => {
+              const active = selectedCategory === cat.slug;
+              return (
                 <button
+                  key={cat._id}
                   type="button"
-                  onClick={() => handleCategorySelect('')}
-                  className="hover:text-[#380725] font-bold text-[#280619] cursor-pointer"
-                >
-                  Shop
-                </button>
-                {selectedCategory && (
-                  <>
-                    <span>/</span>
-                    <span className="text-[#9E1946] font-bold capitalize">
-                      {selectedCategory.replace(/-/g, ' ')}
-                    </span>
-                  </>
-                )}
-              </div>
-            </div>
-
-            {/* Dynamic 2-Line Headline Matching the Exact Selected Menu / Category Name */}
-            <h1 className="font-serif font-bold text-2xl sm:text-4xl md:text-5xl lg:text-[42px] xl:text-[48px] uppercase tracking-[-0.01em] text-[#220915] leading-[1.08]">
-              <span className="block">{heroProfile.line1}</span>
-              <span className="block mt-1 italic font-serif text-transparent bg-clip-text bg-gradient-to-r from-[#4A0B32] via-[#9E1946] to-[#B88228]">
-                {heroProfile.line2}
-              </span>
-            </h1>
-
-            {/* 24K Gold Accent Line */}
-            <div className="flex items-center justify-center lg:justify-start gap-2.5 mt-3 mb-3">
-              <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#FFFDF9] shrink-0" />
-              <span className="h-[1.5px] w-16 sm:w-28 bg-gradient-to-r from-[#D4AF37] via-[#B88228] to-transparent" />
-              <span className="text-[9.5px] sm:text-[10px] font-bold uppercase tracking-[0.18em] text-[#8C5818]">
-                {totalProducts} CURATED STYLES AVAILABLE
-              </span>
-            </div>
-
-            {/* Category Description */}
-            <p className="text-xs sm:text-[14px] text-[#4E3629] leading-[1.68] max-w-xl font-medium">
-              {heroProfile.description}
-            </p>
-
-            {/* Category-Specific Feature Pills */}
-            <div className="mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-2">
-              {heroProfile.pills.map((pill) => (
-                <span
-                  key={pill}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFDF9]/90 border border-[#D4AF37]/60 text-[10px] sm:text-[10.5px] font-bold text-[#280619] shadow-2xs"
-                >
-                  <CheckCircle2 className="w-3 h-3 text-[#9E1946] shrink-0" />
-                  <span>{pill}</span>
-                </span>
-              ))}
-              <Link
-                href="/stitching-services"
-                className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border border-[#D4AF37] text-[10px] sm:text-[10.5px] font-bold shadow-xs hover:scale-105 transition-transform"
-              >
-                <Scissors className="w-3 h-3 shrink-0" />
-                <span>Book Custom Stitching</span>
-                <ArrowRight className="w-3 h-3 shrink-0" />
-              </Link>
-            </div>
-
-            {/* Interactive Quick Category Switcher Bar */}
-            {categories.length > 0 && (
-              <div className="mt-5 pt-4 border-t border-[#D4AF37]/35 w-full flex flex-wrap items-center justify-center lg:justify-start gap-2">
-                <button
-                  type="button"
-                  onClick={() => handleCategorySelect('')}
-                  className={`px-3 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-serif font-bold transition-all cursor-pointer border ${
-                    !selectedCategory
-                      ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37] shadow-md'
-                      : 'bg-[#FFFDF9]/85 text-[#280619] border-[#D4AF37]/55 hover:border-[#380725]'
+                  onClick={() => handleCategorySelect(cat.slug)}
+                  className={`px-4 py-2 rounded-full text-xs font-serif font-bold whitespace-nowrap transition-all shadow-md cursor-pointer border ${
+                    active
+                      ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37]'
+                      : 'bg-[#FFFDF9] text-[#280619] border-[#D4AF37]/50 hover:border-[#D4AF37]'
                   }`}
                 >
-                  All Collections
+                  {cat.name}
                 </button>
-                {categories.map((cat) => {
-                  const active = selectedCategory === cat.slug;
-                  return (
-                    <button
-                      key={cat._id}
-                      type="button"
-                      onClick={() => handleCategorySelect(cat.slug)}
-                      className={`px-3 sm:px-3.5 py-1.5 rounded-full text-[11px] sm:text-xs font-serif font-bold transition-all cursor-pointer border ${
-                        active
-                          ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37] shadow-md'
-                          : 'bg-[#FFFDF9]/85 text-[#280619] border-[#D4AF37]/55 hover:border-[#380725]'
-                      }`}
-                    >
-                      {cat.name}
-                    </button>
-                  );
-                })}
-              </div>
-            )}
+              );
+            })}
           </div>
-
-          {/* Right Column: Dynamic Category Portrait in Double-Bezel 24K Gold Frame + Circular Halo */}
-          <div className="w-full lg:w-[44%] flex items-center justify-center pt-2 lg:pt-0">
-            <div className="relative w-[250px] h-[250px] sm:w-[340px] sm:h-[340px] lg:w-[380px] lg:h-[380px] rounded-full bg-gradient-to-tr from-[#F2E2BE] via-[#FAF1DC] to-[#EFE6CE] border border-[#D4AF37]/45 shadow-[inset_0_0_50px_rgba(212,175,55,0.22)] flex items-center justify-center">
-              <div
-                key={heroProfile.image}
-                className="relative z-10 h-[265px] sm:h-[355px] lg:h-[395px] aspect-[3/4] rounded-[22px] sm:rounded-[24px] p-[3px] bg-gradient-to-b from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] shadow-[0_24px_50px_rgba(40,6,25,0.26)] animate-hero-rise-in"
-              >
-                <div className="relative w-full h-full rounded-[19px] sm:rounded-[21px] overflow-hidden bg-[#280619]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src={heroProfile.image}
-                    alt={heroProfile.line1}
-                    onError={(e) => {
-                      (e.currentTarget as HTMLImageElement).src =
-                        '/images/nalmara/hd/cat_sarees_hd.jpg';
-                    }}
-                    className="w-full h-full object-cover object-top animate-hero-inner-settle"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* 2. MAIN SHOP CONTENT */}
       <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-10">

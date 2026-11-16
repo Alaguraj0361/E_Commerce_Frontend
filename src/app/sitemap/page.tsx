@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { Compass, ArrowUpRight } from "lucide-react";
 import { NalmaraEmblem } from "@/components/ui/BrandLogo";
+import { InnerPageBanner } from "@/components/layout/InnerPageBanner";
 
 const DIRECTORY = [
   {
@@ -46,33 +47,15 @@ const DIRECTORY = [
 export default function SitemapPage() {
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-[#0E0B09]">
-      {/* Royal Obsidian & 24K Gold Hero Header */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0E0B09] via-[#17120D] to-[#0E0B09] text-[#FFFDF9] py-16 md:py-20 px-4 border-b-2 border-[#D4AF37]/50">
-        <div className="pointer-events-none absolute inset-[6px] border border-[#D4AF37]/15" />
-        <span className="pointer-events-none absolute top-3 left-3 h-4 w-4 border-t-2 border-l-2 border-[#D4AF37]/75" />
-        <span className="pointer-events-none absolute top-3 right-3 h-4 w-4 border-t-2 border-r-2 border-[#D4AF37]/75" />
-        <span className="pointer-events-none absolute bottom-3 left-3 h-4 w-4 border-b-2 border-l-2 border-[#D4AF37]/75" />
-        <span className="pointer-events-none absolute bottom-3 right-3 h-4 w-4 border-b-2 border-r-2 border-[#D4AF37]/75" />
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(212,175,55,0.16),transparent_65%)]" />
-
-        <div className="max-w-5xl mx-auto text-center space-y-3 relative z-10">
-          <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-[#17120D]/90 border border-[#D4AF37]/50 shadow-[0_6px_20px_rgba(0,0,0,0.5)]">
-            <NalmaraEmblem className="w-5 h-5" />
-            <span className="text-[10px] uppercase tracking-[0.3em] text-[#FFE59E] font-bold">
-              Nalmara Fashion • Thoothukudi
-            </span>
-          </div>
-          <h1 className="text-3xl sm:text-5xl font-serif font-normal text-[#FFFDF9]">
-            Website{" "}
-            <span className="font-script italic font-normal bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent pr-1">
-              Pages
-            </span>
-          </h1>
-          <p className="text-[#FAF7F2]/75 text-sm max-w-md mx-auto">
-            All pages, collections, and customer help links for Nalmara Fashion, Thoothukudi.
-          </p>
-        </div>
-      </section>
+      {/* 1. ROYAL HERO BANNER (Height: 450px) */}
+      <InnerPageBanner
+        title="Store Directory &"
+        titleHighlight="Sitemap"
+        badge="DIRECT STORE DIRECTORY • THOOTHUKUDI"
+        image="/images/nalmara/hd/hero_stage_clean_desktop.jpg"
+        subtitle="All pages, handloom collections, customer policies, and contact information for Nalmara Fashion, Thoothukudi."
+        breadcrumb={[{ label: 'Directory' }]}
+      />
 
       <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12 md:py-16 grid grid-cols-1 md:grid-cols-3 gap-6">
         {DIRECTORY.map((group) => (

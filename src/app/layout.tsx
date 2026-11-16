@@ -28,6 +28,9 @@ const alexBrush = Alex_Brush({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL || 'https://nalmarafashion.vercel.app'
+  ),
   title: 'NALMARA FASHION • Tradition Woven in Elegance | Luxury Sarees & Ethnic Couture',
   description:
     'Discover beautiful sarees and timeless ethnic styles for every special moment. Curated collections of Kanchivaram silks, cotton sarees, festive wear, and bespoke party ensembles.',

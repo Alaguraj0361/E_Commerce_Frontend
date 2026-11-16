@@ -19,6 +19,7 @@ import { api } from '@/lib/api';
 import { Order } from '@/types';
 import { formatCurrency } from '@/lib/utils';
 import { NalmaraEmblem } from '@/components/ui/BrandLogo';
+import { InnerPageBanner } from '@/components/layout/InnerPageBanner';
 import { useAuthStore } from '@/store/authStore';
 
 const TRACKING_STEPS = [
@@ -149,37 +150,15 @@ function TrackOrderContent() {
 
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
-      {/* 1. ROYAL HERO SECTION (Matching Home Page Look) */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0E0B09] via-[#17120D] to-[#0E0B09] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b-2 border-[#D4AF37]/80">
-        <div className="max-w-[1440px] mx-auto relative rounded-3xl border border-[#D4AF37]/35 bg-[#120E0A]/60 p-8 sm:p-12 text-center space-y-4">
-          <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]/80 pointer-events-none" />
-          <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]/80 pointer-events-none" />
-          <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]/80 pointer-events-none" />
-          <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]/80 pointer-events-none" />
-
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0E0B09] border border-[#D4AF37]/75 text-[#FFE59E] text-[10px] font-bold tracking-[0.22em] uppercase">
-            <NalmaraEmblem className="w-4 h-4" />
-            <span>Nalmara Fashion • Thoothukudi</span>
-          </div>
-
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#FFFDF9] leading-tight">
-            Track Your{' '}
-            <span className="font-script italic font-normal text-4xl sm:text-6xl bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent">
-              Order
-            </span>
-          </h1>
-
-          <p className="text-xs sm:text-sm text-[#EDE3D2]/85 font-light max-w-xl mx-auto leading-relaxed">
-            Enter your Order ID below to check live delivery status from our Thoothukudi store to your doorstep.
-          </p>
-
-          <div className="pt-1 flex items-center justify-center gap-2 text-xs text-[#D4AF37]">
-            <Link href="/" className="hover:text-[#FFE59E] text-[#EDE3D2]/70">Home</Link>
-            <span className="text-[#D4AF37]/50">/</span>
-            <span className="text-[#FFFDF9] font-semibold">Track Order</span>
-          </div>
-        </div>
-      </section>
+      {/* 1. ROYAL HERO BANNER (Height: 450px) */}
+      <InnerPageBanner
+        title="Track Your"
+        titleHighlight="Order"
+        badge="LIVE DISPATCH TRACKING • THOOTHUKUDI"
+        image="/images/nalmara/hd/hero_stage_clean_desktop.jpg"
+        subtitle="Enter your Order ID or tracking code below to check live delivery status from our Thoothukudi store to your doorstep."
+        breadcrumb={[{ label: 'Track Order' }]}
+      />
 
       {/* 2. TRACKING INPUT CARD */}
       <section className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 relative z-20">

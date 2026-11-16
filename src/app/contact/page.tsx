@@ -14,6 +14,7 @@ import {
   Sparkles,
 } from 'lucide-react';
 import { NalmaraEmblem } from '@/components/ui/BrandLogo';
+import { InnerPageBanner } from '@/components/layout/InnerPageBanner';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({
@@ -68,107 +69,34 @@ export default function ContactPage() {
 
   return (
     <div className="min-h-screen bg-[#FDF6EC] text-[#23120B]">
-      {/* 1. ROYAL ATELIER SPLIT HERO BANNER — CONTACT US */}
-      <section className="relative w-full overflow-hidden bg-gradient-to-br from-[#FFFDF9] via-[#FDF5E6] to-[#F4E3C3] border-b-2 border-[#D4AF37]/60 py-10 sm:py-14">
-        <div
-          className="absolute inset-0 pointer-events-none z-0"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 18% 24%, rgba(212,175,55,0.16) 0%, transparent 45%), radial-gradient(circle at 78% 50%, rgba(91,14,61,0.08) 0%, transparent 48%)',
-          }}
-        />
-
-        <div className="relative z-10 max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-14 flex flex-col lg:flex-row items-center justify-between gap-8 lg:gap-10">
-          {/* Left Column: Exact Page Name Headline ("CONTACT US"), Concierge Details & Direct Links */}
-          <div className="w-full lg:w-[54%] flex flex-col items-center text-center lg:items-start lg:text-left animate-hero-text-up">
-            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2 mb-3">
-              <div className="inline-flex items-center gap-2 px-3 sm:px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#D4AF37] shadow-sm">
-                <NalmaraEmblem className="w-4 h-4 shrink-0" />
-                <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.2em] text-[#FFE59E]">
-                  CONTACT US • THOOTHUKUDI BOUTIQUE
-                </span>
-                <Sparkles className="w-3 h-3 text-[#FFE59E] shrink-0" />
-              </div>
-
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFDF9]/90 border border-[#D4AF37]/60 text-[10.5px] sm:text-[11px] font-semibold text-[#5C3D1E]">
-                <Link href="/" className="hover:text-[#380725]">
-                  Home
-                </Link>
-                <span>/</span>
-                <span className="text-[#9E1946] font-bold">Contact Us</span>
-              </div>
-            </div>
-
-            <h1 className="font-serif font-bold text-2xl sm:text-4xl md:text-5xl lg:text-[44px] xl:text-[50px] uppercase tracking-[-0.01em] text-[#220915] leading-[1.08]">
-              <span className="block">CONTACT US</span>
-              <span className="block mt-1 italic font-serif text-transparent bg-clip-text bg-gradient-to-r from-[#4A0B32] via-[#9E1946] to-[#B88228]">
-                ROYAL BOUTIQUE &amp; CONCIERGE
-              </span>
-            </h1>
-
-            <div className="flex items-center justify-center lg:justify-start gap-2.5 mt-3 mb-3">
-              <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#FFFDF9] shrink-0" />
-              <span className="h-[1.5px] w-16 sm:w-28 bg-gradient-to-r from-[#D4AF37] via-[#B88228] to-transparent" />
-              <span className="text-[9.5px] sm:text-[10px] font-bold uppercase tracking-[0.18em] text-[#8C5818]">
-                6383163609 • 7871207631
-              </span>
-            </div>
-
-            <p className="text-xs sm:text-[14px] text-[#4E3629] leading-[1.68] max-w-xl font-medium">
-              Need live saree photos, custom blouse stitching guidance, bulk wedding return gift quotes, or order tracking? Connect directly with our Thoothukudi team via WhatsApp, phone, or the form below.
-            </p>
-
-            <div className="mt-4 flex flex-wrap items-center justify-center lg:justify-start gap-2">
-              {['Live Video Saree Selection', 'Custom Stitching Support', 'Fast Response on WhatsApp'].map(
-                (pill) => (
-                  <span
-                    key={pill}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FFFDF9]/90 border border-[#D4AF37]/60 text-[10px] sm:text-[10.5px] font-bold text-[#280619] shadow-2xs"
-                  >
-                    <CheckCircle2 className="w-3 h-3 text-[#9E1946] shrink-0" />
-                    <span>{pill}</span>
-                  </span>
-                )
-              )}
-            </div>
-
-            <div className="mt-5 flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3">
-              <a
-                href="https://wa.me/916383163609?text=Hello%20NALMARA%20FASHION,%20I%20have%20an%20enquiry"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 sm:px-6 py-2.5 sm:py-3 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] text-[#FFE59E] border-[1.5px] border-[#D4AF37] font-serif font-bold text-xs sm:text-sm shadow-md hover:scale-105 transition-all"
-              >
-                <MessageSquare className="w-4 h-4 text-[#FFE59E] shrink-0" />
-                <span>Chat on WhatsApp</span>
-              </a>
-              <a
-                href="tel:+916383163609"
-                className="inline-flex items-center gap-2 px-5 py-2.5 sm:py-3 rounded-full bg-[#FFFDF9]/90 hover:bg-[#380725] text-[#280619] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37]/80 font-serif font-bold text-xs sm:text-sm shadow-sm transition-all"
-              >
-                <Phone className="w-3.5 h-3.5 text-[#B88228] shrink-0" />
-                <span>Call +91 63831 63609</span>
-              </a>
-            </div>
-          </div>
-
-          {/* Right Column: Double-Bezel 24K Gold Portrait Showcase */}
-          <div className="w-full lg:w-[44%] flex items-center justify-center pt-2 lg:pt-0">
-            <div className="relative w-[250px] h-[250px] sm:w-[340px] sm:h-[340px] lg:w-[380px] lg:h-[380px] rounded-full bg-gradient-to-tr from-[#F2E2BE] via-[#FAF1DC] to-[#EFE6CE] border border-[#D4AF37]/45 shadow-[inset_0_0_50px_rgba(212,175,55,0.22)] flex items-center justify-center">
-              <div className="relative z-10 h-[265px] sm:h-[355px] lg:h-[395px] aspect-[3/4] rounded-[22px] sm:rounded-[24px] p-[3px] bg-gradient-to-b from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] shadow-[0_24px_50px_rgba(40,6,25,0.26)] animate-hero-rise-in">
-                <div className="relative w-full h-full rounded-[19px] sm:rounded-[21px] overflow-hidden bg-[#280619]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/nalmara/hd/stitching_blouse_hd.jpg"
-                    alt="Contact Nalmara Fashion"
-                    className="w-full h-full object-cover object-top animate-hero-inner-settle"
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
+      {/* 1. ROYAL PALACE 450PX HERO BANNER */}
+      <InnerPageBanner
+        title="Get In"
+        titleHighlight="Touch"
+        badge="CONTACT US • THOOTHUKUDI BOUTIQUE"
+        image="/images/nalmara/festive_banner_backdrop.jpg"
+        subtitle="Need live saree photos, custom blouse stitching guidance, bulk wedding return gift quotes, or order tracking? Connect directly with our Thoothukudi team."
+        breadcrumb={[{ label: 'Contact Us' }]}
+      >
+        <div className="pt-2 flex flex-wrap items-center justify-center gap-3">
+          <a
+            href="https://wa.me/916383163609?text=Hello%20NALMARA%20FASHION,%20I%20have%20an%20enquiry"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] text-[#280619] border border-[#FFFDF9] font-serif font-bold text-xs sm:text-sm shadow-md hover:scale-105 transition-all"
+          >
+            <MessageSquare className="w-4 h-4 text-[#280619] shrink-0" />
+            <span>Chat on WhatsApp</span>
+          </a>
+          <a
+            href="tel:+916383163609"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#1F0414]/80 text-[#FFE59E] border border-[#D4AF37] font-serif font-bold text-xs sm:text-sm shadow-sm hover:bg-[#380725] transition-all"
+          >
+            <Phone className="w-3.5 h-3.5 text-[#FFE59E] shrink-0" />
+            <span>Call +91 63831 63609</span>
+          </a>
         </div>
-      </section>
+      </InnerPageBanner>
 
       {/* 2. CONTACT CHANNELS & ENQUIRY FORM */}
       <section className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 xl:px-12 max-w-[1560px] mx-auto">

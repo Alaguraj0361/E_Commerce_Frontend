@@ -8,6 +8,7 @@ import { useWishlistStore } from '../../store/wishlistStore';
 import { useCartStore } from '../../store/cartStore';
 import { formatCurrency, resolveMediaUrl } from '../../lib/utils';
 import { NalmaraEmblem } from '../../components/ui/BrandLogo';
+import { InnerPageBanner } from '../../components/layout/InnerPageBanner';
 import { toast } from 'sonner';
 
 export default function WishlistPage() {
@@ -36,40 +37,18 @@ export default function WishlistPage() {
 
   return (
     <div className="min-h-screen bg-[#FDF6EC] text-[#23120B]">
-      {/* 1. ROYAL PALACE HERO SECTION */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#280619] via-[#3D0829] to-[#280619] text-white py-12 sm:py-16 px-4 sm:px-6 lg:px-8 border-b-2 border-[#D4AF37]">
-        <div className="max-w-[1440px] mx-auto relative rounded-3xl border border-[#D4AF37]/45 bg-[#220415]/65 p-6 sm:p-10 text-center space-y-3">
-          <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#FFE59E] pointer-events-none" />
-          <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#FFE59E] pointer-events-none" />
-          <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#FFE59E] pointer-events-none" />
-          <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#FFE59E] pointer-events-none" />
-
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#FFE59E]/85 text-[#FFE59E] text-[10px] font-bold tracking-[0.25em] uppercase">
-            <NalmaraEmblem className="w-4 h-4" />
-            <span>Nalmara Fashion • Thoothukudi</span>
-            <Sparkles className="w-3 h-3 text-[#FFE59E]" />
-          </div>
-
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FFFDF9] leading-tight">
-            Your Saved{' '}
-            <span className="font-script italic font-normal text-4xl sm:text-5xl lg:text-6xl bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent">
-              Wishlist
-            </span>
-          </h1>
-
-          <p className="text-xs sm:text-sm text-[#FAF0DD]/85 font-light max-w-xl mx-auto leading-relaxed">
-            Your saved sarees, salwar suits, kurtis, and kids wear ready to order anytime.
-          </p>
-
-          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#D4AF37]">
-            <Link href="/" className="hover:text-[#FFE59E] text-[#FAF0DD]/75">Home</Link>
-            <span className="text-[#D4AF37]/50">/</span>
-            <Link href="/shop" className="hover:text-[#FFE59E] text-[#FAF0DD]/75">Shop</Link>
-            <span className="text-[#D4AF37]/50">/</span>
-            <span className="text-[#FFFDF9] font-semibold">Wishlist ({products.length})</span>
-          </div>
-        </div>
-      </section>
+      {/* 1. ROYAL PALACE 450PX HERO BANNER */}
+      <InnerPageBanner
+        title="Your Saved"
+        titleHighlight="Wishlist"
+        badge="NALMARA FASHION • THOOTHUKUDI"
+        image="/images/nalmara/category_pearl_silk_desktop_bg.jpg"
+        subtitle={`Your saved sarees, salwar suits, kurtis, and kids wear ready to order anytime (${products.length} items saved).`}
+        breadcrumb={[
+          { label: 'Shop', href: '/shop' },
+          { label: `Wishlist (${products.length})` },
+        ]}
+      />
 
       {/* 2. MAIN WISHLIST GRID */}
       <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-12">

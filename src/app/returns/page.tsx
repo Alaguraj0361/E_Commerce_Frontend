@@ -8,6 +8,7 @@ import {
   Truck,
 } from 'lucide-react';
 import { NalmaraEmblem } from '@/components/ui/BrandLogo';
+import { InnerPageBanner } from '@/components/layout/InnerPageBanner';
 
 export const metadata = {
   title: 'Return & Exchange Policy | NALMARA FASHION • Thoothukudi, Tamil Nadu',
@@ -41,37 +42,15 @@ export default function ReturnsPage() {
 
   return (
     <div className="min-h-screen bg-[#FAF7F2] text-zinc-900">
-      {/* 1. ROYAL HERO SECTION (Obsidian #0E0B09 & 24K Gold matching Home Page) */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0E0B09] via-[#17120D] to-[#0E0B09] text-white py-14 sm:py-20 px-4 sm:px-6 lg:px-8 border-b-2 border-[#D4AF37]/80">
-        <div className="max-w-[1440px] mx-auto relative rounded-3xl border border-[#D4AF37]/35 bg-[#120E0A]/60 p-8 sm:p-12 text-center space-y-4">
-          <div className="absolute top-3 left-3 w-5 h-5 border-t-2 border-l-2 border-[#D4AF37]/80 pointer-events-none" />
-          <div className="absolute top-3 right-3 w-5 h-5 border-t-2 border-r-2 border-[#D4AF37]/80 pointer-events-none" />
-          <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#D4AF37]/80 pointer-events-none" />
-          <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#D4AF37]/80 pointer-events-none" />
-
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0E0B09] border border-[#D4AF37]/75 text-[#FFE59E] text-[10px] font-bold tracking-[0.22em] uppercase">
-            <NalmaraEmblem className="w-4 h-4" />
-            <span>Easy &amp; Customer Friendly</span>
-          </div>
-
-          <h1 className="font-serif text-3xl sm:text-5xl font-bold tracking-tight text-[#FFFDF9] leading-tight">
-            Return &amp;{' '}
-            <span className="font-script italic font-normal text-4xl sm:text-6xl bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent">
-              Exchange Policy
-            </span>
-          </h1>
-
-          <p className="text-xs sm:text-sm text-[#EDE3D2]/85 font-light max-w-2xl mx-auto leading-relaxed">
-            Your happiness matters most to us. If you need a different size or wish to exchange your saree or dress, our Thoothukudi team makes it simple and quick.
-          </p>
-
-          <div className="pt-2 flex items-center justify-center gap-2 text-xs text-[#D4AF37]">
-            <Link href="/" className="hover:text-[#FFE59E] text-[#EDE3D2]/70">Home</Link>
-            <span className="text-[#D4AF37]/50">/</span>
-            <span className="text-[#FFFDF9] font-semibold">Return &amp; Exchange</span>
-          </div>
-        </div>
-      </section>
+      {/* 1. ROYAL HERO BANNER (Height: 450px) */}
+      <InnerPageBanner
+        title="Return &"
+        titleHighlight="Exchange Policy"
+        badge="EASY 7-DAY EXCHANGE • THOOTHUKUDI BOUTIQUE"
+        image="/images/nalmara/category_pearl_silk_desktop_bg.jpg"
+        subtitle="Your happiness matters most to us. If you need a different size or wish to exchange your saree or dress, our Thoothukudi team makes it simple and quick."
+        breadcrumb={[{ label: 'Return & Exchange' }]}
+      />
 
       {/* 2. THREE CORE GUARANTEES */}
       <section className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 -mt-8 relative z-20">

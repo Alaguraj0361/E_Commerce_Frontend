@@ -1115,7 +1115,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-[#FDF6EC] text-[#2A1019] w-full max-w-full overflow-x-hidden font-sans select-none">
-      {/* =================================================================== */}
+            {/* =================================================================== */}
       {/* 01. ROYAL ATELIER INTERACTIVE PRODUCT SHOWCASE BANNER               */}
       {/* =================================================================== */}
       <section className="relative w-full overflow-hidden border-b-2 border-[#D4AF37]">
@@ -1241,17 +1241,10 @@ export default function HomePage() {
               </svg>
             </div>
 
-            {/* Left Edge & Top-Right Floral Accents */}
+            {/* Top-Right Floral Accent */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/nalmara/hd/bouquet_corner_left.png"
-              alt=""
-              aria-hidden="true"
-              className="pointer-events-none select-none absolute bottom-3 -left-6 w-24 h-24 object-contain z-20 opacity-95 drop-shadow-[0_6px_12px_rgba(0,0,0,0.5)]"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/nalmara/hd/bouquet_corner_right.png"
+              src="/images/nalmara/hd/hero_corner_tr.png"
               alt=""
               aria-hidden="true"
               className="pointer-events-none select-none absolute -top-2 -right-3 w-24 h-24 object-contain z-20 opacity-95 drop-shadow-[0_6px_12px_rgba(0,0,0,0.5)]"
@@ -1304,21 +1297,23 @@ export default function HomePage() {
                   {/* 2. Two-Line Grand Palace Headline ('Cinzel' + 'Great Vibes') */}
                   <Link
                     href={activeHeroItem.rawProduct ? `/product/${activeHeroItem.slug}` : '/shop'}
-                    className="group block max-w-full"
+                    className="group block max-w-full overflow-visible"
                   >
-                    <h1 className="leading-[1.04]">
+                    <h1 className="leading-tight pt-1 pb-1 overflow-visible">
                       <span
-                        className="block font-extrabold text-[19px] uppercase tracking-[0.03em] text-transparent bg-clip-text drop-shadow-[0_3px_10px_rgba(0,0,0,0.85)]"
+                        className="block font-extrabold text-[20px] sm:text-[22px] uppercase tracking-[0.03em] text-transparent bg-clip-text drop-shadow-[0_3px_10px_rgba(0,0,0,0.85)] pt-1.5 pb-0.5 leading-[1.2] overflow-visible"
                         style={{
                           fontFamily: "'Cinzel', Georgia, serif",
                           backgroundImage:
                             'linear-gradient(180deg, #FFFDF9 0%, #FFE28A 46%, #C88A20 88%, #F8DF95 100%)',
+                          WebkitBackgroundClip: 'text',
+                          backgroundClip: 'text',
                         }}
                       >
                         {activeHeroItem.titleLine1}
                       </span>
                       <span
-                        className="block -mt-0.5 font-normal text-[28px] text-[#FCE8C0] leading-[1.05] drop-shadow-[0_3px_12px_rgba(0,0,0,0.9)]"
+                        className="block font-normal text-[28px] sm:text-[32px] text-[#FCE8C0] leading-[1.12] pt-0.5 pb-0.5 drop-shadow-[0_3px_12px_rgba(0,0,0,0.9)] overflow-visible"
                         style={{ fontFamily: "'Great Vibes', Georgia, cursive" }}
                       >
                         {toTitleCase(activeHeroItem.titleLine2)}
@@ -1326,25 +1321,34 @@ export default function HomePage() {
                     </h1>
                   </Link>
 
-                  {/* 3. Centered 24K Gold Lotus Divider */}
-                  <div className="flex items-center justify-center gap-1.5 my-2 w-full max-w-[210px]">
+                  {/* 3. Centered 3D Sculpted 24K Gold Lotus Divider */}
+                  <div className="flex items-center justify-center gap-2 my-2.5 w-full max-w-[240px]">
                     <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-[#FFE59E]" />
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] shrink-0" />
-                    <svg viewBox="0 0 36 22" fill="none" className="w-6 h-4 shrink-0">
-                      <path d="M18 2C15 7 14 12 18 18C22 12 21 7 18 2Z" fill="url(#lotusCenterGrad)" />
-                      <path d="M18 18C13 15 9 10 10 5C13 8 15 12 18 18Z" fill="url(#lotusCenterGrad)" fillOpacity="0.9" />
-                      <path d="M18 18C23 15 27 10 26 5C23 8 21 12 18 18Z" fill="url(#lotusCenterGrad)" fillOpacity="0.9" />
-                      <path d="M18 18C10 18 4 14 3 10C8 11 13 14 18 18Z" fill="url(#lotusCenterGrad)" fillOpacity="0.75" />
-                      <path d="M18 18C26 18 32 14 33 10C28 11 23 14 18 18Z" fill="url(#lotusCenterGrad)" fillOpacity="0.75" />
+                    <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] border border-[#5A3807] shrink-0" />
+                    <svg viewBox="0 0 60 28" fill="none" className="w-7 h-auto shrink-0 drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
+                      <path d="M30 3C26 10 23 16 30 24C37 16 34 10 30 3Z" fill="url(#mobHeroLotusCenter)" stroke="#5A3807" strokeWidth="0.9" />
+                      <path d="M30 24C21 20 15 13 18 7C23 9 26 14 30 24Z" fill="url(#mobHeroLotusSide)" stroke="#5A3807" strokeWidth="0.9" />
+                      <path d="M30 24C39 20 45 13 42 7C37 9 34 14 30 24Z" fill="url(#mobHeroLotusSide)" stroke="#5A3807" strokeWidth="0.9" />
+                      <path d="M30 24C16 23 8 18 9 12C15 13 22 17 30 24Z" fill="url(#mobHeroLotusOuter)" stroke="#5A3807" strokeWidth="0.8" />
+                      <path d="M30 24C44 23 52 18 51 12C45 13 38 17 30 24Z" fill="url(#mobHeroLotusOuter)" stroke="#5A3807" strokeWidth="0.8" />
+                      <ellipse cx="30" cy="25" rx="10" ry="2" fill="#8C5818" />
                       <defs>
-                        <linearGradient id="lotusCenterGrad" x1="3" y1="2" x2="33" y2="18" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#FFF4C2" />
-                          <stop offset="0.5" stopColor="#E5B84B" />
-                          <stop offset="1" stopColor="#9A6B18" />
+                        <linearGradient id="mobHeroLotusCenter" x1="30" y1="3" x2="30" y2="24" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#FFFDF9" />
+                          <stop offset="0.45" stopColor="#E5B84B" />
+                          <stop offset="1" stopColor="#9E6B18" />
+                        </linearGradient>
+                        <linearGradient id="mobHeroLotusSide" x1="18" y1="7" x2="42" y2="24" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#FFE59E" />
+                          <stop offset="1" stopColor="#A6721E" />
+                        </linearGradient>
+                        <linearGradient id="mobHeroLotusOuter" x1="9" y1="12" x2="51" y2="24" gradientUnits="userSpaceOnUse">
+                          <stop stopColor="#F5D37E" />
+                          <stop offset="1" stopColor="#8C5818" />
                         </linearGradient>
                       </defs>
                     </svg>
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] shrink-0" />
+                    <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] border border-[#5A3807] shrink-0" />
                     <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#D4AF37] to-[#FFE59E]" />
                   </div>
 
@@ -1425,7 +1429,7 @@ export default function HomePage() {
                   <div className="relative w-full max-w-[198px] aspect-[3/4.25] rounded-t-[54px] rounded-b-[20px] p-[2.5px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_20px_50px_rgba(0,0,0,0.65)]">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="/images/nalmara/hd/bouquet_corner_left.png"
+                      src="/images/nalmara/hd/hero_corner_tl.png"
                       alt=""
                       aria-hidden="true"
                       className="pointer-events-none select-none absolute -top-3 left-1 w-14 h-14 object-contain z-30 drop-shadow-[0_4px_8px_rgba(0,0,0,0.45)]"
@@ -1585,17 +1589,17 @@ export default function HomePage() {
               </button>
             </div>
 
-            {/* Bottom-Left & Bottom-Right 3D Golden Floral Bouquets */}
+            {/* Bottom-Left & Bottom-Right 3D Cream & Burgundy Floral Bouquets with 24K Gold Leaves */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/nalmara/hd/bouquet_corner_left.png"
+              src="/images/nalmara/hd/hero_corner_bl.png"
               alt=""
               aria-hidden="true"
               className="pointer-events-none select-none absolute -bottom-2 -left-2 w-24 h-24 object-contain z-20 drop-shadow-[0_6px_12px_rgba(90,52,16,0.3)]"
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/nalmara/hd/bouquet_corner_right.png"
+              src="/images/nalmara/hd/hero_corner_br.png"
               alt=""
               aria-hidden="true"
               className="pointer-events-none select-none absolute -bottom-2 -right-2 w-24 h-24 object-contain z-20 drop-shadow-[0_6px_12px_rgba(90,52,16,0.3)]"
@@ -1757,20 +1761,13 @@ export default function HomePage() {
               </svg>
             </div>
 
-            {/* Left & Top-Right 3D Golden & Magenta Floral Cascades */}
+            {/* Top-Right 3D Cream & Burgundy Floral Cascade with 24K Gold Leaves */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/nalmara/hd/bouquet_corner_left.png"
+              src="/images/nalmara/hd/hero_corner_tr.png"
               alt=""
               aria-hidden="true"
-              className="pointer-events-none select-none absolute bottom-2 -left-4 w-44 h-44 object-contain z-20 opacity-95 drop-shadow-[0_10px_20px_rgba(0,0,0,0.6)]"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/nalmara/hd/bouquet_corner_right.png"
-              alt=""
-              aria-hidden="true"
-              className="pointer-events-none select-none absolute top-1 right-0 w-44 h-44 object-contain z-20 opacity-95 drop-shadow-[0_10px_20px_rgba(0,0,0,0.55)]"
+              className="pointer-events-none select-none absolute top-0 right-0 w-48 sm:w-56 h-auto object-contain z-20 opacity-95 drop-shadow-[0_10px_24px_rgba(0,0,0,0.65)]"
             />
 
             {/* MAIN WIDESCREEN PALACE STAGE (7 Cols Left Royal Editorial | 5 Cols Right Grand Mughal Arch) */}
@@ -1782,7 +1779,7 @@ export default function HomePage() {
                   className="col-span-7 flex flex-col items-center text-center pt-2 pb-2 z-20 animate-hero-text-up"
                 >
                   {/* 1. Scalloped Royal Plum & 24K Gold Crown Jewel Plaque */}
-                  <div className="relative inline-flex items-center mb-3">
+                  <div className="relative inline-flex items-center mb-4 sm:mb-5">
                     <span className="h-[1.5px] w-14 lg:w-20 bg-gradient-to-r from-transparent via-[#D4AF37] to-[#FFF4C2] mr-2" />
                     <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6B18] border border-[#5A3807] -mr-1.5 z-10 shadow-xs" />
                     <div className="rounded-full p-[2.5px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_26px_rgba(0,0,0,0.6)]">
@@ -1812,24 +1809,26 @@ export default function HomePage() {
                     <span className="h-[1.5px] w-14 lg:w-20 bg-gradient-to-l from-transparent via-[#D4AF37] to-[#FFF4C2] ml-2" />
                   </div>
 
-                  {/* 2. Monumental Two-Line Grand Palace Headline ('Cinzel' 3D Gold Serif + 'Great Vibes' Script) */}
+                  {/* 2. Monumental Two-Line Grand Palace Headline (Fully Visible Ascenders & No Clipping) */}
                   <Link
                     href={activeHeroItem.rawProduct ? `/product/${activeHeroItem.slug}` : '/shop'}
-                    className="group block max-w-full"
+                    className="group block max-w-full overflow-visible"
                   >
-                    <h1 className="leading-[1.02]">
+                    <h1 className="leading-tight pt-1 pb-1 overflow-visible">
                       <span
-                        className="block font-extrabold text-4xl lg:text-[52px] xl:text-[58px] uppercase tracking-[0.04em] text-transparent bg-clip-text drop-shadow-[0_5px_16px_rgba(0,0,0,0.85)]"
+                        className="block font-extrabold text-4xl lg:text-[52px] xl:text-[58px] uppercase tracking-[0.04em] text-transparent bg-clip-text drop-shadow-[0_5px_16px_rgba(0,0,0,0.85)] pt-3 pb-1 leading-[1.2] overflow-visible"
                         style={{
                           fontFamily: "'Cinzel', Georgia, serif",
                           backgroundImage:
                             'linear-gradient(180deg, #FFFDF9 0%, #FFE494 42%, #C98B20 82%, #FBE29A 100%)',
+                          WebkitBackgroundClip: 'text',
+                          backgroundClip: 'text',
                         }}
                       >
                         {activeHeroItem.titleLine1}
                       </span>
                       <span
-                        className="block -mt-1 font-normal text-5xl lg:text-[64px] xl:text-[72px] text-[#FCE8C0] leading-[1.02] drop-shadow-[0_5px_18px_rgba(0,0,0,0.9)]"
+                        className="block font-normal text-5xl lg:text-[64px] xl:text-[72px] text-[#FCE8C0] leading-[1.12] pt-0.5 pb-1 drop-shadow-[0_5px_18px_rgba(0,0,0,0.9)] overflow-visible"
                         style={{ fontFamily: "'Great Vibes', Georgia, cursive" }}
                       >
                         {toTitleCase(activeHeroItem.titleLine2)}
@@ -1837,19 +1836,86 @@ export default function HomePage() {
                     </h1>
                   </Link>
 
-                  {/* 3. Centered 24K Gold Lotus Filigree Divider */}
-                  <div className="flex items-center justify-center gap-3 my-2.5 w-full max-w-[440px]">
+                  {/* 3. Centered 3D Sculpted 24K Gold Lotus & Filigree Divider Element */}
+                  <div className="flex items-center justify-center gap-3 my-3 w-full max-w-[460px]">
                     <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-[#FFE59E]" />
-                    <span className="w-2 h-2 rotate-45 bg-[#FFE59E] shrink-0" />
-                    <svg viewBox="0 0 40 24" fill="none" className="w-10 h-6 shrink-0 drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
-                      <path d="M20 2C16.5 7.5 15.5 13 20 19.5C24.5 13 23.5 7.5 20 2Z" fill="#FFF4C2" />
-                      <path d="M20 19.5C14.5 16 10 11 11 5.5C14.5 8.5 16.5 13 20 19.5Z" fill="#E5B84B" />
-                      <path d="M20 19.5C25.5 16 30 11 29 5.5C25.5 8.5 23.5 13 20 19.5Z" fill="#E5B84B" />
-                      <path d="M20 19.5C11 19.5 4.5 15 3.5 10.5C9 11.5 14.5 15 20 19.5Z" fill="#C6923A" />
-                      <path d="M20 19.5C29 19.5 35.5 15 36.5 10.5C31 11.5 25.5 15 20 19.5Z" fill="#C6923A" />
-                      <ellipse cx="20" cy="21" rx="6" ry="1.6" fill="#FFE59E" />
+                    <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6B18] border border-[#5A3807] shadow-xs shrink-0" />
+                    <svg
+                      viewBox="0 0 60 28"
+                      fill="none"
+                      width={52}
+                      height={24}
+                      className="w-12 sm:w-14 h-auto shrink-0 drop-shadow-[0_4px_10px_rgba(0,0,0,0.7)]"
+                    >
+                      <path
+                        d="M30 3C26 10 23 16 30 24C37 16 34 10 30 3Z"
+                        fill="url(#deskHeroLotusCenter)"
+                        stroke="#5A3807"
+                        strokeWidth="0.9"
+                      />
+                      <path
+                        d="M30 24C21 20 15 13 18 7C23 9 26 14 30 24Z"
+                        fill="url(#deskHeroLotusSide)"
+                        stroke="#5A3807"
+                        strokeWidth="0.9"
+                      />
+                      <path
+                        d="M30 24C39 20 45 13 42 7C37 9 34 14 30 24Z"
+                        fill="url(#deskHeroLotusSide)"
+                        stroke="#5A3807"
+                        strokeWidth="0.9"
+                      />
+                      <path
+                        d="M30 24C16 23 8 18 9 12C15 13 22 17 30 24Z"
+                        fill="url(#deskHeroLotusOuter)"
+                        stroke="#5A3807"
+                        strokeWidth="0.8"
+                      />
+                      <path
+                        d="M30 24C44 23 52 18 51 12C45 13 38 17 30 24Z"
+                        fill="url(#deskHeroLotusOuter)"
+                        stroke="#5A3807"
+                        strokeWidth="0.8"
+                      />
+                      <ellipse cx="30" cy="25" rx="10" ry="2" fill="#8C5818" />
+                      <defs>
+                        <linearGradient
+                          id="deskHeroLotusCenter"
+                          x1="30"
+                          y1="3"
+                          x2="30"
+                          y2="24"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stopColor="#FFFDF9" />
+                          <stop offset="0.45" stopColor="#E5B84B" />
+                          <stop offset="1" stopColor="#9E6B18" />
+                        </linearGradient>
+                        <linearGradient
+                          id="deskHeroLotusSide"
+                          x1="18"
+                          y1="7"
+                          x2="42"
+                          y2="24"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stopColor="#FFE59E" />
+                          <stop offset="1" stopColor="#A6721E" />
+                        </linearGradient>
+                        <linearGradient
+                          id="deskHeroLotusOuter"
+                          x1="9"
+                          y1="12"
+                          x2="51"
+                          y2="24"
+                          gradientUnits="userSpaceOnUse"
+                        >
+                          <stop stopColor="#F5D37E" />
+                          <stop offset="1" stopColor="#8C5818" />
+                        </linearGradient>
+                      </defs>
                     </svg>
-                    <span className="w-2 h-2 rotate-45 bg-[#FFE59E] shrink-0" />
+                    <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6B18] border border-[#5A3807] shadow-xs shrink-0" />
                     <span className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#D4AF37] to-[#FFE59E]" />
                   </div>
 
@@ -2308,20 +2374,20 @@ export default function HomePage() {
               </button>
             </div>
 
-            {/* Bottom-Left & Bottom-Right Large 3D Golden & Magenta Floral Bouquets */}
+            {/* Bottom-Left & Bottom-Right Large 3D Cream & Burgundy Floral Bouquets with 24K Gold Leaves */}
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/nalmara/hd/bouquet_corner_left.png"
+              src="/images/nalmara/hd/hero_corner_bl.png"
               alt=""
               aria-hidden="true"
-              className="pointer-events-none select-none absolute -bottom-3 left-0 w-44 h-44 object-contain z-20 drop-shadow-[0_8px_18px_rgba(40,10,25,0.45)]"
+              className="pointer-events-none select-none absolute -bottom-3 left-0 w-44 sm:w-52 h-auto object-contain z-20 drop-shadow-[0_8px_18px_rgba(40,10,25,0.45)]"
             />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
-              src="/images/nalmara/hd/bouquet_corner_right.png"
+              src="/images/nalmara/hd/hero_corner_br.png"
               alt=""
               aria-hidden="true"
-              className="pointer-events-none select-none absolute -bottom-3 right-0 w-44 h-44 object-contain z-20 drop-shadow-[0_8px_18px_rgba(40,10,25,0.45)]"
+              className="pointer-events-none select-none absolute -bottom-3 right-0 w-44 sm:w-52 h-auto object-contain z-20 drop-shadow-[0_8px_18px_rgba(40,10,25,0.45)]"
             />
 
             {/* Bottom Sweeping Royal Purple Silk & 24K Gold Wave Ribbon */}
@@ -2605,10 +2671,10 @@ export default function HomePage() {
               {/* Inner Hairline Gold Border */}
               <div className="pointer-events-none absolute inset-[5px] rounded-[20px] border border-[#D4AF37]/45 z-10" />
 
-              {/* Top-Left 3D Golden Lotus & Floral Bouquet */}
+              {/* Top-Left 3D Cream & Burgundy Floral Bouquet */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/nalmara/hd/bouquet_corner_left.png"
+                src="/images/nalmara/hd/showcase_corner_tl.png"
                 alt=""
                 aria-hidden="true"
                 className="pointer-events-none select-none absolute -top-2 -left-3 w-24 h-24 object-contain z-20 drop-shadow-[0_6px_10px_rgba(90,52,16,0.28)]"
@@ -2617,7 +2683,7 @@ export default function HomePage() {
               {/* Upper-Right Delicate Golden Floral Blossom */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/nalmara/hd/bouquet_corner_right.png"
+                src="/images/nalmara/hd/showcase_corner_tr.png"
                 alt=""
                 aria-hidden="true"
                 className="pointer-events-none select-none absolute top-7 -right-4 w-16 h-16 object-contain z-20 drop-shadow-[0_4px_8px_rgba(90,52,16,0.25)]"
@@ -2628,10 +2694,10 @@ export default function HomePage() {
                 <ThreadSpoolsIllustration className="w-20 h-20 drop-shadow-[0_6px_10px_rgba(56,28,8,0.3)]" />
               </div>
 
-              {/* Bottom-Right 3D Golden Floral Bouquet */}
+              {/* Bottom-Right 3D Cream & Burgundy Floral Bouquet */}
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/nalmara/hd/bouquet_corner_right.png"
+                src="/images/nalmara/hd/showcase_corner_br.png"
                 alt=""
                 aria-hidden="true"
                 className="pointer-events-none select-none absolute -bottom-2 -right-3 w-24 h-24 object-contain z-20 drop-shadow-[0_6px_12px_rgba(90,52,16,0.3)]"
