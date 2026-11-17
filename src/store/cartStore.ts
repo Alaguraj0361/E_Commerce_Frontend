@@ -186,6 +186,17 @@ export const useCartStore = create<CartState>((set, get) => ({
   },
 
   getShippingFee: () => {
+    const { items } = get();
+    const isOnlyTestProduct =
+      items.length > 0 &&
+      items.every(
+        (it) =>
+          it.name?.trim().toLowerCase() === 'testing' ||
+          it.sku?.toUpperCase() === 'TEST-1RS' ||
+          it.price === 1
+      );
+    if (isOnlyTestProduct) return 0;
+
     const subtotal = get().getSubtotal();
     const discount = get().getDiscount();
     const discounted = Math.max(0, subtotal - discount);
@@ -194,6 +205,17 @@ export const useCartStore = create<CartState>((set, get) => ({
   },
 
   getTax: () => {
+    const { items } = get();
+    const isOnlyTestProduct =
+      items.length > 0 &&
+      items.every(
+        (it) =>
+          it.name?.trim().toLowerCase() === 'testing' ||
+          it.sku?.toUpperCase() === 'TEST-1RS' ||
+          it.price === 1
+      );
+    if (isOnlyTestProduct) return 0;
+
     const subtotal = get().getSubtotal();
     const discount = get().getDiscount();
     const discounted = Math.max(0, subtotal - discount);
