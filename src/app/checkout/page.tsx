@@ -242,7 +242,6 @@ export default function CheckoutPage() {
                 name: customer?.name || shippingAddress.fullName,
                 email: customer?.email,
                 contact: customer?.phone || shippingAddress.phone,
-                method: 'upi',
               },
               theme: {
                 color: '#D4AF37',
