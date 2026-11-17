@@ -851,18 +851,18 @@ export default function HomePage() {
   const visibleNewArrivals =
     newArrivalProducts.length > 5
       ? Array.from(
-          { length: 5 },
-          (_, i) => newArrivalProducts[(prodStartIndex + i) % newArrivalProducts.length]
-        )
+        { length: 5 },
+        (_, i) => newArrivalProducts[(prodStartIndex + i) % newArrivalProducts.length]
+      )
       : newArrivalProducts;
 
   const visibleBestSellers =
     bestSellerProducts.length > 5
       ? Array.from(
-          { length: 5 },
-          (_, i) =>
-            bestSellerProducts[(bestSellerStartIndex + i) % bestSellerProducts.length]
-        )
+        { length: 5 },
+        (_, i) =>
+          bestSellerProducts[(bestSellerStartIndex + i) % bestSellerProducts.length]
+      )
       : bestSellerProducts;
 
   const allHappyReviews = React.useMemo(() => {
@@ -968,22 +968,22 @@ export default function HomePage() {
     const normalizedGoogle =
       googleReviews.length > 0
         ? googleReviews.map((g: any, idx: number) => {
-            const parts = String(g.authorName || 'Preethi Sundar').split(' ');
-            return {
-              _id: g.id || `g-rev-${idx}`,
-              rating: Number(g.rating) || 5,
-              comment: g.comment,
-              authorBadge: g.authorBadge || 'Verified Google Review',
-              relativeTime: g.relativeTime || 'Recent on Google',
-              reviewUrl: g.reviewUrl || googleMeta.googleMapsUrl,
-              isGoogle: true,
-              user: {
-                firstName: parts[0] || 'Preethi',
-                lastName: parts.slice(1).join(' ') || 'Sundar',
-                avatar: g.avatar || '/images/nalmara/hd/happy_faq_reviewer_avatar.png',
-              },
-            };
-          })
+          const parts = String(g.authorName || 'Alagu Raj').split(' ');
+          return {
+            _id: g.id || `g-rev-${idx}`,
+            rating: Number(g.rating) || 5,
+            comment: g.comment,
+            authorBadge: g.authorBadge || 'Verified Google Review',
+            relativeTime: g.relativeTime || 'Recent on Google',
+            reviewUrl: g.reviewUrl || googleMeta.googleMapsUrl,
+            isGoogle: true,
+            user: {
+              firstName: parts[0] || 'Alagu',
+              lastName: parts.slice(1).join(' ') || 'Raj',
+              avatar: g.avatar || '/images/nalmara/hd/happy_faq_reviewer_avatar.png',
+            },
+          };
+        })
         : defaultGoogleReviews;
 
     const normalizedLive = liveReviews.map((rev: any) => ({
@@ -1009,23 +1009,23 @@ export default function HomePage() {
     const primary =
       igPosts.length > 0
         ? igPosts.map((post: any) => ({
-            id: String(post.id),
-            title: post.title || '@nalmarafashion',
-            image: resolveMediaUrl(post.image),
-            href: post.permalink || 'https://www.instagram.com/nalmarafashion',
-            external: true,
-          }))
+          id: String(post.id),
+          title: post.title || '@nalmarafashion',
+          image: resolveMediaUrl(post.image),
+          href: post.permalink || 'https://www.instagram.com/nalmarafashion',
+          external: true,
+        }))
         : liveProducts.map((prod) => ({
-            id: String(prod._id),
-            title: prod.name,
-            image:
-              resolveMediaUrl(prod.images?.[0]?.url) ||
-              getCategoryFallbackImage(
-                typeof prod.category === 'object' ? prod.category?.slug : prod.name
-              ),
-            href: `/product/${prod.slug}`,
-            external: false,
-          }));
+          id: String(prod._id),
+          title: prod.name,
+          image:
+            resolveMediaUrl(prod.images?.[0]?.url) ||
+            getCategoryFallbackImage(
+              typeof prod.category === 'object' ? prod.category?.slug : prod.name
+            ),
+          href: `/product/${prod.slug}`,
+          external: false,
+        }));
 
     if (primary.length >= 5) return primary;
 
@@ -1115,7 +1115,7 @@ export default function HomePage() {
 
   return (
     <div className="bg-[#FDF6EC] text-[#2A1019] w-full max-w-full overflow-x-hidden font-sans select-none">
-            {/* =================================================================== */}
+      {/* =================================================================== */}
       {/* 01. ROYAL ATELIER INTERACTIVE PRODUCT SHOWCASE BANNER               */}
       {/* =================================================================== */}
       <section className="relative w-full overflow-hidden border-b-2 border-[#D4AF37]">
@@ -1542,11 +1542,10 @@ export default function HomePage() {
                       key={`mob-${item.id}-${position}`}
                       type="button"
                       onClick={() => goToHeroSlide(slideIndex)}
-                      className={`group relative aspect-[4/3.3] rounded-[14px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] transition-all duration-300 cursor-pointer ${
-                        isCenter
-                          ? 'shadow-[0_12px_26px_rgba(91,14,61,0.32)] scale-[1.05] ring-2 ring-[#D4AF37]'
-                          : 'shadow-[0_6px_14px_rgba(70,40,10,0.18)] opacity-90'
-                      }`}
+                      className={`group relative aspect-[4/3.3] rounded-[14px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] transition-all duration-300 cursor-pointer ${isCenter
+                        ? 'shadow-[0_12px_26px_rgba(91,14,61,0.32)] scale-[1.05] ring-2 ring-[#D4AF37]'
+                        : 'shadow-[0_6px_14px_rgba(70,40,10,0.18)] opacity-90'
+                        }`}
                       aria-label={`Select ${item.name}`}
                     >
                       {isCenter && (
@@ -2304,11 +2303,10 @@ export default function HomePage() {
                       key={`desk-terrace-${item.id}-${idx}`}
                       type="button"
                       onClick={() => goToHeroSlide(idx)}
-                      className={`group relative rounded-[18px] p-[3px] bg-gradient-to-b from-[#FFF8DC] via-[#D4AF37] to-[#7A4B0E] transition-all duration-300 text-left cursor-pointer ${
-                        isActiveCard
-                          ? 'shadow-[0_14px_30px_rgba(91,14,61,0.42)] -translate-y-1 scale-[1.03] ring-2 ring-[#5B0E3D]'
-                          : 'shadow-[0_8px_18px_rgba(70,40,10,0.22)] opacity-95 hover:opacity-100 hover:-translate-y-0.5'
-                      }`}
+                      className={`group relative rounded-[18px] p-[3px] bg-gradient-to-b from-[#FFF8DC] via-[#D4AF37] to-[#7A4B0E] transition-all duration-300 text-left cursor-pointer ${isActiveCard
+                        ? 'shadow-[0_14px_30px_rgba(91,14,61,0.42)] -translate-y-1 scale-[1.03] ring-2 ring-[#5B0E3D]'
+                        : 'shadow-[0_8px_18px_rgba(70,40,10,0.22)] opacity-95 hover:opacity-100 hover:-translate-y-0.5'
+                        }`}
                       aria-label={`Select ${item.name}`}
                     >
                       {isActiveCard && (
@@ -2331,11 +2329,10 @@ export default function HomePage() {
 
                         {/* Top-Left Drop Badge */}
                         <span
-                          className={`absolute top-1.5 left-1.5 px-2 py-0.5 rounded-full text-[8.5px] font-extrabold uppercase tracking-wider border ${
-                            isActiveCard
-                              ? 'bg-[#5B0E3D] text-[#FFE59E] border-[#FFE59E]'
-                              : 'bg-[#240216]/85 text-[#FFFDF9] border-[#D4AF37]/65'
-                          }`}
+                          className={`absolute top-1.5 left-1.5 px-2 py-0.5 rounded-full text-[8.5px] font-extrabold uppercase tracking-wider border ${isActiveCard
+                            ? 'bg-[#5B0E3D] text-[#FFE59E] border-[#FFE59E]'
+                            : 'bg-[#240216]/85 text-[#FFFDF9] border-[#D4AF37]/65'
+                            }`}
                         >
                           0{idx + 1}
                         </span>
@@ -3150,277 +3147,276 @@ export default function HomePage() {
                     <span className="hidden sm:inline">Handpicked New Drops</span>
                   </span>
 
-                <span className="hidden md:inline-block w-[1.5px] h-5 bg-[#C8963E]/55 shrink-0" />
+                  <span className="hidden md:inline-block w-[1.5px] h-5 bg-[#C8963E]/55 shrink-0" />
 
-                {/* Gold Checkmark Circle + Direct Loom Price Text */}
-                <span className="hidden md:inline-flex items-center gap-1.5 text-[11.5px] lg:text-xs font-bold text-[#220915] truncate">
-                  <span className="w-4 h-4 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#B88228] border border-[#8C5818] flex items-center justify-center shrink-0 shadow-2xs">
-                    <Check className="w-2.5 h-2.5 text-[#220915] stroke-[3]" />
+                  {/* Gold Checkmark Circle + Direct Loom Price Text */}
+                  <span className="hidden md:inline-flex items-center gap-1.5 text-[11.5px] lg:text-xs font-bold text-[#220915] truncate">
+                    <span className="w-4 h-4 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#B88228] border border-[#8C5818] flex items-center justify-center shrink-0 shadow-2xs">
+                      <Check className="w-2.5 h-2.5 text-[#220915] stroke-[3]" />
+                    </span>
+                    <span>Full 6.3m Verified • Direct Loom Price</span>
                   </span>
-                  <span>Full 6.3m Verified • Direct Loom Price</span>
-                </span>
 
-                {/* 3D Champagne-Gold Custom Blouse Fit Pill */}
-                <Link
-                  href="/stitching-services"
-                  className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-b from-[#FFF6D6] via-[#EED294] to-[#C8963E] hover:brightness-105 border border-[#8C5818] text-[11px] font-bold text-[#220915] shadow-xs transition-all shrink-0"
-                >
-                  <Scissors className="w-3.5 h-3.5 text-[#380725]" />
-                  <span>Custom Blouse Fit</span>
-                </Link>
-              </div>
+                  {/* 3D Champagne-Gold Custom Blouse Fit Pill */}
+                  <Link
+                    href="/stitching-services"
+                    className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-b from-[#FFF6D6] via-[#EED294] to-[#C8963E] hover:brightness-105 border border-[#8C5818] text-[11px] font-bold text-[#220915] shadow-xs transition-all shrink-0"
+                  >
+                    <Scissors className="w-3.5 h-3.5 text-[#380725]" />
+                    <span>Custom Blouse Fit</span>
+                  </Link>
+                </div>
 
-              {/* Right Group: Separate Circular < > Buttons + View All New Arrivals Pill */}
-              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <button
-                  type="button"
-                  onClick={() =>
-                    setProdStartIndex(
-                      (prev) =>
-                        (prev - 1 + newArrivalProducts.length) % newArrivalProducts.length
-                    )
-                  }
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
-                  aria-label="Previous new arrivals"
-                >
-                  <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() =>
-                    setProdStartIndex((prev) => (prev + 1) % newArrivalProducts.length)
-                  }
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
-                  aria-label="Next new arrivals"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
-                </button>
+                {/* Right Group: Separate Circular < > Buttons + View All New Arrivals Pill */}
+                <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setProdStartIndex(
+                        (prev) =>
+                          (prev - 1 + newArrivalProducts.length) % newArrivalProducts.length
+                      )
+                    }
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
+                    aria-label="Previous new arrivals"
+                  >
+                    <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setProdStartIndex((prev) => (prev + 1) % newArrivalProducts.length)
+                    }
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
+                    aria-label="Next new arrivals"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+                  </button>
 
-                <Link
-                  href="/shop?sort=newest"
-                  className="group inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10.5px] sm:text-xs font-serif font-bold shadow-[0_4px_12px_rgba(40,6,25,0.25)] transition-all"
-                >
-                  <span>View All</span>
-                  <span className="hidden sm:inline">New Arrivals</span>
-                  <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E] group-hover:translate-x-0.5 transition-transform" />
-                </Link>
+                  <Link
+                    href="/shop?sort=newest"
+                    className="group inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10.5px] sm:text-xs font-serif font-bold shadow-[0_4px_12px_rgba(40,6,25,0.25)] transition-all"
+                  >
+                    <span>View All</span>
+                    <span className="hidden sm:inline">New Arrivals</span>
+                    <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E] group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* =============================================================== */}
-        {/* 3. MAIN 24K GOLD SHOWROOM STAGE WITH 5 CARDS IN A ROW           */}
-        {/* =============================================================== */}
-        <div className="relative z-10 rounded-[26px] sm:rounded-[34px] p-[2.5px] bg-gradient-to-b from-[#FFE8A3] via-[#D4AF37] to-[#8C5818] shadow-[0_24px_60px_rgba(40,6,25,0.18)]">
-          <div className="relative rounded-[23.5px] sm:rounded-[31.5px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EFE0BE] pt-8 sm:pt-10 pb-6 sm:pb-8 px-2.5 sm:px-5 lg:px-6 overflow-hidden border border-[#FFFDF9]/70">
-            {/* Ambient Warm Gold Glow */}
-            <div
-              className="absolute inset-0 pointer-events-none z-0"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle at 20% 20%, rgba(212,175,55,0.16) 0%, transparent 45%), radial-gradient(circle at 80% 80%, rgba(91,14,61,0.06) 0%, transparent 45%)',
-              }}
-            />
+          {/* =============================================================== */}
+          {/* 3. MAIN 24K GOLD SHOWROOM STAGE WITH 5 CARDS IN A ROW           */}
+          {/* =============================================================== */}
+          <div className="relative z-10 rounded-[26px] sm:rounded-[34px] p-[2.5px] bg-gradient-to-b from-[#FFE8A3] via-[#D4AF37] to-[#8C5818] shadow-[0_24px_60px_rgba(40,6,25,0.18)]">
+            <div className="relative rounded-[23.5px] sm:rounded-[31.5px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EFE0BE] pt-8 sm:pt-10 pb-6 sm:pb-8 px-2.5 sm:px-5 lg:px-6 overflow-hidden border border-[#FFFDF9]/70">
+              {/* Ambient Warm Gold Glow */}
+              <div
+                className="absolute inset-0 pointer-events-none z-0"
+                style={{
+                  backgroundImage:
+                    'radial-gradient(circle at 20% 20%, rgba(212,175,55,0.16) 0%, transparent 45%), radial-gradient(circle at 80% 80%, rgba(91,14,61,0.06) 0%, transparent 45%)',
+                }}
+              />
 
-            {/* 2 CARDS PER ROW ON MOBILE (`grid-cols-2`), 5 IN A ROW ON DESKTOP (`lg:grid-cols-5`) */}
-            {isProductsLoading ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5 xl:gap-4 relative z-10">
-                {[...Array(5)].map((_, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-[20px] sm:rounded-[22px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#EFE0C2] border-2 border-[#C8963E]/60 p-2 sm:p-2.5 animate-pulse space-y-2.5"
-                  >
-                    <div className="h-[195px] sm:h-[280px] w-full rounded-[14px] sm:rounded-[16px] bg-[#EED9BA]" />
-                    <div className="h-3 w-1/2 rounded bg-[#E5CCA4]" />
-                    <div className="h-4 w-4/5 rounded bg-[#E5CCA4]" />
-                    <div className="h-8 w-full rounded-full bg-[#D9BC8C]" />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5 xl:gap-4 items-stretch">
-                {visibleNewArrivals.slice(0, 5).map((prod, idx) => {
-                  const inWish = isInWishlist(prod._id);
-                  const categoryObj = typeof prod.category === 'object' ? prod.category : null;
-                  const categoryLabel = categoryObj?.name || 'ROYAL SAREE';
-                  const fallbackImg = getCategoryFallbackImage(
-                    `${categoryObj?.slug || ''} ${prod.name || ''}`
-                  );
-                  const prodImage = resolveMediaUrl(prod.images?.[0]?.url) || fallbackImg;
-                  const hasDiscount =
-                    Number(prod.compareAtPrice) > 0 &&
-                    Number(prod.compareAtPrice) > Number(prod.price);
-
-                  return (
+              {/* 2 CARDS PER ROW ON MOBILE (`grid-cols-2`), 5 IN A ROW ON DESKTOP (`lg:grid-cols-5`) */}
+              {isProductsLoading ? (
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5 xl:gap-4 relative z-10">
+                  {[...Array(5)].map((_, idx) => (
                     <div
-                      key={`new-${prod._id}-${idx}`}
-                      className="group relative rounded-[20px] sm:rounded-[22px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_24px_rgba(40,6,25,0.14)] hover:shadow-[0_20px_42px_rgba(40,6,25,0.26)] transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                      key={idx}
+                      className="rounded-[20px] sm:rounded-[22px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#EFE0C2] border-2 border-[#C8963E]/60 p-2 sm:p-2.5 animate-pulse space-y-2.5"
                     >
-                      {/* Top-Center 24K Gold Diamond Star Finial on Each Card */}
-                      <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-20 w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6816] border border-[#5B0E3D] shadow-2xs" />
+                      <div className="h-[195px] sm:h-[280px] w-full rounded-[14px] sm:rounded-[16px] bg-[#EED9BA]" />
+                      <div className="h-3 w-1/2 rounded bg-[#E5CCA4]" />
+                      <div className="h-4 w-4/5 rounded bg-[#E5CCA4]" />
+                      <div className="h-8 w-full rounded-full bg-[#D9BC8C]" />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5 xl:gap-4 items-stretch">
+                  {visibleNewArrivals.slice(0, 5).map((prod, idx) => {
+                    const inWish = isInWishlist(prod._id);
+                    const categoryObj = typeof prod.category === 'object' ? prod.category : null;
+                    const categoryLabel = categoryObj?.name || 'ROYAL SAREE';
+                    const fallbackImg = getCategoryFallbackImage(
+                      `${categoryObj?.slug || ''} ${prod.name || ''}`
+                    );
+                    const prodImage = resolveMediaUrl(prod.images?.[0]?.url) || fallbackImg;
+                    const hasDiscount =
+                      Number(prod.compareAtPrice) > 0 &&
+                      Number(prod.compareAtPrice) > Number(prod.price);
 
-                      <div className="h-full rounded-[18px] sm:rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EED9B3] p-2 sm:p-2.5 flex flex-col justify-between relative">
-                        {/* TALL ROYAL PORTRAIT IMAGE FRAME */}
-                        <div className="relative h-[195px] sm:h-[275px] xl:h-[295px] w-full rounded-[14px] sm:rounded-[16px] overflow-hidden bg-[#280619] border-[1.5px] border-[#D4AF37] shadow-inner">
-                          <Link href={`/product/${prod.slug}`} className="block w-full h-full">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={prodImage}
-                              alt={prod.name}
-                              onError={(e) => {
-                                const target = e.currentTarget;
-                                if (target.src !== fallbackImg) {
-                                  target.src = fallbackImg;
-                                }
-                              }}
-                              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                            />
-                          </Link>
+                    return (
+                      <div
+                        key={`new-${prod._id}-${idx}`}
+                        className="group relative rounded-[20px] sm:rounded-[22px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_24px_rgba(40,6,25,0.14)] hover:shadow-[0_20px_42px_rgba(40,6,25,0.26)] transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                      >
+                        {/* Top-Center 24K Gold Diamond Star Finial on Each Card */}
+                        <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-20 w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6816] border border-[#5B0E3D] shadow-2xs" />
 
-                          {/* Top-Left `✦ NEW #1` Royal Plum & Gold Pill */}
-                          <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 z-20">
-                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] border border-[#D4AF37] text-[#FFE59E] text-[8px] sm:text-[9.5px] font-bold tracking-[0.08em] uppercase shadow-md">
-                              <Sparkles className="w-2.5 h-2.5 text-[#FFE59E] fill-[#FFE59E]" />
-                              <span>NEW #{idx + 1}</span>
-                            </span>
-                          </div>
+                        <div className="h-full rounded-[18px] sm:rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EED9B3] p-2 sm:p-2.5 flex flex-col justify-between relative">
+                          {/* TALL ROYAL PORTRAIT IMAGE FRAME */}
+                          <div className="relative h-[195px] sm:h-[275px] xl:h-[295px] w-full rounded-[14px] sm:rounded-[16px] overflow-hidden bg-[#280619] border-[1.5px] border-[#D4AF37] shadow-inner">
+                            <Link href={`/product/${prod.slug}`} className="block w-full h-full">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={prodImage}
+                                alt={prod.name}
+                                onError={(e) => {
+                                  const target = e.currentTarget;
+                                  if (target.src !== fallbackImg) {
+                                    target.src = fallbackImg;
+                                  }
+                                }}
+                                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                              />
+                            </Link>
 
-                          {/* Top-Right Circular White Wishlist Heart Button */}
-                          <button
-                            type="button"
-                            onClick={(e) => handleWishlistToggle(prod, e)}
-                            className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white hover:bg-[#FFF5F7] border border-[#E5D3B3] flex items-center justify-center shadow-md cursor-pointer transition-transform hover:scale-110"
-                            aria-label="Add to wishlist"
-                          >
-                            <Heart
-                              className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
-                                inWish
+                            {/* Top-Left `✦ NEW #1` Royal Plum & Gold Pill */}
+                            <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 z-20">
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] border border-[#D4AF37] text-[#FFE59E] text-[8px] sm:text-[9.5px] font-bold tracking-[0.08em] uppercase shadow-md">
+                                <Sparkles className="w-2.5 h-2.5 text-[#FFE59E] fill-[#FFE59E]" />
+                                <span>NEW #{idx + 1}</span>
+                              </span>
+                            </div>
+
+                            {/* Top-Right Circular White Wishlist Heart Button */}
+                            <button
+                              type="button"
+                              onClick={(e) => handleWishlistToggle(prod, e)}
+                              className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white hover:bg-[#FFF5F7] border border-[#E5D3B3] flex items-center justify-center shadow-md cursor-pointer transition-transform hover:scale-110"
+                              aria-label="Add to wishlist"
+                            >
+                              <Heart
+                                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${inWish
                                   ? 'fill-rose-600 text-rose-600'
                                   : 'fill-[#4A0830] text-[#4A0830]'
-                              }`}
-                            />
-                          </button>
+                                  }`}
+                              />
+                            </button>
 
-                          {/* Bottom-Right Dark Royal Plum & 24K Gold Oval Price Badge Inside Image */}
-                          <div className="absolute bottom-2 right-2 z-20 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#3D0626] via-[#240216] to-[#12000A] border-[1.5px] border-[#D4AF37] text-[#FFE59E] font-serif font-extrabold text-[11px] sm:text-[13.5px] shadow-[0_4px_12px_rgba(0,0,0,0.45)]">
-                            {formatCurrency(prod.price)}
-                          </div>
-                        </div>
-
-                        {/* PRODUCT DETAILS & ACTION BAR */}
-                        <div className="pt-2 sm:pt-2.5 px-0.5 flex flex-col justify-between flex-1">
-                          <div>
-                            {/* Row 1: Warm Tan Category Pill + Green `● Ready` */}
-                            <div className="flex items-center justify-between gap-1">
-                              <span className="px-2 sm:px-2.5 py-0.5 rounded-full bg-gradient-to-b from-[#F5E3BE] to-[#E3C68C] border border-[#C8963E]/85 text-[7.5px] sm:text-[8.5px] font-extrabold tracking-[0.08em] text-[#2B1206] uppercase truncate shadow-2xs">
-                                {categoryLabel}
-                              </span>
-                              <span className="text-[8.5px] sm:text-[9.5px] font-bold text-[#15803D] inline-flex items-center gap-1 shrink-0">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#15803D]" />
-                                Ready
-                              </span>
+                            {/* Bottom-Right Dark Royal Plum & 24K Gold Oval Price Badge Inside Image */}
+                            <div className="absolute bottom-2 right-2 z-20 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#3D0626] via-[#240216] to-[#12000A] border-[1.5px] border-[#D4AF37] text-[#FFE59E] font-serif font-extrabold text-[11px] sm:text-[13.5px] shadow-[0_4px_12px_rgba(0,0,0,0.45)]">
+                              {formatCurrency(prod.price)}
                             </div>
-
-                            {/* Row 2: Bold Uppercase Serif Title */}
-                            <Link href={`/product/${prod.slug}`} className="block mt-1.5">
-                              <h3 className="font-serif font-extrabold text-[11.5px] sm:text-[13.5px] uppercase tracking-tight text-[#1E0A10] group-hover:text-[#7A1138] transition-colors truncate">
-                                {prod.name}
-                              </h3>
-                            </Link>
                           </div>
 
-                          {/* Row 3 & 4: Price + FREE SHIP & Add to Cart Pill + Arrow Circle */}
-                          <div className="mt-1.5 sm:mt-2">
-                            <div className="flex items-baseline justify-between gap-1 mb-2">
-                              <div className="flex items-baseline gap-1.5">
-                                <span className="font-serif font-extrabold text-[14px] sm:text-[16.5px] text-[#1E0A10]">
-                                  {formatCurrency(prod.price)}
+                          {/* PRODUCT DETAILS & ACTION BAR */}
+                          <div className="pt-2 sm:pt-2.5 px-0.5 flex flex-col justify-between flex-1">
+                            <div>
+                              {/* Row 1: Warm Tan Category Pill + Green `● Ready` */}
+                              <div className="flex items-center justify-between gap-1">
+                                <span className="px-2 sm:px-2.5 py-0.5 rounded-full bg-gradient-to-b from-[#F5E3BE] to-[#E3C68C] border border-[#C8963E]/85 text-[7.5px] sm:text-[8.5px] font-extrabold tracking-[0.08em] text-[#2B1206] uppercase truncate shadow-2xs">
+                                  {categoryLabel}
                                 </span>
-                                {hasDiscount && (
-                                  <span className="text-[9.5px] sm:text-[10.5px] text-[#7A5B3E] line-through font-medium">
-                                    {formatCurrency(Number(prod.compareAtPrice))}
-                                  </span>
-                                )}
+                                <span className="text-[8.5px] sm:text-[9.5px] font-bold text-[#15803D] inline-flex items-center gap-1 shrink-0">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-[#15803D]" />
+                                  Ready
+                                </span>
                               </div>
-                              <span className="text-[8px] sm:text-[9px] font-extrabold text-[#4A2C11] uppercase tracking-[0.06em]">
-                                FREE SHIP
-                              </span>
+
+                              {/* Row 2: Bold Uppercase Serif Title */}
+                              <Link href={`/product/${prod.slug}`} className="block mt-1.5">
+                                <h3 className="font-serif font-extrabold text-[11.5px] sm:text-[13.5px] uppercase tracking-tight text-[#1E0A10] group-hover:text-[#7A1138] transition-colors truncate">
+                                  {prod.name}
+                                </h3>
+                              </Link>
                             </div>
 
-                            <div className="flex items-center gap-1.5">
-                              <button
-                                type="button"
-                                onClick={(e) => handleAddToCart(prod, e)}
-                                className="flex-1 py-1.5 sm:py-2 px-2.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10px] sm:text-[11px] font-serif font-bold flex items-center justify-center gap-1.5 shadow-[0_6px_14px_rgba(38,3,22,0.3)] cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
-                              >
-                                <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E] shrink-0" />
-                                <span className="truncate">Add to Cart</span>
-                              </button>
+                            {/* Row 3 & 4: Price + FREE SHIP & Add to Cart Pill + Arrow Circle */}
+                            <div className="mt-1.5 sm:mt-2">
+                              <div className="flex items-baseline justify-between gap-1 mb-2">
+                                <div className="flex items-baseline gap-1.5">
+                                  <span className="font-serif font-extrabold text-[14px] sm:text-[16.5px] text-[#1E0A10]">
+                                    {formatCurrency(prod.price)}
+                                  </span>
+                                  {hasDiscount && (
+                                    <span className="text-[9.5px] sm:text-[10.5px] text-[#7A5B3E] line-through font-medium">
+                                      {formatCurrency(Number(prod.compareAtPrice))}
+                                    </span>
+                                  )}
+                                </div>
+                                <span className="text-[8px] sm:text-[9px] font-extrabold text-[#4A2C11] uppercase tracking-[0.06em]">
+                                  FREE SHIP
+                                </span>
+                              </div>
 
-                              <Link
-                                href={`/product/${prod.slug}`}
-                                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#1E0A10] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all shrink-0"
-                                aria-label={`View ${prod.name}`}
-                              >
-                                <ArrowRight className="w-3.5 h-3.5 stroke-[2.2]" />
-                              </Link>
+                              <div className="flex items-center gap-1.5">
+                                <button
+                                  type="button"
+                                  onClick={(e) => handleAddToCart(prod, e)}
+                                  className="flex-1 py-1.5 sm:py-2 px-2.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10px] sm:text-[11px] font-serif font-bold flex items-center justify-center gap-1.5 shadow-[0_6px_14px_rgba(38,3,22,0.3)] cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+                                >
+                                  <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E] shrink-0" />
+                                  <span className="truncate">Add to Cart</span>
+                                </button>
+
+                                <Link
+                                  href={`/product/${prod.slug}`}
+                                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#1E0A10] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all shrink-0"
+                                  aria-label={`View ${prod.name}`}
+                                >
+                                  <ArrowRight className="w-3.5 h-3.5 stroke-[2.2]" />
+                                </Link>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* =============================================================== */}
-        {/* 4. LOWER ATTACHED ROYAL PLUM & 24K GOLD ASSURANCE & CATALOG BAR */}
-        {/* =============================================================== */}
-        <div className="relative z-20 max-w-[1320px] mx-auto px-1 sm:px-4 -mt-3 sm:-mt-3.5">
-          {/* Top-Center & Bottom-Center Ornate 24K Gold Diamond Clasps */}
-          <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
-          <span className="hidden sm:block absolute -bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
-
-          <div className="rounded-2xl lg:rounded-full p-[2px] bg-gradient-to-r from-[#8C5818] via-[#FFE59E] to-[#8C5818] shadow-[0_16px_36px_rgba(32,2,18,0.32)]">
-            <div className="rounded-[14px] lg:rounded-full bg-gradient-to-b from-[#3D0626] via-[#260217] to-[#14000B] px-3.5 sm:px-6 py-2.5 sm:py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
-              {/* Left / Center 3 Gold-Icon Trust Pillars */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-5 text-[10.5px] sm:text-xs font-medium text-[#F8E7C8]">
-                <span className="inline-flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] shrink-0" />
-                  <span>5-Step Daylight Weave Inspection</span>
-                </span>
-
-                <span className="hidden sm:inline-block w-[1px] h-4 bg-[#D4AF37]/40" />
-
-                <span className="inline-flex items-center gap-2">
-                  <Crown className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] fill-[#D4AF37] shrink-0" />
-                  <span>Optional Custom Princess / Aari Blouse Stitching</span>
-                </span>
-
-                <span className="hidden md:inline-block w-[1px] h-4 bg-[#D4AF37]/40" />
-
-                <span className="hidden md:inline-flex items-center gap-2">
-                  <Package className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] shrink-0" />
-                  <span>Packed in Signature Nalmara Royal Box</span>
-                </span>
-              </div>
-
-              {/* Right: 3D Metallic 24K Gold Pill CTA Button */}
-              <Link
-                href="/shop?sort=newest"
-                className="group inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-b from-[#FFF4B8] via-[#DFB752] to-[#9A6816] hover:brightness-105 border border-[#FFF6D6] text-[#1E0A10] font-serif font-extrabold text-[10.5px] sm:text-xs shadow-[0_4px_14px_rgba(0,0,0,0.4)] transition-all shrink-0"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-[#3D0626] fill-[#3D0626]" />
-                <span>Explore Complete New Arrivals Catalog</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#1E0A10] group-hover:translate-x-0.5 transition-transform" />
-              </Link>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
-        </div>
+
+          {/* =============================================================== */}
+          {/* 4. LOWER ATTACHED ROYAL PLUM & 24K GOLD ASSURANCE & CATALOG BAR */}
+          {/* =============================================================== */}
+          <div className="relative z-20 max-w-[1320px] mx-auto px-1 sm:px-4 -mt-3 sm:-mt-3.5">
+            {/* Top-Center & Bottom-Center Ornate 24K Gold Diamond Clasps */}
+            <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
+            <span className="hidden sm:block absolute -bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
+
+            <div className="rounded-2xl lg:rounded-full p-[2px] bg-gradient-to-r from-[#8C5818] via-[#FFE59E] to-[#8C5818] shadow-[0_16px_36px_rgba(32,2,18,0.32)]">
+              <div className="rounded-[14px] lg:rounded-full bg-gradient-to-b from-[#3D0626] via-[#260217] to-[#14000B] px-3.5 sm:px-6 py-2.5 sm:py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
+                {/* Left / Center 3 Gold-Icon Trust Pillars */}
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-5 text-[10.5px] sm:text-xs font-medium text-[#F8E7C8]">
+                  <span className="inline-flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] shrink-0" />
+                    <span>5-Step Daylight Weave Inspection</span>
+                  </span>
+
+                  <span className="hidden sm:inline-block w-[1px] h-4 bg-[#D4AF37]/40" />
+
+                  <span className="inline-flex items-center gap-2">
+                    <Crown className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] fill-[#D4AF37] shrink-0" />
+                    <span>Optional Custom Princess / Aari Blouse Stitching</span>
+                  </span>
+
+                  <span className="hidden md:inline-block w-[1px] h-4 bg-[#D4AF37]/40" />
+
+                  <span className="hidden md:inline-flex items-center gap-2">
+                    <Package className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] shrink-0" />
+                    <span>Packed in Signature Nalmara Royal Box</span>
+                  </span>
+                </div>
+
+                {/* Right: 3D Metallic 24K Gold Pill CTA Button */}
+                <Link
+                  href="/shop?sort=newest"
+                  className="group inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-b from-[#FFF4B8] via-[#DFB752] to-[#9A6816] hover:brightness-105 border border-[#FFF6D6] text-[#1E0A10] font-serif font-extrabold text-[10.5px] sm:text-xs shadow-[0_4px_14px_rgba(0,0,0,0.4)] transition-all shrink-0"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-[#3D0626] fill-[#3D0626]" />
+                  <span>Explore Complete New Arrivals Catalog</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#1E0A10] group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -3851,279 +3847,278 @@ export default function HomePage() {
                     <span className="hidden sm:inline">Top Customer Favorites</span>
                   </span>
 
-                <span className="hidden md:inline-block w-[1.5px] h-5 bg-[#C8963E]/55 shrink-0" />
+                  <span className="hidden md:inline-block w-[1.5px] h-5 bg-[#C8963E]/55 shrink-0" />
 
-                {/* Gold Checkmark Circle + Rated Text */}
-                <span className="hidden md:inline-flex items-center gap-1.5 text-[11.5px] lg:text-xs font-bold text-[#220915] truncate">
-                  <span className="w-4 h-4 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#B88228] border border-[#8C5818] flex items-center justify-center shrink-0 shadow-2xs">
-                    <Check className="w-2.5 h-2.5 text-[#220915] stroke-[3]" />
+                  {/* Gold Checkmark Circle + Rated Text */}
+                  <span className="hidden md:inline-flex items-center gap-1.5 text-[11.5px] lg:text-xs font-bold text-[#220915] truncate">
+                    <span className="w-4 h-4 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#B88228] border border-[#8C5818] flex items-center justify-center shrink-0 shadow-2xs">
+                      <Check className="w-2.5 h-2.5 text-[#220915] stroke-[3]" />
+                    </span>
+                    <span>4.9★ Rated Across Tamil Nadu • Direct Loom Price</span>
                   </span>
-                  <span>4.9★ Rated Across Tamil Nadu • Direct Loom Price</span>
-                </span>
 
-                {/* 3D Champagne-Gold Custom Blouse Fit Pill */}
-                <Link
-                  href="/stitching-services"
-                  className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-b from-[#FFF6D6] via-[#EED294] to-[#C8963E] hover:brightness-105 border border-[#8C5818] text-[11px] font-bold text-[#220915] shadow-xs transition-all shrink-0"
-                >
-                  <Scissors className="w-3.5 h-3.5 text-[#380725]" />
-                  <span>Custom Blouse Fit</span>
-                </Link>
-              </div>
+                  {/* 3D Champagne-Gold Custom Blouse Fit Pill */}
+                  <Link
+                    href="/stitching-services"
+                    className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-b from-[#FFF6D6] via-[#EED294] to-[#C8963E] hover:brightness-105 border border-[#8C5818] text-[11px] font-bold text-[#220915] shadow-xs transition-all shrink-0"
+                  >
+                    <Scissors className="w-3.5 h-3.5 text-[#380725]" />
+                    <span>Custom Blouse Fit</span>
+                  </Link>
+                </div>
 
-              {/* Right Group: Separate Circular < > Buttons + View All Best Sellers Pill */}
-              <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
-                <button
-                  type="button"
-                  onClick={() =>
-                    setBestSellerStartIndex(
-                      (prev) =>
-                        (prev - 1 + bestSellerProducts.length) % bestSellerProducts.length
-                    )
-                  }
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
-                  aria-label="Previous best sellers"
-                >
-                  <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
-                </button>
-                <button
-                  type="button"
-                  onClick={() =>
-                    setBestSellerStartIndex(
-                      (prev) => (prev + 1) % bestSellerProducts.length
-                    )
-                  }
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
-                  aria-label="Next best sellers"
-                >
-                  <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
-                </button>
+                {/* Right Group: Separate Circular < > Buttons + View All Best Sellers Pill */}
+                <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setBestSellerStartIndex(
+                        (prev) =>
+                          (prev - 1 + bestSellerProducts.length) % bestSellerProducts.length
+                      )
+                    }
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
+                    aria-label="Previous best sellers"
+                  >
+                    <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      setBestSellerStartIndex(
+                        (prev) => (prev + 1) % bestSellerProducts.length
+                      )
+                    }
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
+                    aria-label="Next best sellers"
+                  >
+                    <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
+                  </button>
 
-                <Link
-                  href="/shop"
-                  className="group inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10.5px] sm:text-xs font-serif font-bold shadow-[0_4px_12px_rgba(40,6,25,0.25)] transition-all"
-                >
-                  <span>View All</span>
-                  <span className="hidden sm:inline">Best Sellers</span>
-                  <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E] group-hover:translate-x-0.5 transition-transform" />
-                </Link>
+                  <Link
+                    href="/shop"
+                    className="group inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10.5px] sm:text-xs font-serif font-bold shadow-[0_4px_12px_rgba(40,6,25,0.25)] transition-all"
+                  >
+                    <span>View All</span>
+                    <span className="hidden sm:inline">Best Sellers</span>
+                    <ArrowRight className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E] group-hover:translate-x-0.5 transition-transform" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* =============================================================== */}
-        {/* 3. MAIN 24K GOLD SHOWROOM STAGE WITH 5 CARDS IN A ROW           */}
-        {/* =============================================================== */}
-        <div className="relative z-10 rounded-[26px] sm:rounded-[34px] p-[2.5px] bg-gradient-to-b from-[#FFE8A3] via-[#D4AF37] to-[#8C5818] shadow-[0_24px_60px_rgba(40,6,25,0.18)]">
-          <div className="relative rounded-[23.5px] sm:rounded-[31.5px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EFE0BE] pt-8 sm:pt-10 pb-6 sm:pb-8 px-2.5 sm:px-5 lg:px-6 overflow-hidden border border-[#FFFDF9]/70">
-            {/* Ambient Warm Gold Glow */}
-            <div
-              className="absolute inset-0 pointer-events-none z-0"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle at 80% 20%, rgba(212,175,55,0.16) 0%, transparent 45%), radial-gradient(circle at 20% 80%, rgba(91,14,61,0.06) 0%, transparent 45%)',
-              }}
-            />
+          {/* =============================================================== */}
+          {/* 3. MAIN 24K GOLD SHOWROOM STAGE WITH 5 CARDS IN A ROW           */}
+          {/* =============================================================== */}
+          <div className="relative z-10 rounded-[26px] sm:rounded-[34px] p-[2.5px] bg-gradient-to-b from-[#FFE8A3] via-[#D4AF37] to-[#8C5818] shadow-[0_24px_60px_rgba(40,6,25,0.18)]">
+            <div className="relative rounded-[23.5px] sm:rounded-[31.5px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EFE0BE] pt-8 sm:pt-10 pb-6 sm:pb-8 px-2.5 sm:px-5 lg:px-6 overflow-hidden border border-[#FFFDF9]/70">
+              {/* Ambient Warm Gold Glow */}
+              <div
+                className="absolute inset-0 pointer-events-none z-0"
+                style={{
+                  backgroundImage:
+                    'radial-gradient(circle at 80% 20%, rgba(212,175,55,0.16) 0%, transparent 45%), radial-gradient(circle at 20% 80%, rgba(91,14,61,0.06) 0%, transparent 45%)',
+                }}
+              />
 
-            {/* 2 CARDS PER ROW ON MOBILE (`grid-cols-2`), 5 IN A ROW ON DESKTOP (`lg:grid-cols-5`) */}
-            {isProductsLoading ? (
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5 xl:gap-4 relative z-10">
-                {[...Array(5)].map((_, idx) => (
-                  <div
-                    key={idx}
-                    className="rounded-[20px] sm:rounded-[22px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#EFE0C2] border-2 border-[#C8963E]/60 p-2 sm:p-2.5 animate-pulse space-y-2.5"
-                  >
-                    <div className="h-[195px] sm:h-[280px] w-full rounded-[14px] sm:rounded-[16px] bg-[#EED9BA]" />
-                    <div className="h-3 w-1/2 rounded bg-[#E5CCA4]" />
-                    <div className="h-4 w-4/5 rounded bg-[#E5CCA4]" />
-                    <div className="h-8 w-full rounded-full bg-[#D9BC8C]" />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5 xl:gap-4 items-stretch">
-                {visibleBestSellers.slice(0, 5).map((prod, idx) => {
-                  const inWish = isInWishlist(prod._id);
-                  const categoryObj = typeof prod.category === 'object' ? prod.category : null;
-                  const categoryLabel = categoryObj?.name || 'ROYAL SAREE';
-                  const fallbackImg = getCategoryFallbackImage(
-                    `${categoryObj?.slug || ''} ${prod.name || ''}`
-                  );
-                  const prodImage = resolveMediaUrl(prod.images?.[0]?.url) || fallbackImg;
-                  const hasDiscount =
-                    Number(prod.compareAtPrice) > 0 &&
-                    Number(prod.compareAtPrice) > Number(prod.price);
-
-                  return (
+              {/* 2 CARDS PER ROW ON MOBILE (`grid-cols-2`), 5 IN A ROW ON DESKTOP (`lg:grid-cols-5`) */}
+              {isProductsLoading ? (
+                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5 xl:gap-4 relative z-10">
+                  {[...Array(5)].map((_, idx) => (
                     <div
-                      key={`best-${prod._id}-${idx}`}
-                      className="group relative rounded-[20px] sm:rounded-[22px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_24px_rgba(40,6,25,0.14)] hover:shadow-[0_20px_42px_rgba(40,6,25,0.26)] transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                      key={idx}
+                      className="rounded-[20px] sm:rounded-[22px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#EFE0C2] border-2 border-[#C8963E]/60 p-2 sm:p-2.5 animate-pulse space-y-2.5"
                     >
-                      {/* Top-Center 24K Gold Diamond Star Finial on Each Card */}
-                      <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-20 w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6816] border border-[#5B0E3D] shadow-2xs" />
+                      <div className="h-[195px] sm:h-[280px] w-full rounded-[14px] sm:rounded-[16px] bg-[#EED9BA]" />
+                      <div className="h-3 w-1/2 rounded bg-[#E5CCA4]" />
+                      <div className="h-4 w-4/5 rounded bg-[#E5CCA4]" />
+                      <div className="h-8 w-full rounded-full bg-[#D9BC8C]" />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3.5 xl:gap-4 items-stretch">
+                  {visibleBestSellers.slice(0, 5).map((prod, idx) => {
+                    const inWish = isInWishlist(prod._id);
+                    const categoryObj = typeof prod.category === 'object' ? prod.category : null;
+                    const categoryLabel = categoryObj?.name || 'ROYAL SAREE';
+                    const fallbackImg = getCategoryFallbackImage(
+                      `${categoryObj?.slug || ''} ${prod.name || ''}`
+                    );
+                    const prodImage = resolveMediaUrl(prod.images?.[0]?.url) || fallbackImg;
+                    const hasDiscount =
+                      Number(prod.compareAtPrice) > 0 &&
+                      Number(prod.compareAtPrice) > Number(prod.price);
 
-                      <div className="h-full rounded-[18px] sm:rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EED9B3] p-2 sm:p-2.5 flex flex-col justify-between relative">
-                        {/* TALL ROYAL PORTRAIT IMAGE FRAME */}
-                        <div className="relative h-[195px] sm:h-[275px] xl:h-[295px] w-full rounded-[14px] sm:rounded-[16px] overflow-hidden bg-[#280619] border-[1.5px] border-[#D4AF37] shadow-inner">
-                          <Link href={`/product/${prod.slug}`} className="block w-full h-full">
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={prodImage}
-                              alt={prod.name}
-                              onError={(e) => {
-                                const target = e.currentTarget;
-                                if (target.src !== fallbackImg) {
-                                  target.src = fallbackImg;
-                                }
-                              }}
-                              className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
-                            />
-                          </Link>
+                    return (
+                      <div
+                        key={`best-${prod._id}-${idx}`}
+                        className="group relative rounded-[20px] sm:rounded-[22px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_24px_rgba(40,6,25,0.14)] hover:shadow-[0_20px_42px_rgba(40,6,25,0.26)] transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                      >
+                        {/* Top-Center 24K Gold Diamond Star Finial on Each Card */}
+                        <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-20 w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6816] border border-[#5B0E3D] shadow-2xs" />
 
-                          {/* Top-Left `✦ TOP #1` Royal Plum & Gold Pill */}
-                          <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 z-20">
-                            <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] border border-[#D4AF37] text-[#FFE59E] text-[8px] sm:text-[9.5px] font-bold tracking-[0.08em] uppercase shadow-md">
-                              <Sparkles className="w-2.5 h-2.5 text-[#FFE59E] fill-[#FFE59E]" />
-                              <span>TOP #{idx + 1}</span>
-                            </span>
-                          </div>
+                        <div className="h-full rounded-[18px] sm:rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EED9B3] p-2 sm:p-2.5 flex flex-col justify-between relative">
+                          {/* TALL ROYAL PORTRAIT IMAGE FRAME */}
+                          <div className="relative h-[195px] sm:h-[275px] xl:h-[295px] w-full rounded-[14px] sm:rounded-[16px] overflow-hidden bg-[#280619] border-[1.5px] border-[#D4AF37] shadow-inner">
+                            <Link href={`/product/${prod.slug}`} className="block w-full h-full">
+                              {/* eslint-disable-next-line @next/next/no-img-element */}
+                              <img
+                                src={prodImage}
+                                alt={prod.name}
+                                onError={(e) => {
+                                  const target = e.currentTarget;
+                                  if (target.src !== fallbackImg) {
+                                    target.src = fallbackImg;
+                                  }
+                                }}
+                                className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                              />
+                            </Link>
 
-                          {/* Top-Right Circular White Wishlist Heart Button */}
-                          <button
-                            type="button"
-                            onClick={(e) => handleWishlistToggle(prod, e)}
-                            className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white hover:bg-[#FFF5F7] border border-[#E5D3B3] flex items-center justify-center shadow-md cursor-pointer transition-transform hover:scale-110"
-                            aria-label="Add to wishlist"
-                          >
-                            <Heart
-                              className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
-                                inWish
+                            {/* Top-Left `✦ TOP #1` Royal Plum & Gold Pill */}
+                            <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 z-20">
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] border border-[#D4AF37] text-[#FFE59E] text-[8px] sm:text-[9.5px] font-bold tracking-[0.08em] uppercase shadow-md">
+                                <Sparkles className="w-2.5 h-2.5 text-[#FFE59E] fill-[#FFE59E]" />
+                                <span>TOP #{idx + 1}</span>
+                              </span>
+                            </div>
+
+                            {/* Top-Right Circular White Wishlist Heart Button */}
+                            <button
+                              type="button"
+                              onClick={(e) => handleWishlistToggle(prod, e)}
+                              className="absolute top-2 right-2 sm:top-2.5 sm:right-2.5 z-20 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-white hover:bg-[#FFF5F7] border border-[#E5D3B3] flex items-center justify-center shadow-md cursor-pointer transition-transform hover:scale-110"
+                              aria-label="Add to wishlist"
+                            >
+                              <Heart
+                                className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${inWish
                                   ? 'fill-rose-600 text-rose-600'
                                   : 'fill-[#4A0830] text-[#4A0830]'
-                              }`}
-                            />
-                          </button>
+                                  }`}
+                              />
+                            </button>
 
-                          {/* Bottom-Right Dark Royal Plum & 24K Gold Oval Price Badge Inside Image */}
-                          <div className="absolute bottom-2 right-2 z-20 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#3D0626] via-[#240216] to-[#12000A] border-[1.5px] border-[#D4AF37] text-[#FFE59E] font-serif font-extrabold text-[11px] sm:text-[13.5px] shadow-[0_4px_12px_rgba(0,0,0,0.45)]">
-                            {formatCurrency(prod.price)}
-                          </div>
-                        </div>
-
-                        {/* PRODUCT DETAILS & ACTION BAR */}
-                        <div className="pt-2 sm:pt-2.5 px-0.5 flex flex-col justify-between flex-1">
-                          <div>
-                            {/* Row 1: Warm Tan Category Pill + Green `● Ready` */}
-                            <div className="flex items-center justify-between gap-1">
-                              <span className="px-2 sm:px-2.5 py-0.5 rounded-full bg-gradient-to-b from-[#F5E3BE] to-[#E3C68C] border border-[#C8963E]/85 text-[7.5px] sm:text-[8.5px] font-extrabold tracking-[0.08em] text-[#2B1206] uppercase truncate shadow-2xs">
-                                {categoryLabel}
-                              </span>
-                              <span className="text-[8.5px] sm:text-[9.5px] font-bold text-[#15803D] inline-flex items-center gap-1 shrink-0">
-                                <span className="w-1.5 h-1.5 rounded-full bg-[#15803D]" />
-                                Ready
-                              </span>
+                            {/* Bottom-Right Dark Royal Plum & 24K Gold Oval Price Badge Inside Image */}
+                            <div className="absolute bottom-2 right-2 z-20 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#3D0626] via-[#240216] to-[#12000A] border-[1.5px] border-[#D4AF37] text-[#FFE59E] font-serif font-extrabold text-[11px] sm:text-[13.5px] shadow-[0_4px_12px_rgba(0,0,0,0.45)]">
+                              {formatCurrency(prod.price)}
                             </div>
-
-                            {/* Row 2: Bold Uppercase Serif Title */}
-                            <Link href={`/product/${prod.slug}`} className="block mt-1.5">
-                              <h3 className="font-serif font-extrabold text-[11.5px] sm:text-[13.5px] uppercase tracking-tight text-[#1E0A10] group-hover:text-[#7A1138] transition-colors truncate">
-                                {prod.name}
-                              </h3>
-                            </Link>
                           </div>
 
-                          {/* Row 3 & 4: Price + FREE SHIP & Add to Cart Pill + Arrow Circle */}
-                          <div className="mt-1.5 sm:mt-2">
-                            <div className="flex items-baseline justify-between gap-1 mb-2">
-                              <div className="flex items-baseline gap-1.5">
-                                <span className="font-serif font-extrabold text-[14px] sm:text-[16.5px] text-[#1E0A10]">
-                                  {formatCurrency(prod.price)}
+                          {/* PRODUCT DETAILS & ACTION BAR */}
+                          <div className="pt-2 sm:pt-2.5 px-0.5 flex flex-col justify-between flex-1">
+                            <div>
+                              {/* Row 1: Warm Tan Category Pill + Green `● Ready` */}
+                              <div className="flex items-center justify-between gap-1">
+                                <span className="px-2 sm:px-2.5 py-0.5 rounded-full bg-gradient-to-b from-[#F5E3BE] to-[#E3C68C] border border-[#C8963E]/85 text-[7.5px] sm:text-[8.5px] font-extrabold tracking-[0.08em] text-[#2B1206] uppercase truncate shadow-2xs">
+                                  {categoryLabel}
                                 </span>
-                                {hasDiscount && (
-                                  <span className="text-[9.5px] sm:text-[10.5px] text-[#7A5B3E] line-through font-medium">
-                                    {formatCurrency(Number(prod.compareAtPrice))}
-                                  </span>
-                                )}
+                                <span className="text-[8.5px] sm:text-[9.5px] font-bold text-[#15803D] inline-flex items-center gap-1 shrink-0">
+                                  <span className="w-1.5 h-1.5 rounded-full bg-[#15803D]" />
+                                  Ready
+                                </span>
                               </div>
-                              <span className="text-[8px] sm:text-[9px] font-extrabold text-[#4A2C11] uppercase tracking-[0.06em]">
-                                FREE SHIP
-                              </span>
+
+                              {/* Row 2: Bold Uppercase Serif Title */}
+                              <Link href={`/product/${prod.slug}`} className="block mt-1.5">
+                                <h3 className="font-serif font-extrabold text-[11.5px] sm:text-[13.5px] uppercase tracking-tight text-[#1E0A10] group-hover:text-[#7A1138] transition-colors truncate">
+                                  {prod.name}
+                                </h3>
+                              </Link>
                             </div>
 
-                            <div className="flex items-center gap-1.5">
-                              <button
-                                type="button"
-                                onClick={(e) => handleAddToCart(prod, e)}
-                                className="flex-1 py-1.5 sm:py-2 px-2.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10px] sm:text-[11px] font-serif font-bold flex items-center justify-center gap-1.5 shadow-[0_6px_14px_rgba(38,3,22,0.3)] cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
-                              >
-                                <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E] shrink-0" />
-                                <span className="truncate">Add to Cart</span>
-                              </button>
+                            {/* Row 3 & 4: Price + FREE SHIP & Add to Cart Pill + Arrow Circle */}
+                            <div className="mt-1.5 sm:mt-2">
+                              <div className="flex items-baseline justify-between gap-1 mb-2">
+                                <div className="flex items-baseline gap-1.5">
+                                  <span className="font-serif font-extrabold text-[14px] sm:text-[16.5px] text-[#1E0A10]">
+                                    {formatCurrency(prod.price)}
+                                  </span>
+                                  {hasDiscount && (
+                                    <span className="text-[9.5px] sm:text-[10.5px] text-[#7A5B3E] line-through font-medium">
+                                      {formatCurrency(Number(prod.compareAtPrice))}
+                                    </span>
+                                  )}
+                                </div>
+                                <span className="text-[8px] sm:text-[9px] font-extrabold text-[#4A2C11] uppercase tracking-[0.06em]">
+                                  FREE SHIP
+                                </span>
+                              </div>
 
-                              <Link
-                                href={`/product/${prod.slug}`}
-                                className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#1E0A10] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all shrink-0"
-                                aria-label={`View ${prod.name}`}
-                              >
-                                <ArrowRight className="w-3.5 h-3.5 stroke-[2.2]" />
-                              </Link>
+                              <div className="flex items-center gap-1.5">
+                                <button
+                                  type="button"
+                                  onClick={(e) => handleAddToCart(prod, e)}
+                                  className="flex-1 py-1.5 sm:py-2 px-2.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10px] sm:text-[11px] font-serif font-bold flex items-center justify-center gap-1.5 shadow-[0_6px_14px_rgba(38,3,22,0.3)] cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+                                >
+                                  <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E] shrink-0" />
+                                  <span className="truncate">Add to Cart</span>
+                                </button>
+
+                                <Link
+                                  href={`/product/${prod.slug}`}
+                                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#1E0A10] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all shrink-0"
+                                  aria-label={`View ${prod.name}`}
+                                >
+                                  <ArrowRight className="w-3.5 h-3.5 stroke-[2.2]" />
+                                </Link>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
-          </div>
-        </div>
-
-        {/* =============================================================== */}
-        {/* 4. LOWER ATTACHED ROYAL PLUM & 24K GOLD ASSURANCE & CATALOG BAR */}
-        {/* =============================================================== */}
-        <div className="relative z-20 max-w-[1320px] mx-auto px-1 sm:px-4 -mt-3 sm:-mt-3.5">
-          {/* Top-Center & Bottom-Center Ornate 24K Gold Diamond Clasps */}
-          <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
-          <span className="hidden sm:block absolute -bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
-
-          <div className="rounded-2xl lg:rounded-full p-[2px] bg-gradient-to-r from-[#8C5818] via-[#FFE59E] to-[#8C5818] shadow-[0_16px_36px_rgba(32,2,18,0.32)]">
-            <div className="rounded-[14px] lg:rounded-full bg-gradient-to-b from-[#3D0626] via-[#260217] to-[#14000B] px-3.5 sm:px-6 py-2.5 sm:py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
-              {/* Left / Center 3 Gold-Icon Trust Pillars */}
-              <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-5 text-[10.5px] sm:text-xs font-medium text-[#F8E7C8]">
-                <span className="inline-flex items-center gap-2">
-                  <ShieldCheck className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] shrink-0" />
-                  <span>5-Step Daylight Weave Inspection</span>
-                </span>
-
-                <span className="hidden sm:inline-block w-[1px] h-4 bg-[#D4AF37]/40" />
-
-                <span className="inline-flex items-center gap-2">
-                  <Crown className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] fill-[#D4AF37] shrink-0" />
-                  <span>Optional Custom Princess / Aari Blouse Stitching</span>
-                </span>
-
-                <span className="hidden md:inline-block w-[1px] h-4 bg-[#D4AF37]/40" />
-
-                <span className="hidden md:inline-flex items-center gap-2">
-                  <Package className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] shrink-0" />
-                  <span>Packed in Signature Nalmara Royal Box</span>
-                </span>
-              </div>
-
-              {/* Right: 3D Metallic 24K Gold Pill CTA Button */}
-              <Link
-                href="/shop"
-                className="group inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-b from-[#FFF4B8] via-[#DFB752] to-[#9A6816] hover:brightness-105 border border-[#FFF6D6] text-[#1E0A10] font-serif font-extrabold text-[10.5px] sm:text-xs shadow-[0_4px_14px_rgba(0,0,0,0.4)] transition-all shrink-0"
-              >
-                <Sparkles className="w-3.5 h-3.5 text-[#3D0626] fill-[#3D0626]" />
-                <span>Explore Complete Best Sellers Catalog</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#1E0A10] group-hover:translate-x-0.5 transition-transform" />
-              </Link>
+                    );
+                  })}
+                </div>
+              )}
             </div>
           </div>
-        </div>
+
+          {/* =============================================================== */}
+          {/* 4. LOWER ATTACHED ROYAL PLUM & 24K GOLD ASSURANCE & CATALOG BAR */}
+          {/* =============================================================== */}
+          <div className="relative z-20 max-w-[1320px] mx-auto px-1 sm:px-4 -mt-3 sm:-mt-3.5">
+            {/* Top-Center & Bottom-Center Ornate 24K Gold Diamond Clasps */}
+            <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
+            <span className="hidden sm:block absolute -bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
+
+            <div className="rounded-2xl lg:rounded-full p-[2px] bg-gradient-to-r from-[#8C5818] via-[#FFE59E] to-[#8C5818] shadow-[0_16px_36px_rgba(32,2,18,0.32)]">
+              <div className="rounded-[14px] lg:rounded-full bg-gradient-to-b from-[#3D0626] via-[#260217] to-[#14000B] px-3.5 sm:px-6 py-2.5 sm:py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
+                {/* Left / Center 3 Gold-Icon Trust Pillars */}
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-5 text-[10.5px] sm:text-xs font-medium text-[#F8E7C8]">
+                  <span className="inline-flex items-center gap-2">
+                    <ShieldCheck className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] shrink-0" />
+                    <span>5-Step Daylight Weave Inspection</span>
+                  </span>
+
+                  <span className="hidden sm:inline-block w-[1px] h-4 bg-[#D4AF37]/40" />
+
+                  <span className="inline-flex items-center gap-2">
+                    <Crown className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] fill-[#D4AF37] shrink-0" />
+                    <span>Optional Custom Princess / Aari Blouse Stitching</span>
+                  </span>
+
+                  <span className="hidden md:inline-block w-[1px] h-4 bg-[#D4AF37]/40" />
+
+                  <span className="hidden md:inline-flex items-center gap-2">
+                    <Package className="w-4 h-4 sm:w-[18px] sm:h-[18px] text-[#FFE59E] shrink-0" />
+                    <span>Packed in Signature Nalmara Royal Box</span>
+                  </span>
+                </div>
+
+                {/* Right: 3D Metallic 24K Gold Pill CTA Button */}
+                <Link
+                  href="/shop"
+                  className="group inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-b from-[#FFF4B8] via-[#DFB752] to-[#9A6816] hover:brightness-105 border border-[#FFF6D6] text-[#1E0A10] font-serif font-extrabold text-[10.5px] sm:text-xs shadow-[0_4px_14px_rgba(0,0,0,0.4)] transition-all shrink-0"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-[#3D0626] fill-[#3D0626]" />
+                  <span>Explore Complete Best Sellers Catalog</span>
+                  <ArrowRight className="w-3.5 h-3.5 text-[#1E0A10] group-hover:translate-x-0.5 transition-transform" />
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -4276,11 +4271,10 @@ export default function HomePage() {
 
                   {/* Bold Serif Pillar Title */}
                   <h3
-                    className={`font-serif font-extrabold text-[#1E0A10] leading-[1.15] tracking-tight ${
-                      idx === 3
-                        ? 'text-[11.5px] sm:text-[16.5px] xl:text-[18px]'
-                        : 'text-[12.5px] sm:text-[18px] xl:text-[20px]'
-                    }`}
+                    className={`font-serif font-extrabold text-[#1E0A10] leading-[1.15] tracking-tight ${idx === 3
+                      ? 'text-[11.5px] sm:text-[16.5px] xl:text-[18px]'
+                      : 'text-[12.5px] sm:text-[18px] xl:text-[20px]'
+                      }`}
                   >
                     {card.title}
                   </h3>
@@ -4524,11 +4518,10 @@ export default function HomePage() {
                   return (
                     <div
                       key={`${item.id}-${idx}`}
-                      className={`group relative aspect-[3/3.88] rounded-[22px] p-[3.5px] shadow-[0_16px_34px_rgba(68,20,8,0.26)] hover:-translate-y-1.5 transition-all duration-300 ${
-                        idx === 4
-                          ? 'col-span-2 sm:col-span-1 max-w-[240px] sm:max-w-none mx-auto w-full'
-                          : ''
-                      }`}
+                      className={`group relative aspect-[3/3.88] rounded-[22px] p-[3.5px] shadow-[0_16px_34px_rgba(68,20,8,0.26)] hover:-translate-y-1.5 transition-all duration-300 ${idx === 4
+                        ? 'col-span-2 sm:col-span-1 max-w-[240px] sm:max-w-none mx-auto w-full'
+                        : ''
+                        }`}
                       style={{
                         background:
                           'linear-gradient(145deg, #FFFDF7 0%, #FFE59E 22%, #D4AF37 52%, #8C5818 82%, #FFE59E 100%)',
@@ -4620,11 +4613,10 @@ export default function HomePage() {
                                   className="shrink-0 text-[#FFF4C2] hover:scale-115 transition-transform cursor-pointer"
                                 >
                                   <Heart
-                                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${
-                                      isLiked
-                                        ? 'fill-rose-500 text-rose-500'
-                                        : 'text-[#FFE59E] stroke-[2.2]'
-                                    }`}
+                                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isLiked
+                                      ? 'fill-rose-500 text-rose-500'
+                                      : 'text-[#FFE59E] stroke-[2.2]'
+                                      }`}
                                   />
                                 </button>
                                 <Link
@@ -4903,17 +4895,17 @@ export default function HomePage() {
             {/* 3 Sculpted 3D Royal Gold-Framed Google Review Cards */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 items-stretch pt-3">
               {displayHappyReviews.map((rev, idx) => {
-                const firstName = rev.user?.firstName || 'Preethi';
-                const lastName = rev.user?.lastName || 'Sundar';
+                const firstName = rev.user?.firstName || 'Alagu';
+                const lastName = rev.user?.lastName || 'Raj';
                 const fullName = `${firstName} ${lastName}`.trim();
                 const rawAvatar = rev.user?.avatar || '';
                 const avatarUrl =
                   rawAvatar.startsWith('/images/') ||
-                  rawAvatar.startsWith('http://') ||
-                  rawAvatar.startsWith('https://')
+                    rawAvatar.startsWith('http://') ||
+                    rawAvatar.startsWith('https://')
                     ? rawAvatar
                     : resolveMediaUrl(rawAvatar) ||
-                      '/images/nalmara/hd/happy_faq_reviewer_avatar.png';
+                    '/images/nalmara/hd/happy_faq_reviewer_avatar.png';
                 const stars = Math.max(1, Math.min(5, Number(rev.rating) || 5));
                 const quoteText =
                   rev.comment ||
@@ -5553,11 +5545,10 @@ export default function HomePage() {
 
                                 {/* Right Circular Cream & Gold Ring + / − Button */}
                                 <span
-                                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border flex items-center justify-center shrink-0 shadow-2xs transition-colors ${
-                                    isOpen
-                                      ? 'bg-gradient-to-b from-[#5B0E3D] to-[#2B031A] border-[#D4AF37] text-[#FFE59E]'
-                                      : 'bg-gradient-to-b from-[#FFFDF9] to-[#F2DFB8] border-[#D4AF37] text-[#231008]'
-                                  }`}
+                                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border flex items-center justify-center shrink-0 shadow-2xs transition-colors ${isOpen
+                                    ? 'bg-gradient-to-b from-[#5B0E3D] to-[#2B031A] border-[#D4AF37] text-[#FFE59E]'
+                                    : 'bg-gradient-to-b from-[#FFFDF9] to-[#F2DFB8] border-[#D4AF37] text-[#231008]'
+                                    }`}
                                 >
                                   {isOpen ? (
                                     <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />

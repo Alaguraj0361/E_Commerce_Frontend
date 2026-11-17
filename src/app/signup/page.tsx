@@ -97,7 +97,7 @@ function SignupContent() {
                       required
                       value={formData.firstName}
                       onChange={(e) => setFormData({ ...formData, firstName: e.target.value })}
-                      placeholder="Priya"
+                      placeholder="Enter First Name"
                       className="w-full bg-[#FFFDF9] border border-[#D4AF37]/65 rounded-xl py-3 pl-9 pr-3 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-[#280619]"
                     />
                   </div>
@@ -112,7 +112,7 @@ function SignupContent() {
                     required
                     value={formData.lastName}
                     onChange={(e) => setFormData({ ...formData, lastName: e.target.value })}
-                    placeholder="Sharma"
+                    placeholder="Enter Last Name"
                     className="w-full bg-[#FFFDF9] border border-[#D4AF37]/65 rounded-xl py-3 px-3 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-[#280619]"
                   />
                 </div>
@@ -129,7 +129,7 @@ function SignupContent() {
                     required
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    placeholder="priya@example.com"
+                    placeholder="Enter Email Address"
                     className="w-full bg-[#FFFDF9] border border-[#D4AF37]/65 rounded-xl py-3 pl-10 pr-3 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-[#280619]"
                   />
                 </div>
@@ -145,7 +145,7 @@ function SignupContent() {
                     type="tel"
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+91 98765 43210"
+                    placeholder="Enter Phone Number"
                     className="w-full bg-[#FFFDF9] border border-[#D4AF37]/65 rounded-xl py-3 pl-10 pr-3 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-[#280619]"
                   />
                 </div>
@@ -162,7 +162,7 @@ function SignupContent() {
                     required
                     value={formData.password}
                     onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                    placeholder="Minimum 6 characters"
+                    placeholder="Enter Password minimum 6 characters"
                     className="w-full bg-[#FFFDF9] border border-[#D4AF37]/65 rounded-xl py-3 pl-10 pr-3 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-[#280619]"
                   />
                 </div>
@@ -179,7 +179,7 @@ function SignupContent() {
                     required
                     value={formData.confirmPassword}
                     onChange={(e) => setFormData({ ...formData, confirmPassword: e.target.value })}
-                    placeholder="Repeat password"
+                    placeholder="Enter Confirm Password"
                     className="w-full bg-[#FFFDF9] border border-[#D4AF37]/65 rounded-xl py-3 pl-10 pr-3 text-xs focus:outline-none focus:ring-2 focus:ring-[#D4AF37] text-[#280619]"
                   />
                 </div>
