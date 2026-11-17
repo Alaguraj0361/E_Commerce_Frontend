@@ -18,7 +18,7 @@ export const Footer = () => {
   const { categories } = useCategoryStore();
 
   return (
-    <footer className="relative bg-[#220517] text-[#F7E8D0] overflow-hidden select-none border-t-2 border-[#D4AF37]/60">
+    <footer className="hidden md:block relative bg-[#220517] text-[#F7E8D0] overflow-hidden select-none border-t-2 border-[#D4AF37]/60">
       {/* ============================================================ */}
       {/* MAIN 5-COLUMN ROYAL BURGUNDY/PLUM FOOTER                     */}
       {/* ============================================================ */}

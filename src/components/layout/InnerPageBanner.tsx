@@ -36,7 +36,7 @@ export function InnerPageBanner({
 }: InnerPageBannerProps) {
   return (
     <section
-      className={`relative w-full h-[450px] overflow-hidden flex items-center justify-center border-b-2 border-[#D4AF37] shadow-[0_12px_36px_rgba(20,2,14,0.35)] select-none ${className}`}
+      className={`relative w-full h-[450px] overflow-hidden flex items-center justify-center border-b-2 border-[#D4AF37] shadow-md sm:shadow-[0_12px_36px_rgba(20,2,14,0.35)] select-none isolate ${className}`}
     >
       {/* 1. Background Banner Image (Exactly 450px Height) */}
       <div className="absolute inset-0 z-0">
@@ -46,7 +46,7 @@ export function InnerPageBanner({
           fill
           priority
           unoptimized
-          className={`object-cover ${imagePosition} transform scale-105 transition-transform duration-1000`}
+          className={`object-cover ${imagePosition}`}
         />
 
         {/* Multi-Layer Royal Plum & 24K Gold Cinematic Overlays */}

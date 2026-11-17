@@ -67,7 +67,7 @@ export default function RootLayout({
         <ToastProvider />
         <Navbar />
         <CartDrawer />
-        <main className="flex-1 w-full max-w-full overflow-x-hidden">{children}</main>
+        <main className="flex-1 w-full max-w-full overflow-x-hidden pb-16 md:pb-0">{children}</main>
         <WhatsAppButton />
         <BottomNav />
         <Footer />

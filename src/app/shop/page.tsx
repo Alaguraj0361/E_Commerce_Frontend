@@ -321,12 +321,12 @@ function ShopContent() {
 
       {/* QUICK CATEGORY PILLS BAR */}
       {categories.length > 0 && (
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 -mt-5 relative z-20">
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none justify-start sm:justify-center">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mt-3 sm:-mt-5 relative z-20 isolate">
+          <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none justify-start sm:justify-center touch-pan-x">
             <button
               type="button"
               onClick={() => handleCategorySelect('')}
-              className={`px-4 py-2 rounded-full text-xs font-serif font-bold whitespace-nowrap transition-all shadow-md cursor-pointer border ${
+              className={`px-4 py-2 rounded-full text-xs font-serif font-bold whitespace-nowrap transition-colors shadow-sm cursor-pointer border ${
                 !selectedCategory
                   ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37]'
                   : 'bg-[#FFFDF9] text-[#280619] border-[#D4AF37]/50 hover:border-[#D4AF37]'
@@ -341,7 +341,7 @@ function ShopContent() {
                   key={cat._id}
                   type="button"
                   onClick={() => handleCategorySelect(cat.slug)}
-                  className={`px-4 py-2 rounded-full text-xs font-serif font-bold whitespace-nowrap transition-all shadow-md cursor-pointer border ${
+                  className={`px-4 py-2 rounded-full text-xs font-serif font-bold whitespace-nowrap transition-colors shadow-sm cursor-pointer border ${
                     active
                       ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37]'
                       : 'bg-[#FFFDF9] text-[#280619] border-[#D4AF37]/50 hover:border-[#D4AF37]'
@@ -356,9 +356,9 @@ function ShopContent() {
       )}
 
       {/* 2. MAIN SHOP CONTENT */}
-      <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-8 sm:py-10">
+      <div className="max-w-[1560px] mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 py-6 sm:py-10">
         {/* Results Count & Sort Controls Plaque */}
-        <div className="relative rounded-2xl bg-gradient-to-r from-[#FFFDF9] via-[#FAF0DD] to-[#FFFDF9] border-2 border-[#D4AF37]/75 px-4 sm:px-6 py-3.5 shadow-[0_10px_28px_rgba(56,7,37,0.08)] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="relative rounded-2xl bg-[#FFFDF9] border-2 border-[#D4AF37]/75 px-4 sm:px-6 py-3.5 shadow-sm sm:shadow-[0_10px_28px_rgba(56,7,37,0.08)] flex flex-col sm:flex-row sm:items-center justify-between gap-4 isolate">
           <div className="flex items-center gap-2.5">
             <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFE59E] to-[#8C5818]" />
             <p className="text-xs sm:text-sm text-[#4A2C2A]">
