@@ -17,7 +17,7 @@ import { InnerPageBanner } from '@/components/layout/InnerPageBanner';
 export const metadata = {
   title: 'Shipping & Delivery | NALMARA FASHION • Thoothukudi, Tamil Nadu',
   description:
-    'Fast 1–3 day delivery across Thoothukudi, Tirunelveli, Madurai, Chennai, Coimbatore, and all of Tamil Nadu. Free shipping on orders above ₹1,499.',
+    'Fast 2–5 day delivery across Thoothukudi, Tirunelveli, Madurai, Chennai, Coimbatore, and all of Tamil Nadu. Free shipping on orders above ₹1,499.',
 };
 
 export default function ShippingPage() {

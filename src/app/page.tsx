@@ -490,8 +490,8 @@ const FAQ_ITEMS = [
     category: 'Express Shipping',
     question: 'What is your delivery time across Tamil Nadu & India?',
     answer:
-      'Ready-to-ship silk sarees, kurtis, and festive kidswear reach across Tamil Nadu in 1–3 business days (3–5 days across India). Custom-stitched blouses and bridal outfits are dispatched within 2–5 business days with live tracking.',
-    highlights: ['1–3 Days in Tamil Nadu', '3–5 Days Pan-India', 'Insured Doorstep Courier'],
+      'Ready-to-ship silk sarees, kurtis, and festive kidswear reach across Tamil Nadu in 2–5 business days (3–5 days across India). Custom-stitched blouses and bridal outfits are dispatched within 2–5 business days with live tracking.',
+    highlights: ['2–5 Days in Tamil Nadu', '3–5 Days Pan-India', 'Insured Doorstep Courier'],
   },
   {
     id: 4,
@@ -3326,7 +3326,7 @@ export default function HomePage() {
                               </Link>
                             </div>
 
-                            {/* Row 3 & 4: Price + FREE SHIP & Add to Cart Pill + Arrow Circle */}
+                            {/* Row 3 & 4: Price & Add to Cart Pill + Arrow Circle */}
                             <div className="mt-1.5 sm:mt-2">
                               <div className="flex items-baseline justify-between gap-1 mb-2">
                                 <div className="flex items-baseline gap-1.5">
@@ -3339,9 +3339,6 @@ export default function HomePage() {
                                     </span>
                                   )}
                                 </div>
-                                <span className="text-[8px] sm:text-[9px] font-extrabold text-[#4A2C11] uppercase tracking-[0.06em]">
-                                  FREE SHIP
-                                </span>
                               </div>
 
                               <div className="flex items-center gap-1.5">
@@ -3722,7 +3719,7 @@ export default function HomePage() {
                   {
                     icon: Package,
                     title: 'Express Secure Delivery',
-                    sub: '1–3 Days Across Tamil Nadu',
+                    sub: '2–5 Days Across Tamil Nadu',
                   },
                   {
                     icon: Heart,
@@ -4028,7 +4025,7 @@ export default function HomePage() {
                               </Link>
                             </div>
 
-                            {/* Row 3 & 4: Price + FREE SHIP & Add to Cart Pill + Arrow Circle */}
+                            {/* Row 3 & 4: Price & Add to Cart Pill + Arrow Circle */}
                             <div className="mt-1.5 sm:mt-2">
                               <div className="flex items-baseline justify-between gap-1 mb-2">
                                 <div className="flex items-baseline gap-1.5">
@@ -4041,9 +4038,6 @@ export default function HomePage() {
                                     </span>
                                   )}
                                 </div>
-                                <span className="text-[8px] sm:text-[9px] font-extrabold text-[#4A2C11] uppercase tracking-[0.06em]">
-                                  FREE SHIP
-                                </span>
                               </div>
 
                               <div className="flex items-center gap-1.5">

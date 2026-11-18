@@ -47,8 +47,8 @@ const ABOUT_HERO_SLIDES: AboutHeroSlide[] = [
     description:
       'Born in the pearl city of Thoothukudi, NALMARA FASHION curates authentic Kanchipuram pattu sarees, soft silks, Chettinad cottons, festive lehengas, and bespoke tailoring at honest boutique prices.',
     image: '/images/nalmara/hd/prod_designer_saree_hd.jpg',
-    pills: ['Direct Weaver Sourcing', 'Master Tailor Atelier', '2,400+ Happy Families'],
-    statValue: '2,400+',
+    pills: ['Direct Weaver Sourcing', 'Master Tailor Atelier', '500+ Happy Families'],
+    statValue: '500+',
     statLabel: 'Families Dressed Across Tamil Nadu',
   },
   {
@@ -122,8 +122,8 @@ const CRAFT_JOURNEY_STEPS = [
     tag: 'ROYAL DISPATCH',
     title: 'Signature Gift Box Delivery',
     description:
-      'Folded in protective butter paper inside our royal Nalmara gift box and dispatched with live tracking—reaching homes across Tamil Nadu in 1–3 business days.',
-    highlight: '1–3 Days Express TN Shipping',
+      'Folded in protective butter paper inside our royal Nalmara gift box and dispatched with live tracking—reaching homes across Tamil Nadu in 2–5 business days.',
+    highlight: '2–5 Days Express TN Shipping',
   },
 ];
 
@@ -218,20 +218,15 @@ export default function AboutPage() {
       {/* 02. IMPERIAL ROYAL PLUM & 24K GOLD HERITAGE METRICS RIBBON          */}
       {/* =================================================================== */}
       <section className="relative bg-gradient-to-r from-[#240315] via-[#3D0829] to-[#240315] border-b-2 border-[#D4AF37] py-8 sm:py-10 px-4 sm:px-8">
-        <div className="max-w-[1380px] mx-auto grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="max-w-[1100px] mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           {[
             {
-              value: '2,400+',
+              value: '500+',
               label: 'Happy Tamil Nadu Families',
               sub: 'Repeat Bridal & Festive Patrons',
             },
             {
-              value: '6 Hubs',
-              label: 'Direct Weaver Clusters',
-              sub: 'Kanchipuram • Elampillai • Madurai',
-            },
-            {
-              value: '1–3 Days',
+              value: '2–5 Days',
               label: 'Express TN Dispatch',
               sub: 'Packed in Signature Royal Gift Box',
             },
