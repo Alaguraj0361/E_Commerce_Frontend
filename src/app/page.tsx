@@ -25,6 +25,7 @@ import {
   CheckCircle2,
   FolderTree,
   Crown,
+  Gift,
 } from 'lucide-react';
 import { useCartStore } from '../store/cartStore';
 import { useWishlistStore } from '../store/wishlistStore';
@@ -1004,44 +1005,74 @@ export default function HomePage() {
     );
   }, [allHappyReviews, reviewStartIndex]);
 
-  // Derive Style Inspiration items from live Instagram feed or live API products (always ensuring at least 5 items)
-  const styleInspirationList = React.useMemo(() => {
-    const primary =
-      igPosts.length > 0
-        ? igPosts.map((post: any) => ({
-          id: String(post.id),
-          title: post.title || '@nalmarafashion',
-          image: resolveMediaUrl(post.image),
-          href: post.permalink || 'https://www.instagram.com/nalmarafashion',
-          external: true,
-        }))
-        : liveProducts.map((prod) => ({
-          id: String(prod._id),
-          title: prod.name,
-          image:
-            resolveMediaUrl(prod.images?.[0]?.url) ||
-            getCategoryFallbackImage(
-              typeof prod.category === 'object' ? prod.category?.slug : prod.name
-            ),
-          href: `/product/${prod.slug}`,
-          external: false,
-        }));
-
-    if (primary.length >= 5) return primary;
-
-    const padded = [...primary];
-    for (let i = primary.length; i < 5; i++) {
-      const fb = HERO_SHOWCASE_FALLBACK[i % HERO_SHOWCASE_FALLBACK.length];
-      padded.push({
-        id: `fallback-insta-${fb.id}-${i}`,
-        title: fb.name,
-        image: fb.image,
-        href: '/shop',
+  // Curated 5 Lookbook styles from Nalmara Fashion Thoothukudi Boutique
+  const CURATED_STYLE_INSPIRATION = React.useMemo(
+    () => [
+      {
+        id: 'curated-trending-sarees',
+        title: 'Trending Sarees',
+        category: 'sarees',
+        image: '/images/nalmara/hd/style_photo_1_trending_hd.png',
+        cardImage: '/images/nalmara/hd/style_card_1_trending_hd.png',
+        href: '/shop?category=sarees',
         external: false,
-      });
+      },
+      {
+        id: 'curated-kanchi-cotton',
+        title: 'Kanchi Cotton',
+        category: 'kanchi-cotton',
+        image: '/images/nalmara/hd/style_photo_2_kanchi_hd.png',
+        cardImage: '/images/nalmara/hd/style_card_2_kanchi_hd.png',
+        href: '/shop?category=sarees',
+        external: false,
+      },
+      {
+        id: 'curated-party-wear',
+        title: 'Party Wear Dresses',
+        category: 'party-wear',
+        image: '/images/nalmara/hd/style_photo_3_party_hd.png',
+        cardImage: '/images/nalmara/hd/style_card_3_party_hd.png',
+        href: '/shop?category=dresses',
+        external: false,
+      },
+      {
+        id: 'curated-fancy-sarees',
+        title: 'Fancy Sarees',
+        category: 'fancy-sarees',
+        image: '/images/nalmara/hd/style_photo_4_fancy_hd.png',
+        cardImage: '/images/nalmara/hd/style_card_4_fancy_hd.png',
+        href: '/shop?category=sarees',
+        external: false,
+      },
+      {
+        id: 'curated-kids-fashion',
+        title: 'Kids Fashion',
+        category: 'kids-wear',
+        image: '/images/nalmara/hd/style_photo_5_kids_hd.png',
+        cardImage: '/images/nalmara/hd/style_card_5_kids_hd.png',
+        href: '/shop?category=kids-wear',
+        external: false,
+      },
+    ],
+    []
+  );
+
+  // Derive Style Inspiration items from curated lookbook or live Instagram feed
+  const styleInspirationList = React.useMemo(() => {
+    if (igPosts && igPosts.length > 0) {
+      const igMapped = igPosts.map((post: any) => ({
+        id: String(post.id),
+        title: post.title || 'Nalmara Lookbook',
+        category: 'instagram',
+        image: resolveMediaUrl(post.image),
+        cardImage: resolveMediaUrl(post.image),
+        href: post.permalink || 'https://www.instagram.com/nalmarafashion',
+        external: true,
+      }));
+      return [...CURATED_STYLE_INSPIRATION, ...igMapped];
     }
-    return padded;
-  }, [igPosts, liveProducts]);
+    return CURATED_STYLE_INSPIRATION;
+  }, [igPosts, CURATED_STYLE_INSPIRATION]);
 
   const visibleStyleInspiration = React.useMemo(
     () =>
@@ -4117,130 +4148,107 @@ export default function HomePage() {
       </section>
 
       {/* =================================================================== */}
-      {/* 06. WHY CHOOSE NALMARA FASHION? (4 Royal Mughal Arch Shield Cards)  */}
+      {/* 06. WHY CHOOSE NALMARA FASHION? (Full Container-Fluid Bleed Section)*/}
       {/* =================================================================== */}
-      <section className="relative max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-10 py-6 sm:py-10 overflow-hidden">
-        <div
-          className="relative max-w-[1360px] mx-auto rounded-[28px] sm:rounded-[36px] px-3 sm:px-8 lg:px-12 pt-6 pb-8 sm:pt-9 sm:pb-11 overflow-hidden border border-[#D4AF37]/45 shadow-[0_18px_48px_rgba(40,6,25,0.10)]"
-          style={{
-            background:
-              'radial-gradient(circle at 50% 18%, #FFFDF9 0%, #FAF0DC 52%, #EFE0BE 100%)',
-          }}
-        >
-          {/* Subtle Champagne Silk Drape Highlights */}
-          <div
-            className="absolute inset-0 pointer-events-none z-0"
-            style={{
-              backgroundImage:
-                'radial-gradient(ellipse at 20% 0%, rgba(255,253,249,0.85) 0%, transparent 50%), radial-gradient(ellipse at 80% 0%, rgba(255,253,249,0.85) 0%, transparent 50%), radial-gradient(circle at 50% 65%, rgba(212,175,55,0.15) 0%, transparent 55%)',
-            }}
+      <section className="relative w-full max-w-full overflow-hidden border-y-2 border-[#D4AF37]/80 py-10 sm:py-16 shadow-[0_24px_64px_rgba(30,2,20,0.45)] isolate">
+        {/* Full-Bleed Container-Fluid High Clarity Royal Magenta Silk Background */}
+        <div className="absolute inset-0 z-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/images/nalmara/hd/why_choose_bg_hd.jpg"
+            alt="Why Choose Nalmara Fashion Background"
+            className="w-full h-full object-cover object-center pointer-events-none select-none"
           />
+          {/* Subtle Ambient Vignette & Top/Bottom Gold Edge Filigree Highlighting */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/25 via-transparent to-black/40 pointer-events-none" />
+          <div className="absolute top-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#FFE59E] to-transparent z-20 pointer-events-none" />
+          <div className="absolute bottom-0 inset-x-0 h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent z-20 pointer-events-none" />
+        </div>
 
-          {/* Top-Left & Top-Right 3D Cream & Burgundy Floral Bouquets with 24K Gold Leaves */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/nalmara/hd/showcase_corner_tl.png"
-            alt=""
-            aria-hidden="true"
-            className="hidden sm:block absolute top-0 left-0 w-36 md:w-48 lg:w-60 pointer-events-none z-20 select-none"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/nalmara/hd/showcase_corner_tr.png"
-            alt=""
-            aria-hidden="true"
-            className="hidden sm:block absolute top-0 right-0 w-36 md:w-48 lg:w-60 pointer-events-none z-20 select-none"
-          />
-
-          {/* Bottom-Left & Bottom-Right 3D Floral Bouquets & Sweeping Royal Purple Silk Waves */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/nalmara/hd/showcase_corner_bl.png"
-            alt=""
-            aria-hidden="true"
-            className="hidden sm:block absolute bottom-0 left-0 w-44 md:w-60 lg:w-72 pointer-events-none z-20 select-none"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/nalmara/hd/showcase_corner_br.png"
-            alt=""
-            aria-hidden="true"
-            className="hidden sm:block absolute bottom-0 right-0 w-44 md:w-60 lg:w-72 pointer-events-none z-20 select-none"
-          />
-
+        {/* Fluid Interior Container */}
+        <div className="relative z-10 w-full max-w-[1680px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
           {/* ============================================================= */}
           {/* 1. 3D CROWN & "THE NALMARA PROMISE" SCALLOPED PLAQUE HEADER   */}
           {/* ============================================================= */}
-          <div className="relative z-10 flex flex-col items-center text-center max-w-[980px] mx-auto">
+          <div className="relative z-10 flex flex-col items-center text-center max-w-[1040px] mx-auto">
             {/* Top Crown & Promise Plaque Flanked by Extending Gold Filigree Lines */}
-            <div className="flex items-center justify-center w-full max-w-[920px] mx-auto">
-              <div className="hidden md:block h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8963E] to-[#9A6816] -mr-3 mt-4" />
+            <div className="flex items-center justify-center w-full max-w-[960px] mx-auto">
+              <div className="hidden md:block h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-[#FFE59E] -mr-3 mt-4" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/nalmara/hd/why_choose_promise_plaque.png"
                 alt="The Nalmara Promise"
-                className="w-[290px] sm:w-[400px] md:w-[460px] h-auto object-contain select-none drop-shadow-[0_8px_18px_rgba(40,6,25,0.18)]"
+                className="w-[280px] sm:w-[380px] md:w-[440px] h-auto object-contain select-none drop-shadow-[0_8px_20px_rgba(0,0,0,0.5)]"
               />
-              <div className="hidden md:block h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8963E] to-[#9A6816] -ml-3 mt-4" />
+              <div className="hidden md:block h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#D4AF37] to-[#FFE59E] -ml-3 mt-4" />
             </div>
 
-            {/* Main Royal Burgundy-Plum Serif Headline */}
-            <h2 className="font-serif font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-[#4A0830] tracking-tight leading-[1.1] mt-1 sm:mt-1.5 drop-shadow-[0_1px_1px_rgba(255,255,255,0.8)]">
-              Why Choose NALMARA FASHION?
+            {/* Grand Headline: WHY CHOOSE NALMARA FASHION? */}
+            <h2 className="font-serif font-black text-2xl sm:text-4xl lg:text-[44px] tracking-tight leading-tight mt-2 sm:mt-3 drop-shadow-[0_4px_16px_rgba(0,0,0,0.65)]">
+              <span className="text-[#FFFDF9]">WHY CHOOSE </span>
+              <span className="text-[#FFE59E] bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent">
+                NALMARA FASHION?
+              </span>
             </h2>
 
-            {/* Italic Subtitle */}
-            <p className="font-serif italic text-xs sm:text-base lg:text-[18px] text-[#220915] font-medium mt-1 sm:mt-1.5">
-              Crafted with devotion in Thoothukudi for families across Tamil Nadu &amp; India
+            {/* Subtitle */}
+            <p className="font-sans font-bold text-[10.5px] sm:text-xs md:text-[13.5px] tracking-[0.22em] uppercase text-[#FFE59E]/95 mt-1.5 sm:mt-2 drop-shadow-[0_2px_8px_rgba(0,0,0,0.6)]">
+              CRAFTED WITH PASSION • DESIGNED FOR YOU • TRUSTED BY THOUSANDS
             </p>
 
             {/* Upper 3D Golden Lotus Divider */}
-            <div className="flex items-center justify-center gap-2 mt-1.5 sm:mt-2 mb-2 sm:mb-3">
-              <span className="h-[1px] w-14 sm:w-24 bg-gradient-to-r from-transparent to-[#B88228]" />
+            <div className="flex items-center justify-center gap-3 mt-2 sm:mt-3 mb-4 sm:mb-6 w-full max-w-[560px] mx-auto">
+              <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-[#FFE59E]" />
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/nalmara/hd/why_choose_gold_lotus.png"
                 alt=""
                 aria-hidden="true"
-                className="w-24 sm:w-28 h-auto object-contain select-none"
+                className="w-14 sm:w-18 h-auto object-contain select-none drop-shadow-md"
               />
-              <span className="h-[1px] w-14 sm:w-24 bg-gradient-to-l from-transparent to-[#B88228]" />
+              <span className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#D4AF37] to-[#FFE59E]" />
             </div>
           </div>
 
           {/* ============================================================= */}
-          {/* 2. 4 SCULPTED 3D ROYAL MUGHAL ARCH SHIELD PILLAR CARDS        */}
+          {/* 2. 5 SCULPTED 3D ROYAL MUGHAL ARCH SHIELD PILLAR CARDS        */}
           {/* ============================================================= */}
-          <div className="relative z-10 grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-5 lg:gap-6 max-w-[1220px] mx-auto">
+          <div className="relative z-10 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-5 xl:gap-6 w-full max-w-[1580px] mx-auto items-stretch">
             {[
               {
                 medallion: '/images/nalmara/hd/why_choose_medallion_1.png',
-                title: 'Handpicked Styles',
+                title: 'HANDPICKED STYLES',
                 kicker: 'LATEST TRENDS',
-                desc: 'Curated Kanchipuram silks, bridal lehengas & festive kidswear updated weekly.',
+                desc: 'Curated collections to keep you stylish and trendy.',
               },
               {
                 medallion: '/images/nalmara/hd/why_choose_medallion_2.png',
-                title: 'Premium Quality',
+                title: 'PREMIUM QUALITY',
                 kicker: 'BEST FABRICS',
-                desc: '100% quality-inspected weaves, skin-friendly linings & rich zari borders.',
+                desc: '100% quality fabrics for lasting comfort.',
               },
               {
                 medallion: '/images/nalmara/hd/why_choose_medallion_3.png',
-                title: 'Perfect Fit & Stitching',
+                title: 'PERFECT FIT & STITCHING',
                 kicker: 'WITH CARE',
-                desc: 'Master tailors crafting custom Aari blouses, pattu pavadais & bridal gowns.',
+                desc: 'Master tailoring for a flawless fit every time.',
               },
               {
                 medallion: '/images/nalmara/hd/why_choose_medallion_4.png',
-                title: 'Trusted Customer Service',
+                title: 'TRUSTED CUSTOMER SERVICE',
                 kicker: 'ALWAYS HERE FOR YOU',
-                desc: 'Personal WhatsApp styling assistance & fast doorstep delivery across India.',
+                desc: 'Personalized support for a hassle-free shopping experience.',
               },
-            ].map((card, idx) => (
+              {
+                medallion: '/images/nalmara/hd/why_choose_medallion_5.png',
+                title: 'VALUE FOR MONEY',
+                kicker: 'MORE STYLE, LESS COST',
+                desc: 'Premium fashion at the best prices.',
+              },
+            ].map((card) => (
               <div
                 key={card.title}
-                className="group relative aspect-[240/272] w-full flex flex-col items-center justify-between text-center select-none transition-transform duration-300 hover:-translate-y-1.5"
+                className="group relative aspect-[240/275] w-full flex flex-col items-center justify-between text-center select-none transition-transform duration-300 hover:-translate-y-2 hover:drop-shadow-[0_16px_32px_rgba(212,175,55,0.4)]"
               >
                 {/* Sculpted 3D Royal Mughal Arch Shield Card Frame with Bottom Gold Lotus */}
                 {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -4248,44 +4256,39 @@ export default function HomePage() {
                   src="/images/nalmara/hd/why_choose_arch_shield_card.png"
                   alt=""
                   aria-hidden="true"
-                  className="absolute inset-0 w-full h-full object-fill pointer-events-none drop-shadow-[0_14px_28px_rgba(60,25,8,0.16)]"
+                  className="absolute inset-0 w-full h-full object-fill pointer-events-none drop-shadow-[0_14px_28px_rgba(0,0,0,0.35)]"
                 />
 
                 {/* Card Interior Content Aligned Inside the Mughal Arch Shield */}
-                <div className="relative z-10 w-full h-full flex flex-col items-center justify-start pt-[11%] sm:pt-[11.5%] pb-[14%] px-[9%] sm:px-[10%]">
+                <div className="relative z-10 w-full h-full flex flex-col items-center justify-start pt-[12%] sm:pt-[13%] pb-[14%] px-[8%] sm:px-[9%]">
                   {/* 3D Royal Plum & 24K Gold Medallion Icon */}
-                  <div className="w-[31%] sm:w-[33%] aspect-square shrink-0 mb-1.5 sm:mb-2.5 group-hover:scale-105 transition-transform duration-300">
+                  <div className="w-[32%] sm:w-[34%] aspect-square shrink-0 mb-1.5 sm:mb-2 group-hover:scale-105 transition-transform duration-300">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
                       src={card.medallion}
                       alt={card.title}
-                      className="w-full h-full object-contain drop-shadow-[0_6px_12px_rgba(40,6,25,0.22)]"
+                      className="w-full h-full object-contain drop-shadow-[0_4px_10px_rgba(0,0,0,0.25)]"
                     />
                   </div>
 
                   {/* Bold Serif Pillar Title */}
-                  <h3
-                    className={`font-serif font-extrabold text-[#1E0A10] leading-[1.15] tracking-tight ${idx === 3
-                      ? 'text-[11.5px] sm:text-[16.5px] xl:text-[18px]'
-                      : 'text-[12.5px] sm:text-[18px] xl:text-[20px]'
-                      }`}
-                  >
+                  <h3 className="font-serif font-extrabold text-[#1E0A10] leading-tight tracking-tight text-[11px] sm:text-[13px] md:text-[14px] xl:text-[15px] uppercase">
                     {card.title}
                   </h3>
 
                   {/* Scalloped Deep Royal Plum & 24K Gold Kicker Pill with 4-Point Stars */}
-                  <div className="mt-1 sm:mt-2 mb-1.5 sm:mb-2.5 inline-flex items-center">
+                  <div className="mt-1 sm:mt-1.5 mb-1.5 inline-flex items-center">
                     <span className="hidden sm:inline-block w-1.5 h-1.5 rotate-45 bg-[#D4AF37] -mr-1 z-10" />
-                    <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] border border-[#D4AF37] text-[#FFFDF9] text-[7px] sm:text-[9.5px] font-bold uppercase tracking-[0.08em] sm:tracking-[0.12em] shadow-[0_3px_8px_rgba(40,6,25,0.25)] whitespace-nowrap">
-                      <span className="text-[#FFE59E] text-[7px] sm:text-[9px]">✦</span>
+                    <span className="inline-flex items-center gap-1 sm:gap-1.5 px-2.5 sm:px-3 py-0.5 rounded-full bg-gradient-to-b from-[#54013F] via-[#450035] to-[#2B031B] border border-[#D4AF37] text-[#FFFDF9] text-[7.5px] sm:text-[8.5px] xl:text-[9px] font-bold uppercase tracking-[0.08em] sm:tracking-[0.1em] shadow-[0_2px_6px_rgba(0,0,0,0.3)] whitespace-nowrap">
+                      <span className="text-[#FFE59E] text-[7px] sm:text-[8px]">✦</span>
                       <span>{card.kicker}</span>
-                      <span className="text-[#FFE59E] text-[7px] sm:text-[9px]">✦</span>
+                      <span className="text-[#FFE59E] text-[7px] sm:text-[8px]">✦</span>
                     </span>
                     <span className="hidden sm:inline-block w-1.5 h-1.5 rotate-45 bg-[#D4AF37] -ml-1 z-10" />
                   </div>
 
                   {/* Crisp 3-Line Description */}
-                  <p className="text-[9.5px] sm:text-[12.5px] xl:text-[13px] font-medium text-[#220915] leading-[1.35] sm:leading-[1.45] line-clamp-3">
+                  <p className="text-[9px] sm:text-[11px] xl:text-[11.5px] font-medium text-[#220915] leading-[1.35] line-clamp-3">
                     {card.desc}
                   </p>
                 </div>
@@ -4296,16 +4299,16 @@ export default function HomePage() {
           {/* ============================================================= */}
           {/* 3. LOWER 3D GOLDEN LOTUS EMBLEM & FILIGREE RULE               */}
           {/* ============================================================= */}
-          <div className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 mt-4 sm:mt-6">
-            <span className="h-[1.5px] w-20 sm:w-44 md:w-56 bg-gradient-to-r from-transparent via-[#C8963E] to-[#9A6816]" />
+          <div className="relative z-10 flex items-center justify-center gap-2 sm:gap-3 mt-6 sm:mt-8 w-full max-w-[620px] mx-auto">
+            <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-[#FFE59E]" />
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               src="/images/nalmara/hd/why_choose_gold_lotus.png"
               alt=""
               aria-hidden="true"
-              className="w-28 sm:w-36 h-auto object-contain select-none drop-shadow-[0_4px_10px_rgba(90,52,16,0.2)]"
+              className="w-16 sm:w-20 h-auto object-contain select-none drop-shadow-md"
             />
-            <span className="h-[1.5px] w-20 sm:w-44 md:w-56 bg-gradient-to-l from-transparent via-[#C8963E] to-[#9A6816]" />
+            <span className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#D4AF37] to-[#FFE59E]" />
           </div>
         </div>
       </section>
@@ -4315,150 +4318,96 @@ export default function HomePage() {
       {/* =================================================================== */}
       {visibleStyleInspiration.length > 0 && (
         <section
-          className="relative w-full overflow-hidden py-10 sm:py-14 border-b border-[#D4AF37]/45"
+          className="relative w-full overflow-hidden py-10 sm:py-16 border-b border-[#D4AF37]/45"
           style={{
-            background:
-              'radial-gradient(ellipse at 50% 18%, #FFFDF9 0%, #FDF5E6 48%, #F4E0BE 100%)',
+            backgroundImage: "url('/images/nalmara/hd/style_inspiration_bg_hd.jpg')",
+            backgroundSize: 'cover',
+            backgroundPosition: 'center center',
+            backgroundRepeat: 'no-repeat',
+            backgroundColor: '#FAF5ED',
           }}
         >
-          {/* Ambient Champagne-Silk Diagonal Drapery Folds & Golden Glow */}
-          <div
-            className="pointer-events-none absolute inset-0 opacity-85"
-            style={{
-              backgroundImage:
-                'radial-gradient(circle at 50% 12%, rgba(255,244,194,0.55) 0%, transparent 45%), linear-gradient(125deg, rgba(255,253,249,0.92) 0%, rgba(235,205,156,0.32) 28%, rgba(255,253,249,0.94) 54%, rgba(230,196,142,0.38) 78%, rgba(255,253,249,0.90) 100%)',
-            }}
-          />
+          {/* Left Mannequin in Couture Plum Gown (100% Transparent Cutout, Full HD, Majestic Sizing) */}
+          <div className="hidden lg:block absolute left-0 xl:left-4 2xl:left-10 bottom-0 z-10 pointer-events-none select-none">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src="/images/nalmara/hd/style_mannequin_transparent_hd.png"
+              alt="Nalmara Fashion Couture Mannequin"
+              className="w-52 lg:w-64 xl:w-72 2xl:w-84 h-auto object-contain drop-shadow-[0_20px_42px_rgba(0,0,0,0.45)]"
+            />
+          </div>
 
-          {/* 4-CORNER DEDICATED 3D ROYAL ROSE BOUQUETS & BOTTOM ROYAL PURPLE SILK WAVES */}
-          {/* Top-Left 3D Burgundy & Cream Rose Bouquet */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/nalmara/hd/insta_corner_tl.png"
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none select-none absolute top-0 left-0 w-28 sm:w-44 lg:w-60 h-auto object-contain z-20"
-          />
-          {/* Top-Right 3D Burgundy & Cream Rose Bouquet */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/nalmara/hd/insta_corner_tr.png"
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none select-none absolute top-0 right-0 w-28 sm:w-44 lg:w-60 h-auto object-contain z-20"
-          />
-          {/* Bottom-Left Sweeping 3D Royal Purple Silk Waves & Corner Rose Bouquet */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/nalmara/hd/insta_corner_bl.png"
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none select-none absolute bottom-0 left-0 w-48 sm:w-80 lg:w-[470px] h-auto object-contain z-20"
-          />
-          {/* Bottom-Right Sweeping 3D Royal Purple Silk Waves & Corner Rose Bouquet */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/nalmara/hd/insta_corner_br.png"
-            alt=""
-            aria-hidden="true"
-            className="pointer-events-none select-none absolute bottom-0 right-0 w-48 sm:w-80 lg:w-[470px] h-auto object-contain z-20"
-          />
-
-          <div className="relative z-20 max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-14">
-            {/* TOP HEADER BLOCK: 3D GOLD CROWN & "ROYAL LOOKBOOK" PLAQUE + HEADLINE + INSTAGRAM MEDALLION DIVIDER */}
+          <div className="relative z-20 max-w-[1360px] mx-auto px-4 sm:px-8 lg:px-12">
+            {/* TOP HEADER BLOCK: GOLD LOTUS + PLAQUE + "Style Inspiration" + INSTAGRAM LINK */}
             <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
-              {/* Crown & ROYAL LOOKBOOK Plaque Flanked by Horizontal Tapered Gold Lines */}
-              <div className="flex items-center justify-center w-full max-w-[920px]">
-                <span className="hidden sm:block h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8922E] to-[#8C5818]" />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/nalmara/hd/insta_royal_lookbook_plaque.png"
-                  alt="Royal Lookbook"
-                  className="w-[270px] sm:w-[370px] lg:w-[430px] h-auto object-contain mx-1 sm:mx-2 drop-shadow-[0_8px_18px_rgba(74,10,46,0.22)]"
-                />
-                <span className="hidden sm:block h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8922E] to-[#8C5818]" />
+              {/* 3D Gold Lotus Icon */}
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/nalmara/hd/why_choose_gold_lotus.png"
+                alt="Nalmara Lotus"
+                className="w-7 h-7 sm:w-9 sm:h-9 object-contain drop-shadow-[0_2px_6px_rgba(212,175,55,0.4)]"
+              />
+
+              {/* Royal Plum Plaque: Nalmara Fashion */}
+              <div className="inline-flex items-center px-5 py-1 rounded-full bg-[#760159] border border-[#D4AF37] shadow-[0_3px_10px_rgba(118,1,89,0.35)] mt-1">
+                <span className="font-serif text-[10.5px] sm:text-xs font-bold text-[#FFE59E] uppercase tracking-[0.22em]">
+                  Nalmara Fashion
+                </span>
               </div>
 
-              {/* Main Serif Title: Style Inspiration */}
-              <h2 className="font-serif font-bold text-2xl sm:text-4xl lg:text-[48px] text-[#4A0830] tracking-tight leading-[1.1] mt-1 drop-shadow-[0_2px_6px_rgba(255,253,249,0.95)]">
-                Style Inspiration
-              </h2>
+              {/* Main Headline: Style Inspiration with Golden Laurel Leaves */}
+              <div className="flex items-center justify-center gap-2 sm:gap-4 mt-1">
+                {/* Left Gold Leaf Sprig */}
+                <svg
+                  className="w-6 sm:w-10 lg:w-12 h-auto text-[#D4AF37] opacity-85 shrink-0"
+                  viewBox="0 0 60 30"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path d="M5 25C15 18 35 15 55 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  <path d="M18 19C14 14 16 7 23 8C25 14 22 18 18 19Z" fill="#D4AF37" fillOpacity="0.4" stroke="currentColor" strokeWidth="1.2" />
+                  <path d="M32 16C28 10 31 3 38 5C39 11 36 15 32 16Z" fill="#D4AF37" fillOpacity="0.4" stroke="currentColor" strokeWidth="1.2" />
+                  <path d="M44 14C42 8 46 2 52 4C53 10 49 13 44 14Z" fill="#D4AF37" fillOpacity="0.4" stroke="currentColor" strokeWidth="1.2" />
+                </svg>
 
-              {/* Subtitle Link: Follow Us @nalmarafashion */}
+                <h2 className="flex items-center gap-2 sm:gap-3 leading-none">
+                  <span className="font-script text-4xl sm:text-6xl lg:text-7xl text-[#760159] font-normal drop-shadow-[0_2px_4px_rgba(255,255,255,0.95)]">
+                    Style
+                  </span>
+                  <span className="font-serif font-black text-2xl sm:text-4xl lg:text-[46px] uppercase tracking-wide text-transparent bg-clip-text bg-gradient-to-r from-[#9E6B18] via-[#D4AF37] to-[#8C5818] drop-shadow-[0_1px_2px_rgba(0,0,0,0.15)]">
+                    Inspiration
+                  </span>
+                </h2>
+
+                {/* Right Gold Leaf Sprig (Mirrored) */}
+                <svg
+                  className="w-6 sm:w-10 lg:w-12 h-auto text-[#D4AF37] opacity-85 shrink-0 -scale-x-100"
+                  viewBox="0 0 60 30"
+                  fill="none"
+                  aria-hidden="true"
+                >
+                  <path d="M5 25C15 18 35 15 55 12" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  <path d="M18 19C14 14 16 7 23 8C25 14 22 18 18 19Z" fill="#D4AF37" fillOpacity="0.4" stroke="currentColor" strokeWidth="1.2" />
+                  <path d="M32 16C28 10 31 3 38 5C39 11 36 15 32 16Z" fill="#D4AF37" fillOpacity="0.4" stroke="currentColor" strokeWidth="1.2" />
+                  <path d="M44 14C42 8 46 2 52 4C53 10 49 13 44 14Z" fill="#D4AF37" fillOpacity="0.4" stroke="currentColor" strokeWidth="1.2" />
+                </svg>
+              </div>
+
+              {/* Subtitle Link: Follow Us @NalmaraFashion */}
               <a
                 href="https://www.instagram.com/nalmarafashion"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-serif font-bold text-sm sm:text-lg lg:text-[21px] text-[#4A0830] hover:text-[#6E0D48] transition-colors mt-1"
+                className="inline-flex items-center gap-1.5 font-serif font-bold text-xs sm:text-sm lg:text-base text-[#4A0830] hover:text-[#760159] transition-colors mt-1"
               >
-                Follow Us @nalmarafashion
+                <Instagram className="w-4 h-4 text-[#760159]" />
+                <span>Follow Us @NalmaraFashion</span>
               </a>
-
-              {/* Centered Royal Plum Instagram Medallion & 3D Faceted Gold Diamond Divider */}
-              <div className="flex items-center justify-center gap-2 sm:gap-2.5 mt-2 w-full max-w-[460px]">
-                <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8922E] to-[#8C5818]" />
-                <span className="w-1.5 h-1.5 rotate-45 bg-[#C8922E] shrink-0" />
-                <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
-                <a
-                  href="https://www.instagram.com/nalmarafashion"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram @nalmarafashion"
-                  className="w-7.5 h-7.5 sm:w-8.5 sm:h-8.5 rounded-full p-[1.5px] bg-gradient-to-b from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] shadow-[0_4px_12px_rgba(74,10,46,0.32)] hover:scale-110 transition-transform shrink-0"
-                >
-                  <span
-                    className="w-full h-full rounded-full flex items-center justify-center text-[#FFFDF9] border border-[#FFE59E]/50"
-                    style={{
-                      background:
-                        'radial-gradient(circle at 50% 35%, #630E42 0%, #2B031A 100%)',
-                    }}
-                  >
-                    <Instagram className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.2]" />
-                  </span>
-                </a>
-                <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
-                <span className="w-1.5 h-1.5 rotate-45 bg-[#C8922E] shrink-0" />
-                <span className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8922E] to-[#8C5818]" />
-              </div>
             </div>
 
-            {/* 5-CARD ROYAL LOOKBOOK GALLERY WITH LEFT < AND RIGHT > PEARL-GOLD ARROWS */}
-            <div className="relative px-2 sm:px-6 lg:px-8">
-              {/* Subtle Gold Leaf Sprigs Behind Outer Left & Outer Right Cards */}
-              <svg
-                viewBox="0 0 90 90"
-                fill="none"
-                aria-hidden="true"
-                className="hidden lg:block pointer-events-none absolute -top-9 left-2 w-20 h-20 opacity-70 z-0"
-              >
-                <path
-                  d="M15 78C26 52 46 30 74 14"
-                  stroke="#B88228"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                />
-                <path d="M30 56C22 48 20 36 28 32C34 38 34 48 30 56Z" stroke="#B88228" strokeWidth="1.2" fill="#E8C77B" fillOpacity="0.38" />
-                <path d="M46 40C38 32 36 20 44 16C50 22 50 32 46 40Z" stroke="#B88228" strokeWidth="1.2" fill="#E8C77B" fillOpacity="0.38" />
-                <path d="M42 60C52 56 62 58 64 66C56 68 46 66 42 60Z" stroke="#B88228" strokeWidth="1.2" fill="#E8C77B" fillOpacity="0.38" />
-              </svg>
-              <svg
-                viewBox="0 0 90 90"
-                fill="none"
-                aria-hidden="true"
-                className="hidden lg:block pointer-events-none absolute -top-9 right-2 w-20 h-20 opacity-70 -scale-x-100 z-0"
-              >
-                <path
-                  d="M15 78C26 52 46 30 74 14"
-                  stroke="#B88228"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                />
-                <path d="M30 56C22 48 20 36 28 32C34 38 34 48 30 56Z" stroke="#B88228" strokeWidth="1.2" fill="#E8C77B" fillOpacity="0.38" />
-                <path d="M46 40C38 32 36 20 44 16C50 22 50 32 46 40Z" stroke="#B88228" strokeWidth="1.2" fill="#E8C77B" fillOpacity="0.38" />
-                <path d="M42 60C52 56 62 58 64 66C56 68 46 66 42 60Z" stroke="#B88228" strokeWidth="1.2" fill="#E8C77B" fillOpacity="0.38" />
-              </svg>
-
-              {/* Left Circular Pearl & 24K Gold Bezel Navigation Arrow */}
+            {/* 5-CARD CAROUSEL GALLERY WITH LEFT < AND RIGHT > BUTTONS */}
+            <div className="relative px-2 sm:px-6 lg:px-8 max-w-[1220px] mx-auto">
+              {/* Left Circular Navigation Arrow */}
               <button
                 type="button"
                 onClick={() =>
@@ -4469,20 +4418,14 @@ export default function HomePage() {
                   )
                 }
                 aria-label="Previous lookbook inspiration"
-                className="absolute -left-1.5 sm:-left-1 lg:-left-2.5 top-1/2 -translate-y-1/2 z-30 w-9.5 h-9.5 sm:w-11 sm:h-11 rounded-full p-[2.5px] bg-gradient-to-b from-[#FFF9E2] via-[#D4AF37] to-[#8C5818] shadow-[0_8px_22px_rgba(74,10,46,0.32)] hover:scale-108 active:scale-95 transition-transform cursor-pointer"
+                className="absolute -left-2 sm:-left-3 lg:-left-6 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full p-[2px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#8C5818] shadow-[0_6px_20px_rgba(74,10,46,0.35)] hover:scale-110 active:scale-95 transition-transform cursor-pointer"
               >
-                <span
-                  className="w-full h-full rounded-full flex items-center justify-center text-[#380523] border border-[#FFFDF9] shadow-inner"
-                  style={{
-                    background:
-                      'radial-gradient(circle at 50% 35%, #FFFDF9 0%, #FAF0DC 62%, #E5C892 100%)',
-                  }}
-                >
-                  <ChevronLeft className="w-5 h-5 stroke-[2.6]" />
+                <span className="w-full h-full rounded-full flex items-center justify-center bg-white text-[#760159] shadow-inner">
+                  <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.6]" />
                 </span>
               </button>
 
-              {/* Right Circular Pearl & 24K Gold Bezel Navigation Arrow */}
+              {/* Right Circular Navigation Arrow */}
               <button
                 type="button"
                 onClick={() =>
@@ -4491,138 +4434,95 @@ export default function HomePage() {
                   )
                 }
                 aria-label="Next lookbook inspiration"
-                className="absolute -right-1.5 sm:-right-1 lg:-right-2.5 top-1/2 -translate-y-1/2 z-30 w-9.5 h-9.5 sm:w-11 sm:h-11 rounded-full p-[2.5px] bg-gradient-to-b from-[#FFF9E2] via-[#D4AF37] to-[#8C5818] shadow-[0_8px_22px_rgba(74,10,46,0.32)] hover:scale-108 active:scale-95 transition-transform cursor-pointer"
+                className="absolute -right-2 sm:-right-3 lg:-right-6 top-1/2 -translate-y-1/2 z-30 w-9 h-9 sm:w-11 sm:h-11 rounded-full p-[2px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#8C5818] shadow-[0_6px_20px_rgba(74,10,46,0.35)] hover:scale-110 active:scale-95 transition-transform cursor-pointer"
               >
-                <span
-                  className="w-full h-full rounded-full flex items-center justify-center text-[#380523] border border-[#FFFDF9] shadow-inner"
-                  style={{
-                    background:
-                      'radial-gradient(circle at 50% 35%, #FFFDF9 0%, #FAF0DC 62%, #E5C892 100%)',
-                  }}
-                >
-                  <ChevronRight className="w-5 h-5 stroke-[2.6]" />
+                <span className="w-full h-full rounded-full flex items-center justify-center bg-white text-[#760159] shadow-inner">
+                  <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 stroke-[2.6]" />
                 </span>
               </button>
 
-              {/* 5 Portrait Sculpted 3D 24K Gold Royal Lookbook Cards */}
-              <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-5">
+              {/* 5 Cards Grid */}
+              <div className="relative z-10 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3.5 sm:gap-4 lg:gap-4.5">
                 {visibleStyleInspiration.map((item, idx) => {
                   const isLiked = Boolean(likedInspire[item.id]);
-                  const fallbackImg = getCategoryFallbackImage(item.title);
                   return (
                     <div
                       key={`${item.id}-${idx}`}
-                      className={`group relative aspect-[3/3.88] rounded-[22px] p-[3.5px] shadow-[0_16px_34px_rgba(68,20,8,0.26)] hover:-translate-y-1.5 transition-all duration-300 ${idx === 4
-                        ? 'col-span-2 sm:col-span-1 max-w-[240px] sm:max-w-none mx-auto w-full'
-                        : ''
-                        }`}
+                      className={`group relative rounded-[20px] p-[2.5px] shadow-[0_12px_28px_rgba(74,10,46,0.22)] hover:-translate-y-2 hover:shadow-[0_20px_40px_rgba(118,1,89,0.35)] transition-all duration-300 ${
+                        idx === 4
+                          ? 'col-span-2 sm:col-span-1 max-w-[220px] sm:max-w-none mx-auto w-full'
+                          : ''
+                      }`}
                       style={{
                         background:
                           'linear-gradient(145deg, #FFFDF7 0%, #FFE59E 22%, #D4AF37 52%, #8C5818 82%, #FFE59E 100%)',
                       }}
                     >
-                      {/* Top-Left & Bottom-Right 24K Gold Specular Gleam */}
-                      <span className="pointer-events-none absolute -top-0.5 left-6 w-12 h-[2px] bg-gradient-to-r from-transparent via-[#FFFDF9] to-transparent z-30" />
-                      <span className="pointer-events-none absolute -bottom-0.5 right-6 w-12 h-[2px] bg-gradient-to-r from-transparent via-[#FFFDF9] to-transparent z-30" />
+                      <div className="relative w-full aspect-[3/3.88] rounded-[18px] overflow-hidden bg-[#240316] border border-[#FFE59E]/70">
+                        <Link
+                          href={item.href}
+                          target={item.external ? '_blank' : undefined}
+                          rel={item.external ? 'noopener noreferrer' : undefined}
+                          className="block w-full h-full"
+                        >
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img
+                            src={item.image}
+                            alt={item.title}
+                            className="w-full h-full object-cover object-center group-hover:scale-106 transition-transform duration-500"
+                          />
+                          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-22 bg-gradient-to-t from-[#1A010E]/80 via-[#1A010E]/25 to-transparent" />
+                        </Link>
 
-                      {/* Inner Sculpted 24K Gold Double Bevel Frame */}
-                      <div className="relative w-full h-full rounded-[18.5px] p-[3px] bg-gradient-to-b from-[#FFF8E2] via-[#E5C278] to-[#9E6B18] shadow-inner">
-                        {/* Corner Royal Gold Bracket Filigrees */}
-                        <span className="pointer-events-none absolute top-1.5 left-1.5 w-3.5 h-3.5 rounded-tl-[8px] border-t-2 border-l-2 border-[#FFF9E6] z-30" />
-                        <span className="pointer-events-none absolute top-1.5 right-1.5 w-3.5 h-3.5 rounded-tr-[8px] border-t-2 border-r-2 border-[#FFF9E6] z-30" />
-                        <span className="pointer-events-none absolute bottom-1.5 left-1.5 w-3.5 h-3.5 rounded-bl-[8px] border-b-2 border-l-2 border-[#FFE59E] z-30" />
-                        <span className="pointer-events-none absolute bottom-1.5 right-1.5 w-3.5 h-3.5 rounded-br-[8px] border-b-2 border-r-2 border-[#FFE59E] z-30" />
+                        {/* Top-Right Instagram Square Rounded Badge */}
+                        <a
+                          href={item.external ? item.href : 'https://www.instagram.com/nalmarafashion'}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`View ${item.title} on Instagram`}
+                          className="absolute top-2.5 right-2.5 z-20 w-7.5 h-7.5 sm:w-8.5 sm:h-8.5 rounded-[9px] bg-gradient-to-br from-[#760159] to-[#450134] border border-[#FFE59E]/85 flex items-center justify-center text-[#FFFDF9] shadow-[0_3px_8px_rgba(0,0,0,0.45)] hover:scale-110 transition-transform"
+                        >
+                          <Instagram className="w-4 h-4 stroke-[2.2]" />
+                        </a>
 
-                        <div className="relative w-full h-full rounded-[15.5px] overflow-hidden bg-[#2A041A] border border-[#FFF4C2]/80">
-                          <Link
-                            href={item.href}
-                            target={item.external ? '_blank' : undefined}
-                            rel={item.external ? 'noopener noreferrer' : undefined}
-                            className="block w-full h-full"
+                        {/* Bottom Royal Plum Pill Badge with Category Name */}
+                        <div className="absolute inset-x-1.5 sm:inset-x-2 bottom-2 z-20">
+                          <div
+                            className="px-2.5 py-1.5 rounded-full border border-[#FFE59E]/85 flex items-center justify-center gap-1.5 shadow-[0_4px_12px_rgba(0,0,0,0.65)]"
+                            style={{
+                              background:
+                                'linear-gradient(180deg, #760159 0%, #54013F 58%, #220215 100%)',
+                            }}
                           >
-                            {/* eslint-disable-next-line @next/next/no-img-element */}
-                            <img
-                              src={item.image || fallbackImg}
-                              alt={item.title}
-                              onError={(e) => {
-                                const target = e.currentTarget;
-                                if (target.src !== fallbackImg) {
-                                  target.src = fallbackImg;
-                                }
+                            <button
+                              type="button"
+                              onClick={(e) => {
+                                e.preventDefault();
+                                e.stopPropagation();
+                                setLikedInspire((prev) => ({
+                                  ...prev,
+                                  [item.id]: !prev[item.id],
+                                }));
                               }}
-                              className="w-full h-full object-cover object-top group-hover:scale-108 transition-transform duration-500"
-                            />
-                            {/* Subtle bottom vignette for legibility */}
-                            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-22 bg-gradient-to-t from-[#1A010E]/80 via-[#1A010E]/25 to-transparent" />
-                          </Link>
-
-                          {/* Top-Right 3D Embossed Pearl-Ivory & Gold Coin Badge with Deep Plum Instagram Icon */}
-                          <a
-                            href={item.external ? item.href : 'https://www.instagram.com/nalmarafashion'}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label={`View ${item.title} on Instagram`}
-                            className="absolute top-2.5 right-2.5 z-20 w-8.5 h-8.5 sm:w-9.5 sm:h-9.5 rounded-full p-[2px] bg-gradient-to-b from-[#FFF9E2] via-[#D4AF37] to-[#8C5818] shadow-[0_5px_14px_rgba(0,0,0,0.45)] hover:scale-110 transition-transform"
-                          >
-                            <span
-                              className="w-full h-full rounded-full flex items-center justify-center border border-[#FFFDF9]"
-                              style={{
-                                background:
-                                  'radial-gradient(circle at 50% 30%, #FFFDF9 0%, #F7E8C8 65%, #DFBF82 100%)',
-                              }}
+                              aria-label="Like style"
+                              className="shrink-0 text-[#FFF4C2] hover:scale-120 transition-transform cursor-pointer"
                             >
-                              <span className="w-5 h-5 sm:w-5.5 sm:h-5.5 rounded-[6px] bg-gradient-to-b from-[#520A35] to-[#220214] flex items-center justify-center text-[#FFFDF9] shadow-2xs">
-                                <Instagram className="w-3.5 h-3.5 stroke-[2.3]" />
-                              </span>
-                            </span>
-                          </a>
-
-                          {/* Bottom Sculpted 3D Royal Plum & 24K Gold Capsule Bar with Heart + Uppercase Title */}
-                          <div className="absolute inset-x-1.5 sm:inset-x-2 bottom-1.5 sm:bottom-2 z-20">
-                            <div
-                              className="relative rounded-full p-[1.8px] shadow-[0_8px_18px_rgba(118,1,89,0.82)]"
-                              style={{
-                                background:
-                                  'linear-gradient(90deg, #760159 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #760159 100%)',
-                              }}
+                              <Heart
+                                className={`w-3 h-3 sm:w-3.5 sm:h-3.5 ${
+                                  isLiked
+                                    ? 'fill-rose-500 text-rose-500'
+                                    : 'text-[#FFE59E] stroke-[2.2]'
+                                }`}
+                              />
+                            </button>
+                            <Link
+                              href={item.href}
+                              target={item.external ? '_blank' : undefined}
+                              rel={item.external ? 'noopener noreferrer' : undefined}
+                              className="min-w-0 font-serif font-bold text-[9px] sm:text-[10.5px] lg:text-[11px] uppercase tracking-wider text-[#FFFDF9] truncate text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)]"
                             >
-                              <div
-                                className="px-2.5 py-1.5 rounded-full border border-[#FFE59E]/45 flex items-center gap-1.5 shadow-[inset_0_1px_2px_rgba(255,244,194,0.38)]"
-                                style={{
-                                  background:
-                                    'linear-gradient(180deg, #760159 0%, #54013F 58%, #220215 100%)',
-                                }}
-                              >
-                                <button
-                                  type="button"
-                                  onClick={(e) => {
-                                    e.preventDefault();
-                                    e.stopPropagation();
-                                    setLikedInspire((prev) => ({
-                                      ...prev,
-                                      [item.id]: !prev[item.id],
-                                    }));
-                                  }}
-                                  aria-label="Like style"
-                                  className="shrink-0 text-[#FFF4C2] hover:scale-115 transition-transform cursor-pointer"
-                                >
-                                  <Heart
-                                    className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isLiked
-                                      ? 'fill-rose-500 text-rose-500'
-                                      : 'text-[#FFE59E] stroke-[2.2]'
-                                      }`}
-                                  />
-                                </button>
-                                <Link
-                                  href={item.href}
-                                  target={item.external ? '_blank' : undefined}
-                                  rel={item.external ? 'noopener noreferrer' : undefined}
-                                  className="flex-1 min-w-0 font-serif font-bold text-[9.5px] sm:text-[10.5px] lg:text-[11px] uppercase tracking-[0.04em] text-[#FFFDF9] truncate text-center pr-1 drop-shadow-[0_1px_2px_rgba(0,0,0,0.85)]"
-                                >
-                                  {item.title}
-                                </Link>
-                              </div>
-                            </div>
+                              {item.title}
+                            </Link>
                           </div>
                         </div>
                       </div>
@@ -4632,45 +4532,66 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* BOTTOM CENTERED SCALLOPED 3D ROYAL PLUM & 24K GOLD "Follow Us →" CTA BUTTON */}
-            <div className="mt-7 sm:mt-9 flex items-center justify-center gap-2.5 sm:gap-4 max-w-[820px] mx-auto">
-              {/* Left Tapered Gold Filigree Line + 3D Faceted Triple Diamond Finials */}
-              <div className="flex items-center gap-1.5 flex-1">
-                <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8922E] to-[#8C5818]" />
-                <span className="w-1.5 h-1.5 rotate-45 bg-gradient-to-br from-[#FFE59E] to-[#8C5818] shrink-0" />
-                <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
-                <span className="w-3 h-3 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#E5B84B] to-[#8C5818] border border-[#6E420C] shadow-xs shrink-0" />
-              </div>
+            {/* BOTTOM FEATURE BADGES & "Follow Us →" CTA BAR (Always Single Line, No Wrapping) */}
+            <div className="mt-7 sm:mt-9 w-full max-w-[1240px] mx-auto px-2 sm:px-4 overflow-x-auto no-scrollbar">
+              <div className="flex flex-nowrap items-center justify-center gap-2 sm:gap-3.5 md:gap-5 lg:gap-6 text-[#4A0830] whitespace-nowrap min-w-max mx-auto py-1.5">
+                {/* Feature 1: Trendy Collections */}
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs md:text-sm font-serif font-semibold shrink-0">
+                  <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#760159] shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2a3 3 0 0 0-3 3c0 .8.3 1.5.8 2.1L2 14v2h20v-2l-7.8-6.9c.5-.6.8-1.3.8-2.1a3 3 0 0 0-3-3zM2 18h20v2H2z"/>
+                  </svg>
+                  <span>Trendy Collections</span>
+                </div>
 
-              <a
-                href="https://www.instagram.com/nalmarafashion"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="group relative rounded-full p-[3.5px] shadow-[0_14px_32px_rgba(118,1,89,0.48)] hover:scale-105 active:scale-95 transition-transform shrink-0"
-                style={{
-                  background:
-                    'linear-gradient(90deg, #760159 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #760159 100%)',
-                }}
-              >
-                <span
-                  className="inline-flex items-center gap-2.5 px-7 sm:px-10 py-2 sm:py-2.5 rounded-full border border-[#FFE59E]/85 font-serif font-bold text-sm sm:text-base lg:text-[18.5px] text-[#FFFDF9] tracking-wide shadow-[inset_0_1px_3px_rgba(255,244,194,0.5)]"
+                <span className="h-3.5 sm:h-4 w-[1px] bg-[#D4AF37]/50 shrink-0" />
+
+                {/* Feature 2: Premium Quality */}
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs md:text-sm font-serif font-semibold shrink-0">
+                  <Gem className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#760159] shrink-0" />
+                  <span>Premium Quality</span>
+                </div>
+
+                <span className="h-3.5 sm:h-4 w-[1px] bg-[#D4AF37]/50 shrink-0" />
+
+                {/* Center CTA Button: Follow Us -> */}
+                <a
+                  href="https://www.instagram.com/nalmarafashion"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative rounded-full p-[2px] shadow-[0_8px_20px_rgba(118,1,89,0.38)] hover:scale-105 active:scale-95 transition-transform shrink-0"
                   style={{
                     background:
-                      'linear-gradient(180deg, #760159 0%, #54013F 55%, #220215 100%)',
+                      'linear-gradient(90deg, #9E6B18 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #9E6B18 100%)',
                   }}
                 >
-                  <Instagram className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[#FFFDF9] stroke-[2.2]" />
-                  <span>Follow Us</span>
-                  <ArrowRight className="w-4 h-4 sm:w-4.5 sm:h-4.5 text-[#FFE59E] group-hover:translate-x-1 transition-transform" />
-                </span>
-              </a>
+                  <span
+                    className="inline-flex items-center gap-2 px-5 sm:px-7 md:px-8 py-1.5 sm:py-2 rounded-full border border-[#FFE59E]/85 font-serif font-bold text-xs sm:text-sm text-[#FFFDF9] tracking-wider shadow-inner"
+                    style={{
+                      background:
+                        'linear-gradient(180deg, #760159 0%, #54013F 60%, #300124 100%)',
+                    }}
+                  >
+                    <Instagram className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFE59E]" />
+                    <span>Follow Us</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-[#FFE59E] group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </a>
 
-              {/* Right 3D Faceted Triple Diamond Finials + Tapered Gold Filigree Line */}
-              <div className="flex items-center gap-1.5 flex-1">
-                <span className="w-3 h-3 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#E5B84B] to-[#8C5818] border border-[#6E420C] shadow-xs shrink-0" />
-                <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
-                <span className="w-1.5 h-1.5 rotate-45 bg-gradient-to-br from-[#FFE59E] to-[#8C5818] shrink-0" />
-                <span className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8922E] to-[#8C5818]" />
+                <span className="h-3.5 sm:h-4 w-[1px] bg-[#D4AF37]/50 shrink-0" />
+
+                {/* Feature 3: Stylish Choices */}
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs md:text-sm font-serif font-semibold shrink-0">
+                  <Gift className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#760159] shrink-0" />
+                  <span>Stylish Choices</span>
+                </div>
+
+                <span className="h-3.5 sm:h-4 w-[1px] bg-[#D4AF37]/50 shrink-0" />
+
+                {/* Feature 4: For Every You */}
+                <div className="flex items-center gap-1.5 text-[11px] sm:text-xs md:text-sm font-serif font-semibold shrink-0">
+                  <Heart className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#760159] shrink-0" />
+                  <span>For Every You</span>
+                </div>
               </div>
             </div>
           </div>
