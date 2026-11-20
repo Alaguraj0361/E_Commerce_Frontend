@@ -519,7 +519,7 @@ export default function CheckoutPage() {
                     required
                     maxLength={6}
                     pattern="[0-9]{6}"
-                    placeholder="e.g. 628001"
+                    placeholder="e.g. 628008"
                     value={shippingAddress.postalCode}
                     onChange={(e) =>
                       setShippingAddress({

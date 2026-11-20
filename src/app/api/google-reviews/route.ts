@@ -236,7 +236,7 @@ export async function GET() {
             businessName: serpData.place_info?.title || 'NALMARA FASHION',
             address:
               serpData.place_info?.address ||
-              '5/20, South Street, Mela Thattaparai, Tamil Nadu 628304, India',
+              'Q4R8+3FC, 3rd Mile, Near Bus Stop, Thoothukudi, 628008, Tamil Nadu, India',
             overallRating: Number(serpData.place_info?.rating) || 5.0,
             totalReviews:
               Number(serpData.place_info?.reviews) || mapped.length || 9,
@@ -408,6 +408,7 @@ export async function GET() {
     placeId,
     cid: resolvedCid,
     businessName: parsedBusinessName,
+    address: 'Q4R8+3FC, 3rd Mile, Near Bus Stop, Thoothukudi, 628008, Tamil Nadu, India',
     overallRating: parsedRating,
     totalReviews: parsedCount,
     googleMapsUrl: configuredShortlink,

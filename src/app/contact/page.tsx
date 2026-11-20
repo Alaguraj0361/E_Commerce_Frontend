@@ -189,12 +189,23 @@ export default function ContactPage() {
                 </div>
                 <div className="space-y-1">
                   <p className="text-[10px] uppercase tracking-[0.18em] text-[#8C5818] font-extrabold">
-                    Our Shop Location
+                    Our Boutique Location
                   </p>
-                  <p className="text-xs text-[#280619] leading-relaxed font-semibold">
-                    NALMARA FASHION, Thoothukudi (Tuticorin), Tamil Nadu — 628001
+                  <p className="text-xs text-[#280619] leading-relaxed font-bold">
+                    NALMARA FASHION
                   </p>
-                  <p className="text-[11px] text-[#5C3D1E]">
+                  <p className="text-xs text-[#280619] leading-relaxed font-medium">
+                    Q4R8+3FC, 3rd Mile, Near Bus Stop, Thoothukudi, 628008
+                  </p>
+                  <a
+                    href="https://www.google.com/maps/search/?api=1&query=Q4R8%2B3FC,+3rd+Mile,+Near+Bus+Stop,+Thoothukudi,+628008"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 text-xs text-[#8C5818] font-bold hover:underline pt-1"
+                  >
+                    <span>Open in Google Maps &rarr;</span>
+                  </a>
+                  <p className="text-[11px] text-[#5C3D1E] pt-0.5">
                     Fast 1–3 Day Delivery across all districts in Tamil Nadu &amp; India
                   </p>
                 </div>

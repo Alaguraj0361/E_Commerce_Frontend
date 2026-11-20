@@ -1,10 +1,9 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
+import { usePathname } from 'next/navigation';
 import {
-  Search,
   Heart,
   ShoppingCart,
   User as UserIcon,
@@ -25,13 +24,11 @@ import { useCategoryStore } from '../../store/categoryStore';
 
 export const Navbar = () => {
   const pathname = usePathname();
-  const router = useRouter();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
+  const userMenuRef = useRef<HTMLDivElement>(null);
 
   const { setIsCartOpen, getTotalItemsCount, fetchCart, mergeGuestCart } =
     useCartStore();
@@ -60,16 +57,33 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // Close menus on route change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+    setIsUserMenuOpen(false);
+  }, [pathname]);
+
+  // Click outside to close user dropdown
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent | TouchEvent) => {
+      if (userMenuRef.current && !userMenuRef.current.contains(event.target as Node)) {
+        setIsUserMenuOpen(false);
+      }
+    };
+
+    if (isUserMenuOpen) {
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('touchstart', handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('touchstart', handleClickOutside);
+    };
+  }, [isUserMenuOpen]);
+
   const totalCartCount = getTotalItemsCount();
   const wishlistCount = wishlistProducts.length;
-
-  const handleSearchSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      router.push(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
-      setIsSearchOpen(false);
-    }
-  };
 
   const shopDropdownItems = [
     { label: 'All Collections', href: '/shop' },
@@ -202,7 +216,10 @@ export const Navbar = () => {
           {/* Left: Mobile Menu Button + Official Circular Emblem & Brand Title */}
           <div className="flex items-center gap-2.5 sm:gap-3.5">
             <button
-              onClick={() => setIsMobileMenuOpen(true)}
+              onClick={() => {
+                setIsUserMenuOpen(false);
+                setIsMobileMenuOpen(true);
+              }}
               className="lg:hidden p-2 rounded-lg text-[#2A0E1B] hover:bg-[#EED9BA]/60 transition-colors"
               aria-label="Open menu"
             >
@@ -332,22 +349,16 @@ export const Navbar = () => {
             </Link>
           </nav>
 
-          {/* Right: Luxury Icon Medallions (Search, User, Wishlist Heart, Cart) */}
+          {/* Right: Luxury Icon Medallions (User, Wishlist Heart, Cart) */}
           <div className="flex items-center gap-2.5 sm:gap-3.5 text-[#23120B]">
-            {/* Search Toggle */}
-            <button
-              onClick={() => setIsSearchOpen(!isSearchOpen)}
-              className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#5B0E3D] flex items-center justify-center shadow-xs transition-all cursor-pointer hover:scale-105"
-              aria-label="Search"
-            >
-              <Search className="w-[18px] h-[18px] stroke-[2.2]" />
-            </button>
-
             {/* User Account */}
-            <div className="relative">
+            <div className="relative" ref={userMenuRef}>
               {isAuthenticated ? (
                 <button
-                  onClick={() => setIsUserMenuOpen(!isUserMenuOpen)}
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsUserMenuOpen(!isUserMenuOpen);
+                  }}
                   className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#5B0E3D] flex items-center justify-center shadow-xs transition-all cursor-pointer hover:scale-105"
                   aria-label="User account"
                 >
@@ -356,6 +367,10 @@ export const Navbar = () => {
               ) : (
                 <Link
                   href="/login"
+                  onClick={() => {
+                    setIsMobileMenuOpen(false);
+                    setIsUserMenuOpen(false);
+                  }}
                   className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#5B0E3D] flex items-center justify-center shadow-xs transition-all hover:scale-105"
                   aria-label="Sign in"
                 >
@@ -412,7 +427,11 @@ export const Navbar = () => {
 
             {/* Cart with Deep Royal Plum & Gold Badge */}
             <button
-              onClick={() => setIsCartOpen(true)}
+              onClick={() => {
+                setIsUserMenuOpen(false);
+                setIsMobileMenuOpen(false);
+                setIsCartOpen(true);
+              }}
               className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#5B0E3D] flex items-center justify-center shadow-xs transition-all cursor-pointer hover:scale-105"
               aria-label="Shopping cart"
             >
@@ -423,29 +442,6 @@ export const Navbar = () => {
             </button>
           </div>
         </div>
-
-        {/* Expandable Search Bar */}
-        {isSearchOpen && (
-          <div className="max-w-xl mx-auto px-4 pt-2.5 pb-1 animate-fade-in">
-            <form onSubmit={handleSearchSubmit} className="relative flex items-center">
-              <Search className="w-4 h-4 text-[#8C6518] absolute left-3.5 pointer-events-none" />
-              <input
-                type="text"
-                autoFocus
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search sarees, blouses, kidswear, lehengas..."
-                className="w-full bg-[#FFFDF9] text-[#23120B] placeholder:text-zinc-400 text-xs pl-9 pr-20 py-2.5 rounded-full border border-[#D4AF37] focus:outline-none shadow-sm"
-              />
-              <button
-                type="submit"
-                className="absolute right-1.5 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#5B0E3D] to-[#3D0829] text-[#FFE59E] text-[10px] font-bold uppercase tracking-wider"
-              >
-                Search
-              </button>
-            </form>
-          </div>
-        )}
       </header>
 
       {/* ========================================================= */}

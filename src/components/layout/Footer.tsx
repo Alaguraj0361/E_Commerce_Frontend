@@ -243,9 +243,9 @@ export const Footer = () => {
                 </span>
               </div>
 
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                <MapPin className="w-4 h-4 text-[#E5B85B] shrink-0" />
-                <span>Thoothukudi, Tamil Nadu, India</span>
+              <div className="flex items-start justify-center sm:justify-start gap-2">
+                <MapPin className="w-4 h-4 text-[#E5B85B] shrink-0 mt-0.5" />
+                <span className="text-left">Q4R8+3FC, 3rd Mile, Near Bus Stop, Thoothukudi, 628008</span>
               </div>
             </div>
 
