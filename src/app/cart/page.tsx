@@ -63,12 +63,12 @@ export default function CartPage() {
       <div className="min-h-[75vh] bg-[#FDF6EC] flex flex-col items-center justify-center px-4 text-center">
         <div className="relative max-w-md w-full bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] p-10 rounded-3xl border-2 border-[#D4AF37]/80 shadow-[0_20px_50px_rgba(56,7,37,0.12)] space-y-5">
           <div className="absolute inset-[5px] rounded-[20px] border border-[#D4AF37]/30 pointer-events-none" />
-          <div className="w-20 h-20 rounded-full bg-gradient-to-b from-[#380725] to-[#280619] border-2 border-[#D4AF37] flex items-center justify-center text-[#FFE59E] mx-auto shadow-lg">
+          <div className="w-20 h-20 rounded-full bg-gradient-to-b from-[#760159] to-[#280619] border-2 border-[#D4AF37] flex items-center justify-center text-[#FFE59E] mx-auto shadow-lg">
             <ShoppingBag className="w-9 h-9 text-[#FFE59E]" />
           </div>
           <h1 className="font-serif text-2xl sm:text-3xl font-bold text-[#280619]">
-            Your Royal Bag is{' '}
-            <span className="font-script italic font-normal text-3xl sm:text-4xl text-[#5B0E3D]">
+            Your Bag is{' '}
+            <span className="font-script italic font-normal text-3xl sm:text-4xl text-[#760159]">
               Empty
             </span>
           </h1>
@@ -200,9 +200,9 @@ export default function CartPage() {
             <div className="pt-2">
               <Link
                 href="/shop"
-                className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#380725] hover:text-[#8C5818] transition-colors"
+                className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#760159] hover:text-[#8C5818] transition-colors"
               >
-                ← Continue Exploring Royal Collections
+                ← Continue Exploring Collections
               </Link>
             </div>
           </div>
@@ -224,7 +224,7 @@ export default function CartPage() {
               {/* Coupon Code Input */}
               <div className="relative z-10 space-y-2">
                 {appliedCoupon ? (
-                  <div className="flex items-center justify-between bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#D4AF37] p-3 rounded-xl text-xs text-[#FFE59E]">
+                  <div className="flex items-center justify-between bg-gradient-to-r from-[#760159] to-[#9E0277] border border-[#D4AF37] p-3 rounded-xl text-xs text-[#FFE59E]">
                     <div className="flex items-center gap-2 font-bold">
                       <Tag className="w-3.5 h-3.5 text-[#FFE59E]" />
                       <span>Code {appliedCoupon.code} Applied</span>
@@ -249,7 +249,7 @@ export default function CartPage() {
                     <button
                       type="submit"
                       disabled={isApplying}
-                      className="bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] text-[#FFE59E] border border-[#D4AF37] px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer"
+                      className="bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] text-[#FFE59E] border border-[#D4AF37] px-4 py-2 rounded-xl text-xs font-extrabold uppercase tracking-wider transition-all disabled:opacity-50 cursor-pointer"
                     >
                       {isApplying ? '...' : 'Apply'}
                     </button>

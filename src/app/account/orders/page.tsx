@@ -52,9 +52,17 @@ export default function OrderHistoryPage() {
             <span>Order History</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FFFDF9] leading-tight">
-            My{' '}
-            <span className="font-script italic font-normal text-4xl sm:text-5xl lg:text-6xl bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent">
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FFFDF9] leading-tight flex flex-wrap items-center justify-center gap-x-2">
+            <span>My</span>
+            <span
+              className="font-script font-normal text-4xl sm:text-5xl lg:text-6xl text-[#FCE8C0] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] overflow-visible inline-block"
+              style={{
+                fontFamily: "var(--font-script), 'Great Vibes', Georgia, cursive",
+                textTransform: 'capitalize',
+                letterSpacing: 'normal',
+                fontStyle: 'normal',
+              }}
+            >
               Orders
             </span>
           </h1>

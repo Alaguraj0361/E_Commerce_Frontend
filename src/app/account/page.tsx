@@ -106,12 +106,12 @@ export default function AccountPage() {
           <div className="absolute bottom-3 right-3 w-4 h-4 border-b-2 border-r-2 border-[#FFE59E] pointer-events-none" />
 
           <div className="flex flex-col sm:flex-row items-center gap-5 text-center sm:text-left">
-            <div className="w-20 h-20 rounded-full bg-gradient-to-b from-[#380725] to-[#280619] border-2 border-[#D4AF37] flex items-center justify-center text-2xl font-serif font-bold text-[#FFE59E] shadow-[0_10px_28px_rgba(212,175,55,0.3)]">
+            <div className="w-20 h-20 rounded-full bg-gradient-to-b from-[#760159] to-[#280619] border-2 border-[#D4AF37] flex items-center justify-center text-2xl font-serif font-bold text-[#FFE59E] shadow-[0_10px_28px_rgba(212,175,55,0.3)]">
               {user.firstName[0]}
               {user.lastName ? user.lastName[0] : ''}
             </div>
             <div className="space-y-1.5">
-              <div className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E] px-3 py-1 rounded-full bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#FFE59E]/85">
+              <div className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E] px-3 py-1 rounded-full bg-gradient-to-r from-[#760159] to-[#5B0E3D] border border-[#FFE59E]/85">
                 <NalmaraEmblem className="w-4 h-4" />
                 <span>My Customer Account</span>
               </div>
@@ -141,7 +141,7 @@ export default function AccountPage() {
                 logout();
                 router.push('/');
               }}
-              className="inline-flex items-center gap-2 border border-[#D4AF37]/80 bg-[#380725] text-[#FFE59E] hover:bg-rose-950/80 hover:border-rose-400 px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 border border-[#D4AF37]/80 bg-[#760159] text-[#FFE59E] hover:bg-rose-950/80 hover:border-rose-400 px-5 py-2.5 rounded-full text-xs font-extrabold uppercase tracking-wider transition-all cursor-pointer"
             >
               <LogOut className="w-3.5 h-3.5" /> Sign Out
             </button>
@@ -158,7 +158,7 @@ export default function AccountPage() {
               onClick={() => setActiveTab('overview')}
               className={`w-full flex items-center gap-3 px-5 py-3.5 rounded-2xl text-xs font-extrabold uppercase tracking-wider transition-all text-left shadow-xs cursor-pointer ${
                 activeTab === 'overview'
-                  ? 'bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] text-[#FFE59E] border-2 border-[#D4AF37]'
+                  ? 'bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] text-[#FFE59E] border-2 border-[#D4AF37]'
                   : 'bg-[#FFFDF9] text-[#280619] hover:border-[#D4AF37] border border-[#D4AF37]/50'
               }`}
             >
@@ -199,7 +199,7 @@ export default function AccountPage() {
               onClick={() => setActiveTab('password')}
               className={`w-full flex items-center gap-3 px-5 py-3.5 rounded-2xl text-xs font-extrabold uppercase tracking-wider transition-all text-left shadow-xs cursor-pointer ${
                 activeTab === 'password'
-                  ? 'bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] text-[#FFE59E] border-2 border-[#D4AF37]'
+                  ? 'bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] text-[#FFE59E] border-2 border-[#D4AF37]'
                   : 'bg-[#FFFDF9] text-[#280619] hover:border-[#D4AF37] border border-[#D4AF37]/50'
               }`}
             >
@@ -242,7 +242,7 @@ export default function AccountPage() {
                         {user.phone || 'Not provided'}
                       </strong>
                     </div>
-                    <div className="p-4 rounded-2xl bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#D4AF37]">
+                    <div className="p-4 rounded-2xl bg-gradient-to-r from-[#760159] to-[#5B0E3D] border border-[#D4AF37]">
                       <span className="text-[#FFE59E]/80 font-bold uppercase tracking-wider text-[10px] block">
                         Membership Tier
                       </span>
@@ -272,7 +272,7 @@ export default function AccountPage() {
                       <p className="text-xs text-[#5C3D1E]">No recent orders found.</p>
                       <Link
                         href="/shop"
-                        className="inline-block text-xs font-extrabold text-[#380725] underline"
+                        className="inline-block text-xs font-extrabold text-[#760159] underline"
                       >
                         Start Exploring Collections →
                       </Link>
@@ -297,7 +297,7 @@ export default function AccountPage() {
                             </p>
                           </div>
                           <div className="flex items-center gap-3">
-                            <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border border-[#D4AF37]">
+                            <span className="px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] border border-[#D4AF37]">
                               {ord.orderStatus}
                             </span>
                             <span className="font-extrabold text-[#280619] font-serif text-sm">
@@ -369,7 +369,7 @@ export default function AccountPage() {
                   <button
                     type="submit"
                     disabled={isChangingPassword}
-                    className="bg-gradient-to-r from-[#5B0E3D] via-[#380725] to-[#5B0E3D] text-[#FFE59E] border border-[#D4AF37] py-3.5 px-7 rounded-full text-xs font-serif font-bold uppercase tracking-[0.2em] shadow-md transition-all disabled:opacity-50 mt-2 cursor-pointer"
+                    className="bg-gradient-to-r from-[#5B0E3D] via-[#760159] to-[#5B0E3D] text-[#FFE59E] border border-[#D4AF37] py-3.5 px-7 rounded-full text-xs font-serif font-bold uppercase tracking-[0.2em] shadow-md transition-all disabled:opacity-50 mt-2 cursor-pointer"
                   >
                     {isChangingPassword ? 'Updating...' : 'Update Password'}
                   </button>

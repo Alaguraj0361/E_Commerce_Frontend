@@ -55,12 +55,12 @@ export default function WishlistPage() {
         {products.length === 0 ? (
           <div className="relative max-w-md mx-auto py-14 text-center space-y-5 bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] rounded-3xl p-8 border-2 border-[#D4AF37]/80 shadow-[0_20px_50px_rgba(56,7,37,0.1)]">
             <div className="absolute inset-[5px] rounded-[20px] border border-[#D4AF37]/30 pointer-events-none" />
-            <div className="w-16 h-16 rounded-full bg-gradient-to-b from-[#380725] to-[#280619] border-2 border-[#D4AF37] flex items-center justify-center mx-auto text-[#FFE59E] shadow-md">
+            <div className="w-16 h-16 rounded-full bg-gradient-to-b from-[#760159] to-[#280619] border-2 border-[#D4AF37] flex items-center justify-center mx-auto text-[#FFE59E] shadow-md">
               <Heart className="w-7 h-7 text-[#FFE59E]" />
             </div>
             <h2 className="font-serif text-2xl font-bold text-[#280619]">
               Your Wishlist is{' '}
-              <span className="font-script italic font-normal text-3xl text-[#5B0E3D]">
+              <span className="font-script italic font-normal text-3xl text-[#760159]">
                 Empty
               </span>
             </h2>
@@ -85,7 +85,7 @@ export default function WishlistPage() {
               return (
                 <div
                   key={product._id}
-                  className="group relative rounded-2xl p-[2px] bg-gradient-to-b from-[#FFE59E] via-[#C8963E] to-[#8C5818] shadow-[0_12px_30px_rgba(56,7,37,0.1)] hover:shadow-[0_20px_45px_rgba(56,7,37,0.22)] transition-all duration-300 flex flex-col justify-between"
+                  className="group relative rounded-2xl p-[2px] bg-gradient-to-b from-[#FFE59E] via-[#C8963E] to-[#8C5818] shadow-[0_12px_30px_rgba(56,7,37,0.1)] card-royal-lift transition-all duration-300 flex flex-col justify-between"
                 >
                   <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#EFE0C2] rounded-[14px] p-2 flex flex-col flex-1 justify-between">
                     {/* Image */}
@@ -106,7 +106,7 @@ export default function WishlistPage() {
                           e.preventDefault();
                           removeFromWishlist(product._id);
                         }}
-                        className="absolute top-2.5 right-2.5 p-2 rounded-full bg-[#280619]/90 border border-[#D4AF37] text-[#FFE59E] hover:text-rose-400 transition-colors shadow-sm cursor-pointer"
+                        className="absolute top-2.5 right-2.5 p-2 rounded-full bg-[#760159]/90 border border-[#D4AF37] text-[#FFE59E] hover:text-rose-400 transition-colors shadow-sm cursor-pointer"
                         aria-label="Remove from wishlist"
                       >
                         <Trash2 className="w-3.5 h-3.5" />
@@ -117,7 +117,7 @@ export default function WishlistPage() {
                     <div className="p-3 flex flex-col flex-1 justify-between space-y-3">
                       <div>
                         <Link href={`/product/${product.slug}`}>
-                          <h3 className="font-serif font-bold text-xs sm:text-sm text-[#280619] hover:text-[#5B0E3D] transition-colors line-clamp-1">
+                          <h3 className="font-serif font-bold text-xs sm:text-sm text-[#280619] tracking-wide uppercase hover:text-[#5B0E3D] transition-colors line-clamp-1">
                             {product.name}
                           </h3>
                         </Link>
@@ -128,7 +128,7 @@ export default function WishlistPage() {
 
                       <button
                         onClick={() => handleMoveToCart(product)}
-                        className="w-full bg-gradient-to-r from-[#5B0D3C] via-[#3F0729] to-[#5B0D3C] hover:from-[#73124C] hover:to-[#4E0B34] text-[#FFE59E] border border-[#D4AF37] py-2.5 rounded-full text-[11px] font-serif font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm cursor-pointer"
+                        className="w-full bg-gradient-to-r from-[#760159] via-[#8E016B] to-[#760159] hover:from-[#8E016B] hover:to-[#5E0147] text-[#FFE59E] border border-[#D4AF37] py-2.5 rounded-full text-[11px] font-sans font-bold uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all shadow-sm hover:shadow-[0_6px_16px_rgba(118,1,89,0.35)] cursor-pointer"
                       >
                         <ShoppingBag className="w-3.5 h-3.5 text-[#FFE59E]" /> Move to Bag
                       </button>

@@ -60,7 +60,7 @@ function SignupContent() {
             <BrandLogo size="lg" theme="light" />
           </div>
           <div className="pt-1">
-            <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E] px-4 py-1 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#D4AF37]">
+            <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E] px-4 py-1 rounded-full bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] border border-[#D4AF37]">
               <NalmaraEmblem className="w-4 h-4" />
               <span>Nalmara Fashion • Thoothukudi</span>
               <Sparkles className="w-3 h-3 text-[#FFE59E]" />
@@ -68,7 +68,7 @@ function SignupContent() {
           </div>
           <h1 className="font-serif text-3xl sm:text-4xl font-bold text-[#280619]">
             Create Your{' '}
-            <span className="font-script italic font-normal text-4xl sm:text-5xl text-[#5B0E3D]">
+            <span className="font-script italic font-normal text-4xl sm:text-5xl text-[#760159]">
               Account
             </span>
           </h1>
@@ -188,7 +188,7 @@ function SignupContent() {
               <button
                 type="submit"
                 disabled={isLoading}
-                className="w-full bg-gradient-to-r from-[#5B0E3D] via-[#380725] to-[#5B0E3D] hover:from-[#70124B] hover:to-[#4A0A31] text-[#FFE59E] border border-[#D4AF37] py-3.5 rounded-full text-xs font-serif font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2 shadow-[0_10px_24px_rgba(56,7,37,0.3)] transition-all hover:scale-[1.01] disabled:opacity-50 mt-4 cursor-pointer"
+                className="w-full bg-gradient-to-r from-[#5B0E3D] via-[#760159] to-[#5B0E3D] hover:from-[#70124B] hover:to-[#4A0A31] text-[#FFE59E] border border-[#D4AF37] py-3.5 rounded-full text-xs font-serif font-bold uppercase tracking-[0.2em] flex items-center justify-center gap-2 shadow-[0_10px_24px_rgba(56,7,37,0.3)] transition-all hover:scale-[1.01] disabled:opacity-50 mt-4 cursor-pointer"
               >
                 {isLoading ? (
                   <>
@@ -205,7 +205,7 @@ function SignupContent() {
               Already have an account?{' '}
               <Link
                 href={`/login?redirect=${redirectUrl}`}
-                className="font-extrabold text-[#380725] hover:text-[#8C5818] underline"
+                className="font-extrabold text-[#760159] hover:text-[#8C5818] underline"
               >
                 Sign In
               </Link>

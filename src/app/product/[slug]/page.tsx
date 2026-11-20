@@ -457,8 +457,8 @@ export default function ProductDetailPage() {
 
   return (
     <div className="min-h-screen bg-[#FDF6EC]">
-      {/* 1. Imperial Royal Plum & 24K Gold Top Breadcrumb Ribbon */}
-      <div className="bg-gradient-to-r from-[#280619] via-[#3D0829] to-[#280619] border-b border-[#D4AF37]/70 py-3 px-4 sm:px-6 lg:px-8">
+      {/* 1. Imperial Royal #760159 & 24K Gold Top Breadcrumb Ribbon */}
+      <div className="bg-gradient-to-r from-[#54013F] via-[#760159] to-[#54013F] border-b border-[#D4AF37]/70 py-3 px-4 sm:px-6 lg:px-8">
         <div className="max-w-[1560px] mx-auto flex items-center justify-between gap-4">
           <nav className="flex items-center gap-2 text-xs text-[#FAF0DD]/85 overflow-x-auto whitespace-nowrap">
             <Link href="/" className="hover:text-[#FFE59E] transition-colors">
@@ -507,7 +507,7 @@ export default function ProductDetailPage() {
             {/* Brand & Title Plaque */}
             <div className="space-y-2.5">
               <div className="flex items-center justify-between">
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#D4AF37] text-[#FFE59E] text-[10px] font-bold uppercase tracking-[0.2em]">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-[#760159] to-[#9E0277] border border-[#D4AF37] text-[#FFE59E] text-[10px] font-bold uppercase tracking-[0.2em]">
                   <LotusIcon className="w-3.5 h-3 text-[#FFE59E]" />
                   <span>{brandName}</span>
                 </div>
@@ -516,14 +516,14 @@ export default function ProductDetailPage() {
                 </span>
               </div>
 
-              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#280619] tracking-tight leading-snug">
+              <h1 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-extrabold text-[#280619] tracking-wider uppercase leading-snug">
                 {product.name}
               </h1>
 
               {/* Ratings & Reviews Count */}
               {product.rating > 0 && (
                 <div className="flex items-center gap-3 text-xs pt-1">
-                  <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#D4AF37] text-[#FFE59E] font-extrabold">
+                  <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#760159] to-[#5B0E3D] border border-[#D4AF37] text-[#FFE59E] font-extrabold">
                     <span>{Number(product.rating).toFixed(1)}</span>
                     <Star className="w-3 h-3 fill-[#FFE59E] text-[#FFE59E]" />
                   </div>
@@ -551,7 +551,7 @@ export default function ProductDetailPage() {
                   <span className="text-base text-[#8C7A65] line-through font-medium">
                     {formatCurrency(comparePrice)}
                   </span>
-                  <span className="bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border border-[#D4AF37] text-[11px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
+                  <span className="bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] border border-[#D4AF37] text-[11px] font-extrabold px-3 py-0.5 rounded-full uppercase tracking-wider shadow-xs">
                     {discountPercent}% OFF
                   </span>
                 </>
@@ -598,7 +598,7 @@ export default function ProductDetailPage() {
                         onClick={() => handleSelectColor(opt.name)}
                         className={`group relative flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-bold border transition-all cursor-pointer ${
                           isSelected
-                            ? 'border-[#D4AF37] bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] shadow-md ring-2 ring-[#D4AF37]/40 scale-[1.02]'
+                            ? 'border-[#D4AF37] bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] shadow-md ring-2 ring-[#D4AF37]/40 scale-[1.02]'
                             : 'border-[#D4AF37]/50 bg-[#FFFDF9] text-[#23120B] hover:border-[#D4AF37]'
                         } ${isOutOfStock ? 'opacity-60' : ''}`}
                       >
@@ -654,8 +654,8 @@ export default function ProductDetailPage() {
                         onClick={() => setSelectedSize(opt.size)}
                         className={`min-w-[46px] px-3.5 py-2 rounded-xl text-xs font-extrabold border transition-all cursor-pointer ${
                           isSelected
-                            ? 'border-[#D4AF37] bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] shadow-md scale-105'
-                            : 'border-[#D4AF37]/50 text-[#23120B] hover:border-[#380725] bg-[#FFFDF9]'
+                            ? 'border-[#D4AF37] bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] shadow-md scale-105'
+                            : 'border-[#D4AF37]/50 text-[#23120B] hover:border-[#760159] bg-[#FFFDF9]'
                         } ${isOutOfStock ? 'opacity-50 line-through' : ''}`}
                       >
                         {opt.size}
@@ -735,32 +735,32 @@ export default function ProductDetailPage() {
                     Optional Tailoring Add-ons:
                   </span>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
-                    <label className="flex items-center gap-2 p-2.5 rounded-xl border border-[#D4AF37]/50 bg-[#FFFDF9] cursor-pointer hover:border-[#380725] transition-colors font-semibold text-[#23120B]">
+                    <label className="flex items-center gap-2 p-2.5 rounded-xl border border-[#D4AF37]/50 bg-[#FFFDF9] cursor-pointer hover:border-[#760159] transition-colors font-semibold text-[#23120B]">
                       <input
                         type="checkbox"
                         checked={addOnCanCan}
                         onChange={(e) => setAddOnCanCan(e.target.checked)}
-                        className="rounded text-[#380725] focus:ring-[#D4AF37] w-4 h-4 accent-[#380725]"
+                        className="rounded text-[#760159] focus:ring-[#D4AF37] w-4 h-4 accent-[#760159]"
                       />
                       <span>Can Can (+₹650)</span>
                     </label>
 
-                    <label className="flex items-center gap-2 p-2.5 rounded-xl border border-[#D4AF37]/50 bg-[#FFFDF9] cursor-pointer hover:border-[#380725] transition-colors font-semibold text-[#23120B]">
+                    <label className="flex items-center gap-2 p-2.5 rounded-xl border border-[#D4AF37]/50 bg-[#FFFDF9] cursor-pointer hover:border-[#760159] transition-colors font-semibold text-[#23120B]">
                       <input
                         type="checkbox"
                         checked={addOnFeedingZip}
                         onChange={(e) => setAddOnFeedingZip(e.target.checked)}
-                        className="rounded text-[#380725] focus:ring-[#D4AF37] w-4 h-4 accent-[#380725]"
+                        className="rounded text-[#760159] focus:ring-[#D4AF37] w-4 h-4 accent-[#760159]"
                       />
                       <span>Feeding Zip (+₹250)</span>
                     </label>
 
-                    <label className="flex items-center gap-2 p-2.5 rounded-xl border border-[#D4AF37]/50 bg-[#FFFDF9] cursor-pointer hover:border-[#380725] transition-colors font-semibold text-[#23120B]">
+                    <label className="flex items-center gap-2 p-2.5 rounded-xl border border-[#D4AF37]/50 bg-[#FFFDF9] cursor-pointer hover:border-[#760159] transition-colors font-semibold text-[#23120B]">
                       <input
                         type="checkbox"
                         checked={addOnBlousePad}
                         onChange={(e) => setAddOnBlousePad(e.target.checked)}
-                        className="rounded text-[#380725] focus:ring-[#D4AF37] w-4 h-4 accent-[#380725]"
+                        className="rounded text-[#760159] focus:ring-[#D4AF37] w-4 h-4 accent-[#760159]"
                       />
                       <span>Blouse Pad (+₹200)</span>
                     </label>
@@ -800,7 +800,7 @@ export default function ProductDetailPage() {
                 <button
                   type="submit"
                   disabled={isCheckingPincode}
-                  className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#D4AF37] text-[#FFE59E] text-xs font-extrabold uppercase tracking-wider hover:opacity-95 transition-all disabled:opacity-50 cursor-pointer"
+                  className="px-5 py-2 rounded-xl bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] border border-[#D4AF37] text-[#FFE59E] text-xs font-extrabold uppercase tracking-wider hover:opacity-95 transition-all disabled:opacity-50 cursor-pointer"
                 >
                   {isCheckingPincode ? 'Checking...' : 'Verify'}
                 </button>
@@ -845,7 +845,7 @@ export default function ProductDetailPage() {
                 <button
                   type="button"
                   onClick={handleAddToCart}
-                  className="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#5B0D3C] via-[#380725] to-[#5B0D3C] border-2 border-[#D4AF37] text-[#FFE59E] font-extrabold py-3.5 px-4 sm:px-6 rounded-full text-xs uppercase tracking-[0.16em] sm:tracking-[0.2em] transition-all shadow-[0_10px_24px_rgba(56,7,37,0.3)] hover:from-[#73124C] hover:to-[#380725] active:scale-95 cursor-pointer"
+                  className="flex-1 min-w-[140px] inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#760159] via-[#8E016B] to-[#760159] border-2 border-[#D4AF37] text-[#FFE59E] font-sans font-extrabold py-3.5 px-4 sm:px-6 rounded-full text-xs uppercase tracking-[0.16em] sm:tracking-[0.2em] transition-all shadow-[0_10px_24px_rgba(118,1,89,0.35)] hover:shadow-[0_12px_28px_rgba(212,175,55,0.35)] hover:from-[#8E016B] hover:to-[#5E0147] active:scale-95 cursor-pointer"
                 >
                   <ShoppingBag className="w-4 h-4 text-[#FFE59E] shrink-0" /> ADD TO BAG
                 </button>
@@ -856,7 +856,7 @@ export default function ProductDetailPage() {
                   onClick={() => toggleWishlist(product)}
                   className={`p-3.5 rounded-full border-2 transition-colors shadow-xs cursor-pointer shrink-0 ${
                     isLiked
-                      ? 'border-[#D4AF37] bg-[#380725] text-[#FFE59E]'
+                      ? 'border-[#D4AF37] bg-[#760159] text-[#FFE59E]'
                       : 'border-[#D4AF37]/70 text-[#280619] hover:border-[#D4AF37] bg-[#FFFDF9]'
                   }`}
                   aria-label="Wishlist"
@@ -869,7 +869,7 @@ export default function ProductDetailPage() {
               <button
                 type="button"
                 onClick={handleBuyNow}
-                className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] hover:opacity-95 text-[#280619] border border-[#FFFDF9] font-extrabold py-4 px-4 sm:px-6 rounded-full text-xs uppercase tracking-[0.16em] sm:tracking-[0.22em] transition-all shadow-[0_12px_30px_rgba(212,175,55,0.45)] active:scale-95 cursor-pointer"
+                className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] hover:opacity-95 text-[#280619] border border-[#FFFDF9] font-sans font-extrabold py-4 px-4 sm:px-6 rounded-full text-xs uppercase tracking-[0.16em] sm:tracking-[0.22em] transition-all shadow-[0_12px_30px_rgba(212,175,55,0.45)] active:scale-95 cursor-pointer"
               >
                 <Zap className="w-4 h-4 text-[#280619] fill-current shrink-0" /> BUY IT NOW — FAST DELIVERY
               </button>
@@ -914,7 +914,7 @@ export default function ProductDetailPage() {
               >
                 {t.label}
                 {activeTab === t.id && (
-                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#380725] via-[#D4AF37] to-[#380725] rounded-full" />
+                  <span className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-[#760159] via-[#D4AF37] to-[#760159] rounded-full" />
                 )}
               </button>
             ))}
@@ -987,14 +987,14 @@ export default function ProductDetailPage() {
                 </span>
                 <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#280619]">
                   You May Also{' '}
-                  <span className="font-script italic font-normal text-3xl sm:text-4xl text-[#5B0E3D]">
+                  <span className="font-script italic font-normal text-3xl sm:text-4xl text-[#760159]">
                     Love
                   </span>
                 </h3>
               </div>
               <Link
                 href="/shop"
-                className="px-5 py-2 rounded-full bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#D4AF37] text-[#FFE59E] text-xs font-extrabold uppercase tracking-wider hover:opacity-95 transition-opacity"
+                className="px-5 py-2 rounded-full bg-gradient-to-r from-[#760159] to-[#54013F] border border-[#D4AF37] text-[#FFE59E] text-xs font-extrabold uppercase tracking-wider hover:opacity-95 transition-opacity"
               >
                 View All →
               </Link>

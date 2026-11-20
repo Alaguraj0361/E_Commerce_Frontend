@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Jost, Playfair_Display, Alex_Brush } from 'next/font/google';
+import { Cinzel, Montserrat, Great_Vibes } from 'next/font/google';
 import './globals.css';
 import { Navbar } from '../components/layout/Navbar';
 import { Footer } from '../components/layout/Footer';
@@ -8,19 +8,21 @@ import { ToastProvider } from '../components/ui/ToastProvider';
 import { WhatsAppButton } from '../components/ui/WhatsAppButton';
 import { BottomNav } from '../components/layout/BottomNav';
 
-const jost = Jost({
-  subsets: ['latin'],
-  variable: '--font-sans',
-  display: 'swap',
-});
-
-const playfair = Playfair_Display({
+const cinzel = Cinzel({
   subsets: ['latin'],
   variable: '--font-display',
   display: 'swap',
+  weight: ['400', '500', '600', '700', '800', '900'],
 });
 
-const alexBrush = Alex_Brush({
+const montserrat = Montserrat({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+  weight: ['300', '400', '500', '600', '700', '800'],
+});
+
+const greatVibes = Great_Vibes({
   weight: '400',
   subsets: ['latin'],
   variable: '--font-script',
@@ -62,8 +64,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${jost.variable} ${playfair.variable} ${alexBrush.variable}`}>
-      <body className="font-sans min-h-screen flex flex-col bg-[#FAF7F2] text-[#0E0B09] selection:bg-[#0E0B09] selection:text-[#FFE59E] w-full max-w-full overflow-x-hidden relative">
+    <html lang="en" className={`${cinzel.variable} ${montserrat.variable} ${greatVibes.variable}`}>
+      <body className="font-sans min-h-screen flex flex-col bg-[#FAF7F2] text-[#0E0B09] selection:bg-[#760159] selection:text-[#FFE59E] w-full max-w-full overflow-x-hidden relative">
         <ToastProvider />
         <Navbar />
         <CartDrawer />

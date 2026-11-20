@@ -215,9 +215,9 @@ export default function AboutPage() {
       />
 
       {/* =================================================================== */}
-      {/* 02. IMPERIAL ROYAL PLUM & 24K GOLD HERITAGE METRICS RIBBON          */}
+      {/* 02. IMPERIAL ROYAL #760159 & 24K GOLD HERITAGE METRICS RIBBON       */}
       {/* =================================================================== */}
-      <section className="relative bg-gradient-to-r from-[#240315] via-[#3D0829] to-[#240315] border-b-2 border-[#D4AF37] py-8 sm:py-10 px-4 sm:px-8">
+      <section className="relative bg-gradient-to-r from-[#54013F] via-[#760159] to-[#54013F] border-b-2 border-[#D4AF37] py-8 sm:py-10 px-4 sm:px-8">
         <div className="max-w-[1100px] mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6">
           {[
             {
@@ -240,7 +240,7 @@ export default function AboutPage() {
               key={stat.label}
               className="rounded-2xl p-[1.5px] bg-gradient-to-b from-[#FFF4C2]/80 via-[#D4AF37]/60 to-[#8C5818]/50 shadow-lg"
             >
-              <div className="h-full rounded-[14px] bg-[#2B051B]/95 px-4 py-4 sm:px-5 sm:py-5 text-center flex flex-col items-center justify-center">
+              <div className="h-full rounded-[14px] bg-[#430132]/95 px-4 py-4 sm:px-5 sm:py-5 text-center flex flex-col items-center justify-center">
                 <span className="font-serif text-2xl sm:text-4xl font-bold bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent">
                   {stat.value}
                 </span>
@@ -275,7 +275,7 @@ export default function AboutPage() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#280619]/80 via-transparent to-transparent" />
                   <div className="absolute bottom-5 left-5 right-5">
-                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#380725]/90 border border-[#FFE59E] text-[9.5px] font-bold uppercase tracking-[0.2em] text-[#FFE59E]">
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#760159]/90 border border-[#FFE59E] text-[9.5px] font-bold uppercase tracking-[0.2em] text-[#FFE59E]">
                       <Crown className="w-3 h-3" />
                       <span>THOOTHUKUDI FLAGSHIP ATELIER</span>
                     </span>
@@ -296,7 +296,7 @@ export default function AboutPage() {
                       alt="Master Aari Embroidery"
                       className="w-full h-full object-cover object-top"
                     />
-                    <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#380725]/90 border border-[#FFE59E] text-[8.5px] font-bold uppercase tracking-wider text-[#FFE59E]">
+                    <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#760159]/90 border border-[#FFE59E] text-[8.5px] font-bold uppercase tracking-wider text-[#FFE59E]">
                       IN-HOUSE TAILORING
                     </span>
                   </div>
@@ -317,7 +317,7 @@ export default function AboutPage() {
           {/* Right 6 Cols: Editorial Heritage Narrative & Founder's Promise */}
           <div className="lg:col-span-6 space-y-6 pt-4 sm:pt-8 lg:pt-0">
             <div>
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#D4AF37] text-[#FFE59E] text-[10px] font-bold uppercase tracking-[0.22em] mb-3">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] border border-[#D4AF37] text-[#FFE59E] text-[10px] font-bold uppercase tracking-[0.22em] mb-3">
                 <Sparkles className="w-3 h-3" />
                 <span>FROM THOOTHUKUDI TO ALL OF TAMIL NADU</span>
               </div>
@@ -340,7 +340,7 @@ export default function AboutPage() {
 
             {/* Framed Founder's Quote Plaque */}
             <div className="rounded-2xl p-[2px] bg-gradient-to-r from-[#D4AF37] via-[#FFE59E] to-[#B88228] shadow-md">
-              <div className="rounded-[14px] bg-gradient-to-r from-[#280619] via-[#380725] to-[#280619] p-4 sm:p-5 text-[#FAF0DD]">
+              <div className="rounded-[14px] bg-gradient-to-r from-[#280619] via-[#760159] to-[#280619] p-4 sm:p-5 text-[#FAF0DD]">
                 <p className="font-serif italic text-xs sm:text-sm text-[#FFF4C2] leading-relaxed">
                   &ldquo;Every saree we fold and every blouse we stitch is inspected as if it were for our own family celebration. Your design, our craft—stitched and packed with love in Thoothukudi.&rdquo;
                 </p>
@@ -378,7 +378,7 @@ export default function AboutPage() {
       <section className="py-16 sm:py-22 bg-gradient-to-b from-[#FAF0DD] via-[#F5E4C3] to-[#FAF0DD] border-y-2 border-[#D4AF37]/65 px-4 sm:px-8 lg:px-12">
         <div className="max-w-[1380px] mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#FFE59E] text-[10px] font-bold uppercase tracking-[0.24em] text-[#FFE59E] mb-2.5">
+            <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] border border-[#FFE59E] text-[10px] font-bold uppercase tracking-[0.24em] text-[#FFE59E] mb-2.5">
               <Layers className="w-3 h-3" />
               <span>THE ART OF NALMARA</span>
             </span>
@@ -399,7 +399,7 @@ export default function AboutPage() {
                 <div className="h-full rounded-[21px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F2DFBE] p-6 flex flex-col justify-between relative overflow-hidden">
                   <div>
                     <div className="flex items-center justify-between mb-4">
-                      <span className="px-3 py-1 rounded-full bg-[#380725] text-[#FFE59E] border border-[#D4AF37] text-[9.5px] font-bold uppercase tracking-[0.18em]">
+                      <span className="px-3 py-1 rounded-full bg-[#760159] text-[#FFE59E] border border-[#D4AF37] text-[9.5px] font-bold uppercase tracking-[0.18em]">
                         {item.tag}
                       </span>
                       <span className="font-serif text-3xl font-bold text-[#D4AF37]/55 group-hover:text-[#9E1946] transition-colors">
@@ -432,7 +432,7 @@ export default function AboutPage() {
       <section className="py-16 sm:py-22 px-4 sm:px-8 lg:px-12 max-w-[1380px] mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-10">
           <div>
-            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E] mb-2.5">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-gradient-to-r from-[#760159] to-[#5B0E3D] border border-[#D4AF37] text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E] mb-2.5">
               <Gem className="w-3 h-3" />
               <span>OUR SIGNATURE WINGS</span>
             </span>
@@ -442,7 +442,7 @@ export default function AboutPage() {
           </div>
           <Link
             href="/stitching-services"
-            className="inline-flex items-center gap-2 text-xs sm:text-sm font-serif font-bold text-[#380725] hover:text-[#9E1946]"
+            className="inline-flex items-center gap-2 text-xs sm:text-sm font-serif font-bold text-[#760159] hover:text-[#9E1946]"
           >
             <span>Explore All 6 Stitching Studios</span>
             <ArrowRight className="w-4 h-4" />
@@ -465,7 +465,7 @@ export default function AboutPage() {
                       alt={card.title}
                       className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                     />
-                    <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-[#380725]/90 border border-[#FFE59E]/80 text-[9px] font-bold uppercase tracking-wider text-[#FFE59E]">
+                    <span className="absolute top-2.5 left-2.5 px-2.5 py-0.5 rounded-full bg-[#760159]/90 border border-[#FFE59E]/80 text-[9px] font-bold uppercase tracking-wider text-[#FFE59E]">
                       {card.tag}
                     </span>
                   </div>
@@ -478,7 +478,7 @@ export default function AboutPage() {
                 </div>
 
                 <div className="mt-4 pt-2.5 border-t border-[#D4AF37]/35 flex items-center justify-between">
-                  <span className="text-xs font-serif font-bold text-[#380725]">
+                  <span className="text-xs font-serif font-bold text-[#760159]">
                     {card.cta}
                   </span>
                   <ArrowRight className="w-4 h-4 text-[#9E1946] group-hover:translate-x-1 transition-transform" />
@@ -522,7 +522,7 @@ export default function AboutPage() {
                 key={p.title}
                 className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] p-6 sm:p-7 rounded-3xl border-2 border-[#D4AF37]/75 shadow-[0_14px_34px_rgba(56,7,37,0.08)] space-y-3.5 hover:border-[#D4AF37] hover:-translate-y-1 transition-all group"
               >
-                <div className="w-12 h-12 rounded-2xl bg-gradient-to-b from-[#380725] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
+                <div className="w-12 h-12 rounded-2xl bg-gradient-to-b from-[#760159] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center shadow-md group-hover:scale-110 transition-transform">
                   <Icon className="w-6 h-6 text-[#FFE59E]" />
                 </div>
                 <h3 className="font-serif text-lg font-bold text-[#280619]">

@@ -18,7 +18,7 @@ export const BottomNav = () => {
   const wishlistCount = wishlistProducts.length;
 
   return (
-    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-[#0E0B09] border-t-2 border-[#D4AF37]/75 py-1.5 px-2 shadow-[0_-8px_24px_rgba(0,0,0,0.35)]">
+    <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-40 bg-gradient-to-r from-[#54013F] via-[#760159] to-[#54013F] border-t-2 border-[#D4AF37]/80 py-1.5 px-2 shadow-[0_-8px_24px_rgba(0,0,0,0.45)]">
       <div className="flex items-center justify-around max-w-md mx-auto">
         {/* Home */}
         <Link
@@ -60,7 +60,7 @@ export const BottomNav = () => {
           )}
           <Heart className={`w-5 h-5 ${pathname === '/wishlist' ? 'text-[#D4AF37]' : ''}`} />
           {wishlistCount > 0 && (
-            <span className="absolute top-0 right-2 bg-[#D4AF37] text-[#0E0B09] text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">
+            <span className="absolute top-0 right-2 bg-gradient-to-b from-[#FFE59E] to-[#D4AF37] text-[#760159] text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none shadow-xs">
               {wishlistCount}
             </span>
           )}
@@ -74,7 +74,7 @@ export const BottomNav = () => {
         >
           <ShoppingBag className="w-5 h-5" />
           {totalCartCount > 0 && (
-            <span className="absolute top-0 right-2 bg-[#D4AF37] text-[#0E0B09] text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none">
+            <span className="absolute top-0 right-2 bg-gradient-to-b from-[#FFE59E] to-[#D4AF37] text-[#760159] text-[8px] font-bold w-3.5 h-3.5 rounded-full flex items-center justify-center leading-none shadow-xs">
               {totalCartCount}
             </span>
           )}

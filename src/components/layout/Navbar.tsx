@@ -106,9 +106,9 @@ export const Navbar = () => {
   return (
     <>
       {/* ========================================================= */}
-      {/* 01. TOP ANNOUNCEMENT BAR (Deep Royal Plum & 24K Gold)     */}
+      {/* 01. TOP ANNOUNCEMENT BAR (Deep Royal #760159 & 24K Gold)   */}
       {/* ========================================================= */}
-      <div className="w-full max-w-full overflow-hidden bg-gradient-to-r from-[#2D051E] via-[#4B0B32] to-[#2D051E] text-[#FDF6EC] text-[11px] sm:text-xs py-1.5 px-3 sm:px-8 border-b border-[#D4AF37]/50">
+      <div className="w-full max-w-full overflow-hidden bg-gradient-to-r from-[#54013F] via-[#760159] to-[#54013F] text-[#FDF6EC] text-[11px] sm:text-xs py-1.5 px-3 sm:px-8 border-b border-[#D4AF37]/50">
         <div className="max-w-[1400px] mx-auto flex items-center justify-between gap-3">
           {/* Left Spacer on Desktop for true center alignment */}
           <div className="hidden lg:block w-44 shrink-0" />
@@ -171,10 +171,10 @@ export const Navbar = () => {
       {/* 02. MAIN HEADER BAR (Royal Champagne Silk & 24K Gold)     */}
       {/* ========================================================= */}
       <header
-        className={`sticky top-0 z-40 transition-all duration-300 bg-gradient-to-r from-[#F4DFC0] via-[#FFF9F0] to-[#F4DFC0] border-b-2 border-[#D4AF37] relative ${
+        className={`sticky top-0 z-40 transition-all duration-300 border-b-2 border-[#D4AF37] relative ${
           isScrolled
-            ? 'shadow-[0_10px_30px_rgba(45,5,30,0.18)] py-2'
-            : 'shadow-[0_4px_18px_rgba(90,45,15,0.08)] py-2.5 sm:py-3'
+            ? 'bg-[#FFF9F0]/95 backdrop-blur-md shadow-[0_10px_30px_rgba(45,5,30,0.18)] py-2'
+            : 'bg-gradient-to-r from-[#F4DFC0] via-[#FFF9F0] to-[#F4DFC0] shadow-[0_4px_18px_rgba(90,45,15,0.08)] py-2.5 sm:py-3'
         }`}
       >
         {/* Top Inner Gold Hairline */}
@@ -256,9 +256,9 @@ export const Navbar = () => {
           <nav className="hidden lg:flex items-center gap-7 xl:gap-9 text-[14.5px] font-serif font-semibold text-[#23120B]">
             <Link
               href="/"
-              className={`relative py-1.5 transition-colors hover:text-[#5B0E3D] ${
+              className={`relative py-1.5 transition-colors hover:text-[#760159] ${
                 pathname === '/'
-                  ? 'text-[#5B0E3D] font-bold after:content-[""] after:absolute after:bottom-0 after:inset-x-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-[#C8912E] after:to-transparent'
+                  ? 'text-[#760159] font-bold after:content-[""] after:absolute after:bottom-0 after:inset-x-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-[#760159] after:to-transparent'
                   : ''
               }`}
             >
@@ -269,20 +269,20 @@ export const Navbar = () => {
             <div className="relative group py-1.5">
               <Link
                 href="/shop"
-                className={`inline-flex items-center gap-1 hover:text-[#5B0E3D] transition-colors ${
-                  pathname.startsWith('/shop') ? 'font-bold text-[#5B0E3D]' : ''
+                className={`inline-flex items-center gap-1 hover:text-[#760159] transition-colors ${
+                  pathname.startsWith('/shop') ? 'font-bold text-[#760159]' : ''
                 }`}
               >
                 <span>Shop</span>
                 <ChevronDown className="w-3.5 h-3.5 text-[#8C6518] group-hover:rotate-180 transition-transform" />
               </Link>
               <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="w-52 rounded-2xl bg-[#FFFDF9] border-[1.5px] border-[#D4AF37] shadow-[0_14px_32px_rgba(45,5,30,0.18)] py-2 px-1.5 font-sans">
+                <div className="w-52 rounded-2xl glass border-[1.5px] border-[#D4AF37]/90 shadow-[0_14px_36px_rgba(45,5,30,0.22)] py-2 px-1.5 font-sans">
                   {shopDropdownItems.map((item) => (
                     <Link
                       key={item.label}
                       href={item.href}
-                      className="block px-3.5 py-2 rounded-xl text-xs font-semibold text-[#23120B] hover:bg-[#FAF0DF] hover:text-[#5B0E3D] transition-colors"
+                      className="block px-3.5 py-2 rounded-xl text-xs font-semibold text-[#23120B] hover:bg-[#FAF0DF] hover:text-[#760159] transition-colors"
                     >
                       {item.label}
                     </Link>
@@ -295,9 +295,9 @@ export const Navbar = () => {
             <div className="relative group py-1.5">
               <Link
                 href="/stitching-services"
-                className={`inline-flex items-center gap-1 hover:text-[#5B0E3D] transition-colors ${
+                className={`inline-flex items-center gap-1 hover:text-[#760159] transition-colors ${
                   pathname.startsWith('/stitching-services')
-                    ? 'font-bold text-[#5B0E3D] after:content-[""] after:absolute after:bottom-0 after:inset-x-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-[#C8912E] after:to-transparent'
+                    ? 'font-bold text-[#760159] after:content-[""] after:absolute after:bottom-0 after:inset-x-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-[#760159] after:to-transparent'
                     : ''
                 }`}
               >
@@ -305,7 +305,7 @@ export const Navbar = () => {
                 <ChevronDown className="w-3.5 h-3.5 text-[#8C6518] group-hover:rotate-180 transition-transform" />
               </Link>
               <div className="absolute left-0 top-full pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                <div className="w-64 rounded-2xl bg-[#FFFDF9] border-[1.5px] border-[#D4AF37] shadow-[0_14px_32px_rgba(45,5,30,0.18)] py-2 px-1.5 font-sans">
+                <div className="w-64 rounded-2xl glass border-[1.5px] border-[#D4AF37]/90 shadow-[0_14px_36px_rgba(45,5,30,0.22)] py-2 px-1.5 font-sans">
                   {stitchingDropdownItems.map((item) => {
                     const isItemActive = pathname === item.href;
                     return (
@@ -314,8 +314,8 @@ export const Navbar = () => {
                         href={item.href}
                         className={`block px-3.5 py-2 rounded-xl text-xs font-semibold transition-colors ${
                           isItemActive
-                            ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E]'
-                            : 'text-[#23120B] hover:bg-[#FAF0DF] hover:text-[#5B0E3D]'
+                            ? 'bg-gradient-to-r from-[#760159] to-[#940270] text-[#FFE59E]'
+                            : 'text-[#23120B] hover:bg-[#FAF0DF] hover:text-[#760159]'
                         }`}
                       >
                         {item.label}
@@ -328,9 +328,9 @@ export const Navbar = () => {
 
             <Link
               href="/about"
-              className={`relative py-1.5 hover:text-[#5B0E3D] transition-colors ${
+              className={`relative py-1.5 hover:text-[#760159] transition-colors ${
                 pathname === '/about'
-                  ? 'font-bold text-[#5B0E3D] after:content-[""] after:absolute after:bottom-0 after:inset-x-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-[#C8912E] after:to-transparent'
+                  ? 'font-bold text-[#760159] after:content-[""] after:absolute after:bottom-0 after:inset-x-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-[#760159] after:to-transparent'
                   : ''
               }`}
             >
@@ -339,9 +339,9 @@ export const Navbar = () => {
 
             <Link
               href="/contact"
-              className={`relative py-1.5 hover:text-[#5B0E3D] transition-colors ${
+              className={`relative py-1.5 hover:text-[#760159] transition-colors ${
                 pathname === '/contact'
-                  ? 'font-bold text-[#5B0E3D] after:content-[""] after:absolute after:bottom-0 after:inset-x-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-[#C8912E] after:to-transparent'
+                  ? 'font-bold text-[#760159] after:content-[""] after:absolute after:bottom-0 after:inset-x-0 after:h-[2px] after:bg-gradient-to-r after:from-transparent after:via-[#760159] after:to-transparent'
                   : ''
               }`}
             >
@@ -359,7 +359,7 @@ export const Navbar = () => {
                     setIsMobileMenuOpen(false);
                     setIsUserMenuOpen(!isUserMenuOpen);
                   }}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#5B0E3D] flex items-center justify-center shadow-xs transition-all cursor-pointer hover:scale-105"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#760159] flex items-center justify-center shadow-xs transition-all cursor-pointer hover:scale-105"
                   aria-label="User account"
                 >
                   <UserIcon className="w-[18px] h-[18px] stroke-[2.2]" />
@@ -371,7 +371,7 @@ export const Navbar = () => {
                     setIsMobileMenuOpen(false);
                     setIsUserMenuOpen(false);
                   }}
-                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#5B0E3D] flex items-center justify-center shadow-xs transition-all hover:scale-105"
+                  className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#760159] flex items-center justify-center shadow-xs transition-all hover:scale-105"
                   aria-label="Sign in"
                 >
                   <UserIcon className="w-[18px] h-[18px] stroke-[2.2]" />
@@ -379,7 +379,7 @@ export const Navbar = () => {
               )}
 
               {isUserMenuOpen && isAuthenticated && (
-                <div className="absolute right-0 top-full mt-2 w-56 bg-[#FFFDF9] border border-[#D4AF37]/70 rounded-2xl shadow-xl py-2 z-50 text-xs">
+                <div className="absolute right-0 top-full mt-2 w-56 glass border border-[#D4AF37]/80 rounded-2xl shadow-[0_14px_36px_rgba(45,5,30,0.22)] py-2 z-50 text-xs">
                   <div className="px-4 py-2.5 border-b border-[#D4AF37]/30">
                     <p className="font-serif font-bold text-[#23120B] truncate">
                       {user?.firstName} {user?.lastName}
@@ -389,14 +389,14 @@ export const Navbar = () => {
                   <Link
                     href="/account"
                     onClick={() => setIsUserMenuOpen(false)}
-                    className="block px-4 py-2 text-zinc-700 hover:bg-[#FAF3E3] hover:text-[#5B0E3D] font-medium"
+                    className="block px-4 py-2 text-zinc-700 hover:bg-[#FAF3E3] hover:text-[#760159] font-medium"
                   >
                     My Account
                   </Link>
                   <Link
                     href="/account/orders"
                     onClick={() => setIsUserMenuOpen(false)}
-                    className="block px-4 py-2 text-zinc-700 hover:bg-[#FAF3E3] hover:text-[#5B0E3D] font-medium"
+                    className="block px-4 py-2 text-zinc-700 hover:bg-[#FAF3E3] hover:text-[#760159] font-medium"
                   >
                     Order History
                   </Link>
@@ -413,30 +413,30 @@ export const Navbar = () => {
               )}
             </div>
 
-            {/* Wishlist Heart with Deep Royal Plum & Gold Badge */}
+            {/* Wishlist Heart with Deep Royal #760159 & Gold Badge */}
             <Link
               href="/wishlist"
-              className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#5B0E3D] flex items-center justify-center shadow-xs transition-all hover:scale-105"
+              className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#760159] flex items-center justify-center shadow-xs transition-all hover:scale-105"
               aria-label="Wishlist"
             >
               <Heart className="w-[18px] h-[18px] fill-[#23120B] text-[#23120B]" />
-              <span className="absolute -top-1 -right-1 bg-gradient-to-b from-[#7A124E] to-[#42062A] border border-[#FFE59E] text-[#FFFDF9] text-[10px] font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center leading-none shadow-sm">
+              <span className="absolute -top-1 -right-1 bg-gradient-to-b from-[#760159] to-[#450036] border border-[#FFE59E] text-[#FFFDF9] text-[10px] font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center leading-none shadow-sm">
                 {wishlistCount}
               </span>
             </Link>
 
-            {/* Cart with Deep Royal Plum & Gold Badge */}
+            {/* Cart with Deep Royal #760159 & Gold Badge */}
             <button
               onClick={() => {
                 setIsUserMenuOpen(false);
                 setIsMobileMenuOpen(false);
                 setIsCartOpen(true);
               }}
-              className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#5B0E3D] flex items-center justify-center shadow-xs transition-all cursor-pointer hover:scale-105"
+              className="relative w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#FFFDF9]/90 hover:bg-[#FFFDF9] border border-[#D4AF37]/75 text-[#23120B] hover:text-[#760159] flex items-center justify-center shadow-xs transition-all cursor-pointer hover:scale-105"
               aria-label="Shopping cart"
             >
               <ShoppingCart className="w-[18px] h-[18px] fill-[#23120B] text-[#23120B]" />
-              <span className="absolute -top-1 -right-1 bg-gradient-to-b from-[#7A124E] to-[#42062A] border border-[#FFE59E] text-[#FFFDF9] text-[10px] font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center leading-none shadow-sm">
+              <span className="absolute -top-1 -right-1 bg-gradient-to-b from-[#760159] to-[#450036] border border-[#FFE59E] text-[#FFFDF9] text-[10px] font-bold min-w-[18px] h-[18px] px-1 rounded-full flex items-center justify-center leading-none shadow-sm">
                 {totalCartCount}
               </span>
             </button>
@@ -481,14 +481,14 @@ export const Navbar = () => {
                 <Link
                   href="/"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#5B0E3D] py-1.5 border-b border-[#D4AF37]/25"
+                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#760159] py-1.5 border-b border-[#D4AF37]/25"
                 >
                   Home
                 </Link>
                 <Link
                   href="/shop"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#5B0E3D] py-1.5 border-b border-[#D4AF37]/25"
+                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#760159] py-1.5 border-b border-[#D4AF37]/25"
                 >
                   Shop All Collections
                 </Link>
@@ -498,7 +498,7 @@ export const Navbar = () => {
                       key={item.label}
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block text-xs font-medium text-[#5C3D1E] hover:text-[#5B0E3D] py-1"
+                      className="block text-xs font-medium text-[#5C3D1E] hover:text-[#760159] py-1"
                     >
                       • {item.label}
                     </Link>
@@ -507,7 +507,7 @@ export const Navbar = () => {
                 <Link
                   href="/stitching-services"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#5B0E3D] py-1.5 border-b border-[#D4AF37]/25"
+                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#760159] py-1.5 border-b border-[#D4AF37]/25"
                 >
                   Stitching Services
                 </Link>
@@ -517,7 +517,7 @@ export const Navbar = () => {
                       key={item.label}
                       href={item.href}
                       onClick={() => setIsMobileMenuOpen(false)}
-                      className="block text-xs font-medium text-[#5C3D1E] hover:text-[#5B0E3D] py-1"
+                      className="block text-xs font-medium text-[#5C3D1E] hover:text-[#760159] py-1"
                     >
                       • {item.label}
                     </Link>
@@ -526,14 +526,14 @@ export const Navbar = () => {
                 <Link
                   href="/about"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#5B0E3D] py-1.5 border-b border-[#D4AF37]/25"
+                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#760159] py-1.5 border-b border-[#D4AF37]/25"
                 >
                   About Us
                 </Link>
                 <Link
                   href="/contact"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#5B0E3D] py-1.5 border-b border-[#D4AF37]/25"
+                  className="block text-sm font-serif font-bold text-[#23120B] hover:text-[#760159] py-1.5 border-b border-[#D4AF37]/25"
                 >
                   Contact Us
                 </Link>
@@ -560,7 +560,7 @@ export const Navbar = () => {
                 <Link
                   href="/login"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="block w-full py-2.5 text-center bg-gradient-to-r from-[#5B0E3D] to-[#3D0829] border border-[#D4AF37] text-[#FFE59E] rounded-full font-serif font-bold tracking-wider uppercase"
+                  className="block w-full py-2.5 text-center bg-gradient-to-r from-[#760159] to-[#54013F] border border-[#D4AF37] text-[#FFE59E] rounded-full font-serif font-bold tracking-wider uppercase shadow-md"
                 >
                   Sign In / Register
                 </Link>
@@ -590,7 +590,7 @@ export const Navbar = () => {
                   logout();
                   setShowLogoutConfirm(false);
                 }}
-                className="flex-1 py-2 text-xs font-semibold rounded-full bg-[#3D0829] border border-[#D4AF37] text-[#FFE59E] hover:bg-[#5B0E3D]"
+                className="flex-1 py-2 text-xs font-semibold rounded-full bg-[#760159] border border-[#D4AF37] text-[#FFE59E] hover:bg-[#8E016B]"
               >
                 Sign Out
               </button>

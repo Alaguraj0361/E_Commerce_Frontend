@@ -53,7 +53,7 @@ function LoginContent() {
             <BrandLogo size="lg" theme="light" />
           </div>
           <div className="pt-1">
-            <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E] px-4 py-1.5 rounded-full bg-gradient-to-r from-[#380725] via-[#540D3A] to-[#380725] border border-[#D4AF37] shadow-sm">
+            <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E] px-4 py-1.5 rounded-full bg-gradient-to-r from-[#760159] via-[#540D3A] to-[#760159] border border-[#D4AF37] shadow-sm">
               <NalmaraEmblem className="w-4 h-4" />
               <span>Nalmara Fashion • Thoothukudi</span>
               <Sparkles className="w-3 h-3 text-[#FFE59E]" />

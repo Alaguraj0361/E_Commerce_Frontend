@@ -58,7 +58,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) =>
 
   if (viewMode === 'list') {
     return (
-      <div className="group relative rounded-2xl p-[2px] bg-gradient-to-b from-[#FFE59E] via-[#C8963E] to-[#8C5818] shadow-[0_12px_28px_rgba(56,7,37,0.1)] hover:shadow-[0_20px_42px_rgba(56,7,37,0.2)] transition-all duration-300">
+      <div className="group relative rounded-2xl p-[2px] bg-gradient-to-b from-[#FFE59E] via-[#C8963E] to-[#8C5818] shadow-[0_12px_28px_rgba(56,7,37,0.1)] card-royal-lift transition-all duration-300">
         <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#EFE0C2] rounded-[14px] overflow-hidden flex flex-col sm:flex-row h-full">
           <Link href={`/product/${product.slug}`} className="relative aspect-[3/4] sm:w-56 shrink-0 overflow-hidden bg-[#EED9BA] block">
             <Image
@@ -71,7 +71,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) =>
             />
             <div className="absolute inset-1.5 border border-[#FFE59E]/50 rounded-xl pointer-events-none z-10" />
             {discountPercent > 0 && (
-              <span className="absolute top-2.5 left-2.5 bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#FFE59E]/85 text-[#FFE59E] text-[9px] font-bold px-2.5 py-0.5 rounded-full shadow-md uppercase tracking-[0.14em] z-20">
+              <span className="absolute top-2.5 left-2.5 bg-gradient-to-r from-[#760159] to-[#9E0277] border border-[#FFE59E]/85 text-[#FFE59E] text-[9px] font-bold px-2.5 py-0.5 rounded-full shadow-md uppercase tracking-[0.14em] z-20">
                 {discountPercent}% OFF
               </span>
             )}
@@ -88,7 +88,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) =>
                 </div>
                 <button
                   onClick={handleLike}
-                  className="p-1.5 rounded-full bg-[#FFFDF9] border border-[#D4AF37]/60 hover:bg-[#380725] hover:text-[#FFE59E] text-[#23120B] transition-colors cursor-pointer"
+                  className="p-1.5 rounded-full glass-card hover:bg-[#760159] hover:text-[#FFE59E] text-[#23120B] transition-colors cursor-pointer"
                   aria-label="Wishlist"
                 >
                   <Heart className={`w-4 h-4 ${isLiked ? 'fill-rose-600 text-rose-600' : ''}`} />
@@ -96,7 +96,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) =>
               </div>
 
               <Link href={`/product/${product.slug}`}>
-                <h3 className="font-serif text-base sm:text-lg font-bold text-[#23120B] hover:text-[#5B0E3D] transition-colors mt-1">
+                <h3 className="font-serif text-base sm:text-lg font-bold text-[#23120B] hover:text-[#760159] transition-colors mt-1">
                   {product.name}
                 </h3>
               </Link>
@@ -135,7 +135,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) =>
 
               <button
                 onClick={handleQuickAdd}
-                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#5B0D3C] via-[#3F0729] to-[#5B0D3C] hover:from-[#73124C] hover:to-[#4E0B34] border border-[#D4AF37] text-[#FFE59E] text-[10px] font-serif font-bold uppercase tracking-[0.16em] flex items-center gap-1.5 transition-all shadow-[0_6px_16px_rgba(56,7,37,0.28)] cursor-pointer"
+                className="px-5 py-2.5 rounded-full bg-gradient-to-r from-[#760159] via-[#8E016B] to-[#760159] hover:from-[#8E016B] hover:to-[#5E0147] border border-[#D4AF37] text-[#FFE59E] text-[10px] font-sans font-bold uppercase tracking-[0.16em] flex items-center gap-1.5 transition-all shadow-[0_6px_16px_rgba(118,1,89,0.35)] hover:shadow-[0_8px_20px_rgba(212,175,55,0.35)] cursor-pointer"
               >
                 <ShoppingBag className="w-3.5 h-3.5 text-[#FFE59E]" />
                 <span>Add to Cart</span>
@@ -148,7 +148,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) =>
   }
 
   return (
-    <div className="group relative rounded-xl sm:rounded-2xl p-[2px] bg-gradient-to-b from-[#FFE59E] via-[#C8963E] to-[#8C5818] shadow-[0_12px_28px_rgba(56,7,37,0.1)] hover:shadow-[0_20px_42px_rgba(56,7,37,0.22)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col">
+    <div className="group relative rounded-xl sm:rounded-2xl p-[2px] bg-gradient-to-b from-[#FFE59E] via-[#C8963E] to-[#8C5818] shadow-[0_12px_28px_rgba(56,7,37,0.1)] card-royal-lift transition-all duration-300 flex flex-col">
       <div className="flex flex-col flex-1 bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#EFE0C2] rounded-[10px] sm:rounded-[14px] overflow-hidden">
         {/* Product Image Container */}
         <Link href={`/product/${product.slug}`} className="relative aspect-[3/4] w-full bg-[#EED9BA] overflow-hidden block">
@@ -165,7 +165,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) =>
           {/* Badges */}
           <div className="absolute top-2.5 left-2.5 flex flex-col gap-1 z-20">
             {discountPercent > 0 && (
-              <span className="bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#FFE59E]/85 text-[#FFE59E] text-[8.5px] sm:text-[9.5px] font-bold px-2.5 py-0.5 rounded-full shadow-md uppercase tracking-[0.14em]">
+              <span className="bg-gradient-to-r from-[#760159] to-[#9E0277] border border-[#FFE59E]/85 text-[#FFE59E] text-[8.5px] sm:text-[9.5px] font-bold px-2.5 py-0.5 rounded-full shadow-md uppercase tracking-[0.14em]">
                 {discountPercent}% OFF
               </span>
             )}
@@ -184,7 +184,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) =>
           {/* Wishlist Button */}
           <button
             onClick={handleLike}
-            className="absolute top-2.5 right-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#FFFDF9]/95 hover:bg-[#380725] hover:text-[#FFE59E] border border-[#D4AF37] text-[#23120B] flex items-center justify-center transition-all shadow-md z-20 cursor-pointer"
+            className="absolute top-2.5 right-2.5 w-7 h-7 sm:w-8 sm:h-8 rounded-full glass-card hover:bg-[#760159] hover:text-[#FFE59E] text-[#23120B] flex items-center justify-center transition-all shadow-md z-20 cursor-pointer"
             aria-label={isLiked ? 'Remove from wishlist' : 'Add to wishlist'}
           >
             <Heart className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isLiked ? 'fill-rose-600 text-rose-600' : ''}`} />
@@ -192,7 +192,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) =>
 
           {/* Bottom-Left Rating Pill Overlaid on Image (Only when live rating exists) */}
           {product.rating > 0 && (
-            <div className="absolute bottom-2.5 left-2.5 z-20 inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-[#FFFDF9]/95 border border-[#D4AF37]/80 text-[10px] font-bold text-[#280619] shadow-sm">
+            <div className="absolute bottom-2.5 left-2.5 z-20 inline-flex items-center gap-1 px-2 py-0.5 rounded-full glass-card text-[10px] font-bold text-[#280619] shadow-sm">
               <span>{Number(product.rating).toFixed(1)}</span>
               <Star className="w-2.5 h-2.5 fill-[#D4AF37] text-[#D4AF37]" />
               {product.reviewCount > 0 && (
@@ -212,13 +212,13 @@ export const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) =>
               <p className="text-[9.5px] uppercase tracking-[0.12em] text-[#8C5818] font-bold truncate">
                 {brandName || 'NALMARA Couture'}
               </p>
-              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.2 rounded bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#D4AF37]/80 text-[8px] font-bold text-[#FFE59E] uppercase tracking-wider">
+              <span className="inline-flex items-center gap-0.5 px-1.5 py-0.2 rounded bg-gradient-to-r from-[#760159] to-[#9E0277] border border-[#D4AF37]/80 text-[8px] font-bold text-[#FFE59E] uppercase tracking-wider">
                 ✦ Royal
               </span>
             </div>
 
             <Link href={`/product/${product.slug}`}>
-              <h3 className="font-serif font-bold text-xs sm:text-[15px] text-[#23120B] group-hover:text-[#5B0E3D] transition-colors line-clamp-1">
+              <h3 className="font-serif font-bold text-xs sm:text-[15px] text-[#23120B] group-hover:text-[#760159] transition-colors line-clamp-1">
                 {product.name}
               </h3>
             </Link>
@@ -249,7 +249,7 @@ export const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) =>
 
             <button
               onClick={handleQuickAdd}
-              className="w-full py-1.5 sm:py-2 px-3 rounded-full bg-gradient-to-r from-[#5B0D3C] via-[#3F0729] to-[#5B0D3C] hover:from-[#73124C] hover:to-[#4E0B34] border border-[#D4AF37] text-[#FFE59E] text-[9.5px] sm:text-[10.5px] font-serif font-bold uppercase tracking-[0.14em] flex items-center justify-center gap-1.5 shadow-[0_6px_16px_rgba(56,7,37,0.25)] transition-all active:scale-95 cursor-pointer"
+              className="w-full py-1.5 sm:py-2 px-3 rounded-full bg-gradient-to-r from-[#760159] via-[#8E016B] to-[#760159] hover:from-[#8E016B] hover:to-[#5E0147] border border-[#D4AF37] text-[#FFE59E] text-[9.5px] sm:text-[10.5px] font-sans font-bold uppercase tracking-[0.15em] flex items-center justify-center gap-1.5 shadow-[0_6px_16px_rgba(118,1,89,0.32)] hover:shadow-[0_8px_20px_rgba(212,175,55,0.35)] transition-all active:scale-95 cursor-pointer"
             >
               <ShoppingBag className="w-3 h-3 text-[#FFE59E]" /> Add to Cart
             </button>

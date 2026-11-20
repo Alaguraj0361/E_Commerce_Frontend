@@ -18,11 +18,11 @@ export const Footer = () => {
   const { categories } = useCategoryStore();
 
   return (
-    <footer className="hidden md:block relative bg-[#220517] text-[#F7E8D0] overflow-hidden select-none border-t-2 border-[#D4AF37]/60">
+    <footer className="hidden md:block relative bg-[#3B002B] text-[#F7E8D0] overflow-hidden select-none border-t-2 border-[#D4AF37]/80">
       {/* ============================================================ */}
-      {/* MAIN 5-COLUMN ROYAL BURGUNDY/PLUM FOOTER                     */}
+      {/* MAIN 5-COLUMN ROYAL #760159 FOOTER                           */}
       {/* ============================================================ */}
-      <div className="relative bg-gradient-to-b from-[#2A061C] via-[#220517] to-[#1A0311] py-10 sm:py-12 px-4 sm:px-6 lg:px-10">
+      <div className="relative bg-gradient-to-b from-[#760159] via-[#54013F] to-[#2B0020] py-10 sm:py-12 px-4 sm:px-6 lg:px-10">
         {/* Left & Right Gold Floral Mandala Corner Ornaments */}
         <svg
           viewBox="0 0 200 200"
@@ -272,7 +272,7 @@ export const Footer = () => {
       {/* ============================================================ */}
       {/* 3. BOTTOM COPYRIGHT BAR                                      */}
       {/* ============================================================ */}
-      <div className="bg-[#18020F] border-t border-[#D4AF37]/30 py-3 px-4 text-center text-[11px] sm:text-xs text-[#EED9BA]/85">
+      <div className="bg-[#200017] border-t border-[#D4AF37]/35 py-3 px-4 text-center text-[11px] sm:text-xs text-[#EED9BA]/90">
         <p className="flex flex-wrap items-center justify-center gap-2">
           <span>© 2026 NALMARA FASHION. All rights reserved.</span>
           <span className="opacity-50">|</span>

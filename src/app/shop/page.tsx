@@ -49,8 +49,8 @@ function getCategoryHeroDetails(slug: string, categories: Category[]) {
   if (!slug) {
     return {
       badge: 'SHOP ALL COLLECTIONS • THOOTHUKUDI',
-      line1: 'SHOP ALL',
-      line2: 'ROYAL COLLECTIONS',
+      line1: 'ALL COLLECTIONS',
+      line2: 'Exclusive Edit',
       description:
         'Explore our complete catalog of handpicked Kanchipuram silk sarees, designer blouses, flared party gowns, lehengas, kurti sets, and traditional kids pattu wear.',
       pills: ['100% Quality Checked', 'Custom Stitching Available', 'Express TN Delivery'],
@@ -62,7 +62,7 @@ function getCategoryHeroDetails(slug: string, categories: Category[]) {
     return {
       badge: 'DESIGNER & BRIDAL BLOUSES',
       line1: matchedCat ? matchedCat.name.toUpperCase() : 'DESIGNER',
-      line2: 'BLOUSE COLLECTION',
+      line2: 'Blouse Atelier',
       description:
         matchedCat?.description ||
         'Handcrafted bridal Aari work blouses, zardozi embroidered silk blouses, and ready-to-stitch designer blouse pieces with custom tailoring options.',
@@ -75,7 +75,7 @@ function getCategoryHeroDetails(slug: string, categories: Category[]) {
     return {
       badge: 'KIDS TRADITIONAL & PARTY WEAR',
       line1: matchedCat ? matchedCat.name.toUpperCase() : 'KIDSWEAR &',
-      line2: 'PATTU PAVADAI EDIT',
+      line2: 'Pattu Pavadai Edit',
       description:
         matchedCat?.description ||
         'Authentic South Indian Pattu Pavadai Sattai, festive silk frocks, and birthday party gowns crafted with ultra-soft breathable cotton lining for kids.',
@@ -88,7 +88,7 @@ function getCategoryHeroDetails(slug: string, categories: Category[]) {
     return {
       badge: 'FESTIVE & PARTY WEAR COUTURE',
       line1: matchedCat ? matchedCat.name.toUpperCase() : 'DRESSES &',
-      line2: 'PARTY WEAR GOWNS',
+      line2: 'Party Wear Gowns',
       description:
         matchedCat?.description ||
         'Floor-length flared Anarkali gowns, organza party dresses, and festive reception ensembles designed for effortless movement and royal grace.',
@@ -102,7 +102,7 @@ function getCategoryHeroDetails(slug: string, categories: Category[]) {
     return {
       badge: 'BRIDAL & FESTIVE LEHENGAS',
       line1: matchedCat ? matchedCat.name.toUpperCase() : 'LEHENGAS &',
-      line2: 'HALF SAREE COLLECTION',
+      line2: 'Half Saree Edit',
       description:
         matchedCat?.description ||
         'Richly embroidered bridal lehenga cholis and traditional South Indian Half Saree / Dhavani sets with heavy zari borders and custom blouse stitching.',
@@ -115,7 +115,7 @@ function getCategoryHeroDetails(slug: string, categories: Category[]) {
     return {
       badge: 'EVERYDAY & FESTIVE ETHNIC SETS',
       line1: matchedCat ? matchedCat.name.toUpperCase() : 'KURTI SETS &',
-      line2: 'SALWAR SUITS',
+      line2: 'Salwar Suits',
       description:
         matchedCat?.description ||
         'Elegant silk blend kurti sets, straight-cut salwar suits, and festive coordinate sets tailored for everyday sophistication and celebratory comfort.',
@@ -128,7 +128,7 @@ function getCategoryHeroDetails(slug: string, categories: Category[]) {
   return {
     badge: 'HANDPICKED SILK & ETHNIC WEAVES',
     line1: matchedCat ? matchedCat.name.toUpperCase() : slug.replace(/-/g, ' ').toUpperCase(),
-    line2: 'ROYAL COLLECTION',
+    line2: 'Collection',
     description:
       matchedCat?.description ||
       'Authentic Kanchipuram silks, soft silk weaves, and festive drapes handpicked for vibrant zari luster, rich pallus, and heirloom durability.',
@@ -326,9 +326,9 @@ function ShopContent() {
             <button
               type="button"
               onClick={() => handleCategorySelect('')}
-              className={`px-4 py-2 rounded-full text-xs font-serif font-bold whitespace-nowrap transition-colors shadow-sm cursor-pointer border ${
+              className={`px-4 py-2 rounded-full text-xs font-sans font-bold uppercase tracking-wider whitespace-nowrap transition-all shadow-sm cursor-pointer border ${
                 !selectedCategory
-                  ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37]'
+                  ? 'bg-gradient-to-r from-[#760159] to-[#9E0277] text-[#FFE59E] border-[#D4AF37] shadow-[0_4px_12px_rgba(118,1,89,0.3)]'
                   : 'bg-[#FFFDF9] text-[#280619] border-[#D4AF37]/50 hover:border-[#D4AF37]'
               }`}
             >
@@ -341,9 +341,9 @@ function ShopContent() {
                   key={cat._id}
                   type="button"
                   onClick={() => handleCategorySelect(cat.slug)}
-                  className={`px-4 py-2 rounded-full text-xs font-serif font-bold whitespace-nowrap transition-colors shadow-sm cursor-pointer border ${
+                  className={`px-4 py-2 rounded-full text-xs font-sans font-bold uppercase tracking-wider whitespace-nowrap transition-all shadow-sm cursor-pointer border ${
                     active
-                      ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37]'
+                      ? 'bg-gradient-to-r from-[#760159] to-[#9E0277] text-[#FFE59E] border-[#D4AF37] shadow-[0_4px_12px_rgba(118,1,89,0.3)]'
                       : 'bg-[#FFFDF9] text-[#280619] border-[#D4AF37]/50 hover:border-[#D4AF37]'
                   }`}
                 >
@@ -371,7 +371,7 @@ function ShopContent() {
             {/* Mobile Filter Toggle */}
             <button
               onClick={() => setIsMobileFilterOpen(true)}
-              className="lg:hidden flex items-center gap-2 bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#D4AF37] text-[#FFE59E] px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm shrink-0"
+              className="lg:hidden flex items-center gap-2 bg-gradient-to-r from-[#760159] via-[#8E016B] to-[#760159] border border-[#D4AF37] text-[#FFE59E] px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider shadow-sm shrink-0"
             >
               <SlidersHorizontal className="w-3.5 h-3.5 text-[#FFE59E]" />
               <span>Filters {activeFiltersCount > 0 && `(${activeFiltersCount})`}</span>
@@ -399,7 +399,7 @@ function ShopContent() {
                 onClick={() => setViewMode('grid')}
                 className={`p-1.5 rounded-full transition-all cursor-pointer ${
                   viewMode === 'grid'
-                    ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] shadow-xs'
+                    ? 'bg-gradient-to-r from-[#760159] to-[#9E0277] text-[#FFE59E] shadow-xs'
                     : 'text-[#6B5740] hover:text-[#280619]'
                 }`}
                 aria-label="Grid view"
@@ -410,7 +410,7 @@ function ShopContent() {
                 onClick={() => setViewMode('list')}
                 className={`p-1.5 rounded-full transition-all cursor-pointer ${
                   viewMode === 'list'
-                    ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] shadow-xs'
+                    ? 'bg-gradient-to-r from-[#760159] to-[#9E0277] text-[#FFE59E] shadow-xs'
                     : 'text-[#6B5740] hover:text-[#280619]'
                 }`}
                 aria-label="List view"
@@ -455,7 +455,7 @@ function ShopContent() {
                     onClick={() => handleCategorySelect('')}
                     className={`w-full text-left px-3.5 py-2 rounded-xl text-xs font-semibold transition-all cursor-pointer ${
                       !selectedCategory
-                        ? 'bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] text-[#FFE59E] border border-[#D4AF37] shadow-sm'
+                        ? 'bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] text-[#FFE59E] border border-[#D4AF37] shadow-sm'
                         : 'text-[#2C1810] hover:bg-[#FFFDF9] border border-transparent hover:border-[#D4AF37]/50'
                     }`}
                   >
@@ -467,7 +467,7 @@ function ShopContent() {
                       onClick={() => handleCategorySelect(c.slug)}
                       className={`w-full text-left px-3.5 py-2 rounded-xl text-xs font-semibold transition-all flex items-center justify-between cursor-pointer ${
                         selectedCategory === c.slug
-                          ? 'bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] text-[#FFE59E] border border-[#D4AF37] shadow-sm'
+                          ? 'bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] text-[#FFE59E] border border-[#D4AF37] shadow-sm'
                           : 'text-[#2C1810] hover:bg-[#FFFDF9] border border-transparent hover:border-[#D4AF37]/50'
                       }`}
                     >
@@ -488,7 +488,7 @@ function ShopContent() {
                     onClick={() => handlePricePreset('', '799')}
                     className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
                       maxPrice === '799' && !minPrice
-                        ? 'border-[#D4AF37] bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] font-bold shadow-xs'
+                        ? 'border-[#D4AF37] bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] font-bold shadow-xs'
                         : 'border-[#D4AF37]/50 bg-[#FFFDF9] text-[#2C1810] hover:border-[#D4AF37]'
                     }`}
                   >
@@ -498,7 +498,7 @@ function ShopContent() {
                     onClick={() => handlePricePreset('800', '1499')}
                     className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
                       minPrice === '800' && maxPrice === '1499'
-                        ? 'border-[#D4AF37] bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] font-bold shadow-xs'
+                        ? 'border-[#D4AF37] bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] font-bold shadow-xs'
                         : 'border-[#D4AF37]/50 bg-[#FFFDF9] text-[#2C1810] hover:border-[#D4AF37]'
                     }`}
                   >
@@ -508,7 +508,7 @@ function ShopContent() {
                     onClick={() => handlePricePreset('1500', '2999')}
                     className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
                       minPrice === '1500' && maxPrice === '2999'
-                        ? 'border-[#D4AF37] bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] font-bold shadow-xs'
+                        ? 'border-[#D4AF37] bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] font-bold shadow-xs'
                         : 'border-[#D4AF37]/50 bg-[#FFFDF9] text-[#2C1810] hover:border-[#D4AF37]'
                     }`}
                   >
@@ -518,7 +518,7 @@ function ShopContent() {
                     onClick={() => handlePricePreset('3000', '')}
                     className={`p-2 rounded-xl border text-center transition-all cursor-pointer ${
                       minPrice === '3000' && !maxPrice
-                        ? 'border-[#D4AF37] bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] font-bold shadow-xs'
+                        ? 'border-[#D4AF37] bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] font-bold shadow-xs'
                         : 'border-[#D4AF37]/50 bg-[#FFFDF9] text-[#2C1810] hover:border-[#D4AF37]'
                     }`}
                   >
@@ -538,7 +538,7 @@ function ShopContent() {
                       type="checkbox"
                       checked={inStock}
                       onChange={(e) => setInStock(e.target.checked)}
-                      className="rounded text-[#380725] focus:ring-[#D4AF37] w-4 h-4 accent-[#380725]"
+                      className="rounded text-[#760159] focus:ring-[#D4AF37] w-4 h-4 accent-[#760159]"
                     />
                     <span>In Stock Only</span>
                   </label>
@@ -547,7 +547,7 @@ function ShopContent() {
                       type="checkbox"
                       checked={hasDiscount}
                       onChange={(e) => setHasDiscount(e.target.checked)}
-                      className="rounded text-[#380725] focus:ring-[#D4AF37] w-4 h-4 accent-[#380725]"
+                      className="rounded text-[#760159] focus:ring-[#D4AF37] w-4 h-4 accent-[#760159]"
                     />
                     <span>Special Offers & Discounts</span>
                   </label>
@@ -586,7 +586,7 @@ function ShopContent() {
               </div>
             ) : (
               <div className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] rounded-3xl border-2 border-[#D4AF37]/75 p-12 text-center space-y-4 shadow-[0_14px_34px_rgba(56,7,37,0.08)]">
-                <div className="mx-auto w-14 h-14 rounded-full bg-gradient-to-b from-[#380725] to-[#280619] border border-[#D4AF37] flex items-center justify-center shadow-md">
+                <div className="mx-auto w-14 h-14 rounded-full bg-gradient-to-b from-[#760159] to-[#280619] border border-[#D4AF37] flex items-center justify-center shadow-md">
                   <LotusIcon className="w-7 h-6 text-[#FFE59E]" />
                 </div>
                 <h3 className="font-serif text-xl font-bold text-[#280619]">
@@ -620,7 +620,7 @@ function ShopContent() {
                       }}
                       className={`w-9 h-9 rounded-full text-xs font-extrabold transition-all cursor-pointer ${
                         page === pNum
-                          ? 'bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] text-[#FFE59E] border-2 border-[#D4AF37] shadow-md scale-105'
+                          ? 'bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] text-[#FFE59E] border-2 border-[#D4AF37] shadow-md scale-105'
                           : 'bg-[#FFFDF9] border border-[#D4AF37]/50 text-[#2C1810] hover:border-[#D4AF37]'
                       }`}
                     >
@@ -652,7 +652,7 @@ function ShopContent() {
                 </div>
                 <button
                   onClick={() => setIsMobileFilterOpen(false)}
-                  className="p-1.5 rounded-full bg-[#380725] text-[#FFE59E] border border-[#D4AF37]/75"
+                  className="p-1.5 rounded-full bg-[#760159] text-[#FFE59E] border border-[#D4AF37]/75"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -671,7 +671,7 @@ function ShopContent() {
                     }}
                     className={`w-full text-left px-3.5 py-2 rounded-xl text-xs font-semibold ${
                       !selectedCategory
-                        ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border border-[#D4AF37] font-bold'
+                        ? 'bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] border border-[#D4AF37] font-bold'
                         : 'text-[#2C1810] bg-[#FFFDF9] border border-[#D4AF37]/40'
                     }`}
                   >
@@ -686,7 +686,7 @@ function ShopContent() {
                       }}
                       className={`w-full text-left px-3.5 py-2 rounded-xl text-xs font-semibold ${
                         selectedCategory === c.slug
-                          ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border border-[#D4AF37] font-bold'
+                          ? 'bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] border border-[#D4AF37] font-bold'
                           : 'text-[#2C1810] bg-[#FFFDF9] border border-[#D4AF37]/40'
                       }`}
                     >
@@ -773,7 +773,7 @@ export default function ShopPage() {
         <div className="min-h-screen bg-[#FDF6EC] flex items-center justify-center">
           <div className="text-center space-y-3">
             <LotusIcon className="w-10 h-8 mx-auto text-[#D4AF37] animate-pulse" />
-            <p className="text-xs font-serif text-[#280619]">Loading Royal Collections...</p>
+            <p className="text-xs font-serif text-[#280619]">Loading Collections...</p>
           </div>
         </div>
       }

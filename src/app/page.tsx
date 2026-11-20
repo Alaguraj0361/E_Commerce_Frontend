@@ -139,10 +139,10 @@ const GoldSectionHeader = ({
 }) => (
   <div className="flex flex-col items-center text-center mb-7 sm:mb-9 relative z-10">
     {badge && (
-      <span className="inline-flex items-center gap-2 px-4.5 py-1 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#FFE59E]/85 text-[10px] font-bold uppercase tracking-[0.25em] text-[#FFE59E] mb-2.5 shadow-[0_4px_14px_rgba(56,7,37,0.22)]">
-        <Sparkles className="w-3 h-3 text-[#FFE59E]" />
+      <span className="inline-flex items-center gap-2 px-4.5 py-1 rounded-full bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] border border-[#FFE59E]/85 text-[10px] font-sans font-bold uppercase tracking-[0.25em] text-[#FFE59E] mb-2.5 shadow-[0_4px_14px_rgba(56,7,37,0.22)]">
+        <Sparkles className="w-3 h-3 text-[#FFE59E] gold-flame-glow" />
         <span>{badge}</span>
-        <Sparkles className="w-3 h-3 text-[#FFE59E]" />
+        <Sparkles className="w-3 h-3 text-[#FFE59E] gold-flame-glow" />
       </span>
     )}
     <div className="flex items-center justify-center gap-3 sm:gap-5 w-full max-w-3xl">
@@ -154,7 +154,7 @@ const GoldSectionHeader = ({
         <span className="w-3 h-3 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#7A4B0E] border border-[#FFFDF9] shadow-xs shrink-0" />
       </div>
 
-      <h2 className="font-serif text-2xl sm:text-3xl lg:text-[36px] font-bold text-[#280619] tracking-tight px-2 drop-shadow-[0_1px_1px_rgba(255,255,255,0.95)]">
+      <h2 className="font-serif text-2xl sm:text-3xl lg:text-[34px] font-bold text-[#280619] tracking-wider uppercase px-2 drop-shadow-[0_1px_1px_rgba(255,255,255,0.95)]">
         {title}
       </h2>
 
@@ -563,7 +563,7 @@ const CategoryMedallionCard = ({ cat }: { cat: Category }) => {
       </div>
 
       {/* Overlapping 3D Double-Bordered Cream & Gold Ribbon Plaque */}
-      <div className="relative z-10 -mt-4 px-4 py-1.5 min-w-[126px] sm:min-w-[142px] max-w-[165px] rounded-full bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#E8D2AA] group-hover:from-[#4A0B32] group-hover:via-[#380725] group-hover:to-[#28041A] border-[1.5px] border-[#C8963E] shadow-[0_6px_16px_rgba(90,45,15,0.16)] transition-all">
+      <div className="relative z-10 -mt-4 px-4 py-1.5 min-w-[126px] sm:min-w-[142px] max-w-[165px] rounded-full bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#E8D2AA] group-hover:from-[#4A0B32] group-hover:via-[#760159] group-hover:to-[#28041A] border-[1.5px] border-[#C8963E] shadow-[0_6px_16px_rgba(90,45,15,0.16)] transition-all">
         <span className="block font-serif font-bold text-xs sm:text-[14px] text-[#23120B] group-hover:text-[#FFE59E] leading-tight truncate transition-colors">
           {cat.name}
         </span>
@@ -1133,7 +1133,7 @@ export default function HomePage() {
             className="relative w-full pt-3 pb-12 overflow-hidden"
             style={{
               background:
-                'radial-gradient(circle at 76% 36%, #8C4A12 0%, #520D38 38%, #2E041E 68%, #16010D 100%)',
+                'radial-gradient(circle at 76% 36%, #8C4A12 0%, #760159 38%, #4A0137 68%, #16010D 100%)',
             }}
           >
             {/* Multi-Point Warm Golden Palace Chandelier Bokeh Lights */}
@@ -1176,9 +1176,9 @@ export default function HomePage() {
                 />
                 <defs>
                   <linearGradient id="heroPurpleDrapeGrad" x1="0" y1="0" x2="380" y2="120" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#4E0835" />
-                    <stop offset="0.45" stopColor="#85165D" />
-                    <stop offset="0.8" stopColor="#42052B" />
+                    <stop stopColor="#760159" />
+                    <stop offset="0.45" stopColor="#9E0277" />
+                    <stop offset="0.8" stopColor="#54013F" />
                     <stop offset="1" stopColor="#240216" />
                   </linearGradient>
                   <linearGradient id="heroGoldTrimGrad" x1="0" y1="148" x2="450" y2="0" gradientUnits="userSpaceOnUse">
@@ -1460,7 +1460,7 @@ export default function HomePage() {
                       />
                       <div className="absolute inset-[3px] rounded-t-[48px] rounded-b-[14px] border border-[#FFF4C2]/65 pointer-events-none z-20" />
                       <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#1E0212]/90 via-[#1E0212]/40 to-transparent z-20 flex items-end justify-between px-2.5 pb-2.5">
-                        <span className="px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#FFE59E] font-serif font-bold text-[10.5px] text-[#FFE59E] shadow-md">
+                        <span className="px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#760159] via-[#940270] to-[#760159] border border-[#FFE59E] font-serif font-bold text-[10.5px] text-[#FFE59E] shadow-md">
                           {formatCurrency(activeHeroItem.price)}
                         </span>
                         <span className="text-[8.5px] font-bold uppercase tracking-wider text-[#FFFDF9] bg-[#240216]/85 px-2 py-0.5 rounded-full border border-[#D4AF37]/60">
@@ -1500,7 +1500,7 @@ export default function HomePage() {
                   className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-[#FFE59E]/75 font-serif font-bold text-[13.5px] text-[#FFFDF9] tracking-wide shadow-[inset_0_1px_2px_rgba(255,244,194,0.4)]"
                   style={{
                     background:
-                      'linear-gradient(180deg, #5B0E3D 0%, #380624 55%, #220215 100%)',
+                      'linear-gradient(180deg, #760159 0%, #54013F 55%, #220215 100%)',
                   }}
                 >
                   <span>Explore Collection</span>
@@ -1708,9 +1708,9 @@ export default function HomePage() {
                 />
                 <defs>
                   <linearGradient id="deskLeftPurpleDrape" x1="0" y1="0" x2="400" y2="150" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#520838" />
-                    <stop offset="0.45" stopColor="#8E1864" />
-                    <stop offset="0.8" stopColor="#42052B" />
+                    <stop stopColor="#760159" />
+                    <stop offset="0.45" stopColor="#9E0277" />
+                    <stop offset="0.8" stopColor="#54013F" />
                     <stop offset="1" stopColor="#240216" />
                   </linearGradient>
                   <linearGradient id="deskLeftGoldTrim" x1="0" y1="166" x2="485" y2="0" gradientUnits="userSpaceOnUse">
@@ -2019,7 +2019,7 @@ export default function HomePage() {
                         className="inline-flex items-center gap-3 px-9 lg:px-11 py-2.5 rounded-full border border-[#FFE59E]/85 font-serif font-bold text-base lg:text-[18px] text-[#FCE8C0] tracking-wide shadow-[inset_0_1px_3px_rgba(255,244,194,0.45)] whitespace-nowrap"
                         style={{
                           background:
-                            'linear-gradient(180deg, #5B0E3D 0%, #360422 55%, #1D0111 100%)',
+                            'linear-gradient(180deg, #760159 0%, #54013F 55%, #1D0111 100%)',
                         }}
                       >
                         <span>Explore Collection</span>
@@ -2144,7 +2144,7 @@ export default function HomePage() {
                     <Link
                       key={`desk-palace-img-${heroAnimTick}-${currentHeroSlide}`}
                       href={activeHeroItem.rawProduct ? `/product/${activeHeroItem.slug}` : '/shop'}
-                      className="relative w-full h-full rounded-t-[79px] rounded-b-[19.5px] overflow-hidden bg-[#2A0519] block group animate-hero-rise-in border border-[#380725]"
+                      className="relative w-full h-full rounded-t-[79px] rounded-b-[19.5px] overflow-hidden bg-[#2A0519] block group animate-hero-rise-in border border-[#760159]"
                     >
                       {/* Soft Ambient Blurred Backdrop Layer */}
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -2174,7 +2174,7 @@ export default function HomePage() {
 
                       {/* Bottom Royal Price & Slide Medallion */}
                       <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#16010D]/95 via-[#16010D]/60 to-transparent z-20 flex items-end justify-between px-5 pb-3.5">
-                        <span className="px-4 py-1 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#FFE59E] font-serif font-bold text-base text-[#FFE59E] shadow-lg">
+                        <span className="px-4 py-1 rounded-full bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] border border-[#FFE59E] font-serif font-bold text-base text-[#FFE59E] shadow-lg">
                           {formatCurrency(activeHeroItem.price)}
                         </span>
                         <span className="px-3.5 py-1 rounded-full bg-[#240216]/90 border border-[#D4AF37]/80 text-xs font-serif font-bold text-[#FFFDF9] tracking-wider">
@@ -2516,7 +2516,7 @@ export default function HomePage() {
         <RoyalCornerMandala className="hidden lg:block absolute top-0 right-4 w-28 h-28 -scale-x-100 pointer-events-none" />
 
         <GoldSectionHeader
-          badge="CURATED ROYAL COLLECTIONS"
+          badge="CURATED COLLECTIONS"
           title="Shop by Category"
           subtitle="Handpicked traditional & contemporary ensembles for every celebration"
         />
@@ -2834,7 +2834,7 @@ export default function HomePage() {
                       className="inline-flex items-center gap-2 px-5 py-2 rounded-full border border-[#D4AF37]/60 font-serif font-medium text-[12px] text-[#FFFDF9] tracking-wide"
                       style={{
                         background:
-                          'linear-gradient(180deg, #5B0E3D 0%, #380725 55%, #220215 100%)',
+                          'linear-gradient(180deg, #5B0E3D 0%, #760159 55%, #220215 100%)',
                       }}
                     >
                       <span>Explore All Stitching Services</span>
@@ -2882,7 +2882,7 @@ export default function HomePage() {
               {/* LEFT COLUMN (4 Cols): Royal Editorial Story, Guarantees & Dual CTAs */}
               <div className="lg:col-span-4 flex flex-col items-center lg:items-start text-center lg:text-left">
                 {/* Luxury Plum & 24K Gold Kicker Pill */}
-                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#D4AF37] shadow-[0_6px_16px_rgba(56,7,37,0.2)] mb-3">
+                <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] border border-[#D4AF37] shadow-[0_6px_16px_rgba(56,7,37,0.2)] mb-3">
                   <Scissors className="w-3.5 h-3.5 text-[#FFE59E] shrink-0" />
                   <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E]">
                     BESPOKE TAILORING ATELIER
@@ -2925,7 +2925,7 @@ export default function HomePage() {
                       key={item.lbl}
                       className="rounded-xl bg-[#FFFDF9]/90 border border-[#D4AF37]/65 px-2.5 py-2 text-center shadow-2xs"
                     >
-                      <span className="block font-serif font-bold text-sm text-[#380725] leading-tight">
+                      <span className="block font-serif font-bold text-sm text-[#760159] leading-tight">
                         {item.val}
                       </span>
                       <span className="block text-[9.5px] font-semibold text-[#7A542E] mt-0.5">
@@ -2939,7 +2939,7 @@ export default function HomePage() {
                 <div className="flex mt-5 flex-wrap items-center justify-center lg:justify-start gap-2.5">
                   <Link
                     href="/stitching-services"
-                    className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] hover:from-[#4E0B34] hover:to-[#280619] text-[#FFE59E] border-[1.5px] border-[#D4AF37] font-serif font-bold text-[13.5px] tracking-wide shadow-[0_10px_26px_rgba(56,7,37,0.3)] transition-all duration-300 hover:scale-105"
+                    className="group inline-flex items-center gap-2.5 px-7 py-3 rounded-full bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] hover:from-[#4E0B34] hover:to-[#280619] text-[#FFE59E] border-[1.5px] border-[#D4AF37] font-serif font-bold text-[13.5px] tracking-wide shadow-[0_10px_26px_rgba(56,7,37,0.3)] transition-all duration-300 hover:scale-105"
                   >
                     <span>Explore All Stitching Services</span>
                     <ArrowRight className="w-4 h-4 text-[#FFE59E] group-hover:translate-x-1 transition-transform" />
@@ -2970,7 +2970,7 @@ export default function HomePage() {
                   {/* Bottom Floating Royal Gold-on-Plum Plaque */}
                   <Link
                     href="/stitching-services/bridal-designer-blouses"
-                    className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border-[1.5px] border-[#FFE59E] text-[#FFE59E] text-[9.5px] font-bold uppercase tracking-[0.18em] shadow-lg hover:scale-105 transition-transform"
+                    className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] border-[1.5px] border-[#FFE59E] text-[#FFE59E] text-[9.5px] font-bold uppercase tracking-[0.18em] shadow-lg hover:scale-105 transition-transform"
                   >
                     <Sparkles className="w-3 h-3 text-[#FFE59E]" />
                     <span>Master Aari &amp; Bridal Fit</span>
@@ -2996,7 +2996,7 @@ export default function HomePage() {
                       href={card.href}
                       className="group/card relative rounded-2xl p-[1.5px] bg-gradient-to-b from-[#FFE59E] via-[#D4AF37] to-[#8C5818] shadow-[0_6px_16px_rgba(56,7,37,0.08)] hover:shadow-[0_14px_28px_rgba(56,7,37,0.2)] transition-all duration-300 hover:-translate-y-0.5"
                     >
-                      <div className="h-full rounded-[14.5px] bg-gradient-to-r from-[#FFFDF9] via-[#FFFDF9] to-[#FAF0DD] group-hover/card:from-[#380725] group-hover/card:via-[#4A0B32] group-hover/card:to-[#280619] p-2.5 flex items-center gap-3 transition-all duration-300">
+                      <div className="h-full rounded-[14.5px] bg-gradient-to-r from-[#FFFDF9] via-[#FFFDF9] to-[#FAF0DD] group-hover/card:from-[#760159] group-hover/card:via-[#4A0B32] group-hover/card:to-[#280619] p-2.5 flex items-center gap-3 transition-all duration-300">
                         {/* Mini Gold-Framed Garment Thumbnail */}
                         <div className="relative w-12 h-14 rounded-xl overflow-hidden bg-[#280619] border border-[#D4AF37] shrink-0 shadow-xs">
                           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -3021,7 +3021,7 @@ export default function HomePage() {
                         </div>
 
                         {/* Gold Arrow Medallion */}
-                        <span className="flex w-7 h-7 rounded-full bg-[#FAF0DD] group-hover/card:bg-gradient-to-b group-hover/card:from-[#FFF4C2] group-hover/card:to-[#D4AF37] border border-[#D4AF37]/75 items-center justify-center text-[#380725] shrink-0 transition-all group-hover/card:translate-x-0.5">
+                        <span className="flex w-7 h-7 rounded-full bg-[#FAF0DD] group-hover/card:bg-gradient-to-b group-hover/card:from-[#FFF4C2] group-hover/card:to-[#D4AF37] border border-[#D4AF37]/75 items-center justify-center text-[#760159] shrink-0 transition-all group-hover/card:translate-x-0.5">
                           <ArrowRight className="w-3.5 h-3.5" />
                         </span>
                       </div>
@@ -3124,14 +3124,14 @@ export default function HomePage() {
           {/* ============================================================= */}
           <div className="relative z-20 max-w-[1220px] mx-auto px-2 sm:px-8 -mb-5 sm:-mb-6">
             {/* Top-Center 24K Gold Diamond Clasp Connecting Header to Toolbar */}
-            <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#8C5818] border border-[#4A0830] shadow-xs" />
+            <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#8C5818] border border-[#760159] shadow-xs" />
 
             <div className="rounded-full p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_12px_28px_rgba(40,6,25,0.16)]">
               <div className="rounded-full bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EED9B3] px-2.5 sm:px-4 py-1.5 sm:py-2 flex items-center justify-between gap-2 border border-[#FFFDF9]/85">
                 {/* Left Group: Handpicked New Drops Pill + Verified Text + Custom Blouse Fit Gold Pill */}
                 <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                  {/* Dark Royal Plum Pill Badge with Hanger SVG */}
-                  <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] text-[#FFE59E] border-[1.5px] border-[#D4AF37] text-[9.5px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.13em] shadow-sm shrink-0">
+                  {/* Dark Royal Magenta Pill Badge with Hanger SVG */}
+                  <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#760159] via-[#54013F] to-[#300024] text-[#FFE59E] border-[1.5px] border-[#D4AF37] text-[9.5px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.13em] shadow-sm shrink-0">
                     <svg
                       viewBox="0 0 24 24"
                       fill="none"
@@ -3162,7 +3162,7 @@ export default function HomePage() {
                     href="/stitching-services"
                     className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-b from-[#FFF6D6] via-[#EED294] to-[#C8963E] hover:brightness-105 border border-[#8C5818] text-[11px] font-bold text-[#220915] shadow-xs transition-all shrink-0"
                   >
-                    <Scissors className="w-3.5 h-3.5 text-[#380725]" />
+                    <Scissors className="w-3.5 h-3.5 text-[#760159]" />
                     <span>Custom Blouse Fit</span>
                   </Link>
                 </div>
@@ -3177,7 +3177,7 @@ export default function HomePage() {
                           (prev - 1 + newArrivalProducts.length) % newArrivalProducts.length
                       )
                     }
-                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#760159] hover:to-[#54013F] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
                     aria-label="Previous new arrivals"
                   >
                     <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
@@ -3187,7 +3187,7 @@ export default function HomePage() {
                     onClick={() =>
                       setProdStartIndex((prev) => (prev + 1) % newArrivalProducts.length)
                     }
-                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#760159] hover:to-[#54013F] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
                     aria-label="Next new arrivals"
                   >
                     <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
@@ -3195,7 +3195,7 @@ export default function HomePage() {
 
                   <Link
                     href="/shop?sort=newest"
-                    className="group inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10.5px] sm:text-xs font-serif font-bold shadow-[0_4px_12px_rgba(40,6,25,0.25)] transition-all"
+                    className="group inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#760159] via-[#54013F] to-[#300024] hover:from-[#9E0277] hover:to-[#54013F] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10.5px] sm:text-xs font-serif font-bold shadow-[0_4px_12px_rgba(118,1,89,0.3)] transition-all"
                   >
                     <span>View All</span>
                     <span className="hidden sm:inline">New Arrivals</span>
@@ -3252,14 +3252,14 @@ export default function HomePage() {
                     return (
                       <div
                         key={`new-${prod._id}-${idx}`}
-                        className="group relative rounded-[20px] sm:rounded-[22px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_24px_rgba(40,6,25,0.14)] hover:shadow-[0_20px_42px_rgba(40,6,25,0.26)] transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                        className="group relative rounded-[20px] sm:rounded-[22px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_24px_rgba(40,6,25,0.14)] hover:shadow-[0_20px_42px_rgba(118,1,89,0.26)] transition-all duration-300 hover:-translate-y-1 flex flex-col"
                       >
                         {/* Top-Center 24K Gold Diamond Star Finial on Each Card */}
-                        <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-20 w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6816] border border-[#5B0E3D] shadow-2xs" />
+                        <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-20 w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6816] border border-[#760159] shadow-2xs" />
 
                         <div className="h-full rounded-[18px] sm:rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EED9B3] p-2 sm:p-2.5 flex flex-col justify-between relative">
                           {/* TALL ROYAL PORTRAIT IMAGE FRAME */}
-                          <div className="relative h-[195px] sm:h-[275px] xl:h-[295px] w-full rounded-[14px] sm:rounded-[16px] overflow-hidden bg-[#280619] border-[1.5px] border-[#D4AF37] shadow-inner">
+                          <div className="relative h-[195px] sm:h-[275px] xl:h-[295px] w-full rounded-[14px] sm:rounded-[16px] overflow-hidden bg-[#54013F] border-[1.5px] border-[#D4AF37] shadow-inner">
                             <Link href={`/product/${prod.slug}`} className="block w-full h-full">
                               {/* eslint-disable-next-line @next/next/no-img-element */}
                               <img
@@ -3275,9 +3275,9 @@ export default function HomePage() {
                               />
                             </Link>
 
-                            {/* Top-Left `✦ NEW #1` Royal Plum & Gold Pill */}
+                            {/* Top-Left `✦ NEW #1` Royal Magenta & Gold Pill */}
                             <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 z-20">
-                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] border border-[#D4AF37] text-[#FFE59E] text-[8px] sm:text-[9.5px] font-bold tracking-[0.08em] uppercase shadow-md">
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#760159] via-[#54013F] to-[#300024] border border-[#D4AF37] text-[#FFE59E] text-[8px] sm:text-[9.5px] font-bold tracking-[0.08em] uppercase shadow-md">
                                 <Sparkles className="w-2.5 h-2.5 text-[#FFE59E] fill-[#FFE59E]" />
                                 <span>NEW #{idx + 1}</span>
                               </span>
@@ -3293,13 +3293,13 @@ export default function HomePage() {
                               <Heart
                                 className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${inWish
                                   ? 'fill-rose-600 text-rose-600'
-                                  : 'fill-[#4A0830] text-[#4A0830]'
+                                  : 'fill-[#760159] text-[#760159]'
                                   }`}
                               />
                             </button>
 
-                            {/* Bottom-Right Dark Royal Plum & 24K Gold Oval Price Badge Inside Image */}
-                            <div className="absolute bottom-2 right-2 z-20 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#3D0626] via-[#240216] to-[#12000A] border-[1.5px] border-[#D4AF37] text-[#FFE59E] font-serif font-extrabold text-[11px] sm:text-[13.5px] shadow-[0_4px_12px_rgba(0,0,0,0.45)]">
+                            {/* Bottom-Right Dark Royal Magenta & 24K Gold Oval Price Badge Inside Image */}
+                            <div className="absolute bottom-2 right-2 z-20 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#760159] via-[#54013F] to-[#25001C] border-[1.5px] border-[#D4AF37] text-[#FFE59E] font-serif font-extrabold text-[11px] sm:text-[13.5px] shadow-[0_4px_12px_rgba(0,0,0,0.45)]">
                               {formatCurrency(prod.price)}
                             </div>
                           </div>
@@ -3320,7 +3320,7 @@ export default function HomePage() {
 
                               {/* Row 2: Bold Uppercase Serif Title */}
                               <Link href={`/product/${prod.slug}`} className="block mt-1.5">
-                                <h3 className="font-serif font-extrabold text-[11.5px] sm:text-[13.5px] uppercase tracking-tight text-[#1E0A10] group-hover:text-[#7A1138] transition-colors truncate">
+                                <h3 className="font-serif font-extrabold text-[11.5px] sm:text-[13.5px] uppercase tracking-tight text-[#1E0A10] group-hover:text-[#760159] transition-colors truncate">
                                   {prod.name}
                                 </h3>
                               </Link>
@@ -3345,7 +3345,7 @@ export default function HomePage() {
                                 <button
                                   type="button"
                                   onClick={(e) => handleAddToCart(prod, e)}
-                                  className="flex-1 py-1.5 sm:py-2 px-2.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10px] sm:text-[11px] font-serif font-bold flex items-center justify-center gap-1.5 shadow-[0_6px_14px_rgba(38,3,22,0.3)] cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+                                  className="flex-1 py-1.5 sm:py-2 px-2.5 rounded-full bg-gradient-to-b from-[#760159] via-[#8E016B] to-[#54013F] hover:from-[#9E0277] hover:to-[#760159] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10px] sm:text-[11px] font-serif font-bold flex items-center justify-center gap-1.5 shadow-[0_6px_14px_rgba(84,1,63,0.3)] cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
                                 >
                                   <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E] shrink-0" />
                                   <span className="truncate">Add to Cart</span>
@@ -3353,7 +3353,7 @@ export default function HomePage() {
 
                                 <Link
                                   href={`/product/${prod.slug}`}
-                                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#1E0A10] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all shrink-0"
+                                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#760159] hover:to-[#54013F] text-[#1E0A10] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all shrink-0"
                                   aria-label={`View ${prod.name}`}
                                 >
                                   <ArrowRight className="w-3.5 h-3.5 stroke-[2.2]" />
@@ -3375,11 +3375,11 @@ export default function HomePage() {
           {/* =============================================================== */}
           <div className="relative z-20 max-w-[1320px] mx-auto px-1 sm:px-4 -mt-3 sm:-mt-3.5">
             {/* Top-Center & Bottom-Center Ornate 24K Gold Diamond Clasps */}
-            <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
-            <span className="hidden sm:block absolute -bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
+            <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#760159] shadow-xs" />
+            <span className="hidden sm:block absolute -bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#760159] shadow-xs" />
 
-            <div className="rounded-2xl lg:rounded-full p-[2px] bg-gradient-to-r from-[#8C5818] via-[#FFE59E] to-[#8C5818] shadow-[0_16px_36px_rgba(32,2,18,0.32)]">
-              <div className="rounded-[14px] lg:rounded-full bg-gradient-to-b from-[#3D0626] via-[#260217] to-[#14000B] px-3.5 sm:px-6 py-2.5 sm:py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
+            <div className="rounded-2xl lg:rounded-full p-[2px] bg-gradient-to-r from-[#8C5818] via-[#FFE59E] to-[#8C5818] shadow-[0_16px_36px_rgba(84,1,63,0.32)]">
+              <div className="rounded-[14px] lg:rounded-full bg-gradient-to-b from-[#54013F] via-[#760159] to-[#3B012C] px-3.5 sm:px-6 py-2.5 sm:py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
                 {/* Left / Center 3 Gold-Icon Trust Pillars */}
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-5 text-[10.5px] sm:text-xs font-medium text-[#F8E7C8]">
                   <span className="inline-flex items-center gap-2">
@@ -3407,7 +3407,7 @@ export default function HomePage() {
                   href="/shop?sort=newest"
                   className="group inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-b from-[#FFF4B8] via-[#DFB752] to-[#9A6816] hover:brightness-105 border border-[#FFF6D6] text-[#1E0A10] font-serif font-extrabold text-[10.5px] sm:text-xs shadow-[0_4px_14px_rgba(0,0,0,0.4)] transition-all shrink-0"
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-[#3D0626] fill-[#3D0626]" />
+                  <Sparkles className="w-3.5 h-3.5 text-[#760159] fill-[#760159]" />
                   <span>Explore Complete New Arrivals Catalog</span>
                   <ArrowRight className="w-3.5 h-3.5 text-[#1E0A10] group-hover:translate-x-0.5 transition-transform" />
                 </Link>
@@ -3425,17 +3425,17 @@ export default function HomePage() {
         {/* MOBILE VIEW (sm:hidden): SHORT & GRAND ROYAL PALACE BANNER        */}
         {/* ================================================================= */}
         <div
-          className="sm:hidden relative rounded-[24px] p-[2.5px] shadow-[0_18px_42px_rgba(40,6,25,0.34)]"
+          className="sm:hidden relative rounded-[24px] p-[2.5px] shadow-[0_18px_42px_rgba(84,1,63,0.34)]"
           style={{
             background:
               'linear-gradient(90deg, #8C5818 0%, #FFE59E 25%, #D4AF37 50%, #FFE59E 75%, #8C5818 100%)',
           }}
         >
           {/* Top & Bottom Center Royal Diamond Studs */}
-          <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3 h-3 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#B88228] border border-[#380725] shadow-xs" />
-          <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-3 h-3 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#B88228] border border-[#380725] shadow-xs" />
+          <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3 h-3 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#B88228] border border-[#760159] shadow-xs" />
+          <span className="absolute -bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-3 h-3 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#B88228] border border-[#760159] shadow-xs" />
 
-          <div className="relative rounded-[21.5px] overflow-hidden bg-[#240316]">
+          <div className="relative rounded-[21.5px] overflow-hidden bg-[#54013F]">
             {/* Background Bride Portrait Positioned on Right + Smooth Left Royal Velvet Gradient */}
             <div className="absolute inset-0 w-full h-full z-0">
               <Image
@@ -3449,7 +3449,7 @@ export default function HomePage() {
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background:
-                    'linear-gradient(90deg, rgba(28, 2, 17, 0.96) 0%, rgba(44, 5, 27, 0.90) 48%, rgba(44, 5, 27, 0.28) 74%, rgba(24, 2, 14, 0.35) 100%)',
+                    'linear-gradient(90deg, rgba(84, 1, 63, 0.96) 0%, rgba(118, 1, 89, 0.90) 48%, rgba(118, 1, 89, 0.28) 74%, rgba(84, 1, 63, 0.35) 100%)',
                 }}
               />
             </div>
@@ -3466,7 +3466,7 @@ export default function HomePage() {
             <div className="relative z-10 p-4 pb-3">
               <div className="w-[68%] flex flex-col items-start text-left">
                 {/* Top Royal Muhurtham Crest Pill */}
-                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#380725]/95 border border-[#FFE59E]/85 mb-1.5 shadow-sm">
+                <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#760159]/95 border border-[#FFE59E]/85 mb-1.5 shadow-sm">
                   <Sparkles className="w-2.5 h-2.5 text-[#FFE59E]" />
                   <span className="text-[8px] font-bold tracking-[0.18em] text-[#FFE59E] uppercase">
                     CELEBRATE IN STYLE
@@ -3501,7 +3501,7 @@ export default function HomePage() {
                     <Link
                       key={item.title}
                       href={item.href}
-                      className="flex items-center gap-1 px-2 py-1 rounded-full bg-[#380725]/90 border border-[#D4AF37]/75 text-[8.5px] font-serif font-semibold text-[#FFE59E] truncate shadow-2xs"
+                      className="flex items-center gap-1 px-2 py-1 rounded-full bg-[#760159]/90 border border-[#D4AF37]/75 text-[8.5px] font-serif font-semibold text-[#FFE59E] truncate shadow-2xs"
                     >
                       <span className="w-1 h-1 rounded-full bg-[#FFE59E] shrink-0" />
                       <span className="truncate">{item.title}</span>
@@ -3521,7 +3521,7 @@ export default function HomePage() {
 
                   <Link
                     href="/stitching-services"
-                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#380725]/90 text-[#FFE59E] border border-[#D4AF37] font-serif font-bold text-[10px] shadow-sm shrink-0"
+                    className="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[#760159]/90 text-[#FFE59E] border border-[#D4AF37] font-serif font-bold text-[10px] shadow-sm shrink-0"
                   >
                     <Scissors className="w-2.5 h-2.5 text-[#FFE59E]" />
                     <span>Stitching</span>
@@ -3541,7 +3541,7 @@ export default function HomePage() {
                   return (
                     <div
                       key={i}
-                      className="flex items-center justify-center gap-1 px-1.5 py-1 rounded-lg bg-[#240316]/85 border border-[#D4AF37]/55"
+                      className="flex items-center justify-center gap-1 px-1.5 py-1 rounded-lg bg-[#54013F]/85 border border-[#D4AF37]/55"
                     >
                       <IconComp className="w-2.5 h-2.5 text-[#FFE59E] shrink-0" />
                       <span className="text-[8px] font-serif font-bold text-[#FFFDF9] truncate">
@@ -3559,17 +3559,17 @@ export default function HomePage() {
         {/* TABLET & DESKTOP VIEW (hidden sm:block): FULL PALACE MASTERPIECE  */}
         {/* ================================================================= */}
         <div
-          className="hidden sm:block relative rounded-[32px] p-[3px] shadow-[0_26px_65px_rgba(40,6,25,0.34)]"
+          className="hidden sm:block relative rounded-[32px] p-[3px] shadow-[0_26px_65px_rgba(84,1,63,0.34)]"
           style={{
             background:
               'linear-gradient(90deg, #8C5818 0%, #FFE59E 25%, #D4AF37 50%, #FFE59E 75%, #8C5818 100%)',
           }}
         >
           {/* Top & Bottom Center Royal Diamond Studs */}
-          <span className="hidden sm:block absolute -top-2 left-1/2 -translate-x-1/2 z-30 w-4 h-4 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#B88228] border-[1.5px] border-[#380725] shadow-md" />
-          <span className="hidden sm:block absolute -bottom-2 left-1/2 -translate-x-1/2 z-30 w-4 h-4 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#B88228] border-[1.5px] border-[#380725] shadow-md" />
+          <span className="hidden sm:block absolute -top-2 left-1/2 -translate-x-1/2 z-30 w-4 h-4 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#B88228] border-[1.5px] border-[#760159] shadow-md" />
+          <span className="hidden sm:block absolute -bottom-2 left-1/2 -translate-x-1/2 z-30 w-4 h-4 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#B88228] border-[1.5px] border-[#760159] shadow-md" />
 
-          <div className="relative rounded-[29px] overflow-hidden bg-[#240316] min-h-[410px] sm:min-h-[460px] lg:min-h-[500px] flex items-center">
+          <div className="relative rounded-[29px] overflow-hidden bg-[#54013F] min-h-[410px] sm:min-h-[460px] lg:min-h-[500px] flex items-center">
             {/* Seamless 1920x640 Panoramic HD Festive Masterpiece + Smooth Royal Velvet Gradient */}
             <div className="absolute inset-0 w-full h-full z-0">
               <Image
@@ -3579,12 +3579,12 @@ export default function HomePage() {
                 unoptimized
                 className="object-cover object-[center_top]"
               />
-              {/* Seamless Multi-Stop Royal Plum Velvet Overlay (No Hard Vertical Cut) */}
+              {/* Seamless Multi-Stop Royal Magenta Velvet Overlay (No Hard Vertical Cut) */}
               <div
                 className="absolute inset-0 pointer-events-none"
                 style={{
                   background:
-                    'linear-gradient(90deg, rgba(28, 2, 17, 0.96) 0%, rgba(44, 5, 27, 0.90) 36%, rgba(44, 5, 27, 0.32) 60%, rgba(28, 2, 17, 0.15) 74%, rgba(24, 2, 14, 0.78) 100%)',
+                    'linear-gradient(90deg, rgba(84, 1, 63, 0.96) 0%, rgba(118, 1, 89, 0.90) 36%, rgba(118, 1, 89, 0.32) 60%, rgba(84, 1, 63, 0.15) 74%, rgba(59, 1, 44, 0.78) 100%)',
                 }}
               />
               {/* Subtle Top & Bottom Golden Temple Glow */}
@@ -3610,7 +3610,7 @@ export default function HomePage() {
               {/* Left Grand Festive Editorial Stage */}
               <div className="w-full lg:w-[52%] flex flex-col items-center lg:items-start text-center lg:text-left">
                 {/* Top Royal Muhurtham Crest Pill */}
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#380725]/95 border border-[#FFE59E]/90 mb-3.5 shadow-[0_8px_22px_rgba(0,0,0,0.45)]">
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#760159]/95 border border-[#FFE59E]/90 mb-3.5 shadow-[0_8px_22px_rgba(0,0,0,0.45)]">
                   <Sparkles className="w-3.5 h-3.5 text-[#FFE59E]" />
                   <span className="text-[10px] sm:text-[11px] font-bold tracking-[0.24em] text-[#FFE59E] uppercase">
                     CELEBRATE IN STYLE • ROYAL FESTIVE EDIT
@@ -3666,7 +3666,7 @@ export default function HomePage() {
                     <Link
                       key={item.title}
                       href={item.href}
-                      className="group flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-2xl bg-[#380725]/85 hover:bg-[#5B0E3D] border border-[#D4AF37]/80 shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all hover:-translate-y-0.5 text-left"
+                      className="group flex items-center justify-between gap-2 px-3.5 py-2.5 rounded-2xl bg-[#760159]/85 hover:bg-[#9E0277] border border-[#D4AF37]/80 shadow-[0_8px_20px_rgba(0,0,0,0.35)] transition-all hover:-translate-y-0.5 text-left"
                     >
                       <div className="min-w-0">
                         <span className="block font-serif font-bold text-xs sm:text-[13.5px] text-[#FFE59E] group-hover:text-white truncate">
@@ -3676,7 +3676,7 @@ export default function HomePage() {
                           {item.sub}
                         </span>
                       </div>
-                      <span className="w-6 h-6 rounded-full bg-[#D4AF37]/20 group-hover:bg-[#FFE59E] text-[#FFE59E] group-hover:text-[#280619] border border-[#D4AF37]/70 flex items-center justify-center shrink-0 transition-colors">
+                      <span className="w-6 h-6 rounded-full bg-[#D4AF37]/20 group-hover:bg-[#FFE59E] text-[#FFE59E] group-hover:text-[#760159] border border-[#D4AF37]/70 flex items-center justify-center shrink-0 transition-colors">
                         <ArrowRight className="w-3 h-3" />
                       </span>
                     </Link>
@@ -3695,7 +3695,7 @@ export default function HomePage() {
 
                   <Link
                     href="/stitching-services"
-                    className="group inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-full bg-[#380725]/90 hover:bg-[#5B0E3D] text-[#FFE59E] border-[1.5px] border-[#D4AF37] font-serif font-bold text-xs sm:text-sm shadow-[0_8px_22px_rgba(0,0,0,0.45)] backdrop-blur-md transition-all hover:scale-105"
+                    className="group inline-flex items-center gap-2 px-5 sm:px-6 py-3 rounded-full bg-[#760159]/90 hover:bg-[#9E0277] text-[#FFE59E] border-[1.5px] border-[#D4AF37] font-serif font-bold text-xs sm:text-sm shadow-[0_8px_22px_rgba(0,0,0,0.45)] backdrop-blur-md transition-all hover:scale-105"
                   >
                     <Scissors className="w-3.5 h-3.5 text-[#FFE59E]" />
                     <span>Book Festive Stitching</span>
@@ -3731,9 +3731,9 @@ export default function HomePage() {
                   return (
                     <div
                       key={i}
-                      className="group flex items-center gap-3 p-2.5 sm:p-3 rounded-2xl bg-[#240316]/90 hover:bg-[#380725] backdrop-blur-md border-[1.5px] border-[#D4AF37] shadow-[0_12px_28px_rgba(0,0,0,0.55)] transition-all duration-300 hover:-translate-x-1"
+                      className="group flex items-center gap-3 p-2.5 sm:p-3 rounded-2xl bg-[#54013F]/90 hover:bg-[#760159] backdrop-blur-md border-[1.5px] border-[#D4AF37] shadow-[0_12px_28px_rgba(0,0,0,0.55)] transition-all duration-300 hover:-translate-x-1"
                     >
-                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] text-[#240316] flex items-center justify-center shadow-md shrink-0 group-hover:scale-105 transition-transform">
+                      <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] text-[#54013F] flex items-center justify-center shadow-md shrink-0 group-hover:scale-105 transition-transform">
                         <IconComp className="w-4 h-4 stroke-[2.2]" />
                       </div>
                       <div className="min-w-0 text-left">
@@ -3831,14 +3831,14 @@ export default function HomePage() {
           {/* ============================================================= */}
           <div className="relative z-20 max-w-[1220px] mx-auto px-2 sm:px-8 -mb-5 sm:-mb-6">
             {/* Top-Center 24K Gold Diamond Clasp Connecting Header to Toolbar */}
-            <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#8C5818] border border-[#4A0830] shadow-xs" />
+            <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#8C5818] border border-[#760159] shadow-xs" />
 
             <div className="rounded-full p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_12px_28px_rgba(40,6,25,0.16)]">
               <div className="rounded-full bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EED9B3] px-2.5 sm:px-4 py-1.5 sm:py-2 flex items-center justify-between gap-2 border border-[#FFFDF9]/85">
                 {/* Left Group: Top Customer Favorites Pill + Verified Text + Custom Blouse Fit Gold Pill */}
                 <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                  {/* Dark Royal Plum Pill Badge with Crown Icon */}
-                  <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] text-[#FFE59E] border-[1.5px] border-[#D4AF37] text-[9.5px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.13em] shadow-sm shrink-0">
+                  {/* Dark Royal Magenta Pill Badge with Crown Icon */}
+                  <span className="inline-flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#760159] via-[#54013F] to-[#300024] text-[#FFE59E] border-[1.5px] border-[#D4AF37] text-[9.5px] sm:text-[11px] font-bold uppercase tracking-[0.1em] sm:tracking-[0.13em] shadow-sm shrink-0">
                     <Crown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-[#FFE59E] fill-[#D4AF37] shrink-0" />
                     <span className="sm:hidden">Top Favorites</span>
                     <span className="hidden sm:inline">Top Customer Favorites</span>
@@ -3859,7 +3859,7 @@ export default function HomePage() {
                     href="/stitching-services"
                     className="hidden xl:inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-gradient-to-b from-[#FFF6D6] via-[#EED294] to-[#C8963E] hover:brightness-105 border border-[#8C5818] text-[11px] font-bold text-[#220915] shadow-xs transition-all shrink-0"
                   >
-                    <Scissors className="w-3.5 h-3.5 text-[#380725]" />
+                    <Scissors className="w-3.5 h-3.5 text-[#760159]" />
                     <span>Custom Blouse Fit</span>
                   </Link>
                 </div>
@@ -3874,7 +3874,7 @@ export default function HomePage() {
                           (prev - 1 + bestSellerProducts.length) % bestSellerProducts.length
                       )
                     }
-                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#760159] hover:to-[#54013F] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
                     aria-label="Previous best sellers"
                   >
                     <ChevronLeft className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
@@ -3886,7 +3886,7 @@ export default function HomePage() {
                         (prev) => (prev + 1) % bestSellerProducts.length
                       )
                     }
-                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
+                    className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#760159] hover:to-[#54013F] text-[#220915] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all cursor-pointer"
                     aria-label="Next best sellers"
                   >
                     <ChevronRight className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
@@ -3894,7 +3894,7 @@ export default function HomePage() {
 
                   <Link
                     href="/shop"
-                    className="group inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10.5px] sm:text-xs font-serif font-bold shadow-[0_4px_12px_rgba(40,6,25,0.25)] transition-all"
+                    className="group inline-flex items-center gap-1.5 px-3.5 sm:px-5 py-1 sm:py-1.5 rounded-full bg-gradient-to-b from-[#760159] via-[#54013F] to-[#300024] hover:from-[#9E0277] hover:to-[#54013F] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10.5px] sm:text-xs font-serif font-bold shadow-[0_4px_12px_rgba(118,1,89,0.3)] transition-all"
                   >
                     <span>View All</span>
                     <span className="hidden sm:inline">Best Sellers</span>
@@ -3951,14 +3951,14 @@ export default function HomePage() {
                     return (
                       <div
                         key={`best-${prod._id}-${idx}`}
-                        className="group relative rounded-[20px] sm:rounded-[22px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_24px_rgba(40,6,25,0.14)] hover:shadow-[0_20px_42px_rgba(40,6,25,0.26)] transition-all duration-300 hover:-translate-y-1 flex flex-col"
+                        className="group relative rounded-[20px] sm:rounded-[22px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_24px_rgba(40,6,25,0.14)] hover:shadow-[0_20px_42px_rgba(118,1,89,0.26)] transition-all duration-300 hover:-translate-y-1 flex flex-col"
                       >
                         {/* Top-Center 24K Gold Diamond Star Finial on Each Card */}
-                        <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-20 w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6816] border border-[#5B0E3D] shadow-2xs" />
+                        <span className="absolute -top-1.5 left-1/2 -translate-x-1/2 z-20 w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6816] border border-[#760159] shadow-2xs" />
 
                         <div className="h-full rounded-[18px] sm:rounded-[20px] bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DC] to-[#EED9B3] p-2 sm:p-2.5 flex flex-col justify-between relative">
                           {/* TALL ROYAL PORTRAIT IMAGE FRAME */}
-                          <div className="relative h-[195px] sm:h-[275px] xl:h-[295px] w-full rounded-[14px] sm:rounded-[16px] overflow-hidden bg-[#280619] border-[1.5px] border-[#D4AF37] shadow-inner">
+                          <div className="relative h-[195px] sm:h-[275px] xl:h-[295px] w-full rounded-[14px] sm:rounded-[16px] overflow-hidden bg-[#54013F] border-[1.5px] border-[#D4AF37] shadow-inner">
                             <Link href={`/product/${prod.slug}`} className="block w-full h-full">
                               {/* eslint-disable-next-line @next/next/no-img-element */}
                               <img
@@ -3974,9 +3974,9 @@ export default function HomePage() {
                               />
                             </Link>
 
-                            {/* Top-Left `✦ TOP #1` Royal Plum & Gold Pill */}
+                            {/* Top-Left `✦ TOP #1` Royal Magenta & Gold Pill */}
                             <div className="absolute top-2 left-2 sm:top-2.5 sm:left-2.5 z-20">
-                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] border border-[#D4AF37] text-[#FFE59E] text-[8px] sm:text-[9.5px] font-bold tracking-[0.08em] uppercase shadow-md">
+                              <span className="inline-flex items-center gap-1 px-2.5 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#760159] via-[#54013F] to-[#300024] border border-[#D4AF37] text-[#FFE59E] text-[8px] sm:text-[9.5px] font-bold tracking-[0.08em] uppercase shadow-md">
                                 <Sparkles className="w-2.5 h-2.5 text-[#FFE59E] fill-[#FFE59E]" />
                                 <span>TOP #{idx + 1}</span>
                               </span>
@@ -3992,13 +3992,13 @@ export default function HomePage() {
                               <Heart
                                 className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${inWish
                                   ? 'fill-rose-600 text-rose-600'
-                                  : 'fill-[#4A0830] text-[#4A0830]'
+                                  : 'fill-[#760159] text-[#760159]'
                                   }`}
                               />
                             </button>
 
-                            {/* Bottom-Right Dark Royal Plum & 24K Gold Oval Price Badge Inside Image */}
-                            <div className="absolute bottom-2 right-2 z-20 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#3D0626] via-[#240216] to-[#12000A] border-[1.5px] border-[#D4AF37] text-[#FFE59E] font-serif font-extrabold text-[11px] sm:text-[13.5px] shadow-[0_4px_12px_rgba(0,0,0,0.45)]">
+                            {/* Bottom-Right Dark Royal Magenta & 24K Gold Oval Price Badge Inside Image */}
+                            <div className="absolute bottom-2 right-2 z-20 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-gradient-to-b from-[#760159] via-[#54013F] to-[#25001C] border-[1.5px] border-[#D4AF37] text-[#FFE59E] font-serif font-extrabold text-[11px] sm:text-[13.5px] shadow-[0_4px_12px_rgba(0,0,0,0.45)]">
                               {formatCurrency(prod.price)}
                             </div>
                           </div>
@@ -4019,7 +4019,7 @@ export default function HomePage() {
 
                               {/* Row 2: Bold Uppercase Serif Title */}
                               <Link href={`/product/${prod.slug}`} className="block mt-1.5">
-                                <h3 className="font-serif font-extrabold text-[11.5px] sm:text-[13.5px] uppercase tracking-tight text-[#1E0A10] group-hover:text-[#7A1138] transition-colors truncate">
+                                <h3 className="font-serif font-extrabold text-[11.5px] sm:text-[13.5px] uppercase tracking-tight text-[#1E0A10] group-hover:text-[#760159] transition-colors truncate">
                                   {prod.name}
                                 </h3>
                               </Link>
@@ -4044,7 +4044,7 @@ export default function HomePage() {
                                 <button
                                   type="button"
                                   onClick={(e) => handleAddToCart(prod, e)}
-                                  className="flex-1 py-1.5 sm:py-2 px-2.5 rounded-full bg-gradient-to-b from-[#4A0830] via-[#2B031B] to-[#16000D] hover:from-[#5B0E3D] hover:to-[#280619] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10px] sm:text-[11px] font-serif font-bold flex items-center justify-center gap-1.5 shadow-[0_6px_14px_rgba(38,3,22,0.3)] cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
+                                  className="flex-1 py-1.5 sm:py-2 px-2.5 rounded-full bg-gradient-to-b from-[#760159] via-[#8E016B] to-[#54013F] hover:from-[#9E0277] hover:to-[#760159] text-[#FFFDF9] border-[1.5px] border-[#D4AF37] text-[10px] sm:text-[11px] font-serif font-bold flex items-center justify-center gap-1.5 shadow-[0_6px_14px_rgba(84,1,63,0.3)] cursor-pointer transition-all hover:scale-[1.02] active:scale-95"
                                 >
                                   <ShoppingBag className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#FFE59E] shrink-0" />
                                   <span className="truncate">Add to Cart</span>
@@ -4052,7 +4052,7 @@ export default function HomePage() {
 
                                 <Link
                                   href={`/product/${prod.slug}`}
-                                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#4A0830] hover:to-[#1E0112] text-[#1E0A10] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all shrink-0"
+                                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-gradient-to-b from-[#FFFDF9] to-[#F1DFBD] hover:from-[#760159] hover:to-[#54013F] text-[#1E0A10] hover:text-[#FFE59E] border-[1.5px] border-[#D4AF37] flex items-center justify-center shadow-xs transition-all shrink-0"
                                   aria-label={`View ${prod.name}`}
                                 >
                                   <ArrowRight className="w-3.5 h-3.5 stroke-[2.2]" />
@@ -4074,11 +4074,11 @@ export default function HomePage() {
           {/* =============================================================== */}
           <div className="relative z-20 max-w-[1320px] mx-auto px-1 sm:px-4 -mt-3 sm:-mt-3.5">
             {/* Top-Center & Bottom-Center Ornate 24K Gold Diamond Clasps */}
-            <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
-            <span className="hidden sm:block absolute -bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#3D0626] shadow-xs" />
+            <span className="hidden sm:block absolute -top-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#760159] shadow-xs" />
+            <span className="hidden sm:block absolute -bottom-1.5 left-1/2 -translate-x-1/2 z-30 w-3.5 h-3.5 rotate-45 bg-gradient-to-br from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] border border-[#760159] shadow-xs" />
 
-            <div className="rounded-2xl lg:rounded-full p-[2px] bg-gradient-to-r from-[#8C5818] via-[#FFE59E] to-[#8C5818] shadow-[0_16px_36px_rgba(32,2,18,0.32)]">
-              <div className="rounded-[14px] lg:rounded-full bg-gradient-to-b from-[#3D0626] via-[#260217] to-[#14000B] px-3.5 sm:px-6 py-2.5 sm:py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
+            <div className="rounded-2xl lg:rounded-full p-[2px] bg-gradient-to-r from-[#8C5818] via-[#FFE59E] to-[#8C5818] shadow-[0_16px_36px_rgba(84,1,63,0.32)]">
+              <div className="rounded-[14px] lg:rounded-full bg-gradient-to-b from-[#54013F] via-[#760159] to-[#3B012C] px-3.5 sm:px-6 py-2.5 sm:py-3 flex flex-col lg:flex-row items-center justify-between gap-3">
                 {/* Left / Center 3 Gold-Icon Trust Pillars */}
                 <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 sm:gap-5 text-[10.5px] sm:text-xs font-medium text-[#F8E7C8]">
                   <span className="inline-flex items-center gap-2">
@@ -4106,7 +4106,7 @@ export default function HomePage() {
                   href="/shop"
                   className="group inline-flex items-center gap-2 px-4 sm:px-5 py-1.5 sm:py-2 rounded-full bg-gradient-to-b from-[#FFF4B8] via-[#DFB752] to-[#9A6816] hover:brightness-105 border border-[#FFF6D6] text-[#1E0A10] font-serif font-extrabold text-[10.5px] sm:text-xs shadow-[0_4px_14px_rgba(0,0,0,0.4)] transition-all shrink-0"
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-[#3D0626] fill-[#3D0626]" />
+                  <Sparkles className="w-3.5 h-3.5 text-[#760159] fill-[#760159]" />
                   <span>Explore Complete Best Sellers Catalog</span>
                   <ArrowRight className="w-3.5 h-3.5 text-[#1E0A10] group-hover:translate-x-0.5 transition-transform" />
                 </Link>
@@ -4580,17 +4580,17 @@ export default function HomePage() {
                           {/* Bottom Sculpted 3D Royal Plum & 24K Gold Capsule Bar with Heart + Uppercase Title */}
                           <div className="absolute inset-x-1.5 sm:inset-x-2 bottom-1.5 sm:bottom-2 z-20">
                             <div
-                              className="relative rounded-full p-[1.8px] shadow-[0_8px_18px_rgba(14,1,8,0.82)]"
+                              className="relative rounded-full p-[1.8px] shadow-[0_8px_18px_rgba(118,1,89,0.82)]"
                               style={{
                                 background:
-                                  'linear-gradient(90deg, #9E6B18 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #9E6B18 100%)',
+                                  'linear-gradient(90deg, #760159 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #760159 100%)',
                               }}
                             >
                               <div
                                 className="px-2.5 py-1.5 rounded-full border border-[#FFE59E]/45 flex items-center gap-1.5 shadow-[inset_0_1px_2px_rgba(255,244,194,0.38)]"
                                 style={{
                                   background:
-                                    'linear-gradient(180deg, #560B37 0%, #2D031B 58%, #16010D 100%)',
+                                    'linear-gradient(180deg, #760159 0%, #54013F 58%, #220215 100%)',
                                 }}
                               >
                                 <button
@@ -4646,17 +4646,17 @@ export default function HomePage() {
                 href="https://www.instagram.com/nalmarafashion"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative rounded-full p-[3.5px] shadow-[0_14px_32px_rgba(42,4,26,0.48)] hover:scale-105 active:scale-95 transition-transform shrink-0"
+                className="group relative rounded-full p-[3.5px] shadow-[0_14px_32px_rgba(118,1,89,0.48)] hover:scale-105 active:scale-95 transition-transform shrink-0"
                 style={{
                   background:
-                    'linear-gradient(90deg, #9E6B18 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #9E6B18 100%)',
+                    'linear-gradient(90deg, #760159 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #760159 100%)',
                 }}
               >
                 <span
                   className="inline-flex items-center gap-2.5 px-7 sm:px-10 py-2 sm:py-2.5 rounded-full border border-[#FFE59E]/85 font-serif font-bold text-sm sm:text-base lg:text-[18.5px] text-[#FFFDF9] tracking-wide shadow-[inset_0_1px_3px_rgba(255,244,194,0.5)]"
                   style={{
                     background:
-                      'linear-gradient(180deg, #5E0E3F 0%, #360422 55%, #1B0110 100%)',
+                      'linear-gradient(180deg, #760159 0%, #54013F 55%, #220215 100%)',
                   }}
                 >
                   <Instagram className="w-4.5 h-4.5 sm:w-5 sm:h-5 text-[#FFFDF9] stroke-[2.2]" />
@@ -5096,17 +5096,17 @@ export default function HomePage() {
                 href={googleMeta.googleReviewUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative rounded-full p-[3px] shadow-[0_14px_32px_rgba(42,4,26,0.42)] hover:scale-105 active:scale-95 transition-transform shrink-0"
+                className="group relative rounded-full p-[3px] shadow-[0_14px_32px_rgba(118,1,89,0.42)] hover:scale-105 active:scale-95 transition-transform shrink-0"
                 style={{
                   background:
-                    'linear-gradient(90deg, #9E6B18 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #9E6B18 100%)',
+                    'linear-gradient(90deg, #760159 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #760159 100%)',
                 }}
               >
                 <span
                   className="inline-flex items-center gap-2.5 px-6 sm:px-9 py-2 sm:py-2.5 rounded-full border border-[#FFE59E]/85 font-serif font-bold text-xs sm:text-base text-[#FFFDF9] tracking-wide shadow-[inset_0_1px_3px_rgba(255,244,194,0.5)]"
                   style={{
                     background:
-                      'linear-gradient(180deg, #5E0E3F 0%, #360422 55%, #1B0110 100%)',
+                      'linear-gradient(180deg, #760159 0%, #54013F 55%, #220215 100%)',
                   }}
                 >
                   <Star className="w-4 h-4 fill-[#FFE59E] text-[#FFE59E]" />
@@ -5231,17 +5231,17 @@ export default function HomePage() {
                 </div>
 
                 <div
-                  className="rounded-full p-[2.5px] shadow-[0_8px_22px_rgba(42,4,26,0.32)] shrink-0"
+                  className="rounded-full p-[2.5px] shadow-[0_8px_22px_rgba(118,1,89,0.32)] shrink-0"
                   style={{
                     background:
-                      'linear-gradient(90deg, #9E6B18 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #9E6B18 100%)',
+                      'linear-gradient(90deg, #760159 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #760159 100%)',
                   }}
                 >
                   <div
                     className="px-5 sm:px-7 py-1.5 rounded-full border border-[#FFE59E]/75 flex items-center gap-2.5 shadow-[inset_0_1px_2px_rgba(255,244,194,0.45)]"
                     style={{
                       background:
-                        'linear-gradient(180deg, #5B0E3D 0%, #360422 55%, #1D0111 100%)',
+                        'linear-gradient(180deg, #760159 0%, #54013F 55%, #220215 100%)',
                     }}
                   >
                     <span className="text-[#FFE59E] text-xs">✦</span>
@@ -5453,17 +5453,17 @@ export default function HomePage() {
               {/* Overlapping Top Scalloped Royal Plum & 24K Gold Header Plaque */}
               <div className="absolute top-0 left-1/2 -translate-x-1/2 z-30 w-[90%] max-w-[430px]">
                 <div
-                  className="rounded-full p-[2.5px] shadow-[0_10px_24px_rgba(42,4,26,0.38)]"
+                  className="rounded-full p-[2.5px] shadow-[0_10px_24px_rgba(118,1,89,0.38)]"
                   style={{
                     background:
-                      'linear-gradient(90deg, #9E6B18 0%, #FFE59E 25%, #FFFDF9 50%, #FFE59E 75%, #9E6B18 100%)',
+                      'linear-gradient(90deg, #760159 0%, #FFE59E 25%, #FFFDF9 50%, #FFE59E 75%, #760159 100%)',
                   }}
                 >
                   <div
                     className="px-5 py-2 rounded-full border border-[#FFE59E]/70 text-center shadow-[inset_0_1px_2px_rgba(255,244,194,0.45)] flex items-center justify-center gap-2"
                     style={{
                       background:
-                        'linear-gradient(180deg, #5B0E3D 0%, #380524 55%, #1E0112 100%)',
+                        'linear-gradient(180deg, #760159 0%, #54013F 55%, #220215 100%)',
                     }}
                   >
                     <span className="text-[#FFE59E] text-xs">✦</span>
@@ -5605,17 +5605,17 @@ export default function HomePage() {
 
             <Link
               href="/contact"
-              className="group relative rounded-full p-[3px] shadow-[0_14px_32px_rgba(42,4,26,0.42)] hover:scale-105 active:scale-95 transition-transform shrink-0"
+              className="group relative rounded-full p-[3px] shadow-[0_14px_32px_rgba(118,1,89,0.42)] hover:scale-105 active:scale-95 transition-transform shrink-0"
               style={{
                 background:
-                  'linear-gradient(90deg, #9E6B18 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #9E6B18 100%)',
+                  'linear-gradient(90deg, #760159 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #760159 100%)',
               }}
             >
               <span
                 className="inline-flex items-center gap-3 px-6 sm:px-9 py-2.5 sm:py-3 rounded-full border border-[#FFE59E]/85 shadow-[inset_0_1px_3px_rgba(255,244,194,0.5)]"
                 style={{
                   background:
-                    'linear-gradient(180deg, #5E0E3F 0%, #360422 55%, #1B0110 100%)',
+                    'linear-gradient(180deg, #760159 0%, #54013F 55%, #220215 100%)',
                 }}
               >
                 {/* Properly Sized 24K Gold Headset Icon Badge */}

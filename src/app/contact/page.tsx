@@ -90,7 +90,7 @@ export default function ContactPage() {
           </a>
           <a
             href="tel:+916383163609"
-            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#1F0414]/80 text-[#FFE59E] border border-[#D4AF37] font-serif font-bold text-xs sm:text-sm shadow-sm hover:bg-[#380725] transition-all"
+            className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#1F0414]/80 text-[#FFE59E] border border-[#D4AF37] font-serif font-bold text-xs sm:text-sm shadow-sm hover:bg-[#760159] transition-all"
           >
             <Phone className="w-3.5 h-3.5 text-[#FFE59E] shrink-0" />
             <span>Call +91 63831 63609</span>
@@ -109,7 +109,7 @@ export default function ContactPage() {
               </p>
               <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#280619]">
                 Happy to Help{' '}
-                <span className="font-script italic font-normal text-3xl sm:text-4xl text-[#5B0E3D]">
+                <span className="font-script italic font-normal text-3xl sm:text-4xl text-[#760159]">
                   You
                 </span>
               </h2>
@@ -122,7 +122,7 @@ export default function ContactPage() {
             <div className="space-y-3.5 pt-2">
               {/* Phone / WhatsApp */}
               <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] p-5 rounded-2xl border-2 border-[#D4AF37]/75 shadow-sm flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-b from-[#380725] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center flex-shrink-0 shadow-xs">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-b from-[#760159] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center flex-shrink-0 shadow-xs">
                   <Phone className="w-4 h-4 text-[#FFE59E]" />
                 </div>
                 <div className="space-y-1">
@@ -158,7 +158,7 @@ export default function ContactPage() {
 
               {/* Email */}
               <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] p-5 rounded-2xl border-2 border-[#D4AF37]/75 shadow-sm flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-b from-[#380725] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center flex-shrink-0 shadow-xs">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-b from-[#760159] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center flex-shrink-0 shadow-xs">
                   <Mail className="w-4 h-4 text-[#FFE59E]" />
                 </div>
                 <div className="space-y-1">
@@ -184,7 +184,7 @@ export default function ContactPage() {
 
               {/* Shop Location */}
               <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] p-5 rounded-2xl border-2 border-[#D4AF37]/75 shadow-sm flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-b from-[#380725] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center flex-shrink-0 shadow-xs">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-b from-[#760159] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center flex-shrink-0 shadow-xs">
                   <MapPin className="w-4 h-4 text-[#FFE59E]" />
                 </div>
                 <div className="space-y-1">
@@ -213,7 +213,7 @@ export default function ContactPage() {
 
               {/* Shop Hours */}
               <div className="bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] p-5 rounded-2xl border-2 border-[#D4AF37]/75 shadow-sm flex items-start gap-4">
-                <div className="w-11 h-11 rounded-xl bg-gradient-to-b from-[#380725] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center flex-shrink-0 shadow-xs">
+                <div className="w-11 h-11 rounded-xl bg-gradient-to-b from-[#760159] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center flex-shrink-0 shadow-xs">
                   <Clock className="w-4 h-4 text-[#FFE59E]" />
                 </div>
                 <div className="space-y-1">
@@ -253,7 +253,7 @@ export default function ContactPage() {
 
               {submitted ? (
                 <div className="relative z-10 py-12 text-center space-y-4 animate-fade-in">
-                  <div className="w-16 h-16 rounded-full bg-gradient-to-b from-[#380725] to-[#280619] border-2 border-[#D4AF37] text-[#FFE59E] flex items-center justify-center mx-auto">
+                  <div className="w-16 h-16 rounded-full bg-gradient-to-b from-[#760159] to-[#280619] border-2 border-[#D4AF37] text-[#FFE59E] flex items-center justify-center mx-auto">
                     <CheckCircle2 className="w-8 h-8 text-[#FFE59E]" />
                   </div>
                   <div className="space-y-1">
@@ -266,7 +266,7 @@ export default function ContactPage() {
                   </div>
                   <button
                     onClick={() => setSubmitted(false)}
-                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#D4AF37] text-[#FFE59E] text-xs font-extrabold uppercase tracking-wider cursor-pointer"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-gradient-to-r from-[#760159] to-[#5B0E3D] border border-[#D4AF37] text-[#FFE59E] text-xs font-extrabold uppercase tracking-wider cursor-pointer"
                   >
                     <span>Send Another Message</span>
                   </button>

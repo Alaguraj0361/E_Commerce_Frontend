@@ -187,32 +187,52 @@ export default function IndividualStitchingServicePage() {
       const apiUrl =
         process.env.NEXT_PUBLIC_API_URL ||
         'https://e-commerce-backend-4c4d.onrender.com/api';
-      await fetch(`${apiUrl}/contact/enquiry`, {
+
+      const res = await fetch(`${apiUrl}/stitching/book`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          name: customerInfo.name,
-          phone: customerInfo.phone,
-          email: 'stitching@nalmarafashion.com',
-          enquiryType: serviceConfig.name,
-          message: [
-            `Service: ${serviceConfig.name}`,
-            `Style: ${activeSlide.name}`,
-            `Step 1: ${step1Value}`,
-            `Step 2: ${step2Value}`,
-            `Step 3: ${step3Value}`,
-            `${serviceConfig.step4ChoiceLabel}: ${step4Choice}`,
-            `Collection Details: ${formatCustomInfoSummary()}`,
-            `Add-ons: ${selectedAddons.join(', ')}`,
-            `Measurements: ${formatMeasurementsSummary()}`,
-            `City: ${customerInfo.pickupCity}`,
-            `Notes: ${customerInfo.notes}`,
-          ].join(' | '),
+          customerName: customerInfo.name.trim(),
+          customerPhone: customerInfo.phone.trim(),
+          customerEmail: 'stitching@nalmarafashion.com',
+          customerCity: customerInfo.pickupCity,
+          customerAddress: customerInfo.pickupCity,
+          categorySlug: serviceConfig.slug,
+          categoryName: serviceConfig.name,
+          styleName: activeSlide.name,
+          step1Value,
+          step2Value,
+          step3Value,
+          step4Choice,
+          customInfoSummary: formatCustomInfoSummary(),
+          addons: selectedAddons,
+          measurementMode,
+          measurements,
+          specialInstructions: [
+            formatCustomInfoSummary(),
+            selectedAddons.length > 0 ? `Add-ons: ${selectedAddons.join(', ')}` : '',
+            customerInfo.notes,
+          ]
+            .filter(Boolean)
+            .join(' | '),
+          fitPreference: 'Comfort Fit',
+          unit: 'inches',
+          stitchingCharge: 450,
+          notes: customerInfo.notes,
         }),
       });
-      toast.success(
-        `Your ${serviceConfig.name} booking & measurement details have been submitted!`
-      );
+
+      const data = await res.json();
+      if (res.ok && data?.success) {
+        const orderNum = data?.data?.order?.stitchingOrderNumber || 'Order Confirmed';
+        toast.success(
+          `Bespoke Order ${orderNum} Booked! Details received in Atelier Console.`
+        );
+      } else {
+        toast.success(
+          `Your ${serviceConfig.name} booking & measurement details have been submitted!`
+        );
+      }
       setCustomerInfo((prev) => ({ ...prev, name: '', phone: '', notes: '' }));
     } catch {
       toast.success('Opening WhatsApp Master Tailor Concierge with your details...');
@@ -256,7 +276,7 @@ export default function IndividualStitchingServicePage() {
                   className={`px-3 py-1 rounded-full text-[10.5px] font-serif font-bold whitespace-nowrap transition-all border ${
                     isCurrentPage
                       ? 'bg-gradient-to-r from-[#FFF4C2] via-[#FFE59E] to-[#D4AF37] text-[#280619] border-[#FFFDF9] shadow-sm'
-                      : 'bg-[#380725]/80 text-[#FFE59E]/85 border-[#D4AF37]/40 hover:border-[#FFE59E] hover:text-white'
+                      : 'bg-[#760159]/80 text-[#FFE59E]/85 border-[#D4AF37]/40 hover:border-[#FFE59E] hover:text-white'
                   }`}
                 >
                   {item.shortName}
@@ -286,7 +306,7 @@ export default function IndividualStitchingServicePage() {
       {/* =================================================================== */}
       <section className="max-w-[1380px] mx-auto px-4 sm:px-8 lg:px-12 py-12 sm:py-16">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gradient-to-r from-[#380725] via-[#5B0E3D] to-[#380725] border border-[#FFE59E] text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E] mb-2.5">
+          <span className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] border border-[#FFE59E] text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E] mb-2.5">
             <Sparkles className="w-3 h-3" />
             <span>{serviceConfig.name.toUpperCase()} COLLECTION</span>
           </span>
@@ -327,7 +347,7 @@ export default function IndividualStitchingServicePage() {
                         alt={sl.name}
                         className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
                       />
-                      <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#380725]/90 border border-[#FFE59E]/80 text-[9px] font-bold uppercase tracking-wider text-[#FFE59E]">
+                      <span className="absolute top-2 left-2 px-2.5 py-0.5 rounded-full bg-[#760159]/90 border border-[#FFE59E]/80 text-[9px] font-bold uppercase tracking-wider text-[#FFE59E]">
                         {sl.tag}
                       </span>
                     </div>
@@ -347,7 +367,7 @@ export default function IndividualStitchingServicePage() {
                     <span className="text-[10.5px] font-bold text-[#8C5818]">
                       {serviceConfig.turnaround}
                     </span>
-                    <span className="inline-flex items-center gap-1 text-xs font-serif font-bold text-[#380725] group-hover:translate-x-1 transition-transform">
+                    <span className="inline-flex items-center gap-1 text-xs font-serif font-bold text-[#760159] group-hover:translate-x-1 transition-transform">
                       <span>Select &amp; Customize</span>
                       <ArrowRight className="w-3.5 h-3.5" />
                     </span>
@@ -371,7 +391,7 @@ export default function IndividualStitchingServicePage() {
             {/* Form Header */}
             <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-[#D4AF37]/45 mb-8">
               <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#380725] text-[#FFE59E] text-[10px] font-bold uppercase tracking-[0.2em] mb-2">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#760159] text-[#FFE59E] text-[10px] font-bold uppercase tracking-[0.2em] mb-2">
                   <Layers className="w-3 h-3" />
                   <span>COLLECTION-SPECIFIC TAILORING FORM</span>
                 </div>
@@ -380,10 +400,10 @@ export default function IndividualStitchingServicePage() {
                 </h2>
                 <p className="text-xs sm:text-sm text-[#5C3D1E] mt-1">
                   All style choices, fabric specifications, and measurement fields below are tailored specifically for{' '}
-                  <strong className="text-[#380725]">{serviceConfig.name}</strong>.
+                  <strong className="text-[#760159]">{serviceConfig.name}</strong>.
                 </p>
               </div>
-              <div className="flex items-center gap-2.5 text-xs font-semibold text-[#380725] bg-[#FFFDF9] px-4 py-2.5 rounded-full border border-[#D4AF37] shrink-0 self-start lg:self-center">
+              <div className="flex items-center gap-2.5 text-xs font-semibold text-[#760159] bg-[#FFFDF9] px-4 py-2.5 rounded-full border border-[#D4AF37] shrink-0 self-start lg:self-center">
                 <ShieldCheck className="w-4 h-4 text-[#B88228] shrink-0" />
                 <span>Free Alteration Guarantee • Thoothukudi Atelier</span>
               </div>
@@ -408,8 +428,8 @@ export default function IndividualStitchingServicePage() {
                         onClick={() => setStep1Value(opt)}
                         className={`px-3.5 py-2.5 rounded-xl text-xs font-bold text-left transition-all cursor-pointer border ${
                           step1Value === opt
-                            ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37] shadow-md'
-                            : 'bg-[#FFFDF9] text-[#280619] border-[#D4AF37]/50 hover:border-[#380725]'
+                            ? 'bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37] shadow-md'
+                            : 'bg-[#FFFDF9] text-[#280619] border-[#D4AF37]/50 hover:border-[#760159]'
                         }`}
                       >
                         {opt}
@@ -431,8 +451,8 @@ export default function IndividualStitchingServicePage() {
                         onClick={() => setStep2Value(opt)}
                         className={`px-3.5 py-2.5 rounded-xl text-xs font-bold text-left transition-all cursor-pointer border ${
                           step2Value === opt
-                            ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37] shadow-md'
-                            : 'bg-[#FFFDF9] text-[#280619] border-[#D4AF37]/50 hover:border-[#380725]'
+                            ? 'bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37] shadow-md'
+                            : 'bg-[#FFFDF9] text-[#280619] border-[#D4AF37]/50 hover:border-[#760159]'
                         }`}
                       >
                         {opt}
@@ -454,8 +474,8 @@ export default function IndividualStitchingServicePage() {
                         onClick={() => setStep3Value(opt)}
                         className={`px-3.5 py-2.5 rounded-xl text-xs font-bold text-left transition-all cursor-pointer border ${
                           step3Value === opt
-                            ? 'bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37] shadow-md'
-                            : 'bg-[#FFFDF9] text-[#280619] border-[#D4AF37]/50 hover:border-[#380725]'
+                            ? 'bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] border-[#D4AF37] shadow-md'
+                            : 'bg-[#FFFDF9] text-[#280619] border-[#D4AF37]/50 hover:border-[#760159]'
                         }`}
                       >
                         {opt}
@@ -467,7 +487,7 @@ export default function IndividualStitchingServicePage() {
                 {/* STEP 4: COLLECTION-RELATED INFORMATION FIELDS */}
                 <div className="rounded-2xl bg-[#FFFDF9]/90 border border-[#D4AF37]/65 p-4 sm:p-5 space-y-4 shadow-xs">
                   <div className="border-b border-[#D4AF37]/30 pb-2.5">
-                    <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#380725]">
+                    <span className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#760159]">
                       {serviceConfig.step4SectionTitle}
                     </span>
                   </div>
@@ -485,8 +505,8 @@ export default function IndividualStitchingServicePage() {
                           onClick={() => setStep4Choice(ch)}
                           className={`px-3.5 py-2 rounded-xl text-xs font-bold transition-all cursor-pointer border ${
                             step4Choice === ch
-                              ? 'bg-[#380725] text-[#FFE59E] border-[#D4AF37] shadow-xs'
-                              : 'bg-[#FAF0DD]/70 text-[#280619] border-[#D4AF37]/50 hover:border-[#380725]'
+                              ? 'bg-[#760159] text-[#FFE59E] border-[#D4AF37] shadow-xs'
+                              : 'bg-[#FAF0DD]/70 text-[#280619] border-[#D4AF37]/50 hover:border-[#760159]'
                           }`}
                         >
                           {ch}
@@ -511,7 +531,7 @@ export default function IndividualStitchingServicePage() {
                                 [field.key]: e.target.value,
                               })
                             }
-                            className="w-full px-3 py-2.5 rounded-xl bg-white border border-[#D4AF37]/75 text-xs font-semibold text-[#280619] focus:outline-none focus:border-[#380725]"
+                            className="w-full px-3 py-2.5 rounded-xl bg-white border border-[#D4AF37]/75 text-xs font-semibold text-[#280619] focus:outline-none focus:border-[#760159]"
                           >
                             {field.options.map((op) => (
                               <option key={op} value={op}>
@@ -530,7 +550,7 @@ export default function IndividualStitchingServicePage() {
                                 [field.key]: e.target.value,
                               })
                             }
-                            className="w-full px-3 py-2.5 rounded-xl bg-white border border-[#D4AF37]/75 text-xs font-semibold text-[#280619] placeholder:text-[#8C5818]/55 focus:outline-none focus:border-[#380725]"
+                            className="w-full px-3 py-2.5 rounded-xl bg-white border border-[#D4AF37]/75 text-xs font-semibold text-[#280619] placeholder:text-[#8C5818]/55 focus:outline-none focus:border-[#760159]"
                           />
                         )}
                       </div>
@@ -553,8 +573,8 @@ export default function IndividualStitchingServicePage() {
                           onClick={() => toggleAddon(addon)}
                           className={`inline-flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-bold transition-all cursor-pointer border ${
                             active
-                              ? 'bg-[#380725] text-[#FFE59E] border-[#D4AF37] shadow-xs'
-                              : 'bg-[#FFFDF9] text-[#4E3629] border-[#D4AF37]/50 hover:border-[#380725]'
+                              ? 'bg-[#760159] text-[#FFE59E] border-[#D4AF37] shadow-xs'
+                              : 'bg-[#FFFDF9] text-[#4E3629] border-[#D4AF37]/50 hover:border-[#760159]'
                           }`}
                         >
                           <CheckCircle2
@@ -586,7 +606,7 @@ export default function IndividualStitchingServicePage() {
                         onClick={() => setMeasurementMode('online')}
                         className={`px-3 py-1 rounded-full text-[11px] font-bold cursor-pointer transition-all ${
                           measurementMode === 'online'
-                            ? 'bg-[#380725] text-[#FFE59E]'
+                            ? 'bg-[#760159] text-[#FFE59E]'
                             : 'text-[#4E3629]'
                         }`}
                       >
@@ -597,7 +617,7 @@ export default function IndividualStitchingServicePage() {
                         onClick={() => setMeasurementMode('whatsapp')}
                         className={`px-3 py-1 rounded-full text-[11px] font-bold cursor-pointer transition-all ${
                           measurementMode === 'whatsapp'
-                            ? 'bg-[#380725] text-[#FFE59E]'
+                            ? 'bg-[#760159] text-[#FFE59E]'
                             : 'text-[#4E3629]'
                         }`}
                       >
@@ -629,7 +649,7 @@ export default function IndividualStitchingServicePage() {
                                 [field.key]: e.target.value,
                               })
                             }
-                            className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-[#D4AF37]/70 text-xs font-bold text-[#280619] focus:outline-none focus:border-[#380725]"
+                            className="w-full px-2.5 py-1.5 rounded-lg bg-white border border-[#D4AF37]/70 text-xs font-bold text-[#280619] focus:outline-none focus:border-[#760159]"
                           />
                         </div>
                       ))}
@@ -652,7 +672,7 @@ export default function IndividualStitchingServicePage() {
 
               {/* RIGHT 5 COLS: Live Collection Summary & Customer Booking Card */}
               <div className="lg:col-span-5">
-                <div className="sticky top-28 rounded-2xl bg-gradient-to-b from-[#280619] via-[#380725] to-[#240415] text-[#FAF0DD] p-6 sm:p-7 border-2 border-[#D4AF37] shadow-xl space-y-4">
+                <div className="sticky top-28 rounded-2xl bg-gradient-to-b from-[#280619] via-[#760159] to-[#240415] text-[#FAF0DD] p-6 sm:p-7 border-2 border-[#D4AF37] shadow-xl space-y-4">
                   <div className="border-b border-[#D4AF37]/35 pb-3.5">
                     <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E]">
                       BESPOKE SPECIFICATION SUMMARY
@@ -791,7 +811,7 @@ export default function IndividualStitchingServicePage() {
             </div>
             <Link
               href="/stitching-services"
-              className="inline-flex items-center gap-1.5 text-xs font-serif font-bold text-[#380725] hover:text-[#9E1946]"
+              className="inline-flex items-center gap-1.5 text-xs font-serif font-bold text-[#760159] hover:text-[#9E1946]"
             >
               <span>View All Stitching Services</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -823,7 +843,7 @@ export default function IndividualStitchingServicePage() {
                         {other.turnaround}
                       </p>
                     </div>
-                    <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-[#380725]">
+                    <span className="mt-2 inline-flex items-center gap-1 text-[11px] font-bold text-[#760159]">
                       <span>Open Page</span>
                       <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                     </span>

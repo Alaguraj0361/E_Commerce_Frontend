@@ -47,7 +47,7 @@ export const CartDrawer = () => {
             </div>
             <button
               onClick={() => setIsCartOpen(false)}
-              className="p-2 rounded-full bg-[#380725] border border-[#D4AF37]/75 text-[#FFE59E] hover:bg-[#5B0E3D] transition-colors cursor-pointer"
+              className="p-2 rounded-full bg-[#760159] border border-[#D4AF37]/75 text-[#FFE59E] hover:bg-[#5B0E3D] transition-colors cursor-pointer"
               aria-label="Close bag"
             >
               <X className="w-4 h-4" />
@@ -71,7 +71,7 @@ export const CartDrawer = () => {
             </div>
             <div className="w-full bg-[#E8D5B5] h-2 rounded-full overflow-hidden border border-[#D4AF37]/40">
               <div
-                className="bg-gradient-to-r from-[#380725] via-[#8C5818] to-[#D4AF37] h-full transition-all duration-500 rounded-full"
+                className="bg-gradient-to-r from-[#760159] via-[#8C5818] to-[#D4AF37] h-full transition-all duration-500 rounded-full"
                 style={{ width: `${progressPercent}%` }}
               />
             </div>
@@ -81,7 +81,7 @@ export const CartDrawer = () => {
           <div className="flex-1 overflow-y-auto p-5 sm:p-6 space-y-3.5 bg-[#FDF6EC]">
             {items.length === 0 ? (
               <div className="h-full flex flex-col items-center justify-center text-center py-12">
-                <div className="w-16 h-16 rounded-full bg-gradient-to-b from-[#380725] to-[#280619] border-2 border-[#D4AF37] flex items-center justify-center text-[#FFE59E] mb-4 shadow-md">
+                <div className="w-16 h-16 rounded-full bg-gradient-to-b from-[#760159] to-[#280619] border-2 border-[#D4AF37] flex items-center justify-center text-[#FFE59E] mb-4 shadow-md">
                   <ShoppingBag className="w-7 h-7 text-[#FFE59E]" />
                 </div>
                 <h3 className="font-serif font-bold text-lg text-[#280619] mb-1">
@@ -203,7 +203,7 @@ export const CartDrawer = () => {
                 <Link
                   href="/cart"
                   onClick={() => setIsCartOpen(false)}
-                  className="flex items-center justify-center border-2 border-[#D4AF37] bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] py-2.5 sm:py-3 rounded-full text-xs font-extrabold uppercase tracking-wider hover:opacity-95 transition-opacity"
+                  className="flex items-center justify-center border-2 border-[#D4AF37] bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] py-2.5 sm:py-3 rounded-full text-xs font-extrabold uppercase tracking-wider hover:opacity-95 transition-opacity"
                 >
                   View Bag
                 </Link>

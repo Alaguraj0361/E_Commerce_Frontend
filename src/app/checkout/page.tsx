@@ -336,14 +336,22 @@ export default function CheckoutPage() {
           <div className="absolute bottom-3 left-3 w-5 h-5 border-b-2 border-l-2 border-[#FFE59E] pointer-events-none" />
           <div className="absolute bottom-3 right-3 w-5 h-5 border-b-2 border-r-2 border-[#FFE59E] pointer-events-none" />
 
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#FFE59E]/85 text-[#FFE59E] text-[10px] font-bold tracking-[0.22em] uppercase">
-            <NalmaraEmblem className="w-4 h-4" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-royal border border-[#D4AF37]/85 text-[#FFE59E] text-[10px] font-sans font-bold tracking-[0.24em] uppercase shadow-[0_4px_16px_rgba(0,0,0,0.4)]">
+            <NalmaraEmblem className="w-4 h-4 text-[#FFE59E]" />
             <span>Safe &amp; Fast Checkout • Thoothukudi</span>
           </div>
 
-          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-[#FFFDF9] leading-tight">
-            Complete Your{' '}
-            <span className="font-script italic font-normal text-4xl sm:text-5xl lg:text-6xl bg-gradient-to-r from-[#FFF6D6] via-[#FFE59E] to-[#D4AF37] bg-clip-text text-transparent">
+          <h1 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#FFFDF9] leading-tight flex flex-wrap items-center justify-center gap-x-3">
+            <span className="tracking-wider uppercase">Complete Your</span>
+            <span
+              className="font-script font-normal text-4xl sm:text-5xl lg:text-6xl text-[#FCE8C0] drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] overflow-visible inline-block"
+              style={{
+                fontFamily: "var(--font-script), 'Great Vibes', Georgia, cursive",
+                textTransform: 'capitalize',
+                letterSpacing: 'normal',
+                fontStyle: 'normal',
+              }}
+            >
               Order
             </span>
           </h1>
@@ -375,7 +383,7 @@ export default function CheckoutPage() {
                 </div>
                 <Link
                   href="/login?redirect=/checkout"
-                  className="self-start sm:self-auto text-xs font-extrabold text-[#FFE59E] bg-gradient-to-r from-[#380725] to-[#5B0E3D] border border-[#D4AF37] px-4 py-1.5 rounded-full uppercase tracking-wider whitespace-nowrap"
+                  className="self-start sm:self-auto text-xs font-extrabold text-[#FFE59E] bg-gradient-to-r from-[#760159] to-[#5B0E3D] border border-[#D4AF37] px-4 py-1.5 rounded-full uppercase tracking-wider whitespace-nowrap"
                 >
                   Sign In
                 </Link>
@@ -386,7 +394,7 @@ export default function CheckoutPage() {
             <div className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] p-6 sm:p-8 rounded-3xl border-2 border-[#D4AF37]/75 space-y-5 shadow-[0_14px_34px_rgba(56,7,37,0.08)]">
               <div className="absolute inset-[5px] rounded-[20px] border border-[#D4AF37]/25 pointer-events-none" />
               <div className="relative z-10 flex items-center gap-3 pb-3 border-b border-[#D4AF37]/35">
-                <div className="w-7 h-7 rounded-full bg-gradient-to-b from-[#380725] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center text-xs font-extrabold">
+                <div className="w-7 h-7 rounded-full bg-gradient-to-b from-[#760159] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center text-xs font-extrabold">
                   1
                 </div>
                 <h2 className="text-lg font-bold font-serif text-[#280619]">
@@ -536,7 +544,7 @@ export default function CheckoutPage() {
             {/* 2. Shipping Method Card */}
             <div className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] p-6 sm:p-8 rounded-3xl border-2 border-[#D4AF37]/75 space-y-4 shadow-[0_14px_34px_rgba(56,7,37,0.08)]">
               <div className="flex items-center gap-3 pb-3 border-b border-[#D4AF37]/35">
-                <div className="w-7 h-7 rounded-full bg-gradient-to-b from-[#380725] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center text-xs font-extrabold">
+                <div className="w-7 h-7 rounded-full bg-gradient-to-b from-[#760159] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center text-xs font-extrabold">
                   2
                 </div>
                 <h2 className="text-lg font-serif font-bold text-[#280619]">
@@ -566,7 +574,7 @@ export default function CheckoutPage() {
             <div className="relative bg-gradient-to-b from-[#FFFDF9] via-[#FAF0DD] to-[#F3E0C0] p-6 sm:p-8 rounded-3xl border-2 border-[#D4AF37]/75 space-y-5 shadow-[0_14px_34px_rgba(56,7,37,0.08)]">
               <div className="flex items-center justify-between pb-3 border-b border-[#D4AF37]/35">
                 <div className="flex items-center gap-3">
-                  <div className="w-7 h-7 rounded-full bg-gradient-to-b from-[#380725] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center text-xs font-extrabold">
+                  <div className="w-7 h-7 rounded-full bg-gradient-to-b from-[#760159] to-[#280619] border border-[#D4AF37] text-[#FFE59E] flex items-center justify-center text-xs font-extrabold">
                     3
                   </div>
                   <h2 className="text-lg font-serif font-bold text-[#280619]">
@@ -593,7 +601,7 @@ export default function CheckoutPage() {
                       <div
                         className={`mt-1 w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
                           paymentMethod === 'razorpay'
-                            ? 'border-[#D4AF37] bg-[#380725]'
+                            ? 'border-[#D4AF37] bg-[#760159]'
                             : 'border-[#8C5818]'
                         }`}
                       >
@@ -606,7 +614,7 @@ export default function CheckoutPage() {
                           <h4 className="font-serif font-bold text-sm text-[#280619]">
                             UPI & Instant Online Payment
                           </h4>
-                          <span className="text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-[#380725] to-[#5B0E3D] text-[#FFE59E] border border-[#D4AF37] px-2.5 py-0.5 rounded-full">
+                          <span className="text-[10px] font-extrabold uppercase tracking-wider bg-gradient-to-r from-[#760159] to-[#5B0E3D] text-[#FFE59E] border border-[#D4AF37] px-2.5 py-0.5 rounded-full">
                             ⚡ Instant 0% Fee
                           </span>
                         </div>
@@ -645,7 +653,7 @@ export default function CheckoutPage() {
                       <div
                         className={`mt-1 w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
                           paymentMethod === 'cod'
-                            ? 'border-[#D4AF37] bg-[#380725]'
+                            ? 'border-[#D4AF37] bg-[#760159]'
                             : 'border-[#8C5818]'
                         }`}
                       >
@@ -685,7 +693,7 @@ export default function CheckoutPage() {
                       <div
                         className={`w-4 h-4 rounded-full border-2 flex items-center justify-center shrink-0 ${
                           paymentMethod === 'stripe'
-                            ? 'border-[#D4AF37] bg-[#380725]'
+                            ? 'border-[#D4AF37] bg-[#760159]'
                             : 'border-[#8C5818]'
                         }`}
                       >
@@ -759,7 +767,7 @@ export default function CheckoutPage() {
                           unoptimized
                           className="object-cover object-top"
                         />
-                        <span className="absolute top-1 right-1 bg-[#380725] text-[#FFE59E] border border-[#D4AF37] text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-extrabold">
+                        <span className="absolute top-1 right-1 bg-[#760159] text-[#FFE59E] border border-[#D4AF37] text-[10px] w-4 h-4 rounded-full flex items-center justify-center font-extrabold">
                           {item.quantity}
                         </span>
                       </div>
