@@ -6,7 +6,6 @@ import {
   Phone,
   MapPin,
   Heart,
-  MessageCircle,
   Headphones,
   ShieldCheck,
 } from 'lucide-react';
@@ -37,35 +36,35 @@ export const Footer = () => {
           aria-hidden="true"
           className="w-full h-full object-cover object-center opacity-85"
         />
-        {/* Soft Ambient Vignette Overlay */}
+        {/* Soft Ambient Vignette Overlay for Crisp Contrast */}
         <div
           className="absolute inset-0"
           style={{
             background:
-              'linear-gradient(180deg, rgba(24, 0, 16, 0.55) 0%, rgba(24, 0, 16, 0.35) 40%, rgba(18, 0, 12, 0.85) 100%)',
+              'linear-gradient(180deg, rgba(24, 0, 16, 0.5) 0%, rgba(24, 0, 16, 0.3) 40%, rgba(18, 0, 12, 0.88) 100%)',
           }}
         />
       </div>
 
-      {/* 2. Main Luxury Content Grid */}
-      <div className="relative z-10 max-w-[1500px] mx-auto pt-10 sm:pt-14 pb-4 px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-4 items-start">
+      {/* 2. Main Luxury Content: 5 Columns Perfect Horizontal Alignment */}
+      <div className="relative z-10 max-w-[1520px] mx-auto pt-10 sm:pt-14 pb-4 px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row md:flex-wrap lg:flex-nowrap items-start justify-between gap-8 lg:gap-2">
           
           {/* ======================================================== */}
-          {/* COL 1: ROYAL ARCH PAVILION & NALMARA CREST (3 Cols)      */}
+          {/* COL 1: ROYAL ARCH PAVILION & NALMARA CREST               */}
           {/* ======================================================== */}
-          <div className="lg:col-span-3 flex flex-col items-center text-center">
+          <div className="w-full md:w-[45%] lg:w-[22%] shrink-0 flex flex-col items-center text-center">
             {/* Scalloped 24K Gold Mughal Palace Cusped Arch */}
-            <div className="relative w-full max-w-[270px] rounded-t-[64px] rounded-b-[20px] p-[2.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_16px_36px_rgba(0,0,0,0.7)]">
+            <div className="relative w-full max-w-[260px] rounded-t-[60px] rounded-b-[18px] p-[2.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_16px_36px_rgba(0,0,0,0.7)]">
               <div
-                className="relative rounded-t-[61.5px] rounded-b-[17.5px] px-5 py-6 flex flex-col items-center text-center border border-[#FFE59E]/40"
+                className="relative rounded-t-[57.5px] rounded-b-[15.5px] px-5 py-5 flex flex-col items-center text-center border border-[#FFE59E]/40"
                 style={{
                   background:
                     'linear-gradient(180deg, #300420 0%, #1A0112 55%, #10000B 100%)',
                 }}
               >
                 {/* Circular Golden Monogram Crest */}
-                <div className="w-20 h-20 rounded-full p-[2px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#8C5818] shadow-lg mb-3">
+                <div className="w-20 h-20 rounded-full p-[2px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#8C5818] shadow-lg mb-2.5">
                   <div className="w-full h-full rounded-full overflow-hidden bg-[#0A0508] flex items-center justify-center">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
@@ -91,7 +90,7 @@ export const Footer = () => {
                 </h3>
 
                 {/* FASHION with 24K Gold Flanking Rules */}
-                <div className="flex items-center justify-center gap-2 mt-1 mb-1.5">
+                <div className="flex items-center justify-center gap-2 mt-1 mb-1">
                   <span className="h-[1px] w-6 bg-gradient-to-r from-transparent to-[#D4AF37]" />
                   <span className="font-serif text-[10px] tracking-[0.32em] text-[#FFE59E] uppercase font-bold">
                     FASHION
@@ -103,78 +102,65 @@ export const Footer = () => {
 
             {/* Script Tagline: "Your Design, Our Craft ♡" */}
             <p
-              className="text-[21px] sm:text-[23px] text-[#FFE59E] mt-3.5 tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+              className="text-[21px] sm:text-[23px] text-[#FFE59E] mt-3 tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
               style={{ fontFamily: "'Great Vibes', cursive" }}
             >
               Your Design, Our Craft ♡
             </p>
 
-            {/* 5 Circular 3D Gold Coin Social Media Icons */}
-            <div className="flex items-center justify-center gap-2.5 mt-3.5">
-              {[
-                {
-                  label: 'Instagram',
-                  href: 'https://www.instagram.com/nalmarafashion',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 stroke-current stroke-2">
-                      <rect x="2" y="2" width="20" height="20" rx="5" />
-                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-                    </svg>
-                  ),
-                },
-                {
-                  label: 'YouTube',
-                  href: 'https://youtube.com/@nalmarafashion',
-                  icon: (
-                    <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 stroke-current stroke-2">
-                      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-                      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" />
-                    </svg>
-                  ),
-                },
-                {
-                  label: 'WhatsApp',
-                  href: 'https://wa.me/916383163609',
-                  icon: <MessageCircle className="w-4 h-4 stroke-[2.2]" />,
-                },
-                {
-                  label: 'Facebook',
-                  href: 'https://facebook.com',
-                  icon: (
-                    <span className="font-serif font-extrabold text-sm leading-none">f</span>
-                  ),
-                },
-                {
-                  label: 'Pinterest',
-                  href: 'https://pinterest.com',
-                  icon: (
-                    <span className="font-serif font-extrabold text-sm leading-none italic">P</span>
-                  ),
-                },
-              ].map((s) => (
-                <a
-                  key={s.label}
-                  href={s.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="group relative w-8 h-8 rounded-full p-[1.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_4px_12px_rgba(0,0,0,0.6)] hover:scale-110 active:scale-95 transition-transform"
-                  aria-label={s.label}
-                >
-                  <div className="w-full h-full rounded-full bg-gradient-to-b from-[#380424] to-[#1A0111] flex items-center justify-center text-[#FFE59E] group-hover:text-[#FFFDF9] transition-colors">
-                    {s.icon}
-                  </div>
-                </a>
-              ))}
+            {/* Social Media Icons: ONLY Instagram and YouTube */}
+            <div className="flex items-center justify-center gap-3.5 mt-3">
+              {/* 1. Instagram */}
+              <a
+                href="https://www.instagram.com/nalmarafashion"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative w-9 h-9 rounded-full p-[1.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_4px_14px_rgba(0,0,0,0.65)] hover:scale-110 active:scale-95 transition-transform"
+                aria-label="Instagram"
+              >
+                <div className="w-full h-full rounded-full bg-gradient-to-b from-[#380424] to-[#1A0111] flex items-center justify-center text-[#FFE59E] group-hover:text-[#FFFDF9] transition-colors">
+                  <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 stroke-current stroke-2">
+                    <rect x="2" y="2" width="20" height="20" rx="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                </div>
+              </a>
+
+              {/* 2. YouTube */}
+              <a
+                href="https://youtube.com/@nalmarafashion"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative w-9 h-9 rounded-full p-[1.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_4px_14px_rgba(0,0,0,0.65)] hover:scale-110 active:scale-95 transition-transform"
+                aria-label="YouTube"
+              >
+                <div className="w-full h-full rounded-full bg-gradient-to-b from-[#380424] to-[#1A0111] flex items-center justify-center text-[#FFE59E] group-hover:text-[#FFFDF9] transition-colors">
+                  <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 stroke-current stroke-2">
+                    <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                    <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" />
+                  </svg>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          {/* Vertical 24K Gold Divider with Diamond Star */}
+          <div className="hidden lg:flex flex-col items-center justify-center self-stretch px-1">
+            <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[#D4AF37]/45 to-transparent relative flex items-center justify-center">
+              <span className="w-2 h-2 rotate-45 bg-[#FFE59E] border border-[#8C5818] shadow-[0_0_8px_rgba(255,229,158,0.7)] z-10" />
             </div>
           </div>
 
           {/* ======================================================== */}
-          {/* COL 2: SHOP LINKS (2.25 Cols)                            */}
+          {/* COL 2: SHOP LINKS                                        */}
           {/* ======================================================== */}
-          <div className="lg:col-span-2 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="w-full md:w-[45%] lg:w-[15%] shrink-0 flex flex-col items-center lg:items-start text-center lg:text-left">
             {/* Scalloped Gold Plaque: SHOP LINKS */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.6)] mb-4" style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}>
+            <div
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.6)] mb-4"
+              style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}
+            >
               <MannequinIcon className="w-3.5 h-3.5" />
               <span className="font-serif font-bold text-xs uppercase tracking-[0.16em] text-[#FFE59E] whitespace-nowrap">
                 SHOP LINKS
@@ -204,18 +190,21 @@ export const Footer = () => {
           </div>
 
           {/* Vertical 24K Gold Divider with Diamond Star */}
-          <div className="hidden lg:flex flex-col items-center justify-center self-stretch -my-2 lg:col-span-0.5">
+          <div className="hidden lg:flex flex-col items-center justify-center self-stretch px-1">
             <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[#D4AF37]/45 to-transparent relative flex items-center justify-center">
               <span className="w-2 h-2 rotate-45 bg-[#FFE59E] border border-[#8C5818] shadow-[0_0_8px_rgba(255,229,158,0.7)] z-10" />
             </div>
           </div>
 
           {/* ======================================================== */}
-          {/* COL 3: CUSTOMER SERVICE (2.25 Cols)                      */}
+          {/* COL 3: CUSTOMER SERVICE                                  */}
           {/* ======================================================== */}
-          <div className="lg:col-span-2 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="w-full md:w-[45%] lg:w-[17%] shrink-0 flex flex-col items-center lg:items-start text-center lg:text-left">
             {/* Scalloped Gold Plaque: CUSTOMER SERVICE */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.6)] mb-4" style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}>
+            <div
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.6)] mb-4"
+              style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}
+            >
               <Headphones className="w-3.5 h-3.5 text-[#FFE59E]" />
               <span className="font-serif font-bold text-xs uppercase tracking-[0.16em] text-[#FFE59E] whitespace-nowrap">
                 CUSTOMER SERVICE
@@ -244,18 +233,21 @@ export const Footer = () => {
           </div>
 
           {/* Vertical 24K Gold Divider with Diamond Star */}
-          <div className="hidden lg:flex flex-col items-center justify-center self-stretch -my-2 lg:col-span-0.5">
+          <div className="hidden lg:flex flex-col items-center justify-center self-stretch px-1">
             <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[#D4AF37]/45 to-transparent relative flex items-center justify-center">
               <span className="w-2 h-2 rotate-45 bg-[#FFE59E] border border-[#8C5818] shadow-[0_0_8px_rgba(255,229,158,0.7)] z-10" />
             </div>
           </div>
 
           {/* ======================================================== */}
-          {/* COL 4: ABOUT US (2 Cols)                                 */}
+          {/* COL 4: ABOUT US                                          */}
           {/* ======================================================== */}
-          <div className="lg:col-span-2 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="w-full md:w-[45%] lg:w-[15%] shrink-0 flex flex-col items-center lg:items-start text-center lg:text-left">
             {/* Scalloped Gold Plaque: ABOUT US */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.6)] mb-4" style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}>
+            <div
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.6)] mb-4"
+              style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}
+            >
               <span className="w-3.5 h-3.5 rounded-full border border-[#FFE59E] text-[#FFE59E] flex items-center justify-center text-[10px] font-bold font-serif leading-none">
                 i
               </span>
@@ -285,12 +277,22 @@ export const Footer = () => {
             </ul>
           </div>
 
+          {/* Vertical 24K Gold Divider with Diamond Star */}
+          <div className="hidden lg:flex flex-col items-center justify-center self-stretch px-1">
+            <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[#D4AF37]/45 to-transparent relative flex items-center justify-center">
+              <span className="w-2 h-2 rotate-45 bg-[#FFE59E] border border-[#8C5818] shadow-[0_0_8px_rgba(255,229,158,0.7)] z-10" />
+            </div>
+          </div>
+
           {/* ======================================================== */}
-          {/* COL 5: CONTACT US & PAYMENTS (2.75 Cols)                 */}
+          {/* COL 5: CONTACT US & PAYMENTS                             */}
           {/* ======================================================== */}
-          <div className="lg:col-span-2 flex flex-col items-center lg:items-start text-center lg:text-left">
+          <div className="w-full md:w-[45%] lg:w-[24%] shrink-0 flex flex-col items-center lg:items-start text-center lg:text-left">
             {/* Scalloped Gold Plaque: CONTACT US */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.6)] mb-4" style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}>
+            <div
+              className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.6)] mb-4"
+              style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}
+            >
               <Phone className="w-3.5 h-3.5 text-[#FFE59E]" />
               <span className="font-serif font-bold text-xs uppercase tracking-[0.16em] text-[#FFE59E] whitespace-nowrap">
                 CONTACT US
@@ -298,15 +300,15 @@ export const Footer = () => {
             </div>
 
             {/* Phone & Address */}
-            <div className="space-y-3 text-xs sm:text-[13px] text-[#F3E2CB]">
+            <div className="space-y-3 text-xs sm:text-[13px] text-[#F3E2CB] w-full">
               <div className="flex items-center justify-center lg:justify-start gap-2">
                 <Phone className="w-4 h-4 text-[#FFE59E] shrink-0" />
                 <span>
-                  <a href="tel:+916383163609" className="hover:text-[#FFE59E]">
+                  <a href="tel:+916383163609" className="hover:text-[#FFE59E] transition-colors">
                     6383163609
                   </a>{' '}
                   |{' '}
-                  <a href="tel:+917871207631" className="hover:text-[#FFE59E]">
+                  <a href="tel:+917871207631" className="hover:text-[#FFE59E] transition-colors">
                     7871207631
                   </a>
                 </span>
@@ -390,7 +392,7 @@ export const Footer = () => {
       {/* ============================================================ */}
       {/* 4. BOTTOM COPYRIGHT & TRUST ROW                              */}
       {/* ============================================================ */}
-      <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 pb-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-[13px] text-[#F3E2CB]">
+      <div className="relative z-10 max-w-[1520px] mx-auto px-4 sm:px-6 lg:px-8 pb-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-[13px] text-[#F3E2CB]">
         {/* Left / Center Copyright */}
         <p className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 text-center">
           <span>© 2026 <strong className="text-[#FFE59E] font-bold">NALMARA FASHION</strong>. All rights reserved.</span>
@@ -402,7 +404,10 @@ export const Footer = () => {
         </p>
 
         {/* Right Gold Bullion "Shop with Confidence" Pill */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.5)]" style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}>
+        <div
+          className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.5)]"
+          style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}
+        >
           <ShieldCheck className="w-4 h-4 text-[#FFE59E]" />
           <span className="font-serif font-bold text-xs text-[#FFE59E] tracking-wide whitespace-nowrap">
             Shop with Confidence
