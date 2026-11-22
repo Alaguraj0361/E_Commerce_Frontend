@@ -1135,27 +1135,21 @@ export default function HomePage() {
                 src={activeHeroItem.mobileBg || activeHeroItem.image}
                 alt={activeHeroItem.name}
                 aria-hidden="true"
-                className="w-full h-full object-cover object-center animate-fade-in transition-all duration-700"
+                className="w-full h-full object-cover object-center animate-fade-in transition-all duration-700 brightness-[1.03] contrast-[1.03]"
               />
-              {/* Center Ambient Royal Plum & Gold Contrast Vignette for Crisp Center-Aligned Typography */}
+              {/* Ultra-Light Ambient Contrast Vignette so the Luxury Background Image is Vivid & Highly Visible */}
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    'radial-gradient(ellipse at 50% 38%, rgba(20, 2, 14, 0.58) 0%, rgba(20, 2, 14, 0.84) 62%, rgba(14, 1, 9, 0.97) 100%)',
+                    'linear-gradient(180deg, rgba(20, 2, 14, 0.25) 0%, rgba(20, 2, 14, 0.10) 30%, rgba(20, 2, 14, 0.15) 65%, rgba(14, 1, 9, 0.60) 100%)',
                 }}
               />
-              {/* Top & bottom smooth gradient blending */}
+              {/* Subtle bottom gradient just to anchor the thumbnail carousel */}
               <div
-                className="absolute inset-x-0 top-0 h-20 pointer-events-none"
+                className="absolute inset-x-0 bottom-0 h-28 pointer-events-none"
                 style={{
-                  background: 'linear-gradient(180deg, rgba(14, 1, 9, 0.65) 0%, transparent 100%)',
-                }}
-              />
-              <div
-                className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
-                style={{
-                  background: 'linear-gradient(0deg, rgba(14, 1, 9, 0.92) 0%, transparent 100%)',
+                  background: 'linear-gradient(0deg, rgba(14, 1, 9, 0.70) 0%, transparent 100%)',
                 }}
               />
             </div>
