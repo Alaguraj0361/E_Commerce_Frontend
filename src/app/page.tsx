@@ -300,8 +300,8 @@ const HERO_SHOWCASE_FALLBACK = [
     id: 'hero-1',
     name: 'ROYAL KANCHIPURAM BRIDAL SILK SAREE',
     titleLine1: 'ROYAL KANCHIPURAM',
-    titleLine2: 'BRIDAL SILK SAREE',
-    price: 1499,
+    titleLine2: 'Bridal Silk Saree',
+    price: 4999,
     description:
       'Pure handwoven zari border silk saree with rich contrast pallu. Comes with unstitched blouse piece & custom Aari tailoring option.',
     sizes: ['S', 'M', 'L', 'XL'],
@@ -313,8 +313,8 @@ const HERO_SHOWCASE_FALLBACK = [
     id: 'hero-2',
     name: 'IMPERIAL VELVET PARTY WEAR GOWN',
     titleLine1: 'IMPERIAL VELVET',
-    titleLine2: 'PARTY WEAR GOWN',
-    price: 999,
+    titleLine2: 'Party Wear Gown',
+    price: 2999,
     description:
       'Flared floor-length festive gown with gold zari yoke embroidery. Full lining with sleeves & back tassel closure.',
     sizes: ['S', 'M', 'L', 'XL'],
@@ -326,8 +326,8 @@ const HERO_SHOWCASE_FALLBACK = [
     id: 'hero-3',
     name: 'BRIDAL ZARDOZI LEHENGA CHOLI',
     titleLine1: 'BRIDAL ZARDOZI',
-    titleLine2: 'LEHENGA CHOLI',
-    price: 1299,
+    titleLine2: 'Lehenga Choli',
+    price: 5499,
     description:
       'Handcrafted festive lehenga choli with heavy zari border, tailored blouse with puff sleeves, and sheer organza dupatta.',
     sizes: ['S', 'M', 'L', 'XL'],
@@ -339,27 +339,14 @@ const HERO_SHOWCASE_FALLBACK = [
     id: 'hero-4',
     name: 'EMERALD SILK FESTIVE KURTI SET',
     titleLine1: 'EMERALD SILK',
-    titleLine2: 'FESTIVE KURTI SET',
-    price: 799,
+    titleLine2: 'Festive Kurti Set',
+    price: 1899,
     description:
       'V-neck silk blend kurti with woven gold motifs, three-quarter sleeves with zari cuffs, and matching straight-fit trousers.',
     sizes: ['S', 'M', 'L', 'XL'],
     image: '/images/nalmara/hd/prod_kurti_set_hd.jpg',
     slug: 'emerald-silk-festive-kurti-set',
     sku: 'NLM-384276-945',
-  },
-  {
-    id: 'hero-5',
-    name: 'GOLDEN AARI DESIGNER BLOUSE',
-    titleLine1: 'GOLDEN AARI',
-    titleLine2: 'DESIGNER BLOUSE',
-    price: 649,
-    description:
-      'Bespoke bridal silk blouse with intricate kundan & zari beadwork. Elbow-length sleeves with custom dori tie at back.',
-    sizes: ['S', 'M', 'L', 'XL'],
-    image: '/images/nalmara/hd/prod_blouse_piece_hd.jpg',
-    slug: 'golden-aari-designer-blouse',
-    sku: 'NLM-384276-946',
   },
 ];
 
@@ -727,47 +714,21 @@ export default function HomePage() {
     };
   }, []);
 
-  // Build 5-item Hero Showcase from live API products (falling back gracefully so 01..05 is always populated)
+  // 4 Curated Static Luxury Hero Showcase Products (Static Sliders)
   const heroShowcaseItems = React.useMemo(() => {
-    const mappedLive = liveProducts.slice(0, 5).map((prod, idx) => {
-      const { line1, line2 } = splitHeadlineTwoLines(prod.name || 'NALMARA COLLECTION');
-      const fallbackEntry = HERO_SHOWCASE_FALLBACK[idx % HERO_SHOWCASE_FALLBACK.length];
-      const resolvedImg =
-        resolveMediaUrl(prod.images?.[0]?.url) ||
-        getCategoryFallbackImage(
-          typeof prod.category === 'object' ? prod.category?.slug : prod.name
-        ) ||
-        fallbackEntry.image;
-
+    return HERO_SHOWCASE_FALLBACK.slice(0, 4).map((item) => {
+      // Find matching live DB product if available by slug or title match
+      const matchedProd = liveProducts.find(
+        (p) =>
+          p.slug === item.slug ||
+          (p.name && p.name.toLowerCase().includes(item.titleLine2.toLowerCase()))
+      );
       return {
-        id: String(prod._id),
-        name: prod.name,
-        titleLine1: line1,
-        titleLine2: line2,
-        price: Number(prod.price) || fallbackEntry.price,
-        description: cleanHeroDescription(prod.description, fallbackEntry.description),
-        sizes: ['S', 'M', 'L'],
-        image: resolvedImg,
-        slug: prod.slug,
-        sku: prod.sku || fallbackEntry.sku,
-        rawProduct: prod,
+        ...item,
+        sizes: item.sizes || ['S', 'M', 'L', 'XL'],
+        rawProduct: matchedProd,
       };
     });
-
-    if (mappedLive.length >= 5) {
-      return mappedLive.slice(0, 5);
-    }
-
-    const combined = [...mappedLive];
-    for (let i = mappedLive.length; i < 5; i++) {
-      const fb = HERO_SHOWCASE_FALLBACK[i];
-      combined.push({
-        ...fb,
-        sizes: ['S', 'M', 'L'],
-        rawProduct: undefined as unknown as Product,
-      });
-    }
-    return combined;
   }, [liveProducts]);
 
   // Unified Slide Transition Handler:
@@ -2118,8 +2079,8 @@ export default function HomePage() {
                 </span>
               </button>
 
-              {/* All 5 Royal Showcase Cards in a Compact, Beveled 24K Gold Row */}
-              <div className="grid grid-cols-5 gap-3 lg:gap-4 flex-1">
+              {/* All 4 Royal Showcase Cards in a Compact, Beveled 24K Gold Row */}
+              <div className="grid grid-cols-4 gap-3 lg:gap-4 flex-1">
                 {heroShowcaseItems.map((item, idx) => {
                   const isActiveCard =
                     (currentHeroSlide % heroShowcaseItems.length) === idx;
