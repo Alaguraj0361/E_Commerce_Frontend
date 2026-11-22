@@ -26,6 +26,7 @@ import {
   FolderTree,
   Crown,
   Gift,
+  User,
 } from 'lucide-react';
 import { useCartStore } from '../store/cartStore';
 import { useWishlistStore } from '../store/wishlistStore';
@@ -128,6 +129,41 @@ const RoyalCornerMandala = ({ className = 'w-28 h-28' }: { className?: string })
     </defs>
   </svg>
 );
+
+const GoogleReviewAvatar = ({
+  avatarUrl,
+  fullName,
+}: {
+  avatarUrl?: string;
+  fullName: string;
+}) => {
+  const [hasError, setHasError] = useState(false);
+
+  const isValid =
+    !hasError &&
+    Boolean(avatarUrl) &&
+    typeof avatarUrl === 'string' &&
+    avatarUrl.trim().length > 0 &&
+    !avatarUrl.includes('happy_faq_reviewer_avatar.png');
+
+  if (!isValid) {
+    return (
+      <div className="w-full h-full rounded-full bg-gradient-to-b from-[#4A0A30] via-[#2E041E] to-[#18000E] flex items-center justify-center text-[#FFE59E]">
+        <User className="w-6 h-6 text-[#FFE59E]" strokeWidth={1.8} />
+      </div>
+    );
+  }
+
+  return (
+    // eslint-disable-next-line @next/next/no-img-element
+    <img
+      src={avatarUrl}
+      alt={fullName}
+      onError={() => setHasError(true)}
+      className="w-full h-full rounded-full object-cover object-top"
+    />
+  );
+};
 
 const GoldSectionHeader = ({
   title,
@@ -626,6 +662,7 @@ export default function HomePage() {
   });
   const [isReviewsLoading, setIsReviewsLoading] = useState(true);
   const [reviewStartIndex, setReviewStartIndex] = useState(0);
+  const [reviewTouchStartX, setReviewTouchStartX] = useState<number | null>(null);
 
   const [igPosts, setIgPosts] = useState<any[]>([]);
   const [likedInspire, setLikedInspire] = useState<Record<string, boolean>>({});
@@ -970,7 +1007,7 @@ export default function HomePage() {
             user: {
               firstName: parts[0] || 'Alagu',
               lastName: parts.slice(1).join(' ') || 'Raj',
-              avatar: g.avatar || '/images/nalmara/hd/happy_faq_reviewer_avatar.png',
+              avatar: g.avatar || '',
             },
           };
         })
@@ -4570,8 +4607,29 @@ export default function HomePage() {
               </span>
             </button>
 
-            {/* 3 Sculpted 3D Royal Gold-Framed Google Review Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 items-stretch pt-3">
+            {/* 3 Sculpted 3D Royal Gold-Framed Google Review Cards (Mobile: 1 Card Slider | Desktop: 3 Cards) */}
+            <div
+              onTouchStart={(e) => setReviewTouchStartX(e.touches[0].clientX)}
+              onTouchEnd={(e) => {
+                if (reviewTouchStartX === null) return;
+                const diff = reviewTouchStartX - e.changedTouches[0].clientX;
+                if (Math.abs(diff) > 40) {
+                  if (diff > 0) {
+                    setReviewStartIndex(
+                      (prev) => (prev + 1) % Math.max(1, allHappyReviews.length)
+                    );
+                  } else {
+                    setReviewStartIndex(
+                      (prev) =>
+                        (prev - 1 + Math.max(1, allHappyReviews.length)) %
+                        Math.max(1, allHappyReviews.length)
+                    );
+                  }
+                }
+                setReviewTouchStartX(null);
+              }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-5 lg:gap-6 items-stretch pt-3"
+            >
               {displayHappyReviews.map((rev, idx) => {
                 const firstName = rev.user?.firstName || 'Alagu';
                 const lastName = rev.user?.lastName || 'Raj';
@@ -4582,8 +4640,9 @@ export default function HomePage() {
                     rawAvatar.startsWith('http://') ||
                     rawAvatar.startsWith('https://')
                     ? rawAvatar
-                    : resolveMediaUrl(rawAvatar) ||
-                    '/images/nalmara/hd/happy_faq_reviewer_avatar.png';
+                    : rawAvatar
+                    ? resolveMediaUrl(rawAvatar)
+                    : '';
                 const stars = Math.max(1, Math.min(5, Number(rev.rating) || 5));
                 const quoteText =
                   rev.comment ||
@@ -4598,7 +4657,9 @@ export default function HomePage() {
                     href={rev.reviewUrl || googleMeta.googleReviewUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="group relative rounded-[24px] p-[2.5px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_14px_32px_rgba(60,25,8,0.16)] hover:shadow-[0_20px_42px_rgba(60,25,8,0.24)] hover:-translate-y-1.5 transition-all duration-300 flex flex-col justify-between"
+                    className={`group relative rounded-[24px] p-[2.5px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_14px_32px_rgba(60,25,8,0.16)] hover:shadow-[0_20px_42px_rgba(60,25,8,0.24)] hover:-translate-y-1.5 transition-all duration-300 flex-col justify-between ${
+                      idx > 0 ? 'hidden md:flex' : 'flex'
+                    }`}
                   >
                     {/* Top Overlapping Scalloped Royal Burgundy & 24K Gold "★ Verified Reviews" Pill */}
                     <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 z-20">
@@ -4675,22 +4736,9 @@ export default function HomePage() {
                       {/* Bottom Reviewer Avatar + Full Name + 5 Gold Stars + Google Metadata */}
                       <div className="flex items-center gap-3 mt-3 pt-3 border-t border-[#D4AF37]/40">
                         <div className="relative w-12 h-12 rounded-full p-[2px] bg-gradient-to-b from-[#FFE59E] via-[#D4AF37] to-[#8C5818] shadow-sm shrink-0">
-                          {/* eslint-disable-next-line @next/next/no-img-element */}
-                          <img
-                            src={avatarUrl}
-                            alt={fullName}
-                            onError={(e) => {
-                              const target = e.currentTarget;
-                              if (
-                                !target.src.includes(
-                                  'happy_faq_reviewer_avatar.png'
-                                )
-                              ) {
-                                target.src =
-                                  '/images/nalmara/hd/happy_faq_reviewer_avatar.png';
-                              }
-                            }}
-                            className="w-full h-full rounded-full object-cover object-top"
+                          <GoogleReviewAvatar
+                            avatarUrl={avatarUrl}
+                            fullName={fullName}
                           />
                           <span className="absolute -bottom-0.5 -right-0.5 w-4 h-4 rounded-full bg-[#15803D] border border-white flex items-center justify-center text-white">
                             <Check className="w-2.5 h-2.5 stroke-[3]" />
@@ -4722,6 +4770,28 @@ export default function HomePage() {
                   </a>
                 );
               })}
+            </div>
+
+            {/* Mobile Single Card Slider Indicator Dots & Pagination */}
+            <div className="flex md:hidden flex-col items-center gap-2 mt-4">
+              <div className="flex items-center justify-center gap-1.5">
+                {allHappyReviews.slice(0, Math.min(10, allHappyReviews.length)).map((_, dotIdx) => (
+                  <button
+                    key={dotIdx}
+                    type="button"
+                    onClick={() => setReviewStartIndex(dotIdx)}
+                    aria-label={`Go to review ${dotIdx + 1}`}
+                    className={`h-2 rounded-full transition-all duration-300 ${
+                      reviewStartIndex % allHappyReviews.length === dotIdx
+                        ? 'w-6 bg-gradient-to-r from-[#D4AF37] to-[#FFE59E]'
+                        : 'w-2 bg-[#D4AF37]/35'
+                    }`}
+                  />
+                ))}
+              </div>
+              <span className="font-serif text-[11px] font-semibold text-[#6E420C]">
+                Review {((reviewStartIndex % allHappyReviews.length) + 1)} of {allHappyReviews.length}
+              </span>
             </div>
           </div>
 
