@@ -1158,431 +1158,285 @@ export default function HomePage() {
         {/* ================================================================= */}
         {/* MOBILE VIEW (sm:hidden): EXACT PORTRAIT ROYAL PALACE BANNER       */}
         {/* ================================================================= */}
-        <div className="sm:hidden">
-          {/* UPPER ROYAL PALACE STAGE (DEEP PLUM VELVET + GOLDEN BOKEH ARCH) */}
-          <div
-            className="relative w-full pt-3 pb-12 overflow-hidden"
-            style={{
-              background:
-                'radial-gradient(circle at 76% 36%, #8C4A12 0%, #760159 38%, #4A0137 68%, #16010D 100%)',
-            }}
-          >
-            {/* Multi-Point Warm Golden Palace Chandelier Bokeh Lights */}
-            <div
-              className="pointer-events-none absolute inset-0 z-0"
-              style={{
-                backgroundImage:
-                  'radial-gradient(circle at 60% 18%, rgba(255, 228, 150, 0.52) 0%, transparent 13%), radial-gradient(circle at 88% 24%, rgba(255, 218, 120, 0.45) 0%, transparent 15%), radial-gradient(circle at 55% 44%, rgba(255, 224, 140, 0.36) 0%, transparent 11%), radial-gradient(circle at 93% 50%, rgba(255, 214, 110, 0.40) 0%, transparent 14%), radial-gradient(circle at 18% 22%, rgba(212, 175, 55, 0.16) 0%, transparent 32%)',
-              }}
-            />
-
-            {/* Top-Left Sculpted Royal Purple Silk Corner Valence */}
-            <div className="pointer-events-none absolute top-0 left-0 w-[52%] h-24 z-10 overflow-hidden">
-              <svg
-                viewBox="0 0 460 160"
-                fill="none"
-                preserveAspectRatio="none"
-                className="w-full h-full drop-shadow-[0_8px_16px_rgba(0,0,0,0.6)]"
-              >
-                <path
-                  d="M0 0H450C380 42 290 74 170 96C88 111 32 128 0 148V0Z"
-                  fill="url(#heroPurpleDrapeGrad)"
-                />
-                <path
-                  d="M0 40C130 34 260 18 380 0"
-                  stroke="#B03082"
-                  strokeWidth="5"
-                  strokeOpacity="0.45"
-                />
-                <path
-                  d="M0 82C145 66 285 36 420 0"
-                  stroke="#220215"
-                  strokeWidth="7"
-                  strokeOpacity="0.55"
-                />
-                <path
-                  d="M0 148C32 128 88 111 170 96C290 74 380 42 450 0"
-                  stroke="url(#heroGoldTrimGrad)"
-                  strokeWidth="4.5"
-                />
-                <defs>
-                  <linearGradient id="heroPurpleDrapeGrad" x1="0" y1="0" x2="380" y2="120" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#760159" />
-                    <stop offset="0.45" stopColor="#9E0277" />
-                    <stop offset="0.8" stopColor="#54013F" />
-                    <stop offset="1" stopColor="#240216" />
-                  </linearGradient>
-                  <linearGradient id="heroGoldTrimGrad" x1="0" y1="148" x2="450" y2="0" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#9A6B18" />
-                    <stop offset="0.5" stopColor="#FFF4C2" />
-                    <stop offset="1" stopColor="#D4AF37" />
-                  </linearGradient>
-                </defs>
-              </svg>
+        <div className="sm:hidden relative w-full overflow-hidden select-none bg-[#1A0112]">
+          {/* Continuous Full-Bleed Royal Plum & Silk Background with Diya & Saree */}
+          <div className="relative w-full overflow-hidden min-h-[660px] flex flex-col justify-between pt-4 pb-5 px-3">
+            
+            {/* Background Image Layer: Ultra-HD South Indian Silk Boutique Plate */}
+            <div className="pointer-events-none absolute inset-0 z-0">
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
+                src="/images/nalmara/mobile_hero_bg.jpg"
+                alt=""
+                aria-hidden="true"
+                className="w-full h-full object-cover object-top"
+              />
+              {/* Left Vignette / Text Contrast Shadow Overlay */}
+              <div
+                className="absolute inset-0"
+                style={{
+                  background:
+                    'linear-gradient(90deg, rgba(20, 2, 14, 0.72) 0%, rgba(20, 2, 14, 0.42) 55%, rgba(20, 2, 14, 0.05) 85%, transparent 100%)',
+                }}
+              />
+              {/* Subtle top & bottom vignette */}
+              <div
+                className="absolute inset-x-0 top-0 h-16 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(180deg, rgba(16, 1, 10, 0.45) 0%, transparent 100%)',
+                }}
+              />
+              <div
+                className="absolute inset-x-0 bottom-0 h-28 pointer-events-none"
+                style={{
+                  background: 'linear-gradient(0deg, rgba(16, 1, 10, 0.8) 0%, transparent 100%)',
+                }}
+              />
             </div>
 
-            {/* Two Ornate Hanging 24K Gold Palace Lanterns (Top-Left) */}
-            <div className="pointer-events-none absolute top-0 left-1.5 z-20 flex items-start gap-1">
-              <svg
-                viewBox="0 0 64 180"
-                fill="none"
-                className="w-8 h-24 drop-shadow-[0_6px_14px_rgba(255,200,80,0.5)]"
+            {/* TOP & MIDDLE CONTENT STACK */}
+            <div className="relative z-10 w-full">
+              {/* 1. Ornate Gold Filigree Crown Crest + ROYAL EDIT Badge */}
+              <div className="flex flex-col items-center text-center mb-1">
+                {/* Crown Filigree SVG */}
+                <svg viewBox="0 0 120 28" fill="none" className="w-20 h-auto drop-shadow-[0_2px_8px_rgba(255,220,120,0.6)] mb-0.5">
+                  <path
+                    d="M60 2 L64 12 L74 6 L70 18 L60 14 L50 18 L46 6 L56 12 Z"
+                    fill="url(#mobCrownGold)"
+                    stroke="#FFE59E"
+                    strokeWidth="0.8"
+                  />
+                  <path
+                    d="M20 18 C35 15, 48 8, 60 14 C72 8, 85 15, 100 18"
+                    stroke="url(#mobCrownGold)"
+                    strokeWidth="1.2"
+                    strokeLinecap="round"
+                  />
+                  <circle cx="60" cy="3" r="1.8" fill="#FFFDF9" stroke="#9A6B18" strokeWidth="0.8" />
+                  <circle cx="46" cy="6" r="1.4" fill="#FFE59E" />
+                  <circle cx="74" cy="6" r="1.4" fill="#FFE59E" />
+                  <circle cx="34" cy="16" r="1" fill="#FFE59E" />
+                  <circle cx="86" cy="16" r="1" fill="#FFE59E" />
+                  <defs>
+                    <linearGradient id="mobCrownGold" x1="20" y1="2" x2="100" y2="20" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#FFF4C2" />
+                      <stop offset="0.5" stopColor="#E5B84B" />
+                      <stop offset="1" stopColor="#9A6B18" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+
+                {/* Scalloped Plaque: ROYAL EDIT - 02 */}
+                <div className="relative inline-flex items-center">
+                  {/* Left scroll horn */}
+                  <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6B18] border border-[#5A3807] -mr-1 z-10 shadow-xs" />
+                  <div className="rounded-full p-[1.5px] bg-gradient-to-r from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_4px_16px_rgba(0,0,0,0.7)]">
+                    <div
+                      className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full border border-[#FFE59E]/70"
+                      style={{
+                        background: 'linear-gradient(180deg, #380424 0%, #200115 100%)',
+                      }}
+                    >
+                      <Crown className="w-3 h-3 text-[#FFE59E] fill-[#FFE59E]/40" />
+                      <span className="font-serif text-[10px] font-bold uppercase tracking-[0.22em] text-[#FFE59E] whitespace-nowrap">
+                        ROYAL EDIT - 0{(currentHeroSlide % heroShowcaseItems.length) + 1}
+                      </span>
+                    </div>
+                  </div>
+                  {/* Right scroll horn */}
+                  <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6B18] border border-[#5A3807] -ml-1 z-10 shadow-xs" />
+                </div>
+              </div>
+
+              {/* 2. Two-Line Grand Palace Headline */}
+              <Link
+                href={activeHeroItem.rawProduct ? `/product/${activeHeroItem.slug}` : '/shop'}
+                className="group block text-center max-w-full overflow-visible my-1"
               >
-                <line x1="32" y1="0" x2="32" y2="44" stroke="url(#lanternGold)" strokeWidth="2.2" strokeDasharray="3 2" />
-                <circle cx="32" cy="44" r="3.5" fill="url(#lanternGold)" />
-                <path d="M18 60C18 50 25 46 32 44C39 46 46 50 46 60H18Z" fill="url(#lanternGold)" stroke="#5A3807" strokeWidth="1" />
-                <rect x="14" y="60" width="36" height="4" rx="2" fill="url(#lanternGold)" />
-                <rect x="17" y="64" width="30" height="44" rx="4" fill="url(#lanternGlow)" stroke="url(#lanternGold)" strokeWidth="2" />
-                <line x1="25" y1="64" x2="25" y2="108" stroke="#8C5818" strokeWidth="1.2" />
-                <line x1="39" y1="64" x2="39" y2="108" stroke="#8C5818" strokeWidth="1.2" />
-                <rect x="14" y="108" width="36" height="4" rx="2" fill="url(#lanternGold)" />
-                <path d="M20 112L32 126L44 112H20Z" fill="url(#lanternGold)" stroke="#5A3807" strokeWidth="1" />
-                <circle cx="32" cy="130" r="2.5" fill="#FFE59E" />
-                <path d="M32 132V140" stroke="#FFE59E" strokeWidth="1.8" strokeLinecap="round" />
-                <defs>
-                  <linearGradient id="lanternGold" x1="14" y1="44" x2="50" y2="130" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FFF4C2" />
-                    <stop offset="0.5" stopColor="#D4AF37" />
-                    <stop offset="1" stopColor="#7A4E0D" />
-                  </linearGradient>
-                  <radialGradient id="lanternGlow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(32 86) scale(18 24)">
-                    <stop stopColor="#FFFDF9" />
-                    <stop offset="0.55" stopColor="#FFD269" />
-                    <stop offset="1" stopColor="#B86B11" />
-                  </radialGradient>
-                </defs>
-              </svg>
+                <h1 className="leading-tight overflow-visible">
+                  <span
+                    className="block font-extrabold text-[21px] sm:text-[23px] uppercase tracking-[0.06em] text-transparent bg-clip-text drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] leading-tight"
+                    style={{
+                      fontFamily: "'Cinzel', Georgia, serif",
+                      backgroundImage:
+                        'linear-gradient(180deg, #FFFDF9 0%, #FFE28A 46%, #C88A20 88%, #F8DF95 100%)',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
+                    }}
+                  >
+                    {activeHeroItem.titleLine1 || 'WEBHOOK PURE'}
+                  </span>
+                  <span
+                    className="block font-normal text-[40px] sm:text-[44px] text-[#FFE8B5] leading-[1.05] mt-0.5 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]"
+                    style={{
+                      fontFamily: "'Great Vibes', Georgia, cursive",
+                      textShadow:
+                        '0 0 24px rgba(255, 220, 130, 0.5), 0 4px 10px rgba(0,0,0,0.9)',
+                    }}
+                  >
+                    {toTitleCase(activeHeroItem.titleLine2 || 'Silk Saree')}
+                  </span>
+                </h1>
+              </Link>
 
-              <svg
-                viewBox="0 0 56 140"
-                fill="none"
-                className="w-6 h-18 -ml-1 drop-shadow-[0_6px_14px_rgba(255,200,80,0.5)]"
-              >
-                <line x1="28" y1="0" x2="28" y2="24" stroke="url(#lanternGold)" strokeWidth="2" strokeDasharray="3 2" />
-                <circle cx="28" cy="24" r="3" fill="url(#lanternGold)" />
-                <path d="M16 38C16 30 22 26 28 24C34 26 40 30 40 38H16Z" fill="url(#lanternGold)" stroke="#5A3807" strokeWidth="1" />
-                <rect x="13" y="38" width="30" height="3.5" rx="1.5" fill="url(#lanternGold)" />
-                <rect x="15" y="41.5" width="26" height="36" rx="3" fill="url(#lanternGlow)" stroke="url(#lanternGold)" strokeWidth="1.8" />
-                <line x1="22" y1="41.5" x2="22" y2="77.5" stroke="#8C5818" strokeWidth="1" />
-                <line x1="34" y1="41.5" x2="34" y2="77.5" stroke="#8C5818" strokeWidth="1" />
-                <rect x="13" y="77.5" width="30" height="3.5" rx="1.5" fill="url(#lanternGold)" />
-                <path d="M18 81L28 92L38 81H18Z" fill="url(#lanternGold)" stroke="#5A3807" strokeWidth="1" />
-                <circle cx="28" cy="96" r="2" fill="#FFE59E" />
-                <path d="M28 98V104" stroke="#FFE59E" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            </div>
+              {/* 3. Centered 3D Sculpted 24K Gold Lotus Divider */}
+              <div className="flex items-center justify-center gap-2 my-1.5 w-full max-w-[280px] mx-auto">
+                <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-[#FFE59E]" />
+                <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] border border-[#5A3807] shrink-0" />
+                <svg viewBox="0 0 60 28" fill="none" className="w-6 h-auto shrink-0 drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]">
+                  <path d="M30 3C26 10 23 16 30 24C37 16 34 10 30 3Z" fill="url(#mobHeroLotusCenterNew)" stroke="#5A3807" strokeWidth="0.9" />
+                  <path d="M30 24C21 20 15 13 18 7C23 9 26 14 30 24Z" fill="url(#mobHeroLotusSideNew)" stroke="#5A3807" strokeWidth="0.9" />
+                  <path d="M30 24C39 20 45 13 42 7C37 9 34 14 30 24Z" fill="url(#mobHeroLotusSideNew)" stroke="#5A3807" strokeWidth="0.9" />
+                  <path d="M30 24C16 23 8 18 9 12C15 13 22 17 30 24Z" fill="url(#mobHeroLotusOuterNew)" stroke="#5A3807" strokeWidth="0.8" />
+                  <path d="M30 24C44 23 52 18 51 12C45 13 38 17 30 24Z" fill="url(#mobHeroLotusOuterNew)" stroke="#5A3807" strokeWidth="0.8" />
+                  <ellipse cx="30" cy="25" rx="10" ry="2" fill="#8C5818" />
+                  <defs>
+                    <linearGradient id="mobHeroLotusCenterNew" x1="30" y1="3" x2="30" y2="24" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#FFFDF9" />
+                      <stop offset="0.45" stopColor="#E5B84B" />
+                      <stop offset="1" stopColor="#9E6B18" />
+                    </linearGradient>
+                    <linearGradient id="mobHeroLotusSideNew" x1="18" y1="7" x2="42" y2="24" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#FFE59E" />
+                      <stop offset="1" stopColor="#A6721E" />
+                    </linearGradient>
+                    <linearGradient id="mobHeroLotusOuterNew" x1="9" y1="12" x2="51" y2="24" gradientUnits="userSpaceOnUse">
+                      <stop stopColor="#F5D37E" />
+                      <stop offset="1" stopColor="#8C5818" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] border border-[#5A3807] shrink-0" />
+                <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#D4AF37] to-[#FFE59E]" />
+              </div>
 
-            {/* Top-Right Floral Accent */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/nalmara/hd/hero_corner_tr.png"
-              alt=""
-              aria-hidden="true"
-              className="pointer-events-none select-none absolute -top-2 -right-3 w-24 h-24 object-contain z-20 opacity-95 drop-shadow-[0_6px_12px_rgba(0,0,0,0.5)]"
-            />
+              {/* 4. Subtitle / Product Tagline */}
+              <p className="font-serif text-[9.5px] uppercase tracking-[0.2em] text-[#FFE59E] text-center font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] max-w-xs mx-auto line-clamp-1 mb-4">
+                {activeHeroItem.description || 'TEST ITEM FOR STOCK MANAGEMENT'}
+              </p>
 
-            {/* Mobile 2-Column Stage */}
-            <div className="relative z-20 px-2.5">
-              <div className="grid grid-cols-12 items-center gap-1.5">
-                {/* Left 7 Cols: Editorial */}
-                <div
-                  key={`palace-mob-text-${heroAnimTick}`}
-                  className="col-span-7 flex flex-col items-center text-center pt-4 pl-1 pb-2 z-20 animate-hero-text-up"
-                >
-                  {/* 1. Scalloped Royal Plum & 24K Gold Crown Plaque */}
-                  <div className="relative inline-flex items-center mb-2">
-                    <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6B18] border border-[#5A3807] -mr-1 z-10 shadow-xs" />
-                    <div className="rounded-full p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_8px_20px_rgba(0,0,0,0.55)]">
-                      <div
-                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-[#FFE59E]/60"
-                        style={{
-                          background:
-                            'linear-gradient(180deg, #4A0B32 0%, #280319 55%, #16010D 100%)',
-                        }}
-                      >
-                        <svg viewBox="0 0 24 18" fill="none" className="w-3.5 h-3 shrink-0">
+              {/* 5. Left-Aligned 4 Badges (2x2 Grid) + Sculpted Gold CTA */}
+              <div className="w-[58%] max-w-[230px] pl-1.5">
+                {/* 2x2 Grid */}
+                <div className="grid grid-cols-2 gap-2">
+                  {[
+                    {
+                      line1: 'PURE SILK',
+                      line2: '& ZARI',
+                      icon: <Gem className="w-4 h-4 text-[#FFE59E] mb-1" />,
+                    },
+                    {
+                      line1: 'CUSTOM',
+                      line2: 'FIT',
+                      icon: <MannequinDummyIcon className="w-4 h-4 mb-1 text-[#FFE59E]" />,
+                    },
+                    {
+                      line1: 'PREMIUM',
+                      line2: 'STITCHING',
+                      icon: (
+                        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 mb-1">
                           <path
-                            d="M2 15L4 5L9 10L12 3L15 10L20 5L22 15H2Z"
-                            fill="url(#crownGoldGrad)"
-                            stroke="#FFF4C2"
-                            strokeWidth="1"
+                            d="M17 3L21 7L7 21L3 21L3 17L17 3Z"
+                            stroke="#FFE59E"
+                            strokeWidth="1.7"
+                            strokeLinecap="round"
                             strokeLinejoin="round"
                           />
-                          <rect x="2" y="15.5" width="20" height="2" rx="1" fill="#FFE59E" />
-                          <defs>
-                            <linearGradient id="crownGoldGrad" x1="2" y1="3" x2="22" y2="16" gradientUnits="userSpaceOnUse">
-                              <stop stopColor="#FFF4C2" />
-                              <stop offset="0.5" stopColor="#E5B84B" />
-                              <stop offset="1" stopColor="#9A6B18" />
-                            </linearGradient>
-                          </defs>
+                          <path
+                            d="M14 6C9 4 4 8 8 12C12 16 7 20 3 19"
+                            stroke="#FFE59E"
+                            strokeWidth="1.6"
+                            strokeLinecap="round"
+                          />
                         </svg>
-                        <span className="font-serif text-[9.5px] font-bold uppercase tracking-[0.18em] text-[#FFF4C2] whitespace-nowrap">
-                          ROYAL EDIT • 0{(currentHeroSlide % heroShowcaseItems.length) + 1}
+                      ),
+                    },
+                    {
+                      line1: 'PREMIUM',
+                      line2: 'QUALITY',
+                      icon: (
+                        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 mb-1">
+                          <circle cx="12" cy="9" r="6" stroke="#FFE59E" strokeWidth="1.6" fill="rgba(255,229,158,0.15)" />
+                          <path d="M9.5 9L11 10.5L14.5 7" stroke="#FFE59E" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                          <path d="M8.5 14.5L7 21L12 18.5L17 21L15.5 14.5" stroke="#FFE59E" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="rgba(255,229,158,0.1)" />
+                        </svg>
+                      ),
+                    },
+                  ].map((plaque) => (
+                    <div
+                      key={plaque.line1 + plaque.line2}
+                      className="relative rounded-[12px] p-[1.5px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_6px_16px_rgba(0,0,0,0.65)]"
+                    >
+                      <div
+                        className="relative h-full rounded-[10px] px-1 py-2 flex flex-col items-center justify-center text-center border border-[#FFE59E]/40"
+                        style={{
+                          background: 'linear-gradient(180deg, rgba(46, 5, 30, 0.92) 0%, rgba(20, 2, 14, 0.96) 100%)',
+                        }}
+                      >
+                        <span className="pointer-events-none absolute inset-[2px] rounded-[8px] border border-[#FFE59E]/20" />
+                        {plaque.icon}
+                        <span className="relative z-10 font-serif font-extrabold text-[8.5px] leading-[1.15] text-[#FFE59E] tracking-wider uppercase">
+                          {plaque.line1}
+                          <br />
+                          {plaque.line2}
                         </span>
                       </div>
                     </div>
-                    <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6B18] border border-[#5A3807] -ml-1 z-10 shadow-xs" />
-                  </div>
+                  ))}
+                </div>
 
-                  {/* 2. Two-Line Grand Palace Headline ('Cinzel' + 'Great Vibes') */}
+                {/* 6. Sculpted 3D Metallic Gold CTA Button */}
+                <div className="mt-3.5">
                   <Link
                     href={activeHeroItem.rawProduct ? `/product/${activeHeroItem.slug}` : '/shop'}
-                    className="group block max-w-full overflow-visible"
-                  >
-                    <h1 className="leading-tight pt-1 pb-1 overflow-visible">
-                      <span
-                        className="block font-extrabold text-[20px] sm:text-[22px] uppercase tracking-[0.03em] text-transparent bg-clip-text drop-shadow-[0_3px_10px_rgba(0,0,0,0.85)] pt-1.5 pb-0.5 leading-[1.2] overflow-visible"
-                        style={{
-                          fontFamily: "'Cinzel', Georgia, serif",
-                          backgroundImage:
-                            'linear-gradient(180deg, #FFFDF9 0%, #FFE28A 46%, #C88A20 88%, #F8DF95 100%)',
-                          WebkitBackgroundClip: 'text',
-                          backgroundClip: 'text',
-                        }}
-                      >
-                        {activeHeroItem.titleLine1}
-                      </span>
-                      <span
-                        className="block font-normal text-[28px] sm:text-[32px] text-[#FCE8C0] leading-[1.12] pt-0.5 pb-0.5 drop-shadow-[0_3px_12px_rgba(0,0,0,0.9)] overflow-visible"
-                        style={{ fontFamily: "'Great Vibes', Georgia, cursive" }}
-                      >
-                        {toTitleCase(activeHeroItem.titleLine2)}
-                      </span>
-                    </h1>
-                  </Link>
-
-                  {/* 3. Centered 3D Sculpted 24K Gold Lotus Divider */}
-                  <div className="flex items-center justify-center gap-2 my-2.5 w-full max-w-[240px]">
-                    <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-[#FFE59E]" />
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] border border-[#5A3807] shrink-0" />
-                    <svg viewBox="0 0 60 28" fill="none" className="w-7 h-auto shrink-0 drop-shadow-[0_2px_6px_rgba(0,0,0,0.6)]">
-                      <path d="M30 3C26 10 23 16 30 24C37 16 34 10 30 3Z" fill="url(#mobHeroLotusCenter)" stroke="#5A3807" strokeWidth="0.9" />
-                      <path d="M30 24C21 20 15 13 18 7C23 9 26 14 30 24Z" fill="url(#mobHeroLotusSide)" stroke="#5A3807" strokeWidth="0.9" />
-                      <path d="M30 24C39 20 45 13 42 7C37 9 34 14 30 24Z" fill="url(#mobHeroLotusSide)" stroke="#5A3807" strokeWidth="0.9" />
-                      <path d="M30 24C16 23 8 18 9 12C15 13 22 17 30 24Z" fill="url(#mobHeroLotusOuter)" stroke="#5A3807" strokeWidth="0.8" />
-                      <path d="M30 24C44 23 52 18 51 12C45 13 38 17 30 24Z" fill="url(#mobHeroLotusOuter)" stroke="#5A3807" strokeWidth="0.8" />
-                      <ellipse cx="30" cy="25" rx="10" ry="2" fill="#8C5818" />
-                      <defs>
-                        <linearGradient id="mobHeroLotusCenter" x1="30" y1="3" x2="30" y2="24" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#FFFDF9" />
-                          <stop offset="0.45" stopColor="#E5B84B" />
-                          <stop offset="1" stopColor="#9E6B18" />
-                        </linearGradient>
-                        <linearGradient id="mobHeroLotusSide" x1="18" y1="7" x2="42" y2="24" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#FFE59E" />
-                          <stop offset="1" stopColor="#A6721E" />
-                        </linearGradient>
-                        <linearGradient id="mobHeroLotusOuter" x1="9" y1="12" x2="51" y2="24" gradientUnits="userSpaceOnUse">
-                          <stop stopColor="#F5D37E" />
-                          <stop offset="1" stopColor="#8C5818" />
-                        </linearGradient>
-                      </defs>
-                    </svg>
-                    <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] border border-[#5A3807] shrink-0" />
-                    <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#D4AF37] to-[#FFE59E]" />
-                  </div>
-
-                  {/* 4. Three-Line Clean Editorial Ivory Serif Description */}
-                  <p className="font-serif text-[11px] text-[#FAF0DC] leading-[1.4] max-w-[235px] line-clamp-3 drop-shadow-[0_2px_4px_rgba(0,0,0,0.85)]">
-                    {activeHeroItem.description}
-                  </p>
-
-                  {/* 5. Three Ornate Scalloped Champagne-Gold Feature Plaques */}
-                  <div className="grid grid-cols-3 gap-1.5 w-full max-w-[255px] mt-3">
-                    {[
-                      {
-                        line1: 'Pure Silk',
-                        line2: '& Zari',
-                        icon: <Gem className="w-4 h-4 text-[#6E410A] stroke-[1.9] mb-1" />,
-                      },
-                      {
-                        line1: 'Custom',
-                        line2: 'Fit',
-                        icon: <MannequinDummyIcon className="w-4 h-4 mb-1" />,
-                      },
-                      {
-                        line1: 'Premium',
-                        line2: 'Stitching',
-                        icon: (
-                          <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 mb-1">
-                            <path
-                              d="M17 3L21 7L7 21L3 21L3 17L17 3Z"
-                              stroke="#6E410A"
-                              strokeWidth="1.7"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                            />
-                            <path
-                              d="M14 6C9 4 4 8 8 12C12 16 7 20 3 19"
-                              stroke="#6E410A"
-                              strokeWidth="1.6"
-                              strokeLinecap="round"
-                            />
-                          </svg>
-                        ),
-                      },
-                    ].map((plaque) => (
-                      <div
-                        key={plaque.line1}
-                        className="relative rounded-[14px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_8px_18px_rgba(0,0,0,0.5)]"
-                      >
-                        <span className="pointer-events-none absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 bg-[#FFF4C2] border border-[#8C5818] z-20" />
-                        <div
-                          className="relative h-full rounded-[12px] px-1.5 py-2 flex flex-col items-center justify-center text-center border border-[#FFFDF9]"
-                          style={{
-                            background:
-                              'linear-gradient(180deg, #FFFDF9 0%, #F9E9C8 55%, #E2C082 100%)',
-                          }}
-                        >
-                          <span className="pointer-events-none absolute inset-[2.5px] rounded-[9.5px] border border-[#B88228]/50" />
-                          {plaque.icon}
-                          <span className="relative z-10 font-serif font-bold text-[9px] leading-[1.15] text-[#231008]">
-                            {plaque.line1}
-                            <br />
-                            {plaque.line2}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Right 5 Cols: Palace Arch */}
-                <div className="col-span-5 relative flex items-end justify-center self-stretch -mb-6">
-                  <div
-                    className="pointer-events-none absolute -inset-2 rounded-t-[60px] opacity-75 blur-md"
+                    className="group relative inline-flex items-center justify-between gap-2.5 px-4 py-2 rounded-full border-2 border-[#FFE59E] shadow-[0_8px_22px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.8)] active:scale-95 transition-transform"
                     style={{
-                      background:
-                        'radial-gradient(circle at 50% 35%, rgba(255, 224, 138, 0.55) 0%, transparent 70%)',
+                      background: 'linear-gradient(180deg, #FFF4C2 0%, #F5C658 35%, #D4AF37 75%, #9E6B18 100%)',
                     }}
-                  />
-                  <div className="relative w-full max-w-[198px] aspect-[3/4.25] rounded-t-[54px] rounded-b-[20px] p-[2.5px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_20px_50px_rgba(0,0,0,0.65)]">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src="/images/nalmara/hd/hero_corner_tl.png"
-                      alt=""
-                      aria-hidden="true"
-                      className="pointer-events-none select-none absolute -top-3 left-1 w-14 h-14 object-contain z-30 drop-shadow-[0_4px_8px_rgba(0,0,0,0.45)]"
-                    />
-                    <Link
-                      key={`palace-mob-img-${heroAnimTick}-${currentHeroSlide}`}
-                      href={activeHeroItem.rawProduct ? `/product/${activeHeroItem.slug}` : '/shop'}
-                      className="relative w-full h-full rounded-t-[51px] rounded-b-[17px] overflow-hidden bg-[#2A0519] block group animate-hero-rise-in"
-                    >
-                      <div
-                        className="absolute inset-0 pointer-events-none z-0"
-                        style={{
-                          background:
-                            'radial-gradient(circle at 50% 25%, rgba(255,220,130,0.38) 0%, transparent 60%)',
-                        }}
-                      />
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={activeHeroItem.image}
-                        alt={activeHeroItem.name}
-                        onError={(e) => {
-                          (e.currentTarget as HTMLImageElement).src =
-                            HERO_SHOWCASE_FALLBACK[
-                              currentHeroSlide % HERO_SHOWCASE_FALLBACK.length
-                            ].image;
-                        }}
-                        className="relative z-10 w-full h-full object-cover object-top"
-                      />
-                      <div className="absolute inset-[3px] rounded-t-[48px] rounded-b-[14px] border border-[#FFF4C2]/65 pointer-events-none z-20" />
-                      <div className="absolute inset-x-0 bottom-0 h-14 bg-gradient-to-t from-[#1E0212]/90 via-[#1E0212]/40 to-transparent z-20 flex items-end justify-between px-2.5 pb-2.5">
-                        <span className="px-2.5 py-0.5 rounded-full bg-gradient-to-r from-[#760159] via-[#940270] to-[#760159] border border-[#FFE59E] font-serif font-bold text-[10.5px] text-[#FFE59E] shadow-md">
-                          {formatCurrency(activeHeroItem.price)}
-                        </span>
-                        <span className="text-[8.5px] font-bold uppercase tracking-wider text-[#FFFDF9] bg-[#240216]/85 px-2 py-0.5 rounded-full border border-[#D4AF37]/60">
-                          0{(currentHeroSlide % heroShowcaseItems.length) + 1} / 0{heroShowcaseItems.length}
-                        </span>
-                      </div>
-                    </Link>
-                  </div>
+                  >
+                    <span className="font-serif font-extrabold text-[11px] uppercase tracking-[0.12em] text-[#280619] whitespace-nowrap">
+                      EXPLORE COLLECTION
+                    </span>
+                    <span className="w-5 h-5 rounded-full bg-[#200318] flex items-center justify-center text-[#FFE59E] shadow-inner shrink-0">
+                      <ChevronRight className="w-3.5 h-3.5 stroke-[2.8]" />
+                    </span>
+                  </Link>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* LOWER CURVED CHAMPAGNE-CREAM GALLERY DECK + OVERLAPPING CTA (Mobile) */}
-          <div
-            className="relative z-20 -mt-7 rounded-t-[40px] border-t-[3px] border-[#D4AF37] pt-8 pb-8 px-3 shadow-[0_-14px_34px_rgba(0,0,0,0.42)]"
-            style={{
-              background:
-                'radial-gradient(circle at 50% 18%, #FFFDF9 0%, #FAF0D8 58%, #ECD3AA 100%)',
-            }}
-          >
-            <div className="pointer-events-none absolute inset-x-2 top-1.5 h-8 rounded-t-[36px] border-t border-[#D4AF37]/50" />
-
-            {/* Overlapping Center Scalloped Royal Plum & 24K Gold "Explore Collection →" Button */}
-            <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-30 flex items-center justify-center w-full max-w-[340px] px-2">
-              <div className="flex items-center flex-1">
-                <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C6923A] to-[#FFE59E]" />
-                <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37] mr-1 shrink-0" />
-                <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#8C5818] border border-[#5A3807] -mr-1.5 z-10 shadow-xs shrink-0" />
-              </div>
-
-              <Link
-                href={activeHeroItem.rawProduct ? `/product/${activeHeroItem.slug}` : '/shop'}
-                className="group relative rounded-full p-[2.5px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_28px_rgba(38,3,22,0.58)] active:scale-95 transition-transform shrink-0"
-              >
-                <span
-                  className="inline-flex items-center gap-2 px-6 py-2 rounded-full border border-[#FFE59E]/75 font-serif font-bold text-[13.5px] text-[#FFFDF9] tracking-wide shadow-[inset_0_1px_2px_rgba(255,244,194,0.4)]"
-                  style={{
-                    background:
-                      'linear-gradient(180deg, #760159 0%, #54013F 55%, #220215 100%)',
-                  }}
-                >
-                  <span>Explore Collection</span>
-                  <ArrowRight className="w-4 h-4 text-[#FFE59E]" />
-                </span>
-              </Link>
-
-              <div className="flex items-center flex-1">
-                <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#8C5818] border border-[#5A3807] -ml-1.5 z-10 shadow-xs shrink-0" />
-                <span className="w-1.5 h-1.5 rotate-45 bg-[#D4AF37] ml-1 shrink-0" />
-                <span className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C6923A] to-[#FFE59E]" />
-              </div>
-            </div>
-
-            {/* 3 Rounded-Rectangle Gold-Bezel Thumbnail Cards Flanked by < and > Buttons */}
-            <div className="relative z-20 max-w-[420px] mx-auto flex items-center justify-center gap-2">
+            {/* BOTTOM 3-THUMBNAIL CAROUSEL STRIP */}
+            <div className="relative z-20 w-full max-w-[380px] mx-auto mt-6 mb-1 flex items-center justify-center gap-2 px-1">
+              {/* Left Arrow Button */}
               <button
                 type="button"
                 onClick={() => goToHeroSlide((prev) => prev - 1)}
-                className="w-8 h-8 rounded-full p-[2px] bg-gradient-to-b from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] shadow-[0_6px_16px_rgba(40,6,25,0.32)] active:scale-95 transition-transform shrink-0 cursor-pointer"
+                className="w-8 h-8 rounded-full border border-[#D4AF37] bg-[#220215]/90 text-[#FFE59E] flex items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.7)] active:scale-95 transition-transform shrink-0 cursor-pointer"
                 aria-label="Previous showcase slide"
               >
-                <span
-                  className="w-full h-full rounded-full flex items-center justify-center text-[#FFE59E]"
-                  style={{
-                    background:
-                      'radial-gradient(circle at 50% 35%, #5B0E3D 0%, #2A031A 100%)',
-                  }}
-                >
-                  <ChevronLeft className="w-4 h-4 stroke-[2.4]" />
-                </span>
+                <ChevronLeft className="w-4 h-4 stroke-[2.6]" />
               </button>
 
-              <div className="grid grid-cols-3 gap-2.5 flex-1">
+              {/* 3 Thumbnails with Thick Gold Bezel */}
+              <div className="grid grid-cols-3 gap-2 flex-1">
                 {heroThreeThumbnails.map(({ item, slideIndex, position }) => {
                   const isCenter = position === 'active';
                   return (
                     <button
-                      key={`mob-${item.id}-${position}`}
+                      key={`mob-new-${item.id}-${position}`}
                       type="button"
                       onClick={() => goToHeroSlide(slideIndex)}
-                      className={`group relative aspect-[4/3.3] rounded-[14px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] transition-all duration-300 cursor-pointer ${isCenter
-                        ? 'shadow-[0_12px_26px_rgba(91,14,61,0.32)] scale-[1.05] ring-2 ring-[#D4AF37]'
-                        : 'shadow-[0_6px_14px_rgba(70,40,10,0.18)] opacity-90'
-                        }`}
+                      className={`group relative aspect-square rounded-[14px] p-[2px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] transition-all duration-300 cursor-pointer ${
+                        isCenter
+                          ? 'shadow-[0_8px_22px_rgba(0,0,0,0.8)] scale-[1.06] ring-2 ring-[#FFE59E]'
+                          : 'shadow-[0_4px_12px_rgba(0,0,0,0.5)] opacity-85 hover:opacity-100'
+                      }`}
                       aria-label={`Select ${item.name}`}
                     >
                       {isCenter && (
-                        <span className="pointer-events-none absolute -top-1.5 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rotate-45 bg-[#5B0E3D] border border-[#FFE59E] z-20 shadow-xs" />
+                        <span className="pointer-events-none absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 bg-[#FFE59E] border border-[#8C5818] z-20 shadow-xs" />
                       )}
-                      <div className="relative w-full h-full rounded-[12px] overflow-hidden bg-[#280619] border border-[#FFFDF9]/85">
+                      <div className="relative w-full h-full rounded-[11px] overflow-hidden bg-[#24031B] border border-[#FFFDF9]/60">
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img
                           src={item.image}
@@ -1601,74 +1455,15 @@ export default function HomePage() {
                 })}
               </div>
 
+              {/* Right Arrow Button */}
               <button
                 type="button"
                 onClick={() => goToHeroSlide((prev) => prev + 1)}
-                className="w-8 h-8 rounded-full p-[2px] bg-gradient-to-b from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] shadow-[0_6px_16px_rgba(40,6,25,0.32)] active:scale-95 transition-transform shrink-0 cursor-pointer"
+                className="w-8 h-8 rounded-full border border-[#D4AF37] bg-[#220215]/90 text-[#FFE59E] flex items-center justify-center shadow-[0_4px_14px_rgba(0,0,0,0.7)] active:scale-95 transition-transform shrink-0 cursor-pointer"
                 aria-label="Next showcase slide"
               >
-                <span
-                  className="w-full h-full rounded-full flex items-center justify-center text-[#FFE59E]"
-                  style={{
-                    background:
-                      'radial-gradient(circle at 50% 35%, #5B0E3D 0%, #2A031A 100%)',
-                  }}
-                >
-                  <ChevronRight className="w-4 h-4 stroke-[2.4]" />
-                </span>
+                <ChevronRight className="w-4 h-4 stroke-[2.6]" />
               </button>
-            </div>
-
-            {/* Bottom-Left & Bottom-Right 3D Cream & Burgundy Floral Bouquets with 24K Gold Leaves */}
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/nalmara/hd/hero_corner_bl.png"
-              alt=""
-              aria-hidden="true"
-              className="pointer-events-none select-none absolute -bottom-2 -left-2 w-24 h-24 object-contain z-20 drop-shadow-[0_6px_12px_rgba(90,52,16,0.3)]"
-            />
-            {/* eslint-disable-next-line @next/next/no-img-element */}
-            <img
-              src="/images/nalmara/hd/hero_corner_br.png"
-              alt=""
-              aria-hidden="true"
-              className="pointer-events-none select-none absolute -bottom-2 -right-2 w-24 h-24 object-contain z-20 drop-shadow-[0_6px_12px_rgba(90,52,16,0.3)]"
-            />
-
-            {/* Bottom Sweeping Royal Purple Silk & 24K Gold Wave Ribbon */}
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-7 z-10 overflow-hidden">
-              <svg
-                viewBox="0 0 1200 60"
-                fill="none"
-                preserveAspectRatio="none"
-                className="w-full h-full"
-              >
-                <path
-                  d="M0 12C220 55 420 58 600 48C780 58 980 55 1200 12V60H0V12Z"
-                  fill="url(#bottomPurpleWaveGrad)"
-                />
-                <path
-                  d="M0 12C220 55 420 58 600 48C780 58 980 55 1200 12"
-                  stroke="url(#bottomGoldWaveStroke)"
-                  strokeWidth="4"
-                />
-                <defs>
-                  <linearGradient id="bottomPurpleWaveGrad" x1="0" y1="12" x2="1200" y2="60" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#42052B" />
-                    <stop offset="0.3" stopColor="#7C1356" />
-                    <stop offset="0.5" stopColor="#380424" />
-                    <stop offset="0.7" stopColor="#7C1356" />
-                    <stop offset="1" stopColor="#42052B" />
-                  </linearGradient>
-                  <linearGradient id="bottomGoldWaveStroke" x1="0" y1="30" x2="1200" y2="30" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#9A6B18" />
-                    <stop offset="0.25" stopColor="#FFF4C2" />
-                    <stop offset="0.5" stopColor="#D4AF37" />
-                    <stop offset="0.75" stopColor="#FFF4C2" />
-                    <stop offset="1" stopColor="#9A6B18" />
-                  </linearGradient>
-                </defs>
-              </svg>
             </div>
           </div>
         </div>
