@@ -15,7 +15,7 @@ export const CartDrawer = () => {
   if (!isCartOpen) return null;
 
   const subtotal = getSubtotal();
-  const freeShippingThreshold = 1499;
+  const freeShippingThreshold = 2999;
   const remainingForFreeShipping = Math.max(0, freeShippingThreshold - subtotal);
   const progressPercent = Math.min(100, (subtotal / freeShippingThreshold) * 100);
 
@@ -64,7 +64,7 @@ export const CartDrawer = () => {
               ) : (
                 <span className="text-[#280619] font-bold flex items-center gap-1.5">
                   <Sparkles className="w-3.5 h-3.5 text-[#8C5818]" />
-                  <span>You&apos;ve Unlocked Free Insured Royal Delivery!</span>
+                  <span>You&apos;ve Unlocked Free Delivery Above ₹2,999!</span>
                 </span>
               )}
               <span className="font-extrabold text-[#8C5818]">{Math.round(progressPercent)}%</span>

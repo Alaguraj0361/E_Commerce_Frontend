@@ -117,7 +117,7 @@ export const Navbar = () => {
           <div className="flex-1 flex items-center justify-center gap-2.5 sm:gap-5 text-center whitespace-nowrap overflow-hidden">
             <span className="inline-flex items-center gap-1.5 text-[#FFF3D6] font-medium tracking-wide">
               <Truck className="w-3.5 h-3.5 text-[#F5C85B] shrink-0" />
-              <span>Free Shipping Across India</span>
+              <span>Free Delivery Above ₹2,999</span>
             </span>
             <span className="text-[#D4AF37]/70">|</span>
             <span className="inline-flex items-center gap-1.5 text-[#FFF3D6] font-medium tracking-wide">

@@ -17,7 +17,7 @@ import { InnerPageBanner } from '@/components/layout/InnerPageBanner';
 export const metadata = {
   title: 'Shipping & Delivery | NALMARA FASHION • Thoothukudi, Tamil Nadu',
   description:
-    'Fast 2–5 day delivery across Thoothukudi, Tirunelveli, Madurai, Chennai, Coimbatore, and all of Tamil Nadu. Free shipping on orders above ₹1,499.',
+    'Fast 2–5 day delivery across Thoothukudi, Tirunelveli, Madurai, Chennai, Coimbatore, and all of Tamil Nadu. Free shipping on orders above ₹2,999.',
 };
 
 export default function ShippingPage() {
@@ -26,21 +26,21 @@ export default function ShippingPage() {
       title: 'Thoothukudi, Tirunelveli & South TN',
       time: '1 – 2 Business Days',
       coverage: 'Thoothukudi, Tirunelveli, Kovilpatti, Nagercoil, Madurai, Virudhunagar, Tenkasi, Ramanathapuram',
-      charge: 'FREE on orders above ₹1,499 (Below ₹1,499: ₹99)',
+      charge: 'FREE on orders above ₹2,999 (Below ₹2,999: ₹99)',
       badge: 'Fast Local Delivery',
     },
     {
       title: 'All Over Tamil Nadu & Puducherry',
       time: '2 – 3 Business Days',
       coverage: 'Chennai, Coimbatore, Trichy, Salem, Erode, Tiruppur, Vellore, Thanjavur & all TN districts',
-      charge: 'FREE on orders above ₹1,499 (Below ₹1,499: ₹99)',
+      charge: 'FREE on orders above ₹2,999 (Below ₹2,999: ₹99)',
       badge: 'Most Popular',
     },
     {
       title: 'South India & Rest of India',
       time: '3 – 5 Business Days',
       coverage: 'Bengaluru, Kerala, Andhra Pradesh, Telangana, Mumbai, Delhi & all Indian states',
-      charge: 'FREE on orders above ₹1,499 (Below ₹1,499: ₹99)',
+      charge: 'FREE on orders above ₹2,999 (Below ₹2,999: ₹99)',
       badge: 'All-India Courier',
     },
     {
@@ -70,8 +70,8 @@ export default function ShippingPage() {
           {[
             {
               icon: Gift,
-              title: 'Free Shipping Above ₹1,499',
-              desc: 'Free delivery across Tamil Nadu & India on orders over ₹1,499.',
+              title: 'Free Shipping Above ₹2,999',
+              desc: 'Free delivery across Tamil Nadu & India on orders over ₹2,999.',
             },
             {
               icon: ShieldCheck,

@@ -507,7 +507,7 @@ const FAQ_ITEMS = [
     question: 'What is your delivery time across Tamil Nadu & India?',
     answer:
       'Ready-to-ship silk sarees, kurtis, and festive kidswear reach across Tamil Nadu in 2–5 business days (3–5 days across India). Custom-stitched blouses and bridal outfits are dispatched within 2–5 business days with live tracking.',
-    highlights: ['2–5 Days in Tamil Nadu', '3–5 Days Pan-India', 'Insured Doorstep Courier'],
+    highlights: ['2–5 Days in Tamil Nadu', '3–5 Days Pan-India', 'Free Delivery Above ₹2,999'],
   },
   {
     id: 4,
@@ -5109,7 +5109,7 @@ export default function HomePage() {
                             100% Quality-Checked Weaves
                           </p>
                           <p className="text-[11px] text-[#FFE59E]/80 truncate">
-                            Insured Pan-India Doorstep Delivery
+                            Free Delivery Above ₹2,999
                           </p>
                         </div>
                       </div>

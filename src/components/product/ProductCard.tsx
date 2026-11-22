@@ -242,9 +242,15 @@ export const ProductCard = ({ product, viewMode = 'grid' }: ProductCardProps) =>
                   {formatCurrency(product.price)}
                 </span>
               </div>
-              <p className="text-[9.5px] text-emerald-800 font-medium mt-0.5">
-                Free Insured Delivery
-              </p>
+              {product.price >= 2999 ? (
+                <p className="text-[9.5px] text-emerald-800 font-semibold mt-0.5">
+                  Free Delivery
+                </p>
+              ) : (
+                <p className="text-[9.5px] text-[#7A5B3E] font-medium mt-0.5">
+                  Free Delivery above ₹2,999
+                </p>
+              )}
             </div>
 
             <button
