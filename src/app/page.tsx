@@ -298,17 +298,23 @@ const ThreadSpoolsIllustration = ({ className = 'w-36 h-36' }: { className?: str
 const HERO_SHOWCASE_FALLBACK = [
   {
     id: 'hero-1',
-    name: 'ROYAL KANCHIPURAM BRIDAL SILK SAREE',
-    titleLine1: 'ROYAL KANCHIPURAM',
-    titleLine2: 'Bridal Silk Saree',
-    price: 4999,
+    name: 'BUTTERFLY GOWN',
+    titleLine1: 'BUTTERFLY',
+    titleLine2: 'Gown',
+    price: 399,
     description:
-      'Pure handwoven zari border silk saree with rich contrast pallu. Comes with unstitched blouse piece & custom Aari tailoring option.',
-    sizes: ['S', 'M', 'L', 'XL'],
-    image: '/images/nalmara/hd/prod_designer_saree_hd.jpg',
-    mobileBg: '/images/nalmara/mobile_hero_bg.jpg',
-    slug: 'royal-kanchipuram-bridal-silk-saree',
-    sku: 'NLM-384276-942',
+      'Make your little princess look extra adorable! Elegant Black & Yellow butterfly design with gorgeous floral appliqué work.',
+    sizes: ['1-2Y', '2-3Y', '3-4Y', '4-5Y'],
+    image: '/images/nalmara/hero_butterfly_gown.jpg',
+    mobileBg: '/images/nalmara/hero_butterfly_gown.jpg',
+    slug: 'butterfly-gown',
+    sku: 'NLM-KIDS-399',
+    badges: [
+      { line1: 'BUTTERFLY', line2: 'DESIGN' },
+      { line1: 'FLORAL', line2: 'APPLIQUÉ' },
+      { line1: 'PREMIUM', line2: 'PARTY WEAR' },
+      { line1: 'BIRTHDAYS &', line2: 'PARTIES' },
+    ],
   },
   {
     id: 'hero-2',
@@ -323,6 +329,12 @@ const HERO_SHOWCASE_FALLBACK = [
     mobileBg: '/images/nalmara/mobile_hero_bg_gown.jpg',
     slug: 'imperial-velvet-party-wear-gown',
     sku: 'NLM-384276-943',
+    badges: [
+      { line1: 'IMPERIAL', line2: 'VELVET' },
+      { line1: 'GOLD ZARI', line2: 'YOKE' },
+      { line1: 'CUSTOM', line2: 'TAILORED' },
+      { line1: 'PARTY', line2: 'WEAR' },
+    ],
   },
   {
     id: 'hero-3',
@@ -337,6 +349,12 @@ const HERO_SHOWCASE_FALLBACK = [
     mobileBg: '/images/nalmara/mobile_hero_bg_lehenga.jpg',
     slug: 'bridal-zardozi-lehenga-choli',
     sku: 'NLM-384276-944',
+    badges: [
+      { line1: 'BRIDAL', line2: 'ZARDOZI' },
+      { line1: 'ORGANZA', line2: 'DUPATTA' },
+      { line1: 'PUFF SLEEVES', line2: 'BLOUSE' },
+      { line1: 'ROYAL', line2: 'COUTURE' },
+    ],
   },
   {
     id: 'hero-4',
@@ -351,6 +369,12 @@ const HERO_SHOWCASE_FALLBACK = [
     mobileBg: '/images/nalmara/mobile_hero_bg_kurti.jpg',
     slug: 'emerald-silk-festive-kurti-set',
     sku: 'NLM-384276-945',
+    badges: [
+      { line1: 'EMERALD SILK', line2: '& ZARI' },
+      { line1: 'WOVEN', line2: 'MOTIFS' },
+      { line1: 'STRAIGHT', line2: 'FIT' },
+      { line1: 'FESTIVE', line2: 'ELEGANCE' },
+    ],
   },
 ];
 
@@ -1276,78 +1300,62 @@ export default function HomePage() {
               </p>
 
               {/* 5. Centered 4 Badges (2x2 Grid) */}
-              <div className="w-full max-w-[270px] mx-auto mb-3.5">
+              <div className="w-full max-w-[270px] mx-auto mb-3">
                 {/* 2x2 Grid */}
                 <div className="grid grid-cols-2 gap-2">
-                  {[
-                    {
-                      line1: 'PURE SILK',
-                      line2: '& ZARI',
-                      icon: <Gem className="w-4 h-4 text-[#FFE59E] mb-1" />,
-                    },
-                    {
-                      line1: 'CUSTOM',
-                      line2: 'FIT',
-                      icon: <MannequinDummyIcon className="w-4 h-4 mb-1 text-[#FFE59E]" />,
-                    },
-                    {
-                      line1: 'PREMIUM',
-                      line2: 'STITCHING',
-                      icon: (
-                        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 mb-1">
-                          <path
-                            d="M17 3L21 7L7 21L3 21L3 17L17 3Z"
-                            stroke="#FFE59E"
-                            strokeWidth="1.7"
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                          />
-                          <path
-                            d="M14 6C9 4 4 8 8 12C12 16 7 20 3 19"
-                            stroke="#FFE59E"
-                            strokeWidth="1.6"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                      ),
-                    },
-                    {
-                      line1: 'PREMIUM',
-                      line2: 'QUALITY',
-                      icon: (
-                        <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 mb-1">
-                          <circle cx="12" cy="9" r="6" stroke="#FFE59E" strokeWidth="1.6" fill="rgba(255,229,158,0.15)" />
-                          <path d="M9.5 9L11 10.5L14.5 7" stroke="#FFE59E" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-                          <path d="M8.5 14.5L7 21L12 18.5L17 21L15.5 14.5" stroke="#FFE59E" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" fill="rgba(255,229,158,0.1)" />
-                        </svg>
-                      ),
-                    },
-                  ].map((plaque) => (
-                    <div
-                      key={plaque.line1 + plaque.line2}
-                      className="relative rounded-[12px] p-[1.5px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_6px_16px_rgba(0,0,0,0.65)]"
-                    >
+                  {(
+                    activeHeroItem.badges || [
+                      { line1: 'BUTTERFLY', line2: 'DESIGN' },
+                      { line1: 'FLORAL', line2: 'APPLIQUÉ' },
+                      { line1: 'PREMIUM', line2: 'PARTY WEAR' },
+                      { line1: 'BIRTHDAYS &', line2: 'PARTIES' },
+                    ]
+                  ).map((plaque, pIdx) => {
+                    const icons = [
+                      <Gem key="gem" className="w-4 h-4 text-[#FFE59E] mb-1" />,
+                      <Sparkles key="sparkles" className="w-4 h-4 mb-1 text-[#FFE59E]" />,
+                      <Crown key="crown" className="w-4 h-4 text-[#FFE59E] mb-1" />,
+                      <MannequinDummyIcon key="dummy" className="w-4 h-4 mb-1 text-[#FFE59E]" />,
+                    ];
+                    return (
                       <div
-                        className="relative h-full rounded-[10px] px-2 py-2 flex flex-col items-center justify-center text-center border border-[#FFE59E]/40"
-                        style={{
-                          background: 'linear-gradient(180deg, rgba(46, 5, 30, 0.92) 0%, rgba(20, 2, 14, 0.96) 100%)',
-                        }}
+                        key={plaque.line1 + plaque.line2 + pIdx}
+                        className="relative rounded-[12px] p-[1.5px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_6px_16px_rgba(0,0,0,0.65)]"
                       >
-                        <span className="pointer-events-none absolute inset-[2px] rounded-[8px] border border-[#FFE59E]/20" />
-                        {plaque.icon}
-                        <span className="relative z-10 font-serif font-extrabold text-[8.5px] leading-[1.15] text-[#FFE59E] tracking-wider uppercase">
-                          {plaque.line1}
-                          <br />
-                          {plaque.line2}
-                        </span>
+                        <div
+                          className="relative h-full rounded-[10px] px-2 py-2 flex flex-col items-center justify-center text-center border border-[#FFE59E]/40"
+                          style={{
+                            background:
+                              'linear-gradient(180deg, rgba(46, 5, 30, 0.92) 0%, rgba(20, 2, 14, 0.96) 100%)',
+                          }}
+                        >
+                          <span className="pointer-events-none absolute inset-[2px] rounded-[8px] border border-[#FFE59E]/20" />
+                          {icons[pIdx % icons.length]}
+                          <span className="relative z-10 font-serif font-extrabold text-[8.5px] leading-[1.15] text-[#FFE59E] tracking-wider uppercase">
+                            {plaque.line1}
+                            <br />
+                            {plaque.line2}
+                          </span>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
               </div>
 
+              {/* Price Highlight Badge: PRICE: ₹399/- ONLY */}
+              <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-gradient-to-r from-[#5B0E3D]/95 via-[#2E051E]/95 to-[#5B0E3D]/95 border border-[#FFE59E] shadow-[0_4px_14px_rgba(0,0,0,0.6)] mb-2.5">
+                <span className="font-serif font-bold text-[10.5px] uppercase tracking-wider text-[#FFFDF9]">
+                  PRICE:{' '}
+                  <span className="text-[#FFE59E] font-extrabold text-[13px] drop-shadow-sm">
+                    {formatCurrency(activeHeroItem.price)}/- ONLY
+                  </span>
+                </span>
+                <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E]" />
+              </div>
+
               {/* 6. Sculpted 3D Metallic Gold CTA Button (Centered) */}
-              <div className="flex justify-center w-full mt-1 mb-1">
+              <div className="flex justify-center w-full mt-0.5 mb-1">
                 <Link
                   href={activeHeroItem.rawProduct ? `/product/${activeHeroItem.slug}` : '/shop'}
                   className="group relative inline-flex items-center justify-between gap-3 px-5 py-2.5 rounded-full border-2 border-[#FFE59E] shadow-[0_8px_22px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.8)] active:scale-95 transition-transform"
