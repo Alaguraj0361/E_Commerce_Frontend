@@ -306,6 +306,7 @@ const HERO_SHOWCASE_FALLBACK = [
       'Pure handwoven zari border silk saree with rich contrast pallu. Comes with unstitched blouse piece & custom Aari tailoring option.',
     sizes: ['S', 'M', 'L', 'XL'],
     image: '/images/nalmara/hd/prod_designer_saree_hd.jpg',
+    mobileBg: '/images/nalmara/mobile_hero_bg.jpg',
     slug: 'royal-kanchipuram-bridal-silk-saree',
     sku: 'NLM-384276-942',
   },
@@ -319,6 +320,7 @@ const HERO_SHOWCASE_FALLBACK = [
       'Flared floor-length festive gown with gold zari yoke embroidery. Full lining with sleeves & back tassel closure.',
     sizes: ['S', 'M', 'L', 'XL'],
     image: '/images/nalmara/hd/prod_party_wear_gown_hd.jpg',
+    mobileBg: '/images/nalmara/mobile_hero_bg_gown.jpg',
     slug: 'imperial-velvet-party-wear-gown',
     sku: 'NLM-384276-943',
   },
@@ -332,6 +334,7 @@ const HERO_SHOWCASE_FALLBACK = [
       'Handcrafted festive lehenga choli with heavy zari border, tailored blouse with puff sleeves, and sheer organza dupatta.',
     sizes: ['S', 'M', 'L', 'XL'],
     image: '/images/nalmara/hd/prod_lehenga_choli_hd.jpg',
+    mobileBg: '/images/nalmara/mobile_hero_bg_lehenga.jpg',
     slug: 'bridal-zardozi-lehenga-choli',
     sku: 'NLM-384276-944',
   },
@@ -345,6 +348,7 @@ const HERO_SHOWCASE_FALLBACK = [
       'V-neck silk blend kurti with woven gold motifs, three-quarter sleeves with zari cuffs, and matching straight-fit trousers.',
     sizes: ['S', 'M', 'L', 'XL'],
     image: '/images/nalmara/hd/prod_kurti_set_hd.jpg',
+    mobileBg: '/images/nalmara/mobile_hero_bg_kurti.jpg',
     slug: 'emerald-silk-festive-kurti-set',
     sku: 'NLM-384276-945',
   },
@@ -1120,47 +1124,48 @@ export default function HomePage() {
         {/* MOBILE VIEW (sm:hidden): EXACT PORTRAIT ROYAL PALACE BANNER       */}
         {/* ================================================================= */}
         <div className="sm:hidden relative w-full overflow-hidden select-none bg-[#1A0112]">
-          {/* Continuous Full-Bleed Royal Plum & Silk Background with Diya & Saree */}
+          {/* Continuous Full-Bleed Royal Plum & Silk Background with Dedicated Per-Slider Garment */}
           <div className="relative w-full overflow-hidden min-h-[660px] flex flex-col justify-between pt-4 pb-5 px-3">
             
-            {/* Background Image Layer: Ultra-HD South Indian Silk Boutique Plate */}
-            <div className="pointer-events-none absolute inset-0 z-0">
+            {/* Background Image Layer: Dedicated Ultra-HD Per-Slider Boutique Background */}
+            <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
-                src="/images/nalmara/mobile_hero_bg.jpg"
-                alt=""
+                key={`mob-bg-${activeHeroItem.id || currentHeroSlide}`}
+                src={activeHeroItem.mobileBg || activeHeroItem.image}
+                alt={activeHeroItem.name}
                 aria-hidden="true"
-                className="w-full h-full object-cover object-top"
+                className="w-full h-full object-cover object-center animate-fade-in transition-all duration-700"
               />
-              {/* Left Vignette / Text Contrast Shadow Overlay */}
+              {/* Center Ambient Royal Plum & Gold Contrast Vignette for Crisp Center-Aligned Typography */}
               <div
                 className="absolute inset-0"
                 style={{
                   background:
-                    'linear-gradient(90deg, rgba(20, 2, 14, 0.72) 0%, rgba(20, 2, 14, 0.42) 55%, rgba(20, 2, 14, 0.05) 85%, transparent 100%)',
+                    'radial-gradient(ellipse at 50% 38%, rgba(20, 2, 14, 0.58) 0%, rgba(20, 2, 14, 0.84) 62%, rgba(14, 1, 9, 0.97) 100%)',
                 }}
               />
-              {/* Subtle top & bottom vignette */}
+              {/* Top & bottom smooth gradient blending */}
               <div
-                className="absolute inset-x-0 top-0 h-16 pointer-events-none"
+                className="absolute inset-x-0 top-0 h-20 pointer-events-none"
                 style={{
-                  background: 'linear-gradient(180deg, rgba(16, 1, 10, 0.45) 0%, transparent 100%)',
+                  background: 'linear-gradient(180deg, rgba(14, 1, 9, 0.65) 0%, transparent 100%)',
                 }}
               />
               <div
-                className="absolute inset-x-0 bottom-0 h-28 pointer-events-none"
+                className="absolute inset-x-0 bottom-0 h-32 pointer-events-none"
                 style={{
-                  background: 'linear-gradient(0deg, rgba(16, 1, 10, 0.8) 0%, transparent 100%)',
+                  background: 'linear-gradient(0deg, rgba(14, 1, 9, 0.92) 0%, transparent 100%)',
                 }}
               />
             </div>
 
-            {/* TOP & MIDDLE CONTENT STACK */}
-            <div className="relative z-10 w-full">
-              {/* 1. Ornate Gold Filigree Crown Crest + ROYAL EDIT Badge (Left Aligned) */}
-              <div className="flex flex-col items-start text-left mb-1.5 pl-2">
+            {/* TOP & MIDDLE CONTENT STACK (ALL CENTER ALIGNED TOP TO BOTTOM) */}
+            <div className="relative z-10 w-full flex flex-col items-center text-center">
+              {/* 1. Ornate Gold Filigree Crown Crest + ROYAL EDIT Badge (Centered) */}
+              <div className="flex flex-col items-center text-center mb-1.5 mx-auto">
                 {/* Crown Filigree SVG */}
-                <svg viewBox="0 0 120 28" fill="none" className="w-16 h-auto drop-shadow-[0_2px_8px_rgba(255,220,120,0.6)] mb-0.5 ml-2">
+                <svg viewBox="0 0 120 28" fill="none" className="w-16 h-auto drop-shadow-[0_2px_8px_rgba(255,220,120,0.6)] mb-0.5 mx-auto">
                   <path
                     d="M60 2 L64 12 L74 6 L70 18 L60 14 L50 18 L46 6 L56 12 Z"
                     fill="url(#mobCrownGold)"
@@ -1187,8 +1192,8 @@ export default function HomePage() {
                   </defs>
                 </svg>
 
-                {/* Scalloped Plaque: ROYAL EDIT - 02 */}
-                <div className="relative inline-flex items-center">
+                {/* Scalloped Plaque: ROYAL EDIT - 01 */}
+                <div className="relative inline-flex items-center mx-auto">
                   {/* Left scroll horn */}
                   <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#FFFDF9] via-[#FFE59E] to-[#9A6B18] border border-[#5A3807] -mr-1 z-10 shadow-xs" />
                   <div className="rounded-full p-[1.5px] bg-gradient-to-r from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_4px_16px_rgba(0,0,0,0.7)]">
@@ -1209,14 +1214,14 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* 2. Two-Line Grand Palace Headline (Left Aligned) */}
+              {/* 2. Two-Line Grand Palace Headline (Centered) */}
               <Link
                 href={activeHeroItem.rawProduct ? `/product/${activeHeroItem.slug}` : '/shop'}
-                className="group block text-left max-w-[62%] overflow-visible my-1 pl-2"
+                className="group block text-center max-w-[92%] mx-auto overflow-visible my-1"
               >
-                <h1 className="leading-tight overflow-visible">
+                <h1 className="leading-tight overflow-visible text-center">
                   <span
-                    className="block font-extrabold text-[20px] sm:text-[22px] uppercase tracking-[0.06em] text-transparent bg-clip-text drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] leading-tight text-left"
+                    className="block font-extrabold text-[20px] sm:text-[23px] uppercase tracking-[0.08em] text-transparent bg-clip-text drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] leading-tight text-center mx-auto"
                     style={{
                       fontFamily: "'Cinzel', Georgia, serif",
                       backgroundImage:
@@ -1225,23 +1230,24 @@ export default function HomePage() {
                       backgroundClip: 'text',
                     }}
                   >
-                    {activeHeroItem.titleLine1 || 'WEBHOOK PURE'}
+                    {activeHeroItem.titleLine1 || 'ROYAL COLLECTION'}
                   </span>
                   <span
-                    className="block font-normal text-[38px] sm:text-[42px] text-[#FFE8B5] leading-[1.05] mt-0.5 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] text-left"
+                    className="block font-normal text-[38px] sm:text-[44px] text-[#FFE8B5] leading-[1.05] mt-0.5 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] text-center mx-auto"
                     style={{
                       fontFamily: "'Great Vibes', Georgia, cursive",
                       textShadow:
                         '0 0 24px rgba(255, 220, 130, 0.5), 0 4px 10px rgba(0,0,0,0.9)',
                     }}
                   >
-                    {toTitleCase(activeHeroItem.titleLine2 || 'Silk Saree')}
+                    {toTitleCase(activeHeroItem.titleLine2 || 'Palace Couture')}
                   </span>
                 </h1>
               </Link>
 
-              {/* 3. Left-Aligned 3D Sculpted 24K Gold Lotus Divider */}
-              <div className="flex items-center justify-start gap-2 my-1.5 w-full max-w-[62%] pl-2">
+              {/* 3. Centered 3D Sculpted 24K Gold Lotus Divider */}
+              <div className="flex items-center justify-center gap-2.5 my-2 w-full max-w-[280px] mx-auto">
+                <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-[#FFE59E]" />
                 <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] border border-[#5A3807] shrink-0" />
                 <svg viewBox="0 0 60 28" fill="none" className="w-6 h-auto shrink-0 drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]">
                   <path d="M30 3C26 10 23 16 30 24C37 16 34 10 30 3Z" fill="url(#mobHeroLotusCenterNew)" stroke="#5A3807" strokeWidth="0.9" />
@@ -1267,16 +1273,16 @@ export default function HomePage() {
                   </defs>
                 </svg>
                 <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] border border-[#5A3807] shrink-0" />
-                <span className="h-[1px] flex-1 bg-gradient-to-r from-[#FFE59E] via-[#D4AF37] to-transparent" />
+                <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#D4AF37] to-[#FFE59E]" />
               </div>
 
-              {/* 4. Subtitle / Product Tagline (Left Aligned) */}
-              <p className="font-serif text-[9.5px] uppercase tracking-[0.18em] text-[#FFE59E] text-left font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] max-w-[62%] pl-2 line-clamp-2 mb-3.5">
-                {activeHeroItem.description || 'TEST ITEM FOR STOCK MANAGEMENT'}
+              {/* 4. Subtitle / Product Tagline (Centered) */}
+              <p className="font-serif text-[10px] uppercase tracking-[0.16em] text-[#FFE59E] text-center font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] max-w-[92%] mx-auto line-clamp-2 mb-3.5">
+                {activeHeroItem.description || 'PURE HANDWOVEN HERITAGE SILK & LUXURY ATELIER'}
               </p>
 
-              {/* 5. Left-Aligned 4 Badges (2x2 Grid) + Sculpted Gold CTA */}
-              <div className="w-[58%] max-w-[230px] pl-2">
+              {/* 5. Centered 4 Badges (2x2 Grid) */}
+              <div className="w-full max-w-[270px] mx-auto mb-3.5">
                 {/* 2x2 Grid */}
                 <div className="grid grid-cols-2 gap-2">
                   {[
@@ -1328,7 +1334,7 @@ export default function HomePage() {
                       className="relative rounded-[12px] p-[1.5px] bg-gradient-to-b from-[#FFF6D6] via-[#D4AF37] to-[#8C5818] shadow-[0_6px_16px_rgba(0,0,0,0.65)]"
                     >
                       <div
-                        className="relative h-full rounded-[10px] px-1 py-2 flex flex-col items-center justify-center text-center border border-[#FFE59E]/40"
+                        className="relative h-full rounded-[10px] px-2 py-2 flex flex-col items-center justify-center text-center border border-[#FFE59E]/40"
                         style={{
                           background: 'linear-gradient(180deg, rgba(46, 5, 30, 0.92) 0%, rgba(20, 2, 14, 0.96) 100%)',
                         }}
@@ -1344,24 +1350,24 @@ export default function HomePage() {
                     </div>
                   ))}
                 </div>
+              </div>
 
-                {/* 6. Sculpted 3D Metallic Gold CTA Button */}
-                <div className="mt-3.5">
-                  <Link
-                    href={activeHeroItem.rawProduct ? `/product/${activeHeroItem.slug}` : '/shop'}
-                    className="group relative inline-flex items-center justify-between gap-2.5 px-4 py-2 rounded-full border-2 border-[#FFE59E] shadow-[0_8px_22px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.8)] active:scale-95 transition-transform"
-                    style={{
-                      background: 'linear-gradient(180deg, #FFF4C2 0%, #F5C658 35%, #D4AF37 75%, #9E6B18 100%)',
-                    }}
-                  >
-                    <span className="font-serif font-extrabold text-[11px] uppercase tracking-[0.12em] text-[#280619] whitespace-nowrap">
-                      EXPLORE COLLECTION
-                    </span>
-                    <span className="w-5 h-5 rounded-full bg-[#200318] flex items-center justify-center text-[#FFE59E] shadow-inner shrink-0">
-                      <ChevronRight className="w-3.5 h-3.5 stroke-[2.8]" />
-                    </span>
-                  </Link>
-                </div>
+              {/* 6. Sculpted 3D Metallic Gold CTA Button (Centered) */}
+              <div className="flex justify-center w-full mt-1 mb-1">
+                <Link
+                  href={activeHeroItem.rawProduct ? `/product/${activeHeroItem.slug}` : '/shop'}
+                  className="group relative inline-flex items-center justify-between gap-3 px-5 py-2.5 rounded-full border-2 border-[#FFE59E] shadow-[0_8px_22px_rgba(0,0,0,0.7),inset_0_1px_2px_rgba(255,255,255,0.8)] active:scale-95 transition-transform"
+                  style={{
+                    background: 'linear-gradient(180deg, #FFF4C2 0%, #F5C658 35%, #D4AF37 75%, #9E6B18 100%)',
+                  }}
+                >
+                  <span className="font-serif font-extrabold text-[11.5px] uppercase tracking-[0.14em] text-[#280619] whitespace-nowrap">
+                    EXPLORE COLLECTION
+                  </span>
+                  <span className="w-5 h-5 rounded-full bg-[#200318] flex items-center justify-center text-[#FFE59E] shadow-inner shrink-0">
+                    <ChevronRight className="w-3.5 h-3.5 stroke-[2.8]" />
+                  </span>
+                </Link>
               </div>
             </div>
 
