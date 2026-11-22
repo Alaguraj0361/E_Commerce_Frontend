@@ -1196,10 +1196,10 @@ export default function HomePage() {
 
             {/* TOP & MIDDLE CONTENT STACK */}
             <div className="relative z-10 w-full">
-              {/* 1. Ornate Gold Filigree Crown Crest + ROYAL EDIT Badge */}
-              <div className="flex flex-col items-center text-center mb-1">
+              {/* 1. Ornate Gold Filigree Crown Crest + ROYAL EDIT Badge (Left Aligned) */}
+              <div className="flex flex-col items-start text-left mb-1.5 pl-2">
                 {/* Crown Filigree SVG */}
-                <svg viewBox="0 0 120 28" fill="none" className="w-20 h-auto drop-shadow-[0_2px_8px_rgba(255,220,120,0.6)] mb-0.5">
+                <svg viewBox="0 0 120 28" fill="none" className="w-16 h-auto drop-shadow-[0_2px_8px_rgba(255,220,120,0.6)] mb-0.5 ml-2">
                   <path
                     d="M60 2 L64 12 L74 6 L70 18 L60 14 L50 18 L46 6 L56 12 Z"
                     fill="url(#mobCrownGold)"
@@ -1248,14 +1248,14 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* 2. Two-Line Grand Palace Headline */}
+              {/* 2. Two-Line Grand Palace Headline (Left Aligned) */}
               <Link
                 href={activeHeroItem.rawProduct ? `/product/${activeHeroItem.slug}` : '/shop'}
-                className="group block text-center max-w-full overflow-visible my-1"
+                className="group block text-left max-w-[62%] overflow-visible my-1 pl-2"
               >
                 <h1 className="leading-tight overflow-visible">
                   <span
-                    className="block font-extrabold text-[21px] sm:text-[23px] uppercase tracking-[0.06em] text-transparent bg-clip-text drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] leading-tight"
+                    className="block font-extrabold text-[20px] sm:text-[22px] uppercase tracking-[0.06em] text-transparent bg-clip-text drop-shadow-[0_4px_12px_rgba(0,0,0,0.9)] leading-tight text-left"
                     style={{
                       fontFamily: "'Cinzel', Georgia, serif",
                       backgroundImage:
@@ -1267,7 +1267,7 @@ export default function HomePage() {
                     {activeHeroItem.titleLine1 || 'WEBHOOK PURE'}
                   </span>
                   <span
-                    className="block font-normal text-[40px] sm:text-[44px] text-[#FFE8B5] leading-[1.05] mt-0.5 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)]"
+                    className="block font-normal text-[38px] sm:text-[42px] text-[#FFE8B5] leading-[1.05] mt-0.5 drop-shadow-[0_4px_16px_rgba(0,0,0,0.95)] text-left"
                     style={{
                       fontFamily: "'Great Vibes', Georgia, cursive",
                       textShadow:
@@ -1279,9 +1279,8 @@ export default function HomePage() {
                 </h1>
               </Link>
 
-              {/* 3. Centered 3D Sculpted 24K Gold Lotus Divider */}
-              <div className="flex items-center justify-center gap-2 my-1.5 w-full max-w-[280px] mx-auto">
-                <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#D4AF37] to-[#FFE59E]" />
+              {/* 3. Left-Aligned 3D Sculpted 24K Gold Lotus Divider */}
+              <div className="flex items-center justify-start gap-2 my-1.5 w-full max-w-[62%] pl-2">
                 <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] border border-[#5A3807] shrink-0" />
                 <svg viewBox="0 0 60 28" fill="none" className="w-6 h-auto shrink-0 drop-shadow-[0_2px_6px_rgba(0,0,0,0.7)]">
                   <path d="M30 3C26 10 23 16 30 24C37 16 34 10 30 3Z" fill="url(#mobHeroLotusCenterNew)" stroke="#5A3807" strokeWidth="0.9" />
@@ -1307,16 +1306,16 @@ export default function HomePage() {
                   </defs>
                 </svg>
                 <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] border border-[#5A3807] shrink-0" />
-                <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#D4AF37] to-[#FFE59E]" />
+                <span className="h-[1px] flex-1 bg-gradient-to-r from-[#FFE59E] via-[#D4AF37] to-transparent" />
               </div>
 
-              {/* 4. Subtitle / Product Tagline */}
-              <p className="font-serif text-[9.5px] uppercase tracking-[0.2em] text-[#FFE59E] text-center font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] max-w-xs mx-auto line-clamp-1 mb-4">
+              {/* 4. Subtitle / Product Tagline (Left Aligned) */}
+              <p className="font-serif text-[9.5px] uppercase tracking-[0.18em] text-[#FFE59E] text-left font-semibold drop-shadow-[0_2px_4px_rgba(0,0,0,0.9)] max-w-[62%] pl-2 line-clamp-2 mb-3.5">
                 {activeHeroItem.description || 'TEST ITEM FOR STOCK MANAGEMENT'}
               </p>
 
               {/* 5. Left-Aligned 4 Badges (2x2 Grid) + Sculpted Gold CTA */}
-              <div className="w-[58%] max-w-[230px] pl-1.5">
+              <div className="w-[58%] max-w-[230px] pl-2">
                 {/* 2x2 Grid */}
                 <div className="grid grid-cols-2 gap-2">
                   {[
