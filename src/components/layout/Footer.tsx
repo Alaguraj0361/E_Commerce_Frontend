@@ -3,235 +3,304 @@
 import React from 'react';
 import Link from 'next/link';
 import {
-  Instagram,
-  Facebook,
-  Youtube,
-  Share2,
   Phone,
   MapPin,
   Heart,
   MessageCircle,
+  Headphones,
+  ShieldCheck,
 } from 'lucide-react';
-import { useCategoryStore } from '../../store/categoryStore';
+
+const MannequinIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
+  <svg viewBox="0 0 24 24" fill="none" className={className}>
+    <circle cx="12" cy="4" r="2.2" stroke="#FFE59E" strokeWidth="1.5" />
+    <path
+      d="M8.5 7.5C8.5 7.5 10 6.5 12 6.5C14 6.5 15.5 7.5 15.5 7.5L14.5 14C14.5 14 13.5 15.5 12 15.5C10.5 15.5 9.5 14 9.5 14L8.5 7.5Z"
+      stroke="#FFE59E"
+      strokeWidth="1.4"
+      fill="rgba(255,229,158,0.15)"
+    />
+    <line x1="12" y1="15.5" x2="12" y2="21" stroke="#FFE59E" strokeWidth="1.6" />
+    <line x1="8.5" y1="21" x2="15.5" y2="21" stroke="#FFE59E" strokeWidth="1.6" strokeLinecap="round" />
+  </svg>
+);
 
 export const Footer = () => {
-  const { categories } = useCategoryStore();
-
   return (
-    <footer className="hidden md:block relative bg-[#3B002B] text-[#F7E8D0] overflow-hidden select-none border-t-2 border-[#D4AF37]/80">
-      {/* ============================================================ */}
-      {/* MAIN 5-COLUMN ROYAL #760159 FOOTER                           */}
-      {/* ============================================================ */}
-      <div className="relative bg-gradient-to-b from-[#760159] via-[#54013F] to-[#2B0020] py-10 sm:py-12 px-4 sm:px-6 lg:px-10">
-        {/* Left & Right Gold Floral Mandala Corner Ornaments */}
-        <svg
-          viewBox="0 0 200 200"
-          fill="none"
-          className="absolute -left-12 top-0 w-44 h-44 text-[#D4AF37]/30 pointer-events-none"
-        >
-          <circle cx="100" cy="100" r="85" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-          <circle cx="100" cy="100" r="65" stroke="currentColor" strokeWidth="1.2" />
-          <path
-            d="M100 10 L115 55 L160 40 L140 85 L185 100 L140 115 L160 160 L115 145 L100 190 L85 145 L40 160 L60 115 L15 100 L60 85 L40 40 L85 55 Z"
-            stroke="currentColor"
-            strokeWidth="1.2"
-          />
-        </svg>
-        <svg
-          viewBox="0 0 200 200"
-          fill="none"
-          className="absolute -right-12 bottom-0 w-48 h-48 text-[#D4AF37]/30 pointer-events-none"
-        >
-          <circle cx="100" cy="100" r="85" stroke="currentColor" strokeWidth="1.5" strokeDasharray="4 4" />
-          <circle cx="100" cy="100" r="65" stroke="currentColor" strokeWidth="1.2" />
-          <path
-            d="M100 10 L115 55 L160 40 L140 85 L185 100 L140 115 L160 160 L115 145 L100 190 L85 145 L40 160 L60 115 L15 100 L60 85 L40 40 L85 55 Z"
-            stroke="currentColor"
-            strokeWidth="1.2"
-          />
-        </svg>
+    <footer className="relative w-full bg-[#180010] text-[#F7E8D0] overflow-hidden select-none border-t-2 border-[#D4AF37]">
+      {/* 1. Full-Bleed Ultra-HD Royal Wine-Plum Background Plate */}
+      <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src="/images/nalmara/footer_luxury_bg.jpg"
+          alt=""
+          aria-hidden="true"
+          className="w-full h-full object-cover object-center opacity-85"
+        />
+        {/* Soft Ambient Vignette Overlay */}
+        <div
+          className="absolute inset-0"
+          style={{
+            background:
+              'linear-gradient(180deg, rgba(24, 0, 16, 0.55) 0%, rgba(24, 0, 16, 0.35) 40%, rgba(18, 0, 12, 0.85) 100%)',
+          }}
+        />
+      </div>
 
-        <div className="max-w-[1340px] mx-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 relative z-10">
-          {/* Col 1 (3 cols): Official Emblem + NALMARA FASHION + Your Design, Our Craft + Socials */}
-          <div className="lg:col-span-3 flex flex-col items-center sm:items-start text-center sm:text-left">
-            <Link href="/" className="flex flex-col items-center sm:items-start group">
-              <div className="w-16 h-16 rounded-full p-[2px] bg-gradient-to-b from-[#FFE59E] via-[#D4AF37] to-[#8C6518] shadow-lg mb-2.5">
-                <div className="w-full h-full rounded-full overflow-hidden bg-[#0E0B09]">
-                  <img
-                    src="/images/nalmara-logo.jpg"
-                    alt="NALMARA FASHION"
-                    className="w-full h-full object-cover scale-[1.34]"
-                  />
+      {/* 2. Main Luxury Content Grid */}
+      <div className="relative z-10 max-w-[1500px] mx-auto pt-10 sm:pt-14 pb-4 px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-4 items-start">
+          
+          {/* ======================================================== */}
+          {/* COL 1: ROYAL ARCH PAVILION & NALMARA CREST (3 Cols)      */}
+          {/* ======================================================== */}
+          <div className="lg:col-span-3 flex flex-col items-center text-center">
+            {/* Scalloped 24K Gold Mughal Palace Cusped Arch */}
+            <div className="relative w-full max-w-[270px] rounded-t-[64px] rounded-b-[20px] p-[2.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_16px_36px_rgba(0,0,0,0.7)]">
+              <div
+                className="relative rounded-t-[61.5px] rounded-b-[17.5px] px-5 py-6 flex flex-col items-center text-center border border-[#FFE59E]/40"
+                style={{
+                  background:
+                    'linear-gradient(180deg, #300420 0%, #1A0112 55%, #10000B 100%)',
+                }}
+              >
+                {/* Circular Golden Monogram Crest */}
+                <div className="w-20 h-20 rounded-full p-[2px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#8C5818] shadow-lg mb-3">
+                  <div className="w-full h-full rounded-full overflow-hidden bg-[#0A0508] flex items-center justify-center">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/nalmara-logo.jpg"
+                      alt="NALMARA"
+                      className="w-full h-full object-cover scale-[1.38]"
+                    />
+                  </div>
+                </div>
+
+                {/* NALMARA Roman Serif Title */}
+                <h3
+                  className="font-serif font-extrabold text-2xl tracking-[0.16em] uppercase text-transparent bg-clip-text drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)]"
+                  style={{
+                    fontFamily: "'Cinzel', Georgia, serif",
+                    backgroundImage:
+                      'linear-gradient(180deg, #FFFDF9 0%, #FFE28A 45%, #C88A20 85%, #F8DF95 100%)',
+                    WebkitBackgroundClip: 'text',
+                    backgroundClip: 'text',
+                  }}
+                >
+                  NALMARA
+                </h3>
+
+                {/* FASHION with 24K Gold Flanking Rules */}
+                <div className="flex items-center justify-center gap-2 mt-1 mb-1.5">
+                  <span className="h-[1px] w-6 bg-gradient-to-r from-transparent to-[#D4AF37]" />
+                  <span className="font-serif text-[10px] tracking-[0.32em] text-[#FFE59E] uppercase font-bold">
+                    FASHION
+                  </span>
+                  <span className="h-[1px] w-6 bg-gradient-to-l from-transparent to-[#D4AF37]" />
                 </div>
               </div>
-              <span className="font-serif text-xl sm:text-2xl font-bold tracking-[0.16em] text-[#FFE59E] uppercase">
-                NALMARA
-              </span>
-              <div className="flex items-center gap-2 mt-0.5">
-                <span className="h-[1px] w-6 bg-[#D4AF37]/60" />
-                <span className="text-[9px] tracking-[0.28em] text-[#E5C158] uppercase font-medium">
-                  FASHION
-                </span>
-                <span className="h-[1px] w-6 bg-[#D4AF37]/60" />
-              </div>
-            </Link>
+            </div>
 
-            <p className="font-serif italic text-xs sm:text-sm text-[#F5DFB8] mt-3 inline-flex items-center gap-1.5">
-              <span>Your Design, Our Craft</span>
-              <Heart className="w-3.5 h-3.5 text-[#FFE59E]" />
+            {/* Script Tagline: "Your Design, Our Craft ♡" */}
+            <p
+              className="text-[21px] sm:text-[23px] text-[#FFE59E] mt-3.5 tracking-wide drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]"
+              style={{ fontFamily: "'Great Vibes', cursive" }}
+            >
+              Your Design, Our Craft ♡
             </p>
 
-            {/* Social Media Links */}
-            <div className="flex items-center gap-2 mt-4">
-              <a
-                href="https://www.instagram.com/nalmarafashion"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-7 h-7 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#C8902B] text-[#2A051C] flex items-center justify-center hover:scale-110 transition-transform shadow-xs"
-                aria-label="Instagram"
-              >
-                <Instagram className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="https://youtube.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-7 h-7 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#C8902B] text-[#2A051C] flex items-center justify-center hover:scale-110 transition-transform shadow-xs"
-                aria-label="YouTube"
-              >
-                <Youtube className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="https://pinterest.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-7 h-7 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#C8902B] text-[#2A051C] flex items-center justify-center hover:scale-110 transition-transform shadow-xs"
-                aria-label="Pinterest"
-              >
-                <Share2 className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="https://wa.me/916383163609"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-7 h-7 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#C8902B] text-[#2A051C] flex items-center justify-center hover:scale-110 transition-transform shadow-xs"
-                aria-label="WhatsApp"
-              >
-                <MessageCircle className="w-3.5 h-3.5" />
-              </a>
-              <a
-                href="https://facebook.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-7 h-7 rounded-full bg-gradient-to-b from-[#FFE59E] to-[#C8902B] text-[#2A051C] flex items-center justify-center hover:scale-110 transition-transform shadow-xs"
-                aria-label="Facebook"
-              >
-                <Facebook className="w-3.5 h-3.5" />
-              </a>
+            {/* 5 Circular 3D Gold Coin Social Media Icons */}
+            <div className="flex items-center justify-center gap-2.5 mt-3.5">
+              {[
+                {
+                  label: 'Instagram',
+                  href: 'https://www.instagram.com/nalmarafashion',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 stroke-current stroke-2">
+                      <rect x="2" y="2" width="20" height="20" rx="5" />
+                      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                    </svg>
+                  ),
+                },
+                {
+                  label: 'YouTube',
+                  href: 'https://youtube.com/@nalmarafashion',
+                  icon: (
+                    <svg viewBox="0 0 24 24" fill="none" className="w-4 h-4 stroke-current stroke-2">
+                      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
+                      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" />
+                    </svg>
+                  ),
+                },
+                {
+                  label: 'WhatsApp',
+                  href: 'https://wa.me/916383163609',
+                  icon: <MessageCircle className="w-4 h-4 stroke-[2.2]" />,
+                },
+                {
+                  label: 'Facebook',
+                  href: 'https://facebook.com',
+                  icon: (
+                    <span className="font-serif font-extrabold text-sm leading-none">f</span>
+                  ),
+                },
+                {
+                  label: 'Pinterest',
+                  href: 'https://pinterest.com',
+                  icon: (
+                    <span className="font-serif font-extrabold text-sm leading-none italic">P</span>
+                  ),
+                },
+              ].map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group relative w-8 h-8 rounded-full p-[1.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_4px_12px_rgba(0,0,0,0.6)] hover:scale-110 active:scale-95 transition-transform"
+                  aria-label={s.label}
+                >
+                  <div className="w-full h-full rounded-full bg-gradient-to-b from-[#380424] to-[#1A0111] flex items-center justify-center text-[#FFE59E] group-hover:text-[#FFFDF9] transition-colors">
+                    {s.icon}
+                  </div>
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Col 2 (2 cols): Shop Links */}
-          <div className="lg:col-span-2 space-y-2.5 text-center sm:text-left">
-            <h4 className="font-serif font-bold text-sm sm:text-base text-[#FFE59E]">
-              Shop Links
-            </h4>
-            <ul className="space-y-2 text-xs sm:text-[13px] text-[#F2E2C8]">
-              <li>
-                <Link href="/shop" className="hover:text-[#FFE59E] transition-colors">
-                  All Collections
-                </Link>
-              </li>
-              {categories.slice(0, 6).map((cat) => (
-                <li key={cat._id}>
+          {/* ======================================================== */}
+          {/* COL 2: SHOP LINKS (2.25 Cols)                            */}
+          {/* ======================================================== */}
+          <div className="lg:col-span-2 flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* Scalloped Gold Plaque: SHOP LINKS */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.6)] mb-4" style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}>
+              <MannequinIcon className="w-3.5 h-3.5" />
+              <span className="font-serif font-bold text-xs uppercase tracking-[0.16em] text-[#FFE59E] whitespace-nowrap">
+                SHOP LINKS
+              </span>
+            </div>
+
+            <ul className="space-y-2.5 text-xs sm:text-[13px] text-[#F3E2CB]">
+              {[
+                { name: 'All Collections', href: '/shop' },
+                { name: "Children's Wear", href: '/shop?category=childrens-wear' },
+                { name: 'Long Top', href: '/shop?category=long-top' },
+                { name: 'Maxi', href: '/shop?category=maxi' },
+                { name: 'Saree', href: '/shop?category=saree' },
+                { name: 'Sudidar', href: '/shop?category=sudidar' },
+              ].map((link) => (
+                <li key={link.name}>
                   <Link
-                    href={`/shop?category=${cat.slug}`}
-                    className="hover:text-[#FFE59E] transition-colors"
+                    href={link.href}
+                    className="group inline-flex items-center text-[#F3E2CB] hover:text-[#FFE59E] transition-colors"
                   >
-                    {cat.name}
+                    <span className="text-[#D4AF37] font-bold text-xs mr-2 transition-transform group-hover:translate-x-0.5">&gt;</span>
+                    <span className="group-hover:underline">{link.name}</span>
                   </Link>
                 </li>
               ))}
             </ul>
           </div>
 
-          {/* Col 3 (2 cols): Customer Service */}
-          <div className="lg:col-span-2 space-y-2.5 text-center sm:text-left">
-            <h4 className="font-serif font-bold text-sm sm:text-base text-[#FFE59E]">
-              Customer Service
-            </h4>
-            <ul className="space-y-2 text-xs sm:text-[13px] text-[#F2E2C8]">
-              <li>
-                <Link href="/track-order" className="hover:text-[#FFE59E] transition-colors">
-                  Track Order
-                </Link>
-              </li>
-              <li>
-                <Link href="/shipping" className="hover:text-[#FFE59E] transition-colors">
-                  Shipping Policy
-                </Link>
-              </li>
-              <li>
-                <Link href="/returns" className="hover:text-[#FFE59E] transition-colors">
-                  Return &amp; Exchange
-                </Link>
-              </li>
-              <li>
-                <Link href="/faq" className="hover:text-[#FFE59E] transition-colors">
-                  FAQs
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-[#FFE59E] transition-colors">
-                  Contact Us
-                </Link>
-              </li>
+          {/* Vertical 24K Gold Divider with Diamond Star */}
+          <div className="hidden lg:flex flex-col items-center justify-center self-stretch -my-2 lg:col-span-0.5">
+            <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[#D4AF37]/45 to-transparent relative flex items-center justify-center">
+              <span className="w-2 h-2 rotate-45 bg-[#FFE59E] border border-[#8C5818] shadow-[0_0_8px_rgba(255,229,158,0.7)] z-10" />
+            </div>
+          </div>
+
+          {/* ======================================================== */}
+          {/* COL 3: CUSTOMER SERVICE (2.25 Cols)                      */}
+          {/* ======================================================== */}
+          <div className="lg:col-span-2 flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* Scalloped Gold Plaque: CUSTOMER SERVICE */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.6)] mb-4" style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}>
+              <Headphones className="w-3.5 h-3.5 text-[#FFE59E]" />
+              <span className="font-serif font-bold text-xs uppercase tracking-[0.16em] text-[#FFE59E] whitespace-nowrap">
+                CUSTOMER SERVICE
+              </span>
+            </div>
+
+            <ul className="space-y-2.5 text-xs sm:text-[13px] text-[#F3E2CB]">
+              {[
+                { name: 'Track Order', href: '/track-order' },
+                { name: 'Shipping Policy', href: '/shipping' },
+                { name: 'Return & Exchange', href: '/returns' },
+                { name: 'FAQs', href: '/faq' },
+                { name: 'Contact Us', href: '/contact' },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="group inline-flex items-center text-[#F3E2CB] hover:text-[#FFE59E] transition-colors"
+                  >
+                    <span className="text-[#D4AF37] font-bold text-xs mr-2 transition-transform group-hover:translate-x-0.5">&gt;</span>
+                    <span className="group-hover:underline">{link.name}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Col 4 (2 cols): About Us */}
-          <div className="lg:col-span-2 space-y-2.5 text-center sm:text-left">
-            <h4 className="font-serif font-bold text-sm sm:text-base text-[#FFE59E]">
-              About Us
-            </h4>
-            <ul className="space-y-2 text-xs sm:text-[13px] text-[#F2E2C8]">
-              <li>
-                <Link href="/about" className="hover:text-[#FFE59E] transition-colors">
-                  Our Story
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-[#FFE59E] transition-colors">
-                  Why Nalmara
-                </Link>
-              </li>
-              <li>
-                <Link href="/reviews" className="hover:text-[#FFE59E] transition-colors">
-                  Testimonials
-                </Link>
-              </li>
-              <li>
-                <Link href="/about" className="hover:text-[#FFE59E] transition-colors">
-                  Blog
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className="hover:text-[#FFE59E] transition-colors">
-                  Careers
-                </Link>
-              </li>
+          {/* Vertical 24K Gold Divider with Diamond Star */}
+          <div className="hidden lg:flex flex-col items-center justify-center self-stretch -my-2 lg:col-span-0.5">
+            <div className="w-[1px] h-full bg-gradient-to-b from-transparent via-[#D4AF37]/45 to-transparent relative flex items-center justify-center">
+              <span className="w-2 h-2 rotate-45 bg-[#FFE59E] border border-[#8C5818] shadow-[0_0_8px_rgba(255,229,158,0.7)] z-10" />
+            </div>
+          </div>
+
+          {/* ======================================================== */}
+          {/* COL 4: ABOUT US (2 Cols)                                 */}
+          {/* ======================================================== */}
+          <div className="lg:col-span-2 flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* Scalloped Gold Plaque: ABOUT US */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.6)] mb-4" style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}>
+              <span className="w-3.5 h-3.5 rounded-full border border-[#FFE59E] text-[#FFE59E] flex items-center justify-center text-[10px] font-bold font-serif leading-none">
+                i
+              </span>
+              <span className="font-serif font-bold text-xs uppercase tracking-[0.16em] text-[#FFE59E] whitespace-nowrap">
+                ABOUT US
+              </span>
+            </div>
+
+            <ul className="space-y-2.5 text-xs sm:text-[13px] text-[#F3E2CB]">
+              {[
+                { name: 'Our Story', href: '/about' },
+                { name: 'Why Nalmara', href: '/about#why-nalmara' },
+                { name: 'Testimonials', href: '/reviews' },
+                { name: 'Blog', href: '/blog' },
+                { name: 'Careers', href: '/contact#careers' },
+              ].map((link) => (
+                <li key={link.name}>
+                  <Link
+                    href={link.href}
+                    className="group inline-flex items-center text-[#F3E2CB] hover:text-[#FFE59E] transition-colors"
+                  >
+                    <span className="text-[#D4AF37] font-bold text-xs mr-2 transition-transform group-hover:translate-x-0.5">&gt;</span>
+                    <span className="group-hover:underline">{link.name}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Col 5 (3 cols): Contact Us & Payment Methods */}
-          <div className="lg:col-span-3 space-y-3 text-center sm:text-left">
-            <h4 className="font-serif font-bold text-sm sm:text-base text-[#FFE59E]">
-              Contact Us
-            </h4>
+          {/* ======================================================== */}
+          {/* COL 5: CONTACT US & PAYMENTS (2.75 Cols)                 */}
+          {/* ======================================================== */}
+          <div className="lg:col-span-2 flex flex-col items-center lg:items-start text-center lg:text-left">
+            {/* Scalloped Gold Plaque: CONTACT US */}
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.6)] mb-4" style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}>
+              <Phone className="w-3.5 h-3.5 text-[#FFE59E]" />
+              <span className="font-serif font-bold text-xs uppercase tracking-[0.16em] text-[#FFE59E] whitespace-nowrap">
+                CONTACT US
+              </span>
+            </div>
 
-            <div className="space-y-2 text-xs sm:text-[13px] text-[#F2E2C8]">
-              <div className="flex items-center justify-center sm:justify-start gap-2">
-                <Phone className="w-4 h-4 text-[#E5B85B] shrink-0" />
+            {/* Phone & Address */}
+            <div className="space-y-3 text-xs sm:text-[13px] text-[#F3E2CB]">
+              <div className="flex items-center justify-center lg:justify-start gap-2">
+                <Phone className="w-4 h-4 text-[#FFE59E] shrink-0" />
                 <span>
                   <a href="tel:+916383163609" className="hover:text-[#FFE59E]">
                     6383163609
@@ -243,14 +312,27 @@ export const Footer = () => {
                 </span>
               </div>
 
-              <div className="flex items-start justify-center sm:justify-start gap-2">
-                <MapPin className="w-4 h-4 text-[#E5B85B] shrink-0 mt-0.5" />
-                <span className="text-left">Q4R8+3FC, 3rd Mile, Near Bus Stop, Thoothukudi, 628008</span>
+              <div className="flex items-start justify-center lg:justify-start gap-2">
+                <MapPin className="w-4 h-4 text-[#FFE59E] shrink-0 mt-0.5" />
+                <span className="text-left leading-relaxed">
+                  Q4R8+3FC, 3rd Mile, Near Bus Stop, Thoothukudi, 628008
+                </span>
               </div>
             </div>
 
-            {/* Payment Method Badges: UPI | VISA | Mastercard | RuPay */}
-            <div className="pt-2 flex flex-wrap items-center justify-center sm:justify-start gap-2">
+            {/* Lotus Motif Divider */}
+            <div className="w-full flex items-center justify-center lg:justify-start my-3">
+              <span className="h-[1px] w-12 bg-gradient-to-r from-transparent to-[#D4AF37]" />
+              <svg viewBox="0 0 30 14" fill="none" className="w-6 h-auto mx-1.5">
+                <path d="M15 1C13 5 11 9 15 13C19 9 17 5 15 1Z" fill="#D4AF37" />
+                <path d="M15 13C10 11 7 7 9 4C11 5 13 8 15 13Z" fill="#B88228" />
+                <path d="M15 13C20 11 23 7 21 4C19 5 17 8 15 13Z" fill="#B88228" />
+              </svg>
+              <span className="h-[1px] w-12 bg-gradient-to-l from-transparent to-[#D4AF37]" />
+            </div>
+
+            {/* 4 Payment Method Badges: UPI | VISA | Mastercard | RuPay */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2">
               <span className="px-2.5 py-1 rounded bg-white text-[#1A1A1A] font-extrabold text-[10px] tracking-wider shadow-xs">
                 UPI
               </span>
@@ -270,17 +352,62 @@ export const Footer = () => {
       </div>
 
       {/* ============================================================ */}
-      {/* 3. BOTTOM COPYRIGHT BAR                                      */}
+      {/* 3. SINUOUS 3D 24K GOLD WAVE RIBBON WITH CENTER GOLD LOTUS   */}
       {/* ============================================================ */}
-      <div className="bg-[#200017] border-t border-[#D4AF37]/35 py-3 px-4 text-center text-[11px] sm:text-xs text-[#EED9BA]/90">
-        <p className="flex flex-wrap items-center justify-center gap-2">
-          <span>© 2026 NALMARA FASHION. All rights reserved.</span>
-          <span className="opacity-50">|</span>
+      <div className="relative w-full flex items-center justify-center my-4 z-20 px-4">
+        <div className="flex-1 h-[1.5px] bg-gradient-to-r from-transparent via-[#D4AF37] to-[#FFE59E]" />
+        {/* Central 3D Sculpted Lotus */}
+        <div className="px-3 shrink-0 flex items-center gap-2">
+          <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] border border-[#5A3807]" />
+          <svg viewBox="0 0 60 28" fill="none" className="w-8 h-auto drop-shadow-[0_2px_8px_rgba(255,229,158,0.7)]">
+            <path d="M30 3C26 10 23 16 30 24C37 16 34 10 30 3Z" fill="url(#ftLotusCenterNew)" stroke="#5A3807" strokeWidth="0.9" />
+            <path d="M30 24C21 20 15 13 18 7C23 9 26 14 30 24Z" fill="url(#ftLotusSideNew)" stroke="#5A3807" strokeWidth="0.9" />
+            <path d="M30 24C39 20 45 13 42 7C37 9 34 14 30 24Z" fill="url(#ftLotusSideNew)" stroke="#5A3807" strokeWidth="0.9" />
+            <path d="M30 24C16 23 8 18 9 12C15 13 22 17 30 24Z" fill="url(#ftLotusOuterNew)" stroke="#5A3807" strokeWidth="0.8" />
+            <path d="M30 24C44 23 52 18 51 12C45 13 38 17 30 24Z" fill="url(#ftLotusOuterNew)" stroke="#5A3807" strokeWidth="0.8" />
+            <ellipse cx="30" cy="25" rx="10" ry="2" fill="#8C5818" />
+            <defs>
+              <linearGradient id="ftLotusCenterNew" x1="30" y1="3" x2="30" y2="24" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#FFFDF9" />
+                <stop offset="0.45" stopColor="#E5B84B" />
+                <stop offset="1" stopColor="#9E6B18" />
+              </linearGradient>
+              <linearGradient id="ftLotusSideNew" x1="18" y1="7" x2="42" y2="24" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#FFE59E" />
+                <stop offset="1" stopColor="#A6721E" />
+              </linearGradient>
+              <linearGradient id="ftLotusOuterNew" x1="9" y1="12" x2="51" y2="24" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#F5D37E" />
+                <stop offset="1" stopColor="#8C5818" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E] border border-[#5A3807]" />
+        </div>
+        <div className="flex-1 h-[1.5px] bg-gradient-to-l from-transparent via-[#D4AF37] to-[#FFE59E]" />
+      </div>
+
+      {/* ============================================================ */}
+      {/* 4. BOTTOM COPYRIGHT & TRUST ROW                              */}
+      {/* ============================================================ */}
+      <div className="relative z-10 max-w-[1500px] mx-auto px-4 sm:px-6 lg:px-8 pb-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs sm:text-[13px] text-[#F3E2CB]">
+        {/* Left / Center Copyright */}
+        <p className="flex flex-wrap items-center justify-center sm:justify-start gap-1.5 text-center">
+          <span>© 2026 <strong className="text-[#FFE59E] font-bold">NALMARA FASHION</strong>. All rights reserved.</span>
+          <span className="opacity-40">|</span>
           <span className="inline-flex items-center gap-1 text-[#FFE59E]">
             Elegance &bull; Tradition &bull; You
-            <Heart className="w-3 h-3 fill-[#E5B85B] text-[#E5B85B]" />
+            <Heart className="w-3.5 h-3.5 fill-[#FFE59E] text-[#FFE59E]" />
           </span>
         </p>
+
+        {/* Right Gold Bullion "Shop with Confidence" Pill */}
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.5)]" style={{ background: 'linear-gradient(180deg, #380424 0%, #1A0111 100%)' }}>
+          <ShieldCheck className="w-4 h-4 text-[#FFE59E]" />
+          <span className="font-serif font-bold text-xs text-[#FFE59E] tracking-wide whitespace-nowrap">
+            Shop with Confidence
+          </span>
+        </div>
       </div>
     </footer>
   );
