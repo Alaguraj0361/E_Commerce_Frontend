@@ -1,7 +1,8 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { toast } from 'sonner';
 import {
   Instagram,
   Facebook,
@@ -11,11 +12,47 @@ import {
   MapPin,
   Heart,
   MessageCircle,
+  Sparkles,
 } from 'lucide-react';
 import { useCategoryStore } from '../../store/categoryStore';
 
 export const Footer = () => {
   const { categories } = useCategoryStore();
+  const [newsletterEmail, setNewsletterEmail] = useState('');
+  const [isSubscribing, setIsSubscribing] = useState(false);
+
+  const handleNewsletterSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!newsletterEmail || !newsletterEmail.includes('@')) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+
+    setIsSubscribing(true);
+    try {
+      const apiUrl =
+        process.env.NEXT_PUBLIC_API_URL ||
+        'https://e-commerce-backend-4c4d.onrender.com/api';
+
+      const res = await fetch(`${apiUrl}/contact/newsletter`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: newsletterEmail.trim() }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.message || 'Subscription failed');
+      }
+
+      toast.success(data.message || 'Welcome to the Nalmara Couture Circle!');
+      setNewsletterEmail('');
+    } catch (err: any) {
+      toast.error(err.message || 'Unable to subscribe right now. Please try again.');
+    } finally {
+      setIsSubscribing(false);
+    }
+  };
 
   return (
     <footer className="hidden md:block relative bg-[#3B002B] text-[#F7E8D0] overflow-hidden select-none border-t-2 border-[#D4AF37]/80">
@@ -266,6 +303,43 @@ export const Footer = () => {
               </span>
             </div>
           </div>
+        </div>
+      </div>
+
+      {/* ============================================================ */}
+      {/* 2. VIP CLUB NEWSLETTER SUBSCRIPTION STRIP                    */}
+      {/* ============================================================ */}
+      <div className="border-t border-b border-[#D4AF37]/40 bg-[#25011B] py-6 px-4 sm:px-8">
+        <div className="max-w-[1340px] mx-auto flex flex-col md:flex-row items-center justify-between gap-5">
+          <div className="text-center md:text-left">
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.24em] text-[#FFE59E]">
+              <Sparkles className="w-3 h-3 text-[#FFE59E]" />
+              <span>VIP PATRON CIRCLE</span>
+            </span>
+            <h3 className="font-serif text-base sm:text-lg font-bold text-[#FFFDF9] mt-0.5">
+              Subscribe to Nalmara Couture Updates
+            </h3>
+            <p className="text-xs text-[#EED9BA]/80 mt-0.5 max-w-xl">
+              Receive private preview access to our handwoven Kanchipuram silk saree releases, bespoke festive collections, and atelier tailoring styling guides.
+            </p>
+          </div>
+          <form onSubmit={handleNewsletterSubmit} className="flex w-full md:w-auto items-center max-w-md gap-2">
+            <input
+              type="email"
+              value={newsletterEmail}
+              onChange={(e) => setNewsletterEmail(e.target.value)}
+              placeholder="Enter your email address..."
+              required
+              className="bg-[#3B012C] border border-[#D4AF37]/60 rounded-full px-4 py-2.5 text-xs text-[#FFFDF9] placeholder-[#EED9BA]/50 focus:outline-none focus:border-[#FFE59E] w-full sm:w-72"
+            />
+            <button
+              type="submit"
+              disabled={isSubscribing}
+              className="bg-gradient-to-r from-[#FFE59E] to-[#D4AF37] text-[#280619] font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-full hover:scale-105 transition-all shadow-md shrink-0 cursor-pointer disabled:opacity-50"
+            >
+              {isSubscribing ? 'Joining...' : 'Subscribe'}
+            </button>
+          </form>
         </div>
       </div>
 
