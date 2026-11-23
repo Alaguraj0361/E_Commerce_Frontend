@@ -4916,31 +4916,103 @@ export default function HomePage() {
       {/* =================================================================== */}
       {/* 09. DEDICATED SECTION: FREQUENTLY ASKED QUESTIONS (FAQs)            */}
       {/* =================================================================== */}
-      <section className="relative w-full overflow-hidden py-14 sm:py-20 lg:py-24 border-y-2 border-[#D4AF37]/50 select-none">
-        {/* Full-Bleed Fluid Luxury Champagne Silk Drape Background Plate */}
+      <section className="relative w-full overflow-hidden py-16 sm:py-20 lg:py-24 border-y-2 border-[#D4AF37] bg-[#14010E] select-none text-[#FFFDF9]">
+        {/* Full-Bleed Ultra-HD Royal Wine-Plum Background Plate */}
         <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
-            src="/images/nalmara/silk_satin_bg.jpg"
+            src="/images/nalmara/footer_luxury_bg.jpg"
             alt=""
             aria-hidden="true"
-            className="w-full h-full object-cover object-center opacity-40 mix-blend-multiply"
+            className="w-full h-full object-cover object-center opacity-65 mix-blend-luminosity scale-105"
           />
-          {/* Haute Couture Radial Vignette & Soft Champagne Sheen */}
+          {/* Imperial Velvet Radial Vignette & Warm Golden Ambient Glow */}
           <div
             className="absolute inset-0"
             style={{
               background:
-                'radial-gradient(circle at 50% 25%, rgba(255, 253, 249, 0.94) 0%, rgba(250, 240, 220, 0.88) 55%, rgba(239, 224, 190, 0.96) 100%)',
+                'radial-gradient(ellipse at 50% 25%, rgba(68, 7, 48, 0.85) 0%, rgba(34, 3, 24, 0.92) 50%, rgba(16, 1, 12, 0.98) 100%)',
             }}
           />
+          {/* Top & Bottom Deep Shadow Hairlines for Grand Depth */}
+          <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-[#0E0008] to-transparent opacity-80" />
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#0E0008] to-transparent opacity-80" />
+        </div>
+
+        {/* Hanging Royal Golden Brass Temple Lamps (Thooku Vilakku) at Top Corners */}
+        <div className="pointer-events-none absolute top-0 left-6 sm:left-14 lg:left-20 z-10 hidden md:block select-none opacity-85 drop-shadow-[0_12px_24px_rgba(212,175,55,0.4)]">
+          <svg viewBox="0 0 70 240" width="60" height="206" fill="none">
+            {/* Chain links */}
+            <line x1="35" y1="0" x2="35" y2="120" stroke="url(#hangingLampChainGold)" strokeWidth="2.5" strokeDasharray="3 2" />
+            {/* Upper dome bell */}
+            <path d="M22 120 C22 110, 48 110, 48 120 L52 135 C52 142, 18 142, 18 135 Z" fill="url(#hangingLampGold)" stroke="#7A4B0E" strokeWidth="1" />
+            <circle cx="35" cy="112" r="3" fill="#FFE59E" />
+            {/* Lamp oil bowl */}
+            <ellipse cx="35" cy="148" rx="22" ry="7" fill="url(#hangingLampGold)" stroke="#7A4B0E" strokeWidth="1" />
+            {/* Multiple flame spouts */}
+            <path d="M14 148 C14 142, 16 138, 17 134 C19 138, 18 144, 18 148 Z" fill="#FFE89E" />
+            <path d="M35 146 C35 138, 37 132, 38 126 C40 132, 39 142, 39 146 Z" fill="#FFE89E" />
+            <path d="M52 148 C52 142, 54 138, 55 134 C57 138, 56 144, 56 148 Z" fill="#FFE89E" />
+            {/* Glowing flame aura */}
+            <circle cx="35" cy="140" r="14" fill="#FFC83B" opacity="0.35" filter="blur(6px)" />
+            {/* Bottom ornamental finial droplet */}
+            <path d="M35 155 L38 175 C38 182, 32 182, 32 175 Z" fill="url(#hangingLampGold)" stroke="#7A4B0E" strokeWidth="0.8" />
+            <circle cx="35" cy="186" r="3.5" fill="#FFE59E" stroke="#7A4B0E" strokeWidth="0.8" />
+            <defs>
+              <linearGradient id="hangingLampChainGold" x1="35" y1="0" x2="35" y2="120" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#FFE59E" />
+                <stop offset="0.5" stopColor="#D4AF37" />
+                <stop offset="1" stopColor="#8C5818" />
+              </linearGradient>
+              <linearGradient id="hangingLampGold" x1="18" y1="110" x2="52" y2="185" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#FFF4C2" />
+                <stop offset="0.3" stopColor="#E5B84B" />
+                <stop offset="0.7" stopColor="#D4AF37" />
+                <stop offset="1" stopColor="#7A4B0E" />
+              </linearGradient>
+            </defs>
+          </svg>
+        </div>
+
+        <div className="pointer-events-none absolute top-0 right-6 sm:right-14 lg:right-20 z-10 hidden md:block select-none opacity-85 drop-shadow-[0_12px_24px_rgba(212,175,55,0.4)]">
+          <svg viewBox="0 0 70 240" width="60" height="206" fill="none">
+            {/* Chain links */}
+            <line x1="35" y1="0" x2="35" y2="120" stroke="url(#hangingLampChainGold2)" strokeWidth="2.5" strokeDasharray="3 2" />
+            {/* Upper dome bell */}
+            <path d="M22 120 C22 110, 48 110, 48 120 L52 135 C52 142, 18 142, 18 135 Z" fill="url(#hangingLampGold2)" stroke="#7A4B0E" strokeWidth="1" />
+            <circle cx="35" cy="112" r="3" fill="#FFE59E" />
+            {/* Lamp oil bowl */}
+            <ellipse cx="35" cy="148" rx="22" ry="7" fill="url(#hangingLampGold2)" stroke="#7A4B0E" strokeWidth="1" />
+            {/* Multiple flame spouts */}
+            <path d="M14 148 C14 142, 16 138, 17 134 C19 138, 18 144, 18 148 Z" fill="#FFE89E" />
+            <path d="M35 146 C35 138, 37 132, 38 126 C40 132, 39 142, 39 146 Z" fill="#FFE89E" />
+            <path d="M52 148 C52 142, 54 138, 55 134 C57 138, 56 144, 56 148 Z" fill="#FFE89E" />
+            {/* Glowing flame aura */}
+            <circle cx="35" cy="140" r="14" fill="#FFC83B" opacity="0.35" filter="blur(6px)" />
+            {/* Bottom ornamental finial droplet */}
+            <path d="M35 155 L38 175 C38 182, 32 182, 32 175 Z" fill="url(#hangingLampGold2)" stroke="#7A4B0E" strokeWidth="0.8" />
+            <circle cx="35" cy="186" r="3.5" fill="#FFE59E" stroke="#7A4B0E" strokeWidth="0.8" />
+            <defs>
+              <linearGradient id="hangingLampChainGold2" x1="35" y1="0" x2="35" y2="120" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#FFE59E" />
+                <stop offset="0.5" stopColor="#D4AF37" />
+                <stop offset="1" stopColor="#8C5818" />
+              </linearGradient>
+              <linearGradient id="hangingLampGold2" x1="18" y1="110" x2="52" y2="185" gradientUnits="userSpaceOnUse">
+                <stop stopColor="#FFF4C2" />
+                <stop offset="0.3" stopColor="#E5B84B" />
+                <stop offset="0.7" stopColor="#D4AF37" />
+                <stop offset="1" stopColor="#7A4B0E" />
+              </linearGradient>
+            </defs>
+          </svg>
         </div>
 
         {/* Sinuous 3D Metallic Gold Draped Wave Ribbons on Left and Right Framing */}
         <svg
           viewBox="0 0 300 800"
           fill="none"
-          className="pointer-events-none absolute left-0 top-0 bottom-0 h-full w-48 sm:w-72 lg:w-96 select-none opacity-85 z-0"
+          className="pointer-events-none absolute left-0 top-0 bottom-0 h-full w-48 sm:w-72 lg:w-96 select-none opacity-80 z-0"
           preserveAspectRatio="none"
         >
           <path
@@ -4972,7 +5044,7 @@ export default function HomePage() {
         <svg
           viewBox="0 0 300 800"
           fill="none"
-          className="pointer-events-none absolute right-0 top-0 bottom-0 h-full w-48 sm:w-72 lg:w-96 select-none opacity-85 -scale-x-100 z-0"
+          className="pointer-events-none absolute right-0 top-0 bottom-0 h-full w-48 sm:w-72 lg:w-96 select-none opacity-80 -scale-x-100 z-0"
           preserveAspectRatio="none"
         >
           <path
@@ -5006,18 +5078,18 @@ export default function HomePage() {
         <div className="relative z-10 w-full max-w-[1540px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
           
           {/* ============================================================= */}
-          {/* 1. 3D CROWN & ROYAL FAQ HEADER                                */}
+          {/* 1. 3D CROWN & GRAND ROYAL FAQ HEADER                          */}
           {/* ============================================================= */}
-          <div className="flex flex-col items-center text-center max-w-[1000px] mx-auto mb-8 sm:mb-12">
+          <div className="flex flex-col items-center text-center max-w-[1000px] mx-auto mb-10 sm:mb-14">
             {/* Top 3D Gold Crown + Scalloped Royal Plum Plaque */}
             <div className="flex flex-col items-center w-full max-w-[880px] mx-auto">
               {/* Crisp 3D 24K Gold Crown SVG */}
               <svg
                 viewBox="0 0 64 32"
                 fill="none"
-                width={56}
-                height={28}
-                className="w-12 sm:w-[56px] h-auto -mb-1.5 relative z-20 drop-shadow-[0_4px_8px_rgba(42,4,26,0.28)]"
+                width={60}
+                height={30}
+                className="w-13 sm:w-[60px] h-auto -mb-1.5 relative z-20 drop-shadow-[0_6px_14px_rgba(212,175,55,0.45)]"
               >
                 <path
                   d="M8 26L4 11L19 18L32 4L45 18L60 11L56 26H8Z"
@@ -5043,8 +5115,9 @@ export default function HomePage() {
                 <circle cx="60" cy="10.5" r="2" fill="#FFE59E" stroke="#7A4B0E" strokeWidth="1" />
                 <defs>
                   <linearGradient id="faqCrownGoldFluid" x1="4" y1="4" x2="60" y2="30" gradientUnits="userSpaceOnUse">
-                    <stop stopColor="#FFF4C2" />
-                    <stop offset="0.45" stopColor="#E5B84B" />
+                    <stop stopColor="#FFFDF9" />
+                    <stop offset="0.3" stopColor="#FFE28A" />
+                    <stop offset="0.65" stopColor="#D4AF37" />
                     <stop offset="1" stopColor="#8C5818" />
                   </linearGradient>
                 </defs>
@@ -5059,21 +5132,21 @@ export default function HomePage() {
                 </div>
 
                 <div
-                  className="rounded-full p-[2.5px] shadow-[0_10px_26px_rgba(118,1,89,0.36)] shrink-0"
+                  className="rounded-full p-[2.5px] shadow-[0_10px_28px_rgba(212,175,55,0.4)] shrink-0"
                   style={{
                     background:
                       'linear-gradient(90deg, #760159 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #760159 100%)',
                   }}
                 >
                   <div
-                    className="px-7 sm:px-9 py-2 rounded-full border border-[#FFE59E]/75 flex items-center gap-2.5 shadow-[inset_0_1px_2px_rgba(255,244,194,0.45)]"
+                    className="px-7 sm:px-9 py-2 rounded-full border border-[#FFE59E]/85 flex items-center gap-2.5 shadow-[inset_0_1px_3px_rgba(255,244,194,0.5)]"
                     style={{
                       background:
-                        'linear-gradient(180deg, #760159 0%, #54013F 55%, #220215 100%)',
+                        'linear-gradient(180deg, #5B0E3D 0%, #380424 55%, #180110 100%)',
                     }}
                   >
                     <span className="text-[#FFE59E] text-xs">✦</span>
-                    <span className="font-serif font-bold text-[12px] sm:text-[14px] tracking-[0.24em] uppercase text-[#FFF4C2]">
+                    <span className="font-serif font-bold text-[12px] sm:text-[14px] tracking-[0.26em] uppercase text-[#FFF4C2] drop-shadow-sm">
                       NALMARA FASHION
                     </span>
                     <span className="text-[#FFE59E] text-xs">✦</span>
@@ -5088,16 +5161,26 @@ export default function HomePage() {
               </div>
             </div>
 
-            <h2 className="font-serif font-extrabold text-2xl sm:text-4xl lg:text-[46px] text-[#240A18] tracking-tight leading-[1.12] mt-3.5 sm:mt-4 drop-shadow-[0_1px_2px_rgba(255,255,255,0.9)] uppercase">
+            {/* Main Shimmering 24K Gold Title */}
+            <h2
+              className="font-serif font-extrabold text-2xl sm:text-4xl lg:text-[46px] tracking-tight leading-[1.12] mt-4 uppercase drop-shadow-[0_4px_16px_rgba(0,0,0,0.8)] text-transparent bg-clip-text"
+              style={{
+                fontFamily: "'Cinzel', Georgia, serif",
+                backgroundImage:
+                  'linear-gradient(180deg, #FFFDF9 0%, #FFE28A 35%, #D4AF37 70%, #A6721E 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+              }}
+            >
               Frequently Asked Questions
             </h2>
 
-            <p className="font-serif italic text-xs sm:text-base lg:text-[18px] text-[#4A2612] font-medium mt-1.5 max-w-2xl">
+            <p className="font-serif italic text-xs sm:text-base lg:text-[17px] text-[#F3E2CB] font-medium mt-2 max-w-2xl drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">
               Everything you need to know about our silks, bespoke wear and tailored services
             </p>
 
             {/* 3D Golden Lotus & Sinuous Filigree Divider */}
-            <div className="flex items-center justify-center gap-3 mt-3">
+            <div className="flex items-center justify-center gap-3 mt-3.5">
               <span className="h-[1.5px] w-20 sm:w-36 bg-gradient-to-r from-transparent via-[#C8963E] to-[#8C5818]" />
               <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#FFF4C2] to-[#8C5818] shrink-0" />
               <svg
@@ -5105,7 +5188,7 @@ export default function HomePage() {
                 fill="none"
                 width={56}
                 height={26}
-                className="w-13 sm:w-16 h-auto shrink-0 drop-shadow-[0_2px_6px_rgba(140,88,24,0.3)]"
+                className="w-13 sm:w-16 h-auto shrink-0 drop-shadow-[0_2px_8px_rgba(212,175,55,0.4)]"
               >
                 <path
                   d="M30 3C26 10 23 16 30 24C37 16 34 10 30 3Z"
@@ -5164,17 +5247,17 @@ export default function HomePage() {
           {/* ============================================================= */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
             
-            {/* LEFT COLUMN (5/12 COLS): LATEST TRENDING ARCHITECTURAL ATELIER SHOWCASE */}
+            {/* LEFT COLUMN (5/12 COLS): GRAND ROYAL ATELIER & BRIDAL ARCH SHOWCASE */}
             <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-center justify-center relative">
               {/* Ambient Golden Stage Glow Behind Showcase */}
-              <div className="pointer-events-none absolute -inset-4 sm:-inset-8 bg-radial from-[#D4AF37]/25 via-[#760159]/15 to-transparent blur-3xl opacity-80" />
+              <div className="pointer-events-none absolute -inset-4 sm:-inset-8 bg-radial from-[#D4AF37]/30 via-[#760159]/20 to-transparent blur-3xl opacity-85" />
 
               <div className="relative w-full max-w-[420px] mx-auto group">
                 
                 {/* 1. FLOATING TRENDING BADGE: TOP-LEFT (LIVE MASTER TAILOR) */}
                 <div className="absolute -top-3.5 left-4 sm:-left-3 z-30">
-                  <div className="rounded-full p-[1.5px] bg-gradient-to-r from-[#FFE59E] via-[#D4AF37] to-[#8C5818] shadow-[0_8px_20px_rgba(30,3,20,0.45)]">
-                    <div className="px-3.5 py-1.5 rounded-full backdrop-blur-md bg-[#220215]/90 border border-[#FFE59E]/40 flex items-center gap-2">
+                  <div className="rounded-full p-[1.5px] bg-gradient-to-r from-[#FFE59E] via-[#D4AF37] to-[#8C5818] shadow-[0_8px_24px_rgba(0,0,0,0.6)]">
+                    <div className="px-3.5 py-1.5 rounded-full backdrop-blur-md bg-[#220215]/95 border border-[#FFE59E]/45 flex items-center gap-2">
                       <span className="relative flex h-2 w-2">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
                         <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
@@ -5188,13 +5271,13 @@ export default function HomePage() {
 
                 {/* 2. FLOATING TRENDING BADGE: TOP-RIGHT (100% BESPOKE CRAFT) */}
                 <div className="absolute top-8 -right-3 sm:-right-4 z-30 hidden sm:block">
-                  <div className="rounded-2xl p-[1.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_25px_rgba(0,0,0,0.35)]">
-                    <div className="px-3 py-2 rounded-[14px] backdrop-blur-md bg-[#2D041E]/92 border border-[#FFE59E]/40 flex flex-col items-center text-center">
+                  <div className="rounded-2xl p-[1.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#8C5818] shadow-[0_12px_28px_rgba(0,0,0,0.55)]">
+                    <div className="px-3.5 py-2 rounded-[14px] backdrop-blur-md bg-[#2D041E]/95 border border-[#FFE59E]/45 flex flex-col items-center text-center">
                       <span className="text-[#FFE59E] text-xs">✂️</span>
                       <span className="font-serif font-bold text-[10px] text-[#FFFDF9] uppercase tracking-wider mt-0.5">
                         Bespoke Fit
                       </span>
-                      <span className="text-[9px] font-sans text-[#FFE59E]/90 font-semibold">
+                      <span className="text-[9px] font-sans text-[#FFE59E] font-semibold">
                         Guaranteed
                       </span>
                     </div>
@@ -5202,9 +5285,9 @@ export default function HomePage() {
                 </div>
 
                 {/* 3. MAIN ARCHITECTURAL PORTRAIT FRAME */}
-                <div className="relative rounded-t-[140px] rounded-b-[32px] p-[3.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_24px_50px_rgba(70,25,8,0.32)] overflow-hidden">
+                <div className="relative rounded-t-[140px] rounded-b-[32px] p-[3.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_26px_56px_rgba(0,0,0,0.75)] overflow-hidden">
                   {/* Subtle Inner Gold Foil Rim */}
-                  <div className="relative w-full h-[380px] sm:h-[430px] rounded-t-[136.5px] rounded-b-[28.5px] overflow-hidden bg-[#240317]">
+                  <div className="relative w-full h-[390px] sm:h-[440px] rounded-t-[136.5px] rounded-b-[28.5px] overflow-hidden bg-[#240317]">
                     
                     {/* Model Image */}
                     {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -5215,7 +5298,7 @@ export default function HomePage() {
                     />
 
                     {/* Architectural Corner Filigree Ornaments */}
-                    <div className="pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 opacity-80">
+                    <div className="pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 opacity-90">
                       <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E]" />
                       <span className="font-serif text-[9px] uppercase tracking-[0.25em] text-[#FFE59E] font-semibold drop-shadow-md">
                         NALMARA ATELIER
@@ -5224,23 +5307,23 @@ export default function HomePage() {
                     </div>
 
                     {/* Gradient Fade at bottom to blend into card */}
-                    <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#1A0112] via-[#1A0112]/60 to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#14010E] via-[#14010E]/70 to-transparent" />
                   </div>
                 </div>
 
                 {/* 4. FLOATING TRENDING BADGE: MIDDLE-LEFT RATING PILL */}
                 <div className="absolute bottom-40 -left-2 sm:-left-5 z-30">
-                  <div className="rounded-full p-[1.5px] bg-gradient-to-r from-[#D4AF37] via-[#FFFDF9] to-[#8C5818] shadow-[0_8px_20px_rgba(0,0,0,0.4)]">
-                    <div className="px-3 py-1.5 rounded-full backdrop-blur-md bg-[#220215]/92 border border-[#FFE59E]/40 flex items-center gap-2">
+                  <div className="rounded-full p-[1.5px] bg-gradient-to-r from-[#D4AF37] via-[#FFFDF9] to-[#8C5818] shadow-[0_10px_24px_rgba(0,0,0,0.6)]">
+                    <div className="px-3.5 py-1.5 rounded-full backdrop-blur-md bg-[#220215]/95 border border-[#FFE59E]/45 flex items-center gap-2">
                       <div className="flex items-center gap-0.5">
                         {[...Array(5)].map((_, i) => (
                           <Star key={i} className="w-2.5 h-2.5 fill-[#FBBC05] text-[#D99B00]" />
                         ))}
                       </div>
-                      <span className="font-serif font-extrabold text-[10px] text-[#FFE59E] tracking-wider">
+                      <span className="font-serif font-extrabold text-[10.5px] text-[#FFE59E] tracking-wider">
                         4.9/5
                       </span>
-                      <span className="text-[9px] text-[#F3E2CB]/80 font-sans font-medium">
+                      <span className="text-[9px] text-[#F3E2CB] font-sans font-medium">
                         (1.2k+ Fits)
                       </span>
                     </div>
@@ -5248,18 +5331,18 @@ export default function HomePage() {
                 </div>
 
                 {/* 5. MODERNIZED OVERLAPPING CONCIERGE STYLING CARD */}
-                <div className="relative -mt-24 sm:-mt-28 z-20 w-[94%] sm:w-[92%] mx-auto rounded-[26px] p-[2.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_20px_46px_rgba(0,0,0,0.65)]">
+                <div className="relative -mt-24 sm:-mt-28 z-20 w-[94%] sm:w-[92%] mx-auto rounded-[26px] p-[2.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_22px_50px_rgba(0,0,0,0.85)]">
                   <div
-                    className="rounded-[23.5px] p-5 sm:p-6 flex flex-col items-center text-center border border-[#FFE59E]/40 relative overflow-hidden"
+                    className="rounded-[23.5px] p-5 sm:p-6 flex flex-col items-center text-center border border-[#FFE59E]/45 relative overflow-hidden"
                     style={{
-                      background: 'linear-gradient(180deg, #3A0526 0%, #220216 55%, #10000A 100%)',
+                      background: 'linear-gradient(180deg, #3A0526 0%, #200215 55%, #0E0008 100%)',
                     }}
                   >
                     {/* Micro Gold Top Bar Accent */}
                     <div className="flex items-center gap-2 mb-2">
                       <span className="h-[1px] w-6 bg-gradient-to-r from-transparent to-[#FFE59E]" />
                       <span className="text-[#FFE59E] text-[10px]">✦</span>
-                      <span className="font-serif font-bold text-[9.5px] tracking-[0.22em] uppercase text-[#FFE59E]">
+                      <span className="font-serif font-bold text-[9.5px] tracking-[0.24em] uppercase text-[#FFE59E]">
                         Couture Styling Desk
                       </span>
                       <span className="text-[#FFE59E] text-[10px]">✦</span>
@@ -5279,16 +5362,16 @@ export default function HomePage() {
                       Personal Styling &amp; Fit Assistance
                     </h3>
                     
-                    <p className="text-xs sm:text-[13px] text-[#F3E2CB]/90 mt-2 leading-relaxed font-sans font-medium">
+                    <p className="text-xs sm:text-[13px] text-[#F3E2CB]/95 mt-2 leading-relaxed font-sans font-medium">
                       Need help with blouse measurements, bridal wear or custom designs?
                     </p>
 
                     {/* Trending Feature Pills Strip */}
                     <div className="flex flex-wrap items-center justify-center gap-1.5 mt-3">
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#520B37]/80 border border-[#FFE59E]/30 text-[9.5px] font-medium text-[#FFE59E]">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#520B37]/90 border border-[#FFE59E]/40 text-[9.5px] font-semibold text-[#FFE59E]">
                         <span>📐</span> Blouse Measurement
                       </span>
-                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#520B37]/80 border border-[#FFE59E]/30 text-[9.5px] font-medium text-[#FFE59E]">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#520B37]/90 border border-[#FFE59E]/40 text-[9.5px] font-semibold text-[#FFE59E]">
                         <span>✨</span> Aari &amp; Zari Work
                       </span>
                     </div>
@@ -5298,7 +5381,7 @@ export default function HomePage() {
                       href="https://wa.me/916383163609?text=Hi%20Nalmara%20Fashion!%20I%20need%20help%20with%20blouse%20measurements%20and%20custom%20stitching."
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="group/btn relative inline-flex items-center justify-center gap-2.5 mt-4 w-full py-2.5 sm:py-3 px-5 rounded-full border border-[#FFE59E] shadow-[0_6px_20px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.6)] active:scale-95 transition-all cursor-pointer"
+                      className="group/btn relative inline-flex items-center justify-center gap-2.5 mt-4 w-full py-2.5 sm:py-3 px-5 rounded-full border-2 border-[#FFE59E] shadow-[0_8px_24px_rgba(0,0,0,0.6),inset_0_1px_2px_rgba(255,255,255,0.7)] active:scale-95 transition-all cursor-pointer hover:shadow-[0_10px_28px_rgba(212,175,55,0.4)]"
                       style={{
                         background:
                           'linear-gradient(180deg, #FFF4C2 0%, #E5B84B 40%, #D4AF37 75%, #9E6B18 100%)',
@@ -5318,75 +5401,84 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* RIGHT COLUMN (7/12 COLS): GOLDEN PANEL & 5 ACCORDION FAQ CARDS */}
+            {/* RIGHT COLUMN (7/12 COLS): GRAND 3D ROYAL GOLD ACCORDION DECK */}
             <div className="lg:col-span-7 xl:col-span-7 flex flex-col items-center">
-              <div className="relative w-full rounded-[30px] p-[3px] bg-gradient-to-b from-[#FFFDF9] via-[#E2C37A] to-[#A67524] shadow-[0_22px_54px_rgba(70,30,8,0.18)]">
+              <div className="relative w-full rounded-[30px] p-[3.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_26px_65px_rgba(0,0,0,0.85)]">
                 <div
-                  className="relative rounded-[27px] pt-11 sm:pt-13 pb-7 sm:pb-8 px-4 sm:px-8 lg:px-9 border border-[#FFFDF9]"
+                  className="relative rounded-[26.5px] pt-12 sm:pt-14 pb-8 sm:pb-9 px-4 sm:px-8 lg:px-9 border border-[#FFE59E]/30"
                   style={{
                     background:
-                      'linear-gradient(180deg, #F8EEDA 0%, #F5E5C4 50%, #ECCFA1 100%)',
+                      'linear-gradient(180deg, rgba(45, 5, 32, 0.97) 0%, rgba(26, 2, 18, 0.98) 55%, rgba(14, 0, 10, 1) 100%)',
                   }}
                 >
                   {/* Top Scalloped Plaque Header: Quick Answers to Your Queries */}
                   <div className="absolute -top-6 left-1/2 -translate-x-1/2 z-20">
-                    <div className="rounded-full p-[2.5px] bg-gradient-to-r from-[#D4AF37] via-[#FFFDF9] to-[#D4AF37] shadow-[0_10px_24px_rgba(70,10,45,0.38)]">
+                    <div className="rounded-full p-[2.5px] bg-gradient-to-r from-[#D4AF37] via-[#FFFDF9] to-[#D4AF37] shadow-[0_12px_28px_rgba(0,0,0,0.6)]">
                       <div
-                        className="px-7 sm:px-11 py-2.5 rounded-full border border-[#FFE59E]/75 flex items-center justify-center gap-2 shadow-inner"
+                        className="px-7 sm:px-11 py-2.5 rounded-full border border-[#FFE59E]/85 flex items-center justify-center gap-2 shadow-inner"
                         style={{
                           background:
-                            'linear-gradient(180deg, #5B0E3D 0%, #380424 55%, #1F0114 100%)',
+                            'linear-gradient(180deg, #5B0E3D 0%, #380424 55%, #180110 100%)',
                         }}
                       >
-                        <h3 className="font-serif font-bold text-xs sm:text-[17px] text-[#FFFDF9] tracking-wide whitespace-nowrap">
+                        <h3 className="font-serif font-bold text-xs sm:text-[17px] text-[#FFFDF9] tracking-wide whitespace-nowrap drop-shadow-sm">
                           Quick Answers to Your Queries
                         </h3>
                       </div>
                     </div>
                   </div>
 
-                  <p className="text-[12.5px] sm:text-[14px] text-[#4A2612] font-semibold text-center mb-5">
+                  <p className="text-[12.5px] sm:text-[14px] text-[#FFE59E] font-medium text-center mb-6 tracking-wide drop-shadow-sm">
                     Find answers to the most common questions below
                   </p>
 
-                  {/* 5 Accordion Cards */}
+                  {/* 5 Royal Grand Accordion Cards */}
                   <div className="space-y-3.5">
                     {FAQ_ITEMS.map((faq) => {
                       const isOpen = openFaq === faq.id;
                       return (
                         <div
                           key={faq.id}
-                          className="rounded-[22px] p-[1.5px] bg-gradient-to-r from-[#D4AF37]/50 via-[#FFE59E] to-[#D4AF37]/50 shadow-[0_4px_14px_rgba(80,40,10,0.07)] transition-all hover:shadow-[0_6px_20px_rgba(80,40,10,0.11)]"
+                          className={`rounded-[22px] p-[1.5px] transition-all duration-300 ${
+                            isOpen
+                              ? 'bg-gradient-to-r from-[#FFE59E] via-[#FFFDF9] to-[#FFE59E] shadow-[0_8px_24px_rgba(212,175,55,0.25)]'
+                              : 'bg-gradient-to-r from-[#D4AF37]/60 via-[#FFE59E]/40 to-[#D4AF37]/60 shadow-[0_4px_16px_rgba(0,0,0,0.4)] hover:border-[#FFE59E]'
+                          }`}
                         >
                           <div
-                            className="rounded-[20.5px] overflow-hidden border border-[#FFFDF9]"
+                            className="rounded-[20.5px] overflow-hidden border border-[#FFE59E]/25 transition-colors duration-300"
                             style={{
-                              background:
-                                'linear-gradient(90deg, #FFFDF9 0%, #FAF1E0 50%, #FFFDF9 100%)',
+                              background: isOpen
+                                ? 'linear-gradient(180deg, #3D072C 0%, #220318 100%)'
+                                : 'linear-gradient(90deg, #2D0521 0%, #1D0215 50%, #2D0521 100%)',
                             }}
                           >
                             {/* Header Row */}
                             <button
                               type="button"
                               onClick={() => setOpenFaq(isOpen ? null : faq.id)}
-                              className="w-full px-4 sm:px-5 py-3 sm:py-3.5 flex items-center justify-between gap-3 text-left cursor-pointer transition-colors hover:bg-[#FFFDF9]"
+                              className="w-full px-4 sm:px-5 py-3.5 sm:py-4 flex items-center justify-between gap-3 text-left cursor-pointer transition-colors hover:bg-white/5"
                             >
                               <div className="flex items-center gap-3 sm:gap-4 min-w-0 flex-1">
                                 <ScallopedFaqBadge num={faq.num} />
-                                <span className="font-serif font-bold text-xs sm:text-[15.5px] text-[#1E0A10] leading-snug">
+                                <span
+                                  className={`font-serif font-bold text-xs sm:text-[16px] leading-snug tracking-wide transition-colors ${
+                                    isOpen ? 'text-[#FFFDF9]' : 'text-[#F5E6D3] hover:text-[#FFE59E]'
+                                  }`}
+                                >
                                   {faq.question}
                                 </span>
                               </div>
 
                               <span
-                                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#D4AF37]/80 flex items-center justify-center shrink-0 shadow-xs transition-colors duration-300 ${
+                                className={`w-8 h-8 rounded-full border border-[#D4AF37] flex items-center justify-center shrink-0 shadow-md transition-all duration-300 ${
                                   isOpen
-                                    ? 'bg-gradient-to-b from-[#4A0830] to-[#200214] text-[#FFE59E]'
-                                    : 'bg-gradient-to-b from-[#FFFDF9] to-[#EBD2A0] text-[#3D2010]'
+                                    ? 'bg-gradient-to-b from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] text-[#1E0112]'
+                                    : 'bg-gradient-to-b from-[#2F0523] to-[#14010E] text-[#FFE59E]'
                                 }`}
                               >
                                 <ChevronDown
-                                  className={`w-4 h-4 stroke-[2.4] transition-transform duration-300 ${
+                                  className={`w-4 h-4 stroke-[2.6] transition-transform duration-300 ${
                                     isOpen ? 'rotate-180' : ''
                                   }`}
                                 />
@@ -5395,18 +5487,18 @@ export default function HomePage() {
 
                             {/* Smooth Expandable Answer Body */}
                             {isOpen && (
-                              <div className="px-5 pb-4 pt-1.5 border-t border-[#D4AF37]/25 animate-fadeIn">
-                                <p className="text-xs sm:text-[14px] text-[#231008] leading-relaxed font-sans font-medium">
+                              <div className="px-5 pb-5 pt-2 border-t border-[#D4AF37]/30 animate-fadeIn">
+                                <p className="text-xs sm:text-[14.5px] text-[#F7E8D3] leading-relaxed font-sans font-normal">
                                   {faq.answer}
                                 </p>
                                 {faq.highlights && faq.highlights.length > 0 && (
-                                  <div className="flex flex-wrap items-center gap-1.5 mt-2.5">
+                                  <div className="flex flex-wrap items-center gap-2 mt-3 pt-2.5 border-t border-[#FFE59E]/15">
                                     {faq.highlights.map((tag) => (
                                       <span
                                         key={tag}
-                                        className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#FAF0DC] border border-[#D4AF37]/60 text-[10.5px] font-bold text-[#4A0830]"
+                                        className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#4E0836]/90 border border-[#D4AF37] text-[11px] font-bold text-[#FFE59E] shadow-sm"
                                       >
-                                        <span className="text-[#B88228]">✦</span>
+                                        <span className="text-[#FFF4C2]">✦</span>
                                         {tag}
                                       </span>
                                     ))}
@@ -5427,7 +5519,7 @@ export default function HomePage() {
           {/* ============================================================= */}
           {/* 3. BOTTOM CENTERED "Still Have Questions? Contact Us →" CTA   */}
           {/* ============================================================= */}
-          <div className="relative z-10 mt-10 sm:mt-14 flex items-center justify-center gap-2.5 sm:gap-4 max-w-[920px] mx-auto px-4">
+          <div className="relative z-10 mt-12 sm:mt-16 flex items-center justify-center gap-2.5 sm:gap-4 max-w-[920px] mx-auto px-4">
             <div className="hidden sm:flex items-center gap-1.5 flex-1">
               <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8922E] to-[#8C5818]" />
               <span className="w-1.5 h-1.5 rotate-45 bg-gradient-to-br from-[#FFE59E] to-[#8C5818] shrink-0" />
@@ -5436,7 +5528,7 @@ export default function HomePage() {
 
             <Link
               href="/contact"
-              className="group relative rounded-full p-[2.5px] shadow-[0_12px_32px_rgba(118,1,89,0.4)] hover:scale-105 active:scale-95 transition-transform shrink-0"
+              className="group relative rounded-full p-[2.5px] shadow-[0_12px_32px_rgba(212,175,55,0.4)] hover:scale-105 active:scale-95 transition-transform shrink-0"
               style={{
                 background:
                   'linear-gradient(90deg, #760159 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #760159 100%)',
@@ -5446,7 +5538,7 @@ export default function HomePage() {
                 className="inline-flex items-center gap-2.5 px-7 sm:px-9 py-2.5 sm:py-3 rounded-full border border-[#FFE59E]/85 shadow-[inset_0_1px_3px_rgba(255,244,194,0.45)]"
                 style={{
                   background:
-                    'linear-gradient(180deg, #5B0E3D 0%, #380424 55%, #1F0114 100%)',
+                    'linear-gradient(180deg, #5B0E3D 0%, #380424 55%, #180110 100%)',
                 }}
               >
                 <Headphones className="w-4 h-4 text-[#FFE59E] shrink-0" />
