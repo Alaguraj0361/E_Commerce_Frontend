@@ -27,6 +27,7 @@ import {
   Crown,
   Gift,
   User,
+  ChevronDown,
 } from 'lucide-react';
 import { useCartStore } from '../store/cartStore';
 import { useWishlistStore } from '../store/wishlistStore';
@@ -164,6 +165,34 @@ const GoogleReviewAvatar = ({
     />
   );
 };
+
+const ScallopedFaqBadge = ({ num }: { num: string }) => (
+  <div className="relative w-8 h-8 sm:w-9 sm:h-9 shrink-0 flex items-center justify-center">
+    <svg viewBox="0 0 40 40" className="w-full h-full drop-shadow-xs">
+      <defs>
+        <radialGradient id={`scallopGrad-${num}`} cx="50%" cy="35%" r="65%">
+          <stop offset="0%" stopColor="#4A0830" />
+          <stop offset="60%" stopColor="#2D031C" />
+          <stop offset="100%" stopColor="#12000B" />
+        </radialGradient>
+        <linearGradient id={`scallopGold-${num}`} x1="0" y1="0" x2="40" y2="40">
+          <stop offset="0%" stopColor="#FFF4C2" />
+          <stop offset="50%" stopColor="#D4AF37" />
+          <stop offset="100%" stopColor="#8C5818" />
+        </linearGradient>
+      </defs>
+      <path
+        d="M20 2 C22.5 2, 24.5 4, 26.5 5 C28.8 6.2, 31 6.5, 32.5 8.5 C34 10.5, 33.8 12.8, 35 15 C36 17, 38 18.5, 38 20 C38 21.5, 36 23, 35 25 C33.8 27.2, 34 29.5, 32.5 31.5 C31 33.5, 28.8 33.8, 26.5 35 C24.5 36, 22.5 38, 20 38 C17.5 38, 15.5 36, 13.5 35 C11.2 33.8, 9 33.5, 7.5 31.5 C6 29.5, 6.2 27.2, 5 25 C4 23, 2 21.5, 2 20 C2 18.5, 4 17, 5 15 C6.2 12.8, 6 10.5, 7.5 8.5 C9 6.5, 11.2 6.2, 13.5 5 C15.5 4, 17.5 2, 20 2 Z"
+        fill={`url(#scallopGrad-${num})`}
+        stroke={`url(#scallopGold-${num})`}
+        strokeWidth="1.2"
+      />
+    </svg>
+    <span className="absolute inset-0 flex items-center justify-center font-serif font-bold text-xs sm:text-[13px] text-[#FFE59E] tracking-tight">
+      {num}
+    </span>
+  </div>
+);
 
 const GoldSectionHeader = ({
   title,
@@ -523,6 +552,7 @@ const STITCHING_ATELIER_CARDS = [
 const FAQ_ITEMS = [
   {
     id: 1,
+    num: '01',
     category: 'Master Tailoring',
     question: 'What types of stitching services do you offer?',
     answer:
@@ -531,6 +561,7 @@ const FAQ_ITEMS = [
   },
   {
     id: 2,
+    num: '02',
     category: 'Bespoke Design',
     question: 'Do you provide custom neck designs & WhatsApp measurement support?',
     answer:
@@ -539,6 +570,7 @@ const FAQ_ITEMS = [
   },
   {
     id: 3,
+    num: '03',
     category: 'Express Shipping',
     question: 'What is your delivery time across Tamil Nadu & India?',
     answer:
@@ -547,6 +579,7 @@ const FAQ_ITEMS = [
   },
   {
     id: 4,
+    num: '04',
     category: 'Saree + Blouse',
     question: 'Can I order a saree with custom blouse stitching & fall-pico done?',
     answer:
@@ -555,8 +588,9 @@ const FAQ_ITEMS = [
   },
   {
     id: 5,
+    num: '05',
     category: 'Kids Couture',
-    question: "How do you ensure comfort in Girls' Pattu Pavadai & Party Frocks?",
+    question: "How do you ensure comfort in girls' pattu pavadai & party frocks?",
     answer:
       'Every kidswear outfit is lined with 100% breathable, hypoallergenic soft cotton so zari borders and sequins never touch delicate skin. We also include extra inner seam allowance (growth tuck) so the outfit grows with your child.',
     highlights: ['Skin-Friendly Cotton Lining', 'Extra Growth Seam Margin', 'Featherlight Cancan'],
@@ -4884,7 +4918,7 @@ export default function HomePage() {
       {/* =================================================================== */}
       <section className="relative max-w-[1440px] mx-auto px-3 sm:px-6 lg:px-10 py-6 sm:py-10 overflow-hidden">
         <div
-          className="relative max-w-[1360px] mx-auto rounded-[28px] sm:rounded-[36px] px-4 sm:px-8 lg:px-12 pt-8 pb-10 sm:pt-11 sm:pb-14 overflow-hidden border border-[#D4AF37]/45 shadow-[0_18px_48px_rgba(40,6,25,0.10)]"
+          className="relative max-w-[1360px] mx-auto rounded-[28px] sm:rounded-[36px] px-4 sm:px-8 lg:px-12 pt-8 pb-10 sm:pt-11 sm:pb-14 overflow-hidden border border-[#D4AF37]/50 shadow-[0_18px_48px_rgba(40,6,25,0.10)]"
           style={{
             background:
               'radial-gradient(circle at 50% 18%, #FFFDF9 0%, #FAF0DC 52%, #EFE0BE 100%)',
@@ -4899,45 +4933,79 @@ export default function HomePage() {
             }}
           />
 
-          {/* Top-Left & Top-Right 3D Cream & Burgundy Floral Bouquets with 24K Gold Leaves */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/nalmara/hd/showcase_corner_tl.png"
-            alt=""
-            aria-hidden="true"
-            className="hidden sm:block absolute top-0 left-0 w-36 md:w-48 lg:w-60 pointer-events-none z-20 select-none"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/nalmara/hd/showcase_corner_tr.png"
-            alt=""
-            aria-hidden="true"
-            className="hidden sm:block absolute top-0 right-0 w-36 md:w-48 lg:w-60 pointer-events-none z-20 select-none"
-          />
-
-          {/* Bottom-Left & Bottom-Right 3D Floral Bouquets & Sweeping Royal Purple Silk Waves */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/nalmara/hd/showcase_corner_bl.png"
-            alt=""
-            aria-hidden="true"
-            className="hidden sm:block absolute bottom-0 left-0 w-44 md:w-60 lg:w-72 pointer-events-none z-20 select-none"
-          />
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            src="/images/nalmara/hd/showcase_corner_br.png"
-            alt=""
-            aria-hidden="true"
-            className="hidden sm:block absolute bottom-0 right-0 w-44 md:w-60 lg:w-72 pointer-events-none z-20 select-none"
-          />
+          {/* Sinuous 3D Metallic Gold Draped Wave Ribbons on Left and Right Framing */}
+          <svg
+            viewBox="0 0 300 600"
+            fill="none"
+            className="pointer-events-none absolute left-0 top-0 bottom-0 h-full w-44 sm:w-64 lg:w-80 select-none opacity-85 z-0"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M-50 0 C120 100, 180 250, 40 450 C-20 530, -50 600, -50 600"
+              stroke="url(#goldRibbonLeftFaq)"
+              strokeWidth="20"
+              fill="none"
+            />
+            <path
+              d="M-40 0 C130 100, 190 250, 50 450 C-10 530, -40 600, -40 600"
+              stroke="url(#goldRibbonHighlightFaq)"
+              strokeWidth="4"
+              fill="none"
+            />
+            <defs>
+              <linearGradient id="goldRibbonLeftFaq" x1="0" y1="0" x2="200" y2="600" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#8C5818" />
+                <stop offset="35%" stopColor="#D4AF37" />
+                <stop offset="65%" stopColor="#FFFDF9" />
+                <stop offset="100%" stopColor="#A6721E" />
+              </linearGradient>
+              <linearGradient id="goldRibbonHighlightFaq" x1="0" y1="0" x2="200" y2="600" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#FFF4C2" />
+                <stop offset="50%" stopColor="#FFFFFF" />
+                <stop offset="100%" stopColor="#FFE28A" />
+              </linearGradient>
+            </defs>
+          </svg>
+          <svg
+            viewBox="0 0 300 600"
+            fill="none"
+            className="pointer-events-none absolute right-0 top-0 bottom-0 h-full w-44 sm:w-64 lg:w-80 select-none opacity-85 -scale-x-100 z-0"
+            preserveAspectRatio="none"
+          >
+            <path
+              d="M-50 0 C120 100, 180 250, 40 450 C-20 530, -50 600, -50 600"
+              stroke="url(#goldRibbonRightFaq)"
+              strokeWidth="20"
+              fill="none"
+            />
+            <path
+              d="M-40 0 C130 100, 190 250, 50 450 C-10 530, -40 600, -40 600"
+              stroke="url(#goldRibbonHighlightFaq2)"
+              strokeWidth="4"
+              fill="none"
+            />
+            <defs>
+              <linearGradient id="goldRibbonRightFaq" x1="0" y1="0" x2="200" y2="600" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#8C5818" />
+                <stop offset="35%" stopColor="#D4AF37" />
+                <stop offset="65%" stopColor="#FFFDF9" />
+                <stop offset="100%" stopColor="#A6721E" />
+              </linearGradient>
+              <linearGradient id="goldRibbonHighlightFaq2" x1="0" y1="0" x2="200" y2="600" gradientUnits="userSpaceOnUse">
+                <stop offset="0%" stopColor="#FFF4C2" />
+                <stop offset="50%" stopColor="#FFFFFF" />
+                <stop offset="100%" stopColor="#FFE28A" />
+              </linearGradient>
+            </defs>
+          </svg>
 
           {/* ============================================================= */}
-          {/* 1. 3D CROWN & ROYAL FAQ HEADER (CRISP VECTOR FILIGREE)        */}
+          {/* 1. 3D CROWN & ROYAL FAQ HEADER                                */}
           {/* ============================================================= */}
           <div className="relative z-10 flex flex-col items-center text-center max-w-[980px] mx-auto mb-7 sm:mb-9">
             {/* Top 3D Gold Crown + Scalloped Royal Plum Plaque */}
             <div className="flex flex-col items-center w-full max-w-[880px] mx-auto">
-              {/* Crisp 3D 24K Gold Crown SVG (Never Clipped) */}
+              {/* Crisp 3D 24K Gold Crown SVG */}
               <svg
                 viewBox="0 0 64 32"
                 fill="none"
@@ -4947,7 +5015,7 @@ export default function HomePage() {
               >
                 <path
                   d="M8 26L4 11L19 18L32 4L45 18L60 11L56 26H8Z"
-                  fill="url(#faqCrownGold)"
+                  fill="url(#faqCrownGoldNew)"
                   stroke="#7A4B0E"
                   strokeWidth="1.4"
                   strokeLinejoin="round"
@@ -4958,7 +5026,7 @@ export default function HomePage() {
                   width="50"
                   height="4"
                   rx="2"
-                  fill="url(#faqCrownGold)"
+                  fill="url(#faqCrownGoldNew)"
                   stroke="#7A4B0E"
                   strokeWidth="1.2"
                 />
@@ -4968,7 +5036,7 @@ export default function HomePage() {
                 <circle cx="4" cy="10.5" r="2" fill="#FFE59E" stroke="#7A4B0E" strokeWidth="1" />
                 <circle cx="60" cy="10.5" r="2" fill="#FFE59E" stroke="#7A4B0E" strokeWidth="1" />
                 <defs>
-                  <linearGradient id="faqCrownGold" x1="4" y1="4" x2="60" y2="30" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="faqCrownGoldNew" x1="4" y1="4" x2="60" y2="30" gradientUnits="userSpaceOnUse">
                     <stop stopColor="#FFF4C2" />
                     <stop offset="0.45" stopColor="#E5B84B" />
                     <stop offset="1" stopColor="#8C5818" />
@@ -4976,7 +5044,7 @@ export default function HomePage() {
                 </defs>
               </svg>
 
-              {/* Filigree Lines + Royal Plum Scalloped Badge */}
+              {/* Filigree Lines + Royal Plum Scalloped Badge: NALMARA FASHION */}
               <div className="flex items-center justify-center w-full gap-2 sm:gap-3">
                 <div className="hidden sm:flex items-center gap-1.5 flex-1">
                   <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8963E] to-[#8C5818]" />
@@ -4992,15 +5060,15 @@ export default function HomePage() {
                   }}
                 >
                   <div
-                    className="px-5 sm:px-7 py-1.5 rounded-full border border-[#FFE59E]/75 flex items-center gap-2.5 shadow-[inset_0_1px_2px_rgba(255,244,194,0.45)]"
+                    className="px-6 sm:px-8 py-1.5 rounded-full border border-[#FFE59E]/75 flex items-center gap-2.5 shadow-[inset_0_1px_2px_rgba(255,244,194,0.45)]"
                     style={{
                       background:
                         'linear-gradient(180deg, #760159 0%, #54013F 55%, #220215 100%)',
                     }}
                   >
                     <span className="text-[#FFE59E] text-xs">✦</span>
-                    <span className="font-serif font-bold text-[11px] sm:text-[13px] tracking-[0.2em] uppercase text-[#FFF4C2]">
-                      NALMARA CONCIERGE &amp; ATELIER DESK
+                    <span className="font-serif font-bold text-[11px] sm:text-[13px] tracking-[0.24em] uppercase text-[#FFF4C2]">
+                      NALMARA FASHION
                     </span>
                     <span className="text-[#FFE59E] text-xs">✦</span>
                   </div>
@@ -5014,16 +5082,16 @@ export default function HomePage() {
               </div>
             </div>
 
-            <h2 className="font-serif font-extrabold text-2xl sm:text-4xl lg:text-[44px] text-[#4A0830] tracking-tight leading-[1.12] mt-2.5 sm:mt-3 drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)]">
+            <h2 className="font-serif font-extrabold text-2xl sm:text-4xl lg:text-[42px] text-[#240A18] tracking-tight leading-[1.12] mt-3 sm:mt-3.5 drop-shadow-[0_1px_1px_rgba(255,255,255,0.85)] uppercase">
               Frequently Asked Questions
             </h2>
 
-            <p className="font-serif italic text-xs sm:text-base lg:text-[18px] text-[#220915] font-medium mt-1">
-              Everything you need to know about our silks, bespoke Aari tailoring &amp; doorstep delivery
+            <p className="font-serif italic text-xs sm:text-base lg:text-[17px] text-[#4A2612] font-medium mt-1.5">
+              Everything you need to know about our silks, bespoke wear and tailored services
             </p>
 
-            {/* Pure Vector 3D Golden Lotus & Filigree Divider (Zero Box Artifact) */}
-            <div className="flex items-center justify-center gap-2.5 mt-2">
+            {/* 3D Golden Lotus & Filigree Divider */}
+            <div className="flex items-center justify-center gap-2.5 mt-2.5">
               <span className="h-[1.5px] w-16 sm:w-28 bg-gradient-to-r from-transparent via-[#C8963E] to-[#8C5818]" />
               <span className="w-2 h-2 rotate-45 bg-gradient-to-br from-[#FFF4C2] to-[#8C5818] shrink-0" />
               <svg
@@ -5035,46 +5103,46 @@ export default function HomePage() {
               >
                 <path
                   d="M30 3C26 10 23 16 30 24C37 16 34 10 30 3Z"
-                  fill="url(#lotusCenterFaq)"
+                  fill="url(#lotusCenterFaqNew)"
                   stroke="#7A4B0E"
                   strokeWidth="1"
                 />
                 <path
                   d="M30 24C21 20 15 13 18 7C23 9 26 14 30 24Z"
-                  fill="url(#lotusSideFaq)"
+                  fill="url(#lotusSideFaqNew)"
                   stroke="#7A4B0E"
                   strokeWidth="1"
                 />
                 <path
                   d="M30 24C39 20 45 13 42 7C37 9 34 14 30 24Z"
-                  fill="url(#lotusSideFaq)"
+                  fill="url(#lotusSideFaqNew)"
                   stroke="#7A4B0E"
                   strokeWidth="1"
                 />
                 <path
                   d="M30 24C16 23 8 18 9 12C15 13 22 17 30 24Z"
-                  fill="url(#lotusOuterFaq)"
+                  fill="url(#lotusOuterFaqNew)"
                   stroke="#7A4B0E"
                   strokeWidth="0.9"
                 />
                 <path
                   d="M30 24C44 23 52 18 51 12C45 13 38 17 30 24Z"
-                  fill="url(#lotusOuterFaq)"
+                  fill="url(#lotusOuterFaqNew)"
                   stroke="#7A4B0E"
                   strokeWidth="0.9"
                 />
                 <ellipse cx="30" cy="25" rx="10" ry="2" fill="#8C5818" />
                 <defs>
-                  <linearGradient id="lotusCenterFaq" x1="30" y1="3" x2="30" y2="24" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="lotusCenterFaqNew" x1="30" y1="3" x2="30" y2="24" gradientUnits="userSpaceOnUse">
                     <stop stopColor="#FFF4C2" />
                     <stop offset="0.5" stopColor="#E5B84B" />
                     <stop offset="1" stopColor="#9E6B18" />
                   </linearGradient>
-                  <linearGradient id="lotusSideFaq" x1="18" y1="7" x2="42" y2="24" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="lotusSideFaqNew" x1="18" y1="7" x2="42" y2="24" gradientUnits="userSpaceOnUse">
                     <stop stopColor="#FFE59E" />
                     <stop offset="1" stopColor="#A6721E" />
                   </linearGradient>
-                  <linearGradient id="lotusOuterFaq" x1="9" y1="12" x2="51" y2="24" gradientUnits="userSpaceOnUse">
+                  <linearGradient id="lotusOuterFaqNew" x1="9" y1="12" x2="51" y2="24" gradientUnits="userSpaceOnUse">
                     <stop stopColor="#F5D37E" />
                     <stop offset="1" stopColor="#8C5818" />
                   </linearGradient>
@@ -5086,240 +5154,145 @@ export default function HomePage() {
           </div>
 
           {/* ============================================================= */}
-          {/* 2. GRAND 12-COLUMN ROYAL ATELIER SHOWCASE + FAQ ACCORDION     */}
+          {/* 2. GRAND ROYAL 2-PAVILION SHOWCASE: LEFT ARCH + RIGHT FAQ     */}
           {/* ============================================================= */}
-          <div className="relative z-10 max-w-[1220px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-7 items-stretch">
-            {/* LEFT COLUMN (4 COLS): ROYAL BRIDAL ATELIER & STYLING DESK CARD */}
-            <div className="lg:col-span-4 flex flex-col pt-4">
-              <div className="relative flex-1 rounded-[26px] p-[2.5px] bg-gradient-to-b from-[#FFE59E] via-[#D4AF37] to-[#9E6B18] shadow-[0_18px_40px_rgba(80,35,10,0.16)] flex flex-col">
+          <div className="relative z-10 max-w-[1240px] mx-auto grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 items-center mt-6">
+            
+            {/* LEFT COLUMN (4 COLS): ROYAL ARCH PORTRAIT & STYLING DESK */}
+            <div className="lg:col-span-4 flex flex-col items-center">
+              {/* Upper Portrait with Mughal Arch Border */}
+              <div className="relative w-full max-w-[340px] rounded-t-[100px] rounded-b-[24px] p-[3px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_16px_38px_rgba(70,25,8,0.22)]">
+                <div className="relative w-full h-[320px] sm:h-[350px] rounded-t-[97px] rounded-b-[21px] overflow-hidden bg-[#2A041A]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src="/images/nalmara/hd/happy_faq_bride_arch.jpg"
+                    alt="Nalmara Bridal Silk & Custom Tailoring"
+                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-[#1A0112] via-[#1A0112]/50 to-transparent" />
+                </div>
+              </div>
+
+              {/* Overlapping Velvet Card at Bottom */}
+              <div className="relative -mt-16 sm:-mt-20 z-20 w-full max-w-[320px] rounded-[22px] p-[2.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_14px_34px_rgba(0,0,0,0.55)]">
                 <div
-                  className="flex-1 rounded-[23.5px] p-4 sm:p-5 border border-[#FFFDF9] flex flex-col justify-between relative overflow-hidden"
+                  className="rounded-[19.5px] p-5 sm:p-6 flex flex-col items-center text-center border border-[#FFE59E]/40"
                   style={{
                     background:
-                      'linear-gradient(180deg, #4B0A30 0%, #2E041D 55%, #1B0110 100%)',
+                      'linear-gradient(180deg, #3A0526 0%, #220216 55%, #12000C 100%)',
                   }}
                 >
-                  {/* Subtle Gold Mandala / Radial Glow Inside Dark Royal Card */}
-                  <div
-                    className="absolute inset-0 pointer-events-none opacity-25"
+                  <h3
+                    className="font-serif font-bold text-lg sm:text-[20px] leading-snug tracking-wide text-transparent bg-clip-text"
                     style={{
+                      fontFamily: "'Cinzel', Georgia, serif",
                       backgroundImage:
-                        'radial-gradient(circle at 50% 25%, rgba(255,229,158,0.45) 0%, transparent 65%)',
+                        'linear-gradient(180deg, #FFFDF9 0%, #FFE28A 45%, #C88A20 85%, #F8DF95 100%)',
+                      WebkitBackgroundClip: 'text',
+                      backgroundClip: 'text',
                     }}
-                  />
+                  >
+                    Personal Styling &amp; Fit Assistance
+                  </h3>
+                  <p className="text-xs sm:text-[13px] text-[#F3E2CB]/90 mt-2 leading-relaxed font-sans">
+                    Need help with blouse measurements, bridal wear or custom designs?
+                  </p>
 
-                  {/* Top Ornate 24K Gold Arch Portrait Window */}
-                  <div className="relative z-10">
-                    <div className="rounded-t-[110px] rounded-b-[18px] p-[2.5px] bg-gradient-to-b from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_24px_rgba(0,0,0,0.35)]">
-                      <div className="relative h-56 sm:h-60 rounded-t-[107px] rounded-b-[15.5px] overflow-hidden bg-[#2A041A]">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                          src="/images/nalmara/hd/happy_faq_bride_arch.jpg"
-                          alt="Nalmara Bridal Silk & Custom Tailoring Atelier"
-                          className="w-full h-full object-cover object-top transform hover:scale-105 transition-transform duration-700"
-                        />
-                        <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-[#1B0110] via-[#1B0110]/65 to-transparent" />
-
-                        {/* Bottom Floating Atelier Caption */}
-                        <div className="absolute bottom-2.5 inset-x-3 text-center">
-                          <span className="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full bg-[#FFFDF9]/95 border border-[#D4AF37] text-[10.5px] font-bold tracking-wider uppercase text-[#4A0830] shadow-xs">
-                            <Sparkles className="w-3 h-3 text-[#B88228]" />
-                            Master Tailoring &amp; Silk Desk
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Concierge Title & Promise */}
-                    <div className="text-center mt-4 px-1">
-                      <h3 className="font-serif font-bold text-lg sm:text-xl text-[#FFF4C2] tracking-wide">
-                        Personal Styling &amp; Fit Assistance
-                      </h3>
-                      <p className="text-xs text-[#F5E4C5]/85 mt-1 leading-relaxed">
-                        Need help with blouse measurements, bridal Aari work, or silk saree selection?
-                      </p>
-                    </div>
-
-                    {/* 3 Royal Service Highlights */}
-                    <div className="mt-4 space-y-2">
-                      <div className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-[#FFFDF9]/10 border border-[#FFE59E]/25">
-                        <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#FFF4C2] to-[#B88228] text-[#2B031A] flex items-center justify-center shrink-0 font-serif font-bold text-xs shadow-2xs">
-                          01
-                        </span>
-                        <div className="min-w-0">
-                          <p className="text-xs font-bold text-[#FFFDF9] leading-tight">
-                            2–4 Days Express Stitching
-                          </p>
-                          <p className="text-[11px] text-[#FFE59E]/80 truncate">
-                            Saree Blouses, Bridal Aari &amp; Kids Pattu
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-[#FFFDF9]/10 border border-[#FFE59E]/25">
-                        <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#FFF4C2] to-[#B88228] text-[#2B031A] flex items-center justify-center shrink-0 font-serif font-bold text-xs shadow-2xs">
-                          02
-                        </span>
-                        <div className="min-w-0">
-                          <p className="text-xs font-bold text-[#FFFDF9] leading-tight">
-                            WhatsApp Measurement Guide
-                          </p>
-                          <p className="text-[11px] text-[#FFE59E]/80 truncate">
-                            +91 63831 63609 • Direct Tailor Support
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="flex items-center gap-3 px-3.5 py-2.5 rounded-xl bg-[#FFFDF9]/10 border border-[#FFE59E]/25">
-                        <span className="w-8 h-8 rounded-full bg-gradient-to-br from-[#FFF4C2] to-[#B88228] text-[#2B031A] flex items-center justify-center shrink-0 font-serif font-bold text-xs shadow-2xs">
-                          03
-                        </span>
-                        <div className="min-w-0">
-                          <p className="text-xs font-bold text-[#FFFDF9] leading-tight">
-                            100% Quality-Checked Weaves
-                          </p>
-                          <p className="text-[11px] text-[#FFE59E]/80 truncate">
-                            Free Delivery Above ₹2,999
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Bottom Direct WhatsApp Concierge CTA inside Left Card */}
-                  <div className="relative z-10 mt-4 pt-3 border-t border-[#FFE59E]/20">
-                    <a
-                      href="https://wa.me/916383163609?text=Hi%20Nalmara%20Fashion!%20I%20have%20a%20question%20about%20your%20collections%20and%20custom%20stitching."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full py-2.5 px-4 rounded-full bg-gradient-to-r from-[#FFF4C2] via-[#E5B84B] to-[#C8922E] text-[#2A041A] font-serif font-bold text-xs sm:text-sm flex items-center justify-center gap-2 shadow-[0_6px_18px_rgba(0,0,0,0.3)] hover:brightness-105 transition-all"
-                    >
-                      <span>Chat with Master Tailor</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </a>
-                  </div>
+                  <a
+                    href="https://wa.me/916383163609?text=Hi%20Nalmara%20Fashion!%20I%20need%20help%20with%20blouse%20measurements%20and%20custom%20stitching."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-center gap-2 mt-4 px-6 py-2 rounded-full border border-[#D4AF37] shadow-[0_4px_14px_rgba(0,0,0,0.4)] text-[#FFE59E] hover:text-[#FFFDF9] hover:border-[#FFE59E] active:scale-95 transition-all text-xs sm:text-[13px] font-serif font-bold tracking-wide"
+                    style={{
+                      background: 'linear-gradient(180deg, #200215 0%, #0E0008 100%)',
+                    }}
+                  >
+                    <span>Chat with Master Tailor</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
                 </div>
               </div>
             </div>
 
-            {/* RIGHT COLUMN (8 COLS): SCULPTED 3D ROYAL FAQ ACCORDION DECK */}
-            <div className="lg:col-span-8 relative pt-4 flex flex-col">
-              {/* Overlapping Top Scalloped Royal Plum & 24K Gold Header Plaque */}
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 z-30 w-[90%] max-w-[430px]">
+            {/* RIGHT COLUMN (8 COLS): GOLDEN PANEL & 5 ACCORDION FAQ CARDS */}
+            <div className="lg:col-span-8 flex flex-col items-center">
+              <div className="relative w-full rounded-[28px] p-[2.5px] bg-gradient-to-b from-[#FFFDF9] via-[#E2C37A] to-[#A67524] shadow-[0_18px_45px_rgba(70,30,8,0.16)]">
                 <div
-                  className="rounded-full p-[2.5px] shadow-[0_10px_24px_rgba(118,1,89,0.38)]"
+                  className="relative rounded-[25.5px] pt-10 sm:pt-11 pb-6 px-3.5 sm:px-7 border border-[#FFFDF9]"
                   style={{
                     background:
-                      'linear-gradient(90deg, #760159 0%, #FFE59E 25%, #FFFDF9 50%, #FFE59E 75%, #760159 100%)',
+                      'linear-gradient(180deg, #F8EEDA 0%, #F5E5C4 50%, #ECCFA1 100%)',
                   }}
                 >
-                  <div
-                    className="px-5 py-2 rounded-full border border-[#FFE59E]/70 text-center shadow-[inset_0_1px_2px_rgba(255,244,194,0.45)] flex items-center justify-center gap-2"
-                    style={{
-                      background:
-                        'linear-gradient(180deg, #760159 0%, #54013F 55%, #220215 100%)',
-                    }}
-                  >
-                    <span className="text-[#FFE59E] text-xs">✦</span>
-                    <h3 className="font-serif font-bold text-sm sm:text-lg text-[#FFFDF9] tracking-wide whitespace-nowrap">
-                      Quick Answers to Your Queries
-                    </h3>
-                    <span className="text-[#FFE59E] text-xs">✦</span>
-                  </div>
-                </div>
-              </div>
-
-              {/* FAQ Card Body */}
-              <div className="flex-1 w-full rounded-[26px] p-[2.5px] bg-gradient-to-b from-[#FFE59E] via-[#D4AF37] to-[#9E6B18] shadow-[0_18px_40px_rgba(80,35,10,0.16)] flex flex-col">
-                <div
-                  className="flex-1 rounded-[23.5px] pt-9 sm:pt-11 pb-5 sm:pb-6 px-3.5 sm:px-6 border border-[#FFFDF9] flex flex-col justify-between"
-                  style={{
-                    background:
-                      'linear-gradient(180deg, #FAF0DD 0%, #F5E4C5 55%, #EDD5AB 100%)',
-                  }}
-                >
-                  {/* Subtitle Flanked by Tapered Gold Lines */}
-                  <div className="flex items-center justify-center gap-2.5 mb-3.5 px-2">
-                    <span className="h-[1px] flex-1 bg-gradient-to-r from-transparent via-[#B88228] to-[#8C5818]" />
-                    <p className="text-[11px] sm:text-[13px] font-semibold uppercase tracking-[0.14em] text-[#5B0E3D]">
-                      Click any question below to view details
-                    </p>
-                    <span className="h-[1px] flex-1 bg-gradient-to-l from-transparent via-[#B88228] to-[#8C5818]" />
+                  {/* Top Scalloped Plaque Header: Quick Answers to Your Queries */}
+                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-20">
+                    <div className="rounded-full p-[2px] bg-gradient-to-r from-[#D4AF37] via-[#FFFDF9] to-[#D4AF37] shadow-[0_8px_20px_rgba(70,10,45,0.35)]">
+                      <div
+                        className="px-6 sm:px-9 py-2 rounded-full border border-[#FFE59E]/75 flex items-center justify-center gap-2 shadow-inner"
+                        style={{
+                          background:
+                            'linear-gradient(180deg, #5B0E3D 0%, #380424 55%, #1F0114 100%)',
+                        }}
+                      >
+                        <h3 className="font-serif font-bold text-xs sm:text-base text-[#FFFDF9] tracking-wide whitespace-nowrap">
+                          Quick Answers to Your Queries
+                        </h3>
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Accordion Items (Q1 - Q5) */}
-                  <div className="space-y-2.5 sm:space-y-3 my-auto">
-                    {FAQ_ITEMS.map((faq, idx) => {
+                  <p className="text-[12px] sm:text-[13px] text-[#4A2612] font-semibold text-center mb-4">
+                    Find answers to the most common questions below
+                  </p>
+
+                  {/* 5 Accordion Cards */}
+                  <div className="space-y-3">
+                    {FAQ_ITEMS.map((faq) => {
                       const isOpen = openFaq === faq.id;
                       return (
-                        <div key={faq.id} className="space-y-2">
-                          {/* Question Pill Header */}
-                          <button
-                            type="button"
-                            onClick={() => setOpenFaq(isOpen ? null : faq.id)}
-                            className="w-full rounded-2xl p-[1.5px] bg-gradient-to-r from-[#E5C687] via-[#D4AF37] to-[#E5C687] shadow-[0_4px_12px_rgba(90,45,15,0.08)] cursor-pointer transition-transform active:scale-[0.995]"
+                        <div
+                          key={faq.id}
+                          className="rounded-[22px] p-[1.5px] bg-gradient-to-r from-[#D4AF37]/50 via-[#FFE59E] to-[#D4AF37]/50 shadow-[0_3px_12px_rgba(80,40,10,0.06)] transition-all"
+                        >
+                          <div
+                            className="rounded-[20.5px] overflow-hidden border border-[#FFFDF9]"
+                            style={{
+                              background:
+                                'linear-gradient(90deg, #FFFDF9 0%, #FAF1E0 50%, #FFFDF9 100%)',
+                            }}
                           >
-                            <span
-                              className="w-full px-3 sm:px-5 py-2.5 sm:py-3 rounded-[14.5px] flex items-center justify-between gap-3 text-left border border-[#FFFDF9]"
-                              style={{
-                                background: isOpen
-                                  ? 'linear-gradient(90deg, #F6DFD8 0%, #FDF2EA 50%, #FAF0E2 100%)'
-                                  : 'linear-gradient(90deg, #FDF6EC 0%, #FFFDF9 55%, #FAF0DD 100%)',
-                              }}
+                            {/* Header Row */}
+                            <button
+                              type="button"
+                              onClick={() => setOpenFaq(isOpen ? null : faq.id)}
+                              className="w-full px-3.5 sm:px-5 py-3 sm:py-3.5 flex items-center justify-between gap-3 text-left cursor-pointer transition-colors hover:bg-[#FFFDF9]"
                             >
-                              <span className="inline-flex items-center gap-2.5 sm:gap-3.5 min-w-0 flex-1">
-                                {/* Circular Deep Royal Burgundy Q1..Q5 Badge */}
-                                <span
-                                  className="w-8 h-8 sm:w-9 sm:h-9 rounded-full border border-[#D4AF37] text-[#FFFDF9] font-serif font-bold text-xs sm:text-[14px] flex items-center justify-center shrink-0 shadow-xs"
-                                  style={{
-                                    background:
-                                      'radial-gradient(circle at 50% 35%, #630E42 0%, #2B031A 100%)',
-                                  }}
-                                >
-                                  Q{idx + 1}
-                                </span>
-                                <span className="font-serif font-bold text-xs sm:text-[15.5px] text-[#231008] leading-snug">
+                              <div className="flex items-center gap-3 sm:gap-3.5 min-w-0 flex-1">
+                                <ScallopedFaqBadge num={faq.num} />
+                                <span className="font-serif font-bold text-xs sm:text-[15px] text-[#1E0A10] leading-snug">
                                   {faq.question}
                                 </span>
+                              </div>
+
+                              <span
+                                className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#D4AF37]/80 flex items-center justify-center shrink-0 shadow-xs transition-colors duration-300 ${
+                                  isOpen
+                                    ? 'bg-gradient-to-b from-[#4A0830] to-[#200214] text-[#FFE59E]'
+                                    : 'bg-gradient-to-b from-[#FFFDF9] to-[#EBD2A0] text-[#3D2010]'
+                                }`}
+                              >
+                                <ChevronDown
+                                  className={`w-4 h-4 stroke-[2.4] transition-transform duration-300 ${
+                                    isOpen ? 'rotate-180' : ''
+                                  }`}
+                                />
                               </span>
+                            </button>
 
-                              <span className="inline-flex items-center gap-2 shrink-0">
-                                {/* Category Tag Pill on Desktop */}
-                                {faq.category && (
-                                  <span className="hidden md:inline-flex items-center px-2.5 py-0.5 rounded-full bg-[#FAF0DC] border border-[#D4AF37]/65 text-[10.5px] font-bold text-[#5B0E3D] tracking-wide">
-                                    {faq.category}
-                                  </span>
-                                )}
-
-                                {/* Right Circular Cream & Gold Ring + / − Button */}
-                                <span
-                                  className={`w-7 h-7 sm:w-8 sm:h-8 rounded-full border flex items-center justify-center shrink-0 shadow-2xs transition-colors ${isOpen
-                                    ? 'bg-gradient-to-b from-[#5B0E3D] to-[#2B031A] border-[#D4AF37] text-[#FFE59E]'
-                                    : 'bg-gradient-to-b from-[#FFFDF9] to-[#F2DFB8] border-[#D4AF37] text-[#231008]'
-                                    }`}
-                                >
-                                  {isOpen ? (
-                                    <Minus className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
-                                  ) : (
-                                    <Plus className="w-3.5 h-3.5 sm:w-4 sm:h-4 stroke-[2.5]" />
-                                  )}
-                                </span>
-                              </span>
-                            </span>
-                          </button>
-
-                          {/* Expanded Answer Panel with Vintage Royal Burgundy & Gold Sewing Machine */}
-                          {isOpen && (
-                            <div className="rounded-2xl bg-[#FFFDF9]/95 border border-[#D4AF37]/70 px-3.5 sm:px-5 py-3.5 shadow-inner flex flex-col sm:flex-row items-start sm:items-center gap-3.5 sm:gap-4">
-                              {/* eslint-disable-next-line @next/next/no-img-element */}
-                              <img
-                                src="/images/nalmara/hd/happy_faq_sewing_machine.png"
-                                alt=""
-                                aria-hidden="true"
-                                className="w-14 sm:w-[72px] h-auto object-contain shrink-0"
-                              />
-                              <div className="flex-1 min-w-0">
-                                <p className="text-xs sm:text-[14px] text-[#231008] leading-[1.6] font-medium">
+                            {/* Smooth Expandable Answer Body */}
+                            {isOpen && (
+                              <div className="px-5 pb-4 pt-1 border-t border-[#D4AF37]/25 animate-fadeIn">
+                                <p className="text-xs sm:text-[14px] text-[#231008] leading-relaxed font-sans font-medium">
                                   {faq.answer}
                                 </p>
                                 {faq.highlights && faq.highlights.length > 0 && (
@@ -5336,8 +5309,8 @@ export default function HomePage() {
                                   </div>
                                 )}
                               </div>
-                            </div>
-                          )}
+                            )}
+                          </div>
                         </div>
                       );
                     })}
@@ -5350,8 +5323,8 @@ export default function HomePage() {
           {/* ============================================================= */}
           {/* 3. BOTTOM CENTERED "Still Have Questions? Contact Us →" CTA   */}
           {/* ============================================================= */}
-          <div className="relative z-10 mt-7 sm:mt-9 flex items-center justify-center gap-2.5 sm:gap-4 max-w-[860px] mx-auto">
-            <div className="flex items-center gap-1.5 flex-1">
+          <div className="relative z-10 mt-8 sm:mt-10 flex items-center justify-center gap-2.5 sm:gap-4 max-w-[860px] mx-auto px-4">
+            <div className="hidden sm:flex items-center gap-1.5 flex-1">
               <span className="h-[1.5px] flex-1 bg-gradient-to-r from-transparent via-[#C8922E] to-[#8C5818]" />
               <span className="w-1.5 h-1.5 rotate-45 bg-gradient-to-br from-[#FFE59E] to-[#8C5818] shrink-0" />
               <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
@@ -5359,90 +5332,31 @@ export default function HomePage() {
 
             <Link
               href="/contact"
-              className="group relative rounded-full p-[3px] shadow-[0_14px_32px_rgba(118,1,89,0.42)] hover:scale-105 active:scale-95 transition-transform shrink-0"
+              className="group relative rounded-full p-[2.5px] shadow-[0_10px_28px_rgba(118,1,89,0.38)] hover:scale-105 active:scale-95 transition-transform shrink-0"
               style={{
                 background:
                   'linear-gradient(90deg, #760159 0%, #FFE59E 28%, #FFFDF9 50%, #FFE59E 72%, #760159 100%)',
               }}
             >
               <span
-                className="inline-flex items-center gap-3 px-6 sm:px-9 py-2.5 sm:py-3 rounded-full border border-[#FFE59E]/85 shadow-[inset_0_1px_3px_rgba(255,244,194,0.5)]"
+                className="inline-flex items-center gap-2.5 px-6 sm:px-8 py-2.5 rounded-full border border-[#FFE59E]/85 shadow-[inset_0_1px_3px_rgba(255,244,194,0.45)]"
                 style={{
                   background:
-                    'linear-gradient(180deg, #760159 0%, #54013F 55%, #220215 100%)',
+                    'linear-gradient(180deg, #5B0E3D 0%, #380424 55%, #1F0114 100%)',
                 }}
               >
-                {/* Properly Sized 24K Gold Headset Icon Badge */}
-                <span className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#FFFDF9]/10 border border-[#FFE59E]/50 flex items-center justify-center shrink-0">
-                  <svg
-                    viewBox="0 0 40 40"
-                    fill="none"
-                    width={22}
-                    height={22}
-                    className="w-5 h-5 sm:w-[22px] sm:h-[22px] shrink-0"
-                  >
-                    <path
-                      d="M8 22V19C8 12.4 13.4 7 20 7C26.6 7 32 12.4 32 19V22"
-                      stroke="url(#headsetGoldFaq)"
-                      strokeWidth="3"
-                      strokeLinecap="round"
-                    />
-                    <rect
-                      x="5"
-                      y="19"
-                      width="5.5"
-                      height="10"
-                      rx="2.75"
-                      fill="url(#headsetGoldFaq)"
-                    />
-                    <rect
-                      x="29.5"
-                      y="19"
-                      width="5.5"
-                      height="10"
-                      rx="2.75"
-                      fill="url(#headsetGoldFaq)"
-                    />
-                    <path
-                      d="M32 28C32 31.5 28.5 34 23 34H19"
-                      stroke="url(#headsetGoldFaq)"
-                      strokeWidth="2.4"
-                      strokeLinecap="round"
-                    />
-                    <circle cx="19" cy="34" r="2.2" fill="#FFE59E" />
-                    <path
-                      d="M20 25.5C20 25.5 14 21.5 14 17C14 14.8 15.7 13.2 17.6 13.2C18.8 13.2 19.6 13.9 20 14.8C20.4 13.9 21.2 13.2 22.4 13.2C24.3 13.2 26 14.8 26 17C26 21.5 20 25.5 20 25.5Z"
-                      fill="url(#headsetGoldFaq)"
-                    />
-                    <defs>
-                      <linearGradient
-                        id="headsetGoldFaq"
-                        x1="5"
-                        y1="7"
-                        x2="35"
-                        y2="35"
-                        gradientUnits="userSpaceOnUse"
-                      >
-                        <stop stopColor="#FFF4C2" />
-                        <stop offset="0.5" stopColor="#E5B84B" />
-                        <stop offset="1" stopColor="#9E6B18" />
-                      </linearGradient>
-                    </defs>
-                  </svg>
-                </span>
-
-                <span className="font-serif font-bold text-xs sm:text-base text-[#FFFDF9] tracking-wide whitespace-nowrap">
+                <Headphones className="w-4 h-4 text-[#FFE59E] shrink-0" />
+                <span className="font-serif font-bold text-xs sm:text-sm text-[#FFFDF9] tracking-wide whitespace-nowrap">
                   Still Have Questions?{' '}
-                  <span className="text-[#FFE59E] underline decoration-[#FFE59E]/50 underline-offset-4">
+                  <span className="text-[#FFE59E] underline decoration-[#FFE59E]/60 underline-offset-4 group-hover:text-white transition-colors">
                     Contact Us
-                  </span>
+                  </span>{' '}
+                  →
                 </span>
-
-                <ArrowRight className="w-4 h-4 text-[#FFE59E] group-hover:translate-x-1 transition-transform shrink-0" />
               </span>
             </Link>
 
-            <div className="flex items-center gap-1.5 flex-1">
+            <div className="hidden sm:flex items-center gap-1.5 flex-1">
               <span className="w-2.5 h-2.5 rotate-45 bg-gradient-to-br from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] border border-[#6E420C] shadow-2xs shrink-0" />
               <span className="w-1.5 h-1.5 rotate-45 bg-gradient-to-br from-[#FFE59E] to-[#8C5818] shrink-0" />
               <span className="h-[1.5px] flex-1 bg-gradient-to-l from-transparent via-[#C8922E] to-[#8C5818]" />
