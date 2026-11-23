@@ -134,9 +134,11 @@ const RoyalCornerMandala = ({ className = 'w-28 h-28' }: { className?: string })
 const GoogleReviewAvatar = ({
   avatarUrl,
   fullName,
+  iconSize = 'w-6 h-6',
 }: {
   avatarUrl?: string;
   fullName: string;
+  iconSize?: string;
 }) => {
   const [hasError, setHasError] = useState(false);
 
@@ -150,7 +152,7 @@ const GoogleReviewAvatar = ({
   if (!isValid) {
     return (
       <div className="w-full h-full rounded-full bg-gradient-to-b from-[#4A0A30] via-[#2E041E] to-[#18000E] flex items-center justify-center text-[#FFE59E]">
-        <User className="w-6 h-6 text-[#FFE59E]" strokeWidth={1.8} />
+        <User className={`${iconSize} text-[#FFE59E]`} strokeWidth={1.8} />
       </div>
     );
   }
@@ -4576,14 +4578,29 @@ export default function HomePage() {
 
               <span className="hidden md:inline-block h-4 w-[1px] bg-[#C8922E]/50" />
 
-              {/* 5 Circular Smiling Patron Portraits Strip + "Join our happy customers ♡" */}
-              <div className="hidden sm:inline-flex items-center gap-2">
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src="/images/nalmara/hd/happy_faq_avatars_strip.png"
-                  alt="Happy Nalmara Patrons"
-                  className="h-7 sm:h-8 w-auto object-contain rounded-full"
-                />
+              {/* 5 Circular Real Customer Review Avatars + "Join our happy customers ♡" */}
+              <div className="hidden sm:inline-flex items-center gap-2.5">
+                <div className="flex items-center -space-x-2">
+                  {allHappyReviews.slice(0, 5).map((rev, revIdx) => {
+                    const revName = `${rev.user?.firstName || ''} ${rev.user?.lastName || ''}`.trim() || 'Valued Patron';
+                    return (
+                      <div
+                        key={rev._id || `header-avatar-${revIdx}`}
+                        className="relative w-7 h-7 sm:w-8 sm:h-8 rounded-full p-[1.5px] bg-gradient-to-b from-[#FFF4C2] via-[#D4AF37] to-[#8C5818] shadow-xs hover:z-20 hover:scale-110 transition-transform"
+                        title={revName}
+                        style={{ zIndex: 10 - revIdx }}
+                      >
+                        <div className="w-full h-full rounded-full overflow-hidden bg-[#2A051E] border border-white/60">
+                          <GoogleReviewAvatar
+                            avatarUrl={rev.user?.avatar}
+                            fullName={revName}
+                            iconSize="w-3.5 h-3.5"
+                          />
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
                 <span className="font-serif font-bold text-xs sm:text-[13.5px] text-[#231008] group-hover:text-[#4A0830] transition-colors">
                   Join our happy customers ♡
                 </span>
