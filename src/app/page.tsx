@@ -2814,7 +2814,7 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* CENTER COLUMN (3 Cols): Uncropped Royal Arch Bridal Portrait */}
+              {/* CENTER COLUMN (3 Cols): Uncropped Royal Arch Center Portrait */}
               <div className="lg:col-span-3 relative flex flex-col items-center justify-center py-2">
                 {/* Circular Champagne & Gold Aura Behind Arch */}
                 <div className="absolute w-72 h-72 rounded-full bg-gradient-to-tr from-[#F2E2BE]/80 via-[#FAF1DC]/90 to-[#EFE6CE]/80 border border-[#D4AF37]/45 shadow-[inset_0_0_40px_rgba(212,175,55,0.25)] pointer-events-none" />
@@ -2827,20 +2827,20 @@ export default function HomePage() {
                   <div className="relative w-full h-full rounded-t-[136px] rounded-b-[13px] overflow-hidden bg-[#280619] border border-[#FFFDF9]/50">
                     {/* eslint-disable-next-line @next/next/no-img-element */}
                     <img
-                      src="/images/nalmara/hd/stitching_blouse_hd.jpg"
-                      alt="Bridal & Designer Blouse Stitching"
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700"
+                      src="/images/nalmara/our_craft_center_kid.jpg"
+                      alt="Nalmara Handcrafted Kids & Couture Fit"
+                      className="w-full h-full object-cover object-[center_30%] group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-[#220414]/85 via-[#220414]/30 to-transparent pointer-events-none" />
                   </div>
 
                   {/* Bottom Floating Royal Gold-on-Plum Plaque */}
                   <Link
-                    href="/stitching-services/bridal-designer-blouses"
+                    href="/stitching-services"
                     className="absolute -bottom-3 left-1/2 -translate-x-1/2 z-30 whitespace-nowrap inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-gradient-to-r from-[#760159] via-[#5B0E3D] to-[#760159] border-[1.5px] border-[#FFE59E] text-[#FFE59E] text-[9.5px] font-bold uppercase tracking-[0.18em] shadow-lg hover:scale-105 transition-transform"
                   >
                     <Sparkles className="w-3 h-3 text-[#FFE59E]" />
-                    <span>Master Aari &amp; Bridal Fit</span>
+                    <span>Handcrafted Kids &amp; Couture Fit</span>
                   </Link>
                 </div>
               </div>
