@@ -26,7 +26,7 @@ const MannequinIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
 
 export const Footer = () => {
   return (
-    <footer className="relative w-full bg-[#180010] text-[#F7E8D0] overflow-hidden select-none border-t-2 border-[#D4AF37]">
+    <footer className="hidden md:block relative w-full bg-[#180010] text-[#F7E8D0] overflow-hidden select-none border-t-2 border-[#D4AF37]">
       {/* 1. Full-Bleed Ultra-HD Royal Wine-Plum Background Plate */}
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}

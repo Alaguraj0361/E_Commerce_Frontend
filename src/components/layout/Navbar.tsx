@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import {
   Heart,
   ShoppingCart,
@@ -16,6 +16,7 @@ import {
   Truck,
   Gem,
   ChevronDown,
+  Search,
 } from 'lucide-react';
 import { useCartStore } from '../../store/cartStore';
 import { useWishlistStore } from '../../store/wishlistStore';
@@ -24,11 +25,34 @@ import { useCategoryStore } from '../../store/categoryStore';
 
 export const Navbar = () => {
   const pathname = usePathname();
+  const router = useRouter();
+  const [mobileSearchQuery, setMobileSearchQuery] = useState('');
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
   const userMenuRef = useRef<HTMLDivElement>(null);
+
+  // Sync search input with URL search param on /shop
+  useEffect(() => {
+    if (typeof window !== 'undefined' && pathname === '/shop') {
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get('search');
+      if (q !== null) {
+        setMobileSearchQuery(q);
+      }
+    }
+  }, [pathname]);
+
+  const handleMobileSearchSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = mobileSearchQuery.trim();
+    if (!trimmed) {
+      router.push('/shop');
+      return;
+    }
+    router.push(`/shop?search=${encodeURIComponent(trimmed)}`);
+  };
 
   const { setIsCartOpen, getTotalItemsCount, fetchCart, mergeGuestCart } =
     useCartStore();
@@ -441,6 +465,50 @@ export const Navbar = () => {
               </span>
             </button>
           </div>
+        </div>
+
+        {/* Mobile View Top Header: Fixed Full-Width Luxury Search Bar */}
+        <div className="block lg:hidden px-3 pt-1.5 pb-2.5 w-full max-w-[1360px] mx-auto">
+          <form
+            onSubmit={handleMobileSearchSubmit}
+            className="relative w-full flex items-center"
+          >
+            <div className="relative w-full rounded-full p-[1.5px] bg-gradient-to-r from-[#D4AF37] via-[#FFE59E] to-[#D4AF37] shadow-[0_2px_10px_rgba(74,10,46,0.14)]">
+              <div className="relative w-full bg-[#FFFDF9] rounded-full flex items-center pl-3.5 pr-1.5 py-1.5 border border-[#FFE59E]/50">
+                <Search className="w-4 h-4 text-[#760159] shrink-0 mr-2 stroke-[2.4]" />
+                <input
+                  type="search"
+                  value={mobileSearchQuery}
+                  onChange={(e) => setMobileSearchQuery(e.target.value)}
+                  placeholder="Search sarees, blouses, lehengas, gowns..."
+                  className="w-full bg-transparent text-xs text-[#23120B] placeholder:text-[#8C7355]/85 focus:outline-none font-sans"
+                  enterKeyHint="search"
+                />
+                {mobileSearchQuery && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setMobileSearchQuery('');
+                      if (pathname === '/shop') {
+                        router.push('/shop');
+                      }
+                    }}
+                    className="p-1 text-zinc-400 hover:text-zinc-700 mr-1 shrink-0"
+                    aria-label="Clear search"
+                  >
+                    <X className="w-3.5 h-3.5" />
+                  </button>
+                )}
+                <button
+                  type="submit"
+                  className="px-3.5 py-1 rounded-full bg-gradient-to-r from-[#760159] to-[#9E0B68] text-[#FFE59E] text-[11px] font-serif font-bold tracking-wide shadow-xs shrink-0 active:scale-95 transition-transform"
+                  aria-label="Search"
+                >
+                  Search
+                </button>
+              </div>
+            </div>
+          </form>
         </div>
       </header>
 
