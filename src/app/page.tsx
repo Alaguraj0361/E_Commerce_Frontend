@@ -5164,64 +5164,162 @@ export default function HomePage() {
           {/* ============================================================= */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 xl:gap-14 items-center">
             
-            {/* LEFT COLUMN (5/12 COLS on LG, 4/12 on XL): ROYAL ARCH PORTRAIT & STYLING DESK */}
-            <div className="lg:col-span-5 xl:col-span-4 flex flex-col items-center">
-              {/* Upper Portrait with Mughal Arch 24K Gold Beveled Border */}
-              <div className="relative w-full max-w-[370px] sm:max-w-[400px] rounded-t-[115px] rounded-b-[28px] p-[3.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_20px_46px_rgba(70,25,8,0.26)]">
-                <div className="relative w-full h-[350px] sm:h-[390px] rounded-t-[111.5px] rounded-b-[24.5px] overflow-hidden bg-[#2A041A]">
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img
-                    src="/images/nalmara/hd/happy_faq_bride_arch.jpg"
-                    alt="Nalmara Bridal Silk & Custom Tailoring"
-                    className="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-t from-[#1A0112] via-[#1A0112]/50 to-transparent" />
-                </div>
-              </div>
+            {/* LEFT COLUMN (5/12 COLS): LATEST TRENDING ARCHITECTURAL ATELIER SHOWCASE */}
+            <div className="lg:col-span-5 xl:col-span-5 flex flex-col items-center justify-center relative">
+              {/* Ambient Golden Stage Glow Behind Showcase */}
+              <div className="pointer-events-none absolute -inset-4 sm:-inset-8 bg-radial from-[#D4AF37]/25 via-[#760159]/15 to-transparent blur-3xl opacity-80" />
 
-              {/* Overlapping Velvet Card at Bottom */}
-              <div className="relative -mt-18 sm:-mt-22 z-20 w-full max-w-[340px] sm:max-w-[365px] rounded-[24px] p-[3px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_16px_40px_rgba(0,0,0,0.6)]">
-                <div
-                  className="rounded-[21px] p-5 sm:p-7 flex flex-col items-center text-center border border-[#FFE59E]/45"
-                  style={{
-                    background:
-                      'linear-gradient(180deg, #3A0526 0%, #220216 55%, #10000A 100%)',
-                  }}
-                >
-                  <h3
-                    className="font-serif font-bold text-lg sm:text-[21px] leading-snug tracking-wide text-transparent bg-clip-text"
+              <div className="relative w-full max-w-[420px] mx-auto group">
+                
+                {/* 1. FLOATING TRENDING BADGE: TOP-LEFT (LIVE MASTER TAILOR) */}
+                <div className="absolute -top-3.5 left-4 sm:-left-3 z-30">
+                  <div className="rounded-full p-[1.5px] bg-gradient-to-r from-[#FFE59E] via-[#D4AF37] to-[#8C5818] shadow-[0_8px_20px_rgba(30,3,20,0.45)]">
+                    <div className="px-3.5 py-1.5 rounded-full backdrop-blur-md bg-[#220215]/90 border border-[#FFE59E]/40 flex items-center gap-2">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                      </span>
+                      <span className="font-serif font-bold text-[10.5px] uppercase tracking-wider text-[#FFFDF9]">
+                        Virtual Tailor Online
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. FLOATING TRENDING BADGE: TOP-RIGHT (100% BESPOKE CRAFT) */}
+                <div className="absolute top-8 -right-3 sm:-right-4 z-30 hidden sm:block">
+                  <div className="rounded-2xl p-[1.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#8C5818] shadow-[0_10px_25px_rgba(0,0,0,0.35)]">
+                    <div className="px-3 py-2 rounded-[14px] backdrop-blur-md bg-[#2D041E]/92 border border-[#FFE59E]/40 flex flex-col items-center text-center">
+                      <span className="text-[#FFE59E] text-xs">✂️</span>
+                      <span className="font-serif font-bold text-[10px] text-[#FFFDF9] uppercase tracking-wider mt-0.5">
+                        Bespoke Fit
+                      </span>
+                      <span className="text-[9px] font-sans text-[#FFE59E]/90 font-semibold">
+                        Guaranteed
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 3. MAIN ARCHITECTURAL PORTRAIT FRAME */}
+                <div className="relative rounded-t-[140px] rounded-b-[32px] p-[3.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_24px_50px_rgba(70,25,8,0.32)] overflow-hidden">
+                  {/* Subtle Inner Gold Foil Rim */}
+                  <div className="relative w-full h-[380px] sm:h-[430px] rounded-t-[136.5px] rounded-b-[28.5px] overflow-hidden bg-[#240317]">
+                    
+                    {/* Model Image */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src="/images/nalmara/hd/happy_faq_bride_arch.jpg"
+                      alt="Nalmara Bridal Silk & Custom Tailoring"
+                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-700 ease-out"
+                    />
+
+                    {/* Architectural Corner Filigree Ornaments */}
+                    <div className="pointer-events-none absolute top-4 left-1/2 -translate-x-1/2 z-10 flex items-center gap-1.5 opacity-80">
+                      <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E]" />
+                      <span className="font-serif text-[9px] uppercase tracking-[0.25em] text-[#FFE59E] font-semibold drop-shadow-md">
+                        NALMARA ATELIER
+                      </span>
+                      <span className="w-1.5 h-1.5 rotate-45 bg-[#FFE59E]" />
+                    </div>
+
+                    {/* Gradient Fade at bottom to blend into card */}
+                    <div className="absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#1A0112] via-[#1A0112]/60 to-transparent" />
+                  </div>
+                </div>
+
+                {/* 4. FLOATING TRENDING BADGE: MIDDLE-LEFT RATING PILL */}
+                <div className="absolute bottom-40 -left-2 sm:-left-5 z-30">
+                  <div className="rounded-full p-[1.5px] bg-gradient-to-r from-[#D4AF37] via-[#FFFDF9] to-[#8C5818] shadow-[0_8px_20px_rgba(0,0,0,0.4)]">
+                    <div className="px-3 py-1.5 rounded-full backdrop-blur-md bg-[#220215]/92 border border-[#FFE59E]/40 flex items-center gap-2">
+                      <div className="flex items-center gap-0.5">
+                        {[...Array(5)].map((_, i) => (
+                          <Star key={i} className="w-2.5 h-2.5 fill-[#FBBC05] text-[#D99B00]" />
+                        ))}
+                      </div>
+                      <span className="font-serif font-extrabold text-[10px] text-[#FFE59E] tracking-wider">
+                        4.9/5
+                      </span>
+                      <span className="text-[9px] text-[#F3E2CB]/80 font-sans font-medium">
+                        (1.2k+ Fits)
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 5. MODERNIZED OVERLAPPING CONCIERGE STYLING CARD */}
+                <div className="relative -mt-24 sm:-mt-28 z-20 w-[94%] sm:w-[92%] mx-auto rounded-[26px] p-[2.5px] bg-gradient-to-b from-[#FFFDF9] via-[#D4AF37] to-[#7A4B0E] shadow-[0_20px_46px_rgba(0,0,0,0.65)]">
+                  <div
+                    className="rounded-[23.5px] p-5 sm:p-6 flex flex-col items-center text-center border border-[#FFE59E]/40 relative overflow-hidden"
                     style={{
-                      fontFamily: "'Cinzel', Georgia, serif",
-                      backgroundImage:
-                        'linear-gradient(180deg, #FFFDF9 0%, #FFE28A 45%, #C88A20 85%, #F8DF95 100%)',
-                      WebkitBackgroundClip: 'text',
-                      backgroundClip: 'text',
+                      background: 'linear-gradient(180deg, #3A0526 0%, #220216 55%, #10000A 100%)',
                     }}
                   >
-                    Personal Styling &amp; Fit Assistance
-                  </h3>
-                  <p className="text-xs sm:text-[13.5px] text-[#F3E2CB]/90 mt-2.5 leading-relaxed font-sans">
-                    Need help with blouse measurements, bridal wear or custom designs?
-                  </p>
+                    {/* Micro Gold Top Bar Accent */}
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="h-[1px] w-6 bg-gradient-to-r from-transparent to-[#FFE59E]" />
+                      <span className="text-[#FFE59E] text-[10px]">✦</span>
+                      <span className="font-serif font-bold text-[9.5px] tracking-[0.22em] uppercase text-[#FFE59E]">
+                        Couture Styling Desk
+                      </span>
+                      <span className="text-[#FFE59E] text-[10px]">✦</span>
+                      <span className="h-[1px] w-6 bg-gradient-to-l from-transparent to-[#FFE59E]" />
+                    </div>
 
-                  <a
-                    href="https://wa.me/916383163609?text=Hi%20Nalmara%20Fashion!%20I%20need%20help%20with%20blouse%20measurements%20and%20custom%20stitching."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 mt-4.5 px-6 sm:px-7 py-2.5 rounded-full border border-[#D4AF37] shadow-[0_6px_18px_rgba(0,0,0,0.45)] text-[#FFE59E] hover:text-[#FFFDF9] hover:border-[#FFE59E] active:scale-95 transition-all text-xs sm:text-[13.5px] font-serif font-bold tracking-wide"
-                    style={{
-                      background: 'linear-gradient(180deg, #220215 0%, #0E0008 100%)',
-                    }}
-                  >
-                    <span>Chat with Master Tailor</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </a>
+                    <h3
+                      className="font-serif font-bold text-lg sm:text-[20px] leading-tight tracking-wide text-transparent bg-clip-text"
+                      style={{
+                        fontFamily: "'Cinzel', Georgia, serif",
+                        backgroundImage:
+                          'linear-gradient(180deg, #FFFDF9 0%, #FFE28A 45%, #C88A20 85%, #F8DF95 100%)',
+                        WebkitBackgroundClip: 'text',
+                        backgroundClip: 'text',
+                      }}
+                    >
+                      Personal Styling &amp; Fit Assistance
+                    </h3>
+                    
+                    <p className="text-xs sm:text-[13px] text-[#F3E2CB]/90 mt-2 leading-relaxed font-sans font-medium">
+                      Need help with blouse measurements, bridal wear or custom designs?
+                    </p>
+
+                    {/* Trending Feature Pills Strip */}
+                    <div className="flex flex-wrap items-center justify-center gap-1.5 mt-3">
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#520B37]/80 border border-[#FFE59E]/30 text-[9.5px] font-medium text-[#FFE59E]">
+                        <span>📐</span> Blouse Measurement
+                      </span>
+                      <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full bg-[#520B37]/80 border border-[#FFE59E]/30 text-[9.5px] font-medium text-[#FFE59E]">
+                        <span>✨</span> Aari &amp; Zari Work
+                      </span>
+                    </div>
+
+                    {/* WhatsApp CTA Button */}
+                    <a
+                      href="https://wa.me/916383163609?text=Hi%20Nalmara%20Fashion!%20I%20need%20help%20with%20blouse%20measurements%20and%20custom%20stitching."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group/btn relative inline-flex items-center justify-center gap-2.5 mt-4 w-full py-2.5 sm:py-3 px-5 rounded-full border border-[#FFE59E] shadow-[0_6px_20px_rgba(0,0,0,0.5),inset_0_1px_2px_rgba(255,255,255,0.6)] active:scale-95 transition-all cursor-pointer"
+                      style={{
+                        background:
+                          'linear-gradient(180deg, #FFF4C2 0%, #E5B84B 40%, #D4AF37 75%, #9E6B18 100%)',
+                      }}
+                    >
+                      <svg viewBox="0 0 24 24" className="w-4 h-4 fill-[#200318] shrink-0">
+                        <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.582 2.128 2.182-.573c.978.58 1.911.928 3.145.929 3.178 0 5.767-2.587 5.768-5.766.001-3.187-2.575-5.77-5.764-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.312.045-.694.062-2.128-.532-1.833-.758-3.003-2.617-3.094-2.739-.089-.122-.74-1.002-.74-1.911 0-.909.475-1.356.645-1.539.171-.183.375-.228.499-.228.125 0 .25 0 .36.006.115.006.27-.043.421.323.155.375.53 1.294.576 1.389.046.095.078.207.014.332-.063.125-.095.203-.188.312-.094.109-.198.243-.282.327-.095.094-.194.197-.083.388.111.19.493.813 1.057 1.316.726.648 1.339.849 1.53.943.191.095.303.079.416-.048.113-.127.483-.562.612-.756.129-.194.258-.162.433-.098.176.064 1.115.526 1.307.622.192.096.321.144.368.225.048.08.048.468-.096.873z" />
+                      </svg>
+                      <span className="font-serif font-extrabold text-[12px] sm:text-[13px] tracking-wide text-[#200318] uppercase">
+                        Chat with Master Tailor
+                      </span>
+                      <ArrowRight className="w-4 h-4 text-[#200318] group-hover/btn:translate-x-1 transition-transform" />
+                    </a>
+                  </div>
                 </div>
+
               </div>
             </div>
 
-            {/* RIGHT COLUMN (7/12 COLS on LG, 8/12 on XL): GOLDEN PANEL & 5 ACCORDION FAQ CARDS */}
-            <div className="lg:col-span-7 xl:col-span-8 flex flex-col items-center">
+            {/* RIGHT COLUMN (7/12 COLS): GOLDEN PANEL & 5 ACCORDION FAQ CARDS */}
+            <div className="lg:col-span-7 xl:col-span-7 flex flex-col items-center">
               <div className="relative w-full rounded-[30px] p-[3px] bg-gradient-to-b from-[#FFFDF9] via-[#E2C37A] to-[#A67524] shadow-[0_22px_54px_rgba(70,30,8,0.18)]">
                 <div
                   className="relative rounded-[27px] pt-11 sm:pt-13 pb-7 sm:pb-8 px-4 sm:px-8 lg:px-9 border border-[#FFFDF9]"
